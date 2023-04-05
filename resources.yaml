@@ -1,0 +1,422 @@
+- name: site
+  groups:
+    - title: Site options
+      entries:
+        - name: site-name
+          default:
+          required: n
+          type: string
+          description: |
+            Provide a specific name for this skupper installation
+        - name: annotations
+          default:
+          required: n
+          type: strings
+          description: |
+            Annotations to add to skupper pods
+        - name: labels
+          default:
+          required: n
+          type: strings
+          description: |
+            Labels to add to skupper pods
+        - name: create-network-policy
+          default:
+          required: n
+          type: bool
+          description: |
+            Create network policy to restrict access to Skupper services
+            exposed through this site to the pods currently in the
+            namespace.
+        - name: enable-rest-api
+          default:
+          required: n
+          type: bool
+          description: |
+            Enable REST API
+    - title: Ingress options
+      entries:
+        - name: ingress
+          default: route if available, else loadbalancer
+          required: n
+          type: string
+          choices: [route, loadbalancer, nodeport, nginx-ingress-v1, contour-http-proxy, ingress, none]
+          description: |
+            Setup Skupper ingress to one of
+        - name: ingress-host
+          default: null
+          required: n
+          type: string
+          description: |
+            The hostname or alias by which the ingress route or proxy can
+            be reached.
+        - name: ingress-annotations
+          default:
+          required: n
+          type: strings
+          description: |
+            Annotations to add to skupper ingress
+    - title: Console options
+      entries:
+        - name: enable-console
+          default: n
+          required: n
+          type: bool
+          description: |
+            Enable skupper console must be used in conjunction with
+            '--enable-flow-collector' flag
+        - name: console-auth
+          default: internal
+          required: n
+          type: string
+          choices: [internal, openshift, unsecured]
+          description: |
+            The authentication mode for the console.
+        - name: console-user
+          default: admin
+          required: n
+          type: string
+          description: |
+            Skupper console user. Valid only when --console-auth=internal
+        - name: console-password
+          default: "[generated]"
+          required: n
+          type: string
+          description: |
+            Skupper console user. Valid only when --console-auth=internal
+        - name: console-ingress
+          default:
+          required: n
+          type: string
+          choices: [route, loadbalancer, nodeport, nginx-ingress-v1, contour-http-proxy, ingress, none]
+          description: |
+            Determines if/how console is exposed outside cluster. If
+            not specified uses value of --ingress.
+    - title: Service sync options
+      entries:
+        - name: enable-service-sync
+          default: y
+          required: n
+          type: bool
+          description: |
+            Participate in cross-site service synchronization (default true)
+        - name: service-sync-site-ttl
+          default:
+          required: n
+          type: duration
+          description: |
+            Time after which stale services, i.e. those whose site has not been heard from, created through service-sync are removed.
+
+    - title: Config sync options
+      entries:
+        - name: config-sync-cpu
+          default:
+          required: n
+          type: string
+          description: |
+            CPU request for config-sync pods
+        - name: config-sync-memory
+          default:
+          required: n
+          type: string
+          description: |
+            Memory request for config-sync pods
+        - name: config-sync-cpu-limit
+          default:
+          required: n
+          type: string
+          description: |
+            CPU limit for config-sync pods
+        - name: config-sync-memory-limit
+          default:
+          required: n
+          type: string
+          description: |
+            Memory limit for config-sync pods
+    - title: Controller options
+      entries:
+        - name: controller-cpu
+          default:
+          required: n
+          type: string
+          description: |
+            CPU request for controller pods
+        - name: controller-memory
+          default:
+          required: n
+          type: string
+          description: |
+            Memory request for controller pods
+        - name: controller-cpu-limit
+          default:
+          required: n
+          type: string
+          description: |
+            CPU limit for controller pods
+        - name: controller-memory-limit
+          default:
+          required: n
+          type: string
+          description: |
+            Memory limit for controller pods
+        - name: controller-node-selector
+          default:
+          required: n
+          type: string
+          description: |
+            Node selector to control placement of controller pods
+        - name: controller-pod-affinity
+          default:
+          required: n
+          type: string
+          description: |
+            Pod affinity label matches to control placement of controller pods
+        - name: controller-pod-antiaffinity
+          default:
+          required: n
+          type: string
+          description: |
+            Pod antiaffinity label matches to control placement of controller pods
+        - name: controller-ingress-host
+          default:
+          required: n
+          type: string
+          description: |
+            Host through which node is accessible when using nodeport as ingress.
+        - name: controller-load-balancer-ip
+          default:
+          required: n
+          type: string
+          description: |
+            Load balancer ip that will be used for controller service, if supported by cloud provider
+            - name: controller-service-annotation
+              default:
+              required: n
+              type: strings
+              description: |
+                Annotations to add to skupper controller service
+    - title: Flow collector options
+      entries:
+        - name: enable-flow-collector
+          default:
+          required: n
+          type: bool
+          description: |
+            Enable cross-site flow collection for the application network
+        - name: flow-collector-record-ttl
+          default:
+          required: n
+          type: duration
+          description: |
+            Time after which terminated flow records are deleted, i.e. those flow records that have an end time set. Default is 30 minutes.
+        - name: flow-collector-cpu
+          default:
+          required: n
+          type: string
+          description: |
+            CPU request for flow collector pods
+        - name: flow-collector-memory
+          default:
+          required: n
+          type: string
+          description: |
+            Memory request for flow collector pods
+        - name: flow-collector-cpu-limit
+          default:
+          required: n
+          type: string
+          description: |
+            CPU limit for flow collector pods
+        - name: flow-collector-memory-limit
+          default:
+          required: n
+          type: string
+          description: |
+            Memory limit for flow collector pods
+    - title: Router options
+      entries:
+        - name: router-mode
+          default: interior
+          required: n
+          type: string
+          description: |
+            Skupper router-mode
+        - name: router-logging
+          default: info
+          required: n
+          type: string
+          choices: [trace, debug, info, notice, warning, error]
+          description: |
+            Logging settings for router
+        - name: router-debug-mode
+          default:
+          required: n
+          type: string
+          choices: [asan, gdb]
+          description: |
+            Enable debug mode for the router
+        - name: routers
+          default:
+          required: n
+          type: int
+          description: |
+            Number of router replicas to start
+        - name: router-cpu
+          default:
+          required: n
+          type: string
+          description: |
+            CPU request for router pods
+        - name: router-memory
+          default:
+          required: n
+          type: string
+          description: |
+            Memory request for router pods
+        - name: router-cpu-limit
+          default:
+          required: n
+          type: string
+          description: |
+            CPU limit for router pods
+        - name: router-memory-limit
+          default:
+          required: n
+          type: string
+          description: |
+            Memory limit for router pods
+        - name: router-node-selector
+          default:
+          required: n
+          type: string
+          description: |
+            Node selector to control placement of router pods
+        - name: router-pod-affinity
+          default:
+          required: n
+          type: string
+          description: |
+            Pod affinity label matches to control placement of router pods
+        - name: router-pod-antiaffinity
+          default:
+          required: n
+          type: string
+          description: |
+            Pod antiaffinity label matches to control placement of router pods
+        - name: router-ingress-host
+          default:
+          required: n
+          type: string
+          description: |
+            Host through which node is accessible when using nodeport as ingress.
+        - name: router-load-balancer-ip
+          default:
+          required: n
+          type: string
+          description: |
+            Load balancer ip that will be used for router service, if supported by cloud provider
+        - name: router-service-annotations
+          default:
+          required: n
+          type: strings
+          description: |
+            Annotations to add to skupper router service
+- name: token
+  entries:
+    - name: expiry
+      default:
+      required: n
+      type: duration
+      description: |
+        Expiration time for claim (only valid if --token-type=claim) (default 15m0s)
+    - name: name
+      default:
+      required: n
+      type: string
+      description: |
+        Provide a specific identity as which connecting skupper installation will be authenticated (default "skupper")
+    - name: uses
+      default:
+      required: n
+      type: int
+      description: |
+        Number of uses for which claim will be valid (only valid if --token-type=claim) (default 1)
+- name: link
+  entries:
+    - name: cost
+      default: 1
+      type: int
+      description: |
+        Specify a cost for this link.
+    - name: name
+      default: "[Generated]"
+      required: n
+      type: string
+      description: |
+        Provide a specific name for the link (used when deleting it)
+- name: required-service
+  entries:
+    - name: aggregate
+      default:
+      required: n
+      type: string
+      description: |
+        The aggregation strategy to use. One of 'json' or 'multipart'. If specified requests to this service will be sent to all registered implementations and the responses aggregated.
+    - name: bridge-image
+      default:
+      required: n
+      type: string
+      description: |
+        The image to use for a bridge running external to the skupper router
+    - name: enable-ingress
+      default:
+      required: n
+      type: string
+      description: |
+        Determines whether access to the Skupper service is enabled in this site. Valid values are Always (default) or Never.
+    - name: event-channel
+      default:
+      required: n
+      type: bool
+      description: |
+        If specified, this service will be a channel for multicast events.
+    - name: generate-tls-secrets
+      default:
+      required: n
+      type: bool
+      description: |
+        If specified, the service communication will be encrypted using TLS
+    - name: protocol
+      default: tcp
+      type: string
+      choices: [tcp, http, http2]
+      description: |
+        The protocol mapping in use for this service address.
+    - name: tls-cert
+      default:
+      required: n
+      type: string
+      description: |
+        The Kubernetes secret name with custom certificates to encrypt
+        the communication using TLS.
+- name: provided-service
+  entries:
+    - name: target-port
+      default:
+      required: n
+      type: strings
+      description: |
+        The port the target is listening on (you can also use colon to map source-port to a target-port).
+    - name: tls-trust
+      default:
+      required: n
+      type: string
+      description: |
+        The Kubernetes secret name with the CA to expose the service
+        over TLS.
+    - name: publish-not-ready-addresses
+      default: n
+      required: n
+      type: bool
+      description: |
+        If specified, skupper will not wait for pods to be ready
