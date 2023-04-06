@@ -1,18 +1,18 @@
 # Refdog
 
-- [Resource _site_](#user-content-resource-site)
-    - [Site options](#user-content-site-options)
-    - [Ingress options](#user-content-ingress-options)
-    - [Console options](#user-content-console-options)
-    - [Service sync options](#user-content-service-sync-options)
-    - [Config sync options](#user-content-config-sync-options)
-    - [Controller options](#user-content-controller-options)
-    - [Flow collector options](#user-content-flow-collector-options)
-    - [Router options](#user-content-router-options)
-- [Resource _token_](#user-content-resource-token)
-- [Resource _link_](#user-content-resource-link)
-- [Resource _required-service_](#user-content-resource-required-service)
-- [Resource _provided-service_](#user-content-resource-provided-service)
+- [Resource _site_](#resource-site)
+    - [Site options](#site-options)
+    - [Ingress options](#ingress-options)
+    - [Console options](#console-options)
+    - [Service sync options](#service-sync-options)
+    - [Config sync options](#config-sync-options)
+    - [Controller options](#controller-options)
+    - [Flow collector options](#flow-collector-options)
+    - [Router options](#router-options)
+- [Resource _token_](#resource-token)
+- [Resource _link_](#resource-link)
+- [Resource _required-service_](#resource-required-service)
+- [Resource _provided-service_](#resource-provided-service)
 
 ## Resource _site_
 
