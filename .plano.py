@@ -39,7 +39,7 @@ def generate():
     out.append("")
 
     for resource in data:
-        out.append("- [Resource {}](#user-content-resource-{})".format(resource["name"], resource["name"]))
+        out.append("- [Resource _{}_](#user-content-resource-{})".format(resource["name"], resource["name"]))
 
         for group in resource.get("groups", []):
             out.append("    - [{}](#user-content-{})".format(group["title"], group["title"].lower().replace(" ", "-")))
@@ -47,7 +47,7 @@ def generate():
     out.append("")
 
     for resource in data:
-        out.append("## Resource {}".format(resource["name"]))
+        out.append("## Resource _{}_".format(resource["name"]))
         out.append("")
 
         out.append("<dl>")
@@ -77,7 +77,7 @@ def generate_entry(out, entry):
     out.append("<dd>")
     out.append("<p>{}</p>".format(entry["description"]).strip())
 
-    out.append("<div><b>Type:</b> {}</div>".format(entry["type"]))
+    out.append("<div><b>Type:</b> {}</div>".format(capitalize(entry["type"])))
 
     if "default" in entry and entry["default"] is not None:
         out.append("<div><b>Default:</b> {}</div>".format(entry["default"]))
