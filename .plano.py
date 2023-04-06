@@ -39,10 +39,10 @@ def generate():
     out.append("")
 
     for resource in data:
-        out.append("- [Resource _{}_](#user-content-resource-{})".format(resource["name"], resource["name"]))
+        out.append("- [Resource _{}_](#resource-{})".format(resource["name"], resource["name"]))
 
         for group in resource.get("groups", []):
-            out.append("    - [{}](#user-content-{})".format(group["title"], group["title"].lower().replace(" ", "-")))
+            out.append("    - [{}](#{})".format(group["title"], group["title"].lower().replace(" ", "-")))
 
     out.append("")
 
