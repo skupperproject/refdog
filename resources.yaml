@@ -404,7 +404,7 @@
     skupper -n east service create backend 8080
     skupper -n east service bind backend deployment/backend --target-port 9090
     # Proposed
-    skupper -n east provide backend:8080 deployment/backend --target-port 9090
+    skupper -n east service provide backend:8080 deployment/backend --target-port 9090
   entries:
     - name: target-port
       default:
@@ -444,7 +444,7 @@
     # Current
     skupper -n west service create backend 8080
     # Proposed
-    skupper -n west require backend:8080
+    skupper -n west service require backend:8080
   entries:
     - name: protocol
       default: tcp

@@ -598,7 +598,7 @@ spec:
 skupper -n east service create backend 8080
 skupper -n east service bind backend deployment/backend --target-port 9090
 # Proposed
-skupper -n east provide backend:8080 deployment/backend --target-port 9090</pre></td></tr>
+skupper -n east service provide backend:8080 deployment/backend --target-port 9090</pre></td></tr>
 </tbody>
 </table>
 
@@ -653,7 +653,7 @@ spec:
 <tr><td colspan="2"><pre># Current
 skupper -n west service create backend 8080
 # Proposed
-skupper -n west require backend:8080</pre></td></tr>
+skupper -n west service require backend:8080</pre></td></tr>
 </tbody>
 </table>
 
