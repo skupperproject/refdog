@@ -30,5 +30,6 @@ experience should be for provided and required services.
 
 ### Resources
 
+- [Skupper's Hello World expressed in Skupper YAML](hello-world.yaml)
 - [Skupper syncer demo](https://github.com/grs/skupper-syncer-demo)
 - [Kubernetes Service API](https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/)
