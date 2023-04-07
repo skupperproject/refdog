@@ -38,6 +38,8 @@ def generate():
     out.append("# Refdog")
     out.append("")
 
+    out.append("- [Notes](#notes)")
+
     for resource in data:
         out.append("- [Resource _{}_](#resource-{})".format(resource["name"], resource["name"]))
 
@@ -45,10 +47,20 @@ def generate():
             out.append("    - [{}](#{})".format(group["title"], group["title"].lower().replace(" ", "-")))
 
     out.append("")
+    out.append(read("notes.md"))
 
     for resource in data:
         out.append("## Resource _{}_".format(resource["name"]))
         out.append("")
+
+        if "skupper_example" in resource or "kubernetes_example" in resource:
+            out.append("<table>")
+            out.append("<tr><th>Skupper site YAML example</th><th>Kubernetes custom resource example</th></tr>")
+            out.append("<tr><td><pre>{}</pre></td><td><pre>{}</pre></td></tr>".format(
+                nvl(resource.get("skupper_example"), "").strip(),
+                nvl(resource.get("kubernetes_example"), "").strip()))
+            out.append("</table>")
+            out.append("")
 
         out.append("<dl>")
 

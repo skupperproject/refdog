@@ -1,5 +1,6 @@
 # Refdog
 
+- [Notes](#notes)
 - [Resource _site_](#resource-site)
     - [Site options](#site-options)
     - [Ingress options](#ingress-options)
@@ -9,12 +10,59 @@
     - [Controller options](#controller-options)
     - [Flow collector options](#flow-collector-options)
     - [Router options](#router-options)
-- [Resource _token_](#resource-token)
 - [Resource _link_](#resource-link)
-- [Resource _required-service_](#resource-required-service)
+- [Resource _token_](#resource-token)
 - [Resource _provided-service_](#resource-provided-service)
+- [Resource _required-service_](#resource-required-service)
+
+## Notes
+
+### Goals
+
+- A unified declarative language ("Skupper site YAML") for creating sites,
+  linking sites, and exposing services.
+- A language that operates uniformly for Kubernetes, Podman, and
+  generated bundles, while still allowing for some platform specific
+  variations.
+- A simple translation from Skupper site YAML to Kubernetes custom
+  resources.
+- As an alternative to CRDs, allow use of Skupper site YAML as the
+  content of a Kubernetes ConfigMap.
+
+### Clarifications
+
+- A token is special in that it is not yet "fulfilled" - and therefore
+  usable for linking - until it has an associated token file or
+  secret.
+
+### Questions
+
+- What *are* address and host on ProvidedService?  Router tcpConnector
+  stuff?
+
+### Resources
+
+- [Skupper syncer demo](https://github.com/grs/skupper-syncer-demo)
+- [Kubernetes Service API](https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/)
+-
 
 ## Resource _site_
+
+<table>
+<tr><th>Skupper site YAML example</th><th>Kubernetes custom resource example</th></tr>
+<tr><td><pre>version: 1
+site:
+  name: east
+  ingress: none
+  router-cpu-limit: 2</pre></td><td><pre>apiVersion: skupper.io/v1alpha1
+kind: Site
+metadata:
+  name: east
+  namespace: east
+spec:
+  ingress: none
+  routerCpuLimit: 2</pre></td></tr>
+</table>
 
 <dl>
 </dl>
@@ -24,7 +72,7 @@
 <dl>
 <dt><p>name</p></dt>
 <dd>
-<p>A name of your choice for this Skupper site.
+<p>A name of your choice for the Skupper site.
 </p>
 <div><b>Type:</b> String</div>
 </dd>
@@ -86,7 +134,7 @@ be reached.
 ### Console options
 
 <dl>
-<dt><p>enable-console</p></dt>
+<dt><p>console-enabled</p></dt>
 <dd>
 <p>Enable skupper console must be used in conjunction with
 '--enable-flow-collector' flag
@@ -129,9 +177,9 @@ not specified uses value of --ingress.
 ### Service sync options
 
 <dl>
-<dt><p>enable-service-sync</p></dt>
+<dt><p>service-sync-enabled</p></dt>
 <dd>
-<p>Participate in cross-site service synchronization (default true)
+<p>Participate in cross-site service synchronization
 </p>
 <div><b>Type:</b> Boolean</div>
 <div><b>Default:</b> y</div>
@@ -227,30 +275,34 @@ not specified uses value of --ingress.
 <dt><p>controller-load-balancer-ip</p></dt>
 <dd>
 <p>Load balancer ip that will be used for controller service, if supported by cloud provider
-- name: controller-service-annotation
-  default:
-      type: strings
-  description: |
-    Annotations to add to skupper controller service
 </p>
 <div><b>Type:</b> String</div>
+</dd>
+<dt><p>controller-service-annotation</p></dt>
+<dd>
+<p>Annotations to add to skupper controller service
+</p>
+<div><b>Type:</b> Strings</div>
 </dd>
 </dl>
 
 ### Flow collector options
 
 <dl>
-<dt><p>enable-flow-collector</p></dt>
+<dt><p>flow-collector-enabled</p></dt>
 <dd>
 <p>Enable cross-site flow collection for the application network
 </p>
 <div><b>Type:</b> Boolean</div>
+<div><b>Default:</b> n</div>
 </dd>
 <dt><p>flow-collector-record-ttl</p></dt>
 <dd>
-<p>Time after which terminated flow records are deleted, i.e. those flow records that have an end time set. Default is 30 minutes.
+<p>Time after which terminated flow records are deleted,
+i.e. those flow records that have an end time set.
 </p>
 <div><b>Type:</b> Duration</div>
+<div><b>Default:</b> 30m</div>
 </dd>
 <dt><p>flow-collector-cpu</p></dt>
 <dd>
@@ -373,32 +425,44 @@ routers do XXX.  Edge routers only do YYY.
 </dd>
 </dl>
 
-## Resource _token_
+## Resource _link_
+
+<table>
+<tr><th>Skupper site YAML example</th><th>Kubernetes custom resource example</th></tr>
+<tr><td><pre>version: 1
+site:
+  name: east
+  links:
+    - name: link-to-west
+      token-file: west-token-1.yaml</pre></td><td><pre>apiVersion: skupper.io/v1alpha1
+kind: Link
+metadata:
+  name: link-to-west
+  namespace: east
+spec:
+  tokenSecret: west-token-1</pre></td></tr>
+</table>
 
 <dl>
-<dt><p>expiry</p></dt>
-<dd>
-<p>Expiration time for claim (only valid if --token-type=claim) (default 15m0s)
-</p>
-<div><b>Type:</b> Duration</div>
-</dd>
 <dt><p>name</p></dt>
 <dd>
-<p>Provide a specific identity as which connecting skupper installation will be authenticated (default "skupper")
+<p>An optional name for the link (used when deleting it).
+</p>
+<div><b>Type:</b> String</div>
+<div><b>Default:</b> [Generated]</div>
+</dd>
+<dt><p>token-file</p></dt>
+<dd>
+<p>The path to the file that contains the token.
 </p>
 <div><b>Type:</b> String</div>
 </dd>
-<dt><p>uses</p></dt>
+<dt><p>token-secret</p></dt>
 <dd>
-<p>Number of uses for which claim will be valid (only valid if --token-type=claim) (default 1)
+<p>The path to the secret that contains the token.
 </p>
-<div><b>Type:</b> Integer</div>
+<div><b>Type:</b> String</div>
 </dd>
-</dl>
-
-## Resource _link_
-
-<dl>
 <dt><p>cost</p></dt>
 <dd>
 <p>Specify a cost for this link.
@@ -406,66 +470,88 @@ routers do XXX.  Edge routers only do YYY.
 <div><b>Type:</b> Integer</div>
 <div><b>Default:</b> 1</div>
 </dd>
-<dt><p>name</p></dt>
-<dd>
-<p>Provide a specific name for the link (used when deleting it)
-</p>
-<div><b>Type:</b> String</div>
-<div><b>Default:</b> [Generated]</div>
-</dd>
 </dl>
 
-## Resource _required-service_
+## Resource _token_
+
+<table>
+<tr><th>Skupper site YAML example</th><th>Kubernetes custom resource example</th></tr>
+<tr><td><pre>version: 1
+site:
+  name: west
+  token:
+    token-file: west-token-1.yaml
+    expiry: 1h</pre></td><td><pre>apiVersion: skupper.io/v1alpha1
+kind: Token
+metadata:
+  name: west-token-1
+  namespace: west
+spec:
+  tokenSecret: west-token-1
+  expiry: 1h</pre></td></tr>
+</table>
 
 <dl>
-<dt><p>aggregate</p></dt>
+<dt><p>token-file</p></dt>
 <dd>
-<p>The aggregation strategy to use. One of 'json' or 'multipart'. If specified requests to this service will be sent to all registered implementations and the responses aggregated.
+<p>The path to the file that is to contain the generated token
+data.
 </p>
 <div><b>Type:</b> String</div>
 </dd>
-<dt><p>bridge-image</p></dt>
+<dt><p>token-secret</p></dt>
 <dd>
-<p>The image to use for a bridge running external to the skupper router
+<p>The name of the Kubernetes secret that is to contain the
+generated token data.
 </p>
 <div><b>Type:</b> String</div>
 </dd>
-<dt><p>enable-ingress</p></dt>
+<dt><p>expiry</p></dt>
 <dd>
-<p>Determines whether access to the Skupper service is enabled in this site. Valid values are Always (default) or Never.
+<p>Expiration time for claim (only valid if --token-type=claim).
+</p>
+<div><b>Type:</b> Duration</div>
+<div><b>Default:</b> 15m</div>
+</dd>
+<dt><p>uses</p></dt>
+<dd>
+<p>Number of uses for which claim will be valid (only valid if
+--token-type=claim).
+</p>
+<div><b>Type:</b> Integer</div>
+<div><b>Default:</b> 1</div>
+</dd>
+<dt><p>name</p></dt>
+<dd>
+<p>An optional name for the remote site that will use this token
+to create a link.
 </p>
 <div><b>Type:</b> String</div>
-</dd>
-<dt><p>event-channel</p></dt>
-<dd>
-<p>If specified, this service will be a channel for multicast events.
-</p>
-<div><b>Type:</b> Boolean</div>
-</dd>
-<dt><p>generate-tls-secrets</p></dt>
-<dd>
-<p>If specified, the service communication will be encrypted using TLS
-</p>
-<div><b>Type:</b> Boolean</div>
-</dd>
-<dt><p>protocol</p></dt>
-<dd>
-<p>The protocol mapping in use for this service address.
-</p>
-<div><b>Type:</b> String</div>
-<div><b>Default:</b> tcp</div>
-<div><b>Choices:</b> tcp, http, http2</div>
-</dd>
-<dt><p>tls-cert</p></dt>
-<dd>
-<p>The Kubernetes secret name with custom certificates to encrypt
-the communication using TLS.
-</p>
-<div><b>Type:</b> String</div>
+<div><b>Default:</b> skupper (?)</div>
 </dd>
 </dl>
 
 ## Resource _provided-service_
+
+<table>
+<tr><th>Skupper site YAML example</th><th>Kubernetes custom resource example</th></tr>
+<tr><td><pre>version: 1
+site:
+  name: east
+  provided-services:
+    - name: backend
+      ports:
+        - port: 8080
+          target-port: 9090</pre></td><td><pre>apiVersion: skupper.io/v1alpha1
+kind: ProvidedService
+metadata:
+  name: backend
+  namespace: east
+spec:
+  ports:
+    - port: 8080
+      targetPort: 9090</pre></td></tr>
+</table>
 
 <dl>
 <dt><p>target-port</p></dt>
@@ -487,5 +573,86 @@ over TLS.
 </p>
 <div><b>Type:</b> Boolean</div>
 <div><b>Default:</b> n</div>
+</dd>
+</dl>
+
+## Resource _required-service_
+
+<table>
+<tr><th>Skupper site YAML example</th><th>Kubernetes custom resource example</th></tr>
+<tr><td><pre>version: 1
+site:
+  name: west
+  required-services:
+    - name: backend
+      ports:
+        - port: 8080</pre></td><td><pre>apiVersion: skupper.io/v1alpha1
+kind: RequiredService
+metadata:
+  name: backend
+  namespace: west
+spec:
+  ports:
+    - port: 8080</pre></td></tr>
+</table>
+
+<dl>
+<dt><p>protocol</p></dt>
+<dd>
+<p>The protocol mapping in use for this service address.
+</p>
+<div><b>Type:</b> String</div>
+<div><b>Default:</b> tcp</div>
+<div><b>Choices:</b> tcp, http, http2</div>
+</dd>
+<dt><p>generate-tls-secrets</p></dt>
+<dd>
+<p>If specified, the service communication will be encrypted using TLS
+</p>
+<div><b>Type:</b> Boolean</div>
+<div><b>Default:</b> n</div>
+</dd>
+<dt><p>tls-cert</p></dt>
+<dd>
+<p>The Kubernetes secret name with custom certificates to encrypt
+the communication using TLS.
+</p>
+<div><b>Type:</b> String</div>
+</dd>
+<dt><p>ingress-enabled</p></dt>
+<dd>
+<p>Determines whether access to the Skupper service is enabled in
+this site.
+
+XXX I want a note here that says that some future iteration
+might include a third state.
+</p>
+<div><b>Type:</b> String</div>
+<div><b>Default:</b> Always</div>
+<div><b>Choices:</b> Always, Never</div>
+</dd>
+<dt><p>event-channel</p></dt>
+<dd>
+<p>If specified, this service will be a channel for multicast events.
+</p>
+<div><b>Type:</b> Boolean</div>
+<div><b>Default:</b> n</div>
+</dd>
+<dt><p>aggregate</p></dt>
+<dd>
+<p>The aggregation strategy to use. One of 'json' or
+'multipart'. If specified requests to this service will be
+sent to all registered implementations and the responses
+aggregated.
+</p>
+<div><b>Type:</b> String</div>
+<div><b>Default:</b> ?</div>
+<div><b>Choices:</b> json, multipart</div>
+</dd>
+<dt><p>bridge-image</p></dt>
+<dd>
+<p>The image to use for a bridge running external to the skupper router
+</p>
+<div><b>Type:</b> String</div>
 </dd>
 </dl>

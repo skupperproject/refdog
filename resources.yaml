@@ -1,4 +1,19 @@
 - name: site
+  skupper_example: |
+    version: 1
+    site:
+      name: east
+      ingress: none
+      router-cpu-limit: 2
+  kubernetes_example: |
+    apiVersion: skupper.io/v1alpha1
+    kind: Site
+    metadata:
+      name: east
+      namespace: east
+    spec:
+      ingress: none
+      routerCpuLimit: 2
   groups:
     - title: Site options
       entries:
@@ -6,7 +21,7 @@
           default:
           type: string
           description: |
-            A name of your choice for this Skupper site.
+            A name of your choice for the Skupper site.
         - name: annotations
           default:
           type: strings
@@ -50,7 +65,7 @@
             Annotations to add to skupper ingress
     - title: Console options
       entries:
-        - name: enable-console
+        - name: console-enabled
           default: n
           type: boolean
           description: |
@@ -81,11 +96,11 @@
             not specified uses value of --ingress.
     - title: Service sync options
       entries:
-        - name: enable-service-sync
+        - name: service-sync-enabled
           default: y
           type: boolean
           description: |
-            Participate in cross-site service synchronization (default true)
+            Participate in cross-site service synchronization
         - name: service-sync-site-ttl
           default:
           type: duration
@@ -161,23 +176,24 @@
           type: string
           description: |
             Load balancer ip that will be used for controller service, if supported by cloud provider
-            - name: controller-service-annotation
-              default:
-                  type: strings
-              description: |
-                Annotations to add to skupper controller service
+        - name: controller-service-annotation
+          default:
+          type: strings
+          description: |
+            Annotations to add to skupper controller service
     - title: Flow collector options
       entries:
-        - name: enable-flow-collector
-          default:
+        - name: flow-collector-enabled
+          default: n
           type: boolean
           description: |
             Enable cross-site flow collection for the application network
         - name: flow-collector-record-ttl
-          default:
+          default: 30m
           type: duration
           description: |
-            Time after which terminated flow records are deleted, i.e. those flow records that have an end time set. Default is 30 minutes.
+            Time after which terminated flow records are deleted,
+            i.e. those flow records that have an end time set.
         - name: flow-collector-cpu
           default:
           type: string
@@ -274,75 +290,110 @@
           type: strings
           description: |
             Annotations to add to skupper router service
-- name: token
+- name: link
+  skupper_example: |
+    version: 1
+    site:
+      name: east
+      links:
+        - name: link-to-west
+          token-file: west-token-1.yaml
+  kubernetes_example: |
+    apiVersion: skupper.io/v1alpha1
+    kind: Link
+    metadata:
+      name: link-to-west
+      namespace: east
+    spec:
+      tokenSecret: west-token-1
   entries:
-    - name: expiry
-      default:
-      type: duration
-      description: |
-        Expiration time for claim (only valid if --token-type=claim) (default 15m0s)
     - name: name
-      default:
+      default: "[Generated]"
       type: string
       description: |
-        Provide a specific identity as which connecting skupper installation will be authenticated (default "skupper")
-    - name: uses
-      default:
-      type: integer
+        An optional name for the link (used when deleting it).
+    - name: token-file
+      type: string
+      platform: podman
       description: |
-        Number of uses for which claim will be valid (only valid if --token-type=claim) (default 1)
-- name: link
-  entries:
+        The path to the file that contains the token.
+    - name: token-secret
+      type: string
+      platform: kubernetes
+      description: |
+        The path to the secret that contains the token.
     - name: cost
       default: 1
       type: integer
       description: |
         Specify a cost for this link.
-    - name: name
-      default: "[Generated]"
-      type: string
-      description: |
-        Provide a specific name for the link (used when deleting it)
-- name: required-service
+- name: token
+  skupper_example: |
+    version: 1
+    site:
+      name: west
+      token:
+        token-file: west-token-1.yaml
+        expiry: 1h
+  kubernetes_example: |
+    apiVersion: skupper.io/v1alpha1
+    kind: Token
+    metadata:
+      name: west-token-1
+      namespace: west
+    spec:
+      tokenSecret: west-token-1
+      expiry: 1h
   entries:
-    - name: aggregate
-      default:
+    - name: token-file
+      type: string
+      platform: podman
+      description: |
+        The path to the file that is to contain the generated token
+        data.
+    - name: token-secret
+      type: string
+      platform: kubernetes
+      description: |
+        The name of the Kubernetes secret that is to contain the
+        generated token data.
+    - name: expiry
+      default: 15m
+      type: duration
+      description: |
+        Expiration time for claim (only valid if --token-type=claim).
+    - name: uses
+      default: 1
+      type: integer
+      description: |
+        Number of uses for which claim will be valid (only valid if
+        --token-type=claim).
+    - name: name
+      default: skupper (?)
       type: string
       description: |
-        The aggregation strategy to use. One of 'json' or 'multipart'. If specified requests to this service will be sent to all registered implementations and the responses aggregated.
-    - name: bridge-image
-      default:
-      type: string
-      description: |
-        The image to use for a bridge running external to the skupper router
-    - name: enable-ingress
-      default:
-      type: string
-      description: |
-        Determines whether access to the Skupper service is enabled in this site. Valid values are Always (default) or Never.
-    - name: event-channel
-      default:
-      type: boolean
-      description: |
-        If specified, this service will be a channel for multicast events.
-    - name: generate-tls-secrets
-      default:
-      type: boolean
-      description: |
-        If specified, the service communication will be encrypted using TLS
-    - name: protocol
-      default: tcp
-      type: string
-      choices: [tcp, http, http2]
-      description: |
-        The protocol mapping in use for this service address.
-    - name: tls-cert
-      default:
-      type: string
-      description: |
-        The Kubernetes secret name with custom certificates to encrypt
-        the communication using TLS.
+        An optional name for the remote site that will use this token
+        to create a link.
 - name: provided-service
+  skupper_example: |
+    version: 1
+    site:
+      name: east
+      provided-services:
+        - name: backend
+          ports:
+            - port: 8080
+              target-port: 9090
+  kubernetes_example: |
+    apiVersion: skupper.io/v1alpha1
+    kind: ProvidedService
+    metadata:
+      name: backend
+      namespace: east
+    spec:
+      ports:
+        - port: 8080
+          targetPort: 9090
   entries:
     - name: target-port
       default:
@@ -360,3 +411,68 @@
       type: boolean
       description: |
         If specified, skupper will not wait for pods to be ready
+- name: required-service
+  skupper_example: |
+    version: 1
+    site:
+      name: west
+      required-services:
+        - name: backend
+          ports:
+            - port: 8080
+  kubernetes_example: |
+    apiVersion: skupper.io/v1alpha1
+    kind: RequiredService
+    metadata:
+      name: backend
+      namespace: west
+    spec:
+      ports:
+        - port: 8080
+  entries:
+    - name: protocol
+      default: tcp
+      type: string
+      choices: [tcp, http, http2]
+      description: |
+        The protocol mapping in use for this service address.
+    - name: generate-tls-secrets
+      default: n
+      type: boolean
+      description: |
+        If specified, the service communication will be encrypted using TLS
+    - name: tls-cert
+      default:
+      type: string
+      description: |
+        The Kubernetes secret name with custom certificates to encrypt
+        the communication using TLS.
+    - name: ingress-enabled
+      default: Always
+      type: string
+      choices: [Always, Never]
+      description: |
+        Determines whether access to the Skupper service is enabled in
+        this site.
+
+        XXX I want a note here that says that some future iteration
+        might include a third state.
+    - name: event-channel
+      default: n
+      type: boolean
+      description: |
+        If specified, this service will be a channel for multicast events.
+    - name: aggregate
+      default: "?"
+      type: string
+      choices: [json, multipart]
+      description: |
+        The aggregation strategy to use. One of 'json' or
+        'multipart'. If specified requests to this service will be
+        sent to all registered implementations and the responses
+        aggregated.
+    - name: bridge-image
+      default:
+      type: string
+      description: |
+        The image to use for a bridge running external to the skupper router
