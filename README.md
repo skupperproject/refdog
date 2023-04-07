@@ -28,16 +28,16 @@
 
 ### Goals
 
-- A unified declarative language ("Skupper site YAML") for creating sites,
+- A unified declarative language ("Skupper YAML") for creating sites,
   linking sites, and exposing services.
 - A configuration model that operates uniformly across Kubernetes,
   Podman, and bundle generation, while still allowing for platform
   specific variations.
-- A simple translation from Skupper site YAML to Kubernetes custom
+- A simple translation from Skupper YAML to Kubernetes custom
   resources.
 - As an alternative to custom resources, the option to use Skupper
-  site YAML as the content of a Kubernetes ConfigMap that you feed to
-  the site controller.
+  YAML as the content of a Kubernetes ConfigMap that you feed to the
+  site controller.
 - A central configuration reference for Skupper.
 
 In addition, I'd like to use this exercise to work out what the CLI
@@ -65,7 +65,7 @@ experience should be for provided and required services.
 
 <table>
 <tbody>
-<tr><th>Skupper site YAML</th><th>Kubernetes custom resource</th></tr>
+<tr><th>Skupper YAML</th><th>Kubernetes custom resource</th></tr>
 <tr><td><pre>version: 1
 site:
   name: east
@@ -451,7 +451,7 @@ routers do XXX.  Edge routers only do YYY.
 
 <table>
 <tbody>
-<tr><th>Skupper site YAML</th><th>Kubernetes custom resource</th></tr>
+<tr><th>Skupper YAML</th><th>Kubernetes custom resource</th></tr>
 <tr><td><pre>version: 1
 site:
   name: east
@@ -507,7 +507,7 @@ spec:
 
 <table>
 <tbody>
-<tr><th>Skupper site YAML</th><th>Kubernetes custom resource</th></tr>
+<tr><th>Skupper YAML</th><th>Kubernetes custom resource</th></tr>
 <tr><td><pre>version: 1
 site:
   name: west
@@ -575,7 +575,7 @@ to create a link.
 
 <table>
 <tbody>
-<tr><th>Skupper site YAML</th><th>Kubernetes custom resource</th></tr>
+<tr><th>Skupper YAML</th><th>Kubernetes custom resource</th></tr>
 <tr><td><pre>version: 1
 site:
   name: east
@@ -633,7 +633,7 @@ over TLS.
 
 <table>
 <tbody>
-<tr><th>Skupper site YAML</th><th>Kubernetes custom resource</th></tr>
+<tr><th>Skupper YAML</th><th>Kubernetes custom resource</th></tr>
 <tr><td><pre>version: 1
 site:
   name: west

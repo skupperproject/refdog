@@ -72,7 +72,7 @@ def generate():
 
             out.append("<table>")
             out.append("<tbody>")
-            out.append("<tr><th>Skupper site YAML</th><th>Kubernetes custom resource</th></tr>")
+            out.append("<tr><th>Skupper YAML</th><th>Kubernetes custom resource</th></tr>")
             out.append("<tr><td><pre>{}</pre></td><td><pre>{}</pre></td></tr>".format(
                 nvl(resource.get("yaml_example"), "").strip(),
                 nvl(resource.get("kubernetes_example"), "").strip()))
