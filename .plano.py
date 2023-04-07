@@ -71,12 +71,14 @@ def generate():
             out.append("")
 
             out.append("<table>")
+            out.append("<tbody>")
             out.append("<tr><th>Skupper site YAML</th><th>Kubernetes custom resource</th></tr>")
             out.append("<tr><td><pre>{}</pre></td><td><pre>{}</pre></td></tr>".format(
                 nvl(resource.get("yaml_example"), "").strip(),
                 nvl(resource.get("kubernetes_example"), "").strip()))
             out.append("<tr><th colspan=\"2\">Skupper CLI</th></tr>")
-            out.append("<tr><td colspan=\"2\">{}</td></tr>".format(nvl(resource.get("cli_example"), "").strip()))
+            out.append("<tr><td colspan=\"2\"><pre>{}</pre></td></tr>".format(nvl(resource.get("cli_example"), "").strip()))
+            out.append("</tbody>")
             out.append("</table>")
             out.append("")
 

@@ -31,13 +31,17 @@
 - A unified declarative language ("Skupper site YAML") for creating sites,
   linking sites, and exposing services.
 - A configuration model that operates uniformly across Kubernetes,
-  Podman, and generated bundles, while still allowing for some
-  platform specific variations.
+  Podman, and bundle generation, while still allowing for platform
+  specific variations.
 - A simple translation from Skupper site YAML to Kubernetes custom
   resources.
-- As an alternative to CRDs, allow use of Skupper site YAML as the
-  content of a Kubernetes ConfigMap.
-- A single source of truth for documentation of Skupper configuration.
+- As an alternative to custom resources, the option to use Skupper
+  site YAML as the content of a Kubernetes ConfigMap that you feed to
+  the site controller.
+- A central configuration reference for Skupper.
+
+In addition, I'd like to use this exercise to work out what the CLI
+experience should be for provided and required services.
 
 ### Clarifications
 
@@ -60,6 +64,7 @@
 ### Site examples
 
 <table>
+<tbody>
 <tr><th>Skupper site YAML</th><th>Kubernetes custom resource</th></tr>
 <tr><td><pre>version: 1
 site:
@@ -74,7 +79,8 @@ spec:
   ingress: none
   routerCpuLimit: 2</pre></td></tr>
 <tr><th colspan="2">Skupper CLI</th></tr>
-<tr><td colspan="2">skupper init --site-name east --ingress none --router-cpu-limit 2</td></tr>
+<tr><td colspan="2"><pre>skupper init --site-name east --ingress none --router-cpu-limit 2</pre></td></tr>
+</tbody>
 </table>
 
 <dl>
@@ -444,6 +450,7 @@ routers do XXX.  Edge routers only do YYY.
 ### Link examples
 
 <table>
+<tbody>
 <tr><th>Skupper site YAML</th><th>Kubernetes custom resource</th></tr>
 <tr><td><pre>version: 1
 site:
@@ -458,7 +465,8 @@ metadata:
 spec:
   tokenSecret: west-token-1</pre></td></tr>
 <tr><th colspan="2">Skupper CLI</th></tr>
-<tr><td colspan="2">skupper link create west-token-1.yaml --namespace east --name link-to-west</td></tr>
+<tr><td colspan="2"><pre>skupper -n east link create west-token-1.yaml --name link-to-west</pre></td></tr>
+</tbody>
 </table>
 
 <dl>
@@ -498,6 +506,7 @@ spec:
 ### Token examples
 
 <table>
+<tbody>
 <tr><th>Skupper site YAML</th><th>Kubernetes custom resource</th></tr>
 <tr><td><pre>version: 1
 site:
@@ -513,7 +522,8 @@ spec:
   tokenSecret: west-token-1
   expiry: 1h</pre></td></tr>
 <tr><th colspan="2">Skupper CLI</th></tr>
-<tr><td colspan="2">skupper token create west-token-1.yaml --namespace west --expiry 1h</td></tr>
+<tr><td colspan="2"><pre>skupper -n west token create west-token-1.yaml --expiry 1h</pre></td></tr>
+</tbody>
 </table>
 
 <dl>
@@ -564,6 +574,7 @@ to create a link.
 ### Provided service examples
 
 <table>
+<tbody>
 <tr><th>Skupper site YAML</th><th>Kubernetes custom resource</th></tr>
 <tr><td><pre>version: 1
 site:
@@ -582,7 +593,12 @@ spec:
     - port: 8080
       targetPort: 9090</pre></td></tr>
 <tr><th colspan="2">Skupper CLI</th></tr>
-<tr><td colspan="2"></td></tr>
+<tr><td colspan="2"><pre># Current
+skupper -n east service create backend 8080
+skupper -n east service bind backend deployment/backend --target-port 9090
+# Proposed
+skupper -n east provide backend:8080 deployment/backend --target-port 9090</pre></td></tr>
+</tbody>
 </table>
 
 <dl>
@@ -616,6 +632,7 @@ over TLS.
 ### Required service examples
 
 <table>
+<tbody>
 <tr><th>Skupper site YAML</th><th>Kubernetes custom resource</th></tr>
 <tr><td><pre>version: 1
 site:
@@ -632,7 +649,11 @@ spec:
   ports:
     - port: 8080</pre></td></tr>
 <tr><th colspan="2">Skupper CLI</th></tr>
-<tr><td colspan="2"></td></tr>
+<tr><td colspan="2"><pre># Current
+skupper -n west service create backend 8080
+# Proposed
+skupper -n west require backend:8080</pre></td></tr>
+</tbody>
 </table>
 
 <dl>

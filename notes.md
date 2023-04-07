@@ -5,13 +5,17 @@
 - A unified declarative language ("Skupper site YAML") for creating sites,
   linking sites, and exposing services.
 - A configuration model that operates uniformly across Kubernetes,
-  Podman, and generated bundles, while still allowing for some
-  platform specific variations.
+  Podman, and bundle generation, while still allowing for platform
+  specific variations.
 - A simple translation from Skupper site YAML to Kubernetes custom
   resources.
-- As an alternative to CRDs, allow use of Skupper site YAML as the
-  content of a Kubernetes ConfigMap.
-- A single source of truth for documentation of Skupper configuration.
+- As an alternative to custom resources, the option to use Skupper
+  site YAML as the content of a Kubernetes ConfigMap that you feed to
+  the site controller.
+- A central configuration reference for Skupper.
+
+In addition, I'd like to use this exercise to work out what the CLI
+experience should be for provided and required services.
 
 ### Clarifications
 

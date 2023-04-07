@@ -308,7 +308,7 @@
     spec:
       tokenSecret: west-token-1
   cli_example: |
-    skupper link create west-token-1.yaml --namespace east --name link-to-west
+    skupper -n east link create west-token-1.yaml --name link-to-west
   entries:
     - name: name
       default: "[Generated]"
@@ -348,7 +348,7 @@
       tokenSecret: west-token-1
       expiry: 1h
   cli_example: |
-    skupper token create west-token-1.yaml --namespace west --expiry 1h
+    skupper -n west token create west-token-1.yaml --expiry 1h
   entries:
     - name: token-file
       type: string
@@ -399,6 +399,12 @@
       ports:
         - port: 8080
           targetPort: 9090
+  cli_example: |
+    # Current
+    skupper -n east service create backend 8080
+    skupper -n east service bind backend deployment/backend --target-port 9090
+    # Proposed
+    skupper -n east provide backend:8080 deployment/backend --target-port 9090
   entries:
     - name: target-port
       default:
@@ -434,6 +440,11 @@
     spec:
       ports:
         - port: 8080
+  cli_example: |
+    # Current
+    skupper -n west service create backend 8080
+    # Proposed
+    skupper -n west require backend:8080
   entries:
     - name: protocol
       default: tcp
