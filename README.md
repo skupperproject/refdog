@@ -2,6 +2,7 @@
 
 - [Notes](#notes)
 - [Resource _site_](#resource-site)
+    - [Site examples](#site-examples)
     - [Site options](#site-options)
     - [Ingress options](#ingress-options)
     - [Console options](#console-options)
@@ -11,9 +12,17 @@
     - [Flow collector options](#flow-collector-options)
     - [Router options](#router-options)
 - [Resource _link_](#resource-link)
+    - [Link examples](#link-examples)
+    - [Link options](#link-options)
 - [Resource _token_](#resource-token)
+    - [Token examples](#token-examples)
+    - [Token options](#token-options)
 - [Resource _provided-service_](#resource-provided-service)
+    - [Provided service examples](#provided-service-examples)
+    - [Provided service options](#provided-service-options)
 - [Resource _required-service_](#resource-required-service)
+    - [Required service examples](#required-service-examples)
+    - [Required service options](#required-service-options)
 
 ## Notes
 
@@ -21,13 +30,14 @@
 
 - A unified declarative language ("Skupper site YAML") for creating sites,
   linking sites, and exposing services.
-- A language that operates uniformly for Kubernetes, Podman, and
-  generated bundles, while still allowing for some platform specific
-  variations.
+- A configuration model that operates uniformly across Kubernetes,
+  Podman, and generated bundles, while still allowing for some
+  platform specific variations.
 - A simple translation from Skupper site YAML to Kubernetes custom
   resources.
 - As an alternative to CRDs, allow use of Skupper site YAML as the
   content of a Kubernetes ConfigMap.
+- A single source of truth for documentation of Skupper configuration.
 
 ### Clarifications
 
@@ -44,12 +54,13 @@
 
 - [Skupper syncer demo](https://github.com/grs/skupper-syncer-demo)
 - [Kubernetes Service API](https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/)
--
 
 ## Resource _site_
 
+### Site examples
+
 <table>
-<tr><th>Skupper site YAML example</th><th>Kubernetes custom resource example</th></tr>
+<tr><th>Skupper site YAML</th><th>Kubernetes custom resource</th></tr>
 <tr><td><pre>version: 1
 site:
   name: east
@@ -62,10 +73,11 @@ metadata:
 spec:
   ingress: none
   routerCpuLimit: 2</pre></td></tr>
+<tr><th colspan="2">Skupper CLI</th></tr>
+<tr><td colspan="2">skupper init --site-name east --ingress none --router-cpu-limit 2</td></tr>
 </table>
 
 <dl>
-</dl>
 
 ### Site options
 
@@ -425,10 +437,14 @@ routers do XXX.  Edge routers only do YYY.
 </dd>
 </dl>
 
+</dl>
+
 ## Resource _link_
 
+### Link examples
+
 <table>
-<tr><th>Skupper site YAML example</th><th>Kubernetes custom resource example</th></tr>
+<tr><th>Skupper site YAML</th><th>Kubernetes custom resource</th></tr>
 <tr><td><pre>version: 1
 site:
   name: east
@@ -441,9 +457,14 @@ metadata:
   namespace: east
 spec:
   tokenSecret: west-token-1</pre></td></tr>
+<tr><th colspan="2">Skupper CLI</th></tr>
+<tr><td colspan="2">skupper link create west-token-1.yaml --namespace east --name link-to-west</td></tr>
 </table>
 
 <dl>
+
+### Link options
+
 <dt><p>name</p></dt>
 <dd>
 <p>An optional name for the link (used when deleting it).
@@ -474,8 +495,10 @@ spec:
 
 ## Resource _token_
 
+### Token examples
+
 <table>
-<tr><th>Skupper site YAML example</th><th>Kubernetes custom resource example</th></tr>
+<tr><th>Skupper site YAML</th><th>Kubernetes custom resource</th></tr>
 <tr><td><pre>version: 1
 site:
   name: west
@@ -489,9 +512,14 @@ metadata:
 spec:
   tokenSecret: west-token-1
   expiry: 1h</pre></td></tr>
+<tr><th colspan="2">Skupper CLI</th></tr>
+<tr><td colspan="2">skupper token create west-token-1.yaml --namespace west --expiry 1h</td></tr>
 </table>
 
 <dl>
+
+### Token options
+
 <dt><p>token-file</p></dt>
 <dd>
 <p>The path to the file that is to contain the generated token
@@ -533,8 +561,10 @@ to create a link.
 
 ## Resource _provided-service_
 
+### Provided service examples
+
 <table>
-<tr><th>Skupper site YAML example</th><th>Kubernetes custom resource example</th></tr>
+<tr><th>Skupper site YAML</th><th>Kubernetes custom resource</th></tr>
 <tr><td><pre>version: 1
 site:
   name: east
@@ -551,9 +581,14 @@ spec:
   ports:
     - port: 8080
       targetPort: 9090</pre></td></tr>
+<tr><th colspan="2">Skupper CLI</th></tr>
+<tr><td colspan="2"></td></tr>
 </table>
 
 <dl>
+
+### Provided service options
+
 <dt><p>target-port</p></dt>
 <dd>
 <p>The port the target is listening on (you can also use colon to map source-port to a target-port).
@@ -578,8 +613,10 @@ over TLS.
 
 ## Resource _required-service_
 
+### Required service examples
+
 <table>
-<tr><th>Skupper site YAML example</th><th>Kubernetes custom resource example</th></tr>
+<tr><th>Skupper site YAML</th><th>Kubernetes custom resource</th></tr>
 <tr><td><pre>version: 1
 site:
   name: west
@@ -594,9 +631,14 @@ metadata:
 spec:
   ports:
     - port: 8080</pre></td></tr>
+<tr><th colspan="2">Skupper CLI</th></tr>
+<tr><td colspan="2"></td></tr>
 </table>
 
 <dl>
+
+### Required service options
+
 <dt><p>protocol</p></dt>
 <dd>
 <p>The protocol mapping in use for this service address.

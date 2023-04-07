@@ -41,46 +41,73 @@ def generate():
     out.append("- [Notes](#notes)")
 
     for resource in data:
-        out.append("- [Resource _{}_](#resource-{})".format(resource["name"], resource["name"]))
+        resource_name = resource["name"]
+        resource_title = capitalize(resource_name.replace("-", " "))
 
-        for group in resource.get("groups", []):
-            out.append("    - [{}](#{})".format(group["title"], group["title"].lower().replace(" ", "-")))
+        out.append("- [Resource _{}_](#resource-{})".format(resource_name, resource_name))
+        out.append("    - [{} examples](#{}-examples)".format(resource_title, resource_name))
+
+        if "groups" in resource:
+            for group in resource.get("groups", []):
+                group_name = group["name"]
+                group_title = capitalize(group_name.replace("-", " "))
+
+                out.append("    - [{} options](#{}-options)".format(group_title, group_name))
+        else:
+            out.append("    - [{} options](#{}-options)".format(resource_title, resource_name))
 
     out.append("")
     out.append(read("notes.md"))
 
     for resource in data:
-        out.append("## Resource _{}_".format(resource["name"]))
+        resource_name = resource["name"]
+        resource_title = capitalize(resource_name.replace("-", " "))
+
+        out.append("## Resource _{}_".format(resource_name))
         out.append("")
 
-        if "skupper_example" in resource or "kubernetes_example" in resource:
+        if "yaml_example" in resource or "kubernetes_example" in resource or "cli_example" in resource:
+            out.append("### {} examples".format(resource_title))
+            out.append("")
+
             out.append("<table>")
-            out.append("<tr><th>Skupper site YAML example</th><th>Kubernetes custom resource example</th></tr>")
+            out.append("<tr><th>Skupper site YAML</th><th>Kubernetes custom resource</th></tr>")
             out.append("<tr><td><pre>{}</pre></td><td><pre>{}</pre></td></tr>".format(
-                nvl(resource.get("skupper_example"), "").strip(),
+                nvl(resource.get("yaml_example"), "").strip(),
                 nvl(resource.get("kubernetes_example"), "").strip()))
+            out.append("<tr><th colspan=\"2\">Skupper CLI</th></tr>")
+            out.append("<tr><td colspan=\"2\">{}</td></tr>".format(nvl(resource.get("cli_example"), "").strip()))
             out.append("</table>")
             out.append("")
 
         out.append("<dl>")
+        out.append("")
 
-        for entry in resource.get("entries", []):
-            generate_entry(out, entry)
+        if "groups" in resource:
+            for group in resource.get("groups", []):
+                group_name = group["name"]
+                group_title = capitalize(group_name.replace("-", " "))
+
+                out.append("### {} options".format(group_title))
+                out.append("")
+
+                out.append("<dl>")
+
+                for entry in group.get("entries", []):
+                    generate_entry(out, entry)
+
+                out.append("</dl>")
+                out.append("")
+        else:
+            out.append("### {} options".format(resource_title))
+            out.append("")
+
+            for entry in resource.get("entries", []):
+                generate_entry(out, entry)
 
         out.append("</dl>")
         out.append("")
 
-        for group in resource.get("groups", []):
-            out.append("### {}".format(group["title"]))
-            out.append("")
-
-            out.append("<dl>")
-
-            for entry in group.get("entries", []):
-                generate_entry(out, entry)
-
-            out.append("</dl>")
-            out.append("")
 
     write("README.md", "\n".join(out))
 

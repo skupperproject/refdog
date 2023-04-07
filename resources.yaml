@@ -1,5 +1,5 @@
 - name: site
-  skupper_example: |
+  yaml_example: |
     version: 1
     site:
       name: east
@@ -14,8 +14,10 @@
     spec:
       ingress: none
       routerCpuLimit: 2
+  cli_example: |
+    skupper init --site-name east --ingress none --router-cpu-limit 2
   groups:
-    - title: Site options
+    - name: site
       entries:
         - name: name
           default:
@@ -44,7 +46,7 @@
           type: boolean
           description: |
             Enable REST API
-    - title: Ingress options
+    - name: ingress
       entries:
         - name: ingress
           default: route if available, else loadbalancer
@@ -63,7 +65,7 @@
           type: strings
           description: |
             Annotations to add to skupper ingress
-    - title: Console options
+    - name: console
       entries:
         - name: console-enabled
           default: n
@@ -94,7 +96,7 @@
           description: |
             Determines if/how console is exposed outside cluster. If
             not specified uses value of --ingress.
-    - title: Service sync options
+    - name: service-sync
       entries:
         - name: service-sync-enabled
           default: y
@@ -106,8 +108,7 @@
           type: duration
           description: |
             Time after which stale services, i.e. those whose site has not been heard from, created through service-sync are removed.
-
-    - title: Config sync options
+    - name: config-sync
       entries:
         - name: config-sync-cpu
           default:
@@ -129,7 +130,7 @@
           type: string
           description: |
             Memory limit for config-sync pods
-    - title: Controller options
+    - name: controller
       entries:
         - name: controller-cpu
           default:
@@ -181,7 +182,7 @@
           type: strings
           description: |
             Annotations to add to skupper controller service
-    - title: Flow collector options
+    - name: flow-collector
       entries:
         - name: flow-collector-enabled
           default: n
@@ -214,7 +215,7 @@
           type: string
           description: |
             Memory limit for flow collector pods
-    - title: Router options
+    - name: router
       entries:
         - name: router-mode
           default: interior
@@ -291,7 +292,7 @@
           description: |
             Annotations to add to skupper router service
 - name: link
-  skupper_example: |
+  yaml_example: |
     version: 1
     site:
       name: east
@@ -306,6 +307,8 @@
       namespace: east
     spec:
       tokenSecret: west-token-1
+  cli_example: |
+    skupper link create west-token-1.yaml --namespace east --name link-to-west
   entries:
     - name: name
       default: "[Generated]"
@@ -328,7 +331,7 @@
       description: |
         Specify a cost for this link.
 - name: token
-  skupper_example: |
+  yaml_example: |
     version: 1
     site:
       name: west
@@ -344,6 +347,8 @@
     spec:
       tokenSecret: west-token-1
       expiry: 1h
+  cli_example: |
+    skupper token create west-token-1.yaml --namespace west --expiry 1h
   entries:
     - name: token-file
       type: string
@@ -375,7 +380,7 @@
         An optional name for the remote site that will use this token
         to create a link.
 - name: provided-service
-  skupper_example: |
+  yaml_example: |
     version: 1
     site:
       name: east
@@ -412,7 +417,7 @@
       description: |
         If specified, skupper will not wait for pods to be ready
 - name: required-service
-  skupper_example: |
+  yaml_example: |
     version: 1
     site:
       name: west
