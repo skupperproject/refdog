@@ -59,6 +59,7 @@ experience should be for provided and required services.
 - [Skupper's Hello World expressed in Skupper YAML](hello-world.yaml)
 - [Skupper syncer demo](https://github.com/grs/skupper-syncer-demo)
 - [Kubernetes Service API](https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/)
+- [Skuppernetes, the GUI equivalent of the operations here](https://www.ssorj.net/skuppernetes/)
 
 ## Resource _site_
 
@@ -512,9 +513,10 @@ spec:
 <tr><td><pre>version: 1
 site:
   name: west
-  token:
-    token-file: west-token-1.yaml
-    expiry: 1h</pre></td><td><pre>apiVersion: skupper.io/v1alpha1
+  tokens:
+    - name: west-token-1
+      token-file: west-token-1.yaml
+      expiry: 1h</pre></td><td><pre>apiVersion: skupper.io/v1alpha1
 kind: Token
 metadata:
   name: west-token-1
@@ -531,6 +533,12 @@ spec:
 
 ### Token options
 
+<dt><p>name</p></dt>
+<dd>
+<p>The name of the token.
+</p>
+<div><b>Type:</b> String</div>
+</dd>
 <dt><p>token-file</p></dt>
 <dd>
 <p>The path to the file that is to contain the generated token
@@ -560,10 +568,13 @@ generated token data.
 <div><b>Type:</b> Integer</div>
 <div><b>Default:</b> 1</div>
 </dd>
-<dt><p>name</p></dt>
+<dt><p>auth-name</p></dt>
 <dd>
-<p>An optional name for the remote site that will use this token
-to create a link.
+<p>Provide a specific identity as which connecting skupper
+installation will be authenticated.
+
+XXX What does this mean?  I feel a more relatable attribute
+name would be remote-site-name.
 </p>
 <div><b>Type:</b> String</div>
 <div><b>Default:</b> skupper (?)</div>

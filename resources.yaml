@@ -335,9 +335,10 @@
     version: 1
     site:
       name: west
-      token:
-        token-file: west-token-1.yaml
-        expiry: 1h
+      tokens:
+        - name: west-token-1
+          token-file: west-token-1.yaml
+          expiry: 1h
   kubernetes_example: |
     apiVersion: skupper.io/v1alpha1
     kind: Token
@@ -350,6 +351,10 @@
   cli_example: |
     skupper -n west token create west-token-1.yaml --expiry 1h
   entries:
+    - name: name
+      type: string
+      description: |
+        The name of the token.
     - name: token-file
       type: string
       platform: podman
@@ -373,12 +378,15 @@
       description: |
         Number of uses for which claim will be valid (only valid if
         --token-type=claim).
-    - name: name
+    - name: auth-name
       default: skupper (?)
       type: string
       description: |
-        An optional name for the remote site that will use this token
-        to create a link.
+        Provide a specific identity as which connecting skupper
+        installation will be authenticated.
+
+        XXX What does this mean?  I feel a more relatable attribute
+        name would be remote-site-name.
 - name: provided-service
   yaml_example: |
     version: 1
