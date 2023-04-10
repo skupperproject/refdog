@@ -339,14 +339,12 @@
         Number of uses for which claim will be valid (only valid if
         --token-type=claim).
     - name: auth-name
+      trouble: What does this mean?  I feel a more relatable attribute might be something linke remote-site-name.
       default: skupper (?)
       type: string
       description: |
         Provide a specific identity as which connecting skupper
         installation will be authenticated.
-
-        XXX What does this mean?  I feel a more relatable attribute
-        name would be remote-site-name.
 - name: provided-service
   yaml_example: |
     version: 1
@@ -390,16 +388,16 @@
           description: |
             The workload that provides this service.
         - name: ingress-enabled
-          trouble: collision
+          trouble: |
+            Collision with other meanings of "ingress".  I want a note
+            here that says that some future iteration might include a
+            third state.
           default: Always
           type: string
           choices: [Always, Never]
           description: |
             Determines whether access to the Skupper service is enabled in
             this site.
-
-            XXX I want a note here that says that some future iteration
-            might include a third state.
         - name: publish-not-ready-addresses
           type: boolean
           description: |

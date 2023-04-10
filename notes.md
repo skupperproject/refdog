@@ -16,8 +16,11 @@
   site controller.
 - A central configuration reference for Skupper.
 
-In addition, I'd like to use this exercise to work out what the CLI
-experience should be for provided and required services.
+In addition, I'd like to use this exercise to work out what the [CLI
+experience][services-cli] should be for provided and required
+services.
+
+[services-cli]: services-cli.txt
 
 A related project is mocking up the [GUI equivalent][skuppernetes] in
 the context of a Kubernetes console.
