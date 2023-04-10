@@ -48,8 +48,11 @@
   site controller.
 - A central configuration reference for Skupper.
 
-In addition, I'd like to use this exercise to work out what the CLI
-experience should be for provided and required services.
+In addition, I'd like to use this exercise to work out what the [CLI
+experience][services-cli] should be for provided and required
+services.
+
+[services-cli]: services-cli.txt
 
 A related project is mocking up the [GUI equivalent][skuppernetes] in
 the context of a Kubernetes console.
@@ -585,9 +588,6 @@ generated token data.
 <dd>
 <p>Provide a specific identity as which connecting skupper
 installation will be authenticated.
-
-XXX What does this mean?  I feel a more relatable attribute
-name would be remote-site-name.
 </p>
 <div><b>Type:</b> String</div>
 <div><b>Default:</b> skupper (?)</div>
@@ -652,9 +652,6 @@ skupper provide backend:8080 deployment/backend --target-port 9090</pre></td></t
 <dd>
 <p>Determines whether access to the Skupper service is enabled in
 this site.
-
-XXX I want a note here that says that some future iteration
-might include a third state.
 </p>
 <div><b>Type:</b> String</div>
 <div><b>Default:</b> Always</div>
