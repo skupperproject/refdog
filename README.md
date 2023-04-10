@@ -20,13 +20,21 @@
 - [Resource _provided-service_](#resource-provided-service)
     - [Provided service examples](#provided-service-examples)
     - [Provided service options](#provided-service-options)
+    - [Provided service port options](#provided-service-port-options)
+    - [Provided service port TLS options](#provided-service-port-tls-options)
+    - [Provided service port event options](#provided-service-port-event-options)
 - [Resource _required-service_](#resource-required-service)
     - [Required service examples](#required-service-examples)
     - [Required service options](#required-service-options)
+    - [Required service port options](#required-service-port-options)
+    - [Required service port TLS options](#required-service-port-tls-options)
+    - [Required service port event options](#required-service-port-event-options)
 
 ## Notes
 
 ### Goals
+
+*Regularize* and *document* Skupper configuration.
 
 - A unified declarative language ("Skupper YAML") for creating sites,
   linking sites, and exposing services.
@@ -43,20 +51,27 @@
 In addition, I'd like to use this exercise to work out what the CLI
 experience should be for provided and required services.
 
-### Clarifications
+A related project is mocking up the [GUI equivalent][skuppernetes] in
+the context of a Kubernetes console.
 
-- A token is special in that it is not yet "fulfilled" - and therefore
-  usable for linking - until it has an associated token file or
-  secret.
+[skuppernetes]: https://www.ssorj.net/skuppernetes/
 
-### Questions
+<!-- ### Clarifications -->
 
-- What *are* address and host on ProvidedService?  Router tcpConnector
-  stuff?
+<!-- - A token is special in that it is not yet "fulfilled" - and therefore -->
+<!--   usable for linking - until it has an associated token file or -->
+<!--   secret. -->
+
+<!-- ### Questions -->
+
+<!-- - What *are* address and host on ProvidedService?  Router tcpConnector -->
+<!--   stuff? -->
 
 ### Resources
 
-- [Skupper's Hello World expressed in Skupper YAML](hello-world.yaml)
+- [Hello World expressed in Skupper YAML](hello-world.yaml)
+- [Hello World as Skupper YAML embedded in ConfigMaps](hello-world-config-map.yaml)
+- [Hello World scripted using the proposed CLI commands](hello-world-cli-script.txt)
 - [Skupper syncer demo](https://github.com/grs/skupper-syncer-demo)
 - [Kubernetes Service API](https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/)
 - [Skuppernetes, the GUI equivalent of the operations here](https://www.ssorj.net/skuppernetes/)
@@ -115,7 +130,6 @@ exposed through this site to the pods currently in the
 namespace.
 </p>
 <div><b>Type:</b> Boolean</div>
-<div><b>Default:</b> n</div>
 </dd>
 <dt><p>enable-rest-api</p></dt>
 <dd>
@@ -160,7 +174,6 @@ be reached.
 '--enable-flow-collector' flag
 </p>
 <div><b>Type:</b> Boolean</div>
-<div><b>Default:</b> n</div>
 </dd>
 <dt><p>console-auth</p></dt>
 <dd>
@@ -314,7 +327,6 @@ not specified uses value of --ingress.
 <p>Enable cross-site flow collection for the application network
 </p>
 <div><b>Type:</b> Boolean</div>
-<div><b>Default:</b> n</div>
 </dd>
 <dt><p>flow-collector-record-ttl</p></dt>
 <dd>
@@ -467,7 +479,7 @@ metadata:
 spec:
   tokenSecret: west-token-1</pre></td></tr>
 <tr><th colspan="2">Skupper CLI</th></tr>
-<tr><td colspan="2"><pre>skupper -n east link create west-token-1.yaml --name link-to-west</pre></td></tr>
+<tr><td colspan="2"><pre>skupper link create west-token-1.yaml --name link-to-west</pre></td></tr>
 </tbody>
 </table>
 
@@ -525,7 +537,7 @@ spec:
   tokenSecret: west-token-1
   expiry: 1h</pre></td></tr>
 <tr><th colspan="2">Skupper CLI</th></tr>
-<tr><td colspan="2"><pre>skupper -n west token create west-token-1.yaml --expiry 1h</pre></td></tr>
+<tr><td colspan="2"><pre>skupper token create west-token-1.yaml --expiry 1h</pre></td></tr>
 </tbody>
 </table>
 
@@ -593,6 +605,7 @@ site:
   name: east
   provided-services:
     - name: backend
+      workload: deployment/backend
       ports:
         - port: 8080
           target-port: 9090</pre></td><td><pre>apiVersion: skupper.io/v1alpha1
@@ -601,15 +614,19 @@ metadata:
   name: backend
   namespace: east
 spec:
+  workload: deployment/backend
   ports:
     - port: 8080
       targetPort: 9090</pre></td></tr>
 <tr><th colspan="2">Skupper CLI</th></tr>
 <tr><td colspan="2"><pre># Current
-skupper -n east service create backend 8080
-skupper -n east service bind backend deployment/backend --target-port 9090
-# Proposed
-skupper -n east service provide backend:8080 deployment/backend --target-port 9090</pre></td></tr>
+skupper service create backend 8080
+skupper service bind backend deployment/backend --target-port 9090
+# Proposed (general purpose form)
+skupper provided-service create backend deployment/backend
+skupper provided-service create-port backend 8080 --target-port 9090
+# Proposed (simplified form for the common case)
+skupper provide backend:8080 deployment/backend --target-port 9090</pre></td></tr>
 </tbody>
 </table>
 
@@ -617,26 +634,126 @@ skupper -n east service provide backend:8080 deployment/backend --target-port 90
 
 ### Provided service options
 
-<dt><p>target-port</p></dt>
+<dl>
+<dt><p>name</p></dt>
 <dd>
-<p>The port the target is listening on (you can also use colon to map source-port to a target-port).
-</p>
-<div><b>Type:</b> Strings</div>
-</dd>
-<dt><p>tls-trust</p></dt>
-<dd>
-<p>The Kubernetes secret name with the CA to expose the service
-over TLS.
+<p>The service name.
 </p>
 <div><b>Type:</b> String</div>
+</dd>
+<dt><p>workload</p></dt>
+<dd>
+<p>The workload that provides this service.
+</p>
+<div><b>Type:</b> String</div>
+</dd>
+<dt><p>ingress-enabled</p></dt>
+<dd>
+<p>Determines whether access to the Skupper service is enabled in
+this site.
+
+XXX I want a note here that says that some future iteration
+might include a third state.
+</p>
+<div><b>Type:</b> String</div>
+<div><b>Default:</b> Always</div>
+<div><b>Choices:</b> Always, Never</div>
 </dd>
 <dt><p>publish-not-ready-addresses</p></dt>
 <dd>
 <p>If specified, skupper will not wait for pods to be ready
 </p>
 <div><b>Type:</b> Boolean</div>
-<div><b>Default:</b> n</div>
 </dd>
+</dl>
+
+### Provided service port options
+
+<dl>
+<dt><p>ports[].port</p></dt>
+<dd>
+<p>The port number.
+</p>
+<div><b>Type:</b> Integer</div>
+</dd>
+<dt><p>ports[].name</p></dt>
+<dd>
+<p>The port name.
+</p>
+<div><b>Type:</b> String</div>
+<div><b>Default:</b> The value of ports[].port</div>
+</dd>
+<dt><p>ports[].protocol</p></dt>
+<dd>
+<p>The protocol mapping in use for this service address.
+</p>
+<div><b>Type:</b> String</div>
+<div><b>Default:</b> tcp</div>
+<div><b>Choices:</b> tcp, http, http2</div>
+</dd>
+<dt><p>ports[].target-port</p></dt>
+<dd>
+<p>The port the target is listening on (you can also use
+colon to map source-port to a target-port).
+</p>
+<div><b>Type:</b> Strings</div>
+<div><b>Default:</b> The value of ports[].port</div>
+</dd>
+<dt><p>ports[].bridge-image</p></dt>
+<dd>
+<p>The image to use for a bridge running external to the
+skupper router
+</p>
+<div><b>Type:</b> String</div>
+</dd>
+</dl>
+
+### Provided service port TLS options
+
+<dl>
+<dt><p>ports[].generate-tls-secrets</p></dt>
+<dd>
+<p>If specified, the service communication will be encrypted using TLS
+</p>
+<div><b>Type:</b> Boolean</div>
+</dd>
+<dt><p>ports[].tls-cert</p></dt>
+<dd>
+<p>The Kubernetes secret name with custom certificates to encrypt
+the communication using TLS.
+</p>
+<div><b>Type:</b> String</div>
+</dd>
+<dt><p>ports[].tls-trust</p></dt>
+<dd>
+<p>The Kubernetes secret name with the CA to expose the service
+over TLS.
+</p>
+<div><b>Type:</b> String</div>
+</dd>
+</dl>
+
+### Provided service port event options
+
+<dl>
+<dt><p>ports[].event-channel-enabled</p></dt>
+<dd>
+<p>If specified, this service will be a channel for multicast
+events.
+</p>
+<div><b>Type:</b> Boolean</div>
+</dd>
+<dt><p>ports[].response-aggregation-mode</p></dt>
+<dd>
+<p>The aggregation strategy to use.  If specified requests to
+this service will be sent to all registered
+implementations and the responses aggregated.
+</p>
+<div><b>Type:</b> String</div>
+<div><b>Choices:</b> json, multipart</div>
+</dd>
+</dl>
+
 </dl>
 
 ## Resource _required-service_
@@ -662,9 +779,12 @@ spec:
     - port: 8080</pre></td></tr>
 <tr><th colspan="2">Skupper CLI</th></tr>
 <tr><td colspan="2"><pre># Current
-skupper -n west service create backend 8080
-# Proposed
-skupper -n west service require backend:8080</pre></td></tr>
+skupper service create backend 8080
+# Proposed (general purpose form)
+skupper required-service create backend
+skupper required-service create-port backend 8080
+# Proposed (simplified form for the common case)
+skupper require backend:8080</pre></td></tr>
 </tbody>
 </table>
 
@@ -672,7 +792,32 @@ skupper -n west service require backend:8080</pre></td></tr>
 
 ### Required service options
 
-<dt><p>protocol</p></dt>
+<dl>
+<dt><p>name</p></dt>
+<dd>
+<p>The service name.
+</p>
+<div><b>Type:</b> String</div>
+</dd>
+</dl>
+
+### Required service port options
+
+<dl>
+<dt><p>ports[].port</p></dt>
+<dd>
+<p>The port number.
+</p>
+<div><b>Type:</b> Integer</div>
+</dd>
+<dt><p>ports[].name</p></dt>
+<dd>
+<p>The port name.
+</p>
+<div><b>Type:</b> String</div>
+<div><b>Default:</b> The value of ports[].port</div>
+</dd>
+<dt><p>ports[].protocol</p></dt>
 <dd>
 <p>The protocol mapping in use for this service address.
 </p>
@@ -680,54 +825,59 @@ skupper -n west service require backend:8080</pre></td></tr>
 <div><b>Default:</b> tcp</div>
 <div><b>Choices:</b> tcp, http, http2</div>
 </dd>
-<dt><p>generate-tls-secrets</p></dt>
+<dt><p>ports[].bridge-image</p></dt>
+<dd>
+<p>The image to use for a bridge running external to the
+skupper router
+</p>
+<div><b>Type:</b> String</div>
+</dd>
+</dl>
+
+### Required service port TLS options
+
+<dl>
+<dt><p>ports[].generate-tls-secrets</p></dt>
 <dd>
 <p>If specified, the service communication will be encrypted using TLS
 </p>
 <div><b>Type:</b> Boolean</div>
-<div><b>Default:</b> n</div>
 </dd>
-<dt><p>tls-cert</p></dt>
+<dt><p>ports[].tls-cert</p></dt>
 <dd>
 <p>The Kubernetes secret name with custom certificates to encrypt
 the communication using TLS.
 </p>
 <div><b>Type:</b> String</div>
 </dd>
-<dt><p>ingress-enabled</p></dt>
+<dt><p>ports[].tls-trust</p></dt>
 <dd>
-<p>Determines whether access to the Skupper service is enabled in
-this site.
-
-XXX I want a note here that says that some future iteration
-might include a third state.
+<p>The Kubernetes secret name with the CA to expose the service
+over TLS.
 </p>
 <div><b>Type:</b> String</div>
-<div><b>Default:</b> Always</div>
-<div><b>Choices:</b> Always, Never</div>
 </dd>
-<dt><p>event-channel</p></dt>
+</dl>
+
+### Required service port event options
+
+<dl>
+<dt><p>ports[].event-channel-enabled</p></dt>
 <dd>
-<p>If specified, this service will be a channel for multicast events.
+<p>If specified, this service will be a channel for multicast
+events.
 </p>
 <div><b>Type:</b> Boolean</div>
-<div><b>Default:</b> n</div>
 </dd>
-<dt><p>aggregate</p></dt>
+<dt><p>ports[].response-aggregation-mode</p></dt>
 <dd>
-<p>The aggregation strategy to use. One of 'json' or
-'multipart'. If specified requests to this service will be
-sent to all registered implementations and the responses
-aggregated.
+<p>The aggregation strategy to use.  If specified requests to
+this service will be sent to all registered
+implementations and the responses aggregated.
 </p>
 <div><b>Type:</b> String</div>
-<div><b>Default:</b> ?</div>
 <div><b>Choices:</b> json, multipart</div>
 </dd>
-<dt><p>bridge-image</p></dt>
-<dd>
-<p>The image to use for a bridge running external to the skupper router
-</p>
-<div><b>Type:</b> String</div>
-</dd>
+</dl>
+
 </dl>

@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: skupper-config
+  namespace: east
+data:
+  version: 1
+  site:
+    name: east
+    links:
+      - token-file: west-token-1.yaml
+    provided-services:
+      - name: backend
+        workload: deployment/backend
+        ports:
+          - port: 8080
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: skupper-config
+  namespace: west
+data:
+  version: 1
+  site:
+    name: west
+    tokens:
+      - token-file: west-token-1.yaml
+    required-services:
+      - name: backend
+        ports:
+          - port: 8080

@@ -2,6 +2,8 @@
 
 ### Goals
 
+*Regularize* and *document* Skupper configuration.
+
 - A unified declarative language ("Skupper YAML") for creating sites,
   linking sites, and exposing services.
 - A configuration model that operates uniformly across Kubernetes,
@@ -17,20 +19,27 @@
 In addition, I'd like to use this exercise to work out what the CLI
 experience should be for provided and required services.
 
-### Clarifications
+A related project is mocking up the [GUI equivalent][skuppernetes] in
+the context of a Kubernetes console.
 
-- A token is special in that it is not yet "fulfilled" - and therefore
-  usable for linking - until it has an associated token file or
-  secret.
+[skuppernetes]: https://www.ssorj.net/skuppernetes/
 
-### Questions
+<!-- ### Clarifications -->
 
-- What *are* address and host on ProvidedService?  Router tcpConnector
-  stuff?
+<!-- - A token is special in that it is not yet "fulfilled" - and therefore -->
+<!--   usable for linking - until it has an associated token file or -->
+<!--   secret. -->
+
+<!-- ### Questions -->
+
+<!-- - What *are* address and host on ProvidedService?  Router tcpConnector -->
+<!--   stuff? -->
 
 ### Resources
 
-- [Skupper's Hello World expressed in Skupper YAML](hello-world.yaml)
+- [Hello World expressed in Skupper YAML](hello-world.yaml)
+- [Hello World as Skupper YAML embedded in ConfigMaps](hello-world-config-map.yaml)
+- [Hello World scripted using the proposed CLI commands](hello-world-cli-script.txt)
 - [Skupper syncer demo](https://github.com/grs/skupper-syncer-demo)
 - [Kubernetes Service API](https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/)
 - [Skuppernetes, the GUI equivalent of the operations here](https://www.ssorj.net/skuppernetes/)

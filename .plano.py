@@ -52,6 +52,9 @@ def generate():
                 group_name = group["name"]
                 group_title = capitalize(group_name.replace("-", " "))
 
+                if "title" in group:
+                    group_title = group["title"]
+
                 out.append("    - [{} options](#{}-options)".format(group_title, group_name))
         else:
             out.append("    - [{} options](#{}-options)".format(resource_title, resource_name))
@@ -89,6 +92,9 @@ def generate():
             for group in resource.get("groups", []):
                 group_name = group["name"]
                 group_title = capitalize(group_name.replace("-", " "))
+
+                if "title" in group:
+                    group_title = group["title"]
 
                 out.append("### {} options".format(group_title))
                 out.append("")

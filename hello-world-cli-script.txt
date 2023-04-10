@@ -1,0 +1,13 @@
+# East
+
+export KUBECONFIG=~/.kuke/config-east
+skupper init
+skupper link create ~/west-token-1.yaml
+skupper provide backend:8080 deployment/backend
+
+# West
+
+export KUBECONFIG=~/.kuke/config-west
+skupper init
+skupper token create ~/west-token-1.yaml
+skupper require backend:8080

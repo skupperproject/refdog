@@ -20,29 +20,24 @@
     - name: site
       entries:
         - name: name
-          default:
           type: string
           description: |
             A name of your choice for the Skupper site.
         - name: annotations
-          default:
           type: strings
           description: |
             Annotations to add to Skupper pods.
         - name: labels
-          default:
           type: strings
           description: |
             Labels to add to skupper pods
         - name: create-network-policy
-          default: n
           type: boolean
           description: |
             Create network policy to restrict access to Skupper services
             exposed through this site to the pods currently in the
             namespace.
         - name: enable-rest-api
-          default:
           type: boolean
           description: |
             Enable REST API
@@ -61,14 +56,12 @@
             The hostname or alias by which the ingress route or proxy can
             be reached.
         - name: ingress-annotations
-          default:
           type: strings
           description: |
             Annotations to add to skupper ingress
     - name: console
       entries:
         - name: console-enabled
-          default: n
           type: boolean
           description: |
             Enable skupper console must be used in conjunction with
@@ -90,7 +83,6 @@
           description: |
             The console password when using internal authentication.
         - name: console-ingress
-          default:
           type: string
           choices: [route, loadbalancer, nodeport, nginx-ingress-v1, contour-http-proxy, ingress, none]
           description: |
@@ -104,88 +96,72 @@
           description: |
             Participate in cross-site service synchronization
         - name: service-sync-site-ttl
-          default:
           type: duration
           description: |
             Time after which stale services, i.e. those whose site has not been heard from, created through service-sync are removed.
     - name: config-sync
       entries:
         - name: config-sync-cpu
-          default:
           type: string
           description: |
             CPU request for config-sync pods
         - name: config-sync-memory
-          default:
           type: string
           description: |
             Memory request for config-sync pods
         - name: config-sync-cpu-limit
-          default:
           type: string
           description: |
             CPU limit for config-sync pods
         - name: config-sync-memory-limit
-          default:
           type: string
           description: |
             Memory limit for config-sync pods
     - name: controller
       entries:
         - name: controller-cpu
-          default:
           type: string
           description: |
             CPU request for controller pods
         - name: controller-memory
-          default:
           type: string
           description: |
             Memory request for controller pods
         - name: controller-cpu-limit
-          default:
           type: string
           description: |
             CPU limit for controller pods
         - name: controller-memory-limit
-          default:
           type: string
           description: |
             Memory limit for controller pods
         - name: controller-node-selector
-          default:
           type: string
           description: |
             Node selector to control placement of controller pods
         - name: controller-pod-affinity
-          default:
           type: string
           description: |
             Pod affinity label matches to control placement of controller pods
         - name: controller-pod-antiaffinity
-          default:
           type: string
           description: |
             Pod antiaffinity label matches to control placement of controller pods
         - name: controller-ingress-host
-          default:
           type: string
           description: |
             Host through which node is accessible when using nodeport as ingress.
         - name: controller-load-balancer-ip
-          default:
           type: string
           description: |
             Load balancer ip that will be used for controller service, if supported by cloud provider
         - name: controller-service-annotation
-          default:
           type: strings
           description: |
             Annotations to add to skupper controller service
     - name: flow-collector
       entries:
         - name: flow-collector-enabled
-          default: n
           type: boolean
           description: |
             Enable cross-site flow collection for the application network
@@ -196,22 +172,18 @@
             Time after which terminated flow records are deleted,
             i.e. those flow records that have an end time set.
         - name: flow-collector-cpu
-          default:
           type: string
           description: |
             CPU request for flow collector pods
         - name: flow-collector-memory
-          default:
           type: string
           description: |
             Memory request for flow collector pods
         - name: flow-collector-cpu-limit
-          default:
           type: string
           description: |
             CPU limit for flow collector pods
         - name: flow-collector-memory-limit
-          default:
           type: string
           description: |
             Memory limit for flow collector pods
@@ -231,63 +203,51 @@
           description: |
             Logging settings for router
         - name: router-debug-mode
-          default:
           type: string
           choices: [asan, gdb]
           description: |
             Enable debug mode for the router
         - name: routers
-          default:
           type: integer
           description: |
             Number of router replicas to start
         - name: router-cpu
-          default:
           type: string
           description: |
             CPU request for router pods
         - name: router-memory
-          default:
           type: string
           description: |
             Memory request for router pods
         - name: router-cpu-limit
-          default:
           type: string
           description: |
             CPU limit for router pods
         - name: router-memory-limit
-          default:
           type: string
           description: |
             Memory limit for router pods
         - name: router-node-selector
-          default:
           type: string
           description: |
             Node selector to control placement of router pods
         - name: router-pod-affinity
-          default:
           type: string
           description: |
             Pod affinity label matches to control placement of router pods
         - name: router-pod-antiaffinity
-          default:
           type: string
           description: |
             Pod antiaffinity label matches to control placement of router pods
         - name: router-ingress-host
-          default:
           type: string
           description: |
             Host through which node is accessible when using nodeport as ingress.
         - name: router-load-balancer-ip
-          default:
           type: string
           description: |
             Load balancer ip that will be used for router service, if supported by cloud provider
         - name: router-service-annotations
-          default:
           type: strings
           description: |
             Annotations to add to skupper router service
@@ -308,7 +268,7 @@
     spec:
       tokenSecret: west-token-1
   cli_example: |
-    skupper -n east link create west-token-1.yaml --name link-to-west
+    skupper link create west-token-1.yaml --name link-to-west
   entries:
     - name: name
       default: "[Generated]"
@@ -349,7 +309,7 @@
       tokenSecret: west-token-1
       expiry: 1h
   cli_example: |
-    skupper -n west token create west-token-1.yaml --expiry 1h
+    skupper token create west-token-1.yaml --expiry 1h
   entries:
     - name: name
       type: string
@@ -394,6 +354,7 @@
       name: east
       provided-services:
         - name: backend
+          workload: deployment/backend
           ports:
             - port: 8080
               target-port: 9090
@@ -404,32 +365,106 @@
       name: backend
       namespace: east
     spec:
+      workload: deployment/backend
       ports:
         - port: 8080
           targetPort: 9090
   cli_example: |
     # Current
-    skupper -n east service create backend 8080
-    skupper -n east service bind backend deployment/backend --target-port 9090
-    # Proposed
-    skupper -n east service provide backend:8080 deployment/backend --target-port 9090
-  entries:
-    - name: target-port
-      default:
-      type: strings
-      description: |
-        The port the target is listening on (you can also use colon to map source-port to a target-port).
-    - name: tls-trust
-      default:
-      type: string
-      description: |
-        The Kubernetes secret name with the CA to expose the service
-        over TLS.
-    - name: publish-not-ready-addresses
-      default: n
-      type: boolean
-      description: |
-        If specified, skupper will not wait for pods to be ready
+    skupper service create backend 8080
+    skupper service bind backend deployment/backend --target-port 9090
+    # Proposed (general purpose form)
+    skupper provided-service create backend deployment/backend
+    skupper provided-service create-port backend 8080 --target-port 9090
+    # Proposed (simplified form for the common case)
+    skupper provide backend:8080 deployment/backend --target-port 9090
+  groups:
+    - name: provided-service
+      entries:
+        - name: name
+          type: string
+          description: |
+            The service name.
+        - name: workload
+          type: string
+          description: |
+            The workload that provides this service.
+        - name: ingress-enabled
+          trouble: collision
+          default: Always
+          type: string
+          choices: [Always, Never]
+          description: |
+            Determines whether access to the Skupper service is enabled in
+            this site.
+
+            XXX I want a note here that says that some future iteration
+            might include a third state.
+        - name: publish-not-ready-addresses
+          type: boolean
+          description: |
+            If specified, skupper will not wait for pods to be ready
+    - name: provided-service-port
+      entries:
+        - name: ports[].port
+          type: integer
+          description: |
+            The port number.
+        - name: ports[].name
+          default: The value of ports[].port
+          type: string
+          description: |
+            The port name.
+        - name: ports[].protocol
+          default: tcp
+          type: string
+          choices: [tcp, http, http2]
+          description: |
+            The protocol mapping in use for this service address.
+        - name: ports[].target-port
+          default: The value of ports[].port
+          type: strings
+          description: |
+            The port the target is listening on (you can also use
+            colon to map source-port to a target-port).
+        - name: ports[].bridge-image
+          type: string
+          description: |
+            The image to use for a bridge running external to the
+            skupper router
+    - name: provided-service-port-tls
+      title: Provided service port TLS
+      entries:
+        - name: ports[].generate-tls-secrets
+          trouble: This sounds like it generates secrets, but the description says it enables encryption
+          type: boolean
+          description: |
+            If specified, the service communication will be encrypted using TLS
+        - name: ports[].tls-cert
+          type: string
+          description: |
+            The Kubernetes secret name with custom certificates to encrypt
+            the communication using TLS.
+        - name: ports[].tls-trust
+          type: string
+          description: |
+            The Kubernetes secret name with the CA to expose the service
+            over TLS.
+    - name: provided-service-port-event
+      entries:
+        - name: ports[].event-channel-enabled
+          trouble: I feel like having "multicast" in the name would be better
+          type: boolean
+          description: |
+            If specified, this service will be a channel for multicast
+            events.
+        - name: ports[].response-aggregation-mode
+          type: string
+          choices: [json, multipart]
+          description: |
+            The aggregation strategy to use.  If specified requests to
+            this service will be sent to all registered
+            implementations and the responses aggregated.
 - name: required-service
   yaml_example: |
     version: 1
@@ -450,53 +485,70 @@
         - port: 8080
   cli_example: |
     # Current
-    skupper -n west service create backend 8080
-    # Proposed
-    skupper -n west service require backend:8080
-  entries:
-    - name: protocol
-      default: tcp
-      type: string
-      choices: [tcp, http, http2]
-      description: |
-        The protocol mapping in use for this service address.
-    - name: generate-tls-secrets
-      default: n
-      type: boolean
-      description: |
-        If specified, the service communication will be encrypted using TLS
-    - name: tls-cert
-      default:
-      type: string
-      description: |
-        The Kubernetes secret name with custom certificates to encrypt
-        the communication using TLS.
-    - name: ingress-enabled
-      default: Always
-      type: string
-      choices: [Always, Never]
-      description: |
-        Determines whether access to the Skupper service is enabled in
-        this site.
-
-        XXX I want a note here that says that some future iteration
-        might include a third state.
-    - name: event-channel
-      default: n
-      type: boolean
-      description: |
-        If specified, this service will be a channel for multicast events.
-    - name: aggregate
-      default: "?"
-      type: string
-      choices: [json, multipart]
-      description: |
-        The aggregation strategy to use. One of 'json' or
-        'multipart'. If specified requests to this service will be
-        sent to all registered implementations and the responses
-        aggregated.
-    - name: bridge-image
-      default:
-      type: string
-      description: |
-        The image to use for a bridge running external to the skupper router
+    skupper service create backend 8080
+    # Proposed (general purpose form)
+    skupper required-service create backend
+    skupper required-service create-port backend 8080
+    # Proposed (simplified form for the common case)
+    skupper require backend:8080
+  groups:
+    - name: required-service
+      entries:
+        - name: name
+          type: string
+          description: |
+            The service name.
+    - name: required-service-port
+      entries:
+        - name: ports[].port
+          type: integer
+          description: |
+            The port number.
+        - name: ports[].name
+          default: The value of ports[].port
+          type: string
+          description: |
+            The port name.
+        - name: ports[].protocol
+          default: tcp
+          type: string
+          choices: [tcp, http, http2]
+          description: |
+            The protocol mapping in use for this service address.
+        - name: ports[].bridge-image
+          type: string
+          description: |
+            The image to use for a bridge running external to the
+            skupper router
+    - name: required-service-port-tls
+      title: Required service port TLS
+      entries:
+        - name: ports[].generate-tls-secrets
+          trouble: This sounds like it generates secrets, but the description says it enables encryption
+          type: boolean
+          description: |
+            If specified, the service communication will be encrypted using TLS
+        - name: ports[].tls-cert
+          type: string
+          description: |
+            The Kubernetes secret name with custom certificates to encrypt
+            the communication using TLS.
+        - name: ports[].tls-trust
+          type: string
+          description: |
+            The Kubernetes secret name with the CA to expose the service
+            over TLS.
+    - name: required-service-port-event
+      entries:
+        - name: ports[].event-channel-enabled
+          type: boolean
+          description: |
+            If specified, this service will be a channel for multicast
+            events.
+        - name: ports[].response-aggregation-mode
+          type: string
+          choices: [json, multipart]
+          description: |
+            The aggregation strategy to use.  If specified requests to
+            this service will be sent to all registered
+            implementations and the responses aggregated.

@@ -5,6 +5,7 @@ site:
     - token-file: west-token-1.yaml
   provided-services:
     - name: backend
+      workload: deployment/backend
       ports:
         - port: 8080
 ---
