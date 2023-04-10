@@ -70,6 +70,7 @@ the context of a Kubernetes console.
 ### Resources
 
 - [Hello World expressed in Skupper YAML](hello-world.yaml)
+- [Hello World expressed as Kubernetes custom resources](hello-world-custom-resources.yaml)
 - [Hello World as Skupper YAML embedded in ConfigMaps](hello-world-config-map.yaml)
 - [Hello World scripted using the proposed CLI commands](hello-world-cli-script.txt)
 - [Skupper syncer demo](https://github.com/grs/skupper-syncer-demo)
