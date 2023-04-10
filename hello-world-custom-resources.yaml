@@ -1,0 +1,47 @@
+apiVersion: skupper.io/v1alpha1
+kind: Site
+metadata:
+  name: east
+  namespace: east
+---
+apiVersion: skupper.io/v1alpha1
+kind: Site
+metadata:
+  name: west
+  namespace: west
+---
+apiVersion: skupper.io/v1alpha1
+kind: Link
+metadata:
+  name: link-to-west
+  namespace: east
+spec:
+  tokenSecret: west-token-1
+---
+apiVersion: skupper.io/v1alpha1
+kind: Token
+metadata:
+  name: west-token-1
+  namespace: west
+spec:
+  tokenSecret: west-token-1
+  expiry: 1h
+---
+apiVersion: skupper.io/v1alpha1
+kind: ProvidedService
+metadata:
+  name: backend
+  namespace: east
+spec:
+  workload: deployment/backend
+  ports:
+    - port: 8080
+---
+apiVersion: skupper.io/v1alpha1
+kind: RequiredService
+metadata:
+  name: backend
+  namespace: west
+spec:
+  ports:
+    - port: 8080

@@ -36,8 +36,8 @@
 
 *Regularize* and *document* Skupper configuration.
 
-- A unified declarative language ("Skupper YAML") for creating sites,
-  linking sites, and exposing services.
+- A declarative language ("Skupper YAML") for creating sites, linking
+  sites, and exposing services.
 - A configuration model that operates uniformly across Kubernetes,
   Podman, and bundle generation, while still allowing for platform
   specific variations.
