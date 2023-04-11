@@ -1,6 +1,7 @@
 # Refdog
 
 - [Notes](#notes)
+- [Diagram](#diagram)
 - [Resource _site_](#resource-site)
     - [Site examples](#site-examples)
     - [Site options](#site-options)
@@ -76,9 +77,14 @@ the context of a Kubernetes console.
 - [Hello World expressed as Kubernetes custom resources](hello-world-custom-resources.yaml)
 - [Hello World as Skupper YAML embedded in ConfigMaps](hello-world-config-map.yaml)
 - [Hello World scripted using the proposed CLI commands](hello-world-cli-script.txt)
+- [Skupper KCP demo](https://github.com/grs/skupper-kcp-demo)
 - [Skupper syncer demo](https://github.com/grs/skupper-syncer-demo)
 - [Kubernetes Service API](https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/)
 - [Skuppernetes, the GUI equivalent of the operations here](https://www.ssorj.net/skuppernetes/)
+
+## Diagram
+
+<img src="images/model.svg" width="640"/>
 
 ## Resource _site_
 
@@ -475,13 +481,13 @@ site:
   name: east
   links:
     - name: link-to-west
-      token-file: west-token-1.yaml</pre></td><td><pre>apiVersion: skupper.io/v1alpha1
+      secret: west-token-1.yaml</pre></td><td><pre>apiVersion: skupper.io/v1alpha1
 kind: Link
 metadata:
   name: link-to-west
   namespace: east
 spec:
-  tokenSecret: west-token-1</pre></td></tr>
+  secret: west-token-1</pre></td></tr>
 <tr><th colspan="2">Skupper CLI</th></tr>
 <tr><td colspan="2"><pre>skupper link create west-token-1.yaml --name link-to-west</pre></td></tr>
 </tbody>
@@ -498,15 +504,9 @@ spec:
 <div><b>Type:</b> String</div>
 <div><b>Default:</b> [Generated]</div>
 </dd>
-<dt><p>token-file</p></dt>
+<dt><p>secret</p></dt>
 <dd>
-<p>The path to the file that contains the token.
-</p>
-<div><b>Type:</b> String</div>
-</dd>
-<dt><p>token-secret</p></dt>
-<dd>
-<p>The path to the secret that contains the token.
+<p>The path to the file or resource that contains the token data.
 </p>
 <div><b>Type:</b> String</div>
 </dd>
@@ -531,14 +531,14 @@ site:
   name: west
   tokens:
     - name: west-token-1
-      token-file: west-token-1.yaml
+      secret: west-token-1.yaml
       expiry: 1h</pre></td><td><pre>apiVersion: skupper.io/v1alpha1
 kind: Token
 metadata:
   name: west-token-1
   namespace: west
 spec:
-  tokenSecret: west-token-1
+  secret: west-token-1
   expiry: 1h</pre></td></tr>
 <tr><th colspan="2">Skupper CLI</th></tr>
 <tr><td colspan="2"><pre>skupper token create west-token-1.yaml --expiry 1h</pre></td></tr>
@@ -555,16 +555,9 @@ spec:
 </p>
 <div><b>Type:</b> String</div>
 </dd>
-<dt><p>token-file</p></dt>
+<dt><p>secret</p></dt>
 <dd>
-<p>The path to the file that is to contain the generated token
-data.
-</p>
-<div><b>Type:</b> String</div>
-</dd>
-<dt><p>token-secret</p></dt>
-<dd>
-<p>The name of the Kubernetes secret that is to contain the
+<p>The path to the file or resource that is to contain the
 generated token data.
 </p>
 <div><b>Type:</b> String</div>

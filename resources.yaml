@@ -258,7 +258,7 @@
       name: east
       links:
         - name: link-to-west
-          token-file: west-token-1.yaml
+          secret: west-token-1.yaml
   kubernetes_example: |
     apiVersion: skupper.io/v1alpha1
     kind: Link
@@ -266,7 +266,7 @@
       name: link-to-west
       namespace: east
     spec:
-      tokenSecret: west-token-1
+      secret: west-token-1
   cli_example: |
     skupper link create west-token-1.yaml --name link-to-west
   entries:
@@ -275,16 +275,10 @@
       type: string
       description: |
         An optional name for the link (used when deleting it).
-    - name: token-file
+    - name: secret
       type: string
-      platform: podman
       description: |
-        The path to the file that contains the token.
-    - name: token-secret
-      type: string
-      platform: kubernetes
-      description: |
-        The path to the secret that contains the token.
+        The path to the file or resource that contains the token data.
     - name: cost
       default: 1
       type: integer
@@ -297,7 +291,7 @@
       name: west
       tokens:
         - name: west-token-1
-          token-file: west-token-1.yaml
+          secret: west-token-1.yaml
           expiry: 1h
   kubernetes_example: |
     apiVersion: skupper.io/v1alpha1
@@ -306,7 +300,7 @@
       name: west-token-1
       namespace: west
     spec:
-      tokenSecret: west-token-1
+      secret: west-token-1
       expiry: 1h
   cli_example: |
     skupper token create west-token-1.yaml --expiry 1h
@@ -315,17 +309,10 @@
       type: string
       description: |
         The name of the token.
-    - name: token-file
+    - name: secret
       type: string
-      platform: podman
       description: |
-        The path to the file that is to contain the generated token
-        data.
-    - name: token-secret
-      type: string
-      platform: kubernetes
-      description: |
-        The name of the Kubernetes secret that is to contain the
+        The path to the file or resource that is to contain the
         generated token data.
     - name: expiry
       default: 15m

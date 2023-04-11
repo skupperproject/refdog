@@ -2,7 +2,7 @@ version: 1
 site:
   name: east
   links:
-    - token-file: west-token-1.yaml
+    - secret: west-token-1.yaml
   provided-services:
     - name: backend
       workload: deployment/backend
@@ -16,7 +16,7 @@ version: 1
 site:
   name: west
   tokens:
-    - token-file: west-token-1.yaml
+    - secret: west-token-1.yaml
   required-services:
     - name: backend
       ports:

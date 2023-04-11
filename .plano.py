@@ -39,6 +39,7 @@ def generate():
     out.append("")
 
     out.append("- [Notes](#notes)")
+    out.append("- [Diagram](#diagram)")
 
     for resource in data:
         resource_name = resource["name"]
@@ -61,6 +62,12 @@ def generate():
 
     out.append("")
     out.append(read("notes.md"))
+
+    out.append("## Diagram")
+    out.append("")
+
+    out.append("<img src=\"images/model.svg\" width=\"640\"/>")
+    out.append("")
 
     for resource in data:
         resource_name = resource["name"]

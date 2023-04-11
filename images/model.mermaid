@@ -1,0 +1,44 @@
+%%{init: {'theme': 'neutral', 'fontFamily': 'Noto Sans'}}%%
+
+classDiagram
+    Site "1" -- "0..n" Link
+    Site "1" -- "0..n" Token
+    Site "1" -- "0..n" ProvidedService
+    Site "1" -- "0..n" RequiredService
+    ProvidedService "1" -- "1..n" ProvidedServicePort
+    RequiredService "1" -- "1..n" RequiredServicePort
+    class Site {
+        name
+        &lt;options&gt;
+    }
+    class Link {
+        name
+        secret
+        &lt;options&gt;
+    }
+    class Token {
+        name
+        secret
+        &lt;options&gt;
+    }
+    class ProvidedService {
+        name
+        workload
+        &lt;options&gt;
+    }
+    class ProvidedServicePort {
+        port
+        name
+        protocol
+        &lt;options&gt;
+    }
+    class RequiredService {
+        name
+        &lt;options&gt;
+    }
+    class RequiredServicePort {
+        port
+        name
+        protocol
+        &lt;options&gt;
+    }
