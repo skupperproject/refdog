@@ -16,7 +16,7 @@ metadata:
   name: link-to-west
   namespace: east
 spec:
-  tokenSecret: west-token-1
+  secret: west-token-1
 ---
 apiVersion: skupper.io/v1alpha1
 kind: Token
@@ -24,7 +24,7 @@ metadata:
   name: west-token-1
   namespace: west
 spec:
-  tokenSecret: west-token-1
+  secret: west-token-1
   expiry: 1h
 ---
 apiVersion: skupper.io/v1alpha1
