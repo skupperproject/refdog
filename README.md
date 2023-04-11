@@ -3,6 +3,7 @@
 - [Notes](#notes)
 - [Diagram](#diagram)
 - [Resource _site_](#resource-site)
+    - [Site diagram](#site-diagram)
     - [Site examples](#site-examples)
     - [Site options](#site-options)
     - [Ingress options](#ingress-options)
@@ -13,18 +14,22 @@
     - [Flow collector options](#flow-collector-options)
     - [Router options](#router-options)
 - [Resource _link_](#resource-link)
+    - [Link diagram](#link-diagram)
     - [Link examples](#link-examples)
     - [Link options](#link-options)
 - [Resource _token_](#resource-token)
+    - [Token diagram](#token-diagram)
     - [Token examples](#token-examples)
     - [Token options](#token-options)
 - [Resource _provided-service_](#resource-provided-service)
+    - [Provided service diagram](#provided-service-diagram)
     - [Provided service examples](#provided-service-examples)
     - [Provided service options](#provided-service-options)
     - [Provided service port options](#provided-service-port-options)
     - [Provided service port TLS options](#provided-service-port-tls-options)
     - [Provided service port event options](#provided-service-port-event-options)
 - [Resource _required-service_](#resource-required-service)
+    - [Required service diagram](#required-service-diagram)
     - [Required service examples](#required-service-examples)
     - [Required service options](#required-service-options)
     - [Required service port options](#required-service-port-options)
@@ -126,13 +131,13 @@ spec:
 <dd>
 <p>Annotations to add to Skupper pods.
 </p>
-<div><b>Type:</b> Strings</div>
+<div><b>Type:</b> List of strings</div>
 </dd>
 <dt><p>labels</p></dt>
 <dd>
-<p>Labels to add to skupper pods
+<p>Labels to add to Skupper pods.
 </p>
-<div><b>Type:</b> Strings</div>
+<div><b>Type:</b> List of strings</div>
 </dd>
 <dt><p>create-network-policy</p></dt>
 <dd>
@@ -172,7 +177,7 @@ be reached.
 <dd>
 <p>Annotations to add to skupper ingress
 </p>
-<div><b>Type:</b> Strings</div>
+<div><b>Type:</b> List of strings</div>
 </dd>
 </dl>
 
@@ -294,39 +299,43 @@ not specified uses value of --ingress.
 </dd>
 <dt><p>controller-node-selector</p></dt>
 <dd>
-<p>Node selector to control placement of controller pods
+<p>Node selector to control placement of controller pods.
 </p>
 <div><b>Type:</b> String</div>
 </dd>
 <dt><p>controller-pod-affinity</p></dt>
 <dd>
-<p>Pod affinity label matches to control placement of controller pods
+<p>Pod affinity label matches to control placement of
+controller pods.
 </p>
 <div><b>Type:</b> String</div>
 </dd>
 <dt><p>controller-pod-antiaffinity</p></dt>
 <dd>
-<p>Pod antiaffinity label matches to control placement of controller pods
+<p>Pod antiaffinity label matches to control placement of
+controller pods.
 </p>
 <div><b>Type:</b> String</div>
 </dd>
 <dt><p>controller-ingress-host</p></dt>
 <dd>
-<p>Host through which node is accessible when using nodeport as ingress.
+<p>The host through which the node is accessible when using
+nodeport as ingress.
 </p>
 <div><b>Type:</b> String</div>
 </dd>
 <dt><p>controller-load-balancer-ip</p></dt>
 <dd>
-<p>Load balancer ip that will be used for controller service, if supported by cloud provider
+<p>The load balancer IP that will be used for the controller
+service, if supported by cloud provider.
 </p>
 <div><b>Type:</b> String</div>
 </dd>
-<dt><p>controller-service-annotation</p></dt>
+<dt><p>controller-service-annotations</p></dt>
 <dd>
 <p>Annotations to add to skupper controller service
 </p>
-<div><b>Type:</b> Strings</div>
+<div><b>Type:</b> List of strings</div>
 </dd>
 </dl>
 
@@ -464,7 +473,7 @@ routers do XXX.  Edge routers only do YYY.
 <dd>
 <p>Annotations to add to skupper router service
 </p>
-<div><b>Type:</b> Strings</div>
+<div><b>Type:</b> List of strings</div>
 </dd>
 </dl>
 
@@ -500,7 +509,7 @@ spec:
 
 <dt><p>name</p></dt>
 <dd>
-<p>An optional name for the link (used when deleting it).
+<p>An optional name for the link.
 </p>
 <div><b>Type:</b> String</div>
 <div><b>Default:</b> [Generated]</div>
@@ -513,7 +522,10 @@ spec:
 </dd>
 <dt><p>cost</p></dt>
 <dd>
-<p>Specify a cost for this link.
+<p>The weighted cost of routing connections and requests over
+this link.  The cost of this link relative to others, plus the
+current backlog at each endpoint and the number of hops
+required, determines how traffic is routed across the network.
 </p>
 <div><b>Type:</b> Integer</div>
 <div><b>Default:</b> 1</div>
@@ -555,6 +567,7 @@ spec:
 <p>The name of the token.
 </p>
 <div><b>Type:</b> String</div>
+<div><b>Default:</b> [Generated]</div>
 </dd>
 <dt><p>secret</p></dt>
 <dd>
@@ -563,17 +576,34 @@ generated token data.
 </p>
 <div><b>Type:</b> String</div>
 </dd>
+<dt><p>type</p></dt>
+<dd>
+<p>The type of token to create.
+</p>
+<div><b>Type:</b> String</div>
+<div><b>Default:</b> claim</div>
+<div><b>Choices:</b> claim, cert</div>
+</dd>
 <dt><p>expiry</p></dt>
 <dd>
-<p>Expiration time for claim (only valid if --token-type=claim).
+<p>The expiration time for the token.  Valid only if the token
+type is claim.
 </p>
 <div><b>Type:</b> Duration</div>
 <div><b>Default:</b> 15m</div>
 </dd>
+<dt><p>password</p></dt>
+<dd>
+<p>A password for the token.  Valid only if the token type is
+claim.
+</p>
+<div><b>Type:</b> String</div>
+<div><b>Default:</b> ['Generated']</div>
+</dd>
 <dt><p>uses</p></dt>
 <dd>
-<p>Number of uses for which claim will be valid (only valid if
---token-type=claim).
+<p>The max number of uses the token allows.  Valid only if
+the token type is claim.
 </p>
 <div><b>Type:</b> Integer</div>
 <div><b>Default:</b> 1</div>
@@ -589,6 +619,10 @@ installation will be authenticated.
 </dl>
 
 ## Resource _provided-service_
+
+### Provided service diagram
+
+<img src="images/provided-service.svg" width="480"/>
 
 ### Provided service examples
 
@@ -642,6 +676,12 @@ skupper provide backend:8080 deployment/backend --target-port 9090</pre></td></t
 </p>
 <div><b>Type:</b> String</div>
 </dd>
+<dt><p>ports[]</p></dt>
+<dd>
+<p>A list of ports.
+</p>
+<div><b>Type:</b> List</div>
+</dd>
 <dt><p>target</p></dt>
 <dd>
 <p>The workload that implements this service.
@@ -694,7 +734,7 @@ this site.
 <p>The port the target is listening on (you can also use
 colon to map source-port to a target-port).
 </p>
-<div><b>Type:</b> Strings</div>
+<div><b>Type:</b> List of strings</div>
 <div><b>Default:</b> The value of ports[].port</div>
 </dd>
 <dt><p>ports[].bridge-image</p></dt>
@@ -756,6 +796,10 @@ implementations and the responses aggregated.
 
 ## Resource _required-service_
 
+### Required service diagram
+
+<img src="images/required-service.svg" width="480"/>
+
 ### Required service examples
 
 <table>
@@ -803,6 +847,18 @@ skupper require backend:8080</pre></td></tr>
 </p>
 <div><b>Type:</b> String</div>
 </dd>
+<dt><p>ports[]</p></dt>
+<dd>
+<p>A list of ports.
+</p>
+<div><b>Type:</b> List</div>
+</dd>
+<dt><p>publish-not-ready-addresses</p></dt>
+<dd>
+<p>If specified, skupper will not wait for pods to be ready
+</p>
+<div><b>Type:</b> Boolean</div>
+</dd>
 </dl>
 
 ### Required service port options
@@ -824,6 +880,8 @@ skupper require backend:8080</pre></td></tr>
 <dt><p>ports[].protocol</p></dt>
 <dd>
 <p>The protocol mapping in use for this service address.
+
+XXX Consequences for observability.
 </p>
 <div><b>Type:</b> String</div>
 <div><b>Default:</b> tcp</div>

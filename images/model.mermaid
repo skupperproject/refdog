@@ -1,12 +1,13 @@
 %%{init: {'theme': 'neutral', 'fontFamily': 'Noto Sans'}}%%
 
 classDiagram
+    direction TB
     Site "1" -- "0..n" Link
     Site "1" -- "0..n" Token
     Site "1" -- "0..n" ProvidedService
     Site "1" -- "0..n" RequiredService
-    ProvidedService "1" -- "1..n" ProvidedServicePort
-    RequiredService "1" -- "1..n" RequiredServicePort
+    ProvidedService "1" -- "1..n" ProvidedPort
+    RequiredService "1" -- "1..n" RequiredPort
     class Site {
         name
         &lt;options&gt;
@@ -26,7 +27,7 @@ classDiagram
         target
         &lt;options&gt;
     }
-    class ProvidedServicePort {
+    class ProvidedPort {
         port
         name
         protocol
@@ -37,7 +38,7 @@ classDiagram
         name
         &lt;options&gt;
     }
-    class RequiredServicePort {
+    class RequiredPort {
         port
         name
         protocol

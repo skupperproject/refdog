@@ -1,0 +1,20 @@
+%%{init: {'theme': 'neutral', 'fontFamily': 'Noto Sans'}}%%
+
+classDiagram
+    direction LR
+    Site "1" -- "0..n" RequiredService
+    RequiredService "1" -- "1..n" RequiredPort
+    class Site {
+        name
+        &lt;options&gt;
+    }
+   class RequiredService {
+        name
+        &lt;options&gt;
+    }
+    class RequiredPort {
+        port
+        name
+        protocol
+        &lt;options&gt;
+    }

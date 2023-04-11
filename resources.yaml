@@ -24,13 +24,13 @@
           description: |
             A name of your choice for the Skupper site.
         - name: annotations
-          type: strings
+          type: List of strings
           description: |
             Annotations to add to Skupper pods.
         - name: labels
-          type: strings
+          type: List of strings
           description: |
-            Labels to add to skupper pods
+            Labels to add to Skupper pods.
         - name: create-network-policy
           type: boolean
           description: |
@@ -56,7 +56,7 @@
             The hostname or alias by which the ingress route or proxy can
             be reached.
         - name: ingress-annotations
-          type: strings
+          type: List of strings
           description: |
             Annotations to add to skupper ingress
     - name: console
@@ -138,25 +138,29 @@
         - name: controller-node-selector
           type: string
           description: |
-            Node selector to control placement of controller pods
+            Node selector to control placement of controller pods.
         - name: controller-pod-affinity
           type: string
           description: |
-            Pod affinity label matches to control placement of controller pods
+            Pod affinity label matches to control placement of
+            controller pods.
         - name: controller-pod-antiaffinity
           type: string
           description: |
-            Pod antiaffinity label matches to control placement of controller pods
+            Pod antiaffinity label matches to control placement of
+            controller pods.
         - name: controller-ingress-host
           type: string
           description: |
-            Host through which node is accessible when using nodeport as ingress.
+            The host through which the node is accessible when using
+            nodeport as ingress.
         - name: controller-load-balancer-ip
           type: string
           description: |
-            Load balancer ip that will be used for controller service, if supported by cloud provider
-        - name: controller-service-annotation
-          type: strings
+            The load balancer IP that will be used for the controller
+            service, if supported by cloud provider.
+        - name: controller-service-annotations
+          type: List of strings
           description: |
             Annotations to add to skupper controller service
     - name: flow-collector
@@ -248,7 +252,7 @@
           description: |
             Load balancer ip that will be used for router service, if supported by cloud provider
         - name: router-service-annotations
-          type: strings
+          type: List of strings
           description: |
             Annotations to add to skupper router service
 - name: link
@@ -274,7 +278,7 @@
       default: "[Generated]"
       type: string
       description: |
-        An optional name for the link (used when deleting it).
+        An optional name for the link.
     - name: secret
       type: string
       description: |
@@ -283,7 +287,10 @@
       default: 1
       type: integer
       description: |
-        Specify a cost for this link.
+        The weighted cost of routing connections and requests over
+        this link.  The cost of this link relative to others, plus the
+        current backlog at each endpoint and the number of hops
+        required, determines how traffic is routed across the network.
 - name: token
   yaml_example: |
     version: 1
@@ -306,6 +313,7 @@
     skupper token create west-token-1.yaml --expiry 1h
   entries:
     - name: name
+      default: "[Generated]"
       type: string
       description: |
         The name of the token.
@@ -314,17 +322,30 @@
       description: |
         The path to the file or resource that is to contain the
         generated token data.
+    - name: type
+      default: claim
+      type: string
+      choices: [claim, cert]
+      description: |
+        The type of token to create.
     - name: expiry
       default: 15m
       type: duration
       description: |
-        Expiration time for claim (only valid if --token-type=claim).
+        The expiration time for the token.  Valid only if the token
+        type is claim.
+    - name: password
+      default: [Generated]
+      type: string
+      description: |
+        A password for the token.  Valid only if the token type is
+        claim.
     - name: uses
       default: 1
       type: integer
       description: |
-        Number of uses for which claim will be valid (only valid if
-        --token-type=claim).
+        The max number of uses the token allows.  Valid only if
+        the token type is claim.
     - name: auth-name
       trouble: What does this mean?  I feel a more relatable attribute might be something linke remote-site-name.
       default: skupper (?)
@@ -376,6 +397,10 @@
           type: string
           description: |
             The service name.
+        - name: ports[]
+          type: list
+          description: |
+            A list of ports.
         - name: target
           type: string
           description: |
@@ -414,7 +439,7 @@
             The protocol mapping in use for this service address.
         - name: ports[].target-port
           default: The value of ports[].port
-          type: strings
+          type: List of strings
           description: |
             The port the target is listening on (you can also use
             colon to map source-port to a target-port).
@@ -495,6 +520,14 @@
           type: string
           description: |
             The service name.
+        - name: ports[]
+          type: list
+          description: |
+            A list of ports.
+        - name: publish-not-ready-addresses
+          type: boolean
+          description: |
+            If specified, skupper will not wait for pods to be ready
     - name: required-service-port
       entries:
         - name: ports[].port
@@ -512,6 +545,8 @@
           choices: [tcp, http, http2]
           description: |
             The protocol mapping in use for this service address.
+
+            XXX Consequences for observability.
         - name: ports[].bridge-image
           type: string
           description: |

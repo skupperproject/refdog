@@ -45,8 +45,9 @@ def generate():
         resource_name = resource["name"]
         resource_title = capitalize(resource_name.replace("-", " "))
 
-        out.append("- [Resource _{}_](#resource-{})".format(resource_name, resource_name))
-        out.append("    - [{} examples](#{}-examples)".format(resource_title, resource_name))
+        out.append(f"- [Resource _{resource_name}_](#resource-{resource_name})")
+        out.append(f"    - [{resource_title} diagram](#{resource_name}-diagram)")
+        out.append(f"    - [{resource_title} examples](#{resource_name}-examples)")
 
         if "groups" in resource:
             for group in resource.get("groups", []):
@@ -56,9 +57,9 @@ def generate():
                 if "title" in group:
                     group_title = group["title"]
 
-                out.append("    - [{} options](#{}-options)".format(group_title, group_name))
+                out.append(f"    - [{group_title} options](#{group_name}-options)")
         else:
-            out.append("    - [{} options](#{}-options)".format(resource_title, resource_name))
+            out.append(f"    - [{resource_title} options](#{resource_name}-options)")
 
     out.append("")
     out.append(read("notes.md"))
@@ -72,12 +73,20 @@ def generate():
     for resource in data:
         resource_name = resource["name"]
         resource_title = capitalize(resource_name.replace("-", " "))
+        diagram_file = f"images/{resource_name}.svg"
 
         out.append("## Resource _{}_".format(resource_name))
         out.append("")
 
+        if exists(diagram_file):
+            out.append(f"### {resource_title} diagram")
+            out.append("")
+
+            out.append(f"<img src=\"{diagram_file}\" width=\"480\"/>")
+            out.append("")
+
         if "yaml_example" in resource or "kubernetes_example" in resource or "cli_example" in resource:
-            out.append("### {} examples".format(resource_title))
+            out.append(f"### {resource_title} examples")
             out.append("")
 
             out.append("<table>")
