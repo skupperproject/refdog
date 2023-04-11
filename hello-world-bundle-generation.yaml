@@ -1,0 +1,22 @@
+version: 1
+site:
+  name: west
+  required-services:
+    - name: backend
+      ports:
+        - port: 8080
+
+# export KUBECONFIG=~.kube/config-west
+# skupper init -f west.yaml
+---
+version: 1
+site:
+  name: east
+  provided-services:
+    - name: backend
+      target: container/backend
+      ports:
+        - port: 8080
+
+# # Still using the west kubeconfig
+# skupper-generate-bundle east.yaml east.tar.gz
