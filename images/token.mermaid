@@ -1,0 +1,15 @@
+%%{init: {'theme': 'neutral', 'fontFamily': 'Noto Sans'}}%%
+
+classDiagram
+    direction LR
+    Site "1" -- "0..n" Token
+    Token .. Secret
+    class Site {
+        name
+        &lt;options&gt;
+    }
+   class Token {
+        name
+        secret
+        &lt;options&gt;
+    }

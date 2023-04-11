@@ -13,9 +13,11 @@
     - [Flow collector options](#flow-collector-options)
     - [Router options](#router-options)
 - [Resource _link_](#resource-link)
+    - [Link diagram](#link-diagram)
     - [Link examples](#link-examples)
     - [Link options](#link-options)
 - [Resource _token_](#resource-token)
+    - [Token diagram](#token-diagram)
     - [Token examples](#token-examples)
     - [Token options](#token-options)
 - [Resource _provided-service_](#resource-provided-service)
@@ -478,6 +480,10 @@ routers do XXX.  Edge routers only do YYY.
 
 ## Resource _link_
 
+### Link diagram
+
+<img src="images/link.svg" width="480"/>
+
 ### Link examples
 
 <table>
@@ -530,6 +536,10 @@ required, determines how traffic is routed across the network.
 </dl>
 
 ## Resource _token_
+
+### Token diagram
+
+<img src="images/token.svg" width="480"/>
 
 ### Token examples
 
