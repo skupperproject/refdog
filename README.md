@@ -77,6 +77,7 @@ the context of a Kubernetes console.
 - [Hello World expressed as Kubernetes custom resources](hello-world-custom-resources.yaml)
 - [Hello World as Skupper YAML embedded in ConfigMaps](hello-world-config-map.yaml)
 - [Hello World scripted using the proposed CLI commands](hello-world-cli-script.txt)
+- [Hello World and bundle generation](hello-world-bundle-generation.yaml)
 - [Skupper KCP demo](https://github.com/grs/skupper-kcp-demo)
 - [Skupper syncer demo](https://github.com/grs/skupper-syncer-demo)
 - [Kubernetes Service API](https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/)
