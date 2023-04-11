@@ -2,7 +2,7 @@
 
 # General purpose operations
 #
-# skupper provided-service create SERVICE-NAME WORKLOAD [OPTIONS]
+# skupper provided-service create SERVICE-NAME TARGET [OPTIONS]
 # skupper provided-service create-port SERVICE-NAME PORT [OPTIONS]
 
 skupper provided-service create orders deployment/orders --publish-not-ready-addresses=false
@@ -10,7 +10,7 @@ skupper provided-service create-port orders 8080 --name api --protocol tcp --tar
 
 # Simplified form for the common case:
 #
-# skupper provide SERVICE-NAME:PORT WORKLOAD [OPTIONS]
+# skupper provide SERVICE-NAME:PORT TARGET [OPTIONS]
 
 skupper provide orders:8080 deployment/orders --name api --protocol tcp --target-port 9090
 
