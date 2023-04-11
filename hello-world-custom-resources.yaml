@@ -33,7 +33,7 @@ metadata:
   name: backend
   namespace: east
 spec:
-  workload: deployment/backend
+  target: deployment/backend
   ports:
     - port: 8080
 ---

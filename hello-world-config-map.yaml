@@ -11,7 +11,7 @@ data:
       - secret: west-token-1.yaml
     provided-services:
       - name: backend
-        workload: deployment/backend
+        target: deployment/backend
         ports:
           - port: 8080
 ---

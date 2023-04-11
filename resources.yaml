@@ -339,7 +339,7 @@
       name: east
       provided-services:
         - name: backend
-          workload: deployment/backend
+          target: deployment/backend
           ports:
             - port: 8080
               target-port: 9090
@@ -350,7 +350,7 @@
       name: backend
       namespace: east
     spec:
-      workload: deployment/backend
+      target: deployment/backend
       ports:
         - port: 8080
           targetPort: 9090
@@ -370,10 +370,10 @@
           type: string
           description: |
             The service name.
-        - name: workload
+        - name: target
           type: string
           description: |
-            The workload that provides this service.
+            The workload that implements this service.
         - name: ingress-enabled
           trouble: |
             Collision with other meanings of "ingress".  I want a note

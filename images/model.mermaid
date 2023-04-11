@@ -23,13 +23,14 @@ classDiagram
     }
     class ProvidedService {
         name
-        workload
+        target
         &lt;options&gt;
     }
     class ProvidedServicePort {
         port
         name
         protocol
+        targetPort
         &lt;options&gt;
     }
     class RequiredService {

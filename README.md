@@ -599,7 +599,7 @@ site:
   name: east
   provided-services:
     - name: backend
-      workload: deployment/backend
+      target: deployment/backend
       ports:
         - port: 8080
           target-port: 9090</pre></td><td><pre>apiVersion: skupper.io/v1alpha1
@@ -608,7 +608,7 @@ metadata:
   name: backend
   namespace: east
 spec:
-  workload: deployment/backend
+  target: deployment/backend
   ports:
     - port: 8080
       targetPort: 9090</pre></td></tr>
@@ -635,9 +635,9 @@ skupper provide backend:8080 deployment/backend --target-port 9090</pre></td></t
 </p>
 <div><b>Type:</b> String</div>
 </dd>
-<dt><p>workload</p></dt>
+<dt><p>target</p></dt>
 <dd>
-<p>The workload that provides this service.
+<p>The workload that implements this service.
 </p>
 <div><b>Type:</b> String</div>
 </dd>
