@@ -44,9 +44,13 @@ def generate():
     for resource in data:
         resource_name = resource["name"]
         resource_title = capitalize(resource_name.replace("-", " "))
+        resource_diagram = f"images/{resource_name}.svg"
 
         out.append(f"- [Resource _{resource_name}_](#resource-{resource_name})")
-        out.append(f"    - [{resource_title} diagram](#{resource_name}-diagram)")
+
+        if exists(resource_diagram):
+            out.append(f"    - [{resource_title} diagram](#{resource_name}-diagram)")
+
         out.append(f"    - [{resource_title} examples](#{resource_name}-examples)")
 
         if "groups" in resource:
@@ -73,16 +77,16 @@ def generate():
     for resource in data:
         resource_name = resource["name"]
         resource_title = capitalize(resource_name.replace("-", " "))
-        diagram_file = f"images/{resource_name}.svg"
+        resource_diagram = f"images/{resource_name}.svg"
 
         out.append("## Resource _{}_".format(resource_name))
         out.append("")
 
-        if exists(diagram_file):
+        if exists(resource_diagram):
             out.append(f"### {resource_title} diagram")
             out.append("")
 
-            out.append(f"<img src=\"{diagram_file}\" width=\"480\"/>")
+            out.append(f"<img src=\"{resource_diagram}\" width=\"480\"/>")
             out.append("")
 
         if "yaml_example" in resource or "kubernetes_example" in resource or "cli_example" in resource:
