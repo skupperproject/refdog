@@ -613,13 +613,19 @@ spec:
     - port: 8080
       targetPort: 9090</pre></td></tr>
 <tr><th colspan="2">Skupper CLI</th></tr>
-<tr><td colspan="2"><pre># Current
+<tr><td colspan="2"><pre>#
+# Current
+#
 skupper service create backend 8080
 skupper service bind backend deployment/backend --target-port 9090
+#
 # Proposed (general purpose form)
+#
 skupper provided-service create backend deployment/backend
 skupper provided-service create-port backend 8080 --target-port 9090
+#
 # Proposed (simplified form for the common case)
+#
 skupper provide backend:8080 deployment/backend --target-port 9090</pre></td></tr>
 </tbody>
 </table>
@@ -769,12 +775,18 @@ spec:
   ports:
     - port: 8080</pre></td></tr>
 <tr><th colspan="2">Skupper CLI</th></tr>
-<tr><td colspan="2"><pre># Current
+<tr><td colspan="2"><pre>#
+# Current
+#
 skupper service create backend 8080
+#
 # Proposed (general purpose form)
+#
 skupper required-service create backend
 skupper required-service create-port backend 8080
+#
 # Proposed (simplified form for the common case)
+#
 skupper require backend:8080</pre></td></tr>
 </tbody>
 </table>
