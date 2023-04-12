@@ -1,0 +1,26 @@
+version: 1
+site:
+  name: east
+  links:
+    - secret: west-token-1.yaml
+  provided-services:
+    - name: backend
+      target: deployment/backend
+      ports:
+        - port: 8080
+
+# export KUBECONFIG=~.kube/config-east
+# skupper init -f east.yaml
+---
+version: 1
+site:
+  name: west
+  tokens:
+    - secret: west-token-1.yaml
+  required-services:
+    - name: backend
+      ports:
+        - port: 8080
+
+# export KUBECONFIG=~.kube/config-west
+# skupper init -f west.yaml

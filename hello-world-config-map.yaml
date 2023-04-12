@@ -4,16 +4,24 @@ metadata:
   name: skupper-config
   namespace: east
 data:
-  version: 1
-  site:
-    name: east
-    links:
-      - secret: west-token-1.yaml
-    provided-services:
-      - name: backend
-        target: deployment/backend
-        ports:
-          - port: 8080
+  resources: |
+    apiVersion: skupper.io/v1alpha1
+    kind: Site
+    metadata:
+      name: east
+      namespace: east
+      links:
+        - secret: west-token-1
+    ---
+    apiVersion: skupper.io/v1alpha1
+    kind: ProvidedService
+    metadata:
+      name: backend
+      namespace: east
+    spec:
+      target: deployment/backend
+      ports:
+        - port: 8080
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -21,12 +29,28 @@ metadata:
   name: skupper-config
   namespace: west
 data:
-  version: 1
-  site:
-    name: west
-    tokens:
-      - secret: west-token-1.yaml
-    required-services:
-      - name: backend
-        ports:
-          - port: 8080
+  resources: |
+    apiVersion: skupper.io/v1alpha1
+    kind: Site
+    metadata:
+      name: west
+      namespace: west
+      tokens:
+        - secret: west-token-1
+    ---
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: west-token-1
+      namespace: west
+      labels:
+        skupper.io/type: token-request
+    ---
+    apiVersion: skupper.io/v1alpha1
+    kind: RequiredService
+    metadata:
+      name: backend
+      namespace: west
+    spec:
+      ports:
+        - port: 8080

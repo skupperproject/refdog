@@ -1,22 +1,42 @@
-version: 1
-site:
+# west.yaml
+
+apiVersion: skupper.io/v1alpha1
+kind: Site
+metadata:
   name: west
-  required-services:
-    - name: backend
-      ports:
-        - port: 8080
+  namespace: west
+---
+apiVersion: skupper.io/v1alpha1
+kind: RequiredService
+metadata:
+  name: backend
+  namespace: west
+spec:
+  ports:
+    - port: 8080
+
+# east.yaml
+
+apiVersion: skupper.io/v1alpha1
+kind: Site
+metadata:
+  name: east
+  namespace: east
+---
+apiVersion: skupper.io/v1alpha1
+kind: ProvidedService
+metadata:
+  name: backend
+  namespace: east
+spec:
+  target: listener/localhost
+  ports:
+    - port: 8080
 
 # export KUBECONFIG=~.kube/config-west
-# skupper init -f west.yaml
----
-version: 1
-site:
-  name: east
-  provided-services:
-    - name: backend
-      target: container/backend
-      ports:
-        - port: 8080
-
-# # Still using the west kubeconfig
+# kubectl apply -f west.yaml
 # skupper-generate-bundle east.yaml east.tar.gz
+# scp east.tar.gz somehost:
+# ssh somehost
+# tar -xf east.tar.gz
+# sh east/install.sh

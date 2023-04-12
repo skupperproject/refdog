@@ -1,26 +1,42 @@
-version: 1
-site:
+apiVersion: skupper.io/v1alpha1
+kind: Site
+metadata:
   name: east
+  namespace: east
   links:
-    - secret: west-token-1.yaml
-  provided-services:
-    - name: backend
-      target: deployment/backend
-      ports:
-        - port: 8080
-
-# export KUBECONFIG=~.kube/config-east
-# skupper init -f east.yaml
+    - secret: west-token-1
 ---
-version: 1
-site:
+apiVersion: skupper.io/v1alpha1
+kind: Site
+metadata:
   name: west
+  namespace: west
   tokens:
-    - secret: west-token-1.yaml
-  required-services:
-    - name: backend
-      ports:
-        - port: 8080
-
-# export KUBECONFIG=~.kube/config-west
-# skupper init -f west.yaml
+    - secret: west-token-1
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: west-token-1
+  namespace: west
+  labels:
+    skupper.io/type: token-request
+---
+apiVersion: skupper.io/v1alpha1
+kind: ProvidedService
+metadata:
+  name: backend
+  namespace: east
+spec:
+  target: deployment/backend
+  ports:
+    - port: 8080
+---
+apiVersion: skupper.io/v1alpha1
+kind: RequiredService
+metadata:
+  name: backend
+  namespace: west
+spec:
+  ports:
+    - port: 8080

@@ -1,0 +1,39 @@
+  yaml_example: |
+    version: 1
+    site:
+      name: east
+      ingress: none
+      router-cpu-limit: 2
+  yaml_example: |
+    version: 1
+    site:
+      name: east
+      links:
+        - name: link-to-west
+          secret: west-token-1.yaml
+  yaml_example: |
+    version: 1
+    site:
+      name: west
+      tokens:
+        - name: west-token-1
+          secret: west-token-1.yaml
+          expiry: 1h
+  yaml_example: |
+    version: 1
+    site:
+      name: east
+      provided-services:
+        - name: backend
+          target: deployment/backend
+          ports:
+            - port: 8080
+              target-port: 9090
+  yaml_example: |
+    version: 1
+    site:
+      name: west
+      required-services:
+        - name: backend
+          ports:
+            - port: 8080

@@ -55,6 +55,9 @@ def generate():
 
         if "groups" in resource:
             for group in resource.get("groups", []):
+                if group.get("hidden"):
+                    continue
+
                 group_name = group["name"]
                 group_title = capitalize(group_name.replace("-", " "))
 
@@ -68,7 +71,7 @@ def generate():
     out.append("")
     out.append(read("notes.md"))
 
-    out.append("## Diagram")
+    out.append("<h2 id=\"yo\">Diagram</h2>")
     out.append("")
 
     out.append("<img src=\"images/model.svg\" width=\"640\"/>")
@@ -95,12 +98,11 @@ def generate():
 
             out.append("<table>")
             out.append("<tbody>")
-            out.append("<tr><th>Skupper YAML</th><th>Kubernetes custom resource</th></tr>")
-            out.append("<tr><td><pre>{}</pre></td><td><pre>{}</pre></td></tr>".format(
-                nvl(resource.get("yaml_example"), "").strip(),
-                nvl(resource.get("kubernetes_example"), "").strip()))
-            out.append("<tr><th colspan=\"2\">Skupper CLI</th></tr>")
-            out.append("<tr><td colspan=\"2\"><pre>{}</pre></td></tr>".format(nvl(resource.get("cli_example"), "").strip()))
+            out.append("<tr><th>Skupper YAML</th></tr>")
+            out.append("<tr><td><pre>{}</pre></td></tr>".format(nvl(resource.get("yaml_example"), "").strip(),
+                                                                nvl(resource.get("kubernetes_example"), "").strip()))
+            out.append("<tr><th>Skupper CLI</th></tr>")
+            out.append("<tr><td><pre>{}</pre></td></tr>".format(nvl(resource.get("cli_example"), "").strip()))
             out.append("</tbody>")
             out.append("</table>")
             out.append("")
@@ -110,6 +112,9 @@ def generate():
 
         if "groups" in resource:
             for group in resource.get("groups", []):
+                if group.get("hidden"):
+                    continue
+
                 group_name = group["name"]
                 group_title = capitalize(group_name.replace("-", " "))
 
@@ -122,6 +127,9 @@ def generate():
                 out.append("<dl>")
 
                 for entry in group.get("entries", []):
+                    if entry.get("hidden"):
+                        continue
+
                     generate_entry(out, entry)
 
                 out.append("</dl>")
@@ -131,6 +139,9 @@ def generate():
             out.append("")
 
             for entry in resource.get("entries", []):
+                if entry.get("hidden"):
+                    continue
+
                 generate_entry(out, entry)
 
         out.append("</dl>")

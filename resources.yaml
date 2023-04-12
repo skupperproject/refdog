@@ -1,21 +1,15 @@
 - name: site
   yaml_example: |
-    version: 1
-    site:
-      name: east
-      ingress: none
-      router-cpu-limit: 2
-  kubernetes_example: |
     apiVersion: skupper.io/v1alpha1
     kind: Site
     metadata:
       name: east
       namespace: east
     spec:
-      ingress: none
-      routerCpuLimit: 2
+      ingress: loadbalancer
+      enableConsole: true
   cli_example: |
-    skupper init --site-name east --ingress none --router-cpu-limit 2
+    skupper init --site-name east --ingress loadbalancer --enable-console
   groups:
     - name: site
       entries:
@@ -23,24 +17,12 @@
           type: string
           description: |
             A name of your choice for the Skupper site.
-        - name: annotations
-          type: List of strings
-          description: |
-            Annotations to add to Skupper pods.
-        - name: labels
-          type: List of strings
-          description: |
-            Labels to add to Skupper pods.
-        - name: create-network-policy
+        - name: createNetworkPolicy
           type: boolean
           description: |
             Create network policy to restrict access to Skupper services
             exposed through this site to the pods currently in the
             namespace.
-        - name: enable-rest-api
-          type: boolean
-          description: |
-            Enable REST API
     - name: ingress
       entries:
         - name: ingress
@@ -48,222 +30,120 @@
           type: string
           choices: [route, loadbalancer, nodeport, nginx-ingress-v1, contour-http-proxy, ingress, none]
           description: |
-            Setup Skupper ingress to one of
-        - name: ingress-host
+            Select the method for cluster ingress.  Determines how XXX
+            is exposed outside of the cluster.
+        - name: ingressHost
           default: null
           type: string
           description: |
-            The hostname or alias by which the ingress route or proxy can
-            be reached.
-        - name: ingress-annotations
-          type: List of strings
+            The hostname or alias by which the ingress route or proxy
+            can be reached.
+
+            The host through which the node is accessible when using
+            nodeport as ingress.
+        - name: loadBalancerIP
+          type: string
           description: |
-            Annotations to add to skupper ingress
+            The load balancer IP address that will be used for XXX, if
+            supported by the cloud provider.
+        - name: ingressOptions
+          type: XXX
+          description: XXX xxxIngress, xxxIngressHost, xxxLoadBalancerIP (console, controller, router)
     - name: console
       entries:
-        - name: console-enabled
+        - name: enableConsole
           type: boolean
           description: |
             Enable skupper console must be used in conjunction with
             '--enable-flow-collector' flag
-        - name: console-auth
+        - name: consoleAuth
           default: internal
           type: string
           choices: [internal, openshift, unsecured]
           description: |
             The user authentication method for the console.
-        - name: console-user
+        - name: consoleUser
           default: admin
           type: string
           description: |
             The console username when using internal authentication.
-        - name: console-password
+        - name: consolePassword
           default: "[generated]"
           type: string
           description: |
             The console password when using internal authentication.
-        - name: console-ingress
-          type: string
-          choices: [route, loadbalancer, nodeport, nginx-ingress-v1, contour-http-proxy, ingress, none]
-          description: |
-            Determines if/how console is exposed outside cluster. If
-            not specified uses value of --ingress.
     - name: service-sync
+      hidden: true
       entries:
-        - name: service-sync-enabled
-          default: y
+        - name: enableServiceSync
+          default: true
           type: boolean
           description: |
             Participate in cross-site service synchronization
-        - name: service-sync-site-ttl
+        - name: serviceSyncSiteTTL
           type: duration
           description: |
-            Time after which stale services, i.e. those whose site has not been heard from, created through service-sync are removed.
-    - name: config-sync
-      entries:
-        - name: config-sync-cpu
-          type: string
-          description: |
-            CPU request for config-sync pods
-        - name: config-sync-memory
-          type: string
-          description: |
-            Memory request for config-sync pods
-        - name: config-sync-cpu-limit
-          type: string
-          description: |
-            CPU limit for config-sync pods
-        - name: config-sync-memory-limit
-          type: string
-          description: |
-            Memory limit for config-sync pods
-    - name: controller
-      entries:
-        - name: controller-cpu
-          type: string
-          description: |
-            CPU request for controller pods
-        - name: controller-memory
-          type: string
-          description: |
-            Memory request for controller pods
-        - name: controller-cpu-limit
-          type: string
-          description: |
-            CPU limit for controller pods
-        - name: controller-memory-limit
-          type: string
-          description: |
-            Memory limit for controller pods
-        - name: controller-node-selector
-          type: string
-          description: |
-            Node selector to control placement of controller pods.
-        - name: controller-pod-affinity
-          type: string
-          description: |
-            Pod affinity label matches to control placement of
-            controller pods.
-        - name: controller-pod-antiaffinity
-          type: string
-          description: |
-            Pod antiaffinity label matches to control placement of
-            controller pods.
-        - name: controller-ingress-host
-          type: string
-          description: |
-            The host through which the node is accessible when using
-            nodeport as ingress.
-        - name: controller-load-balancer-ip
-          type: string
-          description: |
-            The load balancer IP that will be used for the controller
-            service, if supported by cloud provider.
-        - name: controller-service-annotations
-          type: List of strings
-          description: |
-            Annotations to add to skupper controller service
+            The time after which stale services created through
+            service sync are removed.  Stale services are those whose
+            site has not been heard from.
     - name: flow-collector
       entries:
-        - name: flow-collector-enabled
+        - name: enableFlowCollector
           type: boolean
           description: |
             Enable cross-site flow collection for the application network
-        - name: flow-collector-record-ttl
+        - name: flowCollectorRecordTTL
           default: 30m
           type: duration
           description: |
             Time after which terminated flow records are deleted,
             i.e. those flow records that have an end time set.
-        - name: flow-collector-cpu
-          type: string
-          description: |
-            CPU request for flow collector pods
-        - name: flow-collector-memory
-          type: string
-          description: |
-            Memory request for flow collector pods
-        - name: flow-collector-cpu-limit
-          type: string
-          description: |
-            CPU limit for flow collector pods
-        - name: flow-collector-memory-limit
-          type: string
-          description: |
-            Memory limit for flow collector pods
     - name: router
       entries:
-        - name: router-mode
+        - name: routerMode
           default: interior
           type: string
           choices: [interior, edge]
           description: |
             The role of the router in the router topology.  Interior
             routers do XXX.  Edge routers only do YYY.
-        - name: router-logging
+        - name: routerLogging
           default: info
           type: string
           choices: [trace, debug, info, notice, warning, error]
           description: |
-            Logging settings for router
-        - name: router-debug-mode
+            Logging settings for the router.
+        - name: routerDebugMode
           type: string
           choices: [asan, gdb]
           description: |
-            Enable debug mode for the router
+            Enable debug mode for the router.
         - name: routers
           type: integer
           description: |
-            Number of router replicas to start
-        - name: router-cpu
-          type: string
-          description: |
-            CPU request for router pods
-        - name: router-memory
-          type: string
-          description: |
-            Memory request for router pods
-        - name: router-cpu-limit
-          type: string
-          description: |
-            CPU limit for router pods
-        - name: router-memory-limit
-          type: string
-          description: |
-            Memory limit for router pods
-        - name: router-node-selector
-          type: string
-          description: |
-            Node selector to control placement of router pods
-        - name: router-pod-affinity
-          type: string
-          description: |
-            Pod affinity label matches to control placement of router pods
-        - name: router-pod-antiaffinity
-          type: string
-          description: |
-            Pod antiaffinity label matches to control placement of router pods
-        - name: router-ingress-host
-          type: string
-          description: |
-            Host through which node is accessible when using nodeport as ingress.
-        - name: router-load-balancer-ip
-          type: string
-          description: |
-            Load balancer ip that will be used for router service, if supported by cloud provider
-        - name: router-service-annotations
-          type: List of strings
-          description: |
-            Annotations to add to skupper router service
+            The number of router replicas to start.
+    - name: skupper-resource
+      entries:
+        - name: resourceRequests
+          type: XXX
+          description: XXX
+        - name: resourceLimits
+          type: XXX
+          description: XXX
+        - name: resourceAnnotations
+          type: XXX
+          description: XXX
+        - name: resourceLabels
+          type: XXX
+          description: XXX
+        - name: resourceNodeAffinity
+          type: XXX
+          description: XXX
+        - name: resourcePodAffinity
+          type: XXX
+          description: XXX
 - name: link
   yaml_example: |
-    version: 1
-    site:
-      name: east
-      links:
-        - name: link-to-west
-          secret: west-token-1.yaml
-  kubernetes_example: |
     apiVersion: skupper.io/v1alpha1
     kind: Link
     metadata:
@@ -293,14 +173,6 @@
         required, determines how traffic is routed across the network.
 - name: token
   yaml_example: |
-    version: 1
-    site:
-      name: west
-      tokens:
-        - name: west-token-1
-          secret: west-token-1.yaml
-          expiry: 1h
-  kubernetes_example: |
     apiVersion: skupper.io/v1alpha1
     kind: Token
     metadata:
@@ -341,12 +213,15 @@
         A password for the token.  Valid only if the token type is
         claim.
     - name: uses
+      trouble: |
+        "Uses" sounds like it could mean "current uses".  "UseLimit"
+        would be unambiguous.
       default: 1
       type: integer
       description: |
         The max number of uses the token allows.  Valid only if
         the token type is claim.
-    - name: auth-name
+    - name: authName
       trouble: What does this mean?  I feel a more relatable attribute might be something linke remote-site-name.
       default: skupper (?)
       type: string
@@ -355,16 +230,6 @@
         installation will be authenticated.
 - name: provided-service
   yaml_example: |
-    version: 1
-    site:
-      name: east
-      provided-services:
-        - name: backend
-          target: deployment/backend
-          ports:
-            - port: 8080
-              target-port: 9090
-  kubernetes_example: |
     apiVersion: skupper.io/v1alpha1
     kind: ProvidedService
     metadata:
@@ -405,7 +270,7 @@
           type: string
           description: |
             The workload that implements this service.
-        - name: ingress-enabled
+        - name: enableIngress
           trouble: |
             Collision with other meanings of "ingress".  I want a note
             here that says that some future iteration might include a
@@ -416,7 +281,7 @@
           description: |
             Determines whether access to the Skupper service is enabled in
             this site.
-        - name: publish-not-ready-addresses
+        - name: publishNotReadyAddresses
           type: boolean
           description: |
             If specified, skupper will not wait for pods to be ready
@@ -437,13 +302,13 @@
           choices: [tcp, http, http2]
           description: |
             The protocol mapping in use for this service address.
-        - name: ports[].target-port
+        - name: ports[].targetPort
           default: The value of ports[].port
           type: List of strings
           description: |
             The port the target is listening on (you can also use
             colon to map source-port to a target-port).
-        - name: ports[].bridge-image
+        - name: ports[].bridgeImage
           type: string
           description: |
             The image to use for a bridge running external to the
@@ -451,30 +316,33 @@
     - name: provided-service-port-tls
       title: Provided service port TLS
       entries:
-        - name: ports[].generate-tls-secrets
-          trouble: This sounds like it generates secrets, but the description says it enables encryption
+        - name: ports[].generateTLSSecrets
+          trouble: |
+            This sounds like it generates secrets, but the description
+            says it enables encryption.  So why not "enableTLS"?
           type: boolean
           description: |
             If specified, the service communication will be encrypted using TLS
-        - name: ports[].tls-cert
+        - name: ports[].tlsCert
           type: string
           description: |
             The Kubernetes secret name with custom certificates to encrypt
             the communication using TLS.
-        - name: ports[].tls-trust
+        - name: ports[].tlsTrust
           type: string
           description: |
             The Kubernetes secret name with the CA to expose the service
             over TLS.
     - name: provided-service-port-event
+      hidden: true
       entries:
-        - name: ports[].event-channel-enabled
+        - name: ports[].enableEventChannel
           trouble: I feel like having "multicast" in the name would be better
           type: boolean
           description: |
             If specified, this service will be a channel for multicast
             events.
-        - name: ports[].response-aggregation-mode
+        - name: ports[].responseAggregationMode
           type: string
           choices: [json, multipart]
           description: |
@@ -483,14 +351,6 @@
             implementations and the responses aggregated.
 - name: required-service
   yaml_example: |
-    version: 1
-    site:
-      name: west
-      required-services:
-        - name: backend
-          ports:
-            - port: 8080
-  kubernetes_example: |
     apiVersion: skupper.io/v1alpha1
     kind: RequiredService
     metadata:
@@ -524,7 +384,7 @@
           type: list
           description: |
             A list of ports.
-        - name: publish-not-ready-addresses
+        - name: publishNotReadyAddresses
           type: boolean
           description: |
             If specified, skupper will not wait for pods to be ready
@@ -547,7 +407,7 @@
             The protocol mapping in use for this service address.
 
             XXX Consequences for observability.
-        - name: ports[].bridge-image
+        - name: ports[].bridgeImage
           type: string
           description: |
             The image to use for a bridge running external to the
@@ -555,29 +415,32 @@
     - name: required-service-port-tls
       title: Required service port TLS
       entries:
-        - name: ports[].generate-tls-secrets
-          trouble: This sounds like it generates secrets, but the description says it enables encryption
+        - name: ports[].generateTLSSecrets
+          trouble: |
+            This sounds like it generates secrets, but the description
+            says it enables encryption.  Does it enable encryption?
           type: boolean
           description: |
             If specified, the service communication will be encrypted using TLS
-        - name: ports[].tls-cert
+        - name: ports[].tlsCert
           type: string
           description: |
             The Kubernetes secret name with custom certificates to encrypt
             the communication using TLS.
-        - name: ports[].tls-trust
+        - name: ports[].tlsTrust
           type: string
           description: |
             The Kubernetes secret name with the CA to expose the service
             over TLS.
     - name: required-service-port-event
+      hidden: true
       entries:
-        - name: ports[].event-channel-enabled
+        - name: ports[].enableEventChannel
           type: boolean
           description: |
             If specified, this service will be a channel for multicast
             events.
-        - name: ports[].response-aggregation-mode
+        - name: ports[].responseAggregationMode
           type: string
           choices: [json, multipart]
           description: |
