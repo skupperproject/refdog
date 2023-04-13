@@ -4,7 +4,7 @@
 
 *Regularize* and *document* Skupper configuration.
 
-- A declarative language for creating sites, linking sites, and
+- A declarative language for configuring sites, linking sites, and
   exposing services.
 - A configuration model that operates uniformly across Kubernetes,
   Podman, and Systemd bundles, while still allowing for platform

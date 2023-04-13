@@ -2,34 +2,30 @@
 
 - [Notes](#notes)
 - [Diagram](#diagram)
-- [Resource _site_](#resource-site)
-    - [Site examples](#site-examples)
-    - [Site options](#site-options)
-    - [Ingress options](#ingress-options)
-    - [Console options](#console-options)
-    - [Flow collector options](#flow-collector-options)
-    - [Router options](#router-options)
-    - [Skupper resource options](#skupper-resource-options)
-- [Resource _link_](#resource-link)
-    - [Link diagram](#link-diagram)
-    - [Link examples](#link-examples)
-    - [Link options](#link-options)
-- [Resource _token_](#resource-token)
-    - [Token diagram](#token-diagram)
-    - [Token examples](#token-examples)
-    - [Token options](#token-options)
-- [Resource _provided-service_](#resource-provided-service)
-    - [Provided service diagram](#provided-service-diagram)
-    - [Provided service examples](#provided-service-examples)
-    - [Provided service options](#provided-service-options)
-    - [Provided service port options](#provided-service-port-options)
-    - [Provided service port TLS options](#provided-service-port-tls-options)
-- [Resource _required-service_](#resource-required-service)
-    - [Required service diagram](#required-service-diagram)
-    - [Required service examples](#required-service-examples)
-    - [Required service options](#required-service-options)
-    - [Required service port options](#required-service-port-options)
-    - [Required service port TLS options](#required-service-port-tls-options)
+- [Site](#Site)
+    - [Examples](#examples)
+    - [Options](#options)
+    - [Ingress options](#Ingress-options)
+    - [Console options](#Console-options)
+    - [Flow collector options](#Flow-collector-options)
+    - [Router options](#Router-options)
+    - [Skupper resource options](#Skupper-resource-options)
+- [Link](#Link)
+    - [Examples](#examples)
+    - [Options](#options)
+- [Token](#Token)
+    - [Examples](#examples)
+    - [Options](#options)
+- [ProvidedService](#ProvidedService)
+    - [Examples](#examples)
+    - [Options](#options)
+    - [Port options](#Port-options)
+    - [Port TLS options](#Port-TLS-options)
+- [RequiredService](#RequiredService)
+    - [Examples](#examples)
+    - [Options](#options)
+    - [Port options](#Port-options)
+    - [Port TLS options](#Port-TLS-options)
 
 ## Notes
 
@@ -37,7 +33,7 @@
 
 *Regularize* and *document* Skupper configuration.
 
-- A declarative language for creating sites, linking sites, and
+- A declarative language for configuring sites, linking sites, and
   exposing services.
 - A configuration model that operates uniformly across Kubernetes,
   Podman, and Systemd bundles, while still allowing for platform
@@ -66,13 +62,13 @@ the context of a Kubernetes console.
 - [Kubernetes Service API](https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/)
 - [Skuppernetes, the GUI equivalent of the operations here](https://www.ssorj.net/skuppernetes/)
 
-<h2 id="yo">Diagram</h2>
+## Diagram
 
 <img src="images/model.svg" width="640"/>
 
-## Resource _site_
+## Site
 
-### Site examples
+### Examples
 
 <table>
 <tbody>
@@ -92,9 +88,8 @@ spec:
 
 <dl>
 
-### Site options
+### Options
 
-<dl>
 <dt><p>name</p></dt>
 <dd>
 <p>A name of your choice for the Skupper site.
@@ -109,7 +104,6 @@ namespace.
 </p>
 <div><b>Type:</b> Boolean</div>
 </dd>
-</dl>
 
 ### Ingress options
 
@@ -120,7 +114,8 @@ namespace.
 is exposed outside of the cluster.
 </p>
 <div><b>Type:</b> String</div>
-<div><b>Default:</b> route if available, else loadbalancer</div>
+<div><b>Default:</b> "route" if OpenShift, else loadbalancer
+</div>
 <div><b>Choices:</b> route, loadbalancer, nodeport, nginx-ingress-v1, contour-http-proxy, ingress, none</div>
 </dd>
 <dt><p>ingressHost</p></dt>
@@ -238,14 +233,9 @@ routers do XXX.  Edge routers only do YYY.
 ### Skupper resource options
 
 <dl>
-<dt><p>resourceRequests</p></dt>
-<dd>
-<p>XXX</p>
-<div><b>Type:</b> XXX</div>
-</dd>
 <dt><p>resourceLimits</p></dt>
 <dd>
-<p>XXX</p>
+<p>XXX requests and limits</p>
 <div><b>Type:</b> XXX</div>
 </dd>
 <dt><p>resourceAnnotations</p></dt>
@@ -272,13 +262,9 @@ routers do XXX.  Edge routers only do YYY.
 
 </dl>
 
-## Resource _link_
+## Link
 
-### Link diagram
-
-<img src="images/link.svg" width="480"/>
-
-### Link examples
+### Examples
 
 <table>
 <tbody>
@@ -297,7 +283,7 @@ spec:
 
 <dl>
 
-### Link options
+### Options
 
 <dt><p>name</p></dt>
 <dd>
@@ -322,15 +308,12 @@ required, determines how traffic is routed across the network.
 <div><b>Type:</b> Integer</div>
 <div><b>Default:</b> 1</div>
 </dd>
+
 </dl>
 
-## Resource _token_
+## Token
 
-### Token diagram
-
-<img src="images/token.svg" width="480"/>
-
-### Token examples
+### Examples
 
 <table>
 <tbody>
@@ -350,7 +333,7 @@ spec:
 
 <dl>
 
-### Token options
+### Options
 
 <dt><p>name</p></dt>
 <dd>
@@ -406,15 +389,12 @@ installation will be authenticated.
 <div><b>Type:</b> String</div>
 <div><b>Default:</b> skupper (?)</div>
 </dd>
+
 </dl>
 
-## Resource _provided-service_
+## ProvidedService
 
-### Provided service diagram
-
-<img src="images/provided-service.svg" width="480"/>
-
-### Provided service examples
+### Examples
 
 <table>
 <tbody>
@@ -449,9 +429,8 @@ skupper provide backend:8080 deployment/backend --target-port 9090</pre></td></t
 
 <dl>
 
-### Provided service options
+### Options
 
-<dl>
 <dt><p>name</p></dt>
 <dd>
 <p>The service name.
@@ -485,9 +464,8 @@ this site.
 </p>
 <div><b>Type:</b> Boolean</div>
 </dd>
-</dl>
 
-### Provided service port options
+### Port options
 
 <dl>
 <dt><p>ports[].port</p></dt>
@@ -528,7 +506,7 @@ skupper router
 </dd>
 </dl>
 
-### Provided service port TLS options
+### Port TLS options
 
 <dl>
 <dt><p>ports[].generateTLSSecrets</p></dt>
@@ -555,13 +533,9 @@ over TLS.
 
 </dl>
 
-## Resource _required-service_
+## RequiredService
 
-### Required service diagram
-
-<img src="images/required-service.svg" width="480"/>
-
-### Required service examples
+### Examples
 
 <table>
 <tbody>
@@ -593,9 +567,8 @@ skupper require backend:8080</pre></td></tr>
 
 <dl>
 
-### Required service options
+### Options
 
-<dl>
 <dt><p>name</p></dt>
 <dd>
 <p>The service name.
@@ -614,9 +587,8 @@ skupper require backend:8080</pre></td></tr>
 </p>
 <div><b>Type:</b> Boolean</div>
 </dd>
-</dl>
 
-### Required service port options
+### Port options
 
 <dl>
 <dt><p>ports[].port</p></dt>
@@ -651,7 +623,7 @@ skupper router
 </dd>
 </dl>
 
-### Required service port TLS options
+### Port TLS options
 
 <dl>
 <dt><p>ports[].generateTLSSecrets</p></dt>

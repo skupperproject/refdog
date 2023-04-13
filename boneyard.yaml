@@ -37,3 +37,52 @@
         - name: backend
           ports:
             - port: 8080
+
+  xxx:
+    - name: provided-service-port-event
+      hidden: true
+      entries:
+        - name: ports[].enableEventChannel
+          trouble: I feel like having "multicast" in the name would be better
+          type: boolean
+          description: |
+            If specified, this service will be a channel for multicast
+            events.
+        - name: ports[].responseAggregationMode
+          type: string
+          choices: [json, multipart]
+          description: |
+            The aggregation strategy to use.  If specified requests to
+            this service will be sent to all registered
+            implementations and the responses aggregated.
+    - name: required-service-port-event
+      hidden: true
+      entries:
+        - name: ports[].enableEventChannel
+          type: boolean
+          description: |
+            If specified, this service will be a channel for multicast
+            events.
+        - name: ports[].responseAggregationMode
+          type: string
+          choices: [json, multipart]
+          description: |
+            The aggregation strategy to use.  If specified requests to
+            this service will be sent to all registered
+            implementations and the responses aggregated.
+
+
+    - name: service-sync
+      hidden: true
+      options:
+        - name: enableServiceSync
+          default: true
+          type: boolean
+          description: |
+            Participate in cross-site service synchronization
+        - name: serviceSyncSiteTTL
+          type: duration
+          description: |
+            The time after which stale services created through
+            service sync are removed.  Stale services are those whose
+            site has not been heard from.

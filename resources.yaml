@@ -1,4 +1,4 @@
-- name: site
+- name: Site
   yaml_example: |
     apiVersion: skupper.io/v1alpha1
     kind: Site
@@ -10,23 +10,23 @@
       enableConsole: true
   cli_example: |
     skupper init --site-name east --ingress loadbalancer --enable-console
+  options:
+    - name: name
+      type: string
+      description: |
+        A name of your choice for the Skupper site.
+    - name: createNetworkPolicy
+      type: boolean
+      description: |
+        Create network policy to restrict access to Skupper services
+        exposed through this site to the pods currently in the
+        namespace.
   groups:
-    - name: site
-      entries:
-        - name: name
-          type: string
-          description: |
-            A name of your choice for the Skupper site.
-        - name: createNetworkPolicy
-          type: boolean
-          description: |
-            Create network policy to restrict access to Skupper services
-            exposed through this site to the pods currently in the
-            namespace.
-    - name: ingress
-      entries:
+    - title: Ingress options
+      options:
         - name: ingress
-          default: route if available, else loadbalancer
+          default: |
+            "route" if OpenShift, else loadbalancer
           type: string
           choices: [route, loadbalancer, nodeport, nginx-ingress-v1, contour-http-proxy, ingress, none]
           description: |
@@ -49,8 +49,8 @@
         - name: ingressOptions
           type: XXX
           description: XXX xxxIngress, xxxIngressHost, xxxLoadBalancerIP (console, controller, router)
-    - name: console
-      entries:
+    - title: Console options
+      options:
         - name: enableConsole
           type: boolean
           description: |
@@ -72,22 +72,8 @@
           type: string
           description: |
             The console password when using internal authentication.
-    - name: service-sync
-      hidden: true
-      entries:
-        - name: enableServiceSync
-          default: true
-          type: boolean
-          description: |
-            Participate in cross-site service synchronization
-        - name: serviceSyncSiteTTL
-          type: duration
-          description: |
-            The time after which stale services created through
-            service sync are removed.  Stale services are those whose
-            site has not been heard from.
-    - name: flow-collector
-      entries:
+    - title: Flow collector options
+      options:
         - name: enableFlowCollector
           type: boolean
           description: |
@@ -98,8 +84,8 @@
           description: |
             Time after which terminated flow records are deleted,
             i.e. those flow records that have an end time set.
-    - name: router
-      entries:
+    - title: Router options
+      options:
         - name: routerMode
           default: interior
           type: string
@@ -122,14 +108,11 @@
           type: integer
           description: |
             The number of router replicas to start.
-    - name: skupper-resource
-      entries:
-        - name: resourceRequests
-          type: XXX
-          description: XXX
+    - title: Skupper resource options
+      options:
         - name: resourceLimits
           type: XXX
-          description: XXX
+          description: XXX requests and limits
         - name: resourceAnnotations
           type: XXX
           description: XXX
@@ -142,7 +125,7 @@
         - name: resourcePodAffinity
           type: XXX
           description: XXX
-- name: link
+- name: Link
   yaml_example: |
     apiVersion: skupper.io/v1alpha1
     kind: Link
@@ -153,7 +136,7 @@
       secret: west-token-1
   cli_example: |
     skupper link create west-token-1.yaml --name link-to-west
-  entries:
+  options:
     - name: name
       default: "[Generated]"
       type: string
@@ -171,7 +154,7 @@
         this link.  The cost of this link relative to others, plus the
         current backlog at each endpoint and the number of hops
         required, determines how traffic is routed across the network.
-- name: token
+- name: Token
   yaml_example: |
     apiVersion: skupper.io/v1alpha1
     kind: Token
@@ -183,7 +166,7 @@
       expiry: 1h
   cli_example: |
     skupper token create west-token-1.yaml --expiry 1h
-  entries:
+  options:
     - name: name
       default: "[Generated]"
       type: string
@@ -228,7 +211,7 @@
       description: |
         Provide a specific identity as which connecting skupper
         installation will be authenticated.
-- name: provided-service
+- name: ProvidedService
   yaml_example: |
     apiVersion: skupper.io/v1alpha1
     kind: ProvidedService
@@ -255,38 +238,37 @@
     # Proposed (simplified form for the common case)
     #
     skupper provide backend:8080 deployment/backend --target-port 9090
+  options:
+    - name: name
+      type: string
+      description: |
+        The service name.
+    - name: ports[]
+      type: list
+      description: |
+        A list of ports.
+    - name: target
+      type: string
+      description: |
+        The workload that implements this service.
+    - name: enableIngress
+      trouble: |
+        Collision with other meanings of "ingress".  I want a note
+        here that says that some future iteration might include a
+        third state.
+      default: Always
+      type: string
+      choices: [Always, Never]
+      description: |
+        Determines whether access to the Skupper service is enabled in
+        this site.
+    - name: publishNotReadyAddresses
+      type: boolean
+      description: |
+        If specified, skupper will not wait for pods to be ready
   groups:
-    - name: provided-service
-      entries:
-        - name: name
-          type: string
-          description: |
-            The service name.
-        - name: ports[]
-          type: list
-          description: |
-            A list of ports.
-        - name: target
-          type: string
-          description: |
-            The workload that implements this service.
-        - name: enableIngress
-          trouble: |
-            Collision with other meanings of "ingress".  I want a note
-            here that says that some future iteration might include a
-            third state.
-          default: Always
-          type: string
-          choices: [Always, Never]
-          description: |
-            Determines whether access to the Skupper service is enabled in
-            this site.
-        - name: publishNotReadyAddresses
-          type: boolean
-          description: |
-            If specified, skupper will not wait for pods to be ready
-    - name: provided-service-port
-      entries:
+    - title: Port options
+      options:
         - name: ports[].port
           type: integer
           description: |
@@ -313,9 +295,8 @@
           description: |
             The image to use for a bridge running external to the
             skupper router
-    - name: provided-service-port-tls
-      title: Provided service port TLS
-      entries:
+    - title: Port TLS options
+      options:
         - name: ports[].generateTLSSecrets
           trouble: |
             This sounds like it generates secrets, but the description
@@ -333,23 +314,7 @@
           description: |
             The Kubernetes secret name with the CA to expose the service
             over TLS.
-    - name: provided-service-port-event
-      hidden: true
-      entries:
-        - name: ports[].enableEventChannel
-          trouble: I feel like having "multicast" in the name would be better
-          type: boolean
-          description: |
-            If specified, this service will be a channel for multicast
-            events.
-        - name: ports[].responseAggregationMode
-          type: string
-          choices: [json, multipart]
-          description: |
-            The aggregation strategy to use.  If specified requests to
-            this service will be sent to all registered
-            implementations and the responses aggregated.
-- name: required-service
+- name: RequiredService
   yaml_example: |
     apiVersion: skupper.io/v1alpha1
     kind: RequiredService
@@ -373,23 +338,22 @@
     # Proposed (simplified form for the common case)
     #
     skupper require backend:8080
+  options:
+    - name: name
+      type: string
+      description: |
+        The service name.
+    - name: ports[]
+      type: list
+      description: |
+        A list of ports.
+    - name: publishNotReadyAddresses
+      type: boolean
+      description: |
+        If specified, skupper will not wait for pods to be ready
   groups:
-    - name: required-service
-      entries:
-        - name: name
-          type: string
-          description: |
-            The service name.
-        - name: ports[]
-          type: list
-          description: |
-            A list of ports.
-        - name: publishNotReadyAddresses
-          type: boolean
-          description: |
-            If specified, skupper will not wait for pods to be ready
-    - name: required-service-port
-      entries:
+    - title: Port options
+      options:
         - name: ports[].port
           type: integer
           description: |
@@ -412,9 +376,8 @@
           description: |
             The image to use for a bridge running external to the
             skupper router
-    - name: required-service-port-tls
-      title: Required service port TLS
-      entries:
+    - title: Port TLS options
+      options:
         - name: ports[].generateTLSSecrets
           trouble: |
             This sounds like it generates secrets, but the description
@@ -432,18 +395,3 @@
           description: |
             The Kubernetes secret name with the CA to expose the service
             over TLS.
-    - name: required-service-port-event
-      hidden: true
-      entries:
-        - name: ports[].enableEventChannel
-          type: boolean
-          description: |
-            If specified, this service will be a channel for multicast
-            events.
-        - name: ports[].responseAggregationMode
-          type: string
-          choices: [json, multipart]
-          description: |
-            The aggregation strategy to use.  If specified requests to
-            this service will be sent to all registered
-            implementations and the responses aggregated.

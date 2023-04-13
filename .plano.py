@@ -1,6 +1,8 @@
 from plano import *
 
-entry = """    - name: {name}
+import collections
+
+option = """    - name: {name}
       default:
       required: n
       type: {type}
@@ -28,7 +30,7 @@ def convert_help():
             type = bool
             description = " ".join(elems[1:])
 
-        print(entry.format(**locals()))
+        print(option.format(**locals()))
 
 @command
 def generate():
@@ -46,32 +48,27 @@ def generate():
         resource_title = capitalize(resource_name.replace("-", " "))
         resource_diagram = f"images/{resource_name}.svg"
 
-        out.append(f"- [Resource _{resource_name}_](#resource-{resource_name})")
+        out.append(f"- [{resource_title}](#{resource_name})")
 
         if exists(resource_diagram):
-            out.append(f"    - [{resource_title} diagram](#{resource_name}-diagram)")
+            out.append(f"    - [Diagram](#diagram)")
 
-        out.append(f"    - [{resource_title} examples](#{resource_name}-examples)")
+        out.append(f"    - [Examples](#examples)")
+        out.append(f"    - [Options](#options)")
 
-        if "groups" in resource:
-            for group in resource.get("groups", []):
-                if group.get("hidden"):
-                    continue
+        for group in resource.get("groups", []):
+            if group.get("hidden"):
+                continue
 
-                group_name = group["name"]
-                group_title = capitalize(group_name.replace("-", " "))
+            group_title = group["title"]
+            group_id = group_title.replace(" ", "-")
 
-                if "title" in group:
-                    group_title = group["title"]
-
-                out.append(f"    - [{group_title} options](#{group_name}-options)")
-        else:
-            out.append(f"    - [{resource_title} options](#{resource_name}-options)")
+            out.append(f"    - [{group_title}](#{group_id})")
 
     out.append("")
     out.append(read("notes.md"))
 
-    out.append("<h2 id=\"yo\">Diagram</h2>")
+    out.append("## Diagram")
     out.append("")
 
     out.append("<img src=\"images/model.svg\" width=\"640\"/>")
@@ -82,18 +79,18 @@ def generate():
         resource_title = capitalize(resource_name.replace("-", " "))
         resource_diagram = f"images/{resource_name}.svg"
 
-        out.append("## Resource _{}_".format(resource_name))
+        out.append("## {}".format(resource_name))
         out.append("")
 
         if exists(resource_diagram):
-            out.append(f"### {resource_title} diagram")
+            out.append(f"### Diagram")
             out.append("")
 
             out.append(f"<img src=\"{resource_diagram}\" width=\"480\"/>")
             out.append("")
 
         if "yaml_example" in resource or "kubernetes_example" in resource or "cli_example" in resource:
-            out.append(f"### {resource_title} examples")
+            out.append(f"### Examples")
             out.append("")
 
             out.append("<table>")
@@ -110,39 +107,37 @@ def generate():
         out.append("<dl>")
         out.append("")
 
-        if "groups" in resource:
-            for group in resource.get("groups", []):
-                if group.get("hidden"):
-                    continue
+        out.append("### Options")
+        out.append("")
 
-                group_name = group["name"]
-                group_title = capitalize(group_name.replace("-", " "))
+        for option in resource.get("options", []):
+            if option.get("hidden"):
+                continue
 
-                if "title" in group:
-                    group_title = group["title"]
+            generate_option(out, option)
 
-                out.append("### {} options".format(group_title))
-                out.append("")
+        out.append("")
 
-                out.append("<dl>")
+        for group in resource.get("groups", []):
+            if group.get("hidden"):
+                continue
 
-                for entry in group.get("entries", []):
-                    if entry.get("hidden"):
-                        continue
+            group_title = group["title"]
+            group_id = group_title.replace(" ", "-")
 
-                    generate_entry(out, entry)
-
-                out.append("</dl>")
-                out.append("")
-        else:
-            out.append("### {} options".format(resource_title))
+            out.append(f"### {group_title}")
             out.append("")
 
-            for entry in resource.get("entries", []):
-                if entry.get("hidden"):
+            out.append("<dl>")
+
+            for option in group.get("options", []):
+                if option.get("hidden"):
                     continue
 
-                generate_entry(out, entry)
+                generate_option(out, option)
+
+            out.append("</dl>")
+            out.append("")
 
         out.append("</dl>")
         out.append("")
@@ -150,18 +145,18 @@ def generate():
 
     write("README.md", "\n".join(out))
 
-def generate_entry(out, entry):
-    out.append("<dt><p>{}</p></dt>".format(entry["name"]))
+def generate_option(out, option):
+    out.append("<dt><p>{}</p></dt>".format(option["name"]))
     out.append("<dd>")
-    out.append("<p>{}</p>".format(entry["description"]).strip())
+    out.append("<p>{}</p>".format(option["description"]).strip())
 
-    out.append("<div><b>Type:</b> {}</div>".format(capitalize(entry["type"])))
+    out.append("<div><b>Type:</b> {}</div>".format(capitalize(option["type"])))
 
-    if "default" in entry and entry["default"] is not None:
-        out.append("<div><b>Default:</b> {}</div>".format(entry["default"]))
+    if "default" in option and option["default"] is not None:
+        out.append("<div><b>Default:</b> {}</div>".format(option["default"]))
 
-    if "choices" in entry:
-        out.append("<div><b>Choices:</b> {}</div>".format(", ".join(entry["choices"])))
+    if "choices" in option:
+        out.append("<div><b>Choices:</b> {}</div>".format(", ".join(option["choices"])))
 
     out.append("</dd>")
 
