@@ -40,8 +40,8 @@ def generate():
     out.append("# Refdog")
     out.append("")
 
-    out.append("- [Notes](#notes)")
-    out.append("- [Diagram](#diagram)")
+    out.append("- [Notes](#{})".format(get_fragment_id("notes")))
+    out.append("- [Diagram](#{})".format(get_fragment_id("diagram")))
 
     for resource in data:
         resource_name = resource["name"]
@@ -51,10 +51,10 @@ def generate():
         out.append(f"- [{resource_title}](#{resource_name})")
 
         if exists(resource_diagram):
-            out.append(f"    - [Diagram](#diagram)")
+            out.append("    - [Diagram](#{})".format(get_fragment_id("diagram")))
 
-        out.append(f"    - [Examples](#examples)")
-        out.append(f"    - [Options](#options)")
+        out.append("    - [Examples](#{})".format(get_fragment_id("examples")))
+        out.append("    - [Options](#{})".format(get_fragment_id("options")))
 
         for group in resource.get("groups", []):
             if group.get("hidden"):
@@ -62,6 +62,7 @@ def generate():
 
             group_title = group["title"]
             group_id = group_title.replace(" ", "-")
+            group_id = get_fragment_id(group_id)
 
             out.append(f"    - [{group_title}](#{group_id})")
 
@@ -144,6 +145,17 @@ def generate():
 
 
     write("README.md", "\n".join(out))
+
+fragment_ids = collections.defaultdict(int)
+
+def get_fragment_id(fragment_id):
+    count = fragment_ids[fragment_id]
+    fragment_ids[fragment_id] += 1
+
+    if count == 0:
+        return fragment_id
+    else:
+        return f"{fragment_id}-{count}"
 
 def generate_option(out, option):
     out.append("<dt><p>{}</p></dt>".format(option["name"]))
