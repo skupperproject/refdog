@@ -1,34 +1,64 @@
-## Notes
+# Notes
 
-### Goals
+## Terminology
 
-*Regularize* and *document* Skupper configuration.
+### Sites
 
-- A declarative language for configuring sites, linking sites, and
-  exposing services.
-- A configuration model that operates uniformly across Kubernetes,
-  Podman, and Systemd bundles, while still allowing for platform
-  specific variations.
-- A central configuration reference for Skupper.
+### Linking sites
 
-In addition, I'd like to use this exercise to work out what the [CLI
-experience][services-cli] should be for provided and required
-services.
+Links and tokens
 
-[services-cli]: services-cli.txt
+### Service exposure
 
-A related project is mocking up the [GUI equivalent][skuppernetes] in
-the context of a Kubernetes console.
+Providing services and requiring services
 
-[skuppernetes]: https://www.ssorj.net/skuppernetes/
+## The CLI for services
 
-### Resources
+### Provided services
 
-- [Hello World expressed in YAML](hello-world.yaml)
-- [Hello World as YAML embedded in ConfigMaps](hello-world-config-map.yaml)
-- [Hello World scripted using the proposed CLI commands](hello-world-cli-script.txt)
-- [Hello World and systemd bundles](hello-world-systemd-bundles.yaml)
-- [Skupper KCP demo](https://github.com/grs/skupper-kcp-demo)
-- [Skupper syncer demo](https://github.com/grs/skupper-syncer-demo)
-- [Kubernetes Service API](https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/)
-- [Skuppernetes, the GUI equivalent of the operations here](https://www.ssorj.net/skuppernetes/)
+General purpose operations:
+
+~~~ sh
+# skupper provided-service create SERVICE-NAME TARGET [OPTIONS]
+# skupper provided-service create-port SERVICE-NAME PORT [OPTIONS]
+
+skupper provided-service create orders deployment/orders --publish-not-ready-addresses=false
+skupper provided-service create-port orders 8080 --name api --protocol tcp --target-port 9090
+~~~
+
+Simplified form for the common case:
+
+~~~ sh
+# skupper provide SERVICE-NAME:PORT TARGET [OPTIONS]
+
+skupper provide orders:8080 deployment/orders --name api --protocol tcp --target-port 9090
+~~~
+
+### Required services
+
+General purpose operations:
+
+~~~ sh
+# skupper required-service create SERVICE-NAME [OPTIONS]
+# skupper required-service create-port SERVICE-NAME PORT [OPTIONS]
+
+skupper required-service create orders --publish-not-ready-addresses=false
+skupper required-service create-port orders 8080 --name api --protocol tcp
+~~~
+
+Simplified form for the common case:
+
+~~~ sh
+# skupper require SERVICE-NAME:PORT [OPTIONS]
+
+skupper require orders:8080 --name api --protocol tcp
+~~~
+
+### Named ports
+
+As an alternative to port numbers:
+
+~~~ sh
+skupper provide orders:api deployment/orders --target-port 8080
+skupper require orders:api --port 8080
+~~~

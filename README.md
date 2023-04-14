@@ -61,10 +61,9 @@ the context of a Kubernetes console.
 
 ### Resources
 
-- [Hello World expressed in YAML](hello-world.yaml)
-- [Hello World as YAML embedded in ConfigMaps](hello-world-config-map.yaml)
-- [Hello World scripted using the proposed CLI commands](hello-world-cli-script.txt)
-- [Hello World and systemd bundles](hello-world-systemd-bundles.yaml)
+- [Hello World expressed in YAML](hello-world/resources.yaml)
+- [Hello World scripted using the proposed CLI commands](hello-world/cli.txt)
+- [Hello World and systemd bundles](hello-world/systemd-bundles.yaml)
 - [Skupper KCP demo](https://github.com/grs/skupper-kcp-demo)
 - [Skupper syncer demo](https://github.com/grs/skupper-syncer-demo)
 - [Kubernetes Service API](https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/)
