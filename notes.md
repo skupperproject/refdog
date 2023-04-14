@@ -8,7 +8,7 @@
 
 Links and tokens
 
-### Service exposure
+### Exposing services
 
 Providing services and requiring services
 
