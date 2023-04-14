@@ -9,11 +9,11 @@ A configuration reference for Skupper.
 - [Site](#Site)
     - [Examples](#examples)
     - [Options](#options)
-    - [Ingress options](#Ingress-options)
-    - [Console options](#Console-options)
-    - [Flow collector options](#Flow-collector-options)
-    - [Router options](#Router-options)
-    - [Skupper resource options](#Skupper-resource-options)
+    - [Ingress options](#ingress-options)
+    - [Console options](#console-options)
+    - [Flow collector options](#flow-collector-options)
+    - [Router options](#router-options)
+    - [Skupper resource options](#skupper-resource-options)
 - [Link](#Link)
     - [Examples](#examples-1)
     - [Options](#options-1)
@@ -26,14 +26,14 @@ A configuration reference for Skupper.
 - [ProvidedPort](#ProvidedPort)
     - [Examples](#examples-4)
     - [Options](#options-4)
-    - [TLS options](#TLS-options)
+    - [TLS options](#tls-options)
 - [RequiredService](#RequiredService)
     - [Examples](#examples-5)
     - [Options](#options-5)
 - [RequiredPort](#RequiredPort)
     - [Examples](#examples-6)
     - [Options](#options-6)
-    - [TLS options](#TLS-options-1)
+    - [TLS options](#tls-options-1)
 
 ## Notes
 
@@ -268,8 +268,6 @@ routers do XXX.  Edge routers only do YYY.
 </dd>
 </dl>
 
-</dl>
-
 ## Link
 
 ### Examples
@@ -316,8 +314,6 @@ required, determines how traffic is routed across the network.
 <div><b>Type:</b> Integer</div>
 <div><b>Default:</b> 1</div>
 </dd>
-
-</dl>
 
 ## Token
 
@@ -398,8 +394,6 @@ installation will be authenticated.
 <div><b>Default:</b> skupper (?)</div>
 </dd>
 
-</dl>
-
 ## ProvidedService
 
 ### Examples
@@ -472,8 +466,6 @@ this site.
 </p>
 <div><b>Type:</b> Boolean</div>
 </dd>
-
-</dl>
 
 ## ProvidedPort
 
@@ -561,8 +553,6 @@ over TLS.
 </dd>
 </dl>
 
-</dl>
-
 ## RequiredService
 
 ### Examples
@@ -617,8 +607,6 @@ skupper require backend:8080</pre></td></tr>
 </p>
 <div><b>Type:</b> Boolean</div>
 </dd>
-
-</dl>
 
 ## RequiredPort
 
@@ -698,7 +686,5 @@ over TLS.
 </p>
 <div><b>Type:</b> String</div>
 </dd>
-</dl>
-
 </dl>
 

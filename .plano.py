@@ -28,13 +28,13 @@ def generate():
                 continue
 
             group_title = group["title"]
-            group_id = group_title.replace(" ", "-")
+            group_id = group_title.lower().replace(" ", "-")
             group_id = get_fragment_id(group_id)
 
             out.append(f"    - [{group_title}](#{group_id})")
 
     toc = "\n".join(out)
-    out = list()
+    out.clear()
 
     for resource in data:
         resource_name = resource["name"]
@@ -100,9 +100,6 @@ def generate():
 
             out.append("</dl>")
             out.append("")
-
-        out.append("</dl>")
-        out.append("")
 
     resources = "\n".join(out)
 
