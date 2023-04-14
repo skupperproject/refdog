@@ -113,8 +113,8 @@ namespace.
 <dl>
 <dt><p>ingress</p></dt>
 <dd>
-<p>Select the method for cluster ingress.  Determines how XXX
-is exposed outside of the cluster.
+<p>Select the method for cluster ingress.  Determines how X
+and Y are exposed outside of the cluster.
 </p>
 <div><b>Type:</b> String</div>
 <div><b>Default:</b> "route" if OpenShift, else loadbalancer
@@ -140,8 +140,7 @@ supported by the cloud provider.
 </dd>
 <dt><p>ingressOptions</p></dt>
 <dd>
-<p>XXX xxxIngress, xxxIngressHost, xxxLoadBalancerIP (console, controller, router)</p>
-<div><b>Type:</b> XXX</div>
+<p>ingress, ingressHost, and loadBalancerIP for specific resources</p>
 </dd>
 </dl>
 
@@ -204,7 +203,7 @@ i.e. those flow records that have an end time set.
 <dt><p>routerMode</p></dt>
 <dd>
 <p>The role of the router in the router topology.  Interior
-routers do XXX.  Edge routers only do YYY.
+routers do X.  Edge routers only do Y.
 </p>
 <div><b>Type:</b> String</div>
 <div><b>Default:</b> interior</div>
@@ -238,34 +237,25 @@ routers do XXX.  Edge routers only do YYY.
 <dl>
 <dt><p>resourceLimits</p></dt>
 <dd>
-<p>XXX requests and limits</p>
-<div><b>Type:</b> XXX</div>
+<p>Resource requests and limits</p>
 </dd>
 <dt><p>resourceAnnotations</p></dt>
 <dd>
-<p>XXX</p>
-<div><b>Type:</b> XXX</div>
 </dd>
 <dt><p>resourceLabels</p></dt>
 <dd>
-<p>XXX</p>
-<div><b>Type:</b> XXX</div>
 </dd>
 <dt><p>resourceNodeAffinity</p></dt>
 <dd>
-<p>XXX</p>
-<div><b>Type:</b> XXX</div>
 </dd>
 <dt><p>resourcePodAffinity</p></dt>
 <dd>
-<p>XXX</p>
-<div><b>Type:</b> XXX</div>
 </dd>
 </dl>
 
 ## Link
 
-### Diagram
+#### Diagram
 
 <img src="images/Link.svg" width="480"/>
 
@@ -311,7 +301,7 @@ required, determines how traffic is routed across the network.
 
 ## Token
 
-### Diagram
+#### Diagram
 
 <img src="images/Token.svg" width="480"/>
 
@@ -389,7 +379,7 @@ installation will be authenticated.
 
 ## ProvidedService
 
-### Diagram
+#### Diagram
 
 <img src="images/ProvidedService.svg" width="480"/>
 
@@ -524,7 +514,7 @@ over TLS.
 
 ## RequiredService
 
-### Diagram
+#### Diagram
 
 <img src="images/RequiredService.svg" width="480"/>
 

@@ -30,8 +30,8 @@
           type: string
           choices: [route, loadbalancer, nodeport, nginx-ingress-v1, contour-http-proxy, ingress, none]
           description: |
-            Select the method for cluster ingress.  Determines how XXX
-            is exposed outside of the cluster.
+            Select the method for cluster ingress.  Determines how X
+            and Y are exposed outside of the cluster.
         - name: ingressHost
           default: null
           type: string
@@ -47,8 +47,7 @@
             The load balancer IP address that will be used for XXX, if
             supported by the cloud provider.
         - name: ingressOptions
-          type: XXX
-          description: XXX xxxIngress, xxxIngressHost, xxxLoadBalancerIP (console, controller, router)
+          description: ingress, ingressHost, and loadBalancerIP for specific resources
     - title: Console options
       options:
         - name: enableConsole
@@ -92,7 +91,7 @@
           choices: [interior, edge]
           description: |
             The role of the router in the router topology.  Interior
-            routers do XXX.  Edge routers only do YYY.
+            routers do X.  Edge routers only do Y.
         - name: routerLogging
           default: info
           type: string
@@ -111,20 +110,11 @@
     - title: Resource options
       options:
         - name: resourceLimits
-          type: XXX
-          description: XXX requests and limits
+          description: Resource requests and limits
         - name: resourceAnnotations
-          type: XXX
-          description: XXX
         - name: resourceLabels
-          type: XXX
-          description: XXX
         - name: resourceNodeAffinity
-          type: XXX
-          description: XXX
         - name: resourcePodAffinity
-          type: XXX
-          description: XXX
 - name: Link
   yaml_example: |
     apiVersion: skupper.io/v1alpha1

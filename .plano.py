@@ -49,7 +49,7 @@ def generate():
         out.append("")
 
         if exists(resource_diagram):
-            out.append(f"### Diagram")
+            out.append(f"#### Diagram")
             out.append("")
 
             out.append(f"<img src=\"{resource_diagram}\" width=\"480\"/>")
@@ -159,9 +159,12 @@ def get_fragment_id(fragment_id):
 def generate_option(out, option):
     out.append("<dt><p>{}</p></dt>".format(option["name"]))
     out.append("<dd>")
-    out.append("<p>{}</p>".format(option["description"]).strip())
 
-    out.append("<div><b>Type:</b> {}</div>".format(capitalize(option["type"])))
+    if "description" in option:
+        out.append("<p>{}</p>".format(option["description"]).strip())
+
+    if "type" in option:
+        out.append("<div><b>Type:</b> {}</div>".format(capitalize(option["type"])))
 
     if "default" in option and option["default"] is not None:
         out.append("<div><b>Default:</b> {}</div>".format(option["default"]))
