@@ -80,7 +80,7 @@ the context of a Kubernetes console.
 
 #### YAML
 
-~~~ 
+~~~ yaml
 apiVersion: skupper.io/v1alpha1
 kind: Site
 metadata:
@@ -93,7 +93,7 @@ spec:
 
 #### CLI
 
-~~~ 
+~~~ sh
 skupper init --site-name east --ingress loadbalancer --enable-console
 ~~~
 
@@ -273,7 +273,7 @@ routers do X.  Edge routers only do Y.
 
 #### YAML
 
-~~~ 
+~~~ yaml
 apiVersion: skupper.io/v1alpha1
 kind: Link
 metadata:
@@ -285,7 +285,7 @@ spec:
 
 #### CLI
 
-~~~ 
+~~~ sh
 skupper link create west-token-1.yaml --name link-to-west
 ~~~
 
@@ -327,7 +327,7 @@ required, determines how traffic is routed across the network.
 
 #### YAML
 
-~~~ 
+~~~ yaml
 apiVersion: skupper.io/v1alpha1
 kind: Token
 metadata:
@@ -340,7 +340,7 @@ spec:
 
 #### CLI
 
-~~~ 
+~~~ sh
 skupper token create west-token-1.yaml --expiry 1h
 ~~~
 
@@ -413,7 +413,7 @@ installation will be authenticated.
 
 #### YAML
 
-~~~ 
+~~~ yaml
 apiVersion: skupper.io/v1alpha1
 kind: ProvidedService
 metadata:
@@ -425,7 +425,7 @@ spec:
 
 #### CLI
 
-~~~ 
+~~~ sh
 skupper provided-service create backend deployment/backend
 ~~~
 
@@ -473,7 +473,7 @@ this site.
 
 #### CLI
 
-~~~ 
+~~~ sh
 skupper provided-service create-port backend 8080 --target-port 9090
 ~~~
 
@@ -555,7 +555,7 @@ over TLS.
 
 #### YAML
 
-~~~ 
+~~~ yaml
 apiVersion: skupper.io/v1alpha1
 kind: RequiredService
 metadata:
@@ -568,7 +568,7 @@ spec:
 
 #### CLI
 
-~~~ 
+~~~ sh
 skupper required-service create backend
 ~~~
 
@@ -595,7 +595,7 @@ skupper required-service create backend
 
 #### CLI
 
-~~~ 
+~~~ sh
 skupper required-service create-port backend 8080 --target-port 9090
 ~~~
 

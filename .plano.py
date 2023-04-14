@@ -63,12 +63,12 @@ def generate():
 
             for example in resource["examples"]:
                 example_title = example["title"]
-                example_type = example.get("type", "")
+                example_syntax = example.get("syntax", "")
                 example_text = example["text"].rstrip()
 
                 append(f"#### {example_title}")
                 append()
-                append(f"~~~ {example_type}")
+                append(f"~~~ {example_syntax}")
                 append(example_text)
                 append("~~~")
                 append()
