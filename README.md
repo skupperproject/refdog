@@ -77,6 +77,28 @@ the context of a Kubernetes console.
 ## Site
 
 ### Examples
+
+#### YAML
+
+~~~ yaml
+apiVersion: skupper.io/v1alpha1
+kind: Site
+metadata:
+  name: east
+  namespace: east
+spec:
+  ingress: loadbalancer
+  enableConsole: true
+
+~~~
+
+#### CLI
+
+~~~ sh
+skupper init --site-name east --ingress loadbalancer --enable-console
+
+~~~
+
 <dl>
 
 ### Options
@@ -245,7 +267,7 @@ routers do X.  Edge routers only do Y.
 
 #### Diagram
 
-<img src="images/Link.svg" width="480"/>
+<img src="images/Link.svg" height="180"/>
 
 <dl>
 
@@ -279,7 +301,7 @@ required, determines how traffic is routed across the network.
 
 #### Diagram
 
-<img src="images/Token.svg" width="480"/>
+<img src="images/Token.svg" height="180"/>
 
 <dl>
 
@@ -344,7 +366,7 @@ installation will be authenticated.
 
 #### Diagram
 
-<img src="images/ProvidedService.svg" width="480"/>
+<img src="images/ProvidedService.svg" height="180"/>
 
 <dl>
 
@@ -458,7 +480,7 @@ over TLS.
 
 #### Diagram
 
-<img src="images/RequiredService.svg" width="480"/>
+<img src="images/RequiredService.svg" height="180"/>
 
 <dl>
 

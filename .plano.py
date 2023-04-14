@@ -52,14 +52,26 @@ def generate():
         append()
 
         if exists(resource_diagram):
-            append(f"#### Diagram")
+            append("#### Diagram")
             append()
-
-            append(f"<img src=\"{resource_diagram}\" height=\"120\"/>")
+            append(f"<img src=\"{resource_diagram}\" height=\"180\"/>")
             append()
 
         if "examples" in resource:
             append("### Examples")
+            append()
+
+            for example in resource["examples"]:
+                example_title = example["title"]
+                example_type = example.get("type", "")
+                example_text = example["text"]
+
+                append(f"#### {example_title}")
+                append()
+                append(f"~~~ {example_type}")
+                append(example_text)
+                append("~~~")
+                append()
 
         append("<dl>")
         append()
