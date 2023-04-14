@@ -80,7 +80,7 @@ the context of a Kubernetes console.
 
 #### YAML
 
-~~~ yaml
+~~~ 
 apiVersion: skupper.io/v1alpha1
 kind: Site
 metadata:
@@ -89,14 +89,12 @@ metadata:
 spec:
   ingress: loadbalancer
   enableConsole: true
-
 ~~~
 
 #### CLI
 
-~~~ sh
+~~~ 
 skupper init --site-name east --ingress loadbalancer --enable-console
-
 ~~~
 
 <dl>
@@ -150,7 +148,9 @@ supported by the cloud provider.
 </dd>
 <dt><p>ingressOptions</p></dt>
 <dd>
-<p>ingress, ingressHost, and loadBalancerIP for specific resources</p>
+<p>Set ingress, ingressHost, and loadBalancerIP for specific
+Skupper services.
+</p>
 </dd>
 </dl>
 
@@ -269,6 +269,26 @@ routers do X.  Edge routers only do Y.
 
 <img src="images/Link.svg" height="180"/>
 
+### Examples
+
+#### YAML
+
+~~~ 
+apiVersion: skupper.io/v1alpha1
+kind: Link
+metadata:
+  name: link-to-west
+  namespace: east
+spec:
+  secret: west-token-1
+~~~
+
+#### CLI
+
+~~~ 
+skupper link create west-token-1.yaml --name link-to-west
+~~~
+
 <dl>
 
 ### Options
@@ -302,6 +322,27 @@ required, determines how traffic is routed across the network.
 #### Diagram
 
 <img src="images/Token.svg" height="180"/>
+
+### Examples
+
+#### YAML
+
+~~~ 
+apiVersion: skupper.io/v1alpha1
+kind: Token
+metadata:
+  name: west-token-1
+  namespace: west
+spec:
+  secret: west-token-1
+  expiry: 1h
+~~~
+
+#### CLI
+
+~~~ 
+skupper token create west-token-1.yaml --expiry 1h
+~~~
 
 <dl>
 
@@ -368,6 +409,26 @@ installation will be authenticated.
 
 <img src="images/ProvidedService.svg" height="180"/>
 
+### Examples
+
+#### YAML
+
+~~~ 
+apiVersion: skupper.io/v1alpha1
+kind: ProvidedService
+metadata:
+  name: backend
+  namespace: east
+spec:
+  target: deployment/backend
+~~~
+
+#### CLI
+
+~~~ 
+skupper provided-service create backend deployment/backend
+~~~
+
 <dl>
 
 ### Options
@@ -407,6 +468,14 @@ this site.
 </dd>
 
 ## ProvidedPort
+
+### Examples
+
+#### CLI
+
+~~~ 
+skupper provided-service create-port backend 8080 --target-port 9090
+~~~
 
 <dl>
 
@@ -482,6 +551,27 @@ over TLS.
 
 <img src="images/RequiredService.svg" height="180"/>
 
+### Examples
+
+#### YAML
+
+~~~ 
+apiVersion: skupper.io/v1alpha1
+kind: RequiredService
+metadata:
+  name: backend
+  namespace: west
+spec:
+  ports:
+    - port: 8080
+~~~
+
+#### CLI
+
+~~~ 
+skupper required-service create backend
+~~~
+
 <dl>
 
 ### Options
@@ -500,6 +590,14 @@ over TLS.
 </dd>
 
 ## RequiredPort
+
+### Examples
+
+#### CLI
+
+~~~ 
+skupper required-service create-port backend 8080 --target-port 9090
+~~~
 
 <dl>
 

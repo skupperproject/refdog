@@ -1,7 +1,7 @@
 - name: Site
   examples:
     - title: YAML
-      type: yaml
+      syntax: yaml
       text: |
         apiVersion: skupper.io/v1alpha1
         kind: Site
@@ -12,7 +12,7 @@
           ingress: loadbalancer
           enableConsole: true
     - title: CLI
-      type: sh
+      syntax: sh
       text: |
         skupper init --site-name east --ingress loadbalancer --enable-console
   options:
@@ -52,7 +52,9 @@
             The load balancer IP address that will be used for XXX, if
             supported by the cloud provider.
         - name: ingressOptions
-          description: ingress, ingressHost, and loadBalancerIP for specific resources
+          description: |
+            Set ingress, ingressHost, and loadBalancerIP for specific
+            Skupper services.
     - title: Console options
       options:
         - name: enableConsole
@@ -121,16 +123,21 @@
         - name: resourceNodeAffinity
         - name: resourcePodAffinity
 - name: Link
-  yaml_example: |
-    apiVersion: skupper.io/v1alpha1
-    kind: Link
-    metadata:
-      name: link-to-west
-      namespace: east
-    spec:
-      secret: west-token-1
-  cli_example: |
-    skupper link create west-token-1.yaml --name link-to-west
+  examples:
+    - title: YAML
+      syntax: yaml
+      text: |
+        apiVersion: skupper.io/v1alpha1
+        kind: Link
+        metadata:
+          name: link-to-west
+          namespace: east
+        spec:
+          secret: west-token-1
+    - title: CLI
+      syntax: sh
+      text: |
+        skupper link create west-token-1.yaml --name link-to-west
   options:
     - name: name
       default: "[Generated]"
@@ -150,17 +157,22 @@
         current backlog at each endpoint and the number of hops
         required, determines how traffic is routed across the network.
 - name: Token
-  yaml_example: |
-    apiVersion: skupper.io/v1alpha1
-    kind: Token
-    metadata:
-      name: west-token-1
-      namespace: west
-    spec:
-      secret: west-token-1
-      expiry: 1h
-  cli_example: |
-    skupper token create west-token-1.yaml --expiry 1h
+  examples:
+    - title: YAML
+      syntax: yaml
+      text: |
+        apiVersion: skupper.io/v1alpha1
+        kind: Token
+        metadata:
+          name: west-token-1
+          namespace: west
+        spec:
+          secret: west-token-1
+          expiry: 1h
+    - title: CLI
+      syntax: sh
+      text: |
+        skupper token create west-token-1.yaml --expiry 1h
   options:
     - name: name
       default: "[Generated]"
@@ -208,32 +220,21 @@
         installation will be authenticated.
 - name: ProvidedService
   extends: Service
-  yaml_example: |
-    apiVersion: skupper.io/v1alpha1
-    kind: ProvidedService
-    metadata:
-      name: backend
-      namespace: east
-    spec:
-      target: deployment/backend
-      ports:
-        - port: 8080
-          targetPort: 9090
-  cli_example: |
-    #
-    # Current
-    #
-    skupper service create backend 8080
-    skupper service bind backend deployment/backend --target-port 9090
-    #
-    # Proposed (general purpose form)
-    #
-    skupper provided-service create backend deployment/backend
-    skupper provided-service create-port backend 8080 --target-port 9090
-    #
-    # Proposed (simplified form for the common case)
-    #
-    skupper provide backend:8080 deployment/backend --target-port 9090
+  examples:
+    - title: YAML
+      syntax: yaml
+      text: |
+        apiVersion: skupper.io/v1alpha1
+        kind: ProvidedService
+        metadata:
+          name: backend
+          namespace: east
+        spec:
+          target: deployment/backend
+    - title: CLI
+      syntax: sh
+      text: |
+        skupper provided-service create backend deployment/backend
   options:
     - name: target
       type: string
@@ -256,17 +257,11 @@
         If specified, skupper will not wait for pods to be ready
 - name: ProvidedPort
   extends: Port
-  yaml_example: |
-    XXX
-  cli_example: |
-    #
-    # Current
-    #
-    skupper service bind backend deployment/backend --target-port 9090
-    #
-    # Proposed (general purpose form)
-    #
-    skupper provided-service create-port backend 8080 --target-port 9090
+  examples:
+    - title: CLI
+      syntax: sh
+      text: |
+        skupper provided-service create-port backend 8080 --target-port 9090
   options:
     - name: targetPort
       default: The value of port
@@ -276,42 +271,29 @@
         colon to map source-port to a target-port).
 - name: RequiredService
   extends: Service
-  yaml_example: |
-    apiVersion: skupper.io/v1alpha1
-    kind: RequiredService
-    metadata:
-      name: backend
-      namespace: west
-    spec:
-      ports:
-        - port: 8080
-  cli_example: |
-    #
-    # Current
-    #
-    skupper service create backend 8080
-    #
-    # Proposed (general purpose form)
-    #
-    skupper required-service create backend
-    skupper required-service create-port backend 8080
-    #
-    # Proposed (simplified form for the common case)
-    #
-    skupper require backend:8080
+  examples:
+    - title: YAML
+      syntax: yaml
+      text: |
+        apiVersion: skupper.io/v1alpha1
+        kind: RequiredService
+        metadata:
+          name: backend
+          namespace: west
+        spec:
+          ports:
+            - port: 8080
+    - title: CLI
+      syntax: sh
+      text: |
+        skupper required-service create backend
 - name: RequiredPort
   extends: Port
-  yaml_example: |
-    XXX
-  cli_example: |
-    #
-    # Current
-    #
-    skupper service bind backend deployment/backend --target-port 9090
-    #
-    # Proposed (general purpose form)
-    #
-    skupper required-service create-port backend 8080 --target-port 9090
+  examples:
+    - title: CLI
+      syntax: sh
+      text: |
+        skupper required-service create-port backend 8080 --target-port 9090
 - name: Service
   hidden: true
   options:

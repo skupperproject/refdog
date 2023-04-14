@@ -64,7 +64,7 @@ def generate():
             for example in resource["examples"]:
                 example_title = example["title"]
                 example_type = example.get("type", "")
-                example_text = example["text"]
+                example_text = example["text"].rstrip()
 
                 append(f"#### {example_title}")
                 append()
