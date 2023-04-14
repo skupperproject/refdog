@@ -73,9 +73,6 @@ def generate():
                 append("~~~")
                 append()
 
-        append("<dl>")
-        append()
-
         append("### Options")
         append()
 
@@ -97,15 +94,12 @@ def generate():
             append(f"### {group_title}")
             append()
 
-            append("<dl>")
-
             for option in group.get("options", []):
                 if option.get("hidden"):
                     continue
 
                 generate_option(lines, option)
 
-            append("</dl>")
             append()
 
     resources = "\n".join(lines)
@@ -156,22 +150,55 @@ def get_fragment_id(fragment_id):
         return f"{fragment_id}-{count}"
 
 def generate_option(lines, option):
-    lines.append("<dt><p>{}</p></dt>".format(option["name"]))
-    lines.append("<dd>")
+    name = option["name"].strip()
+    description = option.get("description", "").strip()
+    type_ = capitalize(option.get("type", ""))
+    default = str(option.get("default", "")).strip()
+    choices = option.get("choices")
+
+    lines.append(f"* **{name}**")
+    lines.append("")
 
     if "description" in option:
-        lines.append("<p>{}</p>".format(option["description"]).strip())
+        lines.append(f"  {description}".replace("\n", "\n  "))
+
+    lines.append("  ")
+    lines.append("  |   |   |")
+    lines.append("  | - | - |")
 
     if "type" in option:
-        lines.append("<div><b>Type:</b> {}</div>".format(capitalize(option["type"])))
+        lines.append(f"  | **Type** | {type_} |")
 
-    if "default" in option and option["default"] is not None:
-        lines.append("<div><b>Default:</b> {}</div>".format(option["default"]))
+    if "default" in option:
+        lines.append(f"  | **Default** | {default} |")
 
     if "choices" in option:
-        lines.append("<div><b>Choices:</b> {}</div>".format(", ".join(option["choices"])))
+        lines.append(f"  | **Choices** | {', '.join(choices)} |")
 
-    lines.append("</dd>")
+    lines.append("")
+
+# def generate_option(lines, option):
+#     lines.append("<dt><p>{}</p></dt>".format(option["name"]))
+#     lines.append("<dd>")
+
+#     if "description" in option:
+#         lines.append("<p>{}</p>".format(option["description"]).strip())
+
+#     lines.append("")
+#     lines.append("|   |   |")
+#     lines.append("| - | - |")
+
+#     if "type" in option:
+#         lines.append("|**Type**|{}|".format(capitalize(option["type"])))
+
+#     if "default" in option and option["default"] is not None:
+#         lines.append("|**Default**|{}|".format(option["default"]))
+
+#     if "choices" in option:
+#         lines.append("|**Choices**|{}|".format(", ".join(option["choices"])))
+
+#     lines.append("")
+#     lines.append("</dd>")
 
 render_template = """
 <html>

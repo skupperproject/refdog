@@ -38,7 +38,6 @@
             Select the method for cluster ingress.  Determines how X
             and Y are exposed outside of the cluster.
         - name: ingressHost
-          default: null
           type: string
           description: |
             The hostname or alias by which the ingress route or proxy
@@ -74,7 +73,7 @@
           description: |
             The console username when using internal authentication.
         - name: consolePassword
-          default: "[generated]"
+          default: "*Generated*"
           type: string
           description: |
             The console password when using internal authentication.
@@ -140,7 +139,7 @@
         skupper link create west-token-1.yaml --name link-to-west
   options:
     - name: name
-      default: "[Generated]"
+      default: "*Generated*"
       type: string
       description: |
         An optional name for the link.
@@ -175,7 +174,7 @@
         skupper token create west-token-1.yaml --expiry 1h
   options:
     - name: name
-      default: "[Generated]"
+      default: "*Generated*"
       type: string
       description: |
         The name of the token.
@@ -197,7 +196,7 @@
         The expiration time for the token.  Valid only if the token
         type is claim.
     - name: password
-      default: [Generated]
+      default: "*Generated*"
       type: string
       description: |
         A password for the token.  Valid only if the token type is
