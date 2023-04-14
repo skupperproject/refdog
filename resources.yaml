@@ -59,8 +59,7 @@
         - name: enableConsole
           type: boolean
           description: |
-            Enable skupper console must be used in conjunction with
-            '--enable-flow-collector' flag
+            Enable the Skupper network console.
         - name: consoleAuth
           default: "`internal`"
           type: string
@@ -82,21 +81,22 @@
         - name: enableFlowCollector
           type: boolean
           description: |
-            Enable cross-site flow collection for the application network
+            Enable cross-site flow collection for the application network.
         - name: flowCollectorRecordTTL
           default: "`30m`"
           type: duration
           description: |
-            Time after which terminated flow records are deleted,
-            i.e. those flow records that have an end time set.
+            The time after which terminated flow records are deleted.
+            Terminated records are those that have an end time set.
     - title: Router options
       options:
         - name: routerMode
           type: string
           choices: [interior, edge]
           description: |
-            The role of the router in the router topology.  Interior
-            routers do X.  Edge routers only do Y.
+            The role of the router in the router topology.
+
+            <!-- Interior routers do X.  Edge routers only do Y. -->
         - name: routerLogging
           default: "`info`"
           type: string

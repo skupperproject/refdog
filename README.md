@@ -153,8 +153,7 @@ skupper init --site-name east --ingress loadbalancer --enable-console
 
 * **`enableConsole`**
 
-  Enable skupper console must be used in conjunction with
-  '--enable-flow-collector' flag
+  Enable the Skupper network console.
   
   _Type_: Boolean\
   _Default_: False
@@ -186,15 +185,15 @@ skupper init --site-name east --ingress loadbalancer --enable-console
 
 * **`enableFlowCollector`**
 
-  Enable cross-site flow collection for the application network
+  Enable cross-site flow collection for the application network.
   
   _Type_: Boolean\
   _Default_: False
 
 * **`flowCollectorRecordTTL`**
 
-  Time after which terminated flow records are deleted,
-  i.e. those flow records that have an end time set.
+  The time after which terminated flow records are deleted.
+  Terminated records are those that have an end time set.
   
   _Type_: Duration\
   _Default_: `30m`
@@ -204,8 +203,9 @@ skupper init --site-name east --ingress loadbalancer --enable-console
 
 * **`routerMode`**
 
-  The role of the router in the router topology.  Interior
-  routers do X.  Edge routers only do Y.
+  The role of the router in the router topology.
+  
+  <!-- Interior routers do X.  Edge routers only do Y. -->
   
   _Type_: String\
   _Default_: `interior`\
