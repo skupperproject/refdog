@@ -5,7 +5,7 @@ A configuration reference for Skupper.
 #### Contents
 
 - [Notes](#notes)
-- [Diagram](#diagram)
+- [Overview](#overview)
 - [Site](#Site)
     - [Examples](#examples)
     - [Options](#options)
@@ -13,17 +13,14 @@ A configuration reference for Skupper.
     - [Console options](#console-options)
     - [Flow collector options](#flow-collector-options)
     - [Router options](#router-options)
-    - [Skupper resource options](#skupper-resource-options)
+    - [Resource options](#resource-options)
 - [Link](#Link)
-    - [Diagram](#diagram-1)
     - [Examples](#examples-1)
     - [Options](#options-1)
 - [Token](#Token)
-    - [Diagram](#diagram-2)
     - [Examples](#examples-2)
     - [Options](#options-2)
 - [ProvidedService](#ProvidedService)
-    - [Diagram](#diagram-3)
     - [Examples](#examples-3)
     - [Options](#options-3)
 - [ProvidedPort](#ProvidedPort)
@@ -31,7 +28,6 @@ A configuration reference for Skupper.
     - [Options](#options-4)
     - [TLS options](#tls-options)
 - [RequiredService](#RequiredService)
-    - [Diagram](#diagram-4)
     - [Examples](#examples-5)
     - [Options](#options-5)
 - [RequiredPort](#RequiredPort)
@@ -74,7 +70,7 @@ the context of a Kubernetes console.
 - [Kubernetes Service API](https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/)
 - [Skuppernetes, the GUI equivalent of the operations here](https://www.ssorj.net/skuppernetes/)
 
-## Diagram
+## Overview
 
 <img src="images/model.svg" width="640"/>
 
@@ -82,22 +78,17 @@ the context of a Kubernetes console.
 
 ### Examples
 
-<table>
-<tbody>
-<tr><th>Skupper YAML</th></tr>
-<tr><td><pre>apiVersion: skupper.io/v1alpha1
+~~~ yaml
+apiVersion: skupper.io/v1alpha1
 kind: Site
 metadata:
   name: east
   namespace: east
 spec:
   ingress: loadbalancer
-  enableConsole: true</pre></td></tr>
-<tr><th>Skupper CLI</th></tr>
-<tr><td><pre>skupper init --site-name east --ingress loadbalancer --enable-console</pre></td></tr>
-</tbody>
-</table>
+  enableConsole: true
 
+~~~
 <dl>
 
 ### Options
@@ -242,7 +233,7 @@ routers do XXX.  Edge routers only do YYY.
 </dd>
 </dl>
 
-### Skupper resource options
+### Resource options
 
 <dl>
 <dt><p>resourceLimits</p></dt>
@@ -280,21 +271,16 @@ routers do XXX.  Edge routers only do YYY.
 
 ### Examples
 
-<table>
-<tbody>
-<tr><th>Skupper YAML</th></tr>
-<tr><td><pre>apiVersion: skupper.io/v1alpha1
+~~~ yaml
+apiVersion: skupper.io/v1alpha1
 kind: Link
 metadata:
   name: link-to-west
   namespace: east
 spec:
-  secret: west-token-1</pre></td></tr>
-<tr><th>Skupper CLI</th></tr>
-<tr><td><pre>skupper link create west-token-1.yaml --name link-to-west</pre></td></tr>
-</tbody>
-</table>
+  secret: west-token-1
 
+~~~
 <dl>
 
 ### Options
@@ -331,22 +317,17 @@ required, determines how traffic is routed across the network.
 
 ### Examples
 
-<table>
-<tbody>
-<tr><th>Skupper YAML</th></tr>
-<tr><td><pre>apiVersion: skupper.io/v1alpha1
+~~~ yaml
+apiVersion: skupper.io/v1alpha1
 kind: Token
 metadata:
   name: west-token-1
   namespace: west
 spec:
   secret: west-token-1
-  expiry: 1h</pre></td></tr>
-<tr><th>Skupper CLI</th></tr>
-<tr><td><pre>skupper token create west-token-1.yaml --expiry 1h</pre></td></tr>
-</tbody>
-</table>
+  expiry: 1h
 
+~~~
 <dl>
 
 ### Options
@@ -414,10 +395,8 @@ installation will be authenticated.
 
 ### Examples
 
-<table>
-<tbody>
-<tr><th>Skupper YAML</th></tr>
-<tr><td><pre>apiVersion: skupper.io/v1alpha1
+~~~ yaml
+apiVersion: skupper.io/v1alpha1
 kind: ProvidedService
 metadata:
   name: backend
@@ -426,25 +405,9 @@ spec:
   target: deployment/backend
   ports:
     - port: 8080
-      targetPort: 9090</pre></td></tr>
-<tr><th>Skupper CLI</th></tr>
-<tr><td><pre>#
-# Current
-#
-skupper service create backend 8080
-skupper service bind backend deployment/backend --target-port 9090
-#
-# Proposed (general purpose form)
-#
-skupper provided-service create backend deployment/backend
-skupper provided-service create-port backend 8080 --target-port 9090
-#
-# Proposed (simplified form for the common case)
-#
-skupper provide backend:8080 deployment/backend --target-port 9090</pre></td></tr>
-</tbody>
-</table>
+      targetPort: 9090
 
+~~~
 <dl>
 
 ### Options
@@ -487,22 +450,10 @@ this site.
 
 ### Examples
 
-<table>
-<tbody>
-<tr><th>Skupper YAML</th></tr>
-<tr><td><pre>XXX</pre></td></tr>
-<tr><th>Skupper CLI</th></tr>
-<tr><td><pre>#
-# Current
-#
-skupper service bind backend deployment/backend --target-port 9090
-#
-# Proposed (general purpose form)
-#
-skupper provided-service create-port backend 8080 --target-port 9090</pre></td></tr>
-</tbody>
-</table>
+~~~ yaml
+XXX
 
+~~~
 <dl>
 
 ### Options
@@ -523,10 +474,19 @@ skupper provided-service create-port backend 8080 --target-port 9090</pre></td><
 <dt><p>protocol</p></dt>
 <dd>
 <p>The protocol mapping in use for this service address.
+
+XXX Consequences for observability.
 </p>
 <div><b>Type:</b> String</div>
 <div><b>Default:</b> tcp</div>
 <div><b>Choices:</b> tcp, http, http2</div>
+</dd>
+<dt><p>bridgeImage</p></dt>
+<dd>
+<p>The image to use for a bridge running external to the
+skupper router
+</p>
+<div><b>Type:</b> String</div>
 </dd>
 <dt><p>targetPort</p></dt>
 <dd>
@@ -535,13 +495,6 @@ colon to map source-port to a target-port).
 </p>
 <div><b>Type:</b> Integer</div>
 <div><b>Default:</b> The value of port</div>
-</dd>
-<dt><p>bridgeImage</p></dt>
-<dd>
-<p>The image to use for a bridge running external to the
-skupper router
-</p>
-<div><b>Type:</b> String</div>
 </dd>
 
 ### TLS options
@@ -577,34 +530,17 @@ over TLS.
 
 ### Examples
 
-<table>
-<tbody>
-<tr><th>Skupper YAML</th></tr>
-<tr><td><pre>apiVersion: skupper.io/v1alpha1
+~~~ yaml
+apiVersion: skupper.io/v1alpha1
 kind: RequiredService
 metadata:
   name: backend
   namespace: west
 spec:
   ports:
-    - port: 8080</pre></td></tr>
-<tr><th>Skupper CLI</th></tr>
-<tr><td><pre>#
-# Current
-#
-skupper service create backend 8080
-#
-# Proposed (general purpose form)
-#
-skupper required-service create backend
-skupper required-service create-port backend 8080
-#
-# Proposed (simplified form for the common case)
-#
-skupper require backend:8080</pre></td></tr>
-</tbody>
-</table>
+    - port: 8080
 
+~~~
 <dl>
 
 ### Options
@@ -621,33 +557,15 @@ skupper require backend:8080</pre></td></tr>
 </p>
 <div><b>Type:</b> List</div>
 </dd>
-<dt><p>publishNotReadyAddresses</p></dt>
-<dd>
-<p>If specified, skupper will not wait for pods to be ready
-</p>
-<div><b>Type:</b> Boolean</div>
-</dd>
 
 ## RequiredPort
 
 ### Examples
 
-<table>
-<tbody>
-<tr><th>Skupper YAML</th></tr>
-<tr><td><pre>XXX</pre></td></tr>
-<tr><th>Skupper CLI</th></tr>
-<tr><td><pre>#
-# Current
-#
-skupper service bind backend deployment/backend --target-port 9090
-#
-# Proposed (general purpose form)
-#
-skupper required-service create-port backend 8080 --target-port 9090</pre></td></tr>
-</tbody>
-</table>
+~~~ yaml
+XXX
 
+~~~
 <dl>
 
 ### Options

@@ -10,7 +10,7 @@ def generate():
     data = transform_data(data)
 
     out.append("- [Notes](#{})".format(get_fragment_id("notes")))
-    out.append("- [Diagram](#{})".format(get_fragment_id("diagram")))
+    out.append("- [Overview](#{})".format(get_fragment_id("overview")))
 
     for resource in data:
         if resource.get("hidden"):
@@ -21,10 +21,6 @@ def generate():
         resource_diagram = f"images/{resource_name}.svg"
 
         out.append(f"- [{resource_title}](#{resource_name})")
-
-        if exists(resource_diagram):
-            out.append("    - [Diagram](#{})".format(get_fragment_id("diagram")))
-
         out.append("    - [Examples](#{})".format(get_fragment_id("examples")))
         out.append("    - [Options](#{})".format(get_fragment_id("options")))
 
@@ -59,20 +55,24 @@ def generate():
             out.append(f"<img src=\"{resource_diagram}\" width=\"480\"/>")
             out.append("")
 
-        if "yaml_example" in resource or "kubernetes_example" in resource or "cli_example" in resource:
+        if "yaml_example" in resource:
             out.append(f"### Examples")
             out.append("")
 
-            out.append("<table>")
-            out.append("<tbody>")
-            out.append("<tr><th>Skupper YAML</th></tr>")
-            out.append("<tr><td><pre>{}</pre></td></tr>".format(nvl(resource.get("yaml_example"), "").strip(),
-                                                                nvl(resource.get("kubernetes_example"), "").strip()))
-            out.append("<tr><th>Skupper CLI</th></tr>")
-            out.append("<tr><td><pre>{}</pre></td></tr>".format(nvl(resource.get("cli_example"), "").strip()))
-            out.append("</tbody>")
-            out.append("</table>")
-            out.append("")
+            out.append("~~~ yaml")
+            out.append(resource["yaml_example"])
+            out.append("~~~")
+
+            # out.append("<table>")
+            # out.append("<tbody>")
+            # out.append("<tr><th>Skupper YAML</th></tr>")
+            # out.append("<tr><td><pre>{}</pre></td></tr>".format(nvl(resource.get("yaml_example"), "").strip(),
+            #                                                     nvl(resource.get("kubernetes_example"), "").strip()))
+            # out.append("<tr><th>Skupper CLI</th></tr>")
+            # out.append("<tr><td><pre>{}</pre></td></tr>".format(nvl(resource.get("cli_example"), "").strip()))
+            # out.append("</tbody>")
+            # out.append("</table>")
+            # out.append("")
 
         out.append("<dl>")
         out.append("")

@@ -41,7 +41,7 @@ the context of a Kubernetes console.
 - [Kubernetes Service API](https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/)
 - [Skuppernetes, the GUI equivalent of the operations here](https://www.ssorj.net/skuppernetes/)
 
-## Diagram
+## Overview
 
 <img src="images/model.svg" width="640"/>
 
