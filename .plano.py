@@ -4,13 +4,16 @@ import collections
 
 @command
 def generate():
-    out = list()
+    lines = list()
+
+    def append(line=""):
+        lines.append(line)
 
     data = read_yaml("resources.yaml")
     data = transform_data(data)
 
-    out.append("- [Notes](#{})".format(get_fragment_id("notes")))
-    out.append("- [Overview](#{})".format(get_fragment_id("overview")))
+    append("- [Notes](#{})".format(get_fragment_id("notes")))
+    append("- [Overview](#{})".format(get_fragment_id("overview")))
 
     for resource in data:
         if resource.get("hidden"):
@@ -20,9 +23,9 @@ def generate():
         resource_title = capitalize(resource_name.replace("-", " "))
         resource_diagram = f"images/{resource_name}.svg"
 
-        out.append(f"- [{resource_title}](#{resource_name})")
-        out.append("    - [Examples](#{})".format(get_fragment_id("examples")))
-        out.append("    - [Options](#{})".format(get_fragment_id("options")))
+        append(f"- [{resource_title}](#{resource_name})")
+        append("    - [Examples](#{})".format(get_fragment_id("examples")))
+        append("    - [Options](#{})".format(get_fragment_id("options")))
 
         for group in resource.get("groups", []):
             if group.get("hidden"):
@@ -32,10 +35,10 @@ def generate():
             group_id = group_title.lower().replace(" ", "-")
             group_id = get_fragment_id(group_id)
 
-            out.append(f"    - [{group_title}](#{group_id})")
+            append(f"    - [{group_title}](#{group_id})")
 
-    toc = "\n".join(out)
-    out.clear()
+    toc = "\n".join(lines)
+    lines.clear()
 
     for resource in data:
         if resource.get("hidden"):
@@ -45,48 +48,32 @@ def generate():
         resource_title = capitalize(resource_name.replace("-", " "))
         resource_diagram = f"images/{resource_name}.svg"
 
-        out.append("## {}".format(resource_name))
-        out.append("")
+        append("## {}".format(resource_name))
+        append()
 
         if exists(resource_diagram):
-            out.append(f"#### Diagram")
-            out.append("")
+            append(f"#### Diagram")
+            append()
 
-            out.append(f"<img src=\"{resource_diagram}\" width=\"480\"/>")
-            out.append("")
+            append(f"<img src=\"{resource_diagram}\" width=\"480\"/>")
+            append()
 
-        if "yaml_example" in resource:
-            out.append(f"### Examples")
-            out.append("")
+        if "examples" in resource:
+            append("### Examples")
 
-            out.append("~~~ yaml")
-            out.append(resource["yaml_example"])
-            out.append("~~~")
+        append("<dl>")
+        append()
 
-            # out.append("<table>")
-            # out.append("<tbody>")
-            # out.append("<tr><th>Skupper YAML</th></tr>")
-            # out.append("<tr><td><pre>{}</pre></td></tr>".format(nvl(resource.get("yaml_example"), "").strip(),
-            #                                                     nvl(resource.get("kubernetes_example"), "").strip()))
-            # out.append("<tr><th>Skupper CLI</th></tr>")
-            # out.append("<tr><td><pre>{}</pre></td></tr>".format(nvl(resource.get("cli_example"), "").strip()))
-            # out.append("</tbody>")
-            # out.append("</table>")
-            # out.append("")
-
-        out.append("<dl>")
-        out.append("")
-
-        out.append("### Options")
-        out.append("")
+        append("### Options")
+        append()
 
         for option in resource.get("options", []):
             if option.get("hidden"):
                 continue
 
-            generate_option(out, option)
+            generate_option(lines, option)
 
-        out.append("")
+        append()
 
         for group in resource.get("groups", []):
             if group.get("hidden"):
@@ -95,21 +82,21 @@ def generate():
             group_title = group["title"]
             group_id = group_title.replace(" ", "-")
 
-            out.append(f"### {group_title}")
-            out.append("")
+            append(f"### {group_title}")
+            append()
 
-            out.append("<dl>")
+            append("<dl>")
 
             for option in group.get("options", []):
                 if option.get("hidden"):
                     continue
 
-                generate_option(out, option)
+                generate_option(lines, option)
 
-            out.append("</dl>")
-            out.append("")
+            append("</dl>")
+            append()
 
-    resources = "\n".join(out)
+    resources = "\n".join(lines)
 
     readme = read("README.md.in")
     readme = readme.replace("@toc@", toc)
@@ -156,23 +143,23 @@ def get_fragment_id(fragment_id):
     else:
         return f"{fragment_id}-{count}"
 
-def generate_option(out, option):
-    out.append("<dt><p>{}</p></dt>".format(option["name"]))
-    out.append("<dd>")
+def generate_option(lines, option):
+    lines.append("<dt><p>{}</p></dt>".format(option["name"]))
+    lines.append("<dd>")
 
     if "description" in option:
-        out.append("<p>{}</p>".format(option["description"]).strip())
+        lines.append("<p>{}</p>".format(option["description"]).strip())
 
     if "type" in option:
-        out.append("<div><b>Type:</b> {}</div>".format(capitalize(option["type"])))
+        lines.append("<div><b>Type:</b> {}</div>".format(capitalize(option["type"])))
 
     if "default" in option and option["default"] is not None:
-        out.append("<div><b>Default:</b> {}</div>".format(option["default"]))
+        lines.append("<div><b>Default:</b> {}</div>".format(option["default"]))
 
     if "choices" in option:
-        out.append("<div><b>Choices:</b> {}</div>".format(", ".join(option["choices"])))
+        lines.append("<div><b>Choices:</b> {}</div>".format(", ".join(option["choices"])))
 
-    out.append("</dd>")
+    lines.append("</dd>")
 
 render_template = """
 <html>

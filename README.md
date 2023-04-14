@@ -77,18 +77,6 @@ the context of a Kubernetes console.
 ## Site
 
 ### Examples
-
-~~~ yaml
-apiVersion: skupper.io/v1alpha1
-kind: Site
-metadata:
-  name: east
-  namespace: east
-spec:
-  ingress: loadbalancer
-  enableConsole: true
-
-~~~
 <dl>
 
 ### Options
@@ -259,18 +247,6 @@ routers do X.  Edge routers only do Y.
 
 <img src="images/Link.svg" width="480"/>
 
-### Examples
-
-~~~ yaml
-apiVersion: skupper.io/v1alpha1
-kind: Link
-metadata:
-  name: link-to-west
-  namespace: east
-spec:
-  secret: west-token-1
-
-~~~
 <dl>
 
 ### Options
@@ -305,19 +281,6 @@ required, determines how traffic is routed across the network.
 
 <img src="images/Token.svg" width="480"/>
 
-### Examples
-
-~~~ yaml
-apiVersion: skupper.io/v1alpha1
-kind: Token
-metadata:
-  name: west-token-1
-  namespace: west
-spec:
-  secret: west-token-1
-  expiry: 1h
-
-~~~
 <dl>
 
 ### Options
@@ -383,21 +346,6 @@ installation will be authenticated.
 
 <img src="images/ProvidedService.svg" width="480"/>
 
-### Examples
-
-~~~ yaml
-apiVersion: skupper.io/v1alpha1
-kind: ProvidedService
-metadata:
-  name: backend
-  namespace: east
-spec:
-  target: deployment/backend
-  ports:
-    - port: 8080
-      targetPort: 9090
-
-~~~
 <dl>
 
 ### Options
@@ -438,12 +386,6 @@ this site.
 
 ## ProvidedPort
 
-### Examples
-
-~~~ yaml
-XXX
-
-~~~
 <dl>
 
 ### Options
@@ -518,19 +460,6 @@ over TLS.
 
 <img src="images/RequiredService.svg" width="480"/>
 
-### Examples
-
-~~~ yaml
-apiVersion: skupper.io/v1alpha1
-kind: RequiredService
-metadata:
-  name: backend
-  namespace: west
-spec:
-  ports:
-    - port: 8080
-
-~~~
 <dl>
 
 ### Options
@@ -550,12 +479,6 @@ spec:
 
 ## RequiredPort
 
-### Examples
-
-~~~ yaml
-XXX
-
-~~~
 <dl>
 
 ### Options
