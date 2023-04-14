@@ -102,7 +102,7 @@ skupper init --site-name east --ingress loadbalancer --enable-console
 
   A name of your choice for the Skupper site.
   
-  **Type**: String
+  _Type_: String
 
 * **`createNetworkPolicy`**
 
@@ -110,7 +110,8 @@ skupper init --site-name east --ingress loadbalancer --enable-console
   exposed through this site to the pods currently in the
   namespace.
   
-  **Type**: Boolean
+  _Type_: Boolean\
+  _Default_: False
 
 
 ### Ingress options
@@ -120,9 +121,9 @@ skupper init --site-name east --ingress loadbalancer --enable-console
   Select the method for cluster ingress.  Determines how X
   and Y are exposed outside of the cluster.
   
-  **Type**: String\
-  **Default**: `route` if OpenShift, else loadbalancer\
-  **Choices**: `route`, `loadbalancer`, `nodeport`, `nginx-ingress-v1`, `contour-http-proxy`, `ingress`, `none`
+  _Type_: String\
+  _Default_: `route` if OpenShift, else loadbalancer\
+  _Choices_: `route`, `loadbalancer`, `nodeport`, `nginx-ingress-v1`, `contour-http-proxy`, `ingress`, `none`
 
 * **`ingressHost`**
 
@@ -132,14 +133,14 @@ skupper init --site-name east --ingress loadbalancer --enable-console
   The host through which the node is accessible when using
   nodeport as ingress.
   
-  **Type**: String
+  _Type_: String
 
 * **`loadBalancerIP`**
 
   The load balancer IP address that will be used for XXX, if
   supported by the cloud provider.
   
-  **Type**: String
+  _Type_: String
 
 * **`ingressOptions`**
 
@@ -155,29 +156,30 @@ skupper init --site-name east --ingress loadbalancer --enable-console
   Enable skupper console must be used in conjunction with
   '--enable-flow-collector' flag
   
-  **Type**: Boolean
+  _Type_: Boolean\
+  _Default_: False
 
 * **`consoleAuth`**
 
   The user authentication method for the console.
   
-  **Type**: String\
-  **Default**: `internal`\
-  **Choices**: `internal`, `openshift`, `unsecured`
+  _Type_: String\
+  _Default_: `internal`\
+  _Choices_: `internal`, `openshift`, `unsecured`
 
 * **`consoleUser`**
 
   The console username when using internal authentication.
   
-  **Type**: String\
-  **Default**: `admin`
+  _Type_: String\
+  _Default_: `admin`
 
 * **`consolePassword`**
 
   The console password when using internal authentication.
   
-  **Type**: String\
-  **Default**: *Generated*
+  _Type_: String\
+  _Default_: *Generated*
 
 
 ### Flow collector options
@@ -186,15 +188,16 @@ skupper init --site-name east --ingress loadbalancer --enable-console
 
   Enable cross-site flow collection for the application network
   
-  **Type**: Boolean
+  _Type_: Boolean\
+  _Default_: False
 
 * **`flowCollectorRecordTTL`**
 
   Time after which terminated flow records are deleted,
   i.e. those flow records that have an end time set.
   
-  **Type**: Duration\
-  **Default**: `30m`
+  _Type_: Duration\
+  _Default_: `30m`
 
 
 ### Router options
@@ -204,31 +207,31 @@ skupper init --site-name east --ingress loadbalancer --enable-console
   The role of the router in the router topology.  Interior
   routers do X.  Edge routers only do Y.
   
-  **Type**: String\
-  **Default**: `interior`\
-  **Choices**: `interior`, `edge`
+  _Type_: String\
+  _Default_: `interior`\
+  _Choices_: `interior`, `edge`
 
 * **`routerLogging`**
 
   Logging settings for the router.
   
-  **Type**: String\
-  **Default**: `info`\
-  **Choices**: `trace`, `debug`, `info`, `notice`, `warning`, `error`
+  _Type_: String\
+  _Default_: `info`\
+  _Choices_: `trace`, `debug`, `info`, `notice`, `warning`, `error`
 
 * **`routerDebugMode`**
 
   Enable debug mode for the router.
   
-  **Type**: String\
-  **Default**: `asan`\
-  **Choices**: `asan`, `gdb`
+  _Type_: String\
+  _Default_: `disabled`\
+  _Choices_: `disabled`, `asan`, `gdb`
 
 * **`routers`**
 
   The number of router replicas to start.
   
-  **Type**: Integer
+  _Type_: Integer
 
 
 ### Resource options
@@ -287,14 +290,14 @@ skupper link create west-token-1.yaml --name link-to-west
 
   An optional name for the link.
   
-  **Type**: String\
-  **Default**: *Generated*
+  _Type_: String\
+  _Default_: *Generated*
 
 * **`secret`**
 
   The path to the file or resource that contains the token data.
   
-  **Type**: String
+  _Type_: String
 
 * **`cost`**
 
@@ -303,8 +306,8 @@ skupper link create west-token-1.yaml --name link-to-west
   current backlog at each endpoint and the number of hops
   required, determines how traffic is routed across the network.
   
-  **Type**: Integer\
-  **Default**: 1
+  _Type_: Integer\
+  _Default_: 1
 
 
 ## Token
@@ -340,55 +343,55 @@ skupper token create west-token-1.yaml --expiry 1h
 
   The name of the token.
   
-  **Type**: String\
-  **Default**: *Generated*
+  _Type_: String\
+  _Default_: *Generated*
 
 * **`secret`**
 
   The path to the file or resource that is to contain the
   generated token data.
   
-  **Type**: String
+  _Type_: String
 
 * **`type`**
 
   The type of token to create.
   
-  **Type**: String\
-  **Default**: `claim`\
-  **Choices**: `claim`, `cert`
+  _Type_: String\
+  _Default_: `claim`\
+  _Choices_: `claim`, `cert`
 
 * **`expiry`**
 
   The expiration time for the token.  Valid only if the token
   type is claim.
   
-  **Type**: Duration\
-  **Default**: `15m`
+  _Type_: Duration\
+  _Default_: `15m`
 
 * **`password`**
 
   A password for the token.  Valid only if the token type is
   claim.
   
-  **Type**: String\
-  **Default**: *Generated*
+  _Type_: String\
+  _Default_: *Generated*
 
 * **`uses`**
 
   The max number of uses the token allows.  Valid only if
   the token type is claim.
   
-  **Type**: Integer\
-  **Default**: 1
+  _Type_: Integer\
+  _Default_: 1
 
 * **`authName`**
 
   Provide a specific identity as which connecting skupper
   installation will be authenticated.
   
-  **Type**: String\
-  **Default**: `skupper` (?)
+  _Type_: String\
+  _Default_: `skupper`
 
 
 ## ProvidedService
@@ -423,34 +426,35 @@ skupper provided-service create backend deployment/backend
 
   The service name.
   
-  **Type**: String
+  _Type_: String
 
 * **`ports`**
 
   A list of ports.
   
-  **Type**: List
+  _Type_: List
 
 * **`target`**
 
   The workload that implements this service.
   
-  **Type**: String
+  _Type_: String
 
 * **`enableIngress`**
 
   Determines whether access to the Skupper service is enabled in
   this site.
   
-  **Type**: String\
-  **Default**: `Always`\
-  **Choices**: `Always`, `Never`
+  _Type_: String\
+  _Default_: `Always`\
+  _Choices_: `Always`, `Never`
 
 * **`publishNotReadyAddresses`**
 
   If specified, skupper will not wait for pods to be ready
   
-  **Type**: Boolean
+  _Type_: Boolean\
+  _Default_: False
 
 
 ## ProvidedPort
@@ -469,39 +473,39 @@ skupper provided-service create-port backend 8080 --target-port 9090
 
   The port number.
   
-  **Type**: Integer
+  _Type_: Integer
 
 * **`name`**
 
   The port name.
   
-  **Type**: String\
-  **Default**: The value of port
+  _Type_: String\
+  _Default_: The value of `port`
 
 * **`protocol`**
 
   The protocol mapping in use for this service address.
   
-  XXX Consequences for observability.
+  <!-- XXX Consequences for observability. -->
   
-  **Type**: String\
-  **Default**: `tcp`\
-  **Choices**: `tcp`, `http`, `http2`
+  _Type_: String\
+  _Default_: `tcp`\
+  _Choices_: `tcp`, `http`, `http2`
 
 * **`bridgeImage`**
 
   The image to use for a bridge running external to the
   skupper router
   
-  **Type**: String
+  _Type_: String
 
 * **`targetPort`**
 
   The port the target is listening on (you can also use
   colon to map source-port to a target-port).
   
-  **Type**: Integer\
-  **Default**: The value of port
+  _Type_: Integer\
+  _Default_: The value of `port`
 
 
 ### TLS options
@@ -510,21 +514,22 @@ skupper provided-service create-port backend 8080 --target-port 9090
 
   If specified, the service communication will be encrypted using TLS
   
-  **Type**: Boolean
+  _Type_: Boolean\
+  _Default_: False
 
 * **`tlsCert`**
 
   The Kubernetes secret name with custom certificates to encrypt
   the communication using TLS.
   
-  **Type**: String
+  _Type_: String
 
 * **`tlsTrust`**
 
   The Kubernetes secret name with the CA to expose the service
   over TLS.
   
-  **Type**: String
+  _Type_: String
 
 
 ## RequiredService
@@ -560,13 +565,13 @@ skupper required-service create backend
 
   The service name.
   
-  **Type**: String
+  _Type_: String
 
 * **`ports`**
 
   A list of ports.
   
-  **Type**: List
+  _Type_: List
 
 
 ## RequiredPort
@@ -585,31 +590,31 @@ skupper required-service create-port backend 8080 --target-port 9090
 
   The port number.
   
-  **Type**: Integer
+  _Type_: Integer
 
 * **`name`**
 
   The port name.
   
-  **Type**: String\
-  **Default**: The value of port
+  _Type_: String\
+  _Default_: The value of `port`
 
 * **`protocol`**
 
   The protocol mapping in use for this service address.
   
-  XXX Consequences for observability.
+  <!-- XXX Consequences for observability. -->
   
-  **Type**: String\
-  **Default**: `tcp`\
-  **Choices**: `tcp`, `http`, `http2`
+  _Type_: String\
+  _Default_: `tcp`\
+  _Choices_: `tcp`, `http`, `http2`
 
 * **`bridgeImage`**
 
   The image to use for a bridge running external to the
   skupper router
   
-  **Type**: String
+  _Type_: String
 
 
 ### TLS options
@@ -618,20 +623,21 @@ skupper required-service create-port backend 8080 --target-port 9090
 
   If specified, the service communication will be encrypted using TLS
   
-  **Type**: Boolean
+  _Type_: Boolean\
+  _Default_: False
 
 * **`tlsCert`**
 
   The Kubernetes secret name with custom certificates to encrypt
   the communication using TLS.
   
-  **Type**: String
+  _Type_: String
 
 * **`tlsTrust`**
 
   The Kubernetes secret name with the CA to expose the service
   over TLS.
   
-  **Type**: String
+  _Type_: String
 
 

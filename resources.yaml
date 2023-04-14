@@ -104,8 +104,9 @@
           description: |
             Logging settings for the router.
         - name: routerDebugMode
+          trouble: Need to check that disabled is okay
           type: string
-          choices: [asan, gdb]
+          choices: [disabled, asan, gdb]
           description: |
             Enable debug mode for the router.
         - name: routers
@@ -209,8 +210,11 @@
         The max number of uses the token allows.  Valid only if
         the token type is claim.
     - name: authName
-      trouble: What does this mean?  I feel a more relatable attribute might be something linke remote-site-name.
-      default: "`skupper` (?)"
+      trouble: |
+        What does this mean?  I feel a more relatable attribute might
+        be something linke remote-site-name.  And why is skupper the
+        default?
+      default: "`skupper`"
       type: string
       description: |
         Provide a specific identity as which connecting skupper
@@ -261,7 +265,7 @@
         skupper provided-service create-port backend 8080 --target-port 9090
   options:
     - name: targetPort
-      default: The value of port
+      default: "The value of `port`"
       type: integer
       description: |
         The port the target is listening on (you can also use
@@ -310,7 +314,7 @@
       description: |
         The port number.
     - name: name
-      default: The value of port
+      default: "The value of `port`"
       type: string
       description: |
         The port name.
@@ -320,7 +324,7 @@
       description: |
         The protocol mapping in use for this service address.
 
-        XXX Consequences for observability.
+        <!-- XXX Consequences for observability. -->
     - name: bridgeImage
       type: string
       description: |

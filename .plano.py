@@ -155,7 +155,7 @@ def generate_option(lines, option):
     type_ = capitalize(option.get("type", ""))
 
     # XXX Minor hack
-    if type_ == "boolean" and "default" not in option:
+    if type_ == "Boolean" and "default" not in option:
         option["default"] = False
 
     default = str(option.get("default", "")).strip()
@@ -170,16 +170,16 @@ def generate_option(lines, option):
     lines.append("  ")
 
     if "type" in option:
-        lines.append(f"  **Type**: {type_}\\")
+        lines.append(f"  _Type_: {type_}\\")
 
     if "default" in option:
-        lines.append(f"  **Default**: {default}\\")
+        lines.append(f"  _Default_: {default}\\")
     elif "choices" in option:
-        lines.append(f"  **Default**: `{choices[0]}`\\")
+        lines.append(f"  _Default_: `{choices[0]}`\\")
 
     if "choices" in option:
         choices = ", ".join([f"`{x}`" for x in choices])
-        lines.append(f"  **Choices**: {choices}\\")
+        lines.append(f"  _Choices_: {choices}\\")
 
     # Chomp off the last backslash
     lines[-1] = lines[-1].removesuffix("\\")
