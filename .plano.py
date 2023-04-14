@@ -153,52 +153,38 @@ def generate_option(lines, option):
     name = option["name"].strip()
     description = option.get("description", "").strip()
     type_ = capitalize(option.get("type", ""))
+
+    # XXX Minor hack
+    if type_ == "boolean" and "default" not in option:
+        option["default"] = False
+
     default = str(option.get("default", "")).strip()
     choices = option.get("choices")
 
-    lines.append(f"* **{name}**")
+    lines.append(f"* **`{name}`**")
     lines.append("")
 
     if "description" in option:
         lines.append(f"  {description}".replace("\n", "\n  "))
 
     lines.append("  ")
-    lines.append("  |   |   |")
-    lines.append("  | - | - |")
 
     if "type" in option:
-        lines.append(f"  | **Type** | {type_} |")
+        lines.append(f"  **Type**: {type_}\\")
 
     if "default" in option:
-        lines.append(f"  | **Default** | {default} |")
+        lines.append(f"  **Default**: {default}\\")
+    elif "choices" in option:
+        lines.append(f"  **Default**: `{choices[0]}`\\")
 
     if "choices" in option:
-        lines.append(f"  | **Choices** | {', '.join(choices)} |")
+        choices = ", ".join([f"`{x}`" for x in choices])
+        lines.append(f"  **Choices**: {choices}\\")
+
+    # Chomp off the last backslash
+    lines[-1] = lines[-1].removesuffix("\\")
 
     lines.append("")
-
-# def generate_option(lines, option):
-#     lines.append("<dt><p>{}</p></dt>".format(option["name"]))
-#     lines.append("<dd>")
-
-#     if "description" in option:
-#         lines.append("<p>{}</p>".format(option["description"]).strip())
-
-#     lines.append("")
-#     lines.append("|   |   |")
-#     lines.append("| - | - |")
-
-#     if "type" in option:
-#         lines.append("|**Type**|{}|".format(capitalize(option["type"])))
-
-#     if "default" in option and option["default"] is not None:
-#         lines.append("|**Default**|{}|".format(option["default"]))
-
-#     if "choices" in option:
-#         lines.append("|**Choices**|{}|".format(", ".join(option["choices"])))
-
-#     lines.append("")
-#     lines.append("</dd>")
 
 render_template = """
 <html>

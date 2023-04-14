@@ -31,7 +31,7 @@
       options:
         - name: ingress
           default: |
-            "route" if OpenShift, else loadbalancer
+            `route` if OpenShift, else loadbalancer
           type: string
           choices: [route, loadbalancer, nodeport, nginx-ingress-v1, contour-http-proxy, ingress, none]
           description: |
@@ -62,13 +62,13 @@
             Enable skupper console must be used in conjunction with
             '--enable-flow-collector' flag
         - name: consoleAuth
-          default: internal
+          default: "`internal`"
           type: string
           choices: [internal, openshift, unsecured]
           description: |
             The user authentication method for the console.
         - name: consoleUser
-          default: admin
+          default: "`admin`"
           type: string
           description: |
             The console username when using internal authentication.
@@ -84,7 +84,7 @@
           description: |
             Enable cross-site flow collection for the application network
         - name: flowCollectorRecordTTL
-          default: 30m
+          default: "`30m`"
           type: duration
           description: |
             Time after which terminated flow records are deleted,
@@ -92,14 +92,13 @@
     - title: Router options
       options:
         - name: routerMode
-          default: interior
           type: string
           choices: [interior, edge]
           description: |
             The role of the router in the router topology.  Interior
             routers do X.  Edge routers only do Y.
         - name: routerLogging
-          default: info
+          default: "`info`"
           type: string
           choices: [trace, debug, info, notice, warning, error]
           description: |
@@ -184,13 +183,12 @@
         The path to the file or resource that is to contain the
         generated token data.
     - name: type
-      default: claim
       type: string
       choices: [claim, cert]
       description: |
         The type of token to create.
     - name: expiry
-      default: 15m
+      default: "`15m`"
       type: duration
       description: |
         The expiration time for the token.  Valid only if the token
@@ -212,7 +210,7 @@
         the token type is claim.
     - name: authName
       trouble: What does this mean?  I feel a more relatable attribute might be something linke remote-site-name.
-      default: skupper (?)
+      default: "`skupper` (?)"
       type: string
       description: |
         Provide a specific identity as which connecting skupper
@@ -243,8 +241,8 @@
       trouble: |
         Collision with other meanings of "ingress".  I want a note
         here that says that some future iteration might include a
-        third state.
-      default: Always
+        third state.  And why the caps?  Our other options don't have
+        that.
       type: string
       choices: [Always, Never]
       description: |
@@ -317,7 +315,6 @@
       description: |
         The port name.
     - name: protocol
-      default: tcp
       type: string
       choices: [tcp, http, http2]
       description: |
