@@ -276,7 +276,8 @@ metadata:
   namespace: east
 data:
   links:
-    - secret: west-token-1
+    - name: link-to-west
+      secret: west-token-1
       cost: 2
 ~~~
 
@@ -506,15 +507,14 @@ skupper provided-service create-port backend 8080 --target-port 9090
 
 * **`bridgeImage`**
 
-  The image to use for a bridge running external to the
-  skupper router
+  The image to use for a bridge running external to the Skupper
+  router.
   
   _Type_: String
 
 * **`targetPort`**
 
-  The port the target is listening on (you can also use
-  colon to map source-port to a target-port).
+  The port the target workload is listening on.
   
   _Type_: Integer\
   _Default_: The value of `port`
@@ -623,8 +623,8 @@ skupper required-service create-port backend 8080 --target-port 9090
 
 * **`bridgeImage`**
 
-  The image to use for a bridge running external to the
-  skupper router
+  The image to use for a bridge running external to the Skupper
+  router.
   
   _Type_: String
 

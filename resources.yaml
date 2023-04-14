@@ -132,7 +132,8 @@
           namespace: east
         data:
           links:
-            - secret: west-token-1
+            - name: link-to-west
+              secret: west-token-1
               cost: 2
     - title: CLI
       syntax: sh
@@ -279,8 +280,7 @@
       default: "The value of `port`"
       type: integer
       description: |
-        The port the target is listening on (you can also use
-        colon to map source-port to a target-port).
+        The port the target workload is listening on.
 - name: RequiredService
   extends: Service
   examples:
@@ -339,8 +339,8 @@
     - name: bridgeImage
       type: string
       description: |
-        The image to use for a bridge running external to the
-        skupper router
+        The image to use for a bridge running external to the Skupper
+        router.
   groups:
     - title: TLS options
       options:
