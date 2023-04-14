@@ -15,12 +15,15 @@ A configuration reference for Skupper.
     - [Router options](#router-options)
     - [Skupper resource options](#skupper-resource-options)
 - [Link](#Link)
+    - [Diagram](#diagram-1)
     - [Examples](#examples-1)
     - [Options](#options-1)
 - [Token](#Token)
+    - [Diagram](#diagram-2)
     - [Examples](#examples-2)
     - [Options](#options-2)
 - [ProvidedService](#ProvidedService)
+    - [Diagram](#diagram-3)
     - [Examples](#examples-3)
     - [Options](#options-3)
 - [ProvidedPort](#ProvidedPort)
@@ -28,6 +31,7 @@ A configuration reference for Skupper.
     - [Options](#options-4)
     - [TLS options](#tls-options)
 - [RequiredService](#RequiredService)
+    - [Diagram](#diagram-4)
     - [Examples](#examples-5)
     - [Options](#options-5)
 - [RequiredPort](#RequiredPort)
@@ -270,6 +274,10 @@ routers do XXX.  Edge routers only do YYY.
 
 ## Link
 
+### Diagram
+
+<img src="images/Link.svg" width="480"/>
+
 ### Examples
 
 <table>
@@ -316,6 +324,10 @@ required, determines how traffic is routed across the network.
 </dd>
 
 ## Token
+
+### Diagram
+
+<img src="images/Token.svg" width="480"/>
 
 ### Examples
 
@@ -396,6 +408,10 @@ installation will be authenticated.
 
 ## ProvidedService
 
+### Diagram
+
+<img src="images/ProvidedService.svg" width="480"/>
+
 ### Examples
 
 <table>
@@ -439,7 +455,7 @@ skupper provide backend:8080 deployment/backend --target-port 9090</pre></td></t
 </p>
 <div><b>Type:</b> String</div>
 </dd>
-<dt><p>ports[]</p></dt>
+<dt><p>ports</p></dt>
 <dd>
 <p>A list of ports.
 </p>
@@ -502,7 +518,7 @@ skupper provided-service create-port backend 8080 --target-port 9090</pre></td><
 <p>The port name.
 </p>
 <div><b>Type:</b> String</div>
-<div><b>Default:</b> The value of ports[].port</div>
+<div><b>Default:</b> The value of port</div>
 </dd>
 <dt><p>protocol</p></dt>
 <dd>
@@ -520,7 +536,7 @@ colon to map source-port to a target-port).
 <div><b>Type:</b> Integer</div>
 <div><b>Default:</b> The value of port</div>
 </dd>
-<dt><p>ports[].bridgeImage</p></dt>
+<dt><p>bridgeImage</p></dt>
 <dd>
 <p>The image to use for a bridge running external to the
 skupper router
@@ -554,6 +570,10 @@ over TLS.
 </dl>
 
 ## RequiredService
+
+### Diagram
+
+<img src="images/RequiredService.svg" width="480"/>
 
 ### Examples
 
@@ -595,7 +615,7 @@ skupper require backend:8080</pre></td></tr>
 </p>
 <div><b>Type:</b> String</div>
 </dd>
-<dt><p>ports[]</p></dt>
+<dt><p>ports</p></dt>
 <dd>
 <p>A list of ports.
 </p>
@@ -632,20 +652,20 @@ skupper required-service create-port backend 8080 --target-port 9090</pre></td><
 
 ### Options
 
-<dt><p>ports[].port</p></dt>
+<dt><p>port</p></dt>
 <dd>
 <p>The port number.
 </p>
 <div><b>Type:</b> Integer</div>
 </dd>
-<dt><p>ports[].name</p></dt>
+<dt><p>name</p></dt>
 <dd>
 <p>The port name.
 </p>
 <div><b>Type:</b> String</div>
-<div><b>Default:</b> The value of ports[].port</div>
+<div><b>Default:</b> The value of port</div>
 </dd>
-<dt><p>ports[].protocol</p></dt>
+<dt><p>protocol</p></dt>
 <dd>
 <p>The protocol mapping in use for this service address.
 
@@ -655,7 +675,7 @@ XXX Consequences for observability.
 <div><b>Default:</b> tcp</div>
 <div><b>Choices:</b> tcp, http, http2</div>
 </dd>
-<dt><p>ports[].bridgeImage</p></dt>
+<dt><p>bridgeImage</p></dt>
 <dd>
 <p>The image to use for a bridge running external to the
 skupper router
@@ -666,20 +686,20 @@ skupper router
 ### TLS options
 
 <dl>
-<dt><p>ports[].generateTLSSecrets</p></dt>
+<dt><p>generateTLSSecrets</p></dt>
 <dd>
 <p>If specified, the service communication will be encrypted using TLS
 </p>
 <div><b>Type:</b> Boolean</div>
 </dd>
-<dt><p>ports[].tlsCert</p></dt>
+<dt><p>tlsCert</p></dt>
 <dd>
 <p>The Kubernetes secret name with custom certificates to encrypt
 the communication using TLS.
 </p>
 <div><b>Type:</b> String</div>
 </dd>
-<dt><p>ports[].tlsTrust</p></dt>
+<dt><p>tlsTrust</p></dt>
 <dd>
 <p>The Kubernetes secret name with the CA to expose the service
 over TLS.

@@ -5,12 +5,17 @@ import collections
 @command
 def generate():
     out = list()
+
     data = read_yaml("resources.yaml")
+    data = transform_data(data)
 
     out.append("- [Notes](#{})".format(get_fragment_id("notes")))
     out.append("- [Diagram](#{})".format(get_fragment_id("diagram")))
 
     for resource in data:
+        if resource.get("hidden"):
+            continue
+
         resource_name = resource["name"]
         resource_title = capitalize(resource_name.replace("-", " "))
         resource_diagram = f"images/{resource_name}.svg"
@@ -37,6 +42,9 @@ def generate():
     out.clear()
 
     for resource in data:
+        if resource.get("hidden"):
+            continue
+
         resource_name = resource["name"]
         resource_title = capitalize(resource_name.replace("-", " "))
         resource_diagram = f"images/{resource_name}.svg"
@@ -108,6 +116,34 @@ def generate():
     readme = readme.replace("@resources@", resources)
 
     write("README.md", readme)
+
+def transform_data(data):
+    for resource in data:
+        if "extends" in resource:
+            base_name = resource["extends"]
+
+            for candidate in data:
+                if candidate["name"] == base_name:
+                    base = candidate
+                    break
+            else:
+                raise Exception()
+
+            if "options" not in resource:
+                resource["options"] = list()
+
+            if "groups" not in resource:
+                resource["groups"] = list()
+
+            # Could use a nicer merge here
+
+            if "options" in base:
+                resource["options"][0:0] = base["options"]
+
+            if "groups" in base:
+                resource["groups"][0:0] = base["groups"]
+
+    return data
 
 fragment_ids = collections.defaultdict(int)
 
