@@ -173,6 +173,9 @@ def generate_option(lines, option):
         lines.append(f"  _Type_: {type_}\\")
 
     if "default" in option:
+        if type_ in ("String", "Duration") and default != "*Generated*" and " " not in default:
+            default = f"`{default}`"
+
         lines.append(f"  _Default_: {default}\\")
     elif "choices" in option:
         lines.append(f"  _Default_: `{choices[0]}`\\")

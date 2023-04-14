@@ -270,12 +270,14 @@ skupper init --site-name east --ingress loadbalancer --enable-console
 
 ~~~ yaml
 apiVersion: skupper.io/v1alpha1
-kind: Link
+kind: Site
 metadata:
-  name: link-to-west
+  name: east
   namespace: east
-spec:
-  secret: west-token-1
+data:
+  links:
+    - secret: west-token-1
+      cost: 2
 ~~~
 
 #### CLI
@@ -295,7 +297,7 @@ skupper link create west-token-1.yaml --name link-to-west
 
 * **`secret`**
 
-  The path to the file or resource that contains the token data.
+  The name of the secret that contains the token data.
   
   _Type_: String
 
@@ -322,19 +324,29 @@ skupper link create west-token-1.yaml --name link-to-west
 
 ~~~ yaml
 apiVersion: skupper.io/v1alpha1
-kind: Token
+kind: Site
+metadata:
+  name: west
+  namespace: west
+spec:
+  tokens:
+    - secret: west-token-1
+      expiry: 1h
+      uses: 2
+---
+apiVersion: v1
+kind: Secret
 metadata:
   name: west-token-1
   namespace: west
-spec:
-  secret: west-token-1
-  expiry: 1h
+  labels:
+    skupper.io/type: token-request
 ~~~
 
 #### CLI
 
 ~~~ sh
-skupper token create west-token-1.yaml --expiry 1h
+skupper token create west-token-1.yaml --expiry 1h --uses 2
 ~~~
 
 ### Options
@@ -348,8 +360,8 @@ skupper token create west-token-1.yaml --expiry 1h
 
 * **`secret`**
 
-  The path to the file or resource that is to contain the
-  generated token data.
+  The name of the secret that is to contain the generated token
+  data.
   
   _Type_: String
 
@@ -512,7 +524,7 @@ skupper provided-service create-port backend 8080 --target-port 9090
 
 * **`generateTLSSecrets`**
 
-  If specified, the service communication will be encrypted using TLS
+  If specified, the service communication will be encrypted using TLS.
   
   _Type_: Boolean\
   _Default_: False
@@ -621,7 +633,7 @@ skupper required-service create-port backend 8080 --target-port 9090
 
 * **`generateTLSSecrets`**
 
-  If specified, the service communication will be encrypted using TLS
+  If specified, the service communication will be encrypted using TLS.
   
   _Type_: Boolean\
   _Default_: False

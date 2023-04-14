@@ -61,13 +61,12 @@
           description: |
             Enable the Skupper network console.
         - name: consoleAuth
-          default: "`internal`"
           type: string
           choices: [internal, openshift, unsecured]
           description: |
             The user authentication method for the console.
         - name: consoleUser
-          default: "`admin`"
+          default: admin
           type: string
           description: |
             The console username when using internal authentication.
@@ -83,7 +82,7 @@
           description: |
             Enable cross-site flow collection for the application network.
         - name: flowCollectorRecordTTL
-          default: "`30m`"
+          default: 30m
           type: duration
           description: |
             The time after which terminated flow records are deleted.
@@ -98,7 +97,7 @@
 
             <!-- Interior routers do X.  Edge routers only do Y. -->
         - name: routerLogging
-          default: "`info`"
+          default: info
           type: string
           choices: [trace, debug, info, notice, warning, error]
           description: |
@@ -127,12 +126,14 @@
       syntax: yaml
       text: |
         apiVersion: skupper.io/v1alpha1
-        kind: Link
+        kind: Site
         metadata:
-          name: link-to-west
+          name: east
           namespace: east
-        spec:
-          secret: west-token-1
+        data:
+          links:
+            - secret: west-token-1
+              cost: 2
     - title: CLI
       syntax: sh
       text: |
@@ -146,7 +147,7 @@
     - name: secret
       type: string
       description: |
-        The path to the file or resource that contains the token data.
+        The name of the secret that contains the token data.
     - name: cost
       default: 1
       type: integer
@@ -161,17 +162,27 @@
       syntax: yaml
       text: |
         apiVersion: skupper.io/v1alpha1
-        kind: Token
+        kind: Site
+        metadata:
+          name: west
+          namespace: west
+        spec:
+          tokens:
+            - secret: west-token-1
+              expiry: 1h
+              uses: 2
+        ---
+        apiVersion: v1
+        kind: Secret
         metadata:
           name: west-token-1
           namespace: west
-        spec:
-          secret: west-token-1
-          expiry: 1h
+          labels:
+            skupper.io/type: token-request
     - title: CLI
       syntax: sh
       text: |
-        skupper token create west-token-1.yaml --expiry 1h
+        skupper token create west-token-1.yaml --expiry 1h --uses 2
   options:
     - name: name
       default: "*Generated*"
@@ -181,15 +192,15 @@
     - name: secret
       type: string
       description: |
-        The path to the file or resource that is to contain the
-        generated token data.
+        The name of the secret that is to contain the generated token
+        data.
     - name: type
       type: string
       choices: [claim, cert]
       description: |
         The type of token to create.
     - name: expiry
-      default: "`15m`"
+      default: 15m
       type: duration
       description: |
         The expiration time for the token.  Valid only if the token
@@ -214,7 +225,7 @@
         What does this mean?  I feel a more relatable attribute might
         be something linke remote-site-name.  And why is skupper the
         default?
-      default: "`skupper`"
+      default: skupper
       type: string
       description: |
         Provide a specific identity as which connecting skupper
@@ -339,7 +350,7 @@
             says it enables encryption.  Does it enable encryption?
           type: boolean
           description: |
-            If specified, the service communication will be encrypted using TLS
+            If specified, the service communication will be encrypted using TLS.
         - name: tlsCert
           type: string
           description: |
