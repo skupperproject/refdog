@@ -55,7 +55,7 @@ def generate():
             append(f"#### Diagram")
             append()
 
-            append(f"<img src=\"{resource_diagram}\" width=\"480\"/>")
+            append(f"<img src=\"{resource_diagram}\" height=\"120\"/>")
             append()
 
         if "examples" in resource:
