@@ -1,5 +1,9 @@
 # Refdog
 
+A configuration reference for Skupper.
+
+#### Contents
+
 - [Notes](#notes)
 - [Diagram](#diagram)
 - [Site](#Site)
@@ -19,13 +23,17 @@
 - [ProvidedService](#ProvidedService)
     - [Examples](#examples-3)
     - [Options](#options-3)
-    - [Port options](#Port-options)
-    - [Port TLS options](#Port-TLS-options)
-- [RequiredService](#RequiredService)
+- [ProvidedPort](#ProvidedPort)
     - [Examples](#examples-4)
     - [Options](#options-4)
-    - [Port options](#Port-options-1)
-    - [Port TLS options](#Port-TLS-options-1)
+    - [TLS options](#TLS-options)
+- [RequiredService](#RequiredService)
+    - [Examples](#examples-5)
+    - [Options](#options-5)
+- [RequiredPort](#RequiredPort)
+    - [Examples](#examples-6)
+    - [Options](#options-6)
+    - [TLS options](#TLS-options-1)
 
 ## Notes
 
@@ -465,23 +473,46 @@ this site.
 <div><b>Type:</b> Boolean</div>
 </dd>
 
-### Port options
+</dl>
+
+## ProvidedPort
+
+### Examples
+
+<table>
+<tbody>
+<tr><th>Skupper YAML</th></tr>
+<tr><td><pre>XXX</pre></td></tr>
+<tr><th>Skupper CLI</th></tr>
+<tr><td><pre>#
+# Current
+#
+skupper service bind backend deployment/backend --target-port 9090
+#
+# Proposed (general purpose form)
+#
+skupper provided-service create-port backend 8080 --target-port 9090</pre></td></tr>
+</tbody>
+</table>
 
 <dl>
-<dt><p>ports[].port</p></dt>
+
+### Options
+
+<dt><p>port</p></dt>
 <dd>
 <p>The port number.
 </p>
 <div><b>Type:</b> Integer</div>
 </dd>
-<dt><p>ports[].name</p></dt>
+<dt><p>name</p></dt>
 <dd>
 <p>The port name.
 </p>
 <div><b>Type:</b> String</div>
 <div><b>Default:</b> The value of ports[].port</div>
 </dd>
-<dt><p>ports[].protocol</p></dt>
+<dt><p>protocol</p></dt>
 <dd>
 <p>The protocol mapping in use for this service address.
 </p>
@@ -489,13 +520,13 @@ this site.
 <div><b>Default:</b> tcp</div>
 <div><b>Choices:</b> tcp, http, http2</div>
 </dd>
-<dt><p>ports[].targetPort</p></dt>
+<dt><p>targetPort</p></dt>
 <dd>
 <p>The port the target is listening on (you can also use
 colon to map source-port to a target-port).
 </p>
-<div><b>Type:</b> List of strings</div>
-<div><b>Default:</b> The value of ports[].port</div>
+<div><b>Type:</b> Integer</div>
+<div><b>Default:</b> The value of port</div>
 </dd>
 <dt><p>ports[].bridgeImage</p></dt>
 <dd>
@@ -504,25 +535,24 @@ skupper router
 </p>
 <div><b>Type:</b> String</div>
 </dd>
-</dl>
 
-### Port TLS options
+### TLS options
 
 <dl>
-<dt><p>ports[].generateTLSSecrets</p></dt>
+<dt><p>generateTLSSecrets</p></dt>
 <dd>
 <p>If specified, the service communication will be encrypted using TLS
 </p>
 <div><b>Type:</b> Boolean</div>
 </dd>
-<dt><p>ports[].tlsCert</p></dt>
+<dt><p>tlsCert</p></dt>
 <dd>
 <p>The Kubernetes secret name with custom certificates to encrypt
 the communication using TLS.
 </p>
 <div><b>Type:</b> String</div>
 </dd>
-<dt><p>ports[].tlsTrust</p></dt>
+<dt><p>tlsTrust</p></dt>
 <dd>
 <p>The Kubernetes secret name with the CA to expose the service
 over TLS.
@@ -588,9 +618,32 @@ skupper require backend:8080</pre></td></tr>
 <div><b>Type:</b> Boolean</div>
 </dd>
 
-### Port options
+</dl>
+
+## RequiredPort
+
+### Examples
+
+<table>
+<tbody>
+<tr><th>Skupper YAML</th></tr>
+<tr><td><pre>XXX</pre></td></tr>
+<tr><th>Skupper CLI</th></tr>
+<tr><td><pre>#
+# Current
+#
+skupper service bind backend deployment/backend --target-port 9090
+#
+# Proposed (general purpose form)
+#
+skupper required-service create-port backend 8080 --target-port 9090</pre></td></tr>
+</tbody>
+</table>
 
 <dl>
+
+### Options
+
 <dt><p>ports[].port</p></dt>
 <dd>
 <p>The port number.
@@ -621,9 +674,8 @@ skupper router
 </p>
 <div><b>Type:</b> String</div>
 </dd>
-</dl>
 
-### Port TLS options
+### TLS options
 
 <dl>
 <dt><p>ports[].generateTLSSecrets</p></dt>
@@ -649,3 +701,4 @@ over TLS.
 </dl>
 
 </dl>
+

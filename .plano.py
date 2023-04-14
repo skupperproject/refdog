@@ -2,43 +2,10 @@ from plano import *
 
 import collections
 
-option = """    - name: {name}
-      default:
-      required: n
-      type: {type}
-      description: |
-        {description}"""
-
-@command
-def convert_help():
-    for line in STDIN:
-        line = line.strip()
-
-        if not line:
-            continue
-
-        if not line.startswith("--"):
-            continue
-
-        elems = line.split()
-        name = elems[0][2:]
-
-        if elems[1] in ("int", "string", "strings", "duration"):
-            type = elems[1]
-            description = " ".join(elems[2:])
-        else:
-            type = bool
-            description = " ".join(elems[1:])
-
-        print(option.format(**locals()))
-
 @command
 def generate():
     out = list()
     data = read_yaml("resources.yaml")
-
-    out.append("# Refdog")
-    out.append("")
 
     out.append("- [Notes](#{})".format(get_fragment_id("notes")))
     out.append("- [Diagram](#{})".format(get_fragment_id("diagram")))
@@ -66,14 +33,8 @@ def generate():
 
             out.append(f"    - [{group_title}](#{group_id})")
 
-    out.append("")
-    out.append(read("notes.md"))
-
-    out.append("## Diagram")
-    out.append("")
-
-    out.append("<img src=\"images/model.svg\" width=\"640\"/>")
-    out.append("")
+    toc = "\n".join(out)
+    out = list()
 
     for resource in data:
         resource_name = resource["name"]
@@ -143,8 +104,13 @@ def generate():
         out.append("</dl>")
         out.append("")
 
+    resources = "\n".join(out)
 
-    write("README.md", "\n".join(out))
+    readme = read("README.md.in")
+    readme = readme.replace("@toc@", toc)
+    readme = readme.replace("@resources@", resources)
+
+    write("README.md", readme)
 
 fragment_ids = collections.defaultdict(int)
 

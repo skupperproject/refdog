@@ -266,50 +266,61 @@
       type: boolean
       description: |
         If specified, skupper will not wait for pods to be ready
+- name: ProvidedPort
+  yaml_example: |
+    XXX
+  cli_example: |
+    #
+    # Current
+    #
+    skupper service bind backend deployment/backend --target-port 9090
+    #
+    # Proposed (general purpose form)
+    #
+    skupper provided-service create-port backend 8080 --target-port 9090
+  options:
+    - name: port
+      type: integer
+      description: |
+        The port number.
+    - name: name
+      default: The value of ports[].port
+      type: string
+      description: |
+        The port name.
+    - name: protocol
+      default: tcp
+      type: string
+      choices: [tcp, http, http2]
+      description: |
+        The protocol mapping in use for this service address.
+    - name: targetPort
+      default: The value of port
+      type: integer
+      description: |
+        The port the target is listening on (you can also use
+        colon to map source-port to a target-port).
+    - name: ports[].bridgeImage
+      type: string
+      description: |
+        The image to use for a bridge running external to the
+        skupper router
   groups:
-    - title: Port options
+    - title: TLS options
       options:
-        - name: ports[].port
-          type: integer
-          description: |
-            The port number.
-        - name: ports[].name
-          default: The value of ports[].port
-          type: string
-          description: |
-            The port name.
-        - name: ports[].protocol
-          default: tcp
-          type: string
-          choices: [tcp, http, http2]
-          description: |
-            The protocol mapping in use for this service address.
-        - name: ports[].targetPort
-          default: The value of ports[].port
-          type: List of strings
-          description: |
-            The port the target is listening on (you can also use
-            colon to map source-port to a target-port).
-        - name: ports[].bridgeImage
-          type: string
-          description: |
-            The image to use for a bridge running external to the
-            skupper router
-    - title: Port TLS options
-      options:
-        - name: ports[].generateTLSSecrets
+        - name: generateTLSSecrets
           trouble: |
             This sounds like it generates secrets, but the description
             says it enables encryption.  So why not "enableTLS"?
           type: boolean
           description: |
             If specified, the service communication will be encrypted using TLS
-        - name: ports[].tlsCert
+        - name: tlsCert
           type: string
           description: |
             The Kubernetes secret name with custom certificates to encrypt
             the communication using TLS.
-        - name: ports[].tlsTrust
+        - name: tlsTrust
           type: string
           description: |
             The Kubernetes secret name with the CA to expose the service
@@ -351,32 +362,43 @@
       type: boolean
       description: |
         If specified, skupper will not wait for pods to be ready
-  groups:
-    - title: Port options
-      options:
-        - name: ports[].port
-          type: integer
-          description: |
-            The port number.
-        - name: ports[].name
-          default: The value of ports[].port
-          type: string
-          description: |
-            The port name.
-        - name: ports[].protocol
-          default: tcp
-          type: string
-          choices: [tcp, http, http2]
-          description: |
-            The protocol mapping in use for this service address.
+- name: RequiredPort
+  yaml_example: |
+    XXX
+  cli_example: |
+    #
+    # Current
+    #
+    skupper service bind backend deployment/backend --target-port 9090
+    #
+    # Proposed (general purpose form)
+    #
+    skupper required-service create-port backend 8080 --target-port 9090
+  options:
+    - name: ports[].port
+      type: integer
+      description: |
+        The port number.
+    - name: ports[].name
+      default: The value of ports[].port
+      type: string
+      description: |
+        The port name.
+    - name: ports[].protocol
+      default: tcp
+      type: string
+      choices: [tcp, http, http2]
+      description: |
+        The protocol mapping in use for this service address.
 
-            XXX Consequences for observability.
-        - name: ports[].bridgeImage
-          type: string
-          description: |
-            The image to use for a bridge running external to the
-            skupper router
-    - title: Port TLS options
+        XXX Consequences for observability.
+    - name: ports[].bridgeImage
+      type: string
+      description: |
+        The image to use for a bridge running external to the
+        skupper router
+  groups:
+    - title: TLS options
       options:
         - name: ports[].generateTLSSecrets
           trouble: |
