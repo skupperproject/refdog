@@ -35,21 +35,14 @@
           type: string
           choices: [route, loadbalancer, nodeport, nginx-ingress-v1, contour-http-proxy, ingress, none]
           description: |
-            Select the method for cluster ingress.  Determines how X
-            and Y are exposed outside of the cluster.
+            Select the method for cluster ingress.  This determines
+            how Skupper services are exposed outside of the cluster.
         - name: ingressHost
+          trouble: Should this get pushed down to ingressOptions?
           type: string
           description: |
             The hostname or alias by which the ingress route or proxy
             can be reached.
-
-            The host through which the node is accessible when using
-            nodeport as ingress.
-        - name: loadBalancerIP
-          type: string
-          description: |
-            The load balancer IP address that will be used for XXX, if
-            supported by the cloud provider.
         - name: ingressOptions
           description: |
             Set ingress, ingressHost, and loadBalancerIP for specific
@@ -271,18 +264,45 @@
 - name: ProvidedPort
   extends: Port
   examples:
+    - title: YAML
+      syntax: yaml
+      text: |
+        apiVersion: skupper.io/v1alpha1
+        kind: ProvidedService
+        metadata:
+          name: backend
+          namespace: east
+        spec:
+          ports:
+            - port: 8080
+              targetPort: 9090
     - title: CLI
       syntax: sh
       text: |
         skupper provided-service create-port backend 8080 --target-port 9090
   options:
     - name: targetPort
-      default: "The value of `port`"
+      default: The value of \`port\`
       type: integer
       description: |
         The port the target workload is listening on.
 - name: RequiredService
   extends: Service
+  examples:
+    - title: YAML
+      syntax: yaml
+      text: |
+        apiVersion: skupper.io/v1alpha1
+        kind: RequiredService
+        metadata:
+          name: backend
+          namespace: west
+    - title: CLI
+      syntax: sh
+      text: |
+        skupper required-service create backend
+- name: RequiredPort
+  extends: Port
   examples:
     - title: YAML
       syntax: yaml
@@ -298,14 +318,7 @@
     - title: CLI
       syntax: sh
       text: |
-        skupper required-service create backend
-- name: RequiredPort
-  extends: Port
-  examples:
-    - title: CLI
-      syntax: sh
-      text: |
-        skupper required-service create-port backend 8080 --target-port 9090
+        skupper required-service create-port backend 8080
 - name: Service
   hidden: true
   options:
@@ -325,7 +338,7 @@
       description: |
         The port number.
     - name: name
-      default: "The value of `port`"
+      default: The value of \`port\`
       type: string
       description: |
         The port name.

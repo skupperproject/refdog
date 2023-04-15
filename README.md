@@ -118,8 +118,8 @@ skupper init --site-name east --ingress loadbalancer --enable-console
 
 * **`ingress`**
 
-  Select the method for cluster ingress.  Determines how X
-  and Y are exposed outside of the cluster.
+  Select the method for cluster ingress.  This determines
+  how Skupper services are exposed outside of the cluster.
   
   _Type_: String\
   _Default_: `route` if OpenShift, else loadbalancer\
@@ -129,16 +129,6 @@ skupper init --site-name east --ingress loadbalancer --enable-console
 
   The hostname or alias by which the ingress route or proxy
   can be reached.
-  
-  The host through which the node is accessible when using
-  nodeport as ingress.
-  
-  _Type_: String
-
-* **`loadBalancerIP`**
-
-  The load balancer IP address that will be used for XXX, if
-  supported by the cloud provider.
   
   _Type_: String
 
@@ -474,6 +464,20 @@ skupper provided-service create backend deployment/backend
 
 ### Examples
 
+#### YAML
+
+~~~ yaml
+apiVersion: skupper.io/v1alpha1
+kind: ProvidedService
+metadata:
+  name: backend
+  namespace: east
+spec:
+  ports:
+    - port: 8080
+      targetPort: 9090
+~~~
+
 #### CLI
 
 ~~~ sh
@@ -493,7 +497,7 @@ skupper provided-service create-port backend 8080 --target-port 9090
   The port name.
   
   _Type_: String\
-  _Default_: The value of `port`
+  _Default_: The value of \`port\`
 
 * **`protocol`**
 
@@ -517,7 +521,7 @@ skupper provided-service create-port backend 8080 --target-port 9090
   The port the target workload is listening on.
   
   _Type_: Integer\
-  _Default_: The value of `port`
+  _Default_: The value of \`port\`
 
 
 ### TLS options
@@ -560,9 +564,6 @@ kind: RequiredService
 metadata:
   name: backend
   namespace: west
-spec:
-  ports:
-    - port: 8080
 ~~~
 
 #### CLI
@@ -590,10 +591,23 @@ skupper required-service create backend
 
 ### Examples
 
+#### YAML
+
+~~~ yaml
+apiVersion: skupper.io/v1alpha1
+kind: RequiredService
+metadata:
+  name: backend
+  namespace: west
+spec:
+  ports:
+    - port: 8080
+~~~
+
 #### CLI
 
 ~~~ sh
-skupper required-service create-port backend 8080 --target-port 9090
+skupper required-service create-port backend 8080
 ~~~
 
 ### Options
@@ -609,7 +623,7 @@ skupper required-service create-port backend 8080 --target-port 9090
   The port name.
   
   _Type_: String\
-  _Default_: The value of `port`
+  _Default_: The value of \`port\`
 
 * **`protocol`**
 

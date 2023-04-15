@@ -12,6 +12,16 @@ Links and tokens
 
 Providing services and requiring services
 
+### Skupper components
+
+#### Routers
+
+Each site has at least one router.
+Routers listen for client connections.
+Routers connect to servers.
+Routers link to eachother to form a router network.
+Routers carry client and server traffic.
+
 ## The CLI for services
 
 ### Provided services
