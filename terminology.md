@@ -19,6 +19,7 @@
   * [Components](#components)
   * [Processes](#processes)
 * [Skupper components](#skupper-components)
+  * [Command-line interface (CLI)](#command-line-interface-cli)
   * [Console](#console)
   * [Flow collector](#flow-collector)
   * [Router](#router)
@@ -68,6 +69,8 @@ Providing services and requiring services.
 A service can have multiple ports.
 Each port represents a routable *address*.
 
+A provided service has a target.
+
 ### Ports
 
 ### Addresses
@@ -95,6 +98,8 @@ On Docker or Podman, a process is a container.
 ## Skupper components
 
 These are the pieces of infrastructure that implement Skupper's features.
+
+### Command-line interface (CLI)
 
 ### Console
 
