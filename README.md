@@ -75,6 +75,10 @@ the context of a Kubernetes console.
 
 ## Site
 
+A [site](terminology.md#site) is a place where part of your
+application is running.  Sites are linked to form application
+[networks](terminology.md#networks).
+
 ### Examples
 
 #### YAML
@@ -116,13 +120,17 @@ skupper init --site-name east --ingress loadbalancer --enable-console
 
 ### Ingress options
 
+Options for configuring site
+[ingress](terminology.md#ingress).
+
 * **`ingress`**
 
   Select the method for cluster ingress.  This determines
   how Skupper services are exposed outside of the cluster.
   
   _Type_: String\
-  _Default_: `route` if OpenShift, else loadbalancer\
+  _Default_: `route` if the environment is OpenShift, otherwise
+`loadbalancer`\
   _Choices_: `route`, `loadbalancer`, `nodeport`, `nginx-ingress-v1`, `contour-http-proxy`, `ingress`, `none`
 
 * **`ingressHost`**
@@ -140,6 +148,8 @@ skupper init --site-name east --ingress loadbalancer --enable-console
 
 
 ### Console options
+
+
 
 * **`enableConsole`**
 
@@ -173,6 +183,8 @@ skupper init --site-name east --ingress loadbalancer --enable-console
 
 ### Flow collector options
 
+
+
 * **`enableFlowCollector`**
 
   Enable cross-site flow collection for the application network.
@@ -190,6 +202,8 @@ skupper init --site-name east --ingress loadbalancer --enable-console
 
 
 ### Router options
+
+
 
 * **`routerMode`**
 
@@ -226,6 +240,8 @@ skupper init --site-name east --ingress loadbalancer --enable-console
 
 ### Resource options
 
+
+
 * **`resourceLimits`**
 
   Resource requests and limits
@@ -250,7 +266,7 @@ skupper init --site-name east --ingress loadbalancer --enable-console
 
 ## Link
 
-#### Diagram
+
 
 <img src="images/Link.svg" height="180"/>
 
@@ -305,7 +321,7 @@ skupper link create west-token-1.yaml --name link-to-west
 
 ## Token
 
-#### Diagram
+
 
 <img src="images/Token.svg" height="180"/>
 
@@ -399,7 +415,7 @@ skupper token create west-token-1.yaml --expiry 1h --uses 2
 
 ## ProvidedService
 
-#### Diagram
+
 
 <img src="images/ProvidedService.svg" height="180"/>
 
@@ -461,6 +477,8 @@ skupper provided-service create backend deployment/backend
 
 
 ## ProvidedPort
+
+
 
 ### Examples
 
@@ -526,6 +544,8 @@ skupper provided-service create-port backend 8080 --target-port 9090
 
 ### TLS options
 
+
+
 * **`generateTLSSecrets`**
 
   If specified, the service communication will be encrypted using TLS.
@@ -550,7 +570,7 @@ skupper provided-service create-port backend 8080 --target-port 9090
 
 ## RequiredService
 
-#### Diagram
+
 
 <img src="images/RequiredService.svg" height="180"/>
 
@@ -588,6 +608,8 @@ skupper required-service create backend
 
 
 ## RequiredPort
+
+
 
 ### Examples
 
@@ -644,6 +666,8 @@ skupper required-service create-port backend 8080
 
 
 ### TLS options
+
+
 
 * **`generateTLSSecrets`**
 

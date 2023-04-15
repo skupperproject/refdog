@@ -46,14 +46,15 @@ def generate():
 
         resource_name = resource["name"]
         resource_title = capitalize(resource_name.replace("-", " "))
+        resource_description = resource.get("description", "").rstrip()
         resource_diagram = f"images/{resource_name}.svg"
 
         append("## {}".format(resource_name))
         append()
+        append(resource_description)
+        append()
 
         if exists(resource_diagram):
-            append("#### Diagram")
-            append()
             append(f"<img src=\"{resource_diagram}\" height=\"180\"/>")
             append()
 
@@ -89,9 +90,12 @@ def generate():
                 continue
 
             group_title = group["title"]
+            group_description = group.get("description", "").rstrip()
             group_id = group_title.replace(" ", "-")
 
             append(f"### {group_title}")
+            append()
+            append(group_description)
             append()
 
             for option in group.get("options", []):

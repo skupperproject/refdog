@@ -2,19 +2,29 @@
 
 #### Contents
 
-* [Skupper concepts](#skupper-concepts)
+* [Skupper networks and sites](#skupper-networks-and-sites)
+  * [Networks](#networks)
   * [Sites](#sites)
   * [Links](#links)
   * [Tokens](#tokens)
+  * [Ingress](#ingress)
+  * [Platforms](#platforms)
+* [Skupper services and ports](#skupper-services-and-ports)
   * [Services](#services)
-  * [Protocols](#services)
+  * [Ports](#ports)
+  * [Addresses](#addresses)
+  * [Protocols](#protocols)
+* [Skupper applications and components](#skupper-applications-and-components)
+  * [Applications](#applications)
+  * [Components](#components)
+  * [Processes](#processes)
 * [Skupper components](#skupper-components)
   * [Console](#console)
   * [Flow collector](#flow-collector)
   * [Router](#router)
   * [Site controller](#site-controller)
 
-## Skupper concepts
+## Skupper networks and sites
 
 ### Networks
 
@@ -42,6 +52,14 @@ A token has a secret, which represents the authority to create a link.
 Tokens can be restricted....
 Tokens are restricted by default....
 
+### Ingress
+
+Understanding ingress is important for creating site-to-site links.
+
+### Platforms
+
+## Skupper services and ports
+
 ### Services
 
 The ultimate purpose of Skupper is to enable application components (microservices) to communicate across distinct sites.
@@ -50,9 +68,29 @@ Providing services and requiring services.
 A service can have multiple ports.
 Each port represents a routable *address*.
 
+### Ports
+
+### Addresses
+
+Routers deal in addresses.
+An address is service name plus port.  One communication channel.  Each one has a protocol.
+
 ### Protocols
 
+Some protocols work at the granularity of connections.  Each connection is an opaque stream.  Load balancing!
+Some protocols work at the granularity of requests (and responses).  Load balancing!
+
+## Skupper applications and components
+
+### Applications
+
 ### Components
+
+### Processes
+
+A process represents running application code.
+On Kubernetes, a process is a pod.
+On Docker or Podman, a process is a container.
 
 ## Skupper components
 
