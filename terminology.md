@@ -7,13 +7,21 @@
   * [Links](#links)
   * [Tokens](#tokens)
   * [Services](#services)
-* [Skupper components](#)
-  * [Router](#router)
+  * [Protocols](#services)
+* [Skupper components](#skupper-components)
   * [Console](#console)
   * [Flow collector](#flow-collector)
+  * [Router](#router)
   * [Site controller](#site-controller)
 
 ## Skupper concepts
+
+### Networks
+
+A network is formed by linking together sites.
+
+A network corresponds to one application.
+The network here is an *application* network.
 
 ### Sites
 
@@ -22,15 +30,44 @@ Links and tokens
 
 ### Links
 
+Links are inter-site links.
+Links are communication channels encrypted using mutual TLS.
+
 ### Tokens
+
+Tokens are a bundle of a target site (a URL) and a credential that represents the authority to create a link.
+A token has a URL, which represents the target site.
+A token has a secret, which represents the authority to create a link.
+
+Tokens can be restricted....
+Tokens are restricted by default....
 
 ### Services
 
-Skupper's reason for being is exposing services across sites.
+The ultimate purpose of Skupper is to enable application components (microservices) to communicate across distinct sites.
+Providing services and requiring services.
 
-Providing services and requiring services
+A service can have multiple ports.
+Each port represents a routable *address*.
+
+### Protocols
+
+### Components
 
 ## Skupper components
+
+These are the pieces of infrastructure that implement Skupper's features.
+
+### Console
+
+The console displays the application traffic on your network.
+The console is scoped to one Skupper network.
+The console is read only.
+The console depends on the flow collector.
+
+### Flow collector
+
+The flow collector stores data about application traffic.
 
 ### Router
 
@@ -47,13 +84,7 @@ The routers in a network constitute the Skupper data plane.
 Routers implement application-layer addressing based on names.
 Routers know where the target processes are for each named address.
 
-### Console
-
-The console depends on the flow collector.
-
-### Flow collector
-
-The flow collector stores data about application traffic.
+Routers have two modes, interior and edge.
 
 ### Site controller
 
