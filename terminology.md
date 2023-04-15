@@ -19,7 +19,7 @@
   * [Components](#components)
   * [Processes](#processes)
 * [Skupper components](#skupper-components)
-  * [Command-line interface (CLI)](#command-line-interface-cli)
+  * [Command line interface](#command-line-interface)
   * [Console](#console)
   * [Flow collector](#flow-collector)
   * [Router](#router)
@@ -99,7 +99,9 @@ On Docker or Podman, a process is a container.
 
 These are the pieces of infrastructure that implement Skupper's features.
 
-### Command-line interface (CLI)
+### Command line interface
+
+AKA CLI.
 
 ### Console
 
