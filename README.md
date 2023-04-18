@@ -160,7 +160,17 @@ Options for configuring site
 
 * **`consoleAuth`**
 
-  The user authentication method for the console.
+  The user authentication mode for the console.
+  
+  `internal` - Use Skupper authentication.  See the
+  `consoleUser` and `consolePassword` options.
+  
+  `openshift` - Use OpenShift authentication, so that users
+  who have permission to log into OpenShift and view the
+  project (namespace) can view the console.
+  
+  `unsecured` - No authentication.  Anyone with the URL can
+  view the console.
   
   _Type_: String\
   _Default_: `internal`\
@@ -168,14 +178,15 @@ Options for configuring site
 
 * **`consoleUser`**
 
-  The console username when using internal authentication.
+  The console username when using `internal` authentication.
   
   _Type_: String\
   _Default_: `admin`
 
 * **`consolePassword`**
 
-  The console password when using internal authentication.
+  The console password when using `internal` authentication.
+  If not set, a random password is generated.
   
   _Type_: String\
   _Default_: *Generated*
