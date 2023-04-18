@@ -64,6 +64,10 @@ Understanding ingress is important for creating site-to-site links.
 
 ### Services
 
+service - a logical representation of a service\
+server - an actual pod implementing a given service\
+client - something that uses a service
+
 The ultimate purpose of Skupper is to enable application components (microservices) to communicate across distinct sites.
 Providing services and requiring services.
 
@@ -101,6 +105,14 @@ On Docker or Podman, a process is a container.
 These are the pieces of infrastructure that implement Skupper's features.
 
 ### Bridge
+
+client-side bridge - the component within a proxy instance that
+translates from the application protocol (http or tcp) to amqp so that
+the communication can be routed
+
+server-side bridge - the component within a proxy instance that
+translates from amqp back into the application protocol (http or tcp)
+so that communication can be delivered to the intended server pod
 
 ### Command line interface
 
