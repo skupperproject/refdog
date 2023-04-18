@@ -19,6 +19,7 @@
   * [Components](#components)
   * [Processes](#processes)
 * [Skupper components](#skupper-components)
+  * [Bridge](#bridge)
   * [Command line interface](#command-line-interface)
   * [Console](#console)
   * [Flow collector](#flow-collector)
@@ -98,6 +99,8 @@ On Docker or Podman, a process is a container.
 ## Skupper components
 
 These are the pieces of infrastructure that implement Skupper's features.
+
+### Bridge
 
 ### Command line interface
 
