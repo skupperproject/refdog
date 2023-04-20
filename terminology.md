@@ -20,7 +20,7 @@
   * [Processes](#processes)
 * [Skupper components](#skupper-components)
   * [Bridge](#bridge)
-  * [Command line interface](#command-line-interface)
+  * [Command line interface (CLI)](#command-line-interface-cli)
   * [Console](#console)
   * [Flow collector](#flow-collector)
   * [Router](#router)
@@ -115,24 +115,28 @@ Some protocols work at the granularity of requests (and responses).  Load balanc
 ## Skupper applications and components
 
 ~~~
-        +----------------------------------------------------+
-        |              Application "Hello World"             |
-        |                                                    |
-        | +----------------------+   +---------------------+ |
-        | | Component "frontend" |   | Component "backend" | |
-        | +----------------------+   +---------------------+ |
-        +----------------------------------------------------+
+      +----------------------------------------------------+
+      |              Application "Hello World"             |
+      |                                                    |
+      | +----------------------+   +---------------------+ |
+      | | Component "frontend" |   | Component "backend" | |
+      | +----------------------+   +---------------------+ |
+      +----------------------------------------------------+
 
-+--------------------------------+   +--------------------------------+
-|          Site "west"           |   |          Site "east"           |
-|                                |   |                                |
-| +----------------------------+ |   | +----------------------------+ |
-| | Workload "frontend"        | |   | | Workload "backend"         | |
-| +----------------------------+ |   | +----------------------------+ |
-| | Process "frontend-1"       | |   | | Process "backend-1"        | |
-| | Process "frontend-2"       | |   | | Process "backend-2"        | |
-| +----------------------------+ |   | +----------------------------+ |
-+--------------------------------+   +--------------------------------+
++------------------------------+   +-----------------------------+
+|          Site "west"         |   |          Site "east"        |
+|                              |   |                             |
+| +--------------------------+ |   | +-------------------------+ |
+| |    Workload "frontend"   | |   | |    Workload "backend"   | |
+| |                          | |   | |                         | |
+| | +----------------------+ | |   | | +---------------------+ | |
+| | | Process "frontend-1" | | |   | | | Process "backend-1" | | |
+| | +----------------------+ | |   | | +---------------------+ | |
+| | +----------------------+ | |   | | +---------------------+ | |
+| | | Process "frontend-2" | | |   | | | Process "backend-2" | | |
+| | +----------------------+ | |   | | +---------------------+ | |
+| +--------------------------+ |   | +-------------------------+ |
++------------------------------+   +-----------------------------+
 ~~~
 
 ### Applications
@@ -151,25 +155,25 @@ On bare-metal hosts or VMs, a process is a "process".
 These are the pieces of infrastructure that implement Skupper's features.
 
 ~~~
-+---------------------------------+   +---------------------------------+
-|           Site "west"           |   |           Site "east"           |
-|                                 |   |                                 |
-|     +---------------------+     |   |     +---------------------+     |
-|     | Workload "frontend" |     |   |     | Workload "frontend" |     |
-|     +---------------------+     |   |     +---------------------+     |
-|           +--------+            |   |           +--------+            |
-|           | Router |----------------------------| Router |            |
-|           +--------+            |   |           +--------+            |
-|      +-----------------+        |   |      +-----------------+        |
-|      | Site controller |        |   |      | Site controller |        |
-|      +-----------------+        |   |      +-----------------+        |
-|      +----------------+         |   |                                 |
-|      | Flow collector |         |   |                                 |
-|      +----------------+         |   |                                 |
-|          +---------+            |   |                                 |
-|          | Console |            |   |                                 |
-|          +---------+            |   |                                 |
-+---------------------------------+   +---------------------------------+
+             +-------------------------+   +------------------------+
+             |       Site "west"       |   |       Site "east"      |
+             |                         |   |                        |
+             | +---------------------+ |   | +--------------------+ |
+             | | Workload "frontend" | |   | | Workload "backend" | |
+             | +---------------------+ |   | +--------------------+ |
+             |       +--------+        |   |       +--------+       |
+             |       | Router |--------------------| Router |       |
+             |       +--------+        |   |       +--------+       |
+  +-----+    |  +-----------------+    |   |  +-----------------+   |
+  | CLI |-------| Site controller |    |   |  | Site controller |   |
+  +-----+    |  +-----------------+    |   |  +-----------------+   |
+             |  +----------------+     |   |                        |
+             |  | Flow collector |     |   |                        |
+             |  +----------------+     |   |                        |
++---------+  |      +---------+        |   |                        |
+| Browser |---------| Console |        |   |                        |
++---------+  |      +---------+        |   |                        |
+             +-------------------------+   +------------------------+
 ~~~
 
 ### Bridge
@@ -182,9 +186,7 @@ server-side bridge - the component within a proxy instance that
 translates from amqp back into the application protocol (http or tcp)
 so that communication can be delivered to the intended server pod
 
-### Command line interface
-
-AKA CLI.
+### Command line interface (CLI)
 
 ### Console
 
