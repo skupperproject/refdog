@@ -28,6 +28,16 @@
 
 ## Skupper networks and sites
 
+~~~
++--------------------------------------------------+
+|               Network "Hello World"              |
+|                                                  |
+| +-------------+     +------+     +-------------+ |
+| | Site "west" |<----| Link |-----| Site "east" | |
+| +-------------+     +------+     +-------------+ |
++--------------------------------------------------+
+~~~
+
 ### Networks
 
 A network is formed by linking together sites.
@@ -62,6 +72,20 @@ Understanding ingress is important for creating site-to-site links.
 
 ## Skupper services and ports
 
+~~~
++--------------------------------+                        +--------------------------------+
+|          Site "west"           |                        |          Site "east"           |
+|                                |                        |                                |
+| +----------------------------+ |                        | +----------------------------+ |
+| | Required service "backend" | |                        | | Provided service "backend" | |
+| |                            | |   +----------------+   | |                            | |
+| |   +--------------------+   | |   |    Address     |   | |   +--------------------+   | |
+| |   | Required port 8080 |---------| "backend:8080" |---------| Provided port 8080 |   | |
+| |   +--------------------+   | |   +----------------+   | |   +--------------------+   | |
+| +----------------------------+ |                        | +----------------------------+ |
++--------------------------------+                        +--------------------------------+
+~~~
+
 ### Services
 
 service - a logical representation of a service\
@@ -90,6 +114,27 @@ Some protocols work at the granularity of requests (and responses).  Load balanc
 
 ## Skupper applications and components
 
+~~~
+        +----------------------------------------------------+
+        |              Application "Hello World"             |
+        |                                                    |
+        | +----------------------+   +---------------------+ |
+        | | Component "frontend" |   | Component "backend" | |
+        | +----------------------+   +---------------------+ |
+        +----------------------------------------------------+
+
++--------------------------------+   +--------------------------------+
+|          Site "west"           |   |          Site "east"           |
+|                                |   |                                |
+| +----------------------------+ |   | +----------------------------+ |
+| | Workload "frontend"        | |   | | Workload "backend"         | |
+| +----------------------------+ |   | +----------------------------+ |
+| | Process "frontend-1"       | |   | | Process "backend-1"        | |
+| | Process "frontend-2"       | |   | | Process "backend-2"        | |
+| +----------------------------+ |   | +----------------------------+ |
++--------------------------------+   +--------------------------------+
+~~~
+
 ### Applications
 
 ### Components
@@ -99,10 +144,33 @@ Some protocols work at the granularity of requests (and responses).  Load balanc
 A process represents running application code.
 On Kubernetes, a process is a pod.
 On Docker or Podman, a process is a container.
+On bare-metal hosts or VMs, a process is a "process".
 
 ## Skupper components
 
 These are the pieces of infrastructure that implement Skupper's features.
+
+~~~
++---------------------------------+   +---------------------------------+
+|           Site "west"           |   |           Site "east"           |
+|                                 |   |                                 |
+|     +---------------------+     |   |     +---------------------+     |
+|     | Workload "frontend" |     |   |     | Workload "frontend" |     |
+|     +---------------------+     |   |     +---------------------+     |
+|           +--------+            |   |           +--------+            |
+|           | Router |----------------------------| Router |            |
+|           +--------+            |   |           +--------+            |
+|      +-----------------+        |   |      +-----------------+        |
+|      | Site controller |        |   |      | Site controller |        |
+|      +-----------------+        |   |      +-----------------+        |
+|      +----------------+         |   |                                 |
+|      | Flow collector |         |   |                                 |
+|      +----------------+         |   |                                 |
+|          +---------+            |   |                                 |
+|          | Console |            |   |                                 |
+|          +---------+            |   |                                 |
++---------------------------------+   +---------------------------------+
+~~~
 
 ### Bridge
 

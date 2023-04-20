@@ -51,8 +51,10 @@ def generate():
 
         append("## {}".format(resource_name))
         append()
-        append(resource_description)
-        append()
+
+        if resource_description:
+            append(resource_description)
+            append()
 
         if exists(resource_diagram):
             append(f"<img src=\"{resource_diagram}\" height=\"180\"/>")
@@ -83,8 +85,6 @@ def generate():
 
             generate_option(lines, option)
 
-        append()
-
         for group in resource.get("groups", []):
             if group.get("hidden"):
                 continue
@@ -95,16 +95,16 @@ def generate():
 
             append(f"### {group_title}")
             append()
-            append(group_description)
-            append()
+
+            if group_description:
+                append(group_description)
+                append()
 
             for option in group.get("options", []):
                 if option.get("hidden"):
                     continue
 
                 generate_option(lines, option)
-
-            append()
 
     resources = "\n".join(lines)
 

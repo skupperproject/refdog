@@ -117,7 +117,6 @@ skupper init --site-name east --ingress loadbalancer --enable-console
   _Type_: Boolean\
   _Default_: False
 
-
 ### Ingress options
 
 Options for configuring site
@@ -146,10 +145,7 @@ Options for configuring site
   Skupper services.
   
 
-
 ### Console options
-
-
 
 * **`enableConsole`**
 
@@ -191,10 +187,7 @@ Options for configuring site
   _Type_: String\
   _Default_: *Generated*
 
-
 ### Flow collector options
-
-
 
 * **`enableFlowCollector`**
 
@@ -211,10 +204,7 @@ Options for configuring site
   _Type_: Duration\
   _Default_: `30m`
 
-
 ### Router options
-
-
 
 * **`routerMode`**
 
@@ -248,10 +238,7 @@ Options for configuring site
   
   _Type_: Integer
 
-
 ### Resource options
-
-
 
 * **`resourceLimits`**
 
@@ -274,10 +261,7 @@ Options for configuring site
 
   
 
-
 ## Link
-
-
 
 <img src="images/Link.svg" height="180"/>
 
@@ -329,10 +313,7 @@ skupper link create west-token-1.yaml --name link-to-west
   _Type_: Integer\
   _Default_: 1
 
-
 ## Token
-
-
 
 <img src="images/Token.svg" height="180"/>
 
@@ -423,10 +404,7 @@ skupper token create west-token-1.yaml --expiry 1h --uses 2
   _Type_: String\
   _Default_: `skupper`
 
-
 ## ProvidedService
-
-
 
 <img src="images/ProvidedService.svg" height="180"/>
 
@@ -486,10 +464,7 @@ skupper provided-service create backend deployment/backend
   _Type_: Boolean\
   _Default_: False
 
-
 ## ProvidedPort
-
-
 
 ### Examples
 
@@ -552,10 +527,7 @@ skupper provided-service create-port backend 8080 --target-port 9090
   _Type_: Integer\
   _Default_: The value of \`port\`
 
-
 ### TLS options
-
-
 
 * **`generateTLSSecrets`**
 
@@ -578,10 +550,7 @@ skupper provided-service create-port backend 8080 --target-port 9090
   
   _Type_: String
 
-
 ## RequiredService
-
-
 
 <img src="images/RequiredService.svg" height="180"/>
 
@@ -617,10 +586,7 @@ skupper required-service create backend
   
   _Type_: List
 
-
 ## RequiredPort
-
-
 
 ### Examples
 
@@ -675,10 +641,7 @@ skupper required-service create-port backend 8080
   
   _Type_: String
 
-
 ### TLS options
-
-
 
 * **`generateTLSSecrets`**
 
@@ -700,5 +663,4 @@ skupper required-service create-port backend 8080
   over TLS.
   
   _Type_: String
-
 
