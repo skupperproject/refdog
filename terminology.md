@@ -33,9 +33,23 @@
 |               Network "Hello World"              |
 |                                                  |
 | +-------------+     +------+     +-------------+ |
-| | Site "west" |<----| Link |-----| Site "east" | |
+| | Site "west" |-----| Link |-----| Site "east" | |
 | +-------------+     +------+     +-------------+ |
 +--------------------------------------------------+
+~~~
+
+~~~
++----------------------------------------------------------+
+|                   Network "Hello World"                  |
+|                                                          |
+| +--------------------------+   +-----------------------+ |
+| |        Site "west"       |   |       Site "east"     | |
+| |                          |   |                       | |
+| | +--------+   +---------+ |   | +------+   +--------+ | |
+| | | Router |<--| Ingress |-------| Link |---| Router | | |
+| | +--------+   +---------+ |   | +------+   +--------+ | |
+| +--------------------------+   +-----------------------+ |
++----------------------------------------------------------+
 ~~~
 
 ### Networks
@@ -57,9 +71,10 @@ Links are communication channels encrypted using mutual TLS.
 
 ### Tokens
 
-Tokens are a bundle of a target site (a URL) and a credential that represents the authority to create a link.
-A token has a URL, which represents the target site.
-A token has a secret, which represents the authority to create a link.
+A token is required to create a link.
+
+A token contains a URL, which represents the target site.
+A token contains a secret, which represents the authority to create a link.
 
 Tokens can be restricted....
 Tokens are restricted by default....
@@ -125,7 +140,7 @@ Some protocols work at the granularity of requests (and responses).  Load balanc
               | | | Process "south/frontend-1" | |   | | Process "east/backend-1" | | |
               | | +----------------------------+ |   | +--------------------------+ | |
               | | +----------------------------+ |   | +--------------------------+ | |
-              | | | Process "south/frontend-2" | |   | | Process "east/backend-1" | | |
+              | | | Process "south/frontend-2" | |   | | Process "east/backend-2" | | |
               | | +----------------------------+ |   | +--------------------------+ | |
               | | +----------------------------+ |   |                              | |
               | | | Process "west/frontend-1"  | |   |                              | |
