@@ -62,9 +62,15 @@ have a point of ingress, so it can accept a TCP connection.
 +-----------------------------------+
 ~~~
 
+Creating a link also requires explicit permission from the target
+site.  This permission is granted using tokens.  A token is....
+
 ~~~
 XXX Sequence diagram for tokens and links
 ~~~
+
+Skupper works on multiple platforms: Kubernetes, Podman, VMs, and bare
+metal.  Each site in a network can run on any supported platform.
 
 ~~~
 +--------------------------+   +--------------------+
