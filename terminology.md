@@ -40,7 +40,7 @@
 
 ~~~
 +-----------------------------------+
-|        Network "Hello World"      |
+|       Network "Hello World"       |
 |                                   |
 | +-------------+   +-------------+ |
 | | Site "west" |   | Site "east" | |
@@ -104,8 +104,11 @@ Understanding ingress is important for creating site-to-site links.
 
 ~~~
 +--------------------------------+                        +--------------------------------+
-|          Site "west"           |                        |          Site "east"           |
+|           Site "west"          |                        |           Site "east"          |
 |                                |                        |                                |
+|     +---------------------+    |                        |     +--------------------+     |
+|     | Workload "frontend" |    |                        |     | Workload "backend" |     |
+|     +---------------------+    |                        |     +--------------------+     |
 | +----------------------------+ |                        | +----------------------------+ |
 | | Required service "backend" | |                        | | Provided service "backend" | |
 | |                            | |   +----------------+   | |                            | |
