@@ -28,10 +28,10 @@
 
 ## Skupper networks and sites
 
-A Skupper network is composed of sites.  Sites are places where parts
-of your application are running.
+A Skupper network is composed of sites.  A site is a place where part
+of your application is running.
 
-Sites are linked together to form a dedicated network for one
+Sites are linked together to form a dedicated network for your
 application.  These links are the basis for site-to-site and
 service-to-service communication.
 
@@ -46,9 +46,7 @@ service-to-service communication.
 ~~~
 
 To create a link, the site that is to be the target of the link must
-have a point of ingress, so it can accept a TCP connection.  In the
-case of Kubernetes clusters, there are many different kinds of
-ingress.
+have a point of ingress, so it can accept a TCP connection.
 
 ~~~
 +-----------------------------------+
