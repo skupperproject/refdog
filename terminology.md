@@ -115,28 +115,41 @@ Some protocols work at the granularity of requests (and responses).  Load balanc
 ## Skupper applications and components
 
 ~~~
-      +----------------------------------------------------+
-      |              Application "Hello World"             |
-      |                                                    |
-      | +----------------------+   +---------------------+ |
-      | | Component "frontend" |   | Component "backend" | |
-      | +----------------------+   +---------------------+ |
-      +----------------------------------------------------+
+              +-----------------------------------------------------------------------+
+              |                        Application "Hello World"                      |
+              |                                                                       |
+              | +--------------------------------+   +------------------------------+ |
+              | |      Component "frontend"      |   |      Component "backend"     | |
+              | |                                |   |                              | |
+              | | +----------------------------+ |   | +--------------------------+ | |
+              | | | Process "south/frontend-1" | |   | | Process "east/backend-1" | | |
+              | | +----------------------------+ |   | +--------------------------+ | |
+              | | +----------------------------+ |   | +--------------------------+ | |
+              | | | Process "south/frontend-2" | |   | | Process "east/backend-1" | | |
+              | | +----------------------------+ |   | +--------------------------+ | |
+              | | +----------------------------+ |   |                              | |
+              | | | Process "west/frontend-1"  | |   |                              | |
+              | | +----------------------------+ |   |                              | |
+              | | +----------------------------+ |   |                              | |
+              | | | Process "west/frontend-2"  | |   |                              | |
+              | | +----------------------------+ |   |                              | |
+              | +--------------------------------+   +------------------------------+ |
+              +-----------------------------------------------------------------------+
 
-+------------------------------+   +-----------------------------+
-|          Site "west"         |   |          Site "east"        |
-|                              |   |                             |
-| +--------------------------+ |   | +-------------------------+ |
-| |    Workload "frontend"   | |   | |    Workload "backend"   | |
-| |                          | |   | |                         | |
-| | +----------------------+ | |   | | +---------------------+ | |
-| | | Process "frontend-1" | | |   | | | Process "backend-1" | | |
-| | +----------------------+ | |   | | +---------------------+ | |
-| | +----------------------+ | |   | | +---------------------+ | |
-| | | Process "frontend-2" | | |   | | | Process "backend-2" | | |
-| | +----------------------+ | |   | | +---------------------+ | |
-| +--------------------------+ |   | +-------------------------+ |
-+------------------------------+   +-----------------------------+
++------------------------------+   +-----------------------------+   +------------------------------+
+|          Site "west"         |   |          Site "east"        |   |         Site "south"         |
+|                              |   |                             |   |                              |
+| +--------------------------+ |   | +-------------------------+ |   | +--------------------------+ |
+| |    Workload "frontend"   | |   | |    Workload "backend"   | |   | |    Workload "frontend"   | |
+| |                          | |   | |                         | |   | |                          | |
+| | +----------------------+ | |   | | +---------------------+ | |   | | +----------------------+ | |
+| | | Process "frontend-1" | | |   | | | Process "backend-1" | | |   | | | Process "frontend-1" | | |
+| | +----------------------+ | |   | | +---------------------+ | |   | | +----------------------+ | |
+| | +----------------------+ | |   | | +---------------------+ | |   | | +----------------------+ | |
+| | | Process "frontend-2" | | |   | | | Process "backend-2" | | |   | | | Process "frontend-2" | | |
+| | +----------------------+ | |   | | +---------------------+ | |   | | +----------------------+ | |
+| +--------------------------+ |   | +-------------------------+ |   | +--------------------------+ |
++------------------------------+   +-----------------------------+   +------------------------------+
 ~~~
 
 ### Applications
@@ -152,7 +165,7 @@ On bare-metal hosts or VMs, a process is a "process".
 
 ## Skupper components
 
-These are the pieces of infrastructure that implement Skupper's features.
+The software components that implement Skupper's features.
 
 ~~~
              +-------------------------+   +------------------------+
@@ -164,9 +177,9 @@ These are the pieces of infrastructure that implement Skupper's features.
              |       +--------+        |   |       +--------+       |
              |       | Router |--------------------| Router |       |
              |       +--------+        |   |       +--------+       |
-  +-----+    |  +-----------------+    |   |  +-----------------+   |
-  | CLI |-------| Site controller |    |   |  | Site controller |   |
-  +-----+    |  +-----------------+    |   |  +-----------------+   |
+  +-----+    |  +-----------------+    |   |  +-----------------+   |    +-----+
+  | CLI |-------| Site controller |    |   |  | Site controller |--------| CLI |
+  +-----+    |  +-----------------+    |   |  +-----------------+   |    +-----+
              |  +----------------+     |   |                        |
              |  | Flow collector |     |   |                        |
              |  +----------------+     |   |                        |
@@ -176,15 +189,15 @@ These are the pieces of infrastructure that implement Skupper's features.
              +-------------------------+   +------------------------+
 ~~~
 
-### Bridge
+<!-- ### Bridge -->
 
-client-side bridge - the component within a proxy instance that
-translates from the application protocol (http or tcp) to amqp so that
-the communication can be routed
+<!-- client-side bridge - the component within a proxy instance that -->
+<!-- translates from the application protocol (http or tcp) to amqp so that -->
+<!-- the communication can be routed -->
 
-server-side bridge - the component within a proxy instance that
-translates from amqp back into the application protocol (http or tcp)
-so that communication can be delivered to the intended server pod
+<!-- server-side bridge - the component within a proxy instance that -->
+<!-- translates from amqp back into the application protocol (http or tcp) -->
+<!-- so that communication can be delivered to the intended server pod -->
 
 ### Command line interface (CLI)
 
