@@ -36,13 +36,13 @@ application.  These links are the basis for site-to-site and
 service-to-service communication.
 
 ~~~
-+-----------------------------------+
-|       Network "Hello World"       |
-|                                   |
-| +-------------+   +-------------+ |
-| | Site "west" |---| Site "east" | |
-| +-------------+   +-------------+ |
-+-----------------------------------+
++--------------------------------------------+
+|            Network "Hello World"           |
+|                                            |
+| +-------------+            +-------------+ |
+| | Site "west" |--- Link ---| Site "east" | |
+| +-------------+            +-------------+ |
++--------------------------------------------+
 ~~~
 
 To create a link, the site that is to be the target of the link must
