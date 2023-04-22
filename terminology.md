@@ -66,7 +66,22 @@ Creating a link also requires explicit permission from the target
 site.  This permission is granted using tokens.  A token is....
 
 ~~~
-XXX Sequence diagram for tokens and links
+  +-------------+             +-------------+
+  | Site "west" |             | Site "east" |
+  +-------------+             +-------------+
+         |                           |
++-----------------+                  |
+| 1. Create token |                  |
++-----------------+                  |
+         |                           |
+         |   +-------------------+   |
+         |---| 2. Transfer token |-->|
+         |   +-------------------+   |
+         |                           |
+         |    +----------------+     |
+         |<---| 3. Create link |-----|
+         |    +----------------+     |
+         |                           |
 ~~~
 
 Skupper works on multiple platforms: Kubernetes, Podman, VMs, and bare
