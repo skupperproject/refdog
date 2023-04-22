@@ -49,21 +49,25 @@ To create a link, the site that is to be the target of the link must
 have a point of ingress, so it can accept a TCP connection.
 
 ~~~
-+-----------------------------------+
-|       Network "Hello World"       |
-|                                   |
-| +-------------+   +-------------+ |
-| | Site "west" |   | Site "east" | |
-| |             |   |             | |
-| | +---------+ |   |  +-------+  | |
-| | | Ingress |<-------| Link  |  | |
-| | +---------+ |   |  +-------+  | |
-| +-------------+   +-------------+ |
-+-----------------------------------+
++------------------------------------+
+|        Network "Hello World"       |
+|                                    |
+| +--------------+   +-------------+ |
+| | Site "west"  |   | Site "east" | |
+| |              |   |             | |
+| | +---------+  |   |  +-------+  | |
+| | | Ingress |<--------| Link  |  | |
+| | +---------+  |   |  +-------+  | |
+| +--------------+   +-------------+ |
++------------------------------------+
 ~~~
 
 Creating a link also requires explicit permission from the target
-site.  This permission is granted using tokens.  A token is....
+site.  This permission is granted using tokens.  A token contains a
+URL for the target site and a secret key.
+
+The target site ("west" in this example") creates a token.  The source
+site ("east") uses the token to create a link.
 
 ~~~
   +-------------+             +-------------+
@@ -96,6 +100,25 @@ metal.  Each site in a network can run on any supported platform.
 | |      Site "west"     |-------|   Site "east"  | |
 | +----------------------+ |   | +----------------+ |
 +--------------------------+   +--------------------+
+~~~
+
+A site does not need be directly linked to all the other sites in the
+network.  A site only needs to be *reachable* through the site
+network.  Skupper is responsible for routing connections and requests
+to the sites providing the required services.
+
+~~~
+ +-----------+                                 +-----------+
+ | Site "nw" |---                           ---| Site "ne" |
+ +-----------+   \   +-----------------+   /   +-----------+
+       |          ---| Site "central1" |---          |
++-------------+  /   +-----------------+   \  +-------------+
+| Site "west" |--             |             --| Site "east" |
++-------------+  \   +-----------------+   /  +-------------+
+       |          ---| Site "central2" |---          |
+ +-----------+   /   +-----------------+   \   +-----------+
+ | Site "sw" |---                           ---| Site "se" |
+ +-----------+                                 +-----------+
 ~~~
 
 ### Networks
@@ -148,6 +171,12 @@ Understanding ingress is important for creating site-to-site links.
 | |   +--------------------+   | |   +----------------+   | |   +--------------------+   | |
 | +----------------------------+ |                        | +----------------------------+ |
 +--------------------------------+                        +--------------------------------+
+~~~
+
+XXX Multiple providers at different sites
+
+~~~
+XXX
 ~~~
 
 ### Services
@@ -244,9 +273,9 @@ The software components that implement Skupper's features.
   +-----+    |  +-----------------+    |   |  +-----------------+   |    +-----+
   | CLI |-------| Site controller |    |   |  | Site controller |--------| CLI |
   +-----+    |  +-----------------+    |   |  +-----------------+   |    +-----+
-             |  +----------------+     |   |                        |
-             |  | Flow collector |     |   |                        |
-             |  +----------------+     |   |                        |
+             |  +-----------------+    |   |                        |
+             |  | Flow collector  |    |   |                        |
+             |  +-----------------+    |   |                        |
 +---------+  |      +---------+        |   |                        |
 | Browser |---------| Console |        |   |                        |
 +---------+  |      +---------+        |   |                        |
