@@ -28,8 +28,8 @@
 
 ## Skupper networks and sites
 
-A Skupper network is composed of sites.  A site is a place where part
-of your application is running.
+A Skupper network is composed of sites.  A site is a place where one
+part of your distributed application is running.
 
 Sites are linked together to form a dedicated network for your
 application.  These links are the basis for site-to-site and
@@ -89,17 +89,19 @@ site ("east") uses the token to create a link.
 ~~~
 
 Skupper works on multiple platforms: Kubernetes, Podman, VMs, and bare
-metal.  Each site in a network can run on any supported platform.
+metal hosts.  Each site in a network can run on any supported
+platform.
 
 ~~~
-+--------------------------+   +--------------------+
-|    Kubernetes cluster    |   |       Podman       |
-|                          |   |                    |
-| +----------------------+ |   | +----------------+ |
-| | Kubernetes namespace | |   | | Podman network | |
-| |      Site "west"     |-------|   Site "east"  | |
-| +----------------------+ |   | +----------------+ |
-+--------------------------+   +--------------------+
++---------------------------+   +-------------------------+   +-------------------------+
+|    Kubernetes cluster     |   |         Podman          |   |            VM           |
+|                           |   |                         |   |                         |
+|  +---------------------+  |   |  +-------------------+  |   |  +-------------------+  |
+|  |     Site "west":    |  |   |  |  Site "central":  |  |   |  |    Site "east":   |  |
+|  |   Namespace "west"  |---------|  Podman network   |---------|     VM network    |  |
+|  |                     |  |   |  |    "skupper"      |  |   |  |     "skupper"     |  |
+|  +---------------------+  |   |  +-------------------+  |   |  +-------------------+  |
++---------------------------+   +-------------------------+   +-------------------------+
 ~~~
 
 A site does not need be directly linked to all the other sites in the
@@ -208,29 +210,29 @@ Some protocols work at the granularity of requests (and responses).  Load balanc
 ## Skupper applications and components
 
 ~~~
-              +-----------------------------------------------------------------------+
-              |                        Application "Hello World"                      |
-              |                                                                       |
-              | +--------------------------------+   +------------------------------+ |
-              | |      Component "frontend"      |   |      Component "backend"     | |
-              | |                                |   |                              | |
-              | | +----------------------------+ |   | +--------------------------+ | |
-              | | | Process "south/frontend-1" | |   | | Process "east/backend-1" | | |
-              | | +----------------------------+ |   | +--------------------------+ | |
-              | | +----------------------------+ |   | +--------------------------+ | |
-              | | | Process "south/frontend-2" | |   | | Process "east/backend-2" | | |
-              | | +----------------------------+ |   | +--------------------------+ | |
-              | | +----------------------------+ |   |                              | |
-              | | | Process "west/frontend-1"  | |   |                              | |
-              | | +----------------------------+ |   |                              | |
-              | | +----------------------------+ |   |                              | |
-              | | | Process "west/frontend-2"  | |   |                              | |
-              | | +----------------------------+ |   |                              | |
-              | +--------------------------------+   +------------------------------+ |
-              +-----------------------------------------------------------------------+
+              +-------------------------------------------------------------------------+
+              |                        Application "Hello World"                        |
+              |                                                                         |
+              | +-------------------------------+   +---------------------------------+ |
+              | |      Component "frontend"     |   |        Component "backend"      | |
+              | |                               |   |                                 | |
+              | | +---------------------------+ |   | +-----------------------------+ | |
+              | | | Process "west/frontend-1" | |   | | Process "central/backend-1" | | |
+              | | +---------------------------+ |   | +-----------------------------+ | |
+              | | +---------------------------+ |   | +-----------------------------+ | |
+              | | | Process "west/frontend-2" | |   | | Process "central/backend-2" | | |
+              | | +---------------------------+ |   | +-----------------------------+ | |
+              | | +---------------------------+ |   |                                 | |
+              | | | Process "east/frontend-1" | |   |                                 | |
+              | | +---------------------------+ |   |                                 | |
+              | | +---------------------------+ |   |                                 | |
+              | | | Process "east/frontend-2" | |   |                                 | |
+              | | +---------------------------+ |   |                                 | |
+              | +-------------------------------+   +---------------------------------+ |
+              +-------------------------------------------------------------------------+
 
 +------------------------------+   +-----------------------------+   +------------------------------+
-|          Site "west"         |   |          Site "east"        |   |         Site "south"         |
+|          Site "west"         |   |        Site "central"       |   |          Site "east"         |
 |                              |   |                             |   |                              |
 | +--------------------------+ |   | +-------------------------+ |   | +--------------------------+ |
 | |    Workload "frontend"   | |   | |    Workload "backend"   | |   | |    Workload "frontend"   | |
