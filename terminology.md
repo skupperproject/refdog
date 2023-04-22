@@ -33,7 +33,11 @@ of your distributed application is running.
 
 Sites are linked together to form a dedicated network for your
 application.  These links are the basis for site-to-site and
-service-to-service communication.
+service-to-service communication.  Links are always secured using
+mutual TLS authentication and encryption.
+
+In this example, site "west" and site "east" are linked to form the
+network for the "Hello World" application.
 
 ~~~
 +--------------------------------------------+
@@ -47,6 +51,10 @@ service-to-service communication.
 
 To create a link, the site that is to be the target of the link must
 have a point of ingress, so it can accept a TCP connection.
+
+In this example, site "west" accepts incoming TCP connections through
+its ingress, and site "east" creates the site-to-site link by
+establishing an outbound TCP connection to "west".
 
 ~~~
 +------------------------------------+
@@ -106,7 +114,7 @@ platform.
 +---------------------------+   +-------------------------+   +-------------------------+
 ~~~
 
-A site does not need be directly linked to all the other sites in a
+A site does not need to be directly linked to all the other sites in a
 network.  A site only needs to be *reachable* through the site
 network.  Skupper is responsible for routing connections and requests
 to the sites providing the required services.
