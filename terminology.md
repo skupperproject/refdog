@@ -28,7 +28,7 @@
 
 ## Skupper networks and sites
 
-A Skupper network is composed of sites.  A site is a place where one
+A Skupper network is composed of sites.  A site is a place where a
 part of your distributed application is running.
 
 Sites are linked together to form a dedicated network for your
@@ -66,8 +66,10 @@ Creating a link also requires explicit permission from the target
 site.  This permission is granted using tokens.  A token contains a
 URL for the target site and a secret key.
 
-The target site ("west" in this example") creates a token.  The source
-site ("east") uses the token to create a link.
+In this example, site "west" wishes to allow "east" to create a link.
+Site "west" creates a token.  The owner of "west" gives the token to
+the owner of "east".  The owner of "east" then uses the token to
+create the link.
 
 ~~~
   +-------------+             +-------------+
