@@ -28,8 +28,8 @@
 
 ## Skupper networks and sites
 
-A Skupper network is composed of sites.  A site is a place where a
-part of your distributed application is running.
+A Skupper network is composed of sites.  A site is a place where part
+of your distributed application is running.
 
 Sites are linked together to form a dedicated network for your
 application.  These links are the basis for site-to-site and
@@ -106,23 +106,23 @@ platform.
 +---------------------------+   +-------------------------+   +-------------------------+
 ~~~
 
-A site does not need be directly linked to all the other sites in the
+A site does not need be directly linked to all the other sites in a
 network.  A site only needs to be *reachable* through the site
 network.  Skupper is responsible for routing connections and requests
 to the sites providing the required services.
 
 ~~~
- +-----------+                                 +-----------+
- | Site "nw" |---                           ---| Site "ne" |
- +-----------+   \   +-----------------+   /   +-----------+
-       |          ---| Site "central1" |---          |
-+-------------+  /   +-----------------+   \  +-------------+
-| Site "west" |--             |             --| Site "east" |
-+-------------+  \   +-----------------+   /  +-------------+
-       |          ---| Site "central2" |---          |
- +-----------+   /   +-----------------+   \   +-----------+
- | Site "sw" |---                           ---| Site "se" |
- +-----------+                                 +-----------+
+ +-----------+                                   +-----------+
+ | Site "nw" |---.                           .---| Site "ne" |
+ +-----------+    \   +-----------------+   /    +-----------+
+       |           :--| Site "central1" |--:           |
++-------------+   /   +-----------------+   \   +-------------+
+| Site "west" |--:             |             :--| Site "east" |
++-------------+   \   +-----------------+   /   +-------------+
+       |           :--| Site "central2" |--:           |
+ +-----------+    /   +-----------------+   \    +-----------+
+ | Site "sw" |---'                           '---| Site "se" |
+ +-----------+                                   +-----------+
 ~~~
 
 ### Networks
