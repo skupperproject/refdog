@@ -168,6 +168,29 @@ Understanding ingress is important for creating site-to-site links.
 
 ## Skupper services and ports
 
+It's important to understand that site-to-site links are distinct from
+service-to-service connections.  Site links form the underlying
+transport for your network.  Service connections are carried on top of
+this transport.
+
+Service connections can be established in either direction, regardless
+of how the link was established.  In this example, site "east" has
+established a link to site "west", where ingress is set up.  At the
+service layer, the connection runs in the other direction.  The
+"frontend" workload connects to the "backend".
+
+~~~
+Service connection layer       +---------------------+       +--------------------+
+                               | Workload "frontend" |------>| Workload "backend" |
+                               +---------------------+       +--------------------+
+
+----------------------------------------------------------------------------------------
+
+Site link layer                    +-------------+              +-------------+
+                                   | Site "west" |<-------------| Site "east" |
+                                   +-------------+              +-------------+
+~~~
+
 ~~~
 +--------------------------------+                        +--------------------------------+
 |           Site "west"          |                        |           Site "east"          |
@@ -186,6 +209,12 @@ Understanding ingress is important for creating site-to-site links.
 ~~~
 
 XXX Multiple providers at different sites
+
+~~~
+XXX
+~~~
+
+XXX Skupper virtual conns as opposed to the link stuff
 
 ~~~
 XXX
@@ -218,6 +247,8 @@ Some protocols work at the granularity of connections.  Each connection is an op
 Some protocols work at the granularity of requests (and responses).  Load balancing!
 
 ## Skupper applications and components
+
+Part of Skupper's job is modeling how a multi-site application works.
 
 ~~~
               +-------------------------------------------------------------------------+
