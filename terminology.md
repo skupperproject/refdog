@@ -173,13 +173,11 @@ service-to-service connections.  Site links form the underlying
 transport for your network.  Service connections are carried on top of
 this transport.
 
-Service connections can be established in any direction, regardless of
-how the supporting links are established.  In this example, sites
-"west" and "east" have links to site "central".  Workload "frontend"
-is running on "west", and workload "backend" on "east".  When
-"frontend" connects to "backend", it can ignore the underlying link
-topology.  Skupper ensures that "frontend" can connect directly to
-"backend".
+In this example, sites "west" and "east" have links to site "central".
+Workload "frontend" is running on "west", and workload "backend" on
+"east".  When "frontend" connects to "backend", it can ignore the
+underlying link topology.  Skupper ensures that "frontend" can connect
+directly to "backend".
 
 ~~~
 Service connection    +---------------------+                       +--------------------+
