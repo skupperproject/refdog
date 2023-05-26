@@ -1,40 +1,49 @@
-- name: Site
+- name: site
+  title: Site
   description: |
     A [site](terminology.md#site) is a place where part of your
-    application is running.  Sites are linked to form application
+    application is running.  *Examples!*
+
+    Sites are linked to form application
     [networks](terminology.md#networks).
   examples:
     - title: YAML
       syntax: yaml
       text: |
-        apiVersion: skupper.io/v1alpha1
-        kind: Site
+        apiVersion: v1
+        kind: ConfigMap
         metadata:
-          name: east
-          namespace: east
-        spec:
+          name: west
+          namespace: west
+          labels:
+            skupper.io/type: site
+        data: |
           ingress: loadbalancer
-          enableConsole: true
     - title: CLI
       syntax: sh
       text: |
-        skupper init --site-name east --ingress loadbalancer --enable-console
-  options:
-    - name: name
-      type: string
-      description: |
-        A name of your choice for the Skupper site.
-    - name: createNetworkPolicy
-      type: boolean
-      description: |
-        Create network policy to restrict access to Skupper services
-        exposed through this site to the pods currently in the
-        namespace.
+        skupper init --site-name west --ingress loadbalancer
   groups:
-    - title: Ingress options
+    - title: Core options
+      options:
+        - name: name
+          type: string
+          description: |
+            A name of your choice for the Skupper site.  *Appears in the
+            console and status stuff!*
+        - name: create-network-policy
+          type: boolean
+          description: |
+            Create network policy to restrict access to Skupper services
+            exposed through this site to the pods currently in the
+            namespace.
+
+    - title: Site ingress options
       description: |
-        Options for configuring site
-        [ingress](terminology.md#ingress).
+        Options for configuring site [ingress](terminology.md#ingress)
+        so it can accept incoming site [links](terminology.md#link).
+
+        This is different from *service* ingress. XXX
       options:
         - name: ingress
           default: |
@@ -45,30 +54,159 @@
           description: |
             Select the method for cluster ingress.  This determines
             how Skupper services are exposed outside of the cluster.
-        - name: ingressHost
+        - name: ingress-host
           trouble: Should this get pushed down to ingressOptions?
           type: string
           description: |
             The hostname or alias by which the ingress route or proxy
             can be reached.
-        - name: ingressOptions
+        - name: load-balancer-ip
           description: |
-            Set ingress, ingressHost, and loadBalancerIP for specific
-            Skupper services.
-    - title: Console options
+            XXX
+
+- name: egress-binding
+  title: Egress binding
+  extends: service-binding
+  examples:
+    - title: YAML
+      syntax: yaml
+      text: |
+        apiVersion: v1
+        kind: ConfigMap
+        metadata:
+          name: backend
+          namespace: east
+          labels:
+            skupper.io/type: egress-binding
+        data: |
+          routing-key: backend-8080
+          port: 8080
+          selector: app=backend
+    - title: CLI
+      syntax: sh
+      text: |
+        skupper service bind-egress backend:8080 deployment/backend
+  groups:
+    - name: core
+      title: Core options
       options:
-        - name: enableConsole
+        - name: hostname
+          type: string
+          description: |
+            The workload that implements this service.
+        - name: port
+          default: The value of \`port\`
+          type: integer
+          description: |
+            The port the target workload is listening on.
+    # - name: enableIngress
+    #   trouble: |
+    #     Collision with other meanings of "ingress".  I want a note
+    #     here that says that some future iteration might include a
+    #     third state.  And why the caps?  Our other options don't have
+    #     that.
+    #   type: string
+    #   choices: [Always, Never]
+    #   description: |
+    #     Determines whether access to the Skupper service is enabled in
+    #     this site.
+    # - name: publishNotReadyAddresses
+    #   type: boolean
+    #   description: |
+    #     If specified, skupper will not wait for pods to be ready
+
+- name: ingress-binding
+  title: Ingress binding
+  extends: service-binding
+  examples:
+    - title: YAML
+      syntax: yaml
+      text: |
+        apiVersion: v1
+        kind: ConfigMap
+        metadata:
+          name: backend
+          namespace: west
+          labels:
+            skupper.io/type: ingress-binding
+        data: |
+          routing-key: backend-8080
+          hostname: backend
+          port: 8080
+    - title: CLI
+      syntax: sh
+      text: |
+        skupper service bind-ingress backend:8080
+
+- name: service-binding
+  hidden: true
+  groups:
+    - name: core
+      title: Core options
+      options:
+        - name: routing-key
+          type: string
+          description: |
+            XXX
+    - name: tls
+      title: TLS options
+      options:
+        - name: generate-tls-secrets
+          trouble: |
+            This sounds like it generates secrets, but the description
+            says it enables encryption.  Does it enable encryption?
           type: boolean
           description: |
-            Enable the Skupper network console.
-        - name: consoleAuth
+            If specified, the service communication will be encrypted using TLS.
+        - name: tls-credentials
+          type: string
+          description: |
+            XXX
+
+            The Kubernetes secret name with custom certificates to encrypt
+            the communication using TLS.
+
+            The Kubernetes secret name with the CA to expose the service
+            over TLS.
+    - name: advanced
+      title: Advanced options
+      options:
+        - name: bridge-image
+          type: string
+          description: |
+            The image to use for a bridge running external to the Skupper
+            router.
+
+- name: console
+  title: Console
+  description: |
+    XXX
+  examples:
+    - title: YAML
+      syntax: yaml
+      text: |
+        apiVersion: v1
+        kind: ConfigMap
+        metadata:
+          name: console
+          namespace: west
+          labels:
+            skupper.io/type: console
+        data: |
+          ingress: loadbalancer
+          user: alice
+          password-secret: <secret>
+  groups:
+    - title: Options
+      options:
+        - name: auth
           type: string
           choices: [internal, openshift, unsecured]
           description: |
             The user authentication mode for the console.
 
             `internal` - Use Skupper authentication.  See the
-            `consoleUser` and `consolePassword` options.
+            `console-user` and `console-password` options.
 
             `openshift` - Use OpenShift authentication, so that users
             who have permission to log into OpenShift and view the
@@ -76,320 +214,59 @@
 
             `unsecured` - No authentication.  Anyone with the URL can
             view the console.
-        - name: consoleUser
+        - name: user
           default: admin
           type: string
           description: |
             The console username when using `internal` authentication.
-        - name: consolePassword
+        - name: password
           default: "*Generated*"
           type: string
           description: |
             The console password when using `internal` authentication.
             If not set, a random password is generated.
-    - title: Flow collector options
-      options:
-        - name: enableFlowCollector
-          type: boolean
-          description: |
-            Enable cross-site flow collection for the application network.
-        - name: flowCollectorRecordTTL
-          default: 30m
-          type: duration
-          description: |
-            The time after which terminated flow records are deleted.
-            Terminated records are those that have an end time set.
-    - title: Router options
-      options:
-        - name: routerMode
-          type: string
-          choices: [interior, edge]
-          description: |
-            The role of the router in the router topology.
+    # - title: Flow collector options
+    #   options:
+    #     - name: enableFlowCollector
+    #       type: boolean
+    #       description: |
+    #         Enable cross-site flow collection for the application network.
+    #     - name: flowCollectorRecordTTL
+    #       default: 30m
+    #       type: duration
+    #       description: |
+    #         The time after which terminated flow records are deleted.
+    #         Terminated records are those that have an end time set.
+    # - title: Router options
+    #   options:
+    #     - name: router-mode
+    #       type: string
+    #       choices: [interior, edge]
+    #       description: |
+    #         The role of the router in the router topology.  *You don't need to change this.*
 
-            <!-- Interior routers do X.  Edge routers only do Y. -->
-        - name: routerLogging
-          default: info
-          type: string
-          choices: [trace, debug, info, notice, warning, error]
-          description: |
-            Logging settings for the router.
-        - name: routerDebugMode
-          trouble: Need to check that disabled is okay
-          type: string
-          choices: [disabled, asan, gdb]
-          description: |
-            Enable debug mode for the router.
-        - name: routers
-          type: integer
-          description: |
-            The number of router replicas to start.
-    - title: Resource options
-      options:
-        - name: resourceLimits
-          description: Resource requests and limits
-        - name: resourceAnnotations
-        - name: resourceLabels
-        - name: resourceNodeAffinity
-        - name: resourcePodAffinity
-- name: Link
-  examples:
-    - title: YAML
-      syntax: yaml
-      text: |
-        apiVersion: skupper.io/v1alpha1
-        kind: Site
-        metadata:
-          name: east
-          namespace: east
-        data:
-          links:
-            - name: link-to-west
-              secret: west-token-1
-              cost: 2
-    - title: CLI
-      syntax: sh
-      text: |
-        skupper link create west-token-1.yaml --name link-to-west
-  options:
-    - name: name
-      default: "*Generated*"
-      type: string
-      description: |
-        An optional name for the link.
-    - name: secret
-      type: string
-      description: |
-        The name of the secret that contains the token data.
-    - name: cost
-      default: 1
-      type: integer
-      description: |
-        The weighted cost of routing connections and requests over
-        this link.  The cost of this link relative to others, plus the
-        current backlog at each endpoint and the number of hops
-        required, determines how traffic is routed across the network.
-- name: Token
-  examples:
-    - title: YAML
-      syntax: yaml
-      text: |
-        apiVersion: skupper.io/v1alpha1
-        kind: Site
-        metadata:
-          name: west
-          namespace: west
-        spec:
-          tokens:
-            - secret: west-token-1
-              expiry: 1h
-              uses: 2
-        ---
-        apiVersion: v1
-        kind: Secret
-        metadata:
-          name: west-token-1
-          namespace: west
-          labels:
-            skupper.io/type: token-request
-    - title: CLI
-      syntax: sh
-      text: |
-        skupper token create west-token-1.yaml --expiry 1h --uses 2
-  options:
-    - name: name
-      default: "*Generated*"
-      type: string
-      description: |
-        The name of the token.
-    - name: secret
-      type: string
-      description: |
-        The name of the secret that is to contain the generated token
-        data.
-    - name: type
-      type: string
-      choices: [claim, cert]
-      description: |
-        The type of token to create.
-    - name: expiry
-      default: 15m
-      type: duration
-      description: |
-        The expiration time for the token.  Valid only if the token
-        type is claim.
-    - name: password
-      default: "*Generated*"
-      type: string
-      description: |
-        A password for the token.  Valid only if the token type is
-        claim.
-    - name: uses
-      trouble: |
-        "Uses" sounds like it could mean "current uses".  "UseLimit"
-        would be unambiguous.
-      default: 1
-      type: integer
-      description: |
-        The max number of uses the token allows.  Valid only if
-        the token type is claim.
-    - name: authName
-      trouble: |
-        What does this mean?  I feel a more relatable attribute might
-        be something linke remote-site-name.  And why is skupper the
-        default?
-      default: skupper
-      type: string
-      description: |
-        Provide a specific identity as which connecting skupper
-        installation will be authenticated.
-- name: ProvidedService
-  extends: Service
-  examples:
-    - title: YAML
-      syntax: yaml
-      text: |
-        apiVersion: skupper.io/v1alpha1
-        kind: ProvidedService
-        metadata:
-          name: backend
-          namespace: east
-        spec:
-          target: deployment/backend
-    - title: CLI
-      syntax: sh
-      text: |
-        skupper provided-service create backend deployment/backend
-  options:
-    - name: target
-      type: string
-      description: |
-        The workload that implements this service.
-    - name: enableIngress
-      trouble: |
-        Collision with other meanings of "ingress".  I want a note
-        here that says that some future iteration might include a
-        third state.  And why the caps?  Our other options don't have
-        that.
-      type: string
-      choices: [Always, Never]
-      description: |
-        Determines whether access to the Skupper service is enabled in
-        this site.
-    - name: publishNotReadyAddresses
-      type: boolean
-      description: |
-        If specified, skupper will not wait for pods to be ready
-- name: ProvidedPort
-  extends: Port
-  examples:
-    - title: YAML
-      syntax: yaml
-      text: |
-        apiVersion: skupper.io/v1alpha1
-        kind: ProvidedService
-        metadata:
-          name: backend
-          namespace: east
-        spec:
-          ports:
-            - port: 8080
-              targetPort: 9090
-    - title: CLI
-      syntax: sh
-      text: |
-        skupper provided-service create-port backend 8080 --target-port 9090
-  options:
-    - name: targetPort
-      default: The value of \`port\`
-      type: integer
-      description: |
-        The port the target workload is listening on.
-- name: RequiredService
-  extends: Service
-  examples:
-    - title: YAML
-      syntax: yaml
-      text: |
-        apiVersion: skupper.io/v1alpha1
-        kind: RequiredService
-        metadata:
-          name: backend
-          namespace: west
-    - title: CLI
-      syntax: sh
-      text: |
-        skupper required-service create backend
-- name: RequiredPort
-  extends: Port
-  examples:
-    - title: YAML
-      syntax: yaml
-      text: |
-        apiVersion: skupper.io/v1alpha1
-        kind: RequiredService
-        metadata:
-          name: backend
-          namespace: west
-        spec:
-          ports:
-            - port: 8080
-    - title: CLI
-      syntax: sh
-      text: |
-        skupper required-service create-port backend 8080
-- name: Service
-  hidden: true
-  options:
-    - name: name
-      type: string
-      description: |
-        The service name.
-    - name: ports
-      type: list
-      description: |
-        A list of ports.
-- name: Port
-  hidden: true
-  options:
-    - name: port
-      type: integer
-      description: |
-        The port number.
-    - name: name
-      default: The value of \`port\`
-      type: string
-      description: |
-        The port name.
-    - name: protocol
-      type: string
-      choices: [tcp, http, http2]
-      description: |
-        The protocol mapping in use for this service address.
-
-        <!-- XXX Consequences for observability. -->
-    - name: bridgeImage
-      type: string
-      description: |
-        The image to use for a bridge running external to the Skupper
-        router.
-  groups:
-    - title: TLS options
-      options:
-        - name: generateTLSSecrets
-          trouble: |
-            This sounds like it generates secrets, but the description
-            says it enables encryption.  Does it enable encryption?
-          type: boolean
-          description: |
-            If specified, the service communication will be encrypted using TLS.
-        - name: tlsCert
-          type: string
-          description: |
-            The Kubernetes secret name with custom certificates to encrypt
-            the communication using TLS.
-        - name: tlsTrust
-          type: string
-          description: |
-            The Kubernetes secret name with the CA to expose the service
-            over TLS.
+    #         <!-- Interior routers do X.  Edge routers only do Y. -->
+    #     - name: router-logging
+    #       default: info
+    #       type: string
+    #       choices: [trace, debug, info, notice, warning, error]
+    #       description: |
+    #         Logging settings for the router.
+    #     - name: router-debug-mode
+    #       trouble: Need to check that disabled is okay.  Do we really want this any longer?
+    #       type: string
+    #       choices: [disabled, asan, gdb]
+    #       description: |
+    #         Enable debug mode for the router.
+    #     - name: routers
+    #       type: integer
+    #       description: |
+    #         The number of router replicas to start.
+    # - title: Resource options
+    #   options:
+    #     - name: resource-limits
+    #       description: Resource requests and limits
+    #     - name: resource-annotations
+    #     - name: resource-labels
+    #     - name: resource-node-affinity
+    #     - name: resource-pod-affinity

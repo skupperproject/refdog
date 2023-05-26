@@ -72,3 +72,8 @@ As an alternative to port numbers:
 skupper provide orders:api deployment/orders --target-port 8080
 skupper require orders:api --port 8080
 ~~~
+
+## Resources
+
+ - https://docs.confluent.io/platform/current/installation/configuration/topic-configs.html - Nice example
+ - https://www.postgresql.org/docs/current/pgbench.html

@@ -158,7 +158,7 @@ A token contains a URL, which represents the target site.
 A token contains a secret, which represents the authority to create a link.
 
 Tokens can be restricted....
-Tokens are restricted by default....
+Tokens are restricted by default.... 1 use, 15 mins
 
 ### Ingress
 
@@ -370,3 +370,19 @@ Routers have two modes, interior and edge.
 ### Site controller
 
 The site controller
+
+Maltron asked:
+
+Another question: I remember Andy telling me what are the "services"
+(or server if you will) being install in your Kubernetes namespace (or
+host). What are those services being installed ?
+
+Is the "Skupper router" the way an application on a given namespace
+connects to (because is listening) in order to establish a link ? Or
+maybe it's a different service ?
+
+Justin:
+
+it is the router.  the services installed are the skupper router and
+the skupper service controller.  the router provides the data plane,
+and the service controller provides the control plane

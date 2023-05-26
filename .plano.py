@@ -20,19 +20,18 @@ def generate():
             continue
 
         resource_name = resource["name"]
-        resource_title = capitalize(resource_name.replace("-", " "))
+        resource_title = resource.get("title", resource_name)
         resource_diagram = f"images/{resource_name}.svg"
 
         append(f"- [{resource_title}](#{resource_name})")
         append("    - [Examples](#{})".format(get_fragment_id("examples")))
-        append("    - [Options](#{})".format(get_fragment_id("options")))
 
         for group in resource.get("groups", []):
             if group.get("hidden"):
                 continue
 
             group_title = group["title"]
-            group_id = group_title.lower().replace(" ", "-")
+            group_id = make_resource_id(group_title)
             group_id = get_fragment_id(group_id)
 
             append(f"    - [{group_title}](#{group_id})")
@@ -45,11 +44,11 @@ def generate():
             continue
 
         resource_name = resource["name"]
-        resource_title = capitalize(resource_name.replace("-", " "))
-        resource_description = resource.get("description", "").rstrip()
+        resource_title = resource.get("title", resource_name)
         resource_diagram = f"images/{resource_name}.svg"
+        resource_description = resource.get("description", "").rstrip()
 
-        append("## {}".format(resource_name))
+        append("## {}".format(resource_title))
         append()
 
         if resource_description:
@@ -76,22 +75,13 @@ def generate():
                 append("~~~")
                 append()
 
-        append("### Options")
-        append()
-
-        for option in resource.get("options", []):
-            if option.get("hidden"):
-                continue
-
-            generate_option(lines, option)
-
         for group in resource.get("groups", []):
             if group.get("hidden"):
                 continue
 
             group_title = group["title"]
             group_description = group.get("description", "").rstrip()
-            group_id = group_title.replace(" ", "-")
+            group_id = make_resource_id(group_title)
 
             append(f"### {group_title}")
             append()
@@ -124,23 +114,35 @@ def transform_data(data):
                     base = candidate
                     break
             else:
-                raise Exception()
+                raise Exception(f"I can't find base resource '{base_name}'")
 
-            if "options" not in resource:
-                resource["options"] = list()
-
-            if "groups" not in resource:
-                resource["groups"] = list()
+            try:
+                groups = resource["groups"]
+            except KeyError:
+                groups = dict()
+                resource["groups"] = groups
 
             # Could use a nicer merge here
 
-            if "options" in base:
-                resource["options"][0:0] = base["options"]
+            try:
+                base_groups = {x.name: x for x in base["groups"]}
+            except KeyError:
+                base_groups = None
 
-            if "groups" in base:
+            if "groups" in resource:
+                for group in resource["groups"]:
+                    if base_groups
+                    if "groups" in base:
+                        for base_group in base["groups"]:
+
+
+
                 resource["groups"][0:0] = base["groups"]
 
     return data
+
+def make_resource_id(title):
+    return title.lower().replace(" ", "-")
 
 fragment_ids = collections.defaultdict(int)
 

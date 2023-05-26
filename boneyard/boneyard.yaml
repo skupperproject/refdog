@@ -1,3 +1,116 @@
+- name: Link
+  examples:
+    - title: YAML
+      syntax: yaml
+      text: |
+        apiVersion: skupper.io/v1alpha1
+        kind: Site
+        metadata:
+          name: east
+          namespace: east
+        data:
+          links:
+            - name: link-to-west
+              secret: west-token-1
+              cost: 2
+    - title: CLI
+      syntax: sh
+      text: |
+        skupper link create west-token-1.yaml --name link-to-west
+  options:
+    - name: name
+      default: "*Generated*"
+      type: string
+      description: |
+        An optional name for the link.
+    - name: secret
+      type: string
+      description: |
+        The name of the secret that contains the token data.
+    - name: cost
+      default: 1
+      type: integer
+      description: |
+        The weighted cost of routing connections and requests over
+        this link.  The cost of this link relative to others, plus the
+        current backlog at each endpoint and the number of hops
+        required, determines how traffic is routed across the network.
+- name: Token
+  examples:
+    - title: YAML
+      syntax: yaml
+      text: |
+        apiVersion: skupper.io/v1alpha1
+        kind: Site
+        metadata:
+          name: west
+          namespace: west
+        spec:
+          tokens:
+            - secret: west-token-1
+              expiry: 1h
+              uses: 2
+        ---
+        apiVersion: v1
+        kind: Secret
+        metadata:
+          name: west-token-1
+          namespace: west
+          labels:
+            skupper.io/type: token-request
+    - title: CLI
+      syntax: sh
+      text: |
+        skupper token create west-token-1.yaml --expiry 1h --uses 2
+  options:
+    - name: name
+      default: "*Generated*"
+      type: string
+      description: |
+        The name of the token.
+    - name: secret
+      type: string
+      description: |
+        The name of the secret that is to contain the generated token
+        data.
+    - name: type
+      type: string
+      choices: [claim, cert]
+      description: |
+        The type of token to create.
+    - name: expiry
+      default: 15m
+      type: duration
+      description: |
+        The expiration time for the token.  Valid only if the token
+        type is claim.
+    - name: password
+      default: "*Generated*"
+      type: string
+      description: |
+        A password for the token.  Valid only if the token type is
+        claim.
+    - name: uses
+      trouble: |
+        "Uses" sounds like it could mean "current uses".  "UseLimit"
+        would be unambiguous.
+      default: 1
+      type: integer
+      description: |
+        The max number of uses the token allows.  Valid only if
+        the token type is claim.
+    - name: authName
+      trouble: |
+        What does this mean?  I feel a more relatable attribute might
+        be something linke remote-site-name.  And why is skupper the
+        default?
+      default: skupper
+      type: string
+      description: |
+        Provide a specific identity as which connecting skupper
+        installation will be authenticated.
+
+---
   yaml_example: |
     version: 1
     site:
