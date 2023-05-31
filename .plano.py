@@ -9,29 +9,27 @@ def generate():
     def append(line=""):
         lines.append(line)
 
-    data = read_yaml("resources.yaml")
+    data = read_yaml("entities.yaml")
     data = transform_data(data)
 
     append("- [Notes](#{})".format(get_fragment_id("notes")))
     append("- [Overview](#{})".format(get_fragment_id("overview")))
 
-    for resource in data:
-        if resource.get("hidden"):
+    for entity_name, entity in data.items():
+        if entity.get("hidden"):
             continue
 
-        resource_name = resource["name"]
-        resource_title = resource.get("title", resource_name)
-        resource_diagram = f"images/{resource_name}.svg"
+        entity_title = entity["title"]
+        entity_diagram = f"images/{entity_name}.svg"
 
-        append(f"- [{resource_title}](#{resource_name})")
-        append("    - [Examples](#{})".format(get_fragment_id("examples")))
+        append(f"- [{entity_title}](#{entity_name})")
 
-        for group in resource.get("groups", []):
+        for group_name, group in entity.get("groups", {}).items():
             if group.get("hidden"):
                 continue
 
             group_title = group["title"]
-            group_id = make_resource_id(group_title)
+            group_id = make_entity_id(group_title)
             group_id = get_fragment_id(group_id)
 
             append(f"    - [{group_title}](#{group_id})")
@@ -39,49 +37,63 @@ def generate():
     toc = "\n".join(lines)
     lines.clear()
 
-    for resource in data:
-        if resource.get("hidden"):
+    for entity_name, entity in data.items():
+        if entity.get("hidden"):
             continue
 
-        resource_name = resource["name"]
-        resource_title = resource.get("title", resource_name)
-        resource_diagram = f"images/{resource_name}.svg"
-        resource_description = resource.get("description", "").rstrip()
+        entity_title = entity["title"]
+        entity_diagram = f"images/{entity_name}.svg"
+        entity_description = entity.get("description", "").rstrip()
 
-        append("## {}".format(resource_title))
+        append("## {}".format(entity_title))
         append()
 
-        if resource_description:
-            append(resource_description)
+        if entity_description:
+            append(entity_description)
             append()
 
-        if exists(resource_diagram):
-            append(f"<img src=\"{resource_diagram}\" height=\"180\"/>")
+        resource_name = entity["resource-name"]
+
+        if not resource_name.startswith("*"):
+            resource_name = "`{}`".format(resource_name)
+
+        append("_Resource kind_: `{}`\\".format(entity["resource-kind"]))
+        append(f"_Resource name_: {resource_name}\\")
+        append("_Type label_: `{}`\\".format(entity["type-label"]))
+
+        # Chomp off the last backslash
+        lines[-1] = lines[-1].removesuffix("\\")
+
+        append()
+
+        if exists(entity_diagram):
+            append(f"<img src=\"{entity_diagram}\" height=\"180\"/>")
             append()
 
-        if "examples" in resource:
-            append("### Examples")
-            append()
-
-            for example in resource["examples"]:
-                example_title = example["title"]
-                example_syntax = example.get("syntax", "")
-                example_text = example["text"].rstrip()
-
-                append(f"#### {example_title}")
+        if "examples" in entity:
+            if "yaml" in entity["examples"]:
+                append("#### YAML example")
                 append()
-                append(f"~~~ {example_syntax}")
-                append(example_text)
+                append("~~~ yaml")
+                append(entity["examples"]["yaml"])
                 append("~~~")
                 append()
 
-        for group in resource.get("groups", []):
+            if "cli" in entity["examples"]:
+                append("#### CLI example")
+                append()
+                append("~~~ sh")
+                append(entity["examples"]["cli"])
+                append("~~~")
+                append()
+
+        for group_name, group in entity.get("groups", {}).items():
             if group.get("hidden"):
                 continue
 
-            group_title = group["title"]
+            group_title = group.get("title", group_name)
             group_description = group.get("description", "").rstrip()
-            group_id = make_resource_id(group_title)
+            group_id = make_entity_id(group_title)
 
             append(f"### {group_title}")
             append()
@@ -90,58 +102,71 @@ def generate():
                 append(group_description)
                 append()
 
-            for option in group.get("options", []):
+            for option_name, option in group.get("options", {}).items():
                 if option.get("hidden"):
                     continue
 
-                generate_option(lines, option)
+                generate_option(lines, option_name, option)
 
-    resources = "\n".join(lines)
+    entities = "\n".join(lines)
 
     readme = read("README.md.in")
     readme = readme.replace("@toc@", toc)
-    readme = readme.replace("@resources@", resources)
+    readme = readme.replace("@entities@", entities)
 
     write("README.md", readme)
 
 def transform_data(data):
-    for resource in data:
-        if "extends" in resource:
-            base_name = resource["extends"]
+    for entity_name, entity in data.items():
+        if "title" not in entity:
+            entity["title"] = make_entity_title(entity_name)
 
-            for candidate in data:
-                if candidate["name"] == base_name:
-                    base = candidate
+        if "extends" in entity:
+            base_name = entity["extends"]
+
+            for candidate_name, candidate in data.items():
+                if candidate_name == base_name:
+                    base_entity = candidate
                     break
             else:
-                raise Exception(f"I can't find base resource '{base_name}'")
+                raise Exception(f"I can't find base entity '{base_name}'")
 
-            try:
-                groups = resource["groups"]
-            except KeyError:
-                groups = dict()
-                resource["groups"] = groups
+            if "groups" not in entity:
+                entity["groups"] = dict()
 
-            # Could use a nicer merge here
+            if "groups" not in base_entity:
+                base_entity["groups"] = dict()
 
-            try:
-                base_groups = {x.name: x for x in base["groups"]}
-            except KeyError:
-                base_groups = None
+            group_names = list(base_entity["groups"].keys())
 
-            if "groups" in resource:
-                for group in resource["groups"]:
-                    if base_groups
-                    if "groups" in base:
-                        for base_group in base["groups"]:
+            for group_name in entity["groups"]:
+                if group_name not in group_names:
+                    group_names.append(group_name)
 
+            for group_name in group_names:
+                try:
+                    group = entity["groups"][group_name]
+                except KeyError:
+                    group = dict()
+                    entity["groups"][group_name] = group
 
+                try:
+                    base_group = base_entity["groups"][group_name]
+                except KeyError:
+                    base_group = dict()
+                    base_entity["groups"][group_name] = base_group
 
-                resource["groups"][0:0] = base["groups"]
+                for option_name, option in base_group.items():
+                    if option_name not in group:
+                        group[option_name] = option
 
     return data
 
-def make_resource_id(title):
+def make_entity_title(name):
+    title = name.replace("-", " ")
+    return title[0].upper() + title[1:]
+
+def make_entity_id(title):
     return title.lower().replace(" ", "-")
 
 fragment_ids = collections.defaultdict(int)
@@ -155,8 +180,7 @@ def get_fragment_id(fragment_id):
     else:
         return f"{fragment_id}-{count}"
 
-def generate_option(lines, option):
-    name = option["name"].strip()
+def generate_option(lines, name, option):
     description = option.get("description", "").strip()
     type_ = capitalize(option.get("type", ""))
 
@@ -167,28 +191,29 @@ def generate_option(lines, option):
     default = str(option.get("default", "")).strip()
     choices = option.get("choices")
 
-    lines.append(f"* **`{name}`**")
+    lines.append(f"#### `{name}`")
     lines.append("")
 
     if "description" in option:
-        lines.append(f"  {description}".replace("\n", "\n  "))
+        # lines.append(f"  {description}".replace("\n", "\n  "))
+        lines.append(description)
 
-    lines.append("  ")
+    lines.append("")
 
     if "type" in option:
-        lines.append(f"  _Type_: {type_}\\")
+        lines.append(f"_Type_: {type_}\\")
 
     if "default" in option:
         if type_ in ("String", "Duration") and default != "*Generated*" and " " not in default:
             default = f"`{default}`"
 
-        lines.append(f"  _Default_: {default}\\")
+        lines.append(f"_Default_: {default}\\")
     elif "choices" in option:
-        lines.append(f"  _Default_: `{choices[0]}`\\")
+        lines.append(f"_Default_: `{choices[0]}`\\")
 
     if "choices" in option:
         choices = ", ".join([f"`{x}`" for x in choices])
-        lines.append(f"  _Choices_: {choices}\\")
+        lines.append(f"_Choices_: {choices}\\")
 
     # Chomp off the last backslash
     lines[-1] = lines[-1].removesuffix("\\")

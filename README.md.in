@@ -6,42 +6,42 @@ A configuration reference for Skupper
 
 @toc@
 
-## Notes
+<!-- ## Notes -->
 
-### Goals
+<!-- ### Goals -->
 
-*Regularize* and *document* Skupper configuration.
+<!-- *Regularize* and *document* Skupper configuration. -->
 
-- A declarative language for configuring sites, linking sites, and
-  exposing services.
-- A configuration model that operates uniformly across Kubernetes,
-  Podman, and Systemd bundles, while still allowing for platform
-  specific variations.
-- A central configuration reference for Skupper.
+<!-- - A declarative language for configuring sites, linking sites, and -->
+<!--   exposing services. -->
+<!-- - A configuration model that operates uniformly across Kubernetes, -->
+<!--   Podman, and Systemd bundles, while still allowing for platform -->
+<!--   specific variations. -->
+<!-- - A central configuration reference for Skupper. -->
 
-In addition, I'd like to use this exercise to work out what the [CLI
-experience][services-cli] should be for provided and required
-services.
+<!-- In addition, I'd like to use this exercise to work out what the [CLI -->
+<!-- experience][services-cli] should be for provided and required -->
+<!-- services. -->
 
-[services-cli]: services-cli.txt
+<!-- [services-cli]: services-cli.txt -->
 
-A related project is mocking up the [GUI equivalent][skuppernetes] in
-the context of a Kubernetes console.
+<!-- A related project is mocking up the [GUI equivalent][skuppernetes] in -->
+<!-- the context of a Kubernetes console. -->
 
-[skuppernetes]: https://www.ssorj.net/skuppernetes/
+<!-- [skuppernetes]: https://www.ssorj.net/skuppernetes/ -->
 
-### Resources
+<!-- ### Resources -->
 
-- [Hello World expressed in YAML](hello-world/resources.yaml)
-- [Hello World scripted using the proposed CLI commands](hello-world/cli.txt)
-- [Hello World and systemd bundles](hello-world/systemd-bundles.yaml)
-- [Skupper KCP demo](https://github.com/grs/skupper-kcp-demo)
-- [Skupper syncer demo](https://github.com/grs/skupper-syncer-demo)
-- [Kubernetes Service API](https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/)
-- [Skuppernetes, the GUI equivalent of the operations here](https://www.ssorj.net/skuppernetes/)
+<!-- - [Hello World expressed in YAML](hello-world/resources.yaml) -->
+<!-- - [Hello World scripted using the proposed CLI commands](hello-world/cli.txt) -->
+<!-- - [Hello World and systemd bundles](hello-world/systemd-bundles.yaml) -->
+<!-- - [Skupper KCP demo](https://github.com/grs/skupper-kcp-demo) -->
+<!-- - [Skupper syncer demo](https://github.com/grs/skupper-syncer-demo) -->
+<!-- - [Kubernetes Service API](https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/) -->
+<!-- - [Skuppernetes, the GUI equivalent of the operations here](https://www.ssorj.net/skuppernetes/) -->
 
 ## Overview
 
 <img src="images/model.svg" width="640"/>
 
-@resources@
+@entities@

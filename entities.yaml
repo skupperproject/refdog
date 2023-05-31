@@ -1,0 +1,206 @@
+site:
+  resource-kind: ConfigMap
+  resource-name: skupper-site
+  type-label: "skupper.io/type: site"
+  description: |
+    A [site](terminology.md#site) is a place where part of your
+    application is running.  *Examples!*
+
+    Sites are linked to form application
+    [networks](terminology.md#networks).  Site ingress is important to
+    how you create those links XXX.
+
+    Only one per namespace XXX
+  examples:
+    yaml: |
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: skupper-site
+        namespace: west
+        labels:
+          skupper.io/type: site
+      data: |
+        name: west
+        ingress: loadbalancer
+    cli: |
+      skupper init --site-name west --ingress loadbalancer
+  groups:
+    core:
+      title: Core options
+      options:
+        name:
+          type: string
+          description: |
+            A name of your choice for the Skupper site.  *Appears in the
+            console and status stuff!*
+        create-network-policy:
+          type: boolean
+          description: |
+            Create network policy to restrict access to Skupper services
+            exposed through this site to the pods currently in the
+            namespace.
+    ingress-options:
+      title: Site ingress options
+      description: |
+        Options for configuring site [ingress](terminology.md#ingress)
+        so it can accept incoming site [links](terminology.md#link).
+
+        This is different from *service* ingress. XXX
+      options:
+        ingress:
+          default: |
+            `route` if the environment is OpenShift, otherwise
+            `loadbalancer`
+          type: string
+          choices: [route, loadbalancer, nodeport, nginx-ingress-v1, contour-http-proxy, ingress, none]
+          description: |
+            Select the method for cluster ingress.  This determines
+            how Skupper services are exposed outside of the cluster.
+        ingress-host:
+          trouble: Should this get pushed down to ingressOptions?
+          type: string
+          description: |
+            The hostname or alias by which the ingress route or proxy
+            can be reached.
+        load-balancer-ip:
+          description: |
+            XXX
+egress-binding:
+  extends: service-binding
+  resource-kind: ConfigMap
+  resource-name: "*User defined*"
+  type-label: "skupper.io/type: egress-binding"
+  description: |
+    Multiple in one namespace XXX
+  examples:
+    yaml: |
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: backend
+        namespace: east
+        labels:
+          skupper.io/type: egress-binding
+      data: |
+        routing-key: backend:8080
+        port: 8080
+        selector: app=backend
+    cli: |
+      skupper service bind-egress backend:8080 deployment/backend
+  groups:
+    core:
+      title: Core options
+      options:
+        hostname:
+          type: string
+          description: |
+            The workload that implements this service.
+        port:
+          default: The value of \`port\`
+          type: integer
+          description: |
+            The port the target workload is listening on.
+ingress-binding:
+  extends: service-binding
+  resource-kind: ConfigMap
+  resource-name: "*User defined*"
+  type-label: "skupper.io/type: ingress-binding"
+  description: |
+    Multiple in one namespace XXX
+  examples:
+    yaml: |
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: backend
+        namespace: west
+        labels:
+          skupper.io/type: ingress-binding
+      data: |
+        routing-key: backend:8080
+        hostname: backend
+        port: 8080
+    cli: |
+      skupper service bind-ingress backend:8080
+service-binding:
+  hidden: true
+  groups:
+    core:
+      title: Core options
+      options:
+        routing-key:
+          type: string
+          description: |
+            XXX
+    tls:
+      title: TLS options
+      options:
+        tls-credentials:
+          type: string
+          description: |
+            XXX
+
+            The name of the Kubernetes secret containing custom
+            certificates for use in encrypting communication using
+            TLS.
+
+            The name of the Kubernetes secret containing the CA for
+            exposing the service over TLS.
+    advanced:
+      hidden: true
+      title: Advanced options
+      options:
+        bridge-image:
+          type: string
+          description: |
+            The image to use for a bridge running external to the Skupper
+            router.
+console:
+  resource-kind: ConfigMap
+  resource-name: skupper-console
+  type-label: "skupper.io/type: console"
+  description: |
+    Only one per namespace XXX
+  examples:
+    yaml: |
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: skupper-console
+        namespace: west
+        labels:
+          skupper.io/type: console
+      data: |
+        ingress: loadbalancer
+        users: skupper-console-users
+  groups:
+    main:
+      title: Options
+      options:
+        auth:
+          type: string
+          choices: [internal, openshift, unsecured]
+          description: |
+            The user authentication mode for the console.
+
+            `internal` - Use Skupper's built-in authentication.  See
+            the `users` option.
+
+            `openshift` - Use OpenShift authentication, so that users
+            who have permission to log into OpenShift and view the
+            namespace (project) can view the console.
+
+            `unsecured` - No authentication.  Anyone with the URL can
+            view the console.
+        users:
+          default: "*Generated*"
+          type: string
+          description: |
+            The name of the Kubernetes secret containing the console
+            users and passwords for the `internal` authentication
+            mode.
+
+            If not set, a default is generated with user "admin" and a
+            random password.  You can query the generated password XXX
+            ...
