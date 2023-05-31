@@ -4,19 +4,11 @@ A configuration reference for Skupper
 
 #### Contents
 
-- [Notes](#notes)
 - [Overview](#overview)
 - [Site](#site)
-    - [Core options](#core-options)
-    - [Site ingress options](#site-ingress-options)
 - [Egress binding](#egress-binding)
-    - [Core options](#core-options-1)
-    - [TLS options](#tls-options)
 - [Ingress binding](#ingress-binding)
-    - [Core options](#core-options-2)
-    - [TLS options](#tls-options-1)
 - [Console](#console)
-    - [Options](#options)
 
 <!-- ## Notes -->
 
@@ -54,7 +46,11 @@ A configuration reference for Skupper
 
 ## Overview
 
-<img src="images/model.svg" width="640"/>
+Enumerate and relate the declarative stuff XXX
+
+<img src="images/model.svg" width="360"/>
+
+Site linking, by contrast, is procedural XXX
 
 ## Site
 
@@ -62,8 +58,7 @@ A [site](terminology.md#site) is a place where part of your
 application is running.  *Examples!*
 
 Sites are linked to form application
-[networks](terminology.md#networks).  Site ingress is important to
-how you create those links XXX.
+[networks](terminology.md#networks).
 
 Only one per namespace XXX
 
@@ -112,10 +107,10 @@ namespace.
 _Type_: Boolean\
 _Default_: False
 
-### Site ingress options
+### Ingress options
 
 Options for configuring site [ingress](terminology.md#ingress)
-so it can accept incoming site [links](terminology.md#link).
+so the site can accept incoming [links](terminology.md#link).
 
 This is different from *service* ingress. XXX
 
@@ -155,7 +150,7 @@ _Type label_: `skupper.io/type: egress-binding`
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: backend
+  name: skupper-egress-binding-backend
   namespace: east
   labels:
     skupper.io/type: egress-binding
@@ -195,8 +190,7 @@ _Default_: The value of \`port\`
 XXX
 
 The name of the Kubernetes secret containing custom
-certificates for use in encrypting communication using
-TLS.
+certificates for use in encrypting communication with TLS.
 
 The name of the Kubernetes secret containing the CA for
 exposing the service over TLS.
@@ -217,7 +211,7 @@ _Type label_: `skupper.io/type: ingress-binding`
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: backend
+  name: skupper-ingress-binding-backend
   namespace: west
   labels:
     skupper.io/type: ingress-binding
@@ -250,8 +244,7 @@ _Type_: String
 XXX
 
 The name of the Kubernetes secret containing custom
-certificates for use in encrypting communication using
-TLS.
+certificates for use in encrypting communication with TLS.
 
 The name of the Kubernetes secret containing the CA for
 exposing the service over TLS.

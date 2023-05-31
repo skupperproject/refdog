@@ -7,8 +7,7 @@ site:
     application is running.  *Examples!*
 
     Sites are linked to form application
-    [networks](terminology.md#networks).  Site ingress is important to
-    how you create those links XXX.
+    [networks](terminology.md#networks).
 
     Only one per namespace XXX
   examples:
@@ -41,10 +40,10 @@ site:
             exposed through this site to the pods currently in the
             namespace.
     ingress-options:
-      title: Site ingress options
+      title: Ingress options
       description: |
         Options for configuring site [ingress](terminology.md#ingress)
-        so it can accept incoming site [links](terminology.md#link).
+        so the site can accept incoming [links](terminology.md#link).
 
         This is different from *service* ingress. XXX
       options:
@@ -78,7 +77,7 @@ egress-binding:
       apiVersion: v1
       kind: ConfigMap
       metadata:
-        name: backend
+        name: skupper-egress-binding-backend
         namespace: east
         labels:
           skupper.io/type: egress-binding
@@ -113,7 +112,7 @@ ingress-binding:
       apiVersion: v1
       kind: ConfigMap
       metadata:
-        name: backend
+        name: skupper-ingress-binding-backend
         namespace: west
         labels:
           skupper.io/type: ingress-binding
@@ -142,8 +141,7 @@ service-binding:
             XXX
 
             The name of the Kubernetes secret containing custom
-            certificates for use in encrypting communication using
-            TLS.
+            certificates for use in encrypting communication with TLS.
 
             The name of the Kubernetes secret containing the CA for
             exposing the service over TLS.

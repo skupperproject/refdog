@@ -12,7 +12,7 @@ def generate():
     data = read_yaml("entities.yaml")
     data = transform_data(data)
 
-    append("- [Notes](#{})".format(get_fragment_id("notes")))
+    # append("- [Notes](#{})".format(get_fragment_id("notes")))
     append("- [Overview](#{})".format(get_fragment_id("overview")))
 
     for entity_name, entity in data.items():
@@ -24,15 +24,15 @@ def generate():
 
         append(f"- [{entity_title}](#{entity_name})")
 
-        for group_name, group in entity.get("groups", {}).items():
-            if group.get("hidden"):
-                continue
+        # for group_name, group in entity.get("groups", {}).items():
+        #     if group.get("hidden"):
+        #         continue
 
-            group_title = group["title"]
-            group_id = make_entity_id(group_title)
-            group_id = get_fragment_id(group_id)
+        #     group_title = group["title"]
+        #     group_id = make_entity_id(group_title)
+        #     group_id = get_fragment_id(group_id)
 
-            append(f"    - [{group_title}](#{group_id})")
+        #     append(f"    - [{group_title}](#{group_id})")
 
     toc = "\n".join(lines)
     lines.clear()
