@@ -24,16 +24,6 @@ def generate():
 
         append(f"- [{entity_title}](#{entity_name})")
 
-        # for group_name, group in entity.get("groups", {}).items():
-        #     if group.get("hidden"):
-        #         continue
-
-        #     group_title = group["title"]
-        #     group_id = make_entity_id(group_title)
-        #     group_id = get_fragment_id(group_id)
-
-        #     append(f"    - [{group_title}](#{group_id})")
-
     toc = "\n".join(lines)
     lines.clear()
 
@@ -91,7 +81,7 @@ def generate():
             if group.get("hidden"):
                 continue
 
-            group_title = group.get("title", group_name)
+            group_title = group.get("title", "Settings")
             group_description = group.get("description", "").rstrip()
             group_id = make_entity_id(group_title)
 
@@ -102,11 +92,11 @@ def generate():
                 append(group_description)
                 append()
 
-            for option_name, option in group.get("options", {}).items():
-                if option.get("hidden"):
+            for setting_name, setting in group.get("settings", {}).items():
+                if setting.get("hidden"):
                     continue
 
-                generate_option(lines, option_name, option)
+                generate_setting(lines, setting_name, setting)
 
     entities = "\n".join(lines)
 
@@ -131,11 +121,11 @@ def transform_data(data):
             else:
                 raise Exception(f"I can't find base entity '{base_name}'")
 
-            if "groups" not in entity:
-                entity["groups"] = dict()
-
             if "groups" not in base_entity:
                 base_entity["groups"] = dict()
+
+            if "groups" not in entity:
+                entity["groups"] = dict()
 
             group_names = list(base_entity["groups"].keys())
 
@@ -145,20 +135,26 @@ def transform_data(data):
 
             for group_name in group_names:
                 try:
-                    group = entity["groups"][group_name]
-                except KeyError:
-                    group = dict()
-                    entity["groups"][group_name] = group
-
-                try:
                     base_group = base_entity["groups"][group_name]
                 except KeyError:
-                    base_group = dict()
-                    base_entity["groups"][group_name] = base_group
+                    base_entity["groups"][group_name] = base_group = dict()
 
-                for option_name, option in base_group.items():
-                    if option_name not in group:
-                        group[option_name] = option
+                try:
+                    derived_group = entity["groups"][group_name]
+                except KeyError:
+                    entity["groups"][group_name] = derived_group = dict()
+
+                settings = dict()
+
+                if "settings" in base_group:
+                    for setting_name, setting in base_group["settings"].items():
+                        settings[setting_name] = setting
+
+                if "settings" in derived_group:
+                    for setting_name, setting in derived_group["settings"].items():
+                        settings[setting_name] = setting
+
+                derived_group["settings"] = settings
 
     return data
 
@@ -180,45 +176,55 @@ def get_fragment_id(fragment_id):
     else:
         return f"{fragment_id}-{count}"
 
-def generate_option(lines, name, option):
-    description = option.get("description", "").strip()
-    type_ = capitalize(option.get("type", ""))
+def generate_setting(lines, name, setting):
+    def append(line=""):
+        lines.append(line)
+
+    description = setting.get("description", "").strip()
+    type_ = capitalize(setting.get("type", ""))
 
     # XXX Minor hack
-    if type_ == "Boolean" and "default" not in option:
-        option["default"] = False
+    if type_ == "Boolean" and "default" not in setting:
+        setting["default"] = False
 
-    default = str(option.get("default", "")).strip()
-    choices = option.get("choices")
+    default = str(setting.get("default", "")).strip()
+    choices = setting.get("choices")
 
-    lines.append(f"#### `{name}`")
-    lines.append("")
+    append(f"#### `{name}`")
+    append()
 
-    if "description" in option:
-        # lines.append(f"  {description}".replace("\n", "\n  "))
-        lines.append(description)
+    if "description" in setting:
+        # append(f"  {description}".replace("\n", "\n  "))
+        append(description)
 
-    lines.append("")
+    append()
 
-    if "type" in option:
-        lines.append(f"_Type_: {type_}\\")
+    required = "No"
 
-    if "default" in option:
+    if "required" in setting:
+        required = "Yes" if setting["required"] else required
+
+    append(f"_Required_: {required}\\")
+
+    if "type" in setting:
+        append(f"_Type_: {type_}\\")
+
+    if "default" in setting:
         if type_ in ("String", "Duration") and default != "*Generated*" and " " not in default:
             default = f"`{default}`"
 
-        lines.append(f"_Default_: {default}\\")
-    elif "choices" in option:
-        lines.append(f"_Default_: `{choices[0]}`\\")
+        append(f"_Default_: {default}\\")
+    elif "choices" in setting:
+        append(f"_Default_: `{choices[0]}`\\")
 
-    if "choices" in option:
+    if "choices" in setting:
         choices = ", ".join([f"`{x}`" for x in choices])
-        lines.append(f"_Choices_: {choices}\\")
+        append(f"_Choices_: {choices}\\")
 
     # Chomp off the last backslash
     lines[-1] = lines[-1].removesuffix("\\")
 
-    lines.append("")
+    append()
 
 render_template = """
 <html>

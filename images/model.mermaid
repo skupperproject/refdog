@@ -2,21 +2,27 @@
 
 classDiagram
     direction TB
-    site "1" -- "0..n" `ingress-binding`
-    site "1" -- "0..n" `egress-binding`
+    site "1" -- "0..n" listener
+    site "1" -- "0..n" connector
     class site {
         name
-        &lt;options&gt;
+        ingress
+        &lt;settings&gt;
+        init()
+        delete()
     }
-    class `egress-binding` {
+    class listener {
         routing-key
         hostname
         port
-        &lt;options&gt;
+        &lt;settings&gt;
+        create()
+        delete()
     }
-    class `ingress-binding` {
+    class connector {
         routing-key
-        hostname
-        port
-        &lt;options&gt;
+        selector
+        &lt;settings&gt;
+        create()
+        delete()
     }

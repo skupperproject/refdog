@@ -6,8 +6,8 @@ A configuration reference for Skupper
 
 - [Overview](#overview)
 - [Site](#site)
-- [Egress binding](#egress-binding)
-- [Ingress binding](#ingress-binding)
+- [Connector](#connector)
+- [Listener](#listener)
 - [Console](#console)
 
 <!-- ## Notes -->
@@ -46,21 +46,21 @@ A configuration reference for Skupper
 
 ## Overview
 
-Enumerate and relate the declarative stuff XXX
+<!-- Enumerate and relate the declarative stuff XXX -->
 
-<img src="images/model.svg" width="360"/>
+<img src="images/model.svg" width="320"/>
 
-Site linking, by contrast, is procedural XXX
+<!-- Site linking, by contrast, is procedural XXX -->
 
 ## Site
 
-A [site](terminology.md#site) is a place where part of your
-application is running.  *Examples!*
-
-Sites are linked to form application
+A [site][site] is a place where components of your application are
+running.  Sites are linked to form application
 [networks](terminology.md#networks).
 
-Only one per namespace XXX
+There can be only one `skupper-site` definition per namespace.
+
+[site]: teminology.md#site
 
 _Resource kind_: `ConfigMap`\
 _Resource name_: `skupper-site`\
@@ -85,64 +85,47 @@ data: |
 #### CLI example
 
 ~~~ sh
-skupper init --site-name west --ingress loadbalancer
+# skupper site init <options>
+$ skupper site init --name west --ingress loadbalancer
 
 ~~~
 
-### Core options
+### Settings
 
 #### `name`
 
 A name of your choice for the Skupper site.  *Appears in the
 console and status stuff!*
 
+_Required_: No\
 _Type_: String
-
-#### `create-network-policy`
-
-Create network policy to restrict access to Skupper services
-exposed through this site to the pods currently in the
-namespace.
-
-_Type_: Boolean\
-_Default_: False
-
-### Ingress options
-
-Options for configuring site [ingress](terminology.md#ingress)
-so the site can accept incoming [links](terminology.md#link).
-
-This is different from *service* ingress. XXX
 
 #### `ingress`
 
-Select the method for cluster ingress.  This determines
-how Skupper services are exposed outside of the cluster.
+The method for providing access to this site from outside
+the cluster.  Cluster ingress enables a site to accept
+incoming [links](terminology.md#link).
 
+<!-- XXX enumerate -->
+
+_Required_: No\
 _Type_: String\
 _Default_: `route` if the environment is OpenShift, otherwise
 `loadbalancer`\
 _Choices_: `route`, `loadbalancer`, `nodeport`, `nginx-ingress-v1`, `contour-http-proxy`, `ingress`, `none`
 
-#### `ingress-host`
+## Connector
 
-The hostname or alias by which the ingress route or proxy
-can be reached.
+A [connector][connector] binds local servers to listeners in
+remote sites.
 
-_Type_: String
+Each namespace can contain multiple connector definitions.
 
-#### `load-balancer-ip`
-
-XXX
-
-
-## Egress binding
-
-Multiple in one namespace XXX
+[connector]: terminology.md#connector
 
 _Resource kind_: `ConfigMap`\
-_Resource name_: *User defined*\
-_Type label_: `skupper.io/type: egress-binding`
+_Resource name_: `skupper-connector-<qualifier>`\
+_Type label_: `skupper.io/type: connector`
 
 #### YAML example
 
@@ -150,10 +133,10 @@ _Type label_: `skupper.io/type: egress-binding`
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: skupper-egress-binding-backend
+  name: skupper-connector-backend
   namespace: east
   labels:
-    skupper.io/type: egress-binding
+    skupper.io/type: connector
 data: |
   routing-key: backend:8080
   port: 8080
@@ -164,46 +147,79 @@ data: |
 #### CLI example
 
 ~~~ sh
-skupper service bind-egress backend:8080 deployment/backend
+# skupper connector create <routing-key> <workload>
+$ skupper connector create backend:8080 deployment/backend
 
 ~~~
 
-### Core options
+### Settings
+
+#### `routing-key`
+
+The identifier used to route traffic from listeners to
+connectors.  To connect to a service at a remote site, the
+listener and connector must have matching routing keys.
+
+_Required_: Yes\
+_Type_: String
+
+#### `selector`
+
+A Kubernetes [label selector][selector] for identifying
+server pods.
+
+[selector]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
+
+_Required_: No\
+_Type_: String
 
 #### `hostname`
 
-The workload that implements this service.
+The hostname or IP address of the server.
 
+XXX I think this should be host, not hostname.  An IP
+address here is legit.
+
+XXX We might consider `server` (formatted `<host>:<port>`)
+as opposed to hostname and port here.
+
+_Required_: No\
 _Type_: String
 
 #### `port`
 
-The port the target workload is listening on.
+The port number of the server.
 
-_Type_: Integer\
-_Default_: The value of \`port\`
-
-### TLS options
+_Required_: No\
+_Type_: Integer
 
 #### `tls-credentials`
 
-XXX
+The name of a Kubernetes secret containing TLS
+credentials.  The secret includes the server certificate
+and key.  The connector is configured to trust the
+provided server certificate.
 
-The name of the Kubernetes secret containing custom
-certificates for use in encrypting communication with TLS.
+XXX Is this correct?
 
-The name of the Kubernetes secret containing the CA for
-exposing the service over TLS.
+XXX Compare to `tls-trust`.
 
-_Type_: String
+_Required_: No\
+_Type_: String\
+_Default_: `*None*`
 
-## Ingress binding
+## Listener
 
-Multiple in one namespace XXX
+A [listener][listener] is a local connection endpoint bound to
+services in remote sites.
+
+Each namespace can contain multiple listener definitions.
+
+[listener]: terminology.md#listener
 
 _Resource kind_: `ConfigMap`\
-_Resource name_: *User defined*\
-_Type label_: `skupper.io/type: ingress-binding`
+_Resource name_: `skupper-listener-<qualifier>`\
+_Type label_: `skupper.io/type: listener`
 
 #### YAML example
 
@@ -211,10 +227,10 @@ _Type label_: `skupper.io/type: ingress-binding`
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: skupper-ingress-binding-backend
+  name: skupper-listener-backend
   namespace: west
   labels:
-    skupper.io/type: ingress-binding
+    skupper.io/type: listener
 data: |
   routing-key: backend:8080
   hostname: backend
@@ -225,35 +241,67 @@ data: |
 #### CLI example
 
 ~~~ sh
-skupper service bind-ingress backend:8080
+# skupper listener create <routing-key> <options>
+$ skupper listener create backend:8080
+# skupper listener create abc123 --hostname backend --port 8080
 
 ~~~
 
-### Core options
+### Settings
 
 #### `routing-key`
 
-XXX
+The identifier used to route traffic from listeners to
+connectors.  To connect to a service at a remote site, the
+listener and connector must have matching routing keys.
 
+_Required_: Yes\
 _Type_: String
 
-### TLS options
+#### `hostname`
+
+The hostname of the local listener.  Clients at this site
+use the listener hostname and port to establish
+connections to the remote service.
+
+XXX Is this always a host*name*?  I think in theory we
+could have a platform where it is an address.  If so,
+going to just `host` may be justified.  (The router itself
+can use IP addresses in listener and connector.)
+
+_Required_: Yes\
+_Type_: String
+
+#### `port`
+
+The port of the local listener.  Clients at this site use
+the listener hostname and port to establish connections to
+the remote service.
+
+_Required_: Yes\
+_Type_: Integer
 
 #### `tls-credentials`
 
-XXX
+The name of a Kubernetes secret containing TLS
+credentials.  The secret includes the listener certificate
+and key.  The secret can optionally include a trusted
+client certificate.
 
-The name of the Kubernetes secret containing custom
-certificates for use in encrypting communication with TLS.
+XXX Is this correct?
 
-The name of the Kubernetes secret containing the CA for
-exposing the service over TLS.
+XXX Compare to `tls-cert`.
 
-_Type_: String
+_Required_: No\
+_Type_: String\
+_Default_: `*None*`
 
 ## Console
 
-Only one per namespace XXX
+A web interface for viewing the application network and monitoring
+application traffic.
+
+There can be only one `skupper-console` definition per namespace.
 
 _Resource kind_: `ConfigMap`\
 _Resource name_: `skupper-console`\
@@ -271,11 +319,32 @@ metadata:
     skupper.io/type: console
 data: |
   ingress: loadbalancer
-  users: skupper-console-users
+  auth: unsecured
 
 ~~~
 
-### Options
+#### CLI example
+
+~~~ sh
+# skupper console init <options>
+$ skupper console init --ingress loadbalancer --auth unsecured
+
+~~~
+
+### Settings
+
+#### `ingress`
+
+The method for providing access to the console from outside
+the cluster.
+
+<!-- See site ingress for the enumeration XXX -->
+
+_Required_: No\
+_Type_: String\
+_Default_: `route` if the environment is OpenShift, otherwise
+`loadbalancer`\
+_Choices_: `route`, `loadbalancer`, `nodeport`, `nginx-ingress-v1`, `contour-http-proxy`, `ingress`, `none`
 
 #### `auth`
 
@@ -291,6 +360,7 @@ namespace (project) can view the console.
 `unsecured` - No authentication.  Anyone with the URL can
 view the console.
 
+_Required_: No\
 _Type_: String\
 _Default_: `internal`\
 _Choices_: `internal`, `openshift`, `unsecured`
@@ -301,10 +371,12 @@ The name of the Kubernetes secret containing the console
 users and passwords for the `internal` authentication
 mode.
 
-If not set, a default is generated with user "admin" and a
-random password.  You can query the generated password XXX
-...
+By default, a secret named `skupper-console-users` is
+generated with user `admin` and a random password.
 
+<!-- You can query the generated password XXX -->
+
+_Required_: No\
 _Type_: String\
-_Default_: *Generated*
+_Default_: `skupper-console-users`
 

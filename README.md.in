@@ -42,10 +42,10 @@ A configuration reference for Skupper
 
 ## Overview
 
-Enumerate and relate the declarative stuff XXX
+<!-- Enumerate and relate the declarative stuff XXX -->
 
-<img src="images/model.svg" width="360"/>
+<img src="images/model.svg" width="320"/>
 
-Site linking, by contrast, is procedural XXX
+<!-- Site linking, by contrast, is procedural XXX -->
 
 @entities@

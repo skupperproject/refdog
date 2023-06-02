@@ -1,0 +1,63 @@
+# EITHER: kubectl apply -f <controller-yaml>
+# OR: Use the operator
+# CONSIDER some curl | sh scripting
+# CONSIDER some skupper command line thing that does it (skupper controller init)
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: skupper-site
+  namespace: west
+  labels:
+    skupper.io/type: site
+data: |
+  name: west
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: skupper-site
+  namespace: east
+  labels:
+    skupper.io/type: site
+data: |
+  name: east
+  ingress: none
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: skupper-connector-backend
+  namespace: east
+  labels:
+    skupper.io/type: connector
+data: |
+  routing-key: backend-http
+  port: 8080
+  selector: app=backend
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: skupper-listener-backend
+  namespace: west
+  labels:
+    skupper.io/type: listener
+data: |
+  routing-key: backend-http
+  hostname: backend
+  port: 8080
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: skupper-console
+  namespace: west
+  labels:
+    skupper.io/type: console
+data: |
+  ingress: loadbalancer
+  users: skupper-console-users
+---
+# skupper token create
+# skupper link create
