@@ -18,7 +18,7 @@
   * [Components](#components)
   * [Processes](#processes)
 * [Skupper components](#skupper-components)
-  * [Bridge](#bridge)
+  <!-- * [Bridge](#bridge) -->
   * [Command line interface (CLI)](#command-line-interface-cli)
   * [Console](#console)
   * [Flow collector](#flow-collector)
