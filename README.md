@@ -94,8 +94,8 @@ $ skupper site init --name west --ingress loadbalancer
 
 #### `name`
 
-A name of your choice for the Skupper site.  *Appears in the
-console and status stuff!*
+A name of your choice for the Skupper site.  This name is
+displayed in the console and CLI output.
 
 _Required_: No\
 _Type_: String
@@ -188,7 +188,7 @@ _Type_: String
 
 #### `port`
 
-The port number of the server.
+The port number of the server listener.
 
 _Required_: Yes\
 _Type_: Integer

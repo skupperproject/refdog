@@ -9,7 +9,7 @@
   * [Tokens](#tokens)
   * [Ingress](#ingress)
   * [Platforms](#platforms)
-* [Skupper services and ports](#skupper-services-and-ports)
+* [Skupper service bindings](#skupper-service-bindings)
   * [Services](#services)
   * [Ports](#ports)
   * [Addresses](#addresses)
@@ -166,12 +166,11 @@ Understanding ingress is important for creating site-to-site links.
 
 ### Platforms
 
-## Skupper services and ports
+## Skupper service bindings
 
-It's important to understand that site-to-site links are distinct from
-service-to-service connections.  Site links form the underlying
-transport for your network.  Service connections are carried on top of
-this transport.
+Site-to-site links are distinct from service-to-service connections.
+Site links form the underlying transport for your network.  Service
+connections are carried on top of this transport.
 
 In this example, sites "west" and "east" have links to site "central".
 Workload "frontend" is running on "west", and workload "backend" on
@@ -191,23 +190,19 @@ Site link layer           +-------------+      +----------------+      +--------
                           +-------------+      +----------------+      +-------------+
 ~~~
 
-
-
 ~~~
-+--------------------------------+                        +--------------------------------+
-|           Site "west"          |                        |           Site "east"          |
-|                                |                        |                                |
-|     +---------------------+    |                        |     +--------------------+     |
-|     | Workload "frontend" |    |                        |     | Workload "backend" |     |
-|     +---------------------+    |                        |     +--------------------+     |
-| +----------------------------+ |                        | +----------------------------+ |
-| | Required service "backend" | |                        | | Provided service "backend" | |
-| |                            | |   +----------------+   | |                            | |
-| |   +--------------------+   | |   |    Address     |   | |   +--------------------+   | |
-| |   | Required port 8080 |---------| "backend:8080" |---------| Provided port 8080 |   | |
-| |   +--------------------+   | |   +----------------+   | |   +--------------------+   | |
-| +----------------------------+ |                        | +----------------------------+ |
-+--------------------------------+                        +--------------------------------+
++-------------------------------+                        +--------------------------------+
+|          Site "west"          |                        |           Site "east"          |
+|                               |                        |                                |
+|    +---------------------+    |                        |     +--------------------+     |
+|    | Workload "frontend" |    |                        |     | Workload "backend" |     |
+|    +---------------------+    |                        |     +--------------------+     |
+|               |               |                        |                ^               |
+|               v               |   +----------------+   |                |               |
+|   +-----------------------+   |   |  Routing key   |   |   +------------------------+   |
+|   | Listener backend:8080 |-------| "backend:8080" |-------| Connector backend:8080 |   |
+|   +-----------------------+   |   +----------------+   |   +------------------------+   |
++-------------------------------+                        +--------------------------------+
 ~~~
 
 XXX Multiple providers at different sites
@@ -216,37 +211,39 @@ XXX Multiple providers at different sites
 XXX
 ~~~
 
-XXX Skupper virtual conns as opposed to the link stuff
+### Listeners
 
-~~~
-XXX
-~~~
+### Connectors
 
-### Services
+### Routing keys
 
-service - a logical representation of a service\
-server - an actual pod implementing a given service\
-client - something that uses a service
+<!-- ### Services -->
 
-The ultimate purpose of Skupper is to enable application components (microservices) to communicate across distinct sites.
-Providing services and requiring services.
+<!-- service - a logical representation of a service\ -->
+<!-- server - an actual pod implementing a given service\ -->
+<!-- client - something that uses a service -->
 
-A service can have multiple ports.
-Each port represents a routable *address*.
+<!-- The ultimate purpose of Skupper is to enable application components (microservices) to communicate across distinct sites. -->
+<!-- Providing services and requiring services. -->
 
-A provided service has a target.
+<!-- A service can have multiple ports. -->
+<!-- Each port represents a routable *address*. -->
 
-### Ports
+<!-- A provided service has a target. -->
 
-### Addresses
+<!-- ### Ports -->
 
-Routers deal in addresses.
-An address is service name plus port.  One communication channel.  Each one has a protocol.
+<!-- ### Addresses -->
 
-### Protocols
+<!-- Routers deal in addresses. -->
+<!-- An address is service name plus port.  One communication channel.  Each one has a protocol. -->
 
-Some protocols work at the granularity of connections.  Each connection is an opaque stream.  Load balancing!
-Some protocols work at the granularity of requests (and responses).  Load balancing!
+<!-- ### Protocols -->
+
+<!-- Some protocols work at the granularity of connections.  Each connection is an opaque stream.  Load balancing! -->
+<!-- Some protocols work at the granularity of requests (and responses).  Load balancing! -->
+
+
 
 ## Skupper applications and components
 

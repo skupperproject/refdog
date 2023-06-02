@@ -31,8 +31,8 @@ site:
         name:
           type: string
           description: |
-            A name of your choice for the Skupper site.  *Appears in the
-            console and status stuff!*
+            A name of your choice for the Skupper site.  This name is
+            displayed in the console and CLI output.
         ingress:
           default: |
             `route` if the environment is OpenShift, otherwise
@@ -109,7 +109,7 @@ connector:
           required: true
           type: integer
           description: |
-            The port number of the server.
+            The port number of the server listener.
         tls-credentials:
           type: string
           default: "*None*"
