@@ -27,8 +27,8 @@
 
 ## Skupper networks and sites
 
-A Skupper network is composed of sites.  A site is a place where part
-of your distributed application is running.
+A Skupper network is composed of sites.  A site is a place where
+components of your distributed application are running.
 
 Sites are linked together to form a dedicated network for your
 application.  These links are the basis for site-to-site and
