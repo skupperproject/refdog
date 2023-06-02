@@ -190,7 +190,7 @@ _Type_: String
 
 The port number of the server.
 
-_Required_: No\
+_Required_: Yes\
 _Type_: Integer
 
 #### `tls-credentials`

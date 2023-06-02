@@ -106,6 +106,7 @@ connector:
             XXX We might consider `server` (formatted `<host>:<port>`)
             as opposed to hostname and port here.
         port:
+          required: true
           type: integer
           description: |
             The port number of the server.
