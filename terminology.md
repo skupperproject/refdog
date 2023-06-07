@@ -2,7 +2,7 @@
 
 #### Contents
 
-* [Skupper networks and sites](#skupper-networks-and-sites)
+* [Skupper sites and links](#skupper-sites-and-links)
   * [Networks](#networks)
   * [Sites](#sites)
   * [Links](#links)
@@ -18,14 +18,13 @@
   * [Components](#components)
   * [Processes](#processes)
 * [Skupper components](#skupper-components)
-  <!-- * [Bridge](#bridge) -->
-  * [Command line interface (CLI)](#command-line-interface-cli)
+  * [CLI (command line interface)](#cli-command-line-interface)
+  * [Collector](#collector)
   * [Console](#console)
-  * [Flow collector](#flow-collector)
+  * [Controller](#controller)
   * [Router](#router)
-  * [Site controller](#site-controller)
 
-## Skupper networks and sites
+## Skupper sites and links
 
 A Skupper network is composed of sites.  A site is a place where
 components of your distributed application are running.
@@ -311,29 +310,24 @@ The software components that implement Skupper's features.
              |       +--------+        |   |       +--------+       |
              |       | Router |--------------------| Router |       |
              |       +--------+        |   |       +--------+       |
-  +-----+    |  +-----------------+    |   |  +-----------------+   |    +-----+
-  | CLI |-------| Site controller |    |   |  | Site controller |--------| CLI |
-  +-----+    |  +-----------------+    |   |  +-----------------+   |    +-----+
-             |  +-----------------+    |   |                        |
-             |  | Flow collector  |    |   |                        |
-             |  +-----------------+    |   |                        |
+  +-----+    |     +------------+      |   |     +------------+     |    +-----+
+  | CLI |----------| Controller |      |   |     | Controller |----------| CLI |
+  +-----+    |     +------------+      |   |     +------------+     |    +-----+
+             |     +-----------+       |   |                        |
+             |     | Collector |       |   |                        |
+             |     +-----------+       |   |                        |
 +---------+  |      +---------+        |   |                        |
 | Browser |---------| Console |        |   |                        |
 +---------+  |      +---------+        |   |                        |
              +-------------------------+   +------------------------+
 ~~~
 
-<!-- ### Bridge -->
+### CLI (command line interface)
 
-<!-- client-side bridge - the component within a proxy instance that -->
-<!-- translates from the application protocol (http or tcp) to amqp so that -->
-<!-- the communication can be routed -->
+### Collector
 
-<!-- server-side bridge - the component within a proxy instance that -->
-<!-- translates from amqp back into the application protocol (http or tcp) -->
-<!-- so that communication can be delivered to the intended server pod -->
-
-### Command line interface (CLI)
+The collector stores data about network configuration and application
+traffic.
 
 ### Console
 
@@ -342,9 +336,10 @@ The console is scoped to one Skupper network.
 The console is read only.
 The console depends on the flow collector.
 
-### Flow collector
+### Controller
 
-The flow collector stores data about application traffic.
+The site controller and service controller.
+This is the Skupper control plane.
 
 ### Router
 
@@ -362,23 +357,3 @@ Routers implement application-layer addressing based on names.
 Routers know where the target processes are for each named address.
 
 Routers have two modes, interior and edge.
-
-### Site controller
-
-The site controller
-
-Maltron asked:
-
-Another question: I remember Andy telling me what are the "services"
-(or server if you will) being install in your Kubernetes namespace (or
-host). What are those services being installed ?
-
-Is the "Skupper router" the way an application on a given namespace
-connects to (because is listening) in order to establish a link ? Or
-maybe it's a different service ?
-
-Justin:
-
-it is the router.  the services installed are the skupper router and
-the skupper service controller.  the router provides the data plane,
-and the service controller provides the control plane
