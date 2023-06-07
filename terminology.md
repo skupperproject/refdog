@@ -9,7 +9,7 @@
   * [Tokens](#tokens)
   * [Ingress](#ingress)
   * [Platforms](#platforms)
-* [Skupper service bindings](#skupper-service-bindings)
+* [Skupper listeners and connectors](#skupper-listeners-and-connectors)
   * [Listeners](#listeners)
   * [Connectors](#connectors)
   * [Routing keys](#routing-keys)
@@ -164,7 +164,7 @@ Understanding ingress is important for creating site-to-site links.
 
 ### Platforms
 
-## Skupper service bindings
+## Skupper listeners and connectors
 
 Site-to-site links are distinct from service-to-service connections.
 Site links form the underlying transport for your network.  Service
