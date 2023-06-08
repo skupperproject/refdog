@@ -173,15 +173,9 @@ server pods.
 _Required_: No\
 _Type_: String
 
-#### `hostname`
+#### `host`
 
 The hostname or IP address of the server.
-
-XXX I think this should be host, not hostname.  An IP
-address here is legit.
-
-XXX We might consider `server` (formatted `<host>:<port>`)
-as opposed to hostname and port here.
 
 _Required_: No\
 _Type_: String
@@ -196,13 +190,11 @@ _Type_: Integer
 #### `tls-credentials`
 
 The name of a Kubernetes secret containing TLS
-credentials.  The secret includes the server certificate
-and key.  The connector is configured to trust the
-provided server certificate.
+credentials.  The secret contains the trusted server
+certificate (typically a CA certificate).
 
-XXX Is this correct?
-
-XXX Compare to `tls-trust`.
+It can optionally include a client certificate and key for
+mutual TLS.
 
 _Required_: No\
 _Type_: String\
@@ -233,7 +225,7 @@ metadata:
     skupper.io/type: listener
 data: |
   routing-key: backend:8080
-  hostname: backend
+  host: backend
   port: 8080
 
 ~~~
@@ -243,7 +235,7 @@ data: |
 ~~~ sh
 # skupper listener create <routing-key> <options>
 $ skupper listener create backend:8080
-# skupper listener create abc123 --hostname backend --port 8080
+# skupper listener create abc123 --host backend --port 8080
 
 ~~~
 
@@ -258,16 +250,11 @@ listener and connector must have matching routing keys.
 _Required_: Yes\
 _Type_: String
 
-#### `hostname`
+#### `host`
 
-The hostname of the local listener.  Clients at this site
-use the listener hostname and port to establish
-connections to the remote service.
-
-XXX Is this always a host*name*?  I think in theory we
-could have a platform where it is an address.  If so,
-going to just `host` may be justified.  (The router itself
-can use IP addresses in listener and connector.)
+The hostname or IP address of the local listener.  Clients
+at this site use the listener host and port to
+establish connections to the remote service.
 
 _Required_: Yes\
 _Type_: String
@@ -275,7 +262,7 @@ _Type_: String
 #### `port`
 
 The port of the local listener.  Clients at this site use
-the listener hostname and port to establish connections to
+the listener host and port to establish connections to
 the remote service.
 
 _Required_: Yes\
@@ -284,13 +271,11 @@ _Type_: Integer
 #### `tls-credentials`
 
 The name of a Kubernetes secret containing TLS
-credentials.  The secret includes the listener certificate
-and key.  The secret can optionally include a trusted
-client certificate.
+credentials.  The secret contains the server certificate
+and key.
 
-XXX Is this correct?
-
-XXX Compare to `tls-cert`.
+It can optionally include a client certificate for mutual
+TLS.
 
 _Required_: No\
 _Type_: String\
