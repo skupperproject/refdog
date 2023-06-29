@@ -76,7 +76,7 @@ metadata:
   namespace: west
   labels:
     skupper.io/type: site
-data: |
+data:
   name: west
   ingress: loadbalancer
 
@@ -137,7 +137,7 @@ metadata:
   namespace: east
   labels:
     skupper.io/type: connector
-data: |
+data:
   routing-key: backend:8080
   port: 8080
   selector: app=backend
@@ -223,7 +223,7 @@ metadata:
   namespace: west
   labels:
     skupper.io/type: listener
-data: |
+data:
   routing-key: backend:8080
   host: backend
   port: 8080
@@ -302,7 +302,7 @@ metadata:
   namespace: west
   labels:
     skupper.io/type: console
-data: |
+data:
   ingress: loadbalancer
   auth: unsecured
 
