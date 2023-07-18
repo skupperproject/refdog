@@ -232,7 +232,7 @@ in "east", which then connects to the "backend" workload.
 ### Listener
 
 A listener is a local connection endpoint that is associated with
-remote workloads.  Listeners expose a host and port for accepting
+remote servers.  Listeners expose a host and port for accepting
 connections.  Listeners use a routing key to forward connection data
 to remote connectors.
 
