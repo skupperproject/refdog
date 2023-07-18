@@ -66,9 +66,9 @@ establishing an outbound TCP connection to "west".
 +-----------------------------------------+
 ~~~
 
-Creating a link also requires explicit permission from the target
-site.  This permission is granted using **tokens**.  A token contains
-a URL for the target site and a secret key.
+Creating a link requires explicit permission from the target site.
+This permission is granted using **tokens**.  A token contains a URL
+for the target site and a secret key.
 
 In this example, site "west" wishes to allow "east" to create a link.
 Site "west" creates a token.  The owner of "west" gives the token to
@@ -94,9 +94,9 @@ create the link.
          |                           |
 ~~~
 
-Skupper works on multiple platforms: Kubernetes, Podman, VMs, and bare
-metal hosts.  Each site in a network can run on any supported
-platform.
+Skupper works on multiple platforms: Kubernetes, Podman, virtual
+machines, and bare metal hosts.  Each site in a network can run on any
+supported platform.
 
 ~~~
 +---------------------------+      +------------------------+      +-------------------------+
@@ -134,11 +134,11 @@ to the sites providing the required services.
 
 A network (also called an "application network" or "service network")
 is a set of linked sites.  Each site in the network can expose
-services to other sites in the network.  Each site in the network can
-access those exposed services.
+services to other sites in the network.  In turn, each site in the
+network can access those exposed services.
 
 A network is scoped to one distributed application and is fully
-isolated from any other application network.
+isolated from any other Skupper network.
 
 ### Sites
 
@@ -146,7 +146,7 @@ A site is a network location where components of your application are
 running.  Sites are linked together to form networks.
 
 Sites have different kinds based on platform.  These currently include
-Kubernetes, Podman, VMs, and bare metal.
+Kubernetes, Podman, virtual machines, and bare metal hosts.
 
 ### Links
 
@@ -160,9 +160,9 @@ A token is required to create a link.  The token contains a URL, which
 locates the ingress of the target site, and a secret, which represents
 the authority to create a link.
 
-Tokens can be restricted to a chosen number of uses and a particular
-window of time.  By default, tokens allow only one use and expire
-after 15 minutes.
+Tokens can be restricted to a chosen number of uses inside a limited
+time window.  By default, tokens allow only one use and expire after
+15 minutes.
 
 ## Skupper listeners and connectors
 
