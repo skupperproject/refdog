@@ -190,8 +190,8 @@ Site link layer          +-------------+          +----------------+          +-
 
 **Listeners** and **connectors** work together to route service
 connections across the network.  Listeners provide a local connection
-endpoint, and connectors specify the processes that handle the service
-connections.
+endpoint for remote services.  Connectors specify the local processes
+that handle remote service connections.
 
 Listeners and connectors are linked by matching **routing keys**.
 Connections to a listener with a given routing key are forwarded to
