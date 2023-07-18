@@ -142,8 +142,8 @@ isolated from any other Skupper network.
 
 ### Site
 
-A site is a network location where components of your application are
-running.  Sites are linked together to form networks.
+A site is a location where components of your application are running.
+Sites are linked together to form networks.
 
 Sites have different kinds based on platform.  These currently include
 Kubernetes, Podman, virtual machines, and bare metal hosts.
