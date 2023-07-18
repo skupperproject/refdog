@@ -7,8 +7,8 @@
   * [Sites](#sites)
   * [Links](#links)
   * [Tokens](#tokens)
-  * [Ingress](#ingress)
-  * [Platforms](#platforms)
+  <!-- * [Ingress](#ingress) -->
+  <!-- * [Platforms](#platforms) -->
 * [Skupper listeners and connectors](#skupper-listeners-and-connectors)
   * [Listeners](#listeners)
   * [Connectors](#connectors)
@@ -134,8 +134,9 @@ to the sites providing the required services.
 ### Networks
 
 A network (also called an "application network" or "service network")
-is a set of linked sites.  Sites in the same network can access
-services across network locations.
+is a set of linked sites.  Each site in the network can expose
+services to other sites in the network.  Each site in the network can
+access those exposed services.
 
 Each network is scoped to one distributed application and is fully
 isolated from any other application network.
