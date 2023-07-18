@@ -7,8 +7,6 @@
   * [Sites](#sites)
   * [Links](#links)
   * [Tokens](#tokens)
-  <!-- * [Ingress](#ingress) -->
-  <!-- * [Platforms](#platforms) -->
 * [Skupper listeners and connectors](#skupper-listeners-and-connectors)
   * [Listeners](#listeners)
   * [Connectors](#connectors)
@@ -55,17 +53,17 @@ its ingress, and site "east" creates the site-to-site link by
 establishing an outbound TCP connection to "west".
 
 ~~~
-+------------------------------------+
-|        Network "Hello World"       |
-|                                    |
-| +--------------+   +-------------+ |
-| | Site "west"  |   | Site "east" | |
-| |              |   |             | |
-| | +---------+  |   |  +-------+  | |
-| | | Ingress |<--------| Link  |  | |
-| | +---------+  |   |  +-------+  | |
-| +--------------+   +-------------+ |
-+------------------------------------+
++-----------------------------------------+
+|           Network "Hello World"         |
+|                                         |
+| +---------------+       +-------------+ |
+| |  Site "west"  |       | Site "east" | |
+| |               |       |             | |
+| |  +---------+  |       |  +-------+  | |
+| |  | Ingress |<------------| Link  |  | |
+| |  +---------+  |       |  +-------+  | |
+| +---------------+       +-------------+ |
++-----------------------------------------+
 ~~~
 
 Creating a link also requires explicit permission from the target
@@ -138,7 +136,7 @@ is a set of linked sites.  Each site in the network can expose
 services to other sites in the network.  Each site in the network can
 access those exposed services.
 
-Each network is scoped to one distributed application and is fully
+A network is scoped to one distributed application and is fully
 isolated from any other application network.
 
 ### Sites
@@ -147,7 +145,7 @@ A site is a network location where components of your application are
 running.  Sites are linked together to form networks.
 
 Sites have different kinds based on platform.  These currently include
-Kubernetes sites and Podman sites.
+Kubernetes, Podman, VMs, and bare metal.
 
 ### Links
 
@@ -164,12 +162,6 @@ the authority to create a link.
 Tokens can be restricted to a chosen number of uses and a particular
 window of time.  By default, tokens allow only one use and expire
 after 15 minutes.
-
-<!-- ### Ingress -->
-
-<!-- Understanding ingress is important for creating site-to-site links. -->
-
-<!-- ### Platforms -->
 
 ## Skupper listeners and connectors
 
@@ -195,6 +187,18 @@ Site link layer           +-------------+      +----------------+      +--------
                           +-------------+      +----------------+      +-------------+
 ~~~
 
+In site "west", workload "frontend" needs to connect to
+`backend:8080`.  Skupper provides a local connection listener for that host
+and port.
+
+In site "east", workload "backend" is running and ready to handle
+requests.  Skupper configures a local connector for "backend".
+
+Listeners and connectors are linked by matching routing keys.
+Connections to a listener with routing key "backend:8080" are
+forwarded to remote connectors with the same routing key
+"backend:8080".
+
 ~~~
 +-------------------------------+                        +--------------------------------+
 |          Site "west"          |                        |           Site "east"          |
@@ -210,7 +214,7 @@ Site link layer           +-------------+      +----------------+      +--------
 +-------------------------------+                        +--------------------------------+
 ~~~
 
-XXX Multiple providers at different sites
+XXX Multiple providers at different sites (load balancing, HA)
 
 ~~~
 XXX
