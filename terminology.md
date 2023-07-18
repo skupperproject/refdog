@@ -151,9 +151,9 @@ Kubernetes sites and Podman sites.
 
 ### Links
 
-A link is a site-to-site communication channel.  Links transport
-application traffic such as connections and requests.  Links are
-always encrypted using mutual TLS.
+A link is a site-to-site communication channel.  Links serve as a
+transport for application traffic such as connections and requests.
+Links are always encrypted using mutual TLS.
 
 ### Tokens
 
@@ -161,7 +161,7 @@ A token is required to create a link.  The token contains a URL, which
 locates the ingress of the target site, and a secret, which represents
 the authority to create a link.
 
-Tokens can be restricted to a chose number of uses and a particular
+Tokens can be restricted to a chosen number of uses and a particular
 window of time.  By default, tokens allow only one use and expire
 after 15 minutes.
 
