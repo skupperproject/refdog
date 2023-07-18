@@ -56,11 +56,12 @@ A configuration reference for Skupper
 
 A [site][site] is a place where components of your application are
 running.  Sites are linked to form application
-[networks](terminology.md#networks).
+[networks][network].
 
 There can be only one `skupper-site` definition per namespace.
 
 [site]: teminology.md#site
+[network]: terminology.md#network
 
 _Resource kind_: `ConfigMap`\
 _Resource name_: `skupper-site`\
@@ -104,9 +105,11 @@ _Type_: String
 
 The method for providing access to this site from outside
 the cluster.  Cluster ingress enables a site to accept
-incoming [links](terminology.md#link).
+incoming [links][link].
 
 <!-- XXX enumerate -->
+
+[link]: terminology.md#link
 
 _Required_: No\
 _Type_: String\

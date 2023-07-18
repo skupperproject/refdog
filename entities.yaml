@@ -5,11 +5,12 @@ site:
   description: |
     A [site][site] is a place where components of your application are
     running.  Sites are linked to form application
-    [networks](terminology.md#networks).
+    [networks][network].
 
     There can be only one `skupper-site` definition per namespace.
 
     [site]: teminology.md#site
+    [network]: terminology.md#network
   examples:
     yaml: |
       apiVersion: v1
@@ -42,9 +43,11 @@ site:
           description: |
             The method for providing access to this site from outside
             the cluster.  Cluster ingress enables a site to accept
-            incoming [links](terminology.md#link).
+            incoming [links][link].
 
             <!-- XXX enumerate -->
+
+            [link]: terminology.md#link
         # ingress-host:
         #   type: string
         #   description: |

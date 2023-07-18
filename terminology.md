@@ -3,18 +3,18 @@
 #### Contents
 
 * [Skupper sites and links](#skupper-sites-and-links)
-  * [Networks](#networks)
-  * [Sites](#sites)
-  * [Links](#links)
-  * [Tokens](#tokens)
+  * [Network](#network)
+  * [Site](#site)
+  * [Link](#link)
+  * [Token](#token)
 * [Skupper listeners and connectors](#skupper-listeners-and-connectors)
-  * [Listeners](#listeners)
-  * [Connectors](#connectors)
-  * [Routing keys](#routing-keys)
+  * [Listener](#listener)
+  * [Connector](#connector)
+  * [Routing key](#routing-key)
 <!-- * [Skupper applications and components](#skupper-applications-and-components) -->
-<!--   * [Applications](#applications) -->
-<!--   * [Components](#components) -->
-<!--   * [Processes](#processes) -->
+<!--   * [Application](#application) -->
+<!--   * [Component](#component) -->
+<!--   * [Process](#process) -->
 <!-- * [Skupper components](#skupper-components) -->
 <!--   * [CLI (command line interface)](#cli-command-line-interface) -->
 <!--   * [Collector](#collector) -->
@@ -130,7 +130,7 @@ to the sites providing the required services.
  +-----------+                                   +-----------+
 ~~~
 
-### Networks
+### Network
 
 A network (also called an "application network" or "service network")
 is a set of linked sites.  Each site in the network can expose
@@ -140,7 +140,7 @@ network can access those exposed services.
 A network is scoped to one distributed application and is fully
 isolated from any other Skupper network.
 
-### Sites
+### Site
 
 A site is a network location where components of your application are
 running.  Sites are linked together to form networks.
@@ -148,13 +148,13 @@ running.  Sites are linked together to form networks.
 Sites have different kinds based on platform.  These currently include
 Kubernetes, Podman, virtual machines, and bare metal hosts.
 
-### Links
+### Link
 
 A link is a site-to-site communication channel.  Links serve as a
 transport for application traffic such as connections and requests.
 Links are always encrypted using mutual TLS.
 
-### Tokens
+### Token
 
 A token is required to create a link.  The token contains a URL, which
 locates the ingress of the target site, and a secret, which represents
@@ -229,20 +229,20 @@ in "east", which then connects to the "backend" workload.
 <!-- XXX -->
 <!-- ~~~ -->
 
-### Listeners
+### Listener
 
 A listener is a local connection endpoint that is associated with
 remote workloads.  Listeners expose a host and port for accepting
 connections.  Listeners use a routing key to forward connection data
 to remote connectors.
 
-### Connectors
+### Connector
 
 A connector associates a local workload (pods, containers, or
 processes) to remote connection listeners.  Connectors use a routing
 key to receive connection data from remote listeners.
 
-### Routing keys
+### Routing key
 
 A routing key is a string identifier that binds connectors and
 listeners.  Routing keys are the basis for routing service traffic
