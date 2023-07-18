@@ -207,7 +207,7 @@ provides a local connector associated with the processes implementing
 
 When "frontend" in "west" connects to the listener, Skupper uses the
 routing key to forward the connection data to the matching connector
-in "east", which then connects to the "backend" processes.
+in "east", which then connects to the "backend" workload.
 
 ~~~
 +-------------------------------+                        +--------------------------------+
@@ -224,19 +224,29 @@ in "east", which then connects to the "backend" processes.
 +-------------------------------+                        +--------------------------------+
 ~~~
 
-
-
-XXX Multiple providers at different sites (load balancing, HA)
-
-~~~
-XXX
-~~~
+<!-- XXX Multiple providers at different sites (load balancing, HA) -->
+<!-- ~~~ -->
+<!-- XXX -->
+<!-- ~~~ -->
 
 ### Listeners
 
+A listener is a local connection endpoint that is associated with
+remote workloads.  Listeners expose a host and port for accepting
+connections.  Listeners use a routing key to forward connection data
+to remote connectors.
+
 ### Connectors
 
+A connector associates a local workload (pods, containers, or
+processes) to remote connection listeners.  Connectors use a routing
+key to receive connection data from remote listeners.
+
 ### Routing keys
+
+A routing key is a string identifier that binds connectors and
+listeners.  Routing keys are the basis for routing service traffic
+across sites.
 
 <!-- ### Services -->
 
