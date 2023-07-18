@@ -101,7 +101,9 @@ connector:
         host:
           type: string
           description: |
-            The hostname or IP address of the server.
+            The hostname or IP address of the server.  This is an
+            alternative to `selector` for specifying the target
+            server.
         port:
           required: true
           type: integer
@@ -124,7 +126,7 @@ listener:
   type-label: "skupper.io/type: listener"
   description: |
     A [listener][listener] is a local connection endpoint bound to
-    services in remote sites.
+    servers in remote sites.
 
     Each namespace can contain multiple listener definitions.
 

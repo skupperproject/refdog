@@ -238,9 +238,9 @@ to remote connectors.
 
 ### Connector
 
-A connector associates a local workload (pods, containers, or
-processes) to remote connection listeners.  Connectors use a routing
-key to receive connection data from remote listeners.
+A connector binds local servers (pods, containers, or processes) to
+connection listeners in remote sites.  Connectors are linked to
+listeners by a matching routing key.
 
 ### Routing key
 
