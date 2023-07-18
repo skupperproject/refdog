@@ -24,13 +24,13 @@
 
 ## Skupper sites and links
 
-A Skupper network is composed of sites.  A site is a place where
+A Skupper network is composed of **sites**.  A site is a place where
 components of your distributed application are running.
 
-Sites are linked together to form a dedicated network for your
-application.  These links are the basis for site-to-site and
-service-to-service communication.  Links are always secured using
-mutual TLS authentication and encryption.
+Sites use **links** to form a dedicated network for your application.
+These links are the basis for site-to-site and service-to-service
+communication.  Links are always secured using mutual TLS
+authentication and encryption.
 
 In this example, site "west" and site "east" are linked to form the
 network for the "Hello World" application.
@@ -67,8 +67,8 @@ establishing an outbound TCP connection to "west".
 ~~~
 
 Creating a link also requires explicit permission from the target
-site.  This permission is granted using tokens.  A token contains a
-URL for the target site and a secret key.
+site.  This permission is granted using **tokens**.  A token contains
+a URL for the target site and a secret key.
 
 In this example, site "west" wishes to allow "east" to create a link.
 Site "west" creates a token.  The owner of "west" gives the token to
@@ -176,25 +176,26 @@ underlying link topology.  Skupper ensures that "frontend" can connect
 directly to "backend".
 
 ~~~
-Service connection    +---------------------+                       +--------------------+
-layer                 | Workload "frontend" |---------------------->| Workload "backend" |
-                      +---------------------+                       +--------------------+
-                                 |                                            |
-------------------------------------------------------------------------------------------
-                                 |                                            |
-Site link layer           +-------------+      +----------------+      +-------------+
-                          | Site "west" |----->| Site "central" |<-----| Site "east" |
-                          +-------------+      +----------------+      +-------------+
+Service connection    +---------------------+                              +--------------------+
+layer                 | Workload "frontend" |-------- Connection --------->| Workload "backend" |
+                      +---------------------+                              +--------------------+
+                                |                                                    |
+-------------------------------------------------------------------------------------------------
+                                |                                                    |
+Site link layer          +-------------+          +----------------+          +-------------+
+                         | Site "west" |-- Link ->| Site "central" |<- Link --| Site "east" |
+                         +-------------+          +----------------+          +-------------+
 ~~~
 
 In site "west", workload "frontend" needs to connect to
-`backend:8080`.  Skupper provides a local connection listener for that host
-and port.
+`backend:8080`.  Skupper provides a local connection **listener** for
+that host and port.
 
-In site "east", workload "backend" is running and ready to handle
-requests.  Skupper configures a local connector for "backend".
+In "east", "backend" is running and ready to handle requests.  Skupper
+provides a local **connector** bound to the processes implementing
+"backend".
 
-Listeners and connectors are linked by matching routing keys.
+Listeners and connectors are linked by matching **routing keys**.
 Connections to a listener with routing key "backend:8080" are
 forwarded to remote connectors with the same routing key
 "backend:8080".
