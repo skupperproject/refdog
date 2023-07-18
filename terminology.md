@@ -99,15 +99,16 @@ metal hosts.  Each site in a network can run on any supported
 platform.
 
 ~~~
-+---------------------------+   +-------------------------+   +-------------------------+
-|    Kubernetes cluster     |   |         Podman          |   |            VM           |
-|                           |   |                         |   |                         |
-|  +---------------------+  |   |  +-------------------+  |   |  +-------------------+  |
-|  |     Site "west":    |  |   |  |  Site "central":  |  |   |  |    Site "east":   |  |
-|  |   Namespace "west"  |---------|  Podman network   |---------|     VM network    |  |
-|  |                     |  |   |  |    "skupper"      |  |   |  |     "skupper"     |  |
-|  +---------------------+  |   |  +-------------------+  |   |  +-------------------+  |
-+---------------------------+   +-------------------------+   +-------------------------+
++---------------------------+      +------------------------+      +-------------------------+
+|    Kubernetes cluster     |      |         Podman         |      |     VM or bare metal    |
+|                           |      |                        |      |                         |
+|  +---------------------+  |      |  +------------------+  |      |  +-------------------+  |
+|  |     Site "west":    |  |      |  |  Site "central"  |  |      |  |    Site "east"    |  |
+|  |                     |  |      |  |                  |  |      |  |                   |  |
+|  |   Namespace "west"  |--- Link ---|  Podman network  |--- Link ---|    Local user     |  |
+|  |                     |  |      |  |    "skupper"     |  |      |  |                   |  |
+|  +---------------------+  |      |  +------------------+  |      |  +-------------------+  |
++---------------------------+      +------------------------+      +-------------------------+
 ~~~
 
 A site does not need to be directly linked to all the other sites in a
@@ -252,8 +253,6 @@ XXX
 
 <!-- Some protocols work at the granularity of connections.  Each connection is an opaque stream.  Load balancing! -->
 <!-- Some protocols work at the granularity of requests (and responses).  Load balancing! -->
-
-
 
 ## Skupper applications and components
 
