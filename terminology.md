@@ -188,18 +188,26 @@ Site link layer          +-------------+          +----------------+          +-
                          +-------------+          +----------------+          +-------------+
 ~~~
 
-In site "west", workload "frontend" needs to connect to
-`backend:8080`.  Skupper provides a local connection **listener** for
-that host and port.
-
-In "east", "backend" is running and ready to handle requests.  Skupper
-provides a local **connector** bound to the processes implementing
-"backend".
+**Listeners** and **connectors** work together to route service
+connections across the network.  Listeners provide a local connection
+endpoint, and connectors specify the processes that handle the service
+connections.
 
 Listeners and connectors are linked by matching **routing keys**.
-Connections to a listener with routing key "backend:8080" are
-forwarded to remote connectors with the same routing key
-"backend:8080".
+Connections to a listener with a given routing key are forwarded to
+remote connectors with the same routing key.
+
+In site "west", workload "frontend" needs to connect to
+`backend:8080`.  Skupper provides a local connection listener for that
+host and port.
+
+In "east", "backend" is running and ready to handle requests.  Skupper
+provides a local connector associated with the processes implementing
+"backend".
+
+When "frontend" in "west" connects to the listener, Skupper uses the
+routing key to forward the connection data to the matching connector
+in "east", which then connects to the "backend" processes.
 
 ~~~
 +-------------------------------+                        +--------------------------------+
@@ -215,6 +223,8 @@ forwarded to remote connectors with the same routing key
 |   +-----------------------+   |   +----------------+   |   +------------------------+   |
 +-------------------------------+                        +--------------------------------+
 ~~~
+
+
 
 XXX Multiple providers at different sites (load balancing, HA)
 
