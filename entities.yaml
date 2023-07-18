@@ -9,7 +9,7 @@ site:
 
     There can be only one `skupper-site` definition per namespace.
 
-    [site]: teminology.md#site
+    [site]: terminology.md#site
     [network]: terminology.md#network
   examples:
     yaml: |

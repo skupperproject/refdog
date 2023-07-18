@@ -60,7 +60,7 @@ running.  Sites are linked to form application
 
 There can be only one `skupper-site` definition per namespace.
 
-[site]: teminology.md#site
+[site]: terminology.md#site
 [network]: terminology.md#network
 
 _Resource kind_: `ConfigMap`\
