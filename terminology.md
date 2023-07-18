@@ -11,16 +11,16 @@
   * [Listeners](#listeners)
   * [Connectors](#connectors)
   * [Routing keys](#routing-keys)
-* [Skupper applications and components](#skupper-applications-and-components)
-  * [Applications](#applications)
-  * [Components](#components)
-  * [Processes](#processes)
-* [Skupper components](#skupper-components)
-  * [CLI (command line interface)](#cli-command-line-interface)
-  * [Collector](#collector)
-  * [Console](#console)
-  * [Controller](#controller)
-  * [Router](#router)
+<!-- * [Skupper applications and components](#skupper-applications-and-components) -->
+<!--   * [Applications](#applications) -->
+<!--   * [Components](#components) -->
+<!--   * [Processes](#processes) -->
+<!-- * [Skupper components](#skupper-components) -->
+<!--   * [CLI (command line interface)](#cli-command-line-interface) -->
+<!--   * [Collector](#collector) -->
+<!--   * [Console](#console) -->
+<!--   * [Controller](#controller) -->
+<!--   * [Router](#router) -->
 
 ## Skupper sites and links
 
@@ -274,117 +274,117 @@ across sites.
 <!-- Some protocols work at the granularity of connections.  Each connection is an opaque stream.  Load balancing! -->
 <!-- Some protocols work at the granularity of requests (and responses).  Load balancing! -->
 
-## Skupper applications and components
+<!-- ## Skupper applications and components -->
 
-Part of Skupper's job is modeling how a multi-site application works.
+<!-- Part of Skupper's job is modeling how a multi-site application works. -->
 
-~~~
-              +-------------------------------------------------------------------------+
-              |                        Application "Hello World"                        |
-              |                                                                         |
-              | +-------------------------------+   +---------------------------------+ |
-              | |      Component "frontend"     |   |        Component "backend"      | |
-              | |                               |   |                                 | |
-              | | +---------------------------+ |   | +-----------------------------+ | |
-              | | | Process "west/frontend-1" | |   | | Process "central/backend-1" | | |
-              | | +---------------------------+ |   | +-----------------------------+ | |
-              | | +---------------------------+ |   | +-----------------------------+ | |
-              | | | Process "west/frontend-2" | |   | | Process "central/backend-2" | | |
-              | | +---------------------------+ |   | +-----------------------------+ | |
-              | | +---------------------------+ |   |                                 | |
-              | | | Process "east/frontend-1" | |   |                                 | |
-              | | +---------------------------+ |   |                                 | |
-              | | +---------------------------+ |   |                                 | |
-              | | | Process "east/frontend-2" | |   |                                 | |
-              | | +---------------------------+ |   |                                 | |
-              | +-------------------------------+   +---------------------------------+ |
-              +-------------------------------------------------------------------------+
+<!-- ~~~ -->
+<!--               +-------------------------------------------------------------------------+ -->
+<!--               |                        Application "Hello World"                        | -->
+<!--               |                                                                         | -->
+<!--               | +-------------------------------+   +---------------------------------+ | -->
+<!--               | |      Component "frontend"     |   |        Component "backend"      | | -->
+<!--               | |                               |   |                                 | | -->
+<!--               | | +---------------------------+ |   | +-----------------------------+ | | -->
+<!--               | | | Process "west/frontend-1" | |   | | Process "central/backend-1" | | | -->
+<!--               | | +---------------------------+ |   | +-----------------------------+ | | -->
+<!--               | | +---------------------------+ |   | +-----------------------------+ | | -->
+<!--               | | | Process "west/frontend-2" | |   | | Process "central/backend-2" | | | -->
+<!--               | | +---------------------------+ |   | +-----------------------------+ | | -->
+<!--               | | +---------------------------+ |   |                                 | | -->
+<!--               | | | Process "east/frontend-1" | |   |                                 | | -->
+<!--               | | +---------------------------+ |   |                                 | | -->
+<!--               | | +---------------------------+ |   |                                 | | -->
+<!--               | | | Process "east/frontend-2" | |   |                                 | | -->
+<!--               | | +---------------------------+ |   |                                 | | -->
+<!--               | +-------------------------------+   +---------------------------------+ | -->
+<!--               +-------------------------------------------------------------------------+ -->
 
-+------------------------------+   +-----------------------------+   +------------------------------+
-|          Site "west"         |   |        Site "central"       |   |          Site "east"         |
-|                              |   |                             |   |                              |
-| +--------------------------+ |   | +-------------------------+ |   | +--------------------------+ |
-| |    Workload "frontend"   | |   | |    Workload "backend"   | |   | |    Workload "frontend"   | |
-| |                          | |   | |                         | |   | |                          | |
-| | +----------------------+ | |   | | +---------------------+ | |   | | +----------------------+ | |
-| | | Process "frontend-1" | | |   | | | Process "backend-1" | | |   | | | Process "frontend-1" | | |
-| | +----------------------+ | |   | | +---------------------+ | |   | | +----------------------+ | |
-| | +----------------------+ | |   | | +---------------------+ | |   | | +----------------------+ | |
-| | | Process "frontend-2" | | |   | | | Process "backend-2" | | |   | | | Process "frontend-2" | | |
-| | +----------------------+ | |   | | +---------------------+ | |   | | +----------------------+ | |
-| +--------------------------+ |   | +-------------------------+ |   | +--------------------------+ |
-+------------------------------+   +-----------------------------+   +------------------------------+
-~~~
+<!-- +------------------------------+   +-----------------------------+   +------------------------------+ -->
+<!-- |          Site "west"         |   |        Site "central"       |   |          Site "east"         | -->
+<!-- |                              |   |                             |   |                              | -->
+<!-- | +--------------------------+ |   | +-------------------------+ |   | +--------------------------+ | -->
+<!-- | |    Workload "frontend"   | |   | |    Workload "backend"   | |   | |    Workload "frontend"   | | -->
+<!-- | |                          | |   | |                         | |   | |                          | | -->
+<!-- | | +----------------------+ | |   | | +---------------------+ | |   | | +----------------------+ | | -->
+<!-- | | | Process "frontend-1" | | |   | | | Process "backend-1" | | |   | | | Process "frontend-1" | | | -->
+<!-- | | +----------------------+ | |   | | +---------------------+ | |   | | +----------------------+ | | -->
+<!-- | | +----------------------+ | |   | | +---------------------+ | |   | | +----------------------+ | | -->
+<!-- | | | Process "frontend-2" | | |   | | | Process "backend-2" | | |   | | | Process "frontend-2" | | | -->
+<!-- | | +----------------------+ | |   | | +---------------------+ | |   | | +----------------------+ | | -->
+<!-- | +--------------------------+ |   | +-------------------------+ |   | +--------------------------+ | -->
+<!-- +------------------------------+   +-----------------------------+   +------------------------------+ -->
+<!-- ~~~ -->
 
-### Applications
+<!-- ### Applications -->
 
-### Components
+<!-- ### Components -->
 
-### Processes
+<!-- ### Processes -->
 
-A process represents running application code.
-On Kubernetes, a process is a pod.
-On Docker or Podman, a process is a container.
-On bare-metal hosts or VMs, a process is a "process".
+<!-- A process represents running application code. -->
+<!-- On Kubernetes, a process is a pod. -->
+<!-- On Docker or Podman, a process is a container. -->
+<!-- On bare-metal hosts or VMs, a process is a "process". -->
 
-## Skupper components
+<!-- ## Skupper components -->
 
-The software components that implement Skupper's features.
+<!-- The software components that implement Skupper's features. -->
 
-~~~
-             +-------------------------+   +------------------------+
-             |       Site "west"       |   |       Site "east"      |
-             |                         |   |                        |
-             | +---------------------+ |   | +--------------------+ |
-             | | Workload "frontend" | |   | | Workload "backend" | |
-             | +---------------------+ |   | +--------------------+ |
-             |       +--------+        |   |       +--------+       |
-             |       | Router |--------------------| Router |       |
-             |       +--------+        |   |       +--------+       |
-  +-----+    |     +------------+      |   |     +------------+     |    +-----+
-  | CLI |----------| Controller |      |   |     | Controller |----------| CLI |
-  +-----+    |     +------------+      |   |     +------------+     |    +-----+
-             |     +-----------+       |   |                        |
-             |     | Collector |       |   |                        |
-             |     +-----------+       |   |                        |
-+---------+  |      +---------+        |   |                        |
-| Browser |---------| Console |        |   |                        |
-+---------+  |      +---------+        |   |                        |
-             +-------------------------+   +------------------------+
-~~~
+<!-- ~~~ -->
+<!--              +-------------------------+   +------------------------+ -->
+<!--              |       Site "west"       |   |       Site "east"      | -->
+<!--              |                         |   |                        | -->
+<!--              | +---------------------+ |   | +--------------------+ | -->
+<!--              | | Workload "frontend" | |   | | Workload "backend" | | -->
+<!--              | +---------------------+ |   | +--------------------+ | -->
+<!--              |       +--------+        |   |       +--------+       | -->
+<!--              |       | Router |--------------------| Router |       | -->
+<!--              |       +--------+        |   |       +--------+       | -->
+<!--   +-----+    |     +------------+      |   |     +------------+     |    +-----+ -->
+<!--   | CLI |----------| Controller |      |   |     | Controller |----------| CLI | -->
+<!--   +-----+    |     +------------+      |   |     +------------+     |    +-----+ -->
+<!--              |     +-----------+       |   |                        | -->
+<!--              |     | Collector |       |   |                        | -->
+<!--              |     +-----------+       |   |                        | -->
+<!-- +---------+  |      +---------+        |   |                        | -->
+<!-- | Browser |---------| Console |        |   |                        | -->
+<!-- +---------+  |      +---------+        |   |                        | -->
+<!--              +-------------------------+   +------------------------+ -->
+<!-- ~~~ -->
 
-### CLI (command line interface)
+<!-- ### CLI (command line interface) -->
 
-### Collector
+<!-- ### Collector -->
 
-The collector stores data about network configuration and application
-traffic.
+<!-- The collector stores data about network configuration and application -->
+<!-- traffic. -->
 
-### Console
+<!-- ### Console -->
 
-The console displays the application traffic on your network.
-The console is scoped to one Skupper network.
-The console is read only.
-The console depends on the flow collector.
+<!-- The console displays the application traffic on your network. -->
+<!-- The console is scoped to one Skupper network. -->
+<!-- The console is read only. -->
+<!-- The console depends on the flow collector. -->
 
-### Controller
+<!-- ### Controller -->
 
-The site controller and service controller.
-This is the Skupper control plane.
+<!-- The site controller and service controller. -->
+<!-- This is the Skupper control plane. -->
 
-### Router
+<!-- ### Router -->
 
-Routers transfer application traffic.
-Routers listen for client connections.
-Routers connect to servers.
+<!-- Routers transfer application traffic. -->
+<!-- Routers listen for client connections. -->
+<!-- Routers connect to servers. -->
 
-Each site has at least one router.
-Routers link to eachother to form a router network.
+<!-- Each site has at least one router. -->
+<!-- Routers link to eachother to form a router network. -->
 
-The routers in a network are responsible for transporting application traffic.
-The routers in a network constitute the Skupper data plane.
+<!-- The routers in a network are responsible for transporting application traffic. -->
+<!-- The routers in a network constitute the Skupper data plane. -->
 
-Routers implement application-layer addressing based on names.
-Routers know where the target processes are for each named address.
+<!-- Routers implement application-layer addressing based on names. -->
+<!-- Routers know where the target processes are for each named address. -->
 
-Routers have two modes, interior and edge.
+<!-- Routers have two modes, interior and edge. -->
