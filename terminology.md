@@ -38,51 +38,6 @@ In this example, site "west" and site "east" are linked to form the
 network for the "Hello World" application.
 
 ~~~
-+---------------------------------------------------------------+
-|                   Application "Hello World"                   |
-|                                                               |
-|                                                               |
-| +---------------------+                +--------------------+ |
-| | Workload "frontend" |--------------->| Workload "backend" | |
-| +---------------------+                +--------------------+ |
-+---------------------------------------------------------------+
-~~~
-
-~~~
-+-------------------------+            +------------------------+
-|       Site "west"       |            |       Site "east"      |
-|                         |            |                        |
-| +---------------------+ |            | +--------------------+ |
-| | Workload "frontend" | |            | | Workload "backend" | |
-| +---------------------+ |            | +--------------------+ |
-+-------------------------+            +------------------------+
-~~~
-
-~~~
-+-------------------------+            +------------------------+
-|       Site "west"       |            |       Site "east"      |
-|                         |            |                        |
-| +---------------------+ |--- Link ---| +--------------------+ |
-| | Workload "frontend" | |            | | Workload "backend" | |
-| +---------------------+ |            | +--------------------+ |
-+-------------------------+            +------------------------+
-~~~
-
-~~~
-+-------------------------------------------------------------------+
-|                       Network "Hello World"                       |
-|                                                                   |
-| +-------------------------+            +------------------------+ |
-| |       Site "west"       |            |       Site "east"      | |
-| |                         |            |                        | |
-| | +---------------------+ |--- Link ---| +--------------------+ | |
-| | | Workload "frontend" | |            | | Workload "backend" | | |
-| | +---------------------+ |            | +--------------------+ | |
-| +-------------------------+            +------------------------+ |
-+-------------------------------------------------------------------+
-~~~
-
-~~~
 +--------------------------------------------+
 |            Network "Hello World"           |
 |                                            |
@@ -178,36 +133,42 @@ to the sites providing the required services.
 
 ### Networks
 
-A network is formed by linking together sites.
+A network (also called an "application network" or "service network")
+is a set of linked sites.  Sites in the same network can access
+services across network locations.
 
-A network corresponds to one application.
-The network here is an *application* network.
+Each network is scoped to one distributed application and is fully
+isolated from any other application network.
 
 ### Sites
 
-Linking sites
-Links and tokens
+A site is a network location where components of your application are
+running.  Sites are linked together to form networks.
+
+Sites have different kinds based on platform.  These currently include
+Kubernetes sites and Podman sites.
 
 ### Links
 
-Links are inter-site links.
-Links are communication channels encrypted using mutual TLS.
+A link is a site-to-site communication channel.  Links transport
+application traffic such as connections and requests.  Links are
+always encrypted using mutual TLS.
 
 ### Tokens
 
-A token is required to create a link.
+A token is required to create a link.  The token contains a URL, which
+represents the target site, and a secret, which represents the
+authority to create a link.
 
-A token contains a URL, which represents the target site.
-A token contains a secret, which represents the authority to create a link.
+Tokens can be restricted to a chose number of uses and a particular
+window of time.  By default, tokens allow only 1 use and expire after
+15 minutes.
 
-Tokens can be restricted....
-Tokens are restricted by default.... 1 use, 15 mins
+<!-- ### Ingress -->
 
-### Ingress
+<!-- Understanding ingress is important for creating site-to-site links. -->
 
-Understanding ingress is important for creating site-to-site links.
-
-### Platforms
+<!-- ### Platforms -->
 
 ## Skupper listeners and connectors
 
