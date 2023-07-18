@@ -178,7 +178,9 @@ _Type_: String
 
 #### `host`
 
-The hostname or IP address of the server.
+The hostname or IP address of the server.  This is an
+alternative to `selector` for specifying the target
+server.
 
 _Required_: No\
 _Type_: String
@@ -206,7 +208,7 @@ _Default_: `*None*`
 ## Listener
 
 A [listener][listener] is a local connection endpoint bound to
-services in remote sites.
+servers in remote sites.
 
 Each namespace can contain multiple listener definitions.
 
