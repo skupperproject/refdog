@@ -11,16 +11,10 @@
   * [Listener](#listener)
   * [Connector](#connector)
   * [Routing key](#routing-key)
-<!-- * [Skupper applications and components](#skupper-applications-and-components) -->
-<!--   * [Application](#application) -->
-<!--   * [Component](#component) -->
-<!--   * [Process](#process) -->
-<!-- * [Skupper components](#skupper-components) -->
-<!--   * [CLI (command line interface)](#cli-command-line-interface) -->
-<!--   * [Collector](#collector) -->
-<!--   * [Console](#console) -->
-<!--   * [Controller](#controller) -->
-<!--   * [Router](#router) -->
+* [Skupper applications and components](#skupper-applications-and-components)
+  * [Application](#application)
+  * [Component](#component)
+  * [Process](#process)
 
 ## Skupper sites and links
 
@@ -217,6 +211,8 @@ in "east", which then connects to the "backend" workload.
 |    | Workload "frontend" |    |                        |     | Workload "backend" |     |
 |    +---------------------+    |                        |     +--------------------+     |
 |               |               |                        |                ^               |
+|           Connection          |                        |                |               |
+|               |               |                        |            Connection          |
 |               v               |   +----------------+   |                |               |
 |   +-----------------------+   |   |  Routing key   |   |   +------------------------+   |
 |   | Listener backend:8080 |-------| "backend:8080" |-------| Connector backend:8080 |   |
@@ -274,117 +270,76 @@ across sites.
 <!-- Some protocols work at the granularity of connections.  Each connection is an opaque stream.  Load balancing! -->
 <!-- Some protocols work at the granularity of requests (and responses).  Load balancing! -->
 
-<!-- ## Skupper applications and components -->
+## Skupper applications and components
 
-<!-- Part of Skupper's job is modeling how a multi-site application works. -->
+Part of Skupper's job is modeling how a multi-site application works.
 
-<!-- ~~~ -->
-<!--               +-------------------------------------------------------------------------+ -->
-<!--               |                        Application "Hello World"                        | -->
-<!--               |                                                                         | -->
-<!--               | +-------------------------------+   +---------------------------------+ | -->
-<!--               | |      Component "frontend"     |   |        Component "backend"      | | -->
-<!--               | |                               |   |                                 | | -->
-<!--               | | +---------------------------+ |   | +-----------------------------+ | | -->
-<!--               | | | Process "west/frontend-1" | |   | | Process "central/backend-1" | | | -->
-<!--               | | +---------------------------+ |   | +-----------------------------+ | | -->
-<!--               | | +---------------------------+ |   | +-----------------------------+ | | -->
-<!--               | | | Process "west/frontend-2" | |   | | Process "central/backend-2" | | | -->
-<!--               | | +---------------------------+ |   | +-----------------------------+ | | -->
-<!--               | | +---------------------------+ |   |                                 | | -->
-<!--               | | | Process "east/frontend-1" | |   |                                 | | -->
-<!--               | | +---------------------------+ |   |                                 | | -->
-<!--               | | +---------------------------+ |   |                                 | | -->
-<!--               | | | Process "east/frontend-2" | |   |                                 | | -->
-<!--               | | +---------------------------+ |   |                                 | | -->
-<!--               | +-------------------------------+   +---------------------------------+ | -->
-<!--               +-------------------------------------------------------------------------+ -->
+~~~
+              +-------------------------------------------------------------------------+
+              |                        Application "Hello World"                        |
+              |                                                                         |
+              | +-------------------------------+   +---------------------------------+ |
+              | |      Component "frontend"     |   |        Component "backend"      | |
+              | |                               |   |                                 | |
+              | | +---------------------------+ |   | +-----------------------------+ | |
+              | | | Process "west/frontend-1" | |   | | Process "central/backend-1" | | |
+              | | +---------------------------+ |   | +-----------------------------+ | |
+              | | +---------------------------+ |   | +-----------------------------+ | |
+              | | | Process "west/frontend-2" | |   | | Process "central/backend-2" | | |
+              | | +---------------------------+ |   | +-----------------------------+ | |
+              | | +---------------------------+ |   |                                 | |
+              | | | Process "east/frontend-1" | |   |                                 | |
+              | | +---------------------------+ |   |                                 | |
+              | | +---------------------------+ |   |                                 | |
+              | | | Process "east/frontend-2" | |   |                                 | |
+              | | +---------------------------+ |   |                                 | |
+              | +-------------------------------+   +---------------------------------+ |
+              +-------------------------------------------------------------------------+
 
-<!-- +------------------------------+   +-----------------------------+   +------------------------------+ -->
-<!-- |          Site "west"         |   |        Site "central"       |   |          Site "east"         | -->
-<!-- |                              |   |                             |   |                              | -->
-<!-- | +--------------------------+ |   | +-------------------------+ |   | +--------------------------+ | -->
-<!-- | |    Workload "frontend"   | |   | |    Workload "backend"   | |   | |    Workload "frontend"   | | -->
-<!-- | |                          | |   | |                         | |   | |                          | | -->
-<!-- | | +----------------------+ | |   | | +---------------------+ | |   | | +----------------------+ | | -->
-<!-- | | | Process "frontend-1" | | |   | | | Process "backend-1" | | |   | | | Process "frontend-1" | | | -->
-<!-- | | +----------------------+ | |   | | +---------------------+ | |   | | +----------------------+ | | -->
-<!-- | | +----------------------+ | |   | | +---------------------+ | |   | | +----------------------+ | | -->
-<!-- | | | Process "frontend-2" | | |   | | | Process "backend-2" | | |   | | | Process "frontend-2" | | | -->
-<!-- | | +----------------------+ | |   | | +---------------------+ | |   | | +----------------------+ | | -->
-<!-- | +--------------------------+ |   | +-------------------------+ |   | +--------------------------+ | -->
-<!-- +------------------------------+   +-----------------------------+   +------------------------------+ -->
-<!-- ~~~ -->
++------------------------------+   +-----------------------------+   +------------------------------+
+|          Site "west"         |   |        Site "central"       |   |          Site "east"         |
+|                              |   |                             |   |                              |
+| +--------------------------+ |   | +-------------------------+ |   | +--------------------------+ |
+| |    Workload "frontend"   | |   | |    Workload "backend"   | |   | |    Workload "frontend"   | |
+| |                          | |   | |                         | |   | |                          | |
+| | +----------------------+ | |   | | +---------------------+ | |   | | +----------------------+ | |
+| | | Process "frontend-1" | | |   | | | Process "backend-1" | | |   | | | Process "frontend-1" | | |
+| | +----------------------+ | |   | | +---------------------+ | |   | | +----------------------+ | |
+| | +----------------------+ | |   | | +---------------------+ | |   | | +----------------------+ | |
+| | | Process "frontend-2" | | |   | | | Process "backend-2" | | |   | | | Process "frontend-2" | | |
+| | +----------------------+ | |   | | +---------------------+ | |   | | +----------------------+ | |
+| +--------------------------+ |   | +-------------------------+ |   | +--------------------------+ |
++------------------------------+   +-----------------------------+   +------------------------------+
+~~~
 
-<!-- ### Applications -->
+### Application
 
-<!-- ### Components -->
+An application (a *distributed* application) is a set of components
+that work together to do something useful.  Examples are applications
+built with database-backed, service-oriented, or microservices
+architectures.
 
-<!-- ### Processes -->
+Because the application is broken up into isolated components, the
+components need a way to communicate and coordinate.
 
-<!-- A process represents running application code. -->
-<!-- On Kubernetes, a process is a pod. -->
-<!-- On Docker or Podman, a process is a container. -->
-<!-- On bare-metal hosts or VMs, a process is a "process". -->
+XXX In Skupper, one app, one network.
 
-<!-- ## Skupper components -->
+### Component
 
-<!-- The software components that implement Skupper's features. -->
+A component is a logical element of the application.  It has a role (a
+set of responsibilities) in achieving the goals of the application.
 
-<!-- ~~~ -->
-<!--              +-------------------------+   +------------------------+ -->
-<!--              |       Site "west"       |   |       Site "east"      | -->
-<!--              |                         |   |                        | -->
-<!--              | +---------------------+ |   | +--------------------+ | -->
-<!--              | | Workload "frontend" | |   | | Workload "backend" | | -->
-<!--              | +---------------------+ |   | +--------------------+ | -->
-<!--              |       +--------+        |   |       +--------+       | -->
-<!--              |       | Router |--------------------| Router |       | -->
-<!--              |       +--------+        |   |       +--------+       | -->
-<!--   +-----+    |     +------------+      |   |     +------------+     |    +-----+ -->
-<!--   | CLI |----------| Controller |      |   |     | Controller |----------| CLI | -->
-<!--   +-----+    |     +------------+      |   |     +------------+     |    +-----+ -->
-<!--              |     +-----------+       |   |                        | -->
-<!--              |     | Collector |       |   |                        | -->
-<!--              |     +-----------+       |   |                        | -->
-<!-- +---------+  |      +---------+        |   |                        | -->
-<!-- | Browser |---------| Console |        |   |                        | -->
-<!-- +---------+  |      +---------+        |   |                        | -->
-<!--              +-------------------------+   +------------------------+ -->
-<!-- ~~~ -->
+Components typically have network interfaces so other components can
+communicate with them.  Components are implemented by one or more
+processes.
 
-<!-- ### CLI (command line interface) -->
+Components, as logical elements of the application, are not confined
+to one site.  A component can have implementing processes at multiple
+sites.
 
-<!-- ### Collector -->
+### Process
 
-<!-- The collector stores data about network configuration and application -->
-<!-- traffic. -->
-
-<!-- ### Console -->
-
-<!-- The console displays the application traffic on your network. -->
-<!-- The console is scoped to one Skupper network. -->
-<!-- The console is read only. -->
-<!-- The console depends on the flow collector. -->
-
-<!-- ### Controller -->
-
-<!-- The site controller and service controller. -->
-<!-- This is the Skupper control plane. -->
-
-<!-- ### Router -->
-
-<!-- Routers transfer application traffic. -->
-<!-- Routers listen for client connections. -->
-<!-- Routers connect to servers. -->
-
-<!-- Each site has at least one router. -->
-<!-- Routers link to eachother to form a router network. -->
-
-<!-- The routers in a network are responsible for transporting application traffic. -->
-<!-- The routers in a network constitute the Skupper data plane. -->
-
-<!-- Routers implement application-layer addressing based on names. -->
-<!-- Routers know where the target processes are for each named address. -->
-
-<!-- Routers have two modes, interior and edge. -->
+A process represents running application code.
+On Kubernetes, a process is a pod.
+On Docker or Podman, a process is a container.
+On bare-metal hosts or VMs, a process is a "process".
