@@ -1,4 +1,4 @@
-# Skupper terminology
+# Skupper concepts
 
 #### Contents
 
@@ -162,7 +162,9 @@ time window.  By default, tokens allow only one use and expire after
 
 Site-to-site links are distinct from service-to-service connections.
 Site links form the underlying transport for your network.  Service
-connections are carried on top of this transport.
+connections are carried on top of this transport.  Service connections
+can be established in either direction, regardless of how the site
+link was established.
 
 In this example, sites "west" and "east" have links to site "central".
 Workload "frontend" is running on "west", and workload "backend" on
@@ -274,6 +276,10 @@ across sites.
 
 Part of Skupper's job is modeling how a multi-site application works.
 
+To do that, we need to represent important application entities.
+
+An application is a set of components.  In
+
 ~~~
               +-------------------------------------------------------------------------+
               |                        Application "Hello World"                        |
@@ -322,21 +328,22 @@ Part of Skupper's job is modeling how a multi-site application works.
 
 ### Application
 
-An application (a *distributed* application) is a set of components
-that work together to do something useful.  Examples are applications
-built with database-backed, service-oriented, or microservices
-architectures.
+An application is a set of components that work together to do
+something useful.  A *distributed* application has components that can
+be deployed as separate processes on different machines.  Distributed
+applications are often built with a multi-tier, service-oriented, or
+microservices architecture.
 
 Because the application is broken up into isolated components, the
 components need a way to communicate and coordinate.
 
 Skupper networks are designed to enable this inter-component
-communication across sites.  Skupper networks usually host a single
+communication across sites.  A Skupper network usually hosts a single
 application.
 
 ### Component
 
-A component is a logical element of the application.  It has a role (a
+A component is a logical part of the application.  It has a role (a
 set of responsibilities) in achieving the goals of the application.
 
 Components typically have network interfaces so other components can
@@ -352,4 +359,6 @@ component can have implementing processes at multiple sites.
 A process represents running application code.
 On Kubernetes, a process is a pod.
 On Docker or Podman, a process is a container.
-On bare-metal hosts or VMs, a process is a "process".
+On bare metal hosts or VMs, a process is a "process".
+
+<!-- XXX A client process, a server process, or (often) both. -->
