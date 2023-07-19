@@ -340,7 +340,7 @@ some are running in site "east".
 ~~~
 
 Because Skupper makes communication transparent to the application,
-the location of the running processes is concern independent of the
+the location of the running processes is a concern independent of the
 application's design.  You can deploy your application workoads to
 locations that suit you today, and you can safely change to new
 locations later.
