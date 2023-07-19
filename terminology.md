@@ -280,6 +280,14 @@ Part of Skupper's job is modeling how a multi-site application works.
               |                                                                         |
               | +-------------------------------+   +---------------------------------+ |
               | |      Component "frontend"     |   |        Component "backend"      | |
+              | +-------------------------------+   +---------------------------------+ |
+              +-------------------------------------------------------------------------+
+
+              +-------------------------------------------------------------------------+
+              |                        Application "Hello World"                        |
+              |                                                                         |
+              | +-------------------------------+   +---------------------------------+ |
+              | |      Component "frontend"     |   |        Component "backend"      | |
               | |                               |   |                                 | |
               | | +---------------------------+ |   | +-----------------------------+ | |
               | | | Process "west/frontend-1" | |   | | Process "central/backend-1" | | |
@@ -300,7 +308,7 @@ Part of Skupper's job is modeling how a multi-site application works.
 |          Site "west"         |   |        Site "central"       |   |          Site "east"         |
 |                              |   |                             |   |                              |
 | +--------------------------+ |   | +-------------------------+ |   | +--------------------------+ |
-| |    Workload "frontend"   | |   | |    Workload "backend"   | |   | |    Workload "frontend"   | |
+| |   Deployment "frontend"  | |   | |   Deployment "backend"  | |   | |   Deployment "frontend"  | |
 | |                          | |   | |                         | |   | |                          | |
 | | +----------------------+ | |   | | +---------------------+ | |   | | +----------------------+ | |
 | | | Process "frontend-1" | | |   | | | Process "backend-1" | | |   | | | Process "frontend-1" | | |
@@ -322,7 +330,8 @@ architectures.
 Because the application is broken up into isolated components, the
 components need a way to communicate and coordinate.
 
-XXX In Skupper, one app, one network.
+Skupper networks are designed to enable this inter-component
+communication across sites.  XXX one app, one network
 
 ### Component
 
@@ -330,12 +339,12 @@ A component is a logical element of the application.  It has a role (a
 set of responsibilities) in achieving the goals of the application.
 
 Components typically have network interfaces so other components can
-communicate with them.  Components are implemented by one or more
-processes.
+communicate with them.  That's why components are often referred to as
+"services".
 
-Components, as logical elements of the application, are not confined
-to one site.  A component can have implementing processes at multiple
-sites.
+Components are implemented by one or more processes.  Components, as
+logical elements of the application, are not confined to one site.  A
+component can have implementing processes at multiple sites.
 
 ### Process
 
