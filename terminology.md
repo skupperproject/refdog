@@ -331,7 +331,8 @@ Because the application is broken up into isolated components, the
 components need a way to communicate and coordinate.
 
 Skupper networks are designed to enable this inter-component
-communication across sites.  XXX one app, one network
+communication across sites.  Skupper networks usually host a single
+application.
 
 ### Component
 
