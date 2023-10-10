@@ -9,23 +9,23 @@ site:
 
     There can be only one `skupper-site` definition per namespace.
 
-    [site]: terminology.md#site
-    [network]: terminology.md#network
+    [site]: concepts.md#site
+    [network]: concepts.md#network
   examples:
     yaml: |
       apiVersion: v1
       kind: ConfigMap
       metadata:
         name: skupper-site
-        namespace: west
+        namespace: site-1
         labels:
           skupper.io/type: site
       data:
-        name: west
+        name: site-1
         ingress: loadbalancer
     cli: |
       # skupper site init <options>
-      $ skupper site init --name west --ingress loadbalancer
+      $ skupper site init --name site-1 --ingress loadbalancer
   groups:
     main:
       settings:
@@ -47,7 +47,7 @@ site:
 
             <!-- XXX enumerate -->
 
-            [link]: terminology.md#link
+            [link]: concepts.md#link
         # ingress-host:
         #   type: string
         #   description: |
@@ -71,14 +71,14 @@ connector:
 
     Each namespace can contain multiple connector definitions.
 
-    [connector]: terminology.md#connector
+    [connector]: concepts.md#connector
   examples:
     yaml: |
       apiVersion: v1
       kind: ConfigMap
       metadata:
         name: skupper-connector-backend
-        namespace: east
+        namespace: site-2
         labels:
           skupper.io/type: connector
       data:
@@ -130,14 +130,14 @@ listener:
 
     Each namespace can contain multiple listener definitions.
 
-    [listener]: terminology.md#listener
+    [listener]: concepts.md#listener
   examples:
     yaml: |
       apiVersion: v1
       kind: ConfigMap
       metadata:
         name: skupper-listener-backend
-        namespace: west
+        namespace: site-1
         labels:
           skupper.io/type: listener
       data:
@@ -210,7 +210,7 @@ console:
       kind: ConfigMap
       metadata:
         name: skupper-console
-        namespace: west
+        namespace: site-1
         labels:
           skupper.io/type: console
       data:

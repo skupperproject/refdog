@@ -60,8 +60,8 @@ running.  Sites are linked to form application
 
 There can be only one `skupper-site` definition per namespace.
 
-[site]: terminology.md#site
-[network]: terminology.md#network
+[site]: concepts.md#site
+[network]: concepts.md#network
 
 _Resource kind_: `ConfigMap`\
 _Resource name_: `skupper-site`\
@@ -74,11 +74,11 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: skupper-site
-  namespace: west
+  namespace: site-1
   labels:
     skupper.io/type: site
 data:
-  name: west
+  name: site-1
   ingress: loadbalancer
 
 ~~~
@@ -87,7 +87,7 @@ data:
 
 ~~~ sh
 # skupper site init <options>
-$ skupper site init --name west --ingress loadbalancer
+$ skupper site init --name site-1 --ingress loadbalancer
 
 ~~~
 
@@ -109,7 +109,7 @@ incoming [links][link].
 
 <!-- XXX enumerate -->
 
-[link]: terminology.md#link
+[link]: concepts.md#link
 
 _Required_: No\
 _Type_: String\
@@ -124,7 +124,7 @@ remote sites.
 
 Each namespace can contain multiple connector definitions.
 
-[connector]: terminology.md#connector
+[connector]: concepts.md#connector
 
 _Resource kind_: `ConfigMap`\
 _Resource name_: `skupper-connector-<qualifier>`\
@@ -137,7 +137,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: skupper-connector-backend
-  namespace: east
+  namespace: site-2
   labels:
     skupper.io/type: connector
 data:
@@ -212,7 +212,7 @@ servers in remote sites.
 
 Each namespace can contain multiple listener definitions.
 
-[listener]: terminology.md#listener
+[listener]: concepts.md#listener
 
 _Resource kind_: `ConfigMap`\
 _Resource name_: `skupper-listener-<qualifier>`\
@@ -225,7 +225,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: skupper-listener-backend
-  namespace: west
+  namespace: site-1
   labels:
     skupper.io/type: listener
 data:
@@ -304,7 +304,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: skupper-console
-  namespace: west
+  namespace: site-1
   labels:
     skupper.io/type: console
 data:

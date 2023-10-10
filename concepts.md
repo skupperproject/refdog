@@ -26,53 +26,53 @@ These links are the basis for site-to-site and service-to-service
 communication.  Links are always secured using mutual TLS
 authentication and encryption.
 
-In this example, site "west" and site "east" are linked to form the
-network for the "Hello World" application.
+In this example, "site-1" and "site-2" are linked to form the network
+for the "Hello World" application.
 
 ~~~
-+--------------------------------------------+
-|            Network "Hello World"           |
-|                                            |
-| +-------------+            +-------------+ |
-| | Site "west" |--- Link ---| Site "east" | |
-| +-------------+            +-------------+ |
-+--------------------------------------------+
++------------------------------------------------+
+|              Network "Hello World"             |
+|                                                |
+| +---------------+            +---------------+ |
+| | Site "site-1" |--- Link ---| Site "site-2" | |
+| +---------------+            +---------------+ |
++------------------------------------------------+
 ~~~
 
 To create a link, the site that is to be the target of the link must
 have a point of ingress, so it can accept a TCP connection.
 
-In this example, site "west" accepts incoming TCP connections through
-its ingress, and site "east" creates the site-to-site link by
-establishing an outbound TCP connection to "west".
+In this example, site "site-1" accepts incoming TCP connections through
+its ingress, and site "site-2" creates the site-to-site link by
+establishing an outbound TCP connection to "site-1".
 
 ~~~
-+-----------------------------------------+
-|           Network "Hello World"         |
-|                                         |
-| +---------------+       +-------------+ |
-| |  Site "west"  |       | Site "east" | |
-| |               |       |             | |
-| |  +---------+  |       |  +-------+  | |
-| |  | Ingress |<------------| Link  |  | |
-| |  +---------+  |       |  +-------+  | |
-| +---------------+       +-------------+ |
-+-----------------------------------------+
++----------------------------------------------+
+|             Network "Hello World"            |
+|                                              |
+| +-----------------+       +----------------+ |
+| |  Site "site-1"  |       |  Site "site-2" | |
+| |                 |       |                | |
+| |   +---------+   |       |   +--------+   | |
+| |   | Ingress |<--------------|  Link  |   | |
+| |   +---------+   |       |   +--------+   | |
+| +-----------------+       +----------------+ |
++----------------------------------------------+
 ~~~
 
 Creating a link requires explicit permission from the target site.
 This permission is granted using **tokens**.  A token contains a URL
 for the target site and a secret key.
 
-In this example, site "west" wishes to allow "east" to create a link.
-Site "west" creates a token.  The owner of "west" gives the token to
-the owner of "east".  The owner of "east" then uses the token to
+In this example, site "site-1" wishes to allow "site-2" to create a link.
+Site "site-1" creates a token.  The owner of "site-1" gives the token to
+the owner of "site-2".  The owner of "site-2" then uses the token to
 create the link.
 
 ~~~
-  +-------------+             +-------------+
-  | Site "west" |             | Site "east" |
-  +-------------+             +-------------+
+ +---------------+           +---------------+
+ | Site "site-1" |           | Site "site-2" |
+ +---------------+           +---------------+
          |                           |
 +-----------------+                  |
 | 1. Create token |                  |
@@ -93,16 +93,16 @@ machines, and bare metal hosts.  Each site in a network can run on any
 supported platform.
 
 ~~~
-+---------------------------+      +------------------------+      +-------------------------+
-|    Kubernetes cluster     |      |         Podman         |      |     VM or bare metal    |
-|                           |      |                        |      |                         |
-|  +---------------------+  |      |  +------------------+  |      |  +-------------------+  |
-|  |     Site "west":    |  |      |  |  Site "central"  |  |      |  |    Site "east"    |  |
-|  |                     |  |      |  |                  |  |      |  |                   |  |
-|  |   Namespace "west"  |--- Link ---|  Podman network  |--- Link ---|    Local user     |  |
-|  |                     |  |      |  |    "skupper"     |  |      |  |                   |  |
-|  +---------------------+  |      |  +------------------+  |      |  +-------------------+  |
-+---------------------------+      +------------------------+      +-------------------------+
++-----------------------------+      +------------------------+      +-------------------------+
+|      Kubernetes cluster     |      |         Podman         |      |     VM or bare metal    |
+|                             |      |                        |      |                         |
+|  +-----------------------+  |      |  +------------------+  |      |  +-------------------+  |
+|  |     Site "site-1":    |  |      |  |  Site "central"  |  |      |  |   Site "site-2"   |  |
+|  |                       |  |      |  |                  |  |      |  |                   |  |
+|  |   Namespace "site-1"  |--- Link ---|  Podman network  |--- Link ---|    Local user     |  |
+|  |                       |  |      |  |    "skupper"     |  |      |  |                   |  |
+|  +-----------------------+  |      |  +------------------+  |      |  +-------------------+  |
++-----------------------------+      +------------------------+      +-------------------------+
 ~~~
 
 A site does not need to be directly linked to all the other sites in a
@@ -166,9 +166,9 @@ connections are carried on top of this transport.  Service connections
 can be established in either direction, regardless of how the site
 link was established.
 
-In this example, sites "west" and "east" have links to site "central".
-Workload "frontend" is running on "west", and workload "backend" on
-"east".  When "frontend" connects to "backend", it can ignore the
+In this example, sites "site-1" and "site-2" have links to site "central".
+Workload "frontend" is running on "site-1", and workload "backend" on
+"site-2".  When "frontend" connects to "backend", it can ignore the
 underlying link topology.  Skupper ensures that "frontend" can connect
 directly to "backend".
 
@@ -179,9 +179,9 @@ layer                 | Workload "frontend" |-------- Connection --------->| Wor
                                 |                                                    |
 -------------------------------------------------------------------------------------------------
                                 |                                                    |
-Site link layer          +-------------+          +----------------+          +-------------+
-                         | Site "west" |-- Link ->| Site "central" |<- Link --| Site "east" |
-                         +-------------+          +----------------+          +-------------+
+Site link layer        +---------------+          +----------------+          +---------------+
+                       | Site "site-1" |-- Link ->| Site "central" |<- Link --| Site "site-2" |
+                       +---------------+          +----------------+          +---------------+
 ~~~
 
 **Listeners** and **connectors** work together to route service
@@ -193,21 +193,21 @@ Listeners and connectors are linked by matching **routing keys**.
 Connections to a listener with a given routing key are forwarded to
 remote connectors with the same routing key.
 
-In site "west", workload "frontend" needs to connect to
+In site "site-1", workload "frontend" needs to connect to
 `backend:8080`.  Skupper provides a local connection listener for that
 host and port.
 
-In "east", "backend" is running and ready to handle requests.  Skupper
+In "site-2", "backend" is running and ready to handle requests.  Skupper
 provides a local connector associated with the processes implementing
 "backend".
 
-When "frontend" in "west" connects to the listener, Skupper uses the
+When "frontend" in "site-1" connects to the listener, Skupper uses the
 routing key to forward the connection data to the matching connector
-in "east", which then connects to the "backend" workload.
+in "site-2", which then connects to the "backend" workload.
 
 ~~~
 +-------------------------------+                        +--------------------------------+
-|          Site "west"          |                        |           Site "east"          |
+|         Site "site-1"         |                        |          Site "site-2"         |
 |                               |                        |                                |
 |    +---------------------+    |                        |     +--------------------+     |
 |    | Workload "frontend" |    |                        |     | Workload "backend" |     |
@@ -296,35 +296,35 @@ and a backend.
 Each component is implemented as a set of **processes**.
 
 ~~~
-+-------------------------------------------------------------------------+
-|                        Application "Hello World"                        |
-|                                                                         |
-| +-------------------------------+   +---------------------------------+ |
-| |      Component "frontend"     |   |        Component "backend"      | |
-| |                               |   |                                 | |
-| | +---------------------------+ |   | +-----------------------------+ | |
-| | | Process "west/frontend-1" | |   | | Process "central/backend-1" | | |
-| | +---------------------------+ |   | +-----------------------------+ | |
-| | +---------------------------+ |   | +-----------------------------+ | |
-| | | Process "west/frontend-2" | |   | | Process "central/backend-2" | | |
-| | +---------------------------+ |   | +-----------------------------+ | |
-| | +---------------------------+ |   |                                 | |
-| | | Process "east/frontend-1" | |   |                                 | |
-| | +---------------------------+ |   |                                 | |
-| | +---------------------------+ |   |                                 | |
-| | | Process "east/frontend-2" | |   |                                 | |
-| | +---------------------------+ |   |                                 | |
-| +-------------------------------+   +---------------------------------+ |
-+-------------------------------------------------------------------------+
++---------------------------------------------------------------------------+
+|                         Application "Hello World"                         |
+|                                                                           |
+| +---------------------------------+   +---------------------------------+ |
+| |       Component "frontend"      |   |        Component "backend"      | |
+| |                                 |   |                                 | |
+| | +-----------------------------+ |   | +-----------------------------+ | |
+| | | Process "site-1/frontend-1" | |   | | Process "central/backend-1" | | |
+| | +-----------------------------+ |   | +-----------------------------+ | |
+| | +-----------------------------+ |   | +-----------------------------+ | |
+| | | Process "site-1/frontend-2" | |   | | Process "central/backend-2" | | |
+| | +-----------------------------+ |   | +-----------------------------+ | |
+| | +-----------------------------+ |   |                                 | |
+| | | Process "site-2/frontend-1" | |   |                                 | |
+| | +-----------------------------+ |   |                                 | |
+| | +-----------------------------+ |   |                                 | |
+| | | Process "site-2/frontend-2" | |   |                                 | |
+| | +-----------------------------+ |   |                                 | |
+| +---------------------------------+   +---------------------------------+ |
++---------------------------------------------------------------------------+
 ~~~
 
 Components and processes can span sites.  In the example below, some
-processes of the frontend component are running in site "west" and
-some are running in site "east".
+processes of the frontend component are running in site "site-1" and
+some are running in site "site-2".
 
 ~~~
 +------------------------------+   +-----------------------------+   +------------------------------+
-|          Site "west"         |   |        Site "central"       |   |          Site "east"         |
+|         Site "site-1"        |   |        Site "central"       |   |         Site "site-2"        |
 |                              |   |                             |   |                              |
 | +--------------------------+ |   | +-------------------------+ |   | +--------------------------+ |
 | |   Deployment "frontend"  | |   | |   Deployment "backend"  | |   | |   Deployment "frontend"  | |
