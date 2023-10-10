@@ -97,7 +97,7 @@ supported platform.
 |      Kubernetes cluster     |      |         Podman         |      |     VM or bare metal    |
 |                             |      |                        |      |                         |
 |  +-----------------------+  |      |  +------------------+  |      |  +-------------------+  |
-|  |     Site "site-1":    |  |      |  |  Site "central"  |  |      |  |   Site "site-2"   |  |
+|  |     Site "site-1"     |  |      |  |  Site "central"  |  |      |  |   Site "site-2"   |  |
 |  |                       |  |      |  |                  |  |      |  |                   |  |
 |  |   Namespace "site-1"  |--- Link ---|  Podman network  |--- Link ---|    Local user     |  |
 |  |                       |  |      |  |    "skupper"     |  |      |  |                   |  |
