@@ -88,6 +88,29 @@ create the link.
          |                           |
 ~~~
 
+Skupper networks are small: they are scoped to the application they
+support.  A single platform instance such as a Kubernetes cluster can
+host many Skupper networks.
+
+~~~
++-------------------------------+      +------------------------------+
+|      Kubernetes cluster 1     |      |      Kubernetes cluster 2    |
+|                               |      |                              |
+|   +-------------------------------------------------------------+   |
+|   |                           Network 1                         |   |
+|   +-------------------------------------------------------------+   |
+|                               |      |                              |
+|   +-------------------------------------------------------------+   |
+|   |                           Network 2                         |   |
+|   +-------------------------------------------------------------+   |
+|                               |      |                              |
+|   +-------------------------------------------------------------+   |
+|   |                           Network N                         |   |
+|   +-------------------------------------------------------------+   |
+|                               |      |                              |
++-------------------------------+      +------------------------------+
+~~~
+
 Skupper works on multiple platforms: Kubernetes, Podman, virtual
 machines, and bare metal hosts.  Each site in a network can run on any
 supported platform.
