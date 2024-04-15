@@ -1,6 +1,17 @@
 from plano import *
+from plano.github import *
+from generate import *
 
 import collections
+
+@command
+def gen_():
+    gen()
+
+    html = convert_github_markdown(read("reference.md"))
+    write("reference.html", html)
+
+    print(f"file:{get_real_path('reference.html')}")
 
 @command
 def generate():
@@ -20,7 +31,6 @@ def generate():
             continue
 
         entity_title = entity["title"]
-        entity_diagram = f"images/{entity_name}.svg"
 
         append(f"- [{entity_title}](#{entity_name})")
 
@@ -262,15 +272,10 @@ def render():
     """
     generate()
 
-    markdown = read("README.md")
-    data = {"text": markdown}
-    json = emit_json(data)
-    content = http_post("https://api.github.com/markdown", json, content_type="application/json")
-    html = render_template.replace("@content@", content)
-
+    html = convert_github_markdown(read("README.md"))
     write("README.html", html)
 
-    print(f"file:{get_real_path('README.html')}")
+    print(f"file:{get_real_path('reference.html')}")
 
 @command
 def clean():

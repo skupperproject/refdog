@@ -1,0 +1,167 @@
+resources:
+  Site:
+    group: site-configuration
+    description: |
+      A [site][site] is a place where components of your application are
+      running.  Sites are linked to form application
+      [networks][network].
+
+      There can be only one `skupper-site` definition per namespace.
+
+      [site]: concepts.md#site
+      [network]: concepts.md#network
+    examples:
+      - description: A minimal site definition
+        yaml: |
+          apiVersion: skupper.io/v1alpha1
+          kind: Site
+          metadata:
+            name: west
+            namespace: hello-world-west
+    properties:
+      name:
+        description: |
+          A name of your choice for the Skupper site.  This name is
+          displayed in the console and CLI output.
+      ingress:
+        default: |
+          `route` if the environment is OpenShift, otherwise
+          `loadbalancer`
+        choices: [route, loadbalancer, nodeport, nginx-ingress-v1, contour-http-proxy, ingress, none]
+        description: |
+          The method for providing access to this site from outside
+          the cluster.  Cluster ingress enables a site to accept
+          incoming [links][link].
+
+          <!-- XXX enumerate -->
+
+          [link]: concepts.md#link
+  Link:
+    group: site-linking
+    description: XXX
+    examples:
+      - description: XXX
+        yaml: |
+          apiVersion: skupper.io/v1alpha1
+          kind: Link
+          metadata:
+            name: link-to-west
+            namespace: hello-world-east
+          spec:
+            # Hand wavy!  Very notional!
+            host: west.example.net
+            port: 12345
+            tlsCredentials: secret/foo
+    properties: {}
+  LinkAccess:
+    group: site-linking
+    description: XXX
+    examples:
+      - description: XXX
+        yaml: |
+          apiVersion: skupper.io/v1alpha1
+          kind: LinkAccess
+          metadata:
+            name: link-to-west
+            namespace: hello-world-east
+          spec:
+            # Hand wavy!  Very notional!
+            port: 12345
+            tlsCredentials: secret/foo
+    properties: {}
+  Connector:
+    group: service-exposure
+    description: |
+      A [connector][connector] binds local servers to listeners in
+      remote sites.
+
+      Each namespace can contain multiple connector definitions.
+
+      [connector]: concepts.md#connector
+    examples:
+      - description: XXX
+        yaml: |
+          apiVersion: skupper.io/v1alpha1
+          kind: Connector
+          metadata:
+            name: backend
+            namespace: hello-world-east
+          spec:
+            routingKey: backend
+            port: 8080
+            selector: app=backend
+    properties:
+      routingKey:
+        description: |
+          The identifier used to route traffic from listeners to
+          connectors.  To connect to a service at a remote site, the
+          listener and connector must have matching routing keys.
+      selector:
+        description: |
+          A Kubernetes [label selector][selector] for identifying
+          server pods.
+
+          [selector]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
+      host:
+        description: |
+          The hostname or IP address of the server.  This is an
+          alternative to `selector` for specifying the target
+          server.
+      port:
+        description: |
+          The port number of the server listener.
+      tlsCredentials:
+        default: "*None*"
+        description: |
+          The name of a Kubernetes secret containing TLS
+          credentials.  The secret contains the trusted server
+          certificate (typically a CA certificate).
+
+          It can optionally include a client certificate and key for
+          mutual TLS.
+  Listener:
+    group: service-exposure
+    description: |
+      A [listener][listener] is a local connection endpoint bound to
+      servers in remote sites.
+
+      Each namespace can contain multiple listener definitions.
+
+      [listener]: concepts.md#listener
+    examples:
+      - description: XXX
+        yaml: |
+          apiVersion: skupper.io/v1alpha1
+          kind: Listener
+          metadata:
+            name: backend
+            namespace: hello-world-west
+          spec:
+            routingKey: backend
+            port: 8080
+            host: backend
+    properties:
+      routingKey:
+        description: |
+          The identifier used to route traffic from listeners to
+          connectors.  To connect to a service at a remote site, the
+          listener and connector must have matching routing keys.
+      host:
+        description: |
+          The hostname or IP address of the local listener.  Clients
+          at this site use the listener host and port to
+          establish connections to the remote service.
+      port:
+        description: |
+          The port of the local listener.  Clients at this site use
+          the listener host and port to establish connections to
+          the remote service.
+      tlsCredentials:
+        default: "*None*"
+        description: |
+          The name of a Kubernetes secret containing TLS
+          credentials.  The secret contains the server certificate
+          and key.
+
+          It can optionally include a client certificate for mutual
+          TLS.
