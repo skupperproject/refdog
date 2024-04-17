@@ -1,3 +1,32 @@
+groups:
+  site-configuration:
+    title: Site configuration
+    description: |
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+      enim ad minim veniam, quis nostrud exercitation ullamco laboris
+      nisi ut aliquip ex ea commodo consequat.
+  site-linking:
+    title: Site linking
+    description: |
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+      enim ad minim veniam, quis nostrud exercitation ullamco laboris
+      nisi ut aliquip ex ea commodo consequat.
+  service-exposure:
+    title: Service exposure
+    description: |
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+      enim ad minim veniam, quis nostrud exercitation ullamco laboris
+      nisi ut aliquip ex ea commodo consequat.
+  everything-else:
+    title: Everything else
+    description: |
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+      enim ad minim veniam, quis nostrud exercitation ullamco laboris
+      nisi ut aliquip ex ea commodo consequat.
 resources:
   Site:
     group: site-configuration
@@ -6,7 +35,7 @@ resources:
       running.  Sites are linked to form application
       [networks][network].
 
-      There can be only one `skupper-site` definition per namespace.
+      There can be only one site definition per namespace.
 
       [site]: concepts.md#site
       [network]: concepts.md#network
@@ -16,8 +45,8 @@ resources:
           apiVersion: skupper.io/v1alpha1
           kind: Site
           metadata:
-            name: west
-            namespace: hello-world-west
+            name: east
+            namespace: hello-world-east
     properties:
       name:
         description: |
@@ -38,9 +67,13 @@ resources:
           [link]: concepts.md#link
   Link:
     group: site-linking
-    description: XXX
+    description: |
+      A [link][link] is a site-to-site communication channel. Links
+      serve as a transport for application connections and requests.
+
+      [link]: concepts.md#link
     examples:
-      - description: XXX
+      - description: A typical link definition
         yaml: |
           apiVersion: skupper.io/v1alpha1
           kind: Link
@@ -48,27 +81,33 @@ resources:
             name: link-to-west
             namespace: hello-world-east
           spec:
-            # Hand wavy!  Very notional!
-            host: west.example.net
-            port: 12345
-            tlsCredentials: secret/foo
-    properties: {}
+            [...]
   LinkAccess:
     group: site-linking
-    description: XXX
+    description: |
+      A [link access][link-access] defines a point of external access
+      for links from remote sites.
+
+      [link-access]: XXX
     examples:
-      - description: XXX
+      - description: A typical link access definition
         yaml: |
           apiVersion: skupper.io/v1alpha1
           kind: LinkAccess
           metadata:
-            name: link-to-west
-            namespace: hello-world-east
+            name: skupper-router
           spec:
-            # Hand wavy!  Very notional!
-            port: 12345
-            tlsCredentials: secret/foo
-    properties: {}
+            roles:
+            - role: inter-router
+              port: 55671
+            - role: edge
+              port: 45671
+            accessType: loadbalancer
+            tlsCredentials: skupper-site-server
+  Grant:
+    group: site-linking
+  Claim:
+    group: site-linking
   Connector:
     group: service-exposure
     description: |
@@ -79,7 +118,8 @@ resources:
 
       [connector]: concepts.md#connector
     examples:
-      - description: XXX
+      - description: |
+          A connector in site East for the Hello World backend service
         yaml: |
           apiVersion: skupper.io/v1alpha1
           kind: Connector
@@ -129,7 +169,9 @@ resources:
 
       [listener]: concepts.md#listener
     examples:
-      - description: XXX
+      - description: |
+          A listener in site West for the Hello World backend service
+          in site East
         yaml: |
           apiVersion: skupper.io/v1alpha1
           kind: Listener

@@ -1,86 +1,76 @@
 from plano import *
 
-def gen():
-    model = Model()
-
-    # for name, resource in model.resources.items():
-    #     print(resource)
-    #     for name, prop in resource.properties.items():
-    #         print(prop)
-
+def generate():
+    model = Model("model.yaml")
     lines = list()
+    sections = dict()
 
     def append(line=""):
+        if line is None:
+            return
+
         lines.append(line)
 
-    append(f"- [Site configuration](#site-configuration)")
+    append("#### Contents")
 
-    for resource_name, resource in model.resources.items():
-        if resource.group != "site-configuration": continue
-        append(f"  - [{resource_name}](#{resource_name})")
+    for group_name, group in model.groups.items():
+        append(f"- [{group.title}](#{group_name})")
 
-    append(f"- [Site linking](#site-linking)")
+        for resource_name, resource in model.resources.items():
+            if resource.group == group_name or (resource.group is None and group_name == "everything-else"):
+                append(f"  - [{resource_name}](#{resource_name.lower()})")
 
-    for resource_name, resource in model.resources.items():
-        if resource.group != "site-linking": continue
-        append(f"  - [{resource_name}](#{resource_name})")
+    for group_name, group in model.groups.items():
+        append(f"## {group.title}")
+        append()
+        append(group.description)
+        append()
 
-    append(f"- [Service exposure](#service-exposure)")
+        for resource_name, resource in model.resources.items():
+            if resource.group == group_name or (resource.group is None and group_name == "everything-else"):
+                append(f"### {resource_name}")
+                append()
+                append(resource.description)
 
-    for resource_name, resource in model.resources.items():
-        if resource.group != "service-exposure": continue
-        append(f"  - [{resource_name}](#{resource_name})")
+                append("#### Examples")
+                append()
 
-    toc = "\n".join(lines)
-    lines.clear()
+                for example in resource.examples:
+                    append(example["description"])
+                    append()
+                    append("~~~ yaml")
+                    append(example["yaml"])
+                    append("~~~")
 
-    for resource_name, resource in model.resources.items():
-        if resource.group != "site-configuration": continue
-        append(f"### {resource_name}")
+                append("#### Spec properties")
+                append()
 
-    site_configuration_resources = "\n".join(lines)
-    lines.clear()
+                for prop_name, prop in resource.properties.items():
+                    append(f"##### `{prop_name}`")
+                    append()
 
-    for resource_name, resource in model.resources.items():
-        if resource.group != "site-linking": continue
-        append(f"### {resource_name}")
+                    append(prop.description or "")
+                    append()
 
-    site_linking_resources = "\n".join(lines)
-    lines.clear()
+                    append(f"_Type_: {capitalize(prop.type)}\\")
+                    append(f"_Required_: {'Yes' if prop.required else 'No'}\\")
+                    append(f"_Default_: {prop.default}")
 
-    for resource_name, resource in model.resources.items():
-        if resource.group != "service-exposure": continue
-        append(f"### {resource_name}")
-
-    service_exposure_resources = "\n".join(lines)
-    lines.clear()
+                # append("#### Status properties")
+                # append()
 
     reference = read("reference.md.in")
-    reference = reference.replace("@toc@", toc)
-    reference = reference.replace("@site_configuration_resources@", site_configuration_resources)
-    reference = reference.replace("@site_linking_resources@", site_linking_resources)
-    reference = reference.replace("@service_exposure_resources@", service_exposure_resources)
-
+    reference = reference.replace("@content@", "\n".join(lines))
     write("reference.md", reference)
 
-def object_property(name, default=None):
-    def get(obj):
-        value = obj.data.get(name, default)
-
-        if is_string(value):
-            value = value.replace("@default@", str(nvl(default, "")).strip())
-            value = value.strip()
-
-        return value
-
-    return property(get)
-
 class Model:
-    title = object_property("title")
-
-    def __init__(self):
-        self.data = read_yaml("model.yaml")
+    def __init__(self, yaml_file):
+        self.data = read_yaml(yaml_file)
+        self.groups = dict()
         self.resources = dict()
+
+        for name, data in self.data["groups"].items():
+            self.groups[name] = Group(self, name, data)
 
         with working_dir("crds"):
             for crd_name in list_dir():
@@ -98,12 +88,27 @@ class Model:
                 self.resources[name] = Resource(self, name, data, crd)
 
     def __repr__(self):
-        return f"model"
+        return "model"
+
+class Group:
+    def __init__(self, model, name, data):
+        self.model = model
+        self.name = name
+        self.data = data
+
+    def __repr__(self):
+        return f"group '{self.name}'"
+
+    @property
+    def title(self):
+        return self.data["title"]
+
+    @property
+    def description(self):
+        return self.data.get("description")
 
 class Resource:
     def __init__(self, model, name, data, crd):
-        assert name is not None
-
         self.model = model
         self.name = name
         self.data = data
@@ -114,7 +119,7 @@ class Resource:
         schema = self.crd["spec"]["versions"][0]["schema"]["openAPIV3Schema"]
 
         for name, crd in schema["properties"]["spec"]["properties"].items():
-            data = self.data["properties"].get(name, {})
+            data = self.data.get("properties", {}).get(name, {})
             self.properties[name] = Property(self.model, self, name, data, crd)
 
     def __repr__(self):
@@ -130,12 +135,10 @@ class Resource:
 
     @property
     def examples(self):
-        return self.data.get("examples")
+        return self.data.get("examples", [])
 
 class Property:
     def __init__(self, model, resource, name, data, crd):
-        assert name is not None
-
         self.model = model
         self.resource = resource
         self.name = name

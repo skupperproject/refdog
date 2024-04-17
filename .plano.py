@@ -5,8 +5,8 @@ from generate import *
 import collections
 
 @command
-def gen_():
-    gen()
+def dev():
+    generate()
 
     html = convert_github_markdown(read("reference.md"))
     write("reference.html", html)
@@ -14,7 +14,7 @@ def gen_():
     print(f"file:{get_real_path('reference.html')}")
 
 @command
-def generate():
+def generate_():
     lines = list()
 
     def append(line=""):

@@ -2,24 +2,4 @@
 
 A configuration reference for Skupper
 
-#### Contents
-
-@toc@
-
-## Site configuration
-
-<!-- Key diagram -->
-
-@site_configuration_resources@
-
-## Site linking
-
-<!-- Key diagram -->
-
-@site_linking_resources@
-
-## Service exposure
-
-<!-- Key diagram -->
-
-@service_exposure_resources@
+@content@
