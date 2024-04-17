@@ -54,7 +54,7 @@ def generate():
 
                     append(f"_Type_: {capitalize(prop.type)}\\")
                     append(f"_Required_: {'Yes' if prop.required else 'No'}\\")
-                    append(f"_Default_: {prop.default}")
+                    append(f"_Default_: {'False' if prop.default is None and prop.type == 'boolean' else prop.default}")
 
                 # append("#### Status properties")
                 # append()

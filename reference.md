@@ -73,6 +73,20 @@ nisi ut aliquip ex ea commodo consequat.
 
 ### Claim
 
+XXX
+
+The Claim declares desire to initiate access based on a previous
+Grant.
+
+Does "claim" mean something more than an asserted grant?  That
+is essentially what it is.
+
+The Claim url is obtained from the status of the grant along
+with the secret and the ca, i.e. the information for a Claim
+comes from the Grant.
+
+The Claim has the details from its associated Grant.
+
 #### Examples
 
 #### Spec properties
@@ -99,6 +113,19 @@ _Type_: String\
 _Required_: Yes\
 _Default_: None
 ### Grant
+
+XXX
+
+Grant is the offering of access.
+
+It is the 'server side' of a Claim.
+
+A Grant is essentially a way to declare that someone with the
+given secret can present that in exchange for a certificate
+signed by the ca associated with the grant, up to the given
+expiration and for the number of allowed claims.
+
+Then, on the site you want to use that, you create a Claim.
 
 #### Examples
 
@@ -129,6 +156,17 @@ _Default_: None
 
 A [link access][link-access] defines a point of external access
 for links from remote sites.
+
+XXX
+
+LinkAccess is specifically about configuring and providing
+access to router Listeners.
+
+LinkAccess is a way of configuring and exposing router listeners.
+
+A LinkAccess will be implemented in part by the controller
+creating an underlying SecuredAccess object, but LinkAccess will
+also cause the router config to be adjusted.
 
 [link-access]: XXX
 
@@ -162,6 +200,21 @@ _Required_: Yes\
 _Default_: None
 ##### `ca`
 
+XXX
+
+A reference to a secret.
+
+Why have this when tlsCredentials has a CA?  The CA is only
+needed if you want the controller to generate the
+tlsCredentials for you, and must then refer to a secret
+containing the private key of the CA as well as its
+certificate.
+
+So ca and tlsCredentials are alternatives.
+
+If the CA is supplied in a LinkAccess, it is assumed it
+exists already (for the current mode of certificate
+management).
 
 
 _Type_: String\
@@ -169,6 +222,12 @@ _Required_: No\
 _Default_: None
 ##### `tlsCredentials`
 
+The name of a Kubernetes secret containing TLS
+credentials. The secret contains the trusted server
+certificate (typically a CA certificate).
+
+It can optionally include a client certificate and key for
+mutual TLS.
 
 
 _Type_: String\
@@ -176,6 +235,8 @@ _Required_: Yes\
 _Default_: None
 ##### `accessType`
 
+accessType is a hint or constraint on the kind of ingress
+that can/should be used (route, nodePort, LB, nginx, etc.).
 
 
 _Type_: String\
@@ -192,6 +253,10 @@ _Default_: None
 
 A [link][link] is a site-to-site communication channel. Links
 serve as a transport for application connections and requests.
+
+XXX
+
+The Link would has the details from its associated LinkAccess.
 
 [link]: concepts.md#link
 
@@ -227,6 +292,12 @@ _Required_: Yes\
 _Default_: None
 ##### `tlsCredentials`
 
+The name of a Kubernetes secret containing TLS
+credentials. The secret contains the trusted server
+certificate (typically a CA certificate).
+
+It can optionally include a client certificate and key for
+mutual TLS.
 
 
 _Type_: String\
@@ -245,7 +316,7 @@ _Default_: None
 
 _Type_: Boolean\
 _Required_: No\
-_Default_: None
+_Default_: False
 ## Service exposure
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -347,7 +418,7 @@ _Default_: None
 
 _Type_: Boolean\
 _Required_: No\
-_Default_: None
+_Default_: False
 ### Listener
 
 A [listener][listener] is a local connection endpoint bound to
@@ -468,22 +539,41 @@ _Default_: None
 
 _Type_: Boolean\
 _Required_: No\
-_Default_: None
+_Default_: False
 ##### `server`
 
 
 
 _Type_: Boolean\
 _Required_: No\
-_Default_: None
+_Default_: False
 ##### `signing`
 
 
 
 _Type_: Boolean\
 _Required_: No\
-_Default_: None
+_Default_: False
 ### SecuredAccess
+
+XXX
+
+SecuredAccess is a generic way of exposing a workload (a set of
+pods).
+
+SecuredAccess just creates and necessary service/ingress
+resources and optionally any secrets with tls credentials.
+
+The implementation of LinkAccess creates a SecuredAccess and
+also configures the router.
+
+SecuredAccess is a lower level concept.  It just exposes a
+workload, including if desired, generation of necessary certs
+(though those can also be provided if preferred).
+
+SecuredAccess is not in any way tied to the router.  LInkAccess
+*is* tied to the router.  LinkAccess can be thought of as a
+specialization of SecuredAccess.
 
 #### Examples
 
