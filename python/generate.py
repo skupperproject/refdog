@@ -1,7 +1,7 @@
 from plano import *
 
 def generate():
-    model = Model("model.yaml")
+    model = Model("resources.yaml")
     lines = list()
     sections = dict()
 
@@ -59,9 +59,10 @@ def generate():
                 # append("#### Status properties")
                 # append()
 
-    reference = read("reference.md.in")
-    reference = reference.replace("@content@", "\n".join(lines))
-    write("reference.md", reference)
+    markdown = read("resources.md.in")
+    markdown = markdown.replace("@content@", "\n".join(lines))
+
+    write("resources.md", markdown)
 
 class Model:
     def __init__(self, yaml_file):
