@@ -1,6 +1,4 @@
-# Refdog
-
-A configuration reference for Skupper
+# Skupper resources
 
 #### Contents
 - [Site configuration](#site-configuration)

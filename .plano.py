@@ -7,14 +7,20 @@ import resources
 
 @command
 def generate():
-    resources.generate()
     commands.generate()
+    resources.generate()
 
-    write("resources.html", convert_github_markdown(read("resources.md")))
+@command
+def render():
+    generate()
+
+    write("concepts.html", convert_github_markdown(read("concepts.md")))
     write("commands.html", convert_github_markdown(read("commands.md")))
+    write("resources.html", convert_github_markdown(read("resources.md")))
 
-    print(f"file:{get_real_path('resources.html')}")
+    print(f"file:{get_real_path('concepts.html')}")
     print(f"file:{get_real_path('commands.html')}")
+    print(f"file:{get_real_path('resources.html')}")
 
 @command
 def clean():
