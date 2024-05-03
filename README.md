@@ -1,5 +1,5 @@
 # Refdog
 
 - [Concepts](concepts.md)
-- [YAML reference](resources.md)
-- [CLI reference](commands.md)
+- [Resource reference](resources.md)
+- [Command reference](commands.md)
