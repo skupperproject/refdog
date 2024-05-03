@@ -1,0 +1,35 @@
+groups:
+  - title: Site configuration
+    commands:
+      - title: skupper site create
+      - title: skupper site update
+      - title: skupper site delete
+      - title: skupper site status
+  - title: Site linking
+    commands:
+      - title: skupper token create
+      - title: skupper link create
+      - title: skupper link delete
+      - title: skupper link status
+  - title: Service exposure
+    commands:
+      - title: skupper connector create
+      - title: skupper connector delete
+      - title: skupper connector status
+      - title: skupper listener create
+      - title: skupper listener delete
+      - title: skupper listener status
+  - title: Platform operations
+    commands:
+      - title: skupper platform install
+      - title: skupper platform uninstall
+      - title: skupper platform status
+      - title: skupper platform switch
+  - title: Debug operations
+    commands:
+      - title: skupper debug dump
+      - title: skupper debug events
+  - title: Other operations
+    commands:
+      - title: skupper network status
+      - title: skupper version
