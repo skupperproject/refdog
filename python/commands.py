@@ -59,7 +59,11 @@ def generate():
                 append()
 
                 for option in command.options:
-                    append(f"- **{option.name}** (default {option.default})")
+                    if option.default is None:
+                        append(f"- **{option.name}**")
+                    else:
+                        append(f"- **{option.name}** (default {option.default})")
+
                     append()
 
                     if option.description:
@@ -124,7 +128,7 @@ class Group:
         self.commands = list()
 
         for command_data in self.data["commands"]:
-            self.commands.append(Command(self, command_data))
+            self.commands.append(Command(self.model, command_data))
 
     def __repr__(self):
         return f"group '{self.title}'"
@@ -149,7 +153,13 @@ class Command:
         self.errors = list()
 
         for option_data in self.data.get("options", []):
-            self.options.append(Option(self, option_data))
+            if "include" in option_data:
+                option_group = option_data["include"]
+
+                for x in self.model.data["options"][option_group]:
+                    self.options.append(Option(self.model, x))
+            else:
+                self.options.append(Option(self.model, option_data))
 
         for error_data in self.data.get("errors", []):
             self.errors.append(Error(self, error_data))

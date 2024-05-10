@@ -45,16 +45,16 @@ Create a site.
 
 ~~~
 # Create a site
-skupper site create
+skupper site create west
 
 # Create a site that can accept links from remote sites
-skupper site create --enable-link-access
+skupper site create west --enable-link-access
 ~~~
 
 #### Usage
 
 ~~~
-skupper site create [NAME] [options]
+skupper site create NAME [options]
 ~~~
 
 #### Output
@@ -65,20 +65,40 @@ Site "<name>" is ready
 ~~~
 #### Options
 
-- **NAME** (default [same as namespace name])
+- **--help**
+
+  Display help and exit.
+  
+
+- **--context**
+
+  Select the kubeconfig context.
+  
+
+- **--namespace**
+
+  Select the Kubernetes namespace.
+  
+
+- **--platform**
+
+  Select the Skupper platform.
+  
 
 - **--enable-link-access** (default False)
 
   Enable external access for links from remote sites.
   
 
-- **--link-access-type** (default [platform-dependent])
+- **--link-access-type** (default _platform dependent_)
 
   Select the means of opening external access.
   
   The default is `route` on OpenShift and `loadbalancer`
   otherwise.
   
+
+- **--service-account** (default _generated_)
 
 #### Errors
 
@@ -91,25 +111,21 @@ Site "<name>" is ready
 
 Change site settings.
 
-`skupper site update` has the same options as `skupper site
-create`, except for those options that cannot be changed
-after site creation.
-
 
 #### Examples
 
 ~~~
 # Update the site to accept links
-skupper site update --enable-link-access
+skupper site update west --enable-link-access
 
 # Update multiple settings
-skupper site update --enable-link-access --link-access-type loadbalancer
+skupper site update west --enable-link-access --link-access-type loadbalancer
 ~~~
 
 #### Usage
 
 ~~~
-skupper site update [options]
+skupper site update NAME [options]
 ~~~
 
 #### Output
@@ -118,6 +134,43 @@ skupper site update [options]
 Waiting for update to complete...
 Site "<name>" is updated
 ~~~
+#### Options
+
+- **--help**
+
+  Display help and exit.
+  
+
+- **--context**
+
+  Select the kubeconfig context.
+  
+
+- **--namespace**
+
+  Select the Kubernetes namespace.
+  
+
+- **--platform**
+
+  Select the Skupper platform.
+  
+
+- **--enable-link-access** (default False)
+
+  Enable external access for links from remote sites.
+  
+
+- **--link-access-type** (default _platform dependent_)
+
+  Select the means of opening external access.
+  
+  The default is `route` on OpenShift and `loadbalancer`
+  otherwise.
+  
+
+- **--service-account** (default _generated_)
+
 #### Errors
 
 - **No site resource exists**
@@ -133,7 +186,7 @@ Delete a site.
 #### Usage
 
 ~~~
-skupper site delete
+skupper site delete NAME
 ~~~
 
 #### Output
@@ -163,10 +216,38 @@ skupper site status
 #### Output
 
 ~~~
-Status:        Active
-Name:          west
-Linked sites:  1
+NAME   STATUS   SITES-IN-NETWORK   SERVICES-IN-NETWORK
+west   Ready    1                  0
 ~~~
+#### Options
+
+- **--help**
+
+  Display help and exit.
+  
+
+- **--context**
+
+  Select the kubeconfig context.
+  
+
+- **--namespace**
+
+  Select the Kubernetes namespace.
+  
+
+- **--platform**
+
+  Select the Skupper platform.
+  
+
+#### _Notes_
+
+_What is services-in-network?  Is that the total number of_ 
+_unique routing keys defined by connectors?  Or listeners?_ 
+_Or listeners plus connectors (not the orphans), grouped by_ 
+_routing key?_ 
+
 ## Site linking
 
 ### skupper token
@@ -193,8 +274,6 @@ The token expires after 1 use or after 15 minutes
 ~~~
 #### Options
 
-- **FILE** (default None)
-
 - **--expiry** (default 15m)
 
 - **--uses** (default 1)
@@ -220,11 +299,9 @@ skupper link create FILE [options]
 ~~~
 Waiting for status...
 Link "<name>" is active
-You can now delete <token-file>
+You can now safely delete <file>
 ~~~
 #### Options
-
-- **FILE** (default None)
 
 - **--cost** (default 1)
 
@@ -237,21 +314,18 @@ You can now delete <token-file>
 skupper link delete NAME
 ~~~
 
-#### Options
-
-- **NAME** (default None)
-
 ### skupper link status
 
 
 #### Output
 
 ~~~
-NAME    STATUS   COST
-link1   Active   1
+NAME   STATUS   COST
+west   Ready    1
 
 Links from remote sites:
-east
+
+None
 ~~~
 ## Service exposure
 
@@ -279,17 +353,15 @@ Connector "<name>" is ready
 ~~~
 #### Options
 
-- **NAME** (default None)
+- **--routing-key** (default _NAME_)
 
-- **--routing-key** (default [same as the connector name])
+- **--port**
 
-- **--port** (default None)
+- **--workload**
 
-- **--workload** (default None)
+- **--selector**
 
-- **--selector** (default None)
-
-- **--host** (default None)
+- **--host**
 
 ### skupper connector delete
 
@@ -308,10 +380,6 @@ skupper connector delete NAME
 Waiting for deletion to complete...
 Connector "<name>" is deleted
 ~~~
-#### Options
-
-- **NAME** (default None)
-
 ### skupper connector status
 
 Show the status of connectors in the current site.
@@ -326,7 +394,7 @@ skupper connector status
 #### Output
 
 ~~~
-NAME      ROUTING-KEY   SELECTOR      PORT   LISTENERS
+NAME      ROUTING-KEY   SELECTOR      PORT   MATCHING-LISTENERS
 backend   backend       app=backend   8080   1
 ~~~
 ### skupper listener
@@ -349,17 +417,15 @@ skupper listener create NAME [options]
 
 ~~~
 Waiting for status...
-Connector "<name>" is ready
+Listener "<name>" is ready
 ~~~
 #### Options
 
-- **NAME** (default None)
+- **--routing-key** (default _NAME_)
 
-- **--routing-key** (default [same as the listener name])
+- **--host**
 
-- **--host** (default None)
-
-- **--port** (default None)
+- **--port**
 
 ### skupper listener delete
 
@@ -378,10 +444,6 @@ skupper listener delete NAME
 Waiting for deletion to complete...
 Listener "<name>" is deleted
 ~~~
-#### Options
-
-- **NAME** (default None)
-
 ### skupper listener status
 
 Show the status of listeners in the current site.
@@ -396,7 +458,7 @@ skupper listener status
 #### Output
 
 ~~~
-NAME      ROUTING-KEY   HOST      PORT   CONNECTORS
+NAME      ROUTING-KEY   HOST      PORT   MATCHING-CONNECTORS
 backend   backend       backend   8080   1
 ~~~
 ## Debug operations

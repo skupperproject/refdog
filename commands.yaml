@@ -1,36 +1,53 @@
+options:
+  core:
+    - name: --help
+      description: |
+        Display help and exit.
+    - name: --context
+      description: |
+        Select the kubeconfig context.
+    - name: --namespace
+      description: |
+        Select the Kubernetes namespace.
+    - name: --platform
+      description: |
+        Select the Skupper platform.
+  mutable_site_configuration:
+    - name: --enable-link-access
+      default: false
+      description: |
+        Enable external access for links from remote sites.
+    - name: --link-access-type
+      default: _platform dependent_
+      description: |
+        Select the means of opening external access.
+
+        The default is `route` on OpenShift and `loadbalancer`
+        otherwise.
+    - name: --service-account
+      default: _generated_
 groups:
   - title: Site configuration
     commands:
       - title: skupper site
         description: |
-          Print help for site commands.
+          Display help for site commands.
       - title: skupper site create
         description: |
           Create a site.
         examples: |
           # Create a site
-          skupper site create
+          skupper site create west
 
           # Create a site that can accept links from remote sites
-          skupper site create --enable-link-access
-        usage: skupper site create [NAME] [options]
+          skupper site create west --enable-link-access
+        usage: skupper site create NAME [options]
         output: |
           Waiting for status...
           Site "<name>" is ready
         options:
-          - name: NAME
-            default: "[same as namespace name]"
-          - name: --enable-link-access
-            default: false
-            description: |
-              Enable external access for links from remote sites.
-          - name: --link-access-type
-            default: "[platform-dependent]"
-            description: |
-              Select the means of opening external access.
-
-              The default is `route` on OpenShift and `loadbalancer`
-              otherwise.
+          - include: core
+          - include: mutable_site_configuration
         errors:
           - message: Site resource already exists
             description: |
@@ -38,20 +55,19 @@ groups:
       - title: skupper site update
         examples: |
           # Update the site to accept links
-          skupper site update --enable-link-access
+          skupper site update west --enable-link-access
 
           # Update multiple settings
-          skupper site update --enable-link-access --link-access-type loadbalancer
-        usage: skupper site update [options]
+          skupper site update west --enable-link-access --link-access-type loadbalancer
+        usage: skupper site update NAME [options]
         description: |
           Change site settings.
-
-          `skupper site update` has the same options as `skupper site
-          create`, except for those options that cannot be changed
-          after site creation.
         output: |
           Waiting for update to complete...
           Site "<name>" is updated
+        options:
+          - include: core
+          - include: mutable_site_configuration
         errors:
           - message: No site resource exists
             description: |
@@ -59,7 +75,7 @@ groups:
       - title: skupper site delete
         description: |
           Delete a site.
-        usage: skupper site delete
+        usage: skupper site delete NAME
         output: |
           Waiting for deletion to complete...
           Site "<name>" is deleted
@@ -72,14 +88,20 @@ groups:
           Show the current status of a site.
         usage: skupper site status
         output: |
-          Status:        Active
-          Name:          west
-          Linked sites:  1
+          NAME   STATUS   SITES-IN-NETWORK   SERVICES-IN-NETWORK
+          west   Ready    1                  0
+        options:
+          - include: core
+        notes: |
+          What is services-in-network?  Is that the total number of
+          unique routing keys defined by connectors?  Or listeners?
+          Or listeners plus connectors (not the orphans), grouped by
+          routing key?
   - title: Site linking
     commands:
       - title: skupper token
         description: |
-          Print help for token commands.  Currently there is just one.
+          Display help for token commands.  Currently there is just one.
       - title: skupper token create
         description: |
           Create a token.
@@ -88,14 +110,13 @@ groups:
           Token file created at <file>
           The token expires after 1 use or after 15 minutes
         options:
-          - name: FILE
           - name: --expiry
             default: 15m
           - name: --uses
             default: 1
       - title: skupper link
         description: |
-          Print help for link commands.
+          Display help for link commands.
       - title: skupper link create
         description: |
           Create a link.
@@ -103,27 +124,25 @@ groups:
         output: |
           Waiting for status...
           Link "<name>" is active
-          You can now delete <token-file>
+          You can now safely delete <file>
         options:
-          - name: FILE
           - name: --cost
             default: 1
       - title: skupper link delete
         usage: skupper link delete NAME
-        options:
-          - name: NAME
       - title: skupper link status
         output: |
-          NAME    STATUS   COST
-          link1   Active   1
+          NAME   STATUS   COST
+          west   Active   1
 
           Links from remote sites:
-          east
+
+          None
   - title: Service exposure
     commands:
       - title: skupper connector
         description: |
-          Print help for connector commands.
+          Display help for connector commands.
       - title: skupper connector create
         description: |
           Create a connector.
@@ -132,9 +151,8 @@ groups:
           Waiting for status...
           Connector "<name>" is ready
         options:
-          - name: NAME
           - name: --routing-key
-            default: "[same as the connector name]"
+            default: _NAME_
           - name: --port
           - name: --workload
           - name: --selector
@@ -146,29 +164,26 @@ groups:
         output: |
           Waiting for deletion to complete...
           Connector "<name>" is deleted
-        options:
-          - name: NAME
       - title: skupper connector status
         description: |
           Show the status of connectors in the current site.
         usage: skupper connector status
         output: |
-          NAME      ROUTING-KEY   SELECTOR      PORT   LISTENERS
+          NAME      ROUTING-KEY   SELECTOR      PORT   MATCHING-LISTENERS
           backend   backend       app=backend   8080   1
       - title: skupper listener
         description: |
-          Print help for listener commands.
+          Display help for listener commands.
       - title: skupper listener create
         description: |
           Create a listener.
         usage: skupper listener create NAME [options]
         output: |
           Waiting for status...
-          Connector "<name>" is ready
+          Listener "<name>" is ready
         options:
-          - name: NAME
           - name: --routing-key
-            default: "[same as the listener name]"
+            default: _NAME_
           - name: --host
           - name: --port
       - title: skupper listener delete
@@ -178,20 +193,18 @@ groups:
         output: |
           Waiting for deletion to complete...
           Listener "<name>" is deleted
-        options:
-          - name: NAME
       - title: skupper listener status
         description: |
           Show the status of listeners in the current site.
         usage: skupper listener status
         output: |
-          NAME      ROUTING-KEY   HOST      PORT   CONNECTORS
+          NAME      ROUTING-KEY   HOST      PORT   MATCHING-CONNECTORS
           backend   backend       backend   8080   1
   # - title: Platform operations
   #   commands:
   #     - title: skupper platform
   #       description: |
-  #         Print help for platform commands.
+  #         Display help for platform commands.
   #     - title: skupper platform install
   #     - title: skupper platform uninstall
   #     - title: skupper platform switch
@@ -199,7 +212,7 @@ groups:
     commands:
       - title: skupper debug
         description: |
-          Print help for debug commands.
+          Display help for debug commands.
       - title: skupper debug dump
         description: |
           Generate a debug dump file.
