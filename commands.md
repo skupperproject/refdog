@@ -48,13 +48,13 @@ Create a site.
 skupper site create
 
 # Create a site that can accept links from remote sites
-skupper site create --create-default-link-access
+skupper site create --enable-link-access
 ~~~
 
 #### Usage
 
 ~~~
-skupper site create [OPTIONS]
+skupper site create [NAME] [options]
 ~~~
 
 #### Output
@@ -65,21 +65,12 @@ Site "<name>" is ready
 ~~~
 #### Options
 
-- **--name** (default [generated])
+- **NAME** (default [same as namespace name])
 
-  Set the site name.  The default is the site namespace
-  name.
-  
-
-- **--create-default-link-access** (default False)
+- **--enable-link-access** (default False)
 
   Enable external access for links from remote sites.
   
-
-  ##### _Notes_
-
-  _I've come to think we should name this_
-  _--enable-link-access._
 
 - **--link-access-type** (default [platform-dependent])
 
@@ -96,12 +87,6 @@ Site "<name>" is ready
   There is already a site resource defined for the namespace.
   
 
-#### _Notes_
-
-_I think it may make sense for the site CR to always have the_ 
-_name "site", since it is a singleton, and have the name_ 
-_option be a distinct "name override" field._ 
-
 ### skupper site update
 
 Change site settings.
@@ -114,17 +99,17 @@ after site creation.
 #### Examples
 
 ~~~
-# Change the site name
-skupper site update --name headquarters
+# Update the site to accept links
+skupper site update --enable-link-access
 
 # Update multiple settings
-skupper site update --name warehouse --create-default-link-access
+skupper site update --enable-link-access --link-access-type loadbalancer
 ~~~
 
 #### Usage
 
 ~~~
-skupper site update [OPTIONS]
+skupper site update [options]
 ~~~
 
 #### Output
@@ -197,7 +182,7 @@ Create a token.
 #### Usage
 
 ~~~
-skupper token create TOKEN-FILE
+skupper token create FILE [options]
 ~~~
 
 #### Output
@@ -206,6 +191,14 @@ skupper token create TOKEN-FILE
 Token file created at <file>
 The token expires after 1 use or after 15 minutes
 ~~~
+#### Options
+
+- **FILE** (default None)
+
+- **--expiry** (default 15m)
+
+- **--uses** (default 1)
+
 ### skupper link
 
 Print help for link commands.
@@ -219,8 +212,21 @@ Create a link.
 #### Usage
 
 ~~~
-skupper link create TOKEN-FILE
+skupper link create FILE [options]
 ~~~
+
+#### Output
+
+~~~
+Waiting for status...
+Link "<name>" is active
+You can now delete <token-file>
+~~~
+#### Options
+
+- **FILE** (default None)
+
+- **--cost** (default 1)
 
 ### skupper link delete
 
@@ -228,8 +234,12 @@ skupper link create TOKEN-FILE
 #### Usage
 
 ~~~
-skupper link delete LINK-NAME
+skupper link delete NAME
 ~~~
+
+#### Options
+
+- **NAME** (default None)
 
 ### skupper link status
 
@@ -237,8 +247,8 @@ skupper link delete LINK-NAME
 #### Output
 
 ~~~
-NAME   STATUS
-link1  Active
+NAME    STATUS   COST
+link1   Active   1
 
 Links from remote sites:
 east
@@ -258,7 +268,7 @@ Create a connector.
 #### Usage
 
 ~~~
-skupper connector create CONNECTOR-NAME [OPTIONS]
+skupper connector create NAME [options]
 ~~~
 
 #### Output
@@ -267,6 +277,20 @@ skupper connector create CONNECTOR-NAME [OPTIONS]
 Waiting for status...
 Connector "<name>" is ready
 ~~~
+#### Options
+
+- **NAME** (default None)
+
+- **--routing-key** (default [same as the connector name])
+
+- **--port** (default None)
+
+- **--workload** (default None)
+
+- **--selector** (default None)
+
+- **--host** (default None)
+
 ### skupper connector delete
 
 Delete a connector.
@@ -275,7 +299,7 @@ Delete a connector.
 #### Usage
 
 ~~~
-skupper connector delete CONNECTOR-NAME
+skupper connector delete NAME
 ~~~
 
 #### Output
@@ -284,6 +308,10 @@ skupper connector delete CONNECTOR-NAME
 Waiting for deletion to complete...
 Connector "<name>" is deleted
 ~~~
+#### Options
+
+- **NAME** (default None)
+
 ### skupper connector status
 
 Show the status of connectors in the current site.
@@ -314,7 +342,7 @@ Create a listener.
 #### Usage
 
 ~~~
-skupper listener create LISTENER-NAME [OPTIONS]
+skupper listener create NAME [options]
 ~~~
 
 #### Output
@@ -323,6 +351,16 @@ skupper listener create LISTENER-NAME [OPTIONS]
 Waiting for status...
 Connector "<name>" is ready
 ~~~
+#### Options
+
+- **NAME** (default None)
+
+- **--routing-key** (default [same as the listener name])
+
+- **--host** (default None)
+
+- **--port** (default None)
+
 ### skupper listener delete
 
 Delete a listener.
@@ -331,7 +369,7 @@ Delete a listener.
 #### Usage
 
 ~~~
-skupper listener delete LISTENER-NAME
+skupper listener delete NAME
 ~~~
 
 #### Output
@@ -340,6 +378,10 @@ skupper listener delete LISTENER-NAME
 Waiting for deletion to complete...
 Listener "<name>" is deleted
 ~~~
+#### Options
+
+- **NAME** (default None)
+
 ### skupper listener status
 
 Show the status of listeners in the current site.
@@ -372,7 +414,7 @@ Generate a debug dump file.
 #### Usage
 
 ~~~
-skupper debug dump [FILE-NAME]
+skupper debug dump [FILE]
 ~~~
 
 #### Output
