@@ -63,9 +63,17 @@ def generate():
                     append()
 
                     if option.description:
-                        description = "\n".join("  " + line for line in option.description.split("\n"))
+                        description = "\n".join(f"  {line}" for line in option.description.split("\n"))
 
                         append(description)
+                        append()
+
+                    if option.notes:
+                        notes = "\n".join(f"  _{line}_" for line in option.notes.strip().split("\n"))
+
+                        append("  ##### _Notes_")
+                        append()
+                        append(notes)
                         append()
 
             if command.errors:
@@ -77,15 +85,17 @@ def generate():
                     append()
 
                     if error.description:
-                        description = "\n".join("  " + line for line in error.description.split("\n"))
+                        description = "\n".join(f"  {line}" for line in error.description.split("\n"))
 
                         append(description)
                         append()
 
             if command.notes:
-                append("#### Notes")
+                notes = "\n".join(f"_{line}_ " for line in command.notes.strip().split("\n"))
+
+                append("#### _Notes_")
                 append()
-                append(command.notes.strip())
+                append(notes)
                 append()
 
     markdown = read("commands.md.in")
@@ -203,6 +213,10 @@ class Option:
     def description(self):
         return self.data.get("description")
 
+    @property
+    def notes(self):
+        return self.data.get("notes")
+
 class Error:
     def __init__(self, model, data):
         self.model = model
@@ -218,3 +232,7 @@ class Error:
     @property
     def description(self):
         return self.data.get("description")
+
+    @property
+    def notes(self):
+        return self.data.get("notes")

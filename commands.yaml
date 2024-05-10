@@ -12,8 +12,8 @@ groups:
           skupper site create
 
           # Create a site that can accept links from remote sites
-          skupper site create --enable-link-access
-        usage: skupper site create [OPTIONS...]
+          skupper site create --create-default-link-access
+        usage: skupper site create [OPTIONS]
         output: |
           Waiting for status...
           Site "<name>" is ready
@@ -23,10 +23,13 @@ groups:
             description: |
               Set the site name.  The default is the site namespace
               name.
-          - name: --enable-link-access
+          - name: --create-default-link-access
             default: false
             description: |
               Enable external access for links from remote sites.
+            notes: |
+              I've come to think we should name this
+              --enable-link-access.
           - name: --link-access-type
             default: "[platform-dependent]"
             description: |
@@ -48,14 +51,14 @@ groups:
           skupper site update --name headquarters
 
           # Update multiple settings
-          skupper site update --name warehouse --enable-link-access
-        usage: skupper site update [OPTIONS...]
+          skupper site update --name warehouse --create-default-link-access
+        usage: skupper site update [OPTIONS]
         description: |
           Change site settings.
 
           `skupper site update` has the same options as `skupper site
-          create`, except for options that cannot be changed after
-          site creation.
+          create`, except for those options that cannot be changed
+          after site creation.
         output: |
           Waiting for update to complete...
           Site "<name>" is updated
@@ -92,7 +95,7 @@ groups:
           Create a token.
         usage: skupper token create TOKEN-FILE
         output: |
-          Token file created at <token-file>
+          Token file created at <file>
           The token expires after 1 use or after 15 minutes
       - title: skupper link
         description: |
@@ -116,14 +119,50 @@ groups:
         description: |
           Print help for connector commands.
       - title: skupper connector create
+        description: |
+          Create a connector.
+        usage: skupper connector create CONNECTOR-NAME [OPTIONS]
+        output: |
+          Waiting for status...
+          Connector "<name>" is ready
       - title: skupper connector delete
+        description: |
+          Delete a connector.
+        usage: skupper connector delete CONNECTOR-NAME
+        output: |
+          Waiting for deletion to complete...
+          Connector "<name>" is deleted
       - title: skupper connector status
+        description: |
+          Show the status of connectors in the current site.
+        usage: skupper connector status
+        output: |
+          NAME      ROUTING-KEY   SELECTOR      PORT   LISTENERS
+          backend   backend       app=backend   8080   1
       - title: skupper listener
         description: |
           Print help for listener commands.
       - title: skupper listener create
+        description: |
+          Create a listener.
+        usage: skupper listener create LISTENER-NAME [OPTIONS]
+        output: |
+          Waiting for status...
+          Connector "<name>" is ready
       - title: skupper listener delete
+        description: |
+          Delete a listener.
+        usage: skupper listener delete LISTENER-NAME
+        output: |
+          Waiting for deletion to complete...
+          Listener "<name>" is deleted
       - title: skupper listener status
+        description: |
+          Show the status of listeners in the current site.
+        usage: skupper listener status
+        output: |
+          NAME      ROUTING-KEY   HOST      PORT   CONNECTORS
+          backend   backend       backend   8080   1
   # - title: Platform operations
   #   commands:
   #     - title: skupper platform
@@ -138,7 +177,11 @@ groups:
         description: |
           Print help for debug commands.
       - title: skupper debug dump
-      - title: skupper debug events
+        description: |
+          Generate a debug dump file.
+        usage: skupper debug dump [FILE-NAME]
+        output: |
+          Debug dump file generated at <file>
   - title: Other operations
     commands:
       # - title: skupper network status
