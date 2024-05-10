@@ -1,0 +1,402 @@
+<h1 id="skupper-resources">Skupper resources</h1>
+<h4 id="contents">Contents</h4>
+<ul>
+<li><a href="#site-configuration">Site configuration</a><ul>
+<li><a href="#site">Site</a></li>
+</ul>
+</li>
+<li><a href="#site-linking">Site linking</a><ul>
+<li><a href="#claim">Claim</a></li>
+<li><a href="#grant">Grant</a></li>
+<li><a href="#linkaccess">LinkAccess</a></li>
+<li><a href="#link">Link</a></li>
+</ul>
+</li>
+<li><a href="#service-exposure">Service exposure</a><ul>
+<li><a href="#connector">Connector</a></li>
+<li><a href="#listener">Listener</a></li>
+</ul>
+</li>
+<li><a href="#everything-else">Everything else</a><ul>
+<li><a href="#certificate">Certificate</a></li>
+<li><a href="#securedaccess">SecuredAccess</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="site-configuration">Site configuration</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+enim ad minim veniam, quis nostrud exercitation ullamco laboris
+nisi ut aliquip ex ea commodo consequat.</p>
+<h3 id="site">Site</h3>
+<p>A <a href="concepts.md#site">site</a> is a place where components of your application are
+running.  Sites are linked to form application
+<a href="concepts.md#network">networks</a>.</p>
+<p>There can be only one site definition per namespace.</p>
+<h4 id="examples">Examples</h4>
+<p>A minimal site definition</p>
+<pre><code class="language-yaml">apiVersion: skupper.io/v1alpha1
+kind: Site
+metadata:
+  name: east
+  namespace: hello-world-east
+
+</code></pre>
+<h4 id="spec-properties">Spec properties</h4>
+<h5 id="codeserviceaccountcode"><code>serviceAccount</code></h5>
+<p><em>Type</em>: String<br />
+<em>Required</em>: No<br />
+<em>Default</em>: None</p>
+<h5 id="codesettingscode"><code>settings</code></h5>
+<p><em>Type</em>: Array<br />
+<em>Required</em>: No<br />
+<em>Default</em>: None</p>
+<h2 id="site-linking">Site linking</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+enim ad minim veniam, quis nostrud exercitation ullamco laboris
+nisi ut aliquip ex ea commodo consequat.</p>
+<h3 id="claim">Claim</h3>
+<p>XXX</p>
+<p>The Claim declares desire to initiate access based on a previous
+Grant.</p>
+<p>Does &quot;claim&quot; mean something more than an asserted grant?  That
+is essentially what it is.</p>
+<p>The Claim url is obtained from the status of the grant along
+with the secret and the ca, i.e. the information for a Claim
+comes from the Grant.</p>
+<p>The Claim has the details from its associated Grant.</p>
+<h4 id="examples">Examples</h4>
+<h4 id="spec-properties">Spec properties</h4>
+<h5 id="codeurlcode"><code>url</code></h5>
+<p><em>Type</em>: String<br />
+<em>Required</em>: Yes<br />
+<em>Default</em>: None</p>
+<h5 id="codesecretcode"><code>secret</code></h5>
+<p><em>Type</em>: String<br />
+<em>Required</em>: Yes<br />
+<em>Default</em>: None</p>
+<h5 id="codecacode"><code>ca</code></h5>
+<p><em>Type</em>: String<br />
+<em>Required</em>: Yes<br />
+<em>Default</em>: None</p>
+<h3 id="grant">Grant</h3>
+<p>XXX</p>
+<p>Grant is the offering of access.</p>
+<p>It is the 'server side' of a Claim.</p>
+<p>A Grant is essentially a way to declare that someone with the
+given secret can present that in exchange for a certificate
+signed by the ca associated with the grant, up to the given
+expiration and for the number of allowed claims.</p>
+<p>Then, on the site you want to use that, you create a Claim.</p>
+<h4 id="examples">Examples</h4>
+<h4 id="spec-properties">Spec properties</h4>
+<h5 id="codeclaimscode"><code>claims</code></h5>
+<p><em>Type</em>: Int<br />
+<em>Required</em>: No<br />
+<em>Default</em>: None</p>
+<h5 id="codevalidforcode"><code>validFor</code></h5>
+<p><em>Type</em>: String<br />
+<em>Required</em>: No<br />
+<em>Default</em>: None</p>
+<h5 id="codesecretcode"><code>secret</code></h5>
+<p><em>Type</em>: String<br />
+<em>Required</em>: No<br />
+<em>Default</em>: None</p>
+<h3 id="linkaccess">LinkAccess</h3>
+<p>A <a href="XXX">link access</a> defines a point of external access
+for links from remote sites.</p>
+<p>XXX</p>
+<p>LinkAccess is specifically about configuring and providing
+access to router Listeners.</p>
+<p>LinkAccess is a way of configuring and exposing router listeners.</p>
+<p>A LinkAccess will be implemented in part by the controller
+creating an underlying SecuredAccess object, but LinkAccess will
+also cause the router config to be adjusted.</p>
+<h4 id="examples">Examples</h4>
+<p>A typical link access definition</p>
+<pre><code class="language-yaml">apiVersion: skupper.io/v1alpha1
+kind: LinkAccess
+metadata:
+  name: skupper-router
+spec:
+  roles:
+  - role: inter-router
+    port: 55671
+  - role: edge
+    port: 45671
+  accessType: loadbalancer
+  tlsCredentials: skupper-site-server
+
+</code></pre>
+<h4 id="spec-properties">Spec properties</h4>
+<h5 id="coderolescode"><code>roles</code></h5>
+<p><em>Type</em>: Array<br />
+<em>Required</em>: Yes<br />
+<em>Default</em>: None</p>
+<h5 id="codecacode"><code>ca</code></h5>
+<p>XXX</p>
+<p>A reference to a secret.</p>
+<p>Why have this when tlsCredentials has a CA?  The CA is only
+needed if you want the controller to generate the
+tlsCredentials for you, and must then refer to a secret
+containing the private key of the CA as well as its
+certificate.</p>
+<p>So ca and tlsCredentials are alternatives.</p>
+<p>If the CA is supplied in a LinkAccess, it is assumed it
+exists already (for the current mode of certificate
+management).</p>
+<p><em>Type</em>: String<br />
+<em>Required</em>: No<br />
+<em>Default</em>: None</p>
+<h5 id="codetlscredentialscode"><code>tlsCredentials</code></h5>
+<p>The name of a Kubernetes secret containing TLS
+credentials. The secret contains the trusted server
+certificate (typically a CA certificate).</p>
+<p>It can optionally include a client certificate and key for
+mutual TLS.</p>
+<p><em>Type</em>: String<br />
+<em>Required</em>: Yes<br />
+<em>Default</em>: None</p>
+<h5 id="codeaccesstypecode"><code>accessType</code></h5>
+<p>accessType is a hint or constraint on the kind of ingress
+that can/should be used (route, nodePort, LB, nginx, etc.).</p>
+<p><em>Type</em>: String<br />
+<em>Required</em>: No<br />
+<em>Default</em>: None</p>
+<h5 id="codeoptionscode"><code>options</code></h5>
+<p><em>Type</em>: Object<br />
+<em>Required</em>: No<br />
+<em>Default</em>: None</p>
+<h3 id="link">Link</h3>
+<p>A <a href="concepts.md#link">link</a> is a site-to-site communication channel. Links
+serve as a transport for application connections and requests.</p>
+<p>XXX</p>
+<p>The Link would has the details from its associated LinkAccess.</p>
+<h4 id="examples">Examples</h4>
+<p>A typical link definition</p>
+<pre><code class="language-yaml">apiVersion: skupper.io/v1alpha1
+kind: Link
+metadata:
+  name: link-to-west
+  namespace: hello-world-east
+spec:
+  [...]
+
+</code></pre>
+<h4 id="spec-properties">Spec properties</h4>
+<h5 id="codeinterroutercode"><code>interRouter</code></h5>
+<p><em>Type</em>: Object<br />
+<em>Required</em>: Yes<br />
+<em>Default</em>: None</p>
+<h5 id="codeedgecode"><code>edge</code></h5>
+<p><em>Type</em>: Object<br />
+<em>Required</em>: Yes<br />
+<em>Default</em>: None</p>
+<h5 id="codetlscredentialscode"><code>tlsCredentials</code></h5>
+<p>The name of a Kubernetes secret containing TLS
+credentials. The secret contains the trusted server
+certificate (typically a CA certificate).</p>
+<p>It can optionally include a client certificate and key for
+mutual TLS.</p>
+<p><em>Type</em>: String<br />
+<em>Required</em>: No<br />
+<em>Default</em>: None</p>
+<h5 id="codecostcode"><code>cost</code></h5>
+<p><em>Type</em>: Integer<br />
+<em>Required</em>: No<br />
+<em>Default</em>: None</p>
+<h5 id="codenoclientauthcode"><code>noClientAuth</code></h5>
+<p><em>Type</em>: Boolean<br />
+<em>Required</em>: No<br />
+<em>Default</em>: False</p>
+<h2 id="service-exposure">Service exposure</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+enim ad minim veniam, quis nostrud exercitation ullamco laboris
+nisi ut aliquip ex ea commodo consequat.</p>
+<h3 id="connector">Connector</h3>
+<p>A <a href="concepts.md#connector">connector</a> binds local servers to listeners in
+remote sites.</p>
+<p>Each namespace can contain multiple connector definitions.</p>
+<h4 id="examples">Examples</h4>
+<p>A connector in site East for the Hello World backend service</p>
+<pre><code class="language-yaml">apiVersion: skupper.io/v1alpha1
+kind: Connector
+metadata:
+  name: backend
+  namespace: hello-world-east
+spec:
+  routingKey: backend
+  port: 8080
+  selector: app=backend
+
+</code></pre>
+<h4 id="spec-properties">Spec properties</h4>
+<h5 id="coderoutingkeycode"><code>routingKey</code></h5>
+<p>The identifier used to route traffic from listeners to
+connectors.  To connect to a service at a remote site, the
+listener and connector must have matching routing keys.</p>
+<p><em>Type</em>: String<br />
+<em>Required</em>: Yes<br />
+<em>Default</em>: None</p>
+<h5 id="codeportcode"><code>port</code></h5>
+<p>The port number of the server listener.</p>
+<p><em>Type</em>: Integer<br />
+<em>Required</em>: Yes<br />
+<em>Default</em>: None</p>
+<h5 id="codeselectorcode"><code>selector</code></h5>
+<p>A Kubernetes <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">label selector</a> for identifying
+server pods.</p>
+<p><em>Type</em>: String<br />
+<em>Required</em>: No<br />
+<em>Default</em>: None</p>
+<h5 id="codehostcode"><code>host</code></h5>
+<p>The hostname or IP address of the server.  This is an
+alternative to <code>selector</code> for specifying the target
+server.</p>
+<p><em>Type</em>: String<br />
+<em>Required</em>: No<br />
+<em>Default</em>: None</p>
+<h5 id="codetlscredentialscode"><code>tlsCredentials</code></h5>
+<p>The name of a Kubernetes secret containing TLS
+credentials.  The secret contains the trusted server
+certificate (typically a CA certificate).</p>
+<p>It can optionally include a client certificate and key for
+mutual TLS.</p>
+<p><em>Type</em>: String<br />
+<em>Required</em>: No<br />
+<em>Default</em>: <em>None</em></p>
+<h5 id="codetypecode"><code>type</code></h5>
+<p><em>Type</em>: String<br />
+<em>Required</em>: No<br />
+<em>Default</em>: None</p>
+<h5 id="codeincludenotreadycode"><code>includeNotReady</code></h5>
+<p><em>Type</em>: Boolean<br />
+<em>Required</em>: No<br />
+<em>Default</em>: False</p>
+<h3 id="listener">Listener</h3>
+<p>A <a href="concepts.md#listener">listener</a> is a local connection endpoint bound to
+servers in remote sites.</p>
+<p>Each namespace can contain multiple listener definitions.</p>
+<h4 id="examples">Examples</h4>
+<p>A listener in site West for the Hello World backend service
+in site East</p>
+<pre><code class="language-yaml">apiVersion: skupper.io/v1alpha1
+kind: Listener
+metadata:
+  name: backend
+  namespace: hello-world-west
+spec:
+  routingKey: backend
+  port: 8080
+  host: backend
+
+</code></pre>
+<h4 id="spec-properties">Spec properties</h4>
+<h5 id="coderoutingkeycode"><code>routingKey</code></h5>
+<p>The identifier used to route traffic from listeners to
+connectors.  To connect to a service at a remote site, the
+listener and connector must have matching routing keys.</p>
+<p><em>Type</em>: String<br />
+<em>Required</em>: Yes<br />
+<em>Default</em>: None</p>
+<h5 id="codehostcode"><code>host</code></h5>
+<p>The hostname or IP address of the local listener.  Clients
+at this site use the listener host and port to
+establish connections to the remote service.</p>
+<p><em>Type</em>: String<br />
+<em>Required</em>: Yes<br />
+<em>Default</em>: None</p>
+<h5 id="codeportcode"><code>port</code></h5>
+<p>The port of the local listener.  Clients at this site use
+the listener host and port to establish connections to
+the remote service.</p>
+<p><em>Type</em>: Integer<br />
+<em>Required</em>: Yes<br />
+<em>Default</em>: None</p>
+<h5 id="codetlscredentialscode"><code>tlsCredentials</code></h5>
+<p>The name of a Kubernetes secret containing TLS
+credentials.  The secret contains the server certificate
+and key.</p>
+<p>It can optionally include a client certificate for mutual
+TLS.</p>
+<p><em>Type</em>: String<br />
+<em>Required</em>: No<br />
+<em>Default</em>: <em>None</em></p>
+<h5 id="codetypecode"><code>type</code></h5>
+<p><em>Type</em>: String<br />
+<em>Required</em>: No<br />
+<em>Default</em>: None</p>
+<h2 id="everything-else">Everything else</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+enim ad minim veniam, quis nostrud exercitation ullamco laboris
+nisi ut aliquip ex ea commodo consequat.</p>
+<h3 id="certificate">Certificate</h3>
+<h4 id="examples">Examples</h4>
+<h4 id="spec-properties">Spec properties</h4>
+<h5 id="codecacode"><code>ca</code></h5>
+<p><em>Type</em>: String<br />
+<em>Required</em>: Yes<br />
+<em>Default</em>: None</p>
+<h5 id="codesubjectcode"><code>subject</code></h5>
+<p><em>Type</em>: String<br />
+<em>Required</em>: Yes<br />
+<em>Default</em>: None</p>
+<h5 id="codehostscode"><code>hosts</code></h5>
+<p><em>Type</em>: Array<br />
+<em>Required</em>: No<br />
+<em>Default</em>: None</p>
+<h5 id="codeclientcode"><code>client</code></h5>
+<p><em>Type</em>: Boolean<br />
+<em>Required</em>: No<br />
+<em>Default</em>: False</p>
+<h5 id="codeservercode"><code>server</code></h5>
+<p><em>Type</em>: Boolean<br />
+<em>Required</em>: No<br />
+<em>Default</em>: False</p>
+<h5 id="codesigningcode"><code>signing</code></h5>
+<p><em>Type</em>: Boolean<br />
+<em>Required</em>: No<br />
+<em>Default</em>: False</p>
+<h3 id="securedaccess">SecuredAccess</h3>
+<p>XXX</p>
+<p>SecuredAccess is a generic way of exposing a workload (a set of
+pods).</p>
+<p>SecuredAccess just creates and necessary service/ingress
+resources and optionally any secrets with tls credentials.</p>
+<p>The implementation of LinkAccess creates a SecuredAccess and
+also configures the router.</p>
+<p>SecuredAccess is a lower level concept.  It just exposes a
+workload, including if desired, generation of necessary certs
+(though those can also be provided if preferred).</p>
+<p>SecuredAccess is not in any way tied to the router.  LInkAccess
+<em>is</em> tied to the router.  LinkAccess can be thought of as a
+specialization of SecuredAccess.</p>
+<h4 id="examples">Examples</h4>
+<h4 id="spec-properties">Spec properties</h4>
+<h5 id="codeportscode"><code>ports</code></h5>
+<p><em>Type</em>: Array<br />
+<em>Required</em>: Yes<br />
+<em>Default</em>: None</p>
+<h5 id="codeselectorcode"><code>selector</code></h5>
+<p><em>Type</em>: Object<br />
+<em>Required</em>: Yes<br />
+<em>Default</em>: None</p>
+<h5 id="codecacode"><code>ca</code></h5>
+<p><em>Type</em>: String<br />
+<em>Required</em>: No<br />
+<em>Default</em>: None</p>
+<h5 id="codecertificatecode"><code>certificate</code></h5>
+<p><em>Type</em>: String<br />
+<em>Required</em>: No<br />
+<em>Default</em>: None</p>
+<h5 id="codeaccesstypecode"><code>accessType</code></h5>
+<p><em>Type</em>: String<br />
+<em>Required</em>: No<br />
+<em>Default</em>: None</p>
+<h5 id="codeoptionscode"><code>options</code></h5>
+<p><em>Type</em>: Object<br />
+<em>Required</em>: No<br />
+<em>Default</em>: None</p>

@@ -33,7 +33,7 @@
 
 ### skupper site
 
-Print help for site commands.
+Display help for site commands.
 
 
 ### skupper site create
@@ -252,7 +252,7 @@ _routing key?_
 
 ### skupper token
 
-Print help for token commands.  Currently there is just one.
+Display help for token commands.  Currently there is just one.
 
 
 ### skupper token create
@@ -280,7 +280,7 @@ The token expires after 1 use or after 15 minutes
 
 ### skupper link
 
-Print help for link commands.
+Display help for link commands.
 
 
 ### skupper link create
@@ -321,7 +321,7 @@ skupper link delete NAME
 
 ~~~
 NAME   STATUS   COST
-west   Ready    1
+west   Active   1
 
 Links from remote sites:
 
@@ -331,7 +331,7 @@ None
 
 ### skupper connector
 
-Print help for connector commands.
+Display help for connector commands.
 
 
 ### skupper connector create
@@ -399,7 +399,7 @@ backend   backend       app=backend   8080   1
 ~~~
 ### skupper listener
 
-Print help for listener commands.
+Display help for listener commands.
 
 
 ### skupper listener create
@@ -465,7 +465,7 @@ backend   backend       backend   8080   1
 
 ### skupper debug
 
-Print help for debug commands.
+Display help for debug commands.
 
 
 ### skupper debug dump

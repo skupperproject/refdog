@@ -1,0 +1,324 @@
+<h1 id="skupper-commands">Skupper commands</h1>
+<h4 id="contents">Contents</h4>
+<ul>
+<li><a href="#site-configuration">Site configuration</a><ul>
+<li><a href="#skupper-site">skupper site</a></li>
+<li><a href="#skupper-site-create">skupper site create</a></li>
+<li><a href="#skupper-site-update">skupper site update</a></li>
+<li><a href="#skupper-site-delete">skupper site delete</a></li>
+<li><a href="#skupper-site-status">skupper site status</a></li>
+</ul>
+</li>
+<li><a href="#site-linking">Site linking</a><ul>
+<li><a href="#skupper-token">skupper token</a></li>
+<li><a href="#skupper-token-create">skupper token create</a></li>
+<li><a href="#skupper-link">skupper link</a></li>
+<li><a href="#skupper-link-create">skupper link create</a></li>
+<li><a href="#skupper-link-delete">skupper link delete</a></li>
+<li><a href="#skupper-link-status">skupper link status</a></li>
+</ul>
+</li>
+<li><a href="#service-exposure">Service exposure</a><ul>
+<li><a href="#skupper-connector">skupper connector</a></li>
+<li><a href="#skupper-connector-create">skupper connector create</a></li>
+<li><a href="#skupper-connector-delete">skupper connector delete</a></li>
+<li><a href="#skupper-connector-status">skupper connector status</a></li>
+<li><a href="#skupper-listener">skupper listener</a></li>
+<li><a href="#skupper-listener-create">skupper listener create</a></li>
+<li><a href="#skupper-listener-delete">skupper listener delete</a></li>
+<li><a href="#skupper-listener-status">skupper listener status</a></li>
+</ul>
+</li>
+<li><a href="#debug-operations">Debug operations</a><ul>
+<li><a href="#skupper-debug">skupper debug</a></li>
+<li><a href="#skupper-debug-dump">skupper debug dump</a></li>
+</ul>
+</li>
+<li><a href="#other-operations">Other operations</a><ul>
+<li><a href="#skupper-version">skupper version</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="site-configuration">Site configuration</h2>
+<h3 id="skupper-site">skupper site</h3>
+<p>Display help for site commands.</p>
+<h3 id="skupper-site-create">skupper site create</h3>
+<p>Create a site.</p>
+<h4 id="examples">Examples</h4>
+<pre><code># Create a site
+skupper site create west
+
+# Create a site that can accept links from remote sites
+skupper site create west --enable-link-access
+</code></pre>
+<h4 id="usage">Usage</h4>
+<pre><code>skupper site create NAME [options]
+</code></pre>
+<h4 id="output">Output</h4>
+<pre><code>Waiting for status...
+Site &quot;&lt;name&gt;&quot; is ready
+</code></pre>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><strong>--help</strong></p>
+<p>Display help and exit.</p>
+</li>
+<li><p><strong>--context</strong></p>
+<p>Select the kubeconfig context.</p>
+</li>
+<li><p><strong>--namespace</strong></p>
+<p>Select the Kubernetes namespace.</p>
+</li>
+<li><p><strong>--platform</strong></p>
+<p>Select the Skupper platform.</p>
+</li>
+<li><p><strong>--enable-link-access</strong> (default False)</p>
+<p>Enable external access for links from remote sites.</p>
+</li>
+<li><p><strong>--link-access-type</strong> (default <em>platform dependent</em>)</p>
+<p>Select the means of opening external access.</p>
+<p>The default is <code>route</code> on OpenShift and <code>loadbalancer</code>
+otherwise.</p>
+</li>
+<li><p><strong>--service-account</strong> (default <em>generated</em>)</p>
+</li>
+</ul>
+<h4 id="errors">Errors</h4>
+<ul>
+<li><p><strong>Site resource already exists</strong></p>
+<p>There is already a site resource defined for the namespace.</p>
+</li>
+</ul>
+<h3 id="skupper-site-update">skupper site update</h3>
+<p>Change site settings.</p>
+<h4 id="examples">Examples</h4>
+<pre><code># Update the site to accept links
+skupper site update west --enable-link-access
+
+# Update multiple settings
+skupper site update west --enable-link-access --link-access-type loadbalancer
+</code></pre>
+<h4 id="usage">Usage</h4>
+<pre><code>skupper site update NAME [options]
+</code></pre>
+<h4 id="output">Output</h4>
+<pre><code>Waiting for update to complete...
+Site &quot;&lt;name&gt;&quot; is updated
+</code></pre>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><strong>--help</strong></p>
+<p>Display help and exit.</p>
+</li>
+<li><p><strong>--context</strong></p>
+<p>Select the kubeconfig context.</p>
+</li>
+<li><p><strong>--namespace</strong></p>
+<p>Select the Kubernetes namespace.</p>
+</li>
+<li><p><strong>--platform</strong></p>
+<p>Select the Skupper platform.</p>
+</li>
+<li><p><strong>--enable-link-access</strong> (default False)</p>
+<p>Enable external access for links from remote sites.</p>
+</li>
+<li><p><strong>--link-access-type</strong> (default <em>platform dependent</em>)</p>
+<p>Select the means of opening external access.</p>
+<p>The default is <code>route</code> on OpenShift and <code>loadbalancer</code>
+otherwise.</p>
+</li>
+<li><p><strong>--service-account</strong> (default <em>generated</em>)</p>
+</li>
+</ul>
+<h4 id="errors">Errors</h4>
+<ul>
+<li><p><strong>No site resource exists</strong></p>
+<p>There is no existing Skupper site resource to update.</p>
+</li>
+</ul>
+<h3 id="skupper-site-delete">skupper site delete</h3>
+<p>Delete a site.</p>
+<h4 id="usage">Usage</h4>
+<pre><code>skupper site delete NAME
+</code></pre>
+<h4 id="output">Output</h4>
+<pre><code>Waiting for deletion to complete...
+Site &quot;&lt;name&gt;&quot; is deleted
+</code></pre>
+<h4 id="errors">Errors</h4>
+<ul>
+<li><p><strong>No site resource exists</strong></p>
+<p>There is no existing Skupper site resource to delete.</p>
+</li>
+</ul>
+<h3 id="skupper-site-status">skupper site status</h3>
+<p>Show the current status of a site.</p>
+<h4 id="usage">Usage</h4>
+<pre><code>skupper site status
+</code></pre>
+<h4 id="output">Output</h4>
+<pre><code>NAME   STATUS   SITES-IN-NETWORK   SERVICES-IN-NETWORK
+west   Ready    1                  0
+</code></pre>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><strong>--help</strong></p>
+<p>Display help and exit.</p>
+</li>
+<li><p><strong>--context</strong></p>
+<p>Select the kubeconfig context.</p>
+</li>
+<li><p><strong>--namespace</strong></p>
+<p>Select the Kubernetes namespace.</p>
+</li>
+<li><p><strong>--platform</strong></p>
+<p>Select the Skupper platform.</p>
+</li>
+</ul>
+<h4 id="emnotesem"><em>Notes</em></h4>
+<p><em>What is services-in-network?  Is that the total number of</em>
+<em>unique routing keys defined by connectors?  Or listeners?</em>
+<em>Or listeners plus connectors (not the orphans), grouped by</em>
+<em>routing key?</em></p>
+<h2 id="site-linking">Site linking</h2>
+<h3 id="skupper-token">skupper token</h3>
+<p>Display help for token commands.  Currently there is just one.</p>
+<h3 id="skupper-token-create">skupper token create</h3>
+<p>Create a token.</p>
+<h4 id="usage">Usage</h4>
+<pre><code>skupper token create FILE [options]
+</code></pre>
+<h4 id="output">Output</h4>
+<pre><code>Token file created at &lt;file&gt;
+The token expires after 1 use or after 15 minutes
+</code></pre>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><strong>--expiry</strong> (default 15m)</p>
+</li>
+<li><p><strong>--uses</strong> (default 1)</p>
+</li>
+</ul>
+<h3 id="skupper-link">skupper link</h3>
+<p>Display help for link commands.</p>
+<h3 id="skupper-link-create">skupper link create</h3>
+<p>Create a link.</p>
+<h4 id="usage">Usage</h4>
+<pre><code>skupper link create FILE [options]
+</code></pre>
+<h4 id="output">Output</h4>
+<pre><code>Waiting for status...
+Link &quot;&lt;name&gt;&quot; is active
+You can now safely delete &lt;file&gt;
+</code></pre>
+<h4 id="options">Options</h4>
+<ul>
+<li><strong>--cost</strong> (default 1)</li>
+</ul>
+<h3 id="skupper-link-delete">skupper link delete</h3>
+<h4 id="usage">Usage</h4>
+<pre><code>skupper link delete NAME
+</code></pre>
+<h3 id="skupper-link-status">skupper link status</h3>
+<h4 id="output">Output</h4>
+<pre><code>NAME   STATUS   COST
+west   Active   1
+
+Links from remote sites:
+
+None
+</code></pre>
+<h2 id="service-exposure">Service exposure</h2>
+<h3 id="skupper-connector">skupper connector</h3>
+<p>Display help for connector commands.</p>
+<h3 id="skupper-connector-create">skupper connector create</h3>
+<p>Create a connector.</p>
+<h4 id="usage">Usage</h4>
+<pre><code>skupper connector create NAME [options]
+</code></pre>
+<h4 id="output">Output</h4>
+<pre><code>Waiting for status...
+Connector &quot;&lt;name&gt;&quot; is ready
+</code></pre>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><strong>--routing-key</strong> (default <em>NAME</em>)</p>
+</li>
+<li><p><strong>--port</strong></p>
+</li>
+<li><p><strong>--workload</strong></p>
+</li>
+<li><p><strong>--selector</strong></p>
+</li>
+<li><p><strong>--host</strong></p>
+</li>
+</ul>
+<h3 id="skupper-connector-delete">skupper connector delete</h3>
+<p>Delete a connector.</p>
+<h4 id="usage">Usage</h4>
+<pre><code>skupper connector delete NAME
+</code></pre>
+<h4 id="output">Output</h4>
+<pre><code>Waiting for deletion to complete...
+Connector &quot;&lt;name&gt;&quot; is deleted
+</code></pre>
+<h3 id="skupper-connector-status">skupper connector status</h3>
+<p>Show the status of connectors in the current site.</p>
+<h4 id="usage">Usage</h4>
+<pre><code>skupper connector status
+</code></pre>
+<h4 id="output">Output</h4>
+<pre><code>NAME      ROUTING-KEY   SELECTOR      PORT   MATCHING-LISTENERS
+backend   backend       app=backend   8080   1
+</code></pre>
+<h3 id="skupper-listener">skupper listener</h3>
+<p>Display help for listener commands.</p>
+<h3 id="skupper-listener-create">skupper listener create</h3>
+<p>Create a listener.</p>
+<h4 id="usage">Usage</h4>
+<pre><code>skupper listener create NAME [options]
+</code></pre>
+<h4 id="output">Output</h4>
+<pre><code>Waiting for status...
+Listener &quot;&lt;name&gt;&quot; is ready
+</code></pre>
+<h4 id="options">Options</h4>
+<ul>
+<li><p><strong>--routing-key</strong> (default <em>NAME</em>)</p>
+</li>
+<li><p><strong>--host</strong></p>
+</li>
+<li><p><strong>--port</strong></p>
+</li>
+</ul>
+<h3 id="skupper-listener-delete">skupper listener delete</h3>
+<p>Delete a listener.</p>
+<h4 id="usage">Usage</h4>
+<pre><code>skupper listener delete NAME
+</code></pre>
+<h4 id="output">Output</h4>
+<pre><code>Waiting for deletion to complete...
+Listener &quot;&lt;name&gt;&quot; is deleted
+</code></pre>
+<h3 id="skupper-listener-status">skupper listener status</h3>
+<p>Show the status of listeners in the current site.</p>
+<h4 id="usage">Usage</h4>
+<pre><code>skupper listener status
+</code></pre>
+<h4 id="output">Output</h4>
+<pre><code>NAME      ROUTING-KEY   HOST      PORT   MATCHING-CONNECTORS
+backend   backend       backend   8080   1
+</code></pre>
+<h2 id="debug-operations">Debug operations</h2>
+<h3 id="skupper-debug">skupper debug</h3>
+<p>Display help for debug commands.</p>
+<h3 id="skupper-debug-dump">skupper debug dump</h3>
+<p>Generate a debug dump file.</p>
+<h4 id="usage">Usage</h4>
+<pre><code>skupper debug dump [FILE]
+</code></pre>
+<h4 id="output">Output</h4>
+<pre><code>Debug dump file generated at &lt;file&gt;
+</code></pre>
+<h2 id="other-operations">Other operations</h2>
+<h3 id="skupper-version">skupper version</h3>

@@ -1,7 +1,7 @@
 from plano import *
 
 def generate():
-    model = Model("commands.yaml")
+    model = Model("config/commands.yaml")
     lines = list()
     # sections = dict()
 
@@ -102,10 +102,10 @@ def generate():
                 append(notes)
                 append()
 
-    markdown = read("commands.md.in")
+    markdown = read("config/commands.md.in")
     markdown = markdown.replace("@content@", "\n".join(lines))
 
-    write("commands.md", markdown)
+    write("input/commands.md", markdown)
 
 def fragment_id(title):
     return title.lower().replace(" ", "-")
