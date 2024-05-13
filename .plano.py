@@ -10,7 +10,3 @@ import resources
 def generate():
     commands.generate()
     resources.generate()
-
-@command
-def clean():
-    remove(find(".", "__pycache__"))
