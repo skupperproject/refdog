@@ -85,7 +85,7 @@
 <h3 id="skupper-site-create">skupper site create</h3>
 <p>Create a site.</p>
 <h4 id="usage">Usage</h4>
-<pre><code class="language-shell">$ skupper site create NAME [options]
+<pre><code class="language-shell">$ skupper site create &lt;name&gt; [options]
 Waiting for status...
 Site &quot;&lt;name&gt;&quot; is ready
 </code></pre>
@@ -96,8 +96,11 @@ skupper site create west
 # Create a site that can accept links from remote sites
 skupper site create west --enable-link-access
 </code></pre>
-<h4 id="options">Options</h4>
+<h4 id="arguments">Arguments</h4>
 <ul>
+<li><p><strong>name</strong></p>
+<p>The name of the site resource.</p>
+</li>
 <li><p><strong>--enable-link-access</strong> (default: false)</p>
 <p>Enable external access for links from remote sites.</p>
 </li>
@@ -118,7 +121,7 @@ otherwise.</p>
 <h3 id="skupper-site-update">skupper site update</h3>
 <p>Change site settings.</p>
 <h4 id="usage">Usage</h4>
-<pre><code class="language-shell">$ skupper site update NAME [options]
+<pre><code class="language-shell">$ skupper site update &lt;name&gt; [options]
 Waiting for update to complete...
 Site &quot;&lt;name&gt;&quot; is updated
 </code></pre>
@@ -129,8 +132,11 @@ skupper site update west --enable-link-access
 # Update multiple settings
 skupper site update west --enable-link-access --link-access-type loadbalancer
 </code></pre>
-<h4 id="options">Options</h4>
+<h4 id="arguments">Arguments</h4>
 <ul>
+<li><p><strong>name</strong></p>
+<p>The name of the site resource.</p>
+</li>
 <li><p><strong>--enable-link-access</strong> (default: false)</p>
 <p>Enable external access for links from remote sites.</p>
 </li>
@@ -151,10 +157,16 @@ otherwise.</p>
 <h3 id="skupper-site-delete">skupper site delete</h3>
 <p>Delete a site.</p>
 <h4 id="usage">Usage</h4>
-<pre><code class="language-shell">$ skupper site delete NAME
+<pre><code class="language-shell">$ skupper site delete &lt;name&gt;
 Waiting for deletion to complete...
 Site &quot;&lt;name&gt;&quot; is deleted
 </code></pre>
+<h4 id="arguments">Arguments</h4>
+<ul>
+<li><p><strong>name</strong></p>
+<p>The name of the site resource.</p>
+</li>
+</ul>
 <h4 id="errors">Errors</h4>
 <ul>
 <li><p><strong>No site resource exists</strong></p>
@@ -180,12 +192,15 @@ is only one token command.</p>
 <h3 id="skupper-token-create">skupper token create</h3>
 <p>Create a token.</p>
 <h4 id="usage">Usage</h4>
-<pre><code class="language-shell">$ skupper token create FILE [options]
-Token file created at &lt;file&gt;
+<pre><code class="language-shell">$ skupper token create &lt;file&gt; [options]
+Token file &lt;file&gt; created
 The token expires after 1 use or after 15 minutes
 </code></pre>
-<h4 id="options">Options</h4>
+<h4 id="arguments">Arguments</h4>
 <ul>
+<li><p><strong>file</strong></p>
+<p>The name of the token file.</p>
+</li>
 <li><p><strong>--expiry</strong> <em>duration</em> (default: 15m)</p>
 </li>
 <li><p><strong>--uses</strong> <em>integer</em> (default: 1)</p>
@@ -196,18 +211,22 @@ The token expires after 1 use or after 15 minutes
 <h3 id="skupper-link-create">skupper link create</h3>
 <p>Create a link.</p>
 <h4 id="usage">Usage</h4>
-<pre><code class="language-shell">$ skupper link create FILE [options]
+<pre><code class="language-shell">$ skupper link create &lt;file&gt; [options]
 Waiting for status...
 Link &quot;&lt;name&gt;&quot; is active
 You can now safely delete &lt;file&gt;
 </code></pre>
-<h4 id="options">Options</h4>
+<h4 id="arguments">Arguments</h4>
 <ul>
-<li><strong>--cost</strong> <em>integer</em> (default: 1)</li>
+<li><p><strong>file</strong></p>
+<p>The name of the token file.</p>
+</li>
+<li><p><strong>--cost</strong> <em>integer</em> (default: 1)</p>
+</li>
 </ul>
 <h3 id="skupper-link-delete">skupper link delete</h3>
 <h4 id="usage">Usage</h4>
-<pre><code class="language-shell">$ skupper link delete NAME
+<pre><code class="language-shell">$ skupper link delete &lt;name&gt;
 </code></pre>
 <h3 id="skupper-link-status">skupper link status</h3>
 <h2 id="service-exposure">Service exposure</h2>
@@ -216,7 +235,7 @@ You can now safely delete &lt;file&gt;
 <h3 id="skupper-connector-create">skupper connector create</h3>
 <p>Create a connector.</p>
 <h4 id="usage">Usage</h4>
-<pre><code class="language-shell">$ skupper connector create NAME [options]
+<pre><code class="language-shell">$ skupper connector create &lt;name&gt; [options]
 Waiting for status...
 Connector &quot;&lt;name&gt;&quot; is ready
 </code></pre>
@@ -224,8 +243,11 @@ Connector &quot;&lt;name&gt;&quot; is ready
 <pre><code># Create a connector for a database
 skupper connector create database --workload deployment/postgresql --port 5432
 </code></pre>
-<h4 id="options">Options</h4>
+<h4 id="arguments">Arguments</h4>
 <ul>
+<li><p><strong>name</strong></p>
+<p>The name of the connector resource.</p>
+</li>
 <li><p><strong>--routing-key</strong> <em>string</em> (default: <em>value of NAME</em>)</p>
 </li>
 <li><p><strong>--port</strong> <em>integer</em></p>
@@ -240,24 +262,30 @@ skupper connector create database --workload deployment/postgresql --port 5432
 <h3 id="skupper-connector-delete">skupper connector delete</h3>
 <p>Delete a connector.</p>
 <h4 id="usage">Usage</h4>
-<pre><code class="language-shell">$ skupper connector delete NAME
+<pre><code class="language-shell">$ skupper connector delete &lt;name&gt;
 Waiting for deletion to complete...
 Connector &quot;&lt;name&gt;&quot; is deleted
 </code></pre>
+<h4 id="arguments">Arguments</h4>
+<ul>
+<li><p><strong>name</strong></p>
+<p>The name of the connector resource.</p>
+</li>
+</ul>
 <h3 id="skupper-connector-status">skupper connector status</h3>
 <p>Show the status of connectors in the current site.</p>
 <h4 id="usage">Usage</h4>
 <pre><code class="language-shell">$ skupper connector status
-NAME      ROUTING-KEY   SELECTOR         HOST   PORT   MATCHING-LISTENERS
-backend   backend       app=backend      -      8080   1
-database  database      app=postgresql   -      5342   1
+NAME       ROUTING-KEY   SELECTOR         HOST   PORT   MATCHING-LISTENERS
+backend    backend       app=backend      -      8080   1
+database   database      app=postgresql   -      5342   1
 </code></pre>
 <h3 id="skupper-listener">skupper listener</h3>
 <p>Display help for listener commands and exit.</p>
 <h3 id="skupper-listener-create">skupper listener create</h3>
 <p>Create a listener.</p>
 <h4 id="usage">Usage</h4>
-<pre><code class="language-shell">$ skupper listener create NAME [options]
+<pre><code class="language-shell">$ skupper listener create &lt;name&gt; [options]
 Waiting for status...
 Listener &quot;&lt;name&gt;&quot; is ready
 </code></pre>
@@ -265,8 +293,11 @@ Listener &quot;&lt;name&gt;&quot; is ready
 <pre><code># Create a listener for a database
 skupper listener create database --host database --port 5432
 </code></pre>
-<h4 id="options">Options</h4>
+<h4 id="arguments">Arguments</h4>
 <ul>
+<li><p><strong>name</strong></p>
+<p>The name of the listener resource.</p>
+</li>
 <li><p><strong>--routing-key</strong> <em>string</em> (default: <em>value of NAME</em>)</p>
 </li>
 <li><p><strong>--host</strong> <em>string</em></p>
@@ -277,17 +308,23 @@ skupper listener create database --host database --port 5432
 <h3 id="skupper-listener-delete">skupper listener delete</h3>
 <p>Delete a listener.</p>
 <h4 id="usage">Usage</h4>
-<pre><code class="language-shell">$ skupper listener delete NAME
+<pre><code class="language-shell">$ skupper listener delete &lt;name&gt;
 Waiting for deletion to complete...
 Listener &quot;&lt;name&gt;&quot; is deleted
 </code></pre>
+<h4 id="arguments">Arguments</h4>
+<ul>
+<li><p><strong>name</strong></p>
+<p>The name of the listener resource.</p>
+</li>
+</ul>
 <h3 id="skupper-listener-status">skupper listener status</h3>
 <p>Show the status of listeners in the current site.</p>
 <h4 id="usage">Usage</h4>
 <pre><code class="language-shell">$ skupper listener status
-NAME      ROUTING-KEY   HOST      PORT   MATCHING-CONNECTORS
-backend   backend       backend   8080   1
-database  database      database  5432   1
+NAME       ROUTING-KEY   HOST       PORT   MATCHING-CONNECTORS
+backend    backend       backend    8080   1
+database   database      database   5432   1
 </code></pre>
 <h2 id="debug-operations">Debug operations</h2>
 <h3 id="skupper-debug">skupper debug</h3>

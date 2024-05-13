@@ -1,4 +1,4 @@
-options:
+arguments:
   mutable_site_configuration:
     - name: --enable-link-access
       default: false
@@ -15,7 +15,7 @@ options:
     - name: --service-account
       variable: string
       default: _I don't know_
-global_options:
+global_arguments:
   - name: --help
     description: |
       Display help and exit.
@@ -40,7 +40,7 @@ groups:
       - title: skupper site create
         description: |
           Create a site.
-        usage: skupper site create NAME [options]
+        usage: skupper site create <name> [options]
         examples: |
           # Create a site
           skupper site create west
@@ -50,7 +50,10 @@ groups:
         output: |
           Waiting for status...
           Site "<name>" is ready
-        options:
+        arguments:
+          - name: name
+            description: |
+              The name of the site resource.
           - include: mutable_site_configuration
         errors:
           - message: Site resource already exists
@@ -59,7 +62,7 @@ groups:
       - title: skupper site update
         description: |
           Change site settings.
-        usage: skupper site update NAME [options]
+        usage: skupper site update <name> [options]
         examples: |
           # Update the site to accept links
           skupper site update west --enable-link-access
@@ -69,7 +72,10 @@ groups:
         output: |
           Waiting for update to complete...
           Site "<name>" is updated
-        options:
+        arguments:
+          - name: name
+            description: |
+              The name of the site resource.
           - include: mutable_site_configuration
         errors:
           - message: No site resource exists
@@ -78,10 +84,14 @@ groups:
       - title: skupper site delete
         description: |
           Delete a site.
-        usage: skupper site delete NAME
+        usage: skupper site delete <name>
         output: |
           Waiting for deletion to complete...
           Site "<name>" is deleted
+        arguments:
+          - name: name
+            description: |
+              The name of the site resource.
         errors:
           - message: No site resource exists
             description: |
@@ -107,11 +117,14 @@ groups:
       - title: skupper token create
         description: |
           Create a token.
-        usage: skupper token create FILE [options]
+        usage: skupper token create <file> [options]
         output: |
-          Token file created at <file>
+          Token file <file> created
           The token expires after 1 use or after 15 minutes
-        options:
+        arguments:
+          - name: file
+            description: |
+              The name of the token file.
           - name: --expiry
             variable: duration
             default: 15m
@@ -124,17 +137,20 @@ groups:
       - title: skupper link create
         description: |
           Create a link.
-        usage: skupper link create FILE [options]
+        usage: skupper link create <file> [options]
         output: |
           Waiting for status...
           Link "<name>" is active
           You can now safely delete <file>
-        options:
+        arguments:
+          - name: file
+            description: |
+              The name of the token file.
           - name: --cost
             variable: integer
             default: 1
       - title: skupper link delete
-        usage: skupper link delete NAME
+        usage: skupper link delete <name>
       - title: skupper link status
         output: |
           NAME    STATUS   COST
@@ -152,14 +168,17 @@ groups:
       - title: skupper connector create
         description: |
           Create a connector.
-        usage: skupper connector create NAME [options]
+        usage: skupper connector create <name> [options]
         examples: |
           # Create a connector for a database
           skupper connector create database --workload deployment/postgresql --port 5432
         output: |
           Waiting for status...
           Connector "<name>" is ready
-        options:
+        arguments:
+          - name: name
+            description: |
+              The name of the connector resource.
           - name: --routing-key
             variable: string
             default: _value of NAME_
@@ -174,32 +193,39 @@ groups:
       - title: skupper connector delete
         description: |
           Delete a connector.
-        usage: skupper connector delete NAME
+        usage: skupper connector delete <name>
         output: |
           Waiting for deletion to complete...
           Connector "<name>" is deleted
+        arguments:
+          - name: name
+            description: |
+              The name of the connector resource.
       - title: skupper connector status
         description: |
           Show the status of connectors in the current site.
         usage: skupper connector status
         output: |
-          NAME      ROUTING-KEY   SELECTOR         HOST   PORT   MATCHING-LISTENERS
-          backend   backend       app=backend      -      8080   1
-          database  database      app=postgresql   -      5342   1
+          NAME       ROUTING-KEY   SELECTOR         HOST   PORT   MATCHING-LISTENERS
+          backend    backend       app=backend      -      8080   1
+          database   database      app=postgresql   -      5342   1
       - title: skupper listener
         description: |
           Display help for listener commands and exit.
       - title: skupper listener create
         description: |
           Create a listener.
-        usage: skupper listener create NAME [options]
+        usage: skupper listener create <name> [options]
         examples: |
           # Create a listener for a database
           skupper listener create database --host database --port 5432
         output: |
           Waiting for status...
           Listener "<name>" is ready
-        options:
+        arguments:
+          - name: name
+            description: |
+              The name of the listener resource.
           - name: --routing-key
             variable: string
             default: _value of NAME_
@@ -210,18 +236,22 @@ groups:
       - title: skupper listener delete
         description: |
           Delete a listener.
-        usage: skupper listener delete NAME
+        usage: skupper listener delete <name>
         output: |
           Waiting for deletion to complete...
           Listener "<name>" is deleted
+        arguments:
+          - name: name
+            description: |
+              The name of the listener resource.
       - title: skupper listener status
         description: |
           Show the status of listeners in the current site.
         usage: skupper listener status
         output: |
-          NAME      ROUTING-KEY   HOST      PORT   MATCHING-CONNECTORS
-          backend   backend       backend   8080   1
-          database  database      database  5432   1
+          NAME       ROUTING-KEY   HOST       PORT   MATCHING-CONNECTORS
+          backend    backend       backend    8080   1
+          database   database      database   5432   1
   # - title: Platform operations
   #   commands:
   #     - title: skupper platform

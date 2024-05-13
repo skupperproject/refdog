@@ -68,7 +68,7 @@ Create a site.
 #### Usage
 
 ~~~ shell
-$ skupper site create NAME [options]
+$ skupper site create <name> [options]
 Waiting for status...
 Site "<name>" is ready
 ~~~
@@ -83,7 +83,12 @@ skupper site create west
 skupper site create west --enable-link-access
 ~~~
 
-#### Options
+#### Arguments
+
+- **name**
+
+  The name of the site resource.
+  
 
 - **--enable-link-access** (default: false)
 
@@ -115,7 +120,7 @@ Change site settings.
 #### Usage
 
 ~~~ shell
-$ skupper site update NAME [options]
+$ skupper site update <name> [options]
 Waiting for update to complete...
 Site "<name>" is updated
 ~~~
@@ -130,7 +135,12 @@ skupper site update west --enable-link-access
 skupper site update west --enable-link-access --link-access-type loadbalancer
 ~~~
 
-#### Options
+#### Arguments
+
+- **name**
+
+  The name of the site resource.
+  
 
 - **--enable-link-access** (default: false)
 
@@ -162,10 +172,17 @@ Delete a site.
 #### Usage
 
 ~~~ shell
-$ skupper site delete NAME
+$ skupper site delete <name>
 Waiting for deletion to complete...
 Site "<name>" is deleted
 ~~~
+
+#### Arguments
+
+- **name**
+
+  The name of the site resource.
+  
 
 #### Errors
 
@@ -210,12 +227,17 @@ Create a token.
 #### Usage
 
 ~~~ shell
-$ skupper token create FILE [options]
-Token file created at <file>
+$ skupper token create <file> [options]
+Token file <file> created
 The token expires after 1 use or after 15 minutes
 ~~~
 
-#### Options
+#### Arguments
+
+- **file**
+
+  The name of the token file.
+  
 
 - **--expiry** _duration_ (default: 15m)
 
@@ -234,13 +256,18 @@ Create a link.
 #### Usage
 
 ~~~ shell
-$ skupper link create FILE [options]
+$ skupper link create <file> [options]
 Waiting for status...
 Link "<name>" is active
 You can now safely delete <file>
 ~~~
 
-#### Options
+#### Arguments
+
+- **file**
+
+  The name of the token file.
+  
 
 - **--cost** _integer_ (default: 1)
 
@@ -250,7 +277,7 @@ You can now safely delete <file>
 #### Usage
 
 ~~~ shell
-$ skupper link delete NAME
+$ skupper link delete <name>
 ~~~
 
 ### skupper link status
@@ -271,7 +298,7 @@ Create a connector.
 #### Usage
 
 ~~~ shell
-$ skupper connector create NAME [options]
+$ skupper connector create <name> [options]
 Waiting for status...
 Connector "<name>" is ready
 ~~~
@@ -283,7 +310,12 @@ Connector "<name>" is ready
 skupper connector create database --workload deployment/postgresql --port 5432
 ~~~
 
-#### Options
+#### Arguments
+
+- **name**
+
+  The name of the connector resource.
+  
 
 - **--routing-key** _string_ (default: _value of NAME_)
 
@@ -303,10 +335,17 @@ Delete a connector.
 #### Usage
 
 ~~~ shell
-$ skupper connector delete NAME
+$ skupper connector delete <name>
 Waiting for deletion to complete...
 Connector "<name>" is deleted
 ~~~
+
+#### Arguments
+
+- **name**
+
+  The name of the connector resource.
+  
 
 ### skupper connector status
 
@@ -317,9 +356,9 @@ Show the status of connectors in the current site.
 
 ~~~ shell
 $ skupper connector status
-NAME      ROUTING-KEY   SELECTOR         HOST   PORT   MATCHING-LISTENERS
-backend   backend       app=backend      -      8080   1
-database  database      app=postgresql   -      5342   1
+NAME       ROUTING-KEY   SELECTOR         HOST   PORT   MATCHING-LISTENERS
+backend    backend       app=backend      -      8080   1
+database   database      app=postgresql   -      5342   1
 ~~~
 
 ### skupper listener
@@ -335,7 +374,7 @@ Create a listener.
 #### Usage
 
 ~~~ shell
-$ skupper listener create NAME [options]
+$ skupper listener create <name> [options]
 Waiting for status...
 Listener "<name>" is ready
 ~~~
@@ -347,7 +386,12 @@ Listener "<name>" is ready
 skupper listener create database --host database --port 5432
 ~~~
 
-#### Options
+#### Arguments
+
+- **name**
+
+  The name of the listener resource.
+  
 
 - **--routing-key** _string_ (default: _value of NAME_)
 
@@ -363,10 +407,17 @@ Delete a listener.
 #### Usage
 
 ~~~ shell
-$ skupper listener delete NAME
+$ skupper listener delete <name>
 Waiting for deletion to complete...
 Listener "<name>" is deleted
 ~~~
+
+#### Arguments
+
+- **name**
+
+  The name of the listener resource.
+  
 
 ### skupper listener status
 
@@ -377,9 +428,9 @@ Show the status of listeners in the current site.
 
 ~~~ shell
 $ skupper listener status
-NAME      ROUTING-KEY   HOST      PORT   MATCHING-CONNECTORS
-backend   backend       backend   8080   1
-database  database      database  5432   1
+NAME       ROUTING-KEY   HOST       PORT   MATCHING-CONNECTORS
+backend    backend       backend    8080   1
+database   database      database   5432   1
 ~~~
 
 ## Debug operations

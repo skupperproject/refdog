@@ -25,8 +25,8 @@ def generate():
     append(f"## Global options")
     append()
 
-    for option in model.global_options:
-        generate_option(option, append)
+    for argument in model.global_arguments:
+        generate_argument(argument, append)
 
     for group in model.groups:
         append(f"## {group.title}")
@@ -58,12 +58,12 @@ def generate():
                 append("~~~")
                 append()
 
-            if command.options:
-                append("#### Options")
+            if command.arguments:
+                append("#### Arguments")
                 append()
 
-                for option in command.options:
-                    generate_option(option, append)
+                for argument in command.arguments:
+                    generate_argument(argument, append)
 
             if command.errors:
                 append("#### Errors")
@@ -92,31 +92,31 @@ def generate():
 
     write("input/commands.md", markdown)
 
-def generate_option(option, append):
-    title = f"**{option.name}**"
-    default = option.default
+def generate_argument(argument, append):
+    title = f"**{argument.name}**"
+    default = argument.default
 
-    if option.variable:
-        title = f"**{option.name}** _{option.variable}_"
+    if argument.variable:
+        title = f"**{argument.name}** _{argument.variable}_"
 
-    if option.default in (True, False):
-        default = str(option.default).lower()
+    if argument.default in (True, False):
+        default = str(argument.default).lower()
 
-    if option.default is None:
+    if argument.default is None:
         append(f"- {title}")
     else:
         append(f"- {title} (default: {default})")
 
     append()
 
-    if option.description:
-        description = "\n".join(f"  {line}" for line in option.description.split("\n"))
+    if argument.description:
+        description = "\n".join(f"  {line}" for line in argument.description.split("\n"))
 
         append(description)
         append()
 
-    if option.notes:
-        notes = "\n".join(f"  _{line}_" for line in option.notes.strip().split("\n"))
+    if argument.notes:
+        notes = "\n".join(f"  _{line}_" for line in argument.notes.strip().split("\n"))
 
         append("  ##### _Notes_")
         append()
@@ -129,11 +129,11 @@ def fragment_id(title):
 class Model:
     def __init__(self, yaml_file):
         self.data = read_yaml(yaml_file)
-        self.global_options = list()
+        self.global_arguments = list()
         self.groups = list()
 
-        for option_data in self.data["global_options"]:
-            self.global_options.append(Option(self, option_data))
+        for argument_data in self.data["global_arguments"]:
+            self.global_arguments.append(Argument(self, argument_data))
 
         for group_data in self.data["groups"]:
             self.groups.append(Group(self, group_data))
@@ -169,17 +169,17 @@ class Command:
     def __init__(self, model, data):
         self.model = model
         self.data = data
-        self.options = list()
+        self.arguments = list()
         self.errors = list()
 
-        for option_data in self.data.get("options", []):
-            if "include" in option_data:
-                option_group = option_data["include"]
+        for argument_data in self.data.get("arguments", []):
+            if "include" in argument_data:
+                argument_group = argument_data["include"]
 
-                for x in self.model.data["options"][option_group]:
-                    self.options.append(Option(self.model, x))
+                for x in self.model.data["arguments"][argument_group]:
+                    self.arguments.append(Argument(self.model, x))
             else:
-                self.options.append(Option(self.model, option_data))
+                self.arguments.append(Argument(self.model, argument_data))
 
         for error_data in self.data.get("errors", []):
             self.errors.append(Error(self, error_data))
@@ -215,13 +215,13 @@ class Command:
     def notes(self):
         return self.data.get("notes")
 
-class Option:
+class Argument:
     def __init__(self, model, data):
         self.model = model
         self.data = data
 
     def __repr__(self):
-        return f"option '{self.name}'"
+        return f"argument '{self.name}'"
 
     @property
     def name(self):
