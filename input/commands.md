@@ -317,7 +317,7 @@ skupper connector create database --workload deployment/postgresql --port 5432
   The name of the connector resource.
   
 
-- **--routing-key** _string_ (default: _value of NAME_)
+- **--routing-key** _string_ (default: _value of name_)
 
 - **--port** _integer_
 
@@ -393,7 +393,7 @@ skupper listener create database --host database --port 5432
   The name of the listener resource.
   
 
-- **--routing-key** _string_ (default: _value of NAME_)
+- **--routing-key** _string_ (default: _value of name_)
 
 - **--host** _string_
 
