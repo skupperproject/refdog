@@ -280,7 +280,7 @@ Connector "<name>" is ready
 
 ~~~
 # Create a connector for a database
-skupper connector create database --workload deployment/database --port 5432
+skupper connector create database --workload deployment/postgresql --port 5432
 ~~~
 
 #### Options
@@ -317,8 +317,9 @@ Show the status of connectors in the current site.
 
 ~~~ shell
 $ skupper connector status
-NAME      ROUTING-KEY   SELECTOR      PORT   MATCHING-LISTENERS
-backend   backend       app=backend   8080   1
+NAME      ROUTING-KEY   SELECTOR         HOST   PORT   MATCHING-LISTENERS
+backend   backend       app=backend      -      8080   1
+database  database      app=postgresql   -      5342   1
 ~~~
 
 ### skupper listener
@@ -378,6 +379,7 @@ Show the status of listeners in the current site.
 $ skupper listener status
 NAME      ROUTING-KEY   HOST      PORT   MATCHING-CONNECTORS
 backend   backend       backend   8080   1
+database  database      database  5432   1
 ~~~
 
 ## Debug operations

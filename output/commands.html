@@ -222,7 +222,7 @@ Connector &quot;&lt;name&gt;&quot; is ready
 </code></pre>
 <h4 id="examples">Examples</h4>
 <pre><code># Create a connector for a database
-skupper connector create database --workload deployment/database --port 5432
+skupper connector create database --workload deployment/postgresql --port 5432
 </code></pre>
 <h4 id="options">Options</h4>
 <ul>
@@ -248,8 +248,9 @@ Connector &quot;&lt;name&gt;&quot; is deleted
 <p>Show the status of connectors in the current site.</p>
 <h4 id="usage">Usage</h4>
 <pre><code class="language-shell">$ skupper connector status
-NAME      ROUTING-KEY   SELECTOR      PORT   MATCHING-LISTENERS
-backend   backend       app=backend   8080   1
+NAME      ROUTING-KEY   SELECTOR         HOST   PORT   MATCHING-LISTENERS
+backend   backend       app=backend      -      8080   1
+database  database      app=postgresql   -      5342   1
 </code></pre>
 <h3 id="skupper-listener">skupper listener</h3>
 <p>Display help for listener commands and exit.</p>
@@ -286,6 +287,7 @@ Listener &quot;&lt;name&gt;&quot; is deleted
 <pre><code class="language-shell">$ skupper listener status
 NAME      ROUTING-KEY   HOST      PORT   MATCHING-CONNECTORS
 backend   backend       backend   8080   1
+database  database      database  5432   1
 </code></pre>
 <h2 id="debug-operations">Debug operations</h2>
 <h3 id="skupper-debug">skupper debug</h3>
