@@ -181,7 +181,7 @@ groups:
               The name of the connector resource.
           - name: --routing-key
             variable: string
-            default: _value of NAME_
+            default: _value of name_
           - name: --port
             variable: integer
           - name: --workload
@@ -228,7 +228,7 @@ groups:
               The name of the listener resource.
           - name: --routing-key
             variable: string
-            default: _value of NAME_
+            default: _value of name_
           - name: --host
             variable: string
           - name: --port
