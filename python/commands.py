@@ -3,7 +3,6 @@ from plano import *
 def generate():
     model = Model("config/commands.yaml")
     lines = list()
-    # sections = dict()
 
     def append(line=""):
         if line is None:
@@ -12,6 +11,8 @@ def generate():
         lines.append(line)
 
     append("#### Contents")
+    append()
+    append(f"- [Global options](#global-options)")
 
     for group in model.groups:
         append(f"- [{group.title}](#{group.id})")
@@ -20,6 +21,12 @@ def generate():
             append(f"  - [{command.title}](#{command.id})")
 
     append()
+
+    append(f"## Global options")
+    append()
+
+    for option in model.global_options:
+        generate_option(option, append)
 
     for group in model.groups:
         append(f"## {group.title}")
@@ -31,6 +38,18 @@ def generate():
             append(command.description)
             append()
 
+            if command.usage:
+                append("#### Usage")
+                append()
+                append("~~~ shell")
+                append(f"$ {command.usage.strip()}")
+
+                if command.output:
+                    append(command.output.strip())
+
+                append("~~~")
+                append()
+
             if command.examples:
                 append("#### Examples")
                 append()
@@ -39,46 +58,12 @@ def generate():
                 append("~~~")
                 append()
 
-            if command.usage:
-                append("#### Usage")
-                append()
-                append("~~~")
-                append(command.usage.strip())
-                append("~~~")
-                append()
-
-            if command.output:
-                append("#### Output")
-                append()
-                append("~~~")
-                append(command.output.strip())
-                append("~~~")
-
             if command.options:
                 append("#### Options")
                 append()
 
                 for option in command.options:
-                    if option.default is None:
-                        append(f"- **{option.name}**")
-                    else:
-                        append(f"- **{option.name}** (default {option.default})")
-
-                    append()
-
-                    if option.description:
-                        description = "\n".join(f"  {line}" for line in option.description.split("\n"))
-
-                        append(description)
-                        append()
-
-                    if option.notes:
-                        notes = "\n".join(f"  _{line}_" for line in option.notes.strip().split("\n"))
-
-                        append("  ##### _Notes_")
-                        append()
-                        append(notes)
-                        append()
+                    generate_option(option, append)
 
             if command.errors:
                 append("#### Errors")
@@ -107,13 +92,48 @@ def generate():
 
     write("input/commands.md", markdown)
 
+def generate_option(option, append):
+    title = f"**{option.name}**"
+    default = option.default
+
+    if option.variable:
+        title = f"**{option.name}** _{option.variable}_"
+
+    if option.default in (True, False):
+        default = str(option.default).lower()
+
+    if option.default is None:
+        append(f"- {title}")
+    else:
+        append(f"- {title} (default: {default})")
+
+    append()
+
+    if option.description:
+        description = "\n".join(f"  {line}" for line in option.description.split("\n"))
+
+        append(description)
+        append()
+
+    if option.notes:
+        notes = "\n".join(f"  _{line}_" for line in option.notes.strip().split("\n"))
+
+        append("  ##### _Notes_")
+        append()
+        append(notes)
+        append()
+
 def fragment_id(title):
     return title.lower().replace(" ", "-")
 
 class Model:
     def __init__(self, yaml_file):
         self.data = read_yaml(yaml_file)
+        self.global_options = list()
         self.groups = list()
+
+        for option_data in self.data["global_options"]:
+            self.global_options.append(Option(self, option_data))
 
         for group_data in self.data["groups"]:
             self.groups.append(Group(self, group_data))
@@ -206,6 +226,10 @@ class Option:
     @property
     def name(self):
         return self.data["name"]
+
+    @property
+    def variable(self):
+        return self.data.get("variable")
 
     @property
     def default(self):

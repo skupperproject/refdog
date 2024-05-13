@@ -1,6 +1,8 @@
 # Skupper commands
 
 #### Contents
+
+- [Global options](#global-options)
 - [Site configuration](#site-configuration)
   - [skupper site](#skupper-site)
   - [skupper site create](#skupper-site-create)
@@ -29,17 +31,47 @@
 - [Other operations](#other-operations)
   - [skupper version](#skupper-version)
 
+## Global options
+
+- **--help**
+
+  Display help and exit.
+  
+
+- **--context** _string_
+
+  Select the kubeconfig context.
+  
+
+- **--namespace** _string_
+
+  Select the Kubernetes namespace.
+  
+
+- **--platform** _string_
+
+  Select the Skupper platform.
+  
+
 ## Site configuration
 
 ### skupper site
 
-Display help for site commands.
+Display help for site commands and exit.
 
 
 ### skupper site create
 
 Create a site.
 
+
+#### Usage
+
+~~~ shell
+$ skupper site create NAME [options]
+Waiting for status...
+Site "<name>" is ready
+~~~
 
 #### Examples
 
@@ -51,46 +83,14 @@ skupper site create west
 skupper site create west --enable-link-access
 ~~~
 
-#### Usage
-
-~~~
-skupper site create NAME [options]
-~~~
-
-#### Output
-
-~~~
-Waiting for status...
-Site "<name>" is ready
-~~~
 #### Options
 
-- **--help**
-
-  Display help and exit.
-  
-
-- **--context**
-
-  Select the kubeconfig context.
-  
-
-- **--namespace**
-
-  Select the Kubernetes namespace.
-  
-
-- **--platform**
-
-  Select the Skupper platform.
-  
-
-- **--enable-link-access** (default False)
+- **--enable-link-access** (default: false)
 
   Enable external access for links from remote sites.
   
 
-- **--link-access-type** (default _platform dependent_)
+- **--link-access-type** _string_ (default: _platform dependent_)
 
   Select the means of opening external access.
   
@@ -98,7 +98,7 @@ Site "<name>" is ready
   otherwise.
   
 
-- **--service-account** (default _generated_)
+- **--service-account** _string_ (default: _I don't know_)
 
 #### Errors
 
@@ -112,6 +112,14 @@ Site "<name>" is ready
 Change site settings.
 
 
+#### Usage
+
+~~~ shell
+$ skupper site update NAME [options]
+Waiting for update to complete...
+Site "<name>" is updated
+~~~
+
 #### Examples
 
 ~~~
@@ -122,46 +130,14 @@ skupper site update west --enable-link-access
 skupper site update west --enable-link-access --link-access-type loadbalancer
 ~~~
 
-#### Usage
-
-~~~
-skupper site update NAME [options]
-~~~
-
-#### Output
-
-~~~
-Waiting for update to complete...
-Site "<name>" is updated
-~~~
 #### Options
 
-- **--help**
-
-  Display help and exit.
-  
-
-- **--context**
-
-  Select the kubeconfig context.
-  
-
-- **--namespace**
-
-  Select the Kubernetes namespace.
-  
-
-- **--platform**
-
-  Select the Skupper platform.
-  
-
-- **--enable-link-access** (default False)
+- **--enable-link-access** (default: false)
 
   Enable external access for links from remote sites.
   
 
-- **--link-access-type** (default _platform dependent_)
+- **--link-access-type** _string_ (default: _platform dependent_)
 
   Select the means of opening external access.
   
@@ -169,7 +145,7 @@ Site "<name>" is updated
   otherwise.
   
 
-- **--service-account** (default _generated_)
+- **--service-account** _string_ (default: _I don't know_)
 
 #### Errors
 
@@ -185,16 +161,12 @@ Delete a site.
 
 #### Usage
 
-~~~
-skupper site delete NAME
-~~~
-
-#### Output
-
-~~~
+~~~ shell
+$ skupper site delete NAME
 Waiting for deletion to complete...
 Site "<name>" is deleted
 ~~~
+
 #### Errors
 
 - **No site resource exists**
@@ -209,37 +181,11 @@ Show the current status of a site.
 
 #### Usage
 
-~~~
-skupper site status
-~~~
-
-#### Output
-
-~~~
+~~~ shell
+$ skupper site status
 NAME   STATUS   SITES-IN-NETWORK   SERVICES-IN-NETWORK
 west   Ready    1                  0
 ~~~
-#### Options
-
-- **--help**
-
-  Display help and exit.
-  
-
-- **--context**
-
-  Select the kubeconfig context.
-  
-
-- **--namespace**
-
-  Select the Kubernetes namespace.
-  
-
-- **--platform**
-
-  Select the Skupper platform.
-  
 
 #### _Notes_
 
@@ -252,7 +198,8 @@ _routing key?_
 
 ### skupper token
 
-Display help for token commands.  Currently there is just one.
+Display help for token commands and exit.  Currently there
+is only one token command.
 
 
 ### skupper token create
@@ -262,25 +209,21 @@ Create a token.
 
 #### Usage
 
-~~~
-skupper token create FILE [options]
-~~~
-
-#### Output
-
-~~~
+~~~ shell
+$ skupper token create FILE [options]
 Token file created at <file>
 The token expires after 1 use or after 15 minutes
 ~~~
+
 #### Options
 
-- **--expiry** (default 15m)
+- **--expiry** _duration_ (default: 15m)
 
-- **--uses** (default 1)
+- **--uses** _integer_ (default: 1)
 
 ### skupper link
 
-Display help for link commands.
+Display help for link commands and exit.
 
 
 ### skupper link create
@@ -290,48 +233,34 @@ Create a link.
 
 #### Usage
 
-~~~
-skupper link create FILE [options]
-~~~
-
-#### Output
-
-~~~
+~~~ shell
+$ skupper link create FILE [options]
 Waiting for status...
 Link "<name>" is active
 You can now safely delete <file>
 ~~~
+
 #### Options
 
-- **--cost** (default 1)
+- **--cost** _integer_ (default: 1)
 
 ### skupper link delete
 
 
 #### Usage
 
-~~~
-skupper link delete NAME
+~~~ shell
+$ skupper link delete NAME
 ~~~
 
 ### skupper link status
 
 
-#### Output
-
-~~~
-NAME   STATUS   COST
-west   Active   1
-
-Links from remote sites:
-
-None
-~~~
 ## Service exposure
 
 ### skupper connector
 
-Display help for connector commands.
+Display help for connector commands and exit.
 
 
 ### skupper connector create
@@ -341,27 +270,30 @@ Create a connector.
 
 #### Usage
 
-~~~
-skupper connector create NAME [options]
-~~~
-
-#### Output
-
-~~~
+~~~ shell
+$ skupper connector create NAME [options]
 Waiting for status...
 Connector "<name>" is ready
 ~~~
+
+#### Examples
+
+~~~
+# Create a connector for a database
+skupper connector create database --workload deployment/database --port 5432
+~~~
+
 #### Options
 
-- **--routing-key** (default _NAME_)
+- **--routing-key** _string_ (default: _value of NAME_)
 
-- **--port**
+- **--port** _integer_
 
-- **--workload**
+- **--workload** _string_
 
-- **--selector**
+- **--selector** _string_
 
-- **--host**
+- **--host** _string_
 
 ### skupper connector delete
 
@@ -370,16 +302,12 @@ Delete a connector.
 
 #### Usage
 
-~~~
-skupper connector delete NAME
-~~~
-
-#### Output
-
-~~~
+~~~ shell
+$ skupper connector delete NAME
 Waiting for deletion to complete...
 Connector "<name>" is deleted
 ~~~
+
 ### skupper connector status
 
 Show the status of connectors in the current site.
@@ -387,19 +315,15 @@ Show the status of connectors in the current site.
 
 #### Usage
 
-~~~
-skupper connector status
-~~~
-
-#### Output
-
-~~~
+~~~ shell
+$ skupper connector status
 NAME      ROUTING-KEY   SELECTOR      PORT   MATCHING-LISTENERS
 backend   backend       app=backend   8080   1
 ~~~
+
 ### skupper listener
 
-Display help for listener commands.
+Display help for listener commands and exit.
 
 
 ### skupper listener create
@@ -409,23 +333,26 @@ Create a listener.
 
 #### Usage
 
-~~~
-skupper listener create NAME [options]
-~~~
-
-#### Output
-
-~~~
+~~~ shell
+$ skupper listener create NAME [options]
 Waiting for status...
 Listener "<name>" is ready
 ~~~
+
+#### Examples
+
+~~~
+# Create a listener for a database
+skupper listener create database --host database --port 5432
+~~~
+
 #### Options
 
-- **--routing-key** (default _NAME_)
+- **--routing-key** _string_ (default: _value of NAME_)
 
-- **--host**
+- **--host** _string_
 
-- **--port**
+- **--port** _integer_
 
 ### skupper listener delete
 
@@ -434,16 +361,12 @@ Delete a listener.
 
 #### Usage
 
-~~~
-skupper listener delete NAME
-~~~
-
-#### Output
-
-~~~
+~~~ shell
+$ skupper listener delete NAME
 Waiting for deletion to complete...
 Listener "<name>" is deleted
 ~~~
+
 ### skupper listener status
 
 Show the status of listeners in the current site.
@@ -451,21 +374,17 @@ Show the status of listeners in the current site.
 
 #### Usage
 
-~~~
-skupper listener status
-~~~
-
-#### Output
-
-~~~
+~~~ shell
+$ skupper listener status
 NAME      ROUTING-KEY   HOST      PORT   MATCHING-CONNECTORS
 backend   backend       backend   8080   1
 ~~~
+
 ## Debug operations
 
 ### skupper debug
 
-Display help for debug commands.
+Display help for debug commands and exit.
 
 
 ### skupper debug dump
@@ -475,15 +394,11 @@ Generate a debug dump file.
 
 #### Usage
 
-~~~
-skupper debug dump [FILE]
-~~~
-
-#### Output
-
-~~~
+~~~ shell
+$ skupper debug dump [FILE]
 Debug dump file generated at <file>
 ~~~
+
 ## Other operations
 
 ### skupper version

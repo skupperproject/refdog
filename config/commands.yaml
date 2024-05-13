@@ -1,23 +1,11 @@
 options:
-  core:
-    - name: --help
-      description: |
-        Display help and exit.
-    - name: --context
-      description: |
-        Select the kubeconfig context.
-    - name: --namespace
-      description: |
-        Select the Kubernetes namespace.
-    - name: --platform
-      description: |
-        Select the Skupper platform.
   mutable_site_configuration:
     - name: --enable-link-access
       default: false
       description: |
         Enable external access for links from remote sites.
     - name: --link-access-type
+      variable: string
       default: _platform dependent_
       description: |
         Select the means of opening external access.
@@ -25,48 +13,63 @@ options:
         The default is `route` on OpenShift and `loadbalancer`
         otherwise.
     - name: --service-account
-      default: _generated_
+      variable: string
+      default: _I don't know_
+global_options:
+  - name: --help
+    description: |
+      Display help and exit.
+  - name: --context
+    variable: string
+    description: |
+      Select the kubeconfig context.
+  - name: --namespace
+    variable: string
+    description: |
+      Select the Kubernetes namespace.
+  - name: --platform
+    variable: string
+    description: |
+      Select the Skupper platform.
 groups:
   - title: Site configuration
     commands:
       - title: skupper site
         description: |
-          Display help for site commands.
+          Display help for site commands and exit.
       - title: skupper site create
         description: |
           Create a site.
+        usage: skupper site create NAME [options]
         examples: |
           # Create a site
           skupper site create west
 
           # Create a site that can accept links from remote sites
           skupper site create west --enable-link-access
-        usage: skupper site create NAME [options]
         output: |
           Waiting for status...
           Site "<name>" is ready
         options:
-          - include: core
           - include: mutable_site_configuration
         errors:
           - message: Site resource already exists
             description: |
               There is already a site resource defined for the namespace.
       - title: skupper site update
+        description: |
+          Change site settings.
+        usage: skupper site update NAME [options]
         examples: |
           # Update the site to accept links
           skupper site update west --enable-link-access
 
           # Update multiple settings
           skupper site update west --enable-link-access --link-access-type loadbalancer
-        usage: skupper site update NAME [options]
-        description: |
-          Change site settings.
         output: |
           Waiting for update to complete...
           Site "<name>" is updated
         options:
-          - include: core
           - include: mutable_site_configuration
         errors:
           - message: No site resource exists
@@ -90,8 +93,6 @@ groups:
         output: |
           NAME   STATUS   SITES-IN-NETWORK   SERVICES-IN-NETWORK
           west   Ready    1                  0
-        options:
-          - include: core
         notes: |
           What is services-in-network?  Is that the total number of
           unique routing keys defined by connectors?  Or listeners?
@@ -101,7 +102,8 @@ groups:
     commands:
       - title: skupper token
         description: |
-          Display help for token commands.  Currently there is just one.
+          Display help for token commands and exit.  Currently there
+          is only one token command.
       - title: skupper token create
         description: |
           Create a token.
@@ -111,12 +113,14 @@ groups:
           The token expires after 1 use or after 15 minutes
         options:
           - name: --expiry
+            variable: duration
             default: 15m
           - name: --uses
+            variable: integer
             default: 1
       - title: skupper link
         description: |
-          Display help for link commands.
+          Display help for link commands and exit.
       - title: skupper link create
         description: |
           Create a link.
@@ -127,6 +131,7 @@ groups:
           You can now safely delete <file>
         options:
           - name: --cost
+            variable: integer
             default: 1
       - title: skupper link delete
         usage: skupper link delete NAME
@@ -142,21 +147,29 @@ groups:
     commands:
       - title: skupper connector
         description: |
-          Display help for connector commands.
+          Display help for connector commands and exit.
       - title: skupper connector create
         description: |
           Create a connector.
         usage: skupper connector create NAME [options]
+        examples: |
+          # Create a connector for a database
+          skupper connector create database --workload deployment/database --port 5432
         output: |
           Waiting for status...
           Connector "<name>" is ready
         options:
           - name: --routing-key
-            default: _NAME_
+            variable: string
+            default: _value of NAME_
           - name: --port
+            variable: integer
           - name: --workload
+            variable: string
           - name: --selector
+            variable: string
           - name: --host
+            variable: string
       - title: skupper connector delete
         description: |
           Delete a connector.
@@ -173,19 +186,25 @@ groups:
           backend   backend       app=backend   8080   1
       - title: skupper listener
         description: |
-          Display help for listener commands.
+          Display help for listener commands and exit.
       - title: skupper listener create
         description: |
           Create a listener.
         usage: skupper listener create NAME [options]
+        examples: |
+          # Create a listener for a database
+          skupper listener create database --host database --port 5432
         output: |
           Waiting for status...
           Listener "<name>" is ready
         options:
           - name: --routing-key
-            default: _NAME_
+            variable: string
+            default: _value of NAME_
           - name: --host
+            variable: string
           - name: --port
+            variable: integer
       - title: skupper listener delete
         description: |
           Delete a listener.
@@ -204,7 +223,7 @@ groups:
   #   commands:
   #     - title: skupper platform
   #       description: |
-  #         Display help for platform commands.
+  #         Display help for platform commands and exit.
   #     - title: skupper platform install
   #     - title: skupper platform uninstall
   #     - title: skupper platform switch
@@ -212,7 +231,7 @@ groups:
     commands:
       - title: skupper debug
         description: |
-          Display help for debug commands.
+          Display help for debug commands and exit.
       - title: skupper debug dump
         description: |
           Generate a debug dump file.
