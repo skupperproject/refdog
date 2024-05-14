@@ -1,20 +1,3 @@
-arguments:
-  mutable_site_configuration:
-    - name: --enable-link-access
-      default: false
-      description: |
-        Enable external access for links from remote sites.
-    - name: --link-access-type
-      variable: string
-      default: _platform dependent_
-      description: |
-        Select the means of opening external access.
-
-        The default is `route` on OpenShift and `loadbalancer`
-        otherwise.
-    - name: --service-account
-      variable: string
-      default: _I don't know_
 global_arguments:
   - name: --help
     description: |
@@ -37,9 +20,12 @@ groups:
       - title: skupper site
         description: |
           Display help for site commands and exit.
-      - title: skupper site create
+      - resource: Site
+        title: skupper site create
         description: |
           Create a site.
+
+          @resource_description@
         usage: skupper site create <name> [options]
         examples: |
           # Create a site
@@ -54,12 +40,16 @@ groups:
           - name: name
             description: |
               The name of the site resource.
-          - include: mutable_site_configuration
+          - property: enableLinkAccess
+          - property: linkAccessType
+          - property: linkAccessHost
+          - property: serviceAccount
         errors:
           - message: Site resource already exists
             description: |
               There is already a site resource defined for the namespace.
-      - title: skupper site update
+      - resource: Site
+        title: skupper site update
         description: |
           Change site settings.
         usage: skupper site update <name> [options]
@@ -76,7 +66,10 @@ groups:
           - name: name
             description: |
               The name of the site resource.
-          - include: mutable_site_configuration
+          - property: enableLinkAccess
+          - property: linkAccessType
+          - property: linkAccessHost
+          - property: serviceAccount
         errors:
           - message: No site resource exists
             description: |
@@ -114,7 +107,8 @@ groups:
         description: |
           Display help for token commands and exit.  Currently there
           is only one token command.
-      - title: skupper token create
+      - resource: Grant
+        title: skupper token create
         description: |
           Create a token.
         usage: skupper token create <file> [options]
@@ -125,16 +119,18 @@ groups:
           - name: file
             description: |
               The name of the token file.
-          - name: --expiry
+          - property: validFor
+            name: --expiry
             variable: duration
             default: 15m
-          - name: --uses
-            variable: integer
+          - property: claims
+            name: --uses
             default: 1
       - title: skupper link
         description: |
           Display help for link commands and exit.
-      - title: skupper link create
+      - resource: Link
+        title: skupper link create
         description: |
           Create a link.
         usage: skupper link create <file> [options]
@@ -146,9 +142,7 @@ groups:
           - name: file
             description: |
               The name of the token file.
-          - name: --cost
-            variable: integer
-            default: 1
+          - property: cost
       - title: skupper link delete
         usage: skupper link delete <name>
       - title: skupper link status
@@ -165,7 +159,8 @@ groups:
       - title: skupper connector
         description: |
           Display help for connector commands and exit.
-      - title: skupper connector create
+      - resource: Connector
+        title: skupper connector create
         description: |
           Create a connector.
         usage: skupper connector create <name> [options]
@@ -179,17 +174,16 @@ groups:
           - name: name
             description: |
               The name of the connector resource.
-          - name: --routing-key
-            variable: string
+          - property: routingKey
             default: _value of name_
-          - name: --port
-            variable: integer
           - name: --workload
             variable: string
-          - name: --selector
-            variable: string
-          - name: --host
-            variable: string
+          - property: port
+          - property: selector
+          - property: host
+          - property: tlsCredentials
+          - property: type
+          - property: includeNotReady
       - title: skupper connector delete
         description: |
           Delete a connector.
@@ -212,8 +206,8 @@ groups:
       - title: skupper listener
         description: |
           Display help for listener commands and exit.
-      - title: skupper listener create
-        resource: Listener
+      - resource: Listener
+        title: skupper listener create
         description: |
           Create a listener.
 
@@ -229,16 +223,12 @@ groups:
           - name: name
             description: |
               The name of the listener resource.
-          - name: --routing-key
-            variable: string
+          - property: routingKey
             default: _value of name_
-            property: routingKey
-          - name: --host
-            variable: string
-            property: host
-          - name: --port
-            variable: integer
-            property: port
+          - property: host
+          - property: port
+          - property: tlsCredentials
+          - property: type
       - title: skupper listener delete
         description: |
           Delete a listener.

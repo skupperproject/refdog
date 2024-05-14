@@ -64,6 +64,16 @@ Display help for site commands and exit.
 
 Create a site.
 
+A [site][site] is a place where components of your application are
+running.  Sites are linked to form application
+[networks][network].
+
+There can be only one site definition per namespace.
+
+[site]: concepts.md#site
+[network]: concepts.md#network
+
+
 
 #### Usage
 
@@ -90,12 +100,16 @@ skupper site create west --enable-link-access
   The name of the site resource.
   
 
-- **--enable-link-access** (default: false)
+- **--enable-link-access** _boolean_
 
   Enable external access for links from remote sites.
   
 
-- **--link-access-type** _string_ (default: _platform dependent_)
+- **--link-access-type** _string_
+
+  _Default:_ `route` if the environment is OpenShift, otherwise
+`loadbalancer`
+
 
   Select the means of opening external access.
   
@@ -103,7 +117,12 @@ skupper site create west --enable-link-access
   otherwise.
   
 
-- **--service-account** _string_ (default: _I don't know_)
+- **--link-access-host** _string_
+
+  The host or IP used to expose link access.
+  
+
+- **--service-account** _string_
 
 #### Errors
 
@@ -142,12 +161,16 @@ skupper site update west --enable-link-access --link-access-type loadbalancer
   The name of the site resource.
   
 
-- **--enable-link-access** (default: false)
+- **--enable-link-access** _boolean_
 
   Enable external access for links from remote sites.
   
 
-- **--link-access-type** _string_ (default: _platform dependent_)
+- **--link-access-type** _string_
+
+  _Default:_ `route` if the environment is OpenShift, otherwise
+`loadbalancer`
+
 
   Select the means of opening external access.
   
@@ -155,7 +178,12 @@ skupper site update west --enable-link-access --link-access-type loadbalancer
   otherwise.
   
 
-- **--service-account** _string_ (default: _I don't know_)
+- **--link-access-host** _string_
+
+  The host or IP used to expose link access.
+  
+
+- **--service-account** _string_
 
 #### Errors
 
@@ -239,9 +267,13 @@ The token expires after 1 use or after 15 minutes
   The name of the token file.
   
 
-- **--expiry** _duration_ (default: 15m)
+- **--expiry** _duration_
 
-- **--uses** _integer_ (default: 1)
+  _Default:_ 15m
+
+- **--uses** _int_
+
+  _Default:_ 1
 
 ### skupper link
 
@@ -269,7 +301,7 @@ You can now safely delete <file>
   The name of the token file.
   
 
-- **--cost** _integer_ (default: 1)
+- **--cost** _integer_
 
 ### skupper link delete
 
@@ -317,15 +349,52 @@ skupper connector create database --workload deployment/postgresql --port 5432
   The name of the connector resource.
   
 
-- **--routing-key** _string_ (default: _value of name_)
+- **--routing-key** _string_
 
-- **--port** _integer_
+  _Default:_ _value of name_
+
+  The identifier used to route traffic from listeners to
+  connectors.  To connect to a service at a remote site, the
+  listener and connector must have matching routing keys.
+  
 
 - **--workload** _string_
 
+- **--port** _integer_
+
+  The port number of the server listener.
+  
+
 - **--selector** _string_
 
+  A Kubernetes [label selector][selector] for identifying
+  server pods.
+  
+  [selector]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
+  
+
 - **--host** _string_
+
+  The hostname or IP address of the server.  This is an
+  alternative to `selector` for specifying the target
+  server.
+  
+
+- **--tls-credentials** _string_
+
+  _Default:_ *None*
+
+  The name of a Kubernetes secret containing TLS
+  credentials.  The secret contains the trusted server
+  certificate (typically a CA certificate).
+  
+  It can optionally include a client certificate and key for
+  mutual TLS.
+  
+
+- **--type** _string_
+
+- **--include-not-ready** _boolean_
 
 ### skupper connector delete
 
@@ -401,7 +470,9 @@ skupper listener create database --host database --port 5432
   The name of the listener resource.
   
 
-- **--routing-key** _string_ (default: _value of name_)
+- **--routing-key** _string_
+
+  _Default:_ _value of name_
 
   The identifier used to route traffic from listeners to
   connectors.  To connect to a service at a remote site, the
@@ -421,6 +492,20 @@ skupper listener create database --host database --port 5432
   the listener host and port to establish connections to
   the remote service.
   
+
+- **--tls-credentials** _string_
+
+  _Default:_ *None*
+
+  The name of a Kubernetes secret containing TLS
+  credentials.  The secret contains the server certificate
+  and key.
+  
+  It can optionally include a client certificate for mutual
+  TLS.
+  
+
+- **--type** _string_
 
 ### skupper listener delete
 

@@ -41,11 +41,7 @@
 <li><a href="#listener">Listener</a></li>
 </ul>
 </li>
-<li><a href="#everything-else">Everything else</a><ul>
-<li><a href="#certificate">Certificate</a></li>
-<li><a href="#securedaccess">SecuredAccess</a></li>
-</ul>
-</li>
+<li><a href="#everything-else">Everything else</a></li>
 </ul>
 <h2 id="site-configuration">Site configuration</h2>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -73,6 +69,30 @@ metadata:
 <em>Default</em>: None</p>
 <h5 id="codesettingscode"><code>settings</code></h5>
 <p><em>Type</em>: Array<br />
+<em>Required</em>: No<br />
+<em>Default</em>: None</p>
+<h5 id="codenamecode"><code>name</code></h5>
+<p>A name of your choice for the Skupper site.  This name is
+displayed in the console and CLI output.</p>
+<p><em>Type</em>: <br />
+<em>Required</em>: No<br />
+<em>Default</em>: None</p>
+<h5 id="codeenablelinkaccesscode"><code>enableLinkAccess</code></h5>
+<p>Enable external access for links from remote sites.</p>
+<p><em>Type</em>: Boolean<br />
+<em>Required</em>: No<br />
+<em>Default</em>: False</p>
+<h5 id="codelinkaccesstypecode"><code>linkAccessType</code></h5>
+<p>Select the means of opening external access.</p>
+<p>The default is <code>route</code> on OpenShift and <code>loadbalancer</code>
+otherwise.</p>
+<p><em>Type</em>: String<br />
+<em>Required</em>: No<br />
+<em>Default</em>: <code>route</code> if the environment is OpenShift, otherwise
+<code>loadbalancer</code></p>
+<h5 id="codelinkaccesshostcode"><code>linkAccessHost</code></h5>
+<p>The host or IP used to expose link access.</p>
+<p><em>Type</em>: String<br />
 <em>Required</em>: No<br />
 <em>Default</em>: None</p>
 <h2 id="site-linking">Site linking</h2>
@@ -357,73 +377,6 @@ TLS.</p>
 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
 enim ad minim veniam, quis nostrud exercitation ullamco laboris
 nisi ut aliquip ex ea commodo consequat.</p>
-<h3 id="certificate">Certificate</h3>
-<h4 id="examples">Examples</h4>
-<h4 id="spec-properties">Spec properties</h4>
-<h5 id="codecacode"><code>ca</code></h5>
-<p><em>Type</em>: String<br />
-<em>Required</em>: Yes<br />
-<em>Default</em>: None</p>
-<h5 id="codesubjectcode"><code>subject</code></h5>
-<p><em>Type</em>: String<br />
-<em>Required</em>: Yes<br />
-<em>Default</em>: None</p>
-<h5 id="codehostscode"><code>hosts</code></h5>
-<p><em>Type</em>: Array<br />
-<em>Required</em>: No<br />
-<em>Default</em>: None</p>
-<h5 id="codeclientcode"><code>client</code></h5>
-<p><em>Type</em>: Boolean<br />
-<em>Required</em>: No<br />
-<em>Default</em>: False</p>
-<h5 id="codeservercode"><code>server</code></h5>
-<p><em>Type</em>: Boolean<br />
-<em>Required</em>: No<br />
-<em>Default</em>: False</p>
-<h5 id="codesigningcode"><code>signing</code></h5>
-<p><em>Type</em>: Boolean<br />
-<em>Required</em>: No<br />
-<em>Default</em>: False</p>
-<h3 id="securedaccess">SecuredAccess</h3>
-<p>XXX</p>
-<p>SecuredAccess is a generic way of exposing a workload (a set of
-pods).</p>
-<p>SecuredAccess just creates and necessary service/ingress
-resources and optionally any secrets with tls credentials.</p>
-<p>The implementation of LinkAccess creates a SecuredAccess and
-also configures the router.</p>
-<p>SecuredAccess is a lower level concept.  It just exposes a
-workload, including if desired, generation of necessary certs
-(though those can also be provided if preferred).</p>
-<p>SecuredAccess is not in any way tied to the router.  LInkAccess
-<em>is</em> tied to the router.  LinkAccess can be thought of as a
-specialization of SecuredAccess.</p>
-<h4 id="examples">Examples</h4>
-<h4 id="spec-properties">Spec properties</h4>
-<h5 id="codeportscode"><code>ports</code></h5>
-<p><em>Type</em>: Array<br />
-<em>Required</em>: Yes<br />
-<em>Default</em>: None</p>
-<h5 id="codeselectorcode"><code>selector</code></h5>
-<p><em>Type</em>: Object<br />
-<em>Required</em>: Yes<br />
-<em>Default</em>: None</p>
-<h5 id="codecacode"><code>ca</code></h5>
-<p><em>Type</em>: String<br />
-<em>Required</em>: No<br />
-<em>Default</em>: None</p>
-<h5 id="codecertificatecode"><code>certificate</code></h5>
-<p><em>Type</em>: String<br />
-<em>Required</em>: No<br />
-<em>Default</em>: None</p>
-<h5 id="codeaccesstypecode"><code>accessType</code></h5>
-<p><em>Type</em>: String<br />
-<em>Required</em>: No<br />
-<em>Default</em>: None</p>
-<h5 id="codeoptionscode"><code>options</code></h5>
-<p><em>Type</em>: Object<br />
-<em>Required</em>: No<br />
-<em>Default</em>: None</p>
 
 
     </div>

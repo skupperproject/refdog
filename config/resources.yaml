@@ -52,19 +52,25 @@ resources:
         description: |
           A name of your choice for the Skupper site.  This name is
           displayed in the console and CLI output.
-      ingress:
+      enableLinkAccess:
+        type: boolean
+        description: |
+          Enable external access for links from remote sites.
+      linkAccessType:
+        type: string
+        description: |
+          Select the means of opening external access.
+
+          The default is `route` on OpenShift and `loadbalancer`
+          otherwise.
         default: |
           `route` if the environment is OpenShift, otherwise
           `loadbalancer`
-        choices: [route, loadbalancer, nodeport, nginx-ingress-v1, contour-http-proxy, ingress, none]
+        choices: [route, loadbalancer, nodeport, ingress]
+      linkAccessHost:
+        type: string
         description: |
-          The method for providing access to this site from outside
-          the cluster.  Cluster ingress enables a site to accept
-          incoming [links][link].
-
-          <!-- XXX enumerate -->
-
-          [link]: concepts.md#link
+          The host or IP used to expose link access.
   Link:
     group: site-linking
     description: |
@@ -158,6 +164,7 @@ resources:
         description: |
           accessType is a hint or constraint on the kind of ingress
           that can/should be used (route, nodePort, LB, nginx, etc.).
+
   Grant:
     group: site-linking
     description: |

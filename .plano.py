@@ -8,5 +8,5 @@ import resources
 
 @command
 def generate():
-    commands.generate()
     resources.generate()
+    commands.generate()

@@ -12,8 +12,6 @@
   - [Connector](#connector)
   - [Listener](#listener)
 - [Everything else](#everything-else)
-  - [Certificate](#certificate)
-  - [SecuredAccess](#securedaccess)
 ## Site configuration
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -59,6 +57,44 @@ _Default_: None
 
 
 _Type_: Array\
+_Required_: No\
+_Default_: None
+##### `name`
+
+A name of your choice for the Skupper site.  This name is
+displayed in the console and CLI output.
+
+
+_Type_: \
+_Required_: No\
+_Default_: None
+##### `enableLinkAccess`
+
+Enable external access for links from remote sites.
+
+
+_Type_: Boolean\
+_Required_: No\
+_Default_: False
+##### `linkAccessType`
+
+Select the means of opening external access.
+
+The default is `route` on OpenShift and `loadbalancer`
+otherwise.
+
+
+_Type_: String\
+_Required_: No\
+_Default_: `route` if the environment is OpenShift, otherwise
+`loadbalancer`
+
+##### `linkAccessHost`
+
+The host or IP used to expose link access.
+
+
+_Type_: String\
 _Required_: No\
 _Default_: None
 ## Site linking
@@ -504,118 +540,3 @@ enim ad minim veniam, quis nostrud exercitation ullamco laboris
 nisi ut aliquip ex ea commodo consequat.
 
 
-### Certificate
-
-#### Examples
-
-#### Spec properties
-
-##### `ca`
-
-
-
-_Type_: String\
-_Required_: Yes\
-_Default_: None
-##### `subject`
-
-
-
-_Type_: String\
-_Required_: Yes\
-_Default_: None
-##### `hosts`
-
-
-
-_Type_: Array\
-_Required_: No\
-_Default_: None
-##### `client`
-
-
-
-_Type_: Boolean\
-_Required_: No\
-_Default_: False
-##### `server`
-
-
-
-_Type_: Boolean\
-_Required_: No\
-_Default_: False
-##### `signing`
-
-
-
-_Type_: Boolean\
-_Required_: No\
-_Default_: False
-### SecuredAccess
-
-XXX
-
-SecuredAccess is a generic way of exposing a workload (a set of
-pods).
-
-SecuredAccess just creates and necessary service/ingress
-resources and optionally any secrets with tls credentials.
-
-The implementation of LinkAccess creates a SecuredAccess and
-also configures the router.
-
-SecuredAccess is a lower level concept.  It just exposes a
-workload, including if desired, generation of necessary certs
-(though those can also be provided if preferred).
-
-SecuredAccess is not in any way tied to the router.  LInkAccess
-*is* tied to the router.  LinkAccess can be thought of as a
-specialization of SecuredAccess.
-
-#### Examples
-
-#### Spec properties
-
-##### `ports`
-
-
-
-_Type_: Array\
-_Required_: Yes\
-_Default_: None
-##### `selector`
-
-
-
-_Type_: Object\
-_Required_: Yes\
-_Default_: None
-##### `ca`
-
-
-
-_Type_: String\
-_Required_: No\
-_Default_: None
-##### `certificate`
-
-
-
-_Type_: String\
-_Required_: No\
-_Default_: None
-##### `accessType`
-
-
-
-_Type_: String\
-_Required_: No\
-_Default_: None
-##### `options`
-
-
-
-_Type_: Object\
-_Required_: No\
-_Default_: None

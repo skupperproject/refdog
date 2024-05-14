@@ -84,6 +84,10 @@
 <p>Display help for site commands and exit.</p>
 <h3 id="skupper-site-create">skupper site create</h3>
 <p>Create a site.</p>
+<p>A <a href="concepts.md#site">site</a> is a place where components of your application are
+running.  Sites are linked to form application
+<a href="concepts.md#network">networks</a>.</p>
+<p>There can be only one site definition per namespace.</p>
 <h4 id="usage">Usage</h4>
 <pre><code class="language-shell">$ skupper site create &lt;name&gt; [options]
 Waiting for status...
@@ -101,15 +105,20 @@ skupper site create west --enable-link-access
 <li><p><strong>name</strong></p>
 <p>The name of the site resource.</p>
 </li>
-<li><p><strong>--enable-link-access</strong> (default: false)</p>
+<li><p><strong>--enable-link-access</strong> <em>boolean</em></p>
 <p>Enable external access for links from remote sites.</p>
 </li>
-<li><p><strong>--link-access-type</strong> <em>string</em> (default: <em>platform dependent</em>)</p>
+<li><p><strong>--link-access-type</strong> <em>string</em></p>
+<p><em>Default:</em> <code>route</code> if the environment is OpenShift, otherwise
+<code>loadbalancer</code></p>
 <p>Select the means of opening external access.</p>
 <p>The default is <code>route</code> on OpenShift and <code>loadbalancer</code>
 otherwise.</p>
 </li>
-<li><p><strong>--service-account</strong> <em>string</em> (default: <em>I don't know</em>)</p>
+<li><p><strong>--link-access-host</strong> <em>string</em></p>
+<p>The host or IP used to expose link access.</p>
+</li>
+<li><p><strong>--service-account</strong> <em>string</em></p>
 </li>
 </ul>
 <h4 id="errors">Errors</h4>
@@ -137,15 +146,20 @@ skupper site update west --enable-link-access --link-access-type loadbalancer
 <li><p><strong>name</strong></p>
 <p>The name of the site resource.</p>
 </li>
-<li><p><strong>--enable-link-access</strong> (default: false)</p>
+<li><p><strong>--enable-link-access</strong> <em>boolean</em></p>
 <p>Enable external access for links from remote sites.</p>
 </li>
-<li><p><strong>--link-access-type</strong> <em>string</em> (default: <em>platform dependent</em>)</p>
+<li><p><strong>--link-access-type</strong> <em>string</em></p>
+<p><em>Default:</em> <code>route</code> if the environment is OpenShift, otherwise
+<code>loadbalancer</code></p>
 <p>Select the means of opening external access.</p>
 <p>The default is <code>route</code> on OpenShift and <code>loadbalancer</code>
 otherwise.</p>
 </li>
-<li><p><strong>--service-account</strong> <em>string</em> (default: <em>I don't know</em>)</p>
+<li><p><strong>--link-access-host</strong> <em>string</em></p>
+<p>The host or IP used to expose link access.</p>
+</li>
+<li><p><strong>--service-account</strong> <em>string</em></p>
 </li>
 </ul>
 <h4 id="errors">Errors</h4>
@@ -201,9 +215,11 @@ The token expires after 1 use or after 15 minutes
 <li><p><strong>file</strong></p>
 <p>The name of the token file.</p>
 </li>
-<li><p><strong>--expiry</strong> <em>duration</em> (default: 15m)</p>
+<li><p><strong>--expiry</strong> <em>duration</em></p>
+<p><em>Default:</em> 15m</p>
 </li>
-<li><p><strong>--uses</strong> <em>integer</em> (default: 1)</p>
+<li><p><strong>--uses</strong> <em>int</em></p>
+<p><em>Default:</em> 1</p>
 </li>
 </ul>
 <h3 id="skupper-link">skupper link</h3>
@@ -221,7 +237,7 @@ You can now safely delete &lt;file&gt;
 <li><p><strong>file</strong></p>
 <p>The name of the token file.</p>
 </li>
-<li><p><strong>--cost</strong> <em>integer</em> (default: 1)</p>
+<li><p><strong>--cost</strong> <em>integer</em></p>
 </li>
 </ul>
 <h3 id="skupper-link-delete">skupper link delete</h3>
@@ -248,15 +264,37 @@ skupper connector create database --workload deployment/postgresql --port 5432
 <li><p><strong>name</strong></p>
 <p>The name of the connector resource.</p>
 </li>
-<li><p><strong>--routing-key</strong> <em>string</em> (default: <em>value of name</em>)</p>
-</li>
-<li><p><strong>--port</strong> <em>integer</em></p>
+<li><p><strong>--routing-key</strong> <em>string</em></p>
+<p><em>Default:</em> <em>value of name</em></p>
+<p>The identifier used to route traffic from listeners to
+connectors.  To connect to a service at a remote site, the
+listener and connector must have matching routing keys.</p>
 </li>
 <li><p><strong>--workload</strong> <em>string</em></p>
 </li>
+<li><p><strong>--port</strong> <em>integer</em></p>
+<p>The port number of the server listener.</p>
+</li>
 <li><p><strong>--selector</strong> <em>string</em></p>
+<p>A Kubernetes <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">label selector</a> for identifying
+server pods.</p>
 </li>
 <li><p><strong>--host</strong> <em>string</em></p>
+<p>The hostname or IP address of the server.  This is an
+alternative to <code>selector</code> for specifying the target
+server.</p>
+</li>
+<li><p><strong>--tls-credentials</strong> <em>string</em></p>
+<p><em>Default:</em> <em>None</em></p>
+<p>The name of a Kubernetes secret containing TLS
+credentials.  The secret contains the trusted server
+certificate (typically a CA certificate).</p>
+<p>It can optionally include a client certificate and key for
+mutual TLS.</p>
+</li>
+<li><p><strong>--type</strong> <em>string</em></p>
+</li>
+<li><p><strong>--include-not-ready</strong> <em>boolean</em></p>
 </li>
 </ul>
 <h3 id="skupper-connector-delete">skupper connector delete</h3>
@@ -301,7 +339,8 @@ skupper listener create database --host database --port 5432
 <li><p><strong>name</strong></p>
 <p>The name of the listener resource.</p>
 </li>
-<li><p><strong>--routing-key</strong> <em>string</em> (default: <em>value of name</em>)</p>
+<li><p><strong>--routing-key</strong> <em>string</em></p>
+<p><em>Default:</em> <em>value of name</em></p>
 <p>The identifier used to route traffic from listeners to
 connectors.  To connect to a service at a remote site, the
 listener and connector must have matching routing keys.</p>
@@ -315,6 +354,16 @@ establish connections to the remote service.</p>
 <p>The port of the local listener.  Clients at this site use
 the listener host and port to establish connections to
 the remote service.</p>
+</li>
+<li><p><strong>--tls-credentials</strong> <em>string</em></p>
+<p><em>Default:</em> <em>None</em></p>
+<p>The name of a Kubernetes secret containing TLS
+credentials.  The secret contains the server certificate
+and key.</p>
+<p>It can optionally include a client certificate for mutual
+TLS.</p>
+</li>
+<li><p><strong>--type</strong> <em>string</em></p>
 </li>
 </ul>
 <h3 id="skupper-listener-delete">skupper listener delete</h3>
