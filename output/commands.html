@@ -284,6 +284,9 @@ database   database      app=postgresql   -      5342   1
 <p>Display help for listener commands and exit.</p>
 <h3 id="skupper-listener-create">skupper listener create</h3>
 <p>Create a listener.</p>
+<p>A <a href="concepts.md#listener">listener</a> is a local connection endpoint bound to
+servers in remote sites.</p>
+<p>Each namespace can contain multiple listener definitions.</p>
 <h4 id="usage">Usage</h4>
 <pre><code class="language-shell">$ skupper listener create &lt;name&gt; [options]
 Waiting for status...
@@ -299,10 +302,19 @@ skupper listener create database --host database --port 5432
 <p>The name of the listener resource.</p>
 </li>
 <li><p><strong>--routing-key</strong> <em>string</em> (default: <em>value of name</em>)</p>
+<p>The identifier used to route traffic from listeners to
+connectors.  To connect to a service at a remote site, the
+listener and connector must have matching routing keys.</p>
 </li>
 <li><p><strong>--host</strong> <em>string</em></p>
+<p>The hostname or IP address of the local listener.  Clients
+at this site use the listener host and port to
+establish connections to the remote service.</p>
 </li>
 <li><p><strong>--port</strong> <em>integer</em></p>
+<p>The port of the local listener.  Clients at this site use
+the listener host and port to establish connections to
+the remote service.</p>
 </li>
 </ul>
 <h3 id="skupper-listener-delete">skupper listener delete</h3>

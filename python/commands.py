@@ -1,7 +1,7 @@
-from plano import *
+from resources import *
 
 def generate():
-    model = Model("config/commands.yaml")
+    model = CommandModel()
     lines = list()
 
     def append(line=""):
@@ -126,20 +126,22 @@ def generate_argument(argument, append):
 def fragment_id(title):
     return title.lower().replace(" ", "-")
 
-class Model:
-    def __init__(self, yaml_file):
-        self.data = read_yaml(yaml_file)
+class CommandModel:
+    def __init__(self):
+        self.data = read_yaml("config/commands.yaml")
         self.global_arguments = list()
         self.groups = list()
 
         for argument_data in self.data["global_arguments"]:
-            self.global_arguments.append(Argument(self, argument_data))
+            self.global_arguments.append(Argument(self, self, argument_data))
 
         for group_data in self.data["groups"]:
             self.groups.append(Group(self, group_data))
 
+        self.resource_model = ResourceModel()
+
     def __repr__(self):
-        return "model"
+        return "command model"
 
 class Group:
     def __init__(self, model, data):
@@ -176,10 +178,10 @@ class Command:
             if "include" in argument_data:
                 argument_group = argument_data["include"]
 
-                for x in self.model.data["arguments"][argument_group]:
-                    self.arguments.append(Argument(self.model, x))
+                for item_data in self.model.data["arguments"][argument_group]:
+                    self.arguments.append(Argument(self.model, self, item_data))
             else:
-                self.arguments.append(Argument(self.model, argument_data))
+                self.arguments.append(Argument(self.model, self, argument_data))
 
         for error_data in self.data.get("errors", []):
             self.errors.append(Error(self, error_data))
@@ -196,8 +198,18 @@ class Command:
         return self.data["title"]
 
     @property
+    def resource(self):
+        if "resource" in self.data:
+            return self.model.resource_model.resources[self.data["resource"]]
+
+    @property
     def description(self):
-        return self.data.get("description")
+        description = self.data.get("description")
+
+        if description and self.resource and self.resource.description:
+            description = description.replace("@resource_description@", self.resource.description)
+
+        return description
 
     @property
     def examples(self):
@@ -216,8 +228,9 @@ class Command:
         return self.data.get("notes")
 
 class Argument:
-    def __init__(self, model, data):
+    def __init__(self, model, parent, data):
         self.model = model
+        self.parent = parent
         self.data = data
 
     def __repr__(self):
@@ -226,6 +239,11 @@ class Argument:
     @property
     def name(self):
         return self.data["name"]
+
+    @property
+    def property_(self):
+        if "property" in self.data:
+            return self.parent.resource.properties[self.data["property"]]
 
     @property
     def variable(self):
@@ -245,7 +263,15 @@ class Argument:
 
     @property
     def description(self):
-        return self.data.get("description")
+        description = self.data.get("description")
+
+        if self.property_ and self.property_.description:
+            if description is None:
+                description = self.property_.description
+            else:
+                description = description.replace("@property_description@", self.property_.description)
+
+        return description
 
     @property
     def notes(self):

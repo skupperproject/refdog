@@ -370,6 +370,14 @@ Display help for listener commands and exit.
 
 Create a listener.
 
+A [listener][listener] is a local connection endpoint bound to
+servers in remote sites.
+
+Each namespace can contain multiple listener definitions.
+
+[listener]: concepts.md#listener
+
+
 
 #### Usage
 
@@ -395,9 +403,24 @@ skupper listener create database --host database --port 5432
 
 - **--routing-key** _string_ (default: _value of name_)
 
+  The identifier used to route traffic from listeners to
+  connectors.  To connect to a service at a remote site, the
+  listener and connector must have matching routing keys.
+  
+
 - **--host** _string_
 
+  The hostname or IP address of the local listener.  Clients
+  at this site use the listener host and port to
+  establish connections to the remote service.
+  
+
 - **--port** _integer_
+
+  The port of the local listener.  Clients at this site use
+  the listener host and port to establish connections to
+  the remote service.
+  
 
 ### skupper listener delete
 

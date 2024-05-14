@@ -213,8 +213,11 @@ groups:
         description: |
           Display help for listener commands and exit.
       - title: skupper listener create
+        resource: Listener
         description: |
           Create a listener.
+
+          @resource_description@
         usage: skupper listener create <name> [options]
         examples: |
           # Create a listener for a database
@@ -229,10 +232,13 @@ groups:
           - name: --routing-key
             variable: string
             default: _value of name_
+            property: routingKey
           - name: --host
             variable: string
+            property: host
           - name: --port
             variable: integer
+            property: port
       - title: skupper listener delete
         description: |
           Delete a listener.

@@ -1,9 +1,8 @@
 from plano import *
 
 def generate():
-    model = Model("config/resources.yaml")
+    model = ResourceModel()
     lines = list()
-    sections = dict()
 
     def append(line=""):
         if line is None:
@@ -64,9 +63,9 @@ def generate():
 
     write("input/resources.md", markdown)
 
-class Model:
-    def __init__(self, yaml_file):
-        self.data = read_yaml(yaml_file)
+class ResourceModel:
+    def __init__(self):
+        self.data = read_yaml("config/resources.yaml")
         self.groups = dict()
         self.resources = dict()
 
@@ -89,7 +88,7 @@ class Model:
                 self.resources[name] = Resource(self, name, data, crd)
 
     def __repr__(self):
-        return "model"
+        return "resource model"
 
 class Group:
     def __init__(self, model, name, data):
