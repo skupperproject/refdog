@@ -189,6 +189,10 @@ class Property:
         default = self.crd_data.get("description") if self.crd_data else None
         return self.data.get("description", default)
 
+    @property
+    def notes(self):
+        return self.data.get("notes")
+
 def mlen(value):
     if value is not None:
         return len(value)

@@ -280,8 +280,8 @@ listener and connector must have matching routing keys.</p>
 <em>Required:</em> Yes<br />
 <em>Default:</em> None</p>
 <h5 id="codeselectorcode"><code>selector</code></h5>
-<p>A Kubernetes <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">label selector</a> for identifying
-server pods.</p>
+<p>A Kubernetes <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">label selector</a> for targeting server
+pods.</p>
 <p><em>Type:</em> String<br />
 <em>Required:</em> No<br />
 <em>Default:</em> None</p>
@@ -300,12 +300,19 @@ certificate (typically a CA certificate).</p>
 mutual TLS.</p>
 <p><em>Type:</em> String<br />
 <em>Required:</em> No<br />
-<em>Default:</em> <em>None</em></p>
+<em>Default:</em> None</p>
 <h5 id="codetypecode"><code>type</code></h5>
 <p><em>Type:</em> String<br />
 <em>Required:</em> No<br />
 <em>Default:</em> None</p>
 <h5 id="codeincludenotreadycode"><code>includeNotReady</code></h5>
+<p><em>Type:</em> Boolean<br />
+<em>Required:</em> No<br />
+<em>Default:</em> False</p>
+<h5 id="codeenabletlscode"><code>enableTls</code></h5>
+<p>Use TLS to encrypt communication between the router and servers.</p>
+<p>By default, the TLS credentials are generated and stored in
+a secret at XXX.</p>
 <p><em>Type:</em> Boolean<br />
 <em>Required:</em> No<br />
 <em>Default:</em> False</p>
@@ -357,11 +364,18 @@ and key.</p>
 TLS.</p>
 <p><em>Type:</em> String<br />
 <em>Required:</em> No<br />
-<em>Default:</em> <em>None</em></p>
+<em>Default:</em> None</p>
 <h5 id="codetypecode"><code>type</code></h5>
 <p><em>Type:</em> String<br />
 <em>Required:</em> No<br />
 <em>Default:</em> None</p>
+<h5 id="codeenabletlscode"><code>enableTls</code></h5>
+<p>Use TLS to encrypt communication between clients and the router.</p>
+<p>By default, the TLS credentials are generated and stored in
+a secret at XXX.</p>
+<p><em>Type:</em> Boolean<br />
+<em>Required:</em> No<br />
+<em>Default:</em> False</p>
 <h2 id="everything-else">Everything else</h2>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut

@@ -193,11 +193,10 @@ Site &quot;&lt;name&gt;&quot; is deleted
 NAME   STATUS   SITES-IN-NETWORK   SERVICES-IN-NETWORK
 west   Ready    1                  0
 </code></pre>
-<h4 id="emnotesem"><em>Notes</em></h4>
-<p><em>What is services-in-network?  Is that the total number of</em>
-<em>unique routing keys defined by connectors?  Or listeners?</em>
-<em>Or listeners plus connectors (not the orphans), grouped by</em>
-<em>routing key?</em></p>
+<p><em>Notes: What is services-in-network?  Is that the total number of</em>
+<em>Notes: unique routing keys defined by connectors?  Or listeners?</em>
+<em>Notes: Or listeners plus connectors (not the orphans), grouped by</em>
+<em>Notes: routing key?</em></p>
 <h2 id="site-linking">Site linking</h2>
 <h3 id="skupper-token">skupper token</h3>
 <p>Display help for token commands and exit.  Currently there
@@ -269,7 +268,7 @@ skupper connector create database --workload deployment/postgresql --port 5432
 <p>The name of the connector resource.</p>
 </li>
 <li><p><strong>--routing-key</strong> <em>string</em></p>
-<p><em>Default:</em> <em>Value of name</em></p>
+<p><em>Default:</em> <em>value of name</em></p>
 <p>The identifier used to route traffic from listeners to
 connectors.  To connect to a service at a remote site, the
 listener and connector must have matching routing keys.</p>
@@ -280,16 +279,21 @@ listener and connector must have matching routing keys.</p>
 <p>The port number of the server listener.</p>
 </li>
 <li><p><strong>--selector</strong> <em>string</em></p>
-<p>A Kubernetes <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">label selector</a> for identifying
-server pods.</p>
+<p>A Kubernetes <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">label selector</a> for targeting server
+pods.</p>
 </li>
 <li><p><strong>--host</strong> <em>string</em></p>
 <p>The hostname or IP address of the server.  This is an
 alternative to <code>selector</code> for specifying the target
 server.</p>
 </li>
+<li><p><strong>--enable-tls</strong> <em>boolean</em></p>
+<p><em>Default:</em> false</p>
+<p>Use TLS to encrypt communication between the router and servers.</p>
+<p>By default, the TLS credentials are generated and stored in
+a secret at XXX.</p>
+</li>
 <li><p><strong>--tls-credentials</strong> <em>string</em></p>
-<p><em>Default:</em> <em>None</em></p>
 <p>The name of a Kubernetes secret containing TLS
 credentials.  The secret contains the trusted server
 certificate (typically a CA certificate).</p>
@@ -297,6 +301,7 @@ certificate (typically a CA certificate).</p>
 mutual TLS.</p>
 </li>
 <li><p><strong>--type</strong> <em>string</em></p>
+<p><em>Notes: What is this again?  I think we need a qualifier on &quot;type&quot;.</em></p>
 </li>
 <li><p><strong>--include-not-ready</strong> <em>boolean</em></p>
 <p><em>Default:</em> false</p>
@@ -345,7 +350,7 @@ skupper listener create database --host database --port 5432
 <p>The name of the listener resource.</p>
 </li>
 <li><p><strong>--routing-key</strong> <em>string</em></p>
-<p><em>Default:</em> <em>Value of name</em></p>
+<p><em>Default:</em> <em>value of name</em></p>
 <p>The identifier used to route traffic from listeners to
 connectors.  To connect to a service at a remote site, the
 listener and connector must have matching routing keys.</p>
@@ -360,8 +365,13 @@ establish connections to the remote service.</p>
 the listener host and port to establish connections to
 the remote service.</p>
 </li>
+<li><p><strong>--enable-tls</strong> <em>boolean</em></p>
+<p><em>Default:</em> false</p>
+<p>Use TLS to encrypt communication between clients and the router.</p>
+<p>By default, the TLS credentials are generated and stored in
+a secret at XXX.</p>
+</li>
 <li><p><strong>--tls-credentials</strong> <em>string</em></p>
-<p><em>Default:</em> <em>None</em></p>
 <p>The name of a Kubernetes secret containing TLS
 credentials.  The secret contains the server certificate
 and key.</p>
@@ -369,6 +379,7 @@ and key.</p>
 TLS.</p>
 </li>
 <li><p><strong>--type</strong> <em>string</em></p>
+<p><em>Notes: What is this again?  I think we need a qualifier on &quot;type&quot;.</em></p>
 </li>
 </ul>
 <h3 id="skupper-listener-delete">skupper listener delete</h3>

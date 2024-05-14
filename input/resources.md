@@ -391,8 +391,8 @@ _Required:_ Yes\
 _Default:_ None
 ##### `selector`
 
-A Kubernetes [label selector][selector] for identifying
-server pods.
+A Kubernetes [label selector][selector] for targeting server
+pods.
 
 [selector]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
 
@@ -422,7 +422,7 @@ mutual TLS.
 
 _Type:_ String\
 _Required:_ No\
-_Default:_ *None*
+_Default:_ None
 ##### `type`
 
 
@@ -432,6 +432,17 @@ _Required:_ No\
 _Default:_ None
 ##### `includeNotReady`
 
+
+
+_Type:_ Boolean\
+_Required:_ No\
+_Default:_ False
+##### `enableTls`
+
+Use TLS to encrypt communication between the router and servers.
+
+By default, the TLS credentials are generated and stored in
+a secret at XXX.
 
 
 _Type:_ Boolean\
@@ -508,7 +519,7 @@ TLS.
 
 _Type:_ String\
 _Required:_ No\
-_Default:_ *None*
+_Default:_ None
 ##### `type`
 
 
@@ -516,6 +527,17 @@ _Default:_ *None*
 _Type:_ String\
 _Required:_ No\
 _Default:_ None
+##### `enableTls`
+
+Use TLS to encrypt communication between clients and the router.
+
+By default, the TLS credentials are generated and stored in
+a secret at XXX.
+
+
+_Type:_ Boolean\
+_Required:_ No\
+_Default:_ False
 ## Everything else
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

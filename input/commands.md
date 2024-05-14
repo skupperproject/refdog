@@ -231,12 +231,10 @@ NAME   STATUS   SITES-IN-NETWORK   SERVICES-IN-NETWORK
 west   Ready    1                  0
 ~~~
 
-#### _Notes_
-
-_What is services-in-network?  Is that the total number of_ 
-_unique routing keys defined by connectors?  Or listeners?_ 
-_Or listeners plus connectors (not the orphans), grouped by_ 
-_routing key?_ 
+_Notes: What is services-in-network?  Is that the total number of_ 
+_Notes: unique routing keys defined by connectors?  Or listeners?_ 
+_Notes: Or listeners plus connectors (not the orphans), grouped by_ 
+_Notes: routing key?_ 
 
 ## Site linking
 
@@ -364,7 +362,7 @@ skupper connector create database --workload deployment/postgresql --port 5432
 
 - **--routing-key** _string_
 
-  _Default:_ _Value of name_
+  _Default:_ _value of name_
 
   The identifier used to route traffic from listeners to
   connectors.  To connect to a service at a remote site, the
@@ -380,8 +378,8 @@ skupper connector create database --workload deployment/postgresql --port 5432
 
 - **--selector** _string_
 
-  A Kubernetes [label selector][selector] for identifying
-  server pods.
+  A Kubernetes [label selector][selector] for targeting server
+  pods.
   
   [selector]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
   
@@ -393,9 +391,17 @@ skupper connector create database --workload deployment/postgresql --port 5432
   server.
   
 
-- **--tls-credentials** _string_
+- **--enable-tls** _boolean_
 
-  _Default:_ *None*
+  _Default:_ false
+
+  Use TLS to encrypt communication between the router and servers.
+  
+  By default, the TLS credentials are generated and stored in
+  a secret at XXX.
+  
+
+- **--tls-credentials** _string_
 
   The name of a Kubernetes secret containing TLS
   credentials.  The secret contains the trusted server
@@ -406,6 +412,8 @@ skupper connector create database --workload deployment/postgresql --port 5432
   
 
 - **--type** _string_
+
+  _Notes: What is this again?  I think we need a qualifier on "type"._
 
 - **--include-not-ready** _boolean_
 
@@ -487,7 +495,7 @@ skupper listener create database --host database --port 5432
 
 - **--routing-key** _string_
 
-  _Default:_ _Value of name_
+  _Default:_ _value of name_
 
   The identifier used to route traffic from listeners to
   connectors.  To connect to a service at a remote site, the
@@ -508,9 +516,17 @@ skupper listener create database --host database --port 5432
   the remote service.
   
 
-- **--tls-credentials** _string_
+- **--enable-tls** _boolean_
 
-  _Default:_ *None*
+  _Default:_ false
+
+  Use TLS to encrypt communication between clients and the router.
+  
+  By default, the TLS credentials are generated and stored in
+  a secret at XXX.
+  
+
+- **--tls-credentials** _string_
 
   The name of a Kubernetes secret containing TLS
   credentials.  The secret contains the server certificate
@@ -521,6 +537,8 @@ skupper listener create database --host database --port 5432
   
 
 - **--type** _string_
+
+  _Notes: What is this again?  I think we need a qualifier on "type"._
 
 ### skupper listener delete
 

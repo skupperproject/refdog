@@ -185,12 +185,13 @@ groups:
             description: |
               The name of the connector resource.
           - property: routingKey
-            default: _Value of name_
+            default: _value of name_
           - name: --workload
             variable: string
           - property: port
           - property: selector
           - property: host
+          - property: enableTls
           - property: tlsCredentials
           - property: type
           - property: includeNotReady
@@ -236,9 +237,10 @@ groups:
             description: |
               The name of the listener resource.
           - property: routingKey
-            default: _Value of name_
+            default: _value of name_
           - property: host
           - property: port
+          - property: enableTls
           - property: tlsCredentials
           - property: type
       - title: skupper listener delete

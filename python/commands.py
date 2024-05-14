@@ -90,10 +90,8 @@ def generate_command(command, append):
                 append()
 
     if command.notes:
-        notes = "\n".join(f"_{line}_ " for line in command.notes.strip().split("\n"))
+        notes = "\n".join(f"_Notes: {line}_ " for line in command.notes.strip().split("\n"))
 
-        append("#### _Notes_")
-        append()
         append(notes)
         append()
 
@@ -126,10 +124,8 @@ def generate_argument(argument, append):
         append()
 
     if argument.notes:
-        notes = "\n".join(f"  _{line}_" for line in argument.notes.strip().split("\n"))
+        notes = "\n".join(f"  _Notes: {line}_" for line in argument.notes.strip().split("\n"))
 
-        append("  ##### _Notes_")
-        append()
         append(notes)
         append()
 
@@ -290,7 +286,8 @@ class Argument:
 
     @property
     def notes(self):
-        return self.data.get("notes")
+        default = self.property_.notes if self.property_ else None
+        return self.data.get("notes", default)
 
 class Error:
     def __init__(self, model, data):

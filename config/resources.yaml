@@ -215,8 +215,8 @@ resources:
           listener and connector must have matching routing keys.
       selector:
         description: |
-          A Kubernetes [label selector][selector] for identifying
-          server pods.
+          A Kubernetes [label selector][selector] for targeting server
+          pods.
 
           [selector]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
       host:
@@ -227,8 +227,14 @@ resources:
       port:
         description: |
           The port number of the server listener.
+      enableTls:
+        type: boolean
+        description: |
+          Use TLS to encrypt communication between the router and servers.
+
+          By default, the TLS credentials are generated and stored in
+          a secret at XXX.
       tlsCredentials:
-        default: "*None*"
         description: |
           The name of a Kubernetes secret containing TLS
           credentials.  The secret contains the trusted server
@@ -236,6 +242,9 @@ resources:
 
           It can optionally include a client certificate and key for
           mutual TLS.
+      type:
+        notes: |
+          What is this again?  I think we need a qualifier on "type".
   Listener:
     group: service-exposure
     description: |
@@ -275,8 +284,14 @@ resources:
           The port of the local listener.  Clients at this site use
           the listener host and port to establish connections to
           the remote service.
+      enableTls:
+        type: boolean
+        description: |
+          Use TLS to encrypt communication between clients and the router.
+
+          By default, the TLS credentials are generated and stored in
+          a secret at XXX.
       tlsCredentials:
-        default: "*None*"
         description: |
           The name of a Kubernetes secret containing TLS
           credentials.  The secret contains the server certificate
@@ -284,6 +299,9 @@ resources:
 
           It can optionally include a client certificate for mutual
           TLS.
+      type:
+        notes: |
+          What is this again?  I think we need a qualifier on "type".
   SecuredAccess:
     description: |
       XXX
