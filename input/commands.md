@@ -70,8 +70,8 @@ running.  Sites are linked to form application
 
 There can be only one site definition per namespace.
 
-[site]: concepts.md#site
-[network]: concepts.md#network
+[site]: concepts.html#site
+[network]: concepts.html#network
 
 
 
@@ -95,12 +95,15 @@ skupper site create west --enable-link-access
 
 #### Arguments
 
-- **name**
+- **name** _string_
 
-  The name of the site resource.
+  A name of your choice for the Skupper site.  This name is
+  displayed in the console and CLI output.
   
 
 - **--enable-link-access** _boolean_
+
+  _Default:_ false
 
   Enable external access for links from remote sites.
   
@@ -113,13 +116,10 @@ skupper site create west --enable-link-access
 
   Select the means of opening external access.
   
-  The default is `route` on OpenShift and `loadbalancer`
-  otherwise.
-  
 
 - **--link-access-host** _string_
 
-  The host or IP used to expose link access.
+  The host or IP address at which to expose link access.
   
 
 - **--service-account** _string_
@@ -156,12 +156,14 @@ skupper site update west --enable-link-access --link-access-type loadbalancer
 
 #### Arguments
 
-- **name**
+- **name** _string_
 
   The name of the site resource.
   
 
 - **--enable-link-access** _boolean_
+
+  _Default:_ false
 
   Enable external access for links from remote sites.
   
@@ -174,13 +176,10 @@ skupper site update west --enable-link-access --link-access-type loadbalancer
 
   Select the means of opening external access.
   
-  The default is `route` on OpenShift and `loadbalancer`
-  otherwise.
-  
 
 - **--link-access-host** _string_
 
-  The host or IP used to expose link access.
+  The host or IP address at which to expose link access.
   
 
 - **--service-account** _string_
@@ -207,7 +206,7 @@ Site "<name>" is deleted
 
 #### Arguments
 
-- **name**
+- **name** _string_
 
   The name of the site resource.
   
@@ -262,7 +261,7 @@ The token expires after 1 use or after 15 minutes
 
 #### Arguments
 
-- **file**
+- **file** _string_
 
   The name of the token file.
   
@@ -283,6 +282,12 @@ Display help for link commands and exit.
 ### skupper link create
 
 Create a link.
+
+A [link][link] is a site-to-site communication channel. Links
+serve as a transport for application connections and requests.
+
+[link]: concepts.html#link
+
 
 
 #### Usage
@@ -326,6 +331,14 @@ Display help for connector commands and exit.
 
 Create a connector.
 
+A [connector][connector] binds local servers to listeners in
+remote sites.
+
+Each namespace can contain multiple connector definitions.
+
+[connector]: concepts.html#connector
+
+
 
 #### Usage
 
@@ -344,14 +357,14 @@ skupper connector create database --workload deployment/postgresql --port 5432
 
 #### Arguments
 
-- **name**
+- **name** _string_
 
   The name of the connector resource.
   
 
 - **--routing-key** _string_
 
-  _Default:_ _value of name_
+  _Default:_ _Value of name_
 
   The identifier used to route traffic from listeners to
   connectors.  To connect to a service at a remote site, the
@@ -396,6 +409,8 @@ skupper connector create database --workload deployment/postgresql --port 5432
 
 - **--include-not-ready** _boolean_
 
+  _Default:_ false
+
 ### skupper connector delete
 
 Delete a connector.
@@ -411,7 +426,7 @@ Connector "<name>" is deleted
 
 #### Arguments
 
-- **name**
+- **name** _string_
 
   The name of the connector resource.
   
@@ -444,7 +459,7 @@ servers in remote sites.
 
 Each namespace can contain multiple listener definitions.
 
-[listener]: concepts.md#listener
+[listener]: concepts.html#listener
 
 
 
@@ -465,14 +480,14 @@ skupper listener create database --host database --port 5432
 
 #### Arguments
 
-- **name**
+- **name** _string_
 
   The name of the listener resource.
   
 
 - **--routing-key** _string_
 
-  _Default:_ _value of name_
+  _Default:_ _Value of name_
 
   The identifier used to route traffic from listeners to
   connectors.  To connect to a service at a remote site, the
@@ -522,7 +537,7 @@ Listener "<name>" is deleted
 
 #### Arguments
 
-- **name**
+- **name** _string_
 
   The name of the listener resource.
   
@@ -556,7 +571,7 @@ Generate a debug dump file.
 #### Usage
 
 ~~~ shell
-$ skupper debug dump [FILE]
+$ skupper debug dump [file]
 Debug dump file generated at <file>
 ~~~
 

@@ -84,9 +84,9 @@
 <p>Display help for site commands and exit.</p>
 <h3 id="skupper-site-create">skupper site create</h3>
 <p>Create a site.</p>
-<p>A <a href="concepts.md#site">site</a> is a place where components of your application are
+<p>A <a href="concepts.html#site">site</a> is a place where components of your application are
 running.  Sites are linked to form application
-<a href="concepts.md#network">networks</a>.</p>
+<a href="concepts.html#network">networks</a>.</p>
 <p>There can be only one site definition per namespace.</p>
 <h4 id="usage">Usage</h4>
 <pre><code class="language-shell">$ skupper site create &lt;name&gt; [options]
@@ -102,21 +102,21 @@ skupper site create west --enable-link-access
 </code></pre>
 <h4 id="arguments">Arguments</h4>
 <ul>
-<li><p><strong>name</strong></p>
-<p>The name of the site resource.</p>
+<li><p><strong>name</strong> <em>string</em></p>
+<p>A name of your choice for the Skupper site.  This name is
+displayed in the console and CLI output.</p>
 </li>
 <li><p><strong>--enable-link-access</strong> <em>boolean</em></p>
+<p><em>Default:</em> false</p>
 <p>Enable external access for links from remote sites.</p>
 </li>
 <li><p><strong>--link-access-type</strong> <em>string</em></p>
 <p><em>Default:</em> <code>route</code> if the environment is OpenShift, otherwise
 <code>loadbalancer</code></p>
 <p>Select the means of opening external access.</p>
-<p>The default is <code>route</code> on OpenShift and <code>loadbalancer</code>
-otherwise.</p>
 </li>
 <li><p><strong>--link-access-host</strong> <em>string</em></p>
-<p>The host or IP used to expose link access.</p>
+<p>The host or IP address at which to expose link access.</p>
 </li>
 <li><p><strong>--service-account</strong> <em>string</em></p>
 </li>
@@ -143,21 +143,20 @@ skupper site update west --enable-link-access --link-access-type loadbalancer
 </code></pre>
 <h4 id="arguments">Arguments</h4>
 <ul>
-<li><p><strong>name</strong></p>
+<li><p><strong>name</strong> <em>string</em></p>
 <p>The name of the site resource.</p>
 </li>
 <li><p><strong>--enable-link-access</strong> <em>boolean</em></p>
+<p><em>Default:</em> false</p>
 <p>Enable external access for links from remote sites.</p>
 </li>
 <li><p><strong>--link-access-type</strong> <em>string</em></p>
 <p><em>Default:</em> <code>route</code> if the environment is OpenShift, otherwise
 <code>loadbalancer</code></p>
 <p>Select the means of opening external access.</p>
-<p>The default is <code>route</code> on OpenShift and <code>loadbalancer</code>
-otherwise.</p>
 </li>
 <li><p><strong>--link-access-host</strong> <em>string</em></p>
-<p>The host or IP used to expose link access.</p>
+<p>The host or IP address at which to expose link access.</p>
 </li>
 <li><p><strong>--service-account</strong> <em>string</em></p>
 </li>
@@ -177,7 +176,7 @@ Site &quot;&lt;name&gt;&quot; is deleted
 </code></pre>
 <h4 id="arguments">Arguments</h4>
 <ul>
-<li><p><strong>name</strong></p>
+<li><p><strong>name</strong> <em>string</em></p>
 <p>The name of the site resource.</p>
 </li>
 </ul>
@@ -212,7 +211,7 @@ The token expires after 1 use or after 15 minutes
 </code></pre>
 <h4 id="arguments">Arguments</h4>
 <ul>
-<li><p><strong>file</strong></p>
+<li><p><strong>file</strong> <em>string</em></p>
 <p>The name of the token file.</p>
 </li>
 <li><p><strong>--expiry</strong> <em>duration</em></p>
@@ -226,6 +225,8 @@ The token expires after 1 use or after 15 minutes
 <p>Display help for link commands and exit.</p>
 <h3 id="skupper-link-create">skupper link create</h3>
 <p>Create a link.</p>
+<p>A <a href="concepts.html#link">link</a> is a site-to-site communication channel. Links
+serve as a transport for application connections and requests.</p>
 <h4 id="usage">Usage</h4>
 <pre><code class="language-shell">$ skupper link create &lt;file&gt; [options]
 Waiting for status...
@@ -250,6 +251,9 @@ You can now safely delete &lt;file&gt;
 <p>Display help for connector commands and exit.</p>
 <h3 id="skupper-connector-create">skupper connector create</h3>
 <p>Create a connector.</p>
+<p>A <a href="concepts.html#connector">connector</a> binds local servers to listeners in
+remote sites.</p>
+<p>Each namespace can contain multiple connector definitions.</p>
 <h4 id="usage">Usage</h4>
 <pre><code class="language-shell">$ skupper connector create &lt;name&gt; [options]
 Waiting for status...
@@ -261,11 +265,11 @@ skupper connector create database --workload deployment/postgresql --port 5432
 </code></pre>
 <h4 id="arguments">Arguments</h4>
 <ul>
-<li><p><strong>name</strong></p>
+<li><p><strong>name</strong> <em>string</em></p>
 <p>The name of the connector resource.</p>
 </li>
 <li><p><strong>--routing-key</strong> <em>string</em></p>
-<p><em>Default:</em> <em>value of name</em></p>
+<p><em>Default:</em> <em>Value of name</em></p>
 <p>The identifier used to route traffic from listeners to
 connectors.  To connect to a service at a remote site, the
 listener and connector must have matching routing keys.</p>
@@ -295,6 +299,7 @@ mutual TLS.</p>
 <li><p><strong>--type</strong> <em>string</em></p>
 </li>
 <li><p><strong>--include-not-ready</strong> <em>boolean</em></p>
+<p><em>Default:</em> false</p>
 </li>
 </ul>
 <h3 id="skupper-connector-delete">skupper connector delete</h3>
@@ -306,7 +311,7 @@ Connector &quot;&lt;name&gt;&quot; is deleted
 </code></pre>
 <h4 id="arguments">Arguments</h4>
 <ul>
-<li><p><strong>name</strong></p>
+<li><p><strong>name</strong> <em>string</em></p>
 <p>The name of the connector resource.</p>
 </li>
 </ul>
@@ -322,7 +327,7 @@ database   database      app=postgresql   -      5342   1
 <p>Display help for listener commands and exit.</p>
 <h3 id="skupper-listener-create">skupper listener create</h3>
 <p>Create a listener.</p>
-<p>A <a href="concepts.md#listener">listener</a> is a local connection endpoint bound to
+<p>A <a href="concepts.html#listener">listener</a> is a local connection endpoint bound to
 servers in remote sites.</p>
 <p>Each namespace can contain multiple listener definitions.</p>
 <h4 id="usage">Usage</h4>
@@ -336,11 +341,11 @@ skupper listener create database --host database --port 5432
 </code></pre>
 <h4 id="arguments">Arguments</h4>
 <ul>
-<li><p><strong>name</strong></p>
+<li><p><strong>name</strong> <em>string</em></p>
 <p>The name of the listener resource.</p>
 </li>
 <li><p><strong>--routing-key</strong> <em>string</em></p>
-<p><em>Default:</em> <em>value of name</em></p>
+<p><em>Default:</em> <em>Value of name</em></p>
 <p>The identifier used to route traffic from listeners to
 connectors.  To connect to a service at a remote site, the
 listener and connector must have matching routing keys.</p>
@@ -375,7 +380,7 @@ Listener &quot;&lt;name&gt;&quot; is deleted
 </code></pre>
 <h4 id="arguments">Arguments</h4>
 <ul>
-<li><p><strong>name</strong></p>
+<li><p><strong>name</strong> <em>string</em></p>
 <p>The name of the listener resource.</p>
 </li>
 </ul>
@@ -393,7 +398,7 @@ database   database      database   5432   1
 <h3 id="skupper-debug-dump">skupper debug dump</h3>
 <p>Generate a debug dump file.</p>
 <h4 id="usage">Usage</h4>
-<pre><code class="language-shell">$ skupper debug dump [FILE]
+<pre><code class="language-shell">$ skupper debug dump [file]
 Debug dump file generated at &lt;file&gt;
 </code></pre>
 <h2 id="other-operations">Other operations</h2>

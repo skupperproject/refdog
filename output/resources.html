@@ -49,9 +49,9 @@ eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
 enim ad minim veniam, quis nostrud exercitation ullamco laboris
 nisi ut aliquip ex ea commodo consequat.</p>
 <h3 id="site">Site</h3>
-<p>A <a href="concepts.md#site">site</a> is a place where components of your application are
+<p>A <a href="concepts.html#site">site</a> is a place where components of your application are
 running.  Sites are linked to form application
-<a href="concepts.md#network">networks</a>.</p>
+<a href="concepts.html#network">networks</a>.</p>
 <p>There can be only one site definition per namespace.</p>
 <h4 id="examples">Examples</h4>
 <p>A minimal site definition</p>
@@ -64,37 +64,29 @@ metadata:
 </code></pre>
 <h4 id="spec-properties">Spec properties</h4>
 <h5 id="codeserviceaccountcode"><code>serviceAccount</code></h5>
-<p><em>Type</em>: String<br />
-<em>Required</em>: No<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> String<br />
+<em>Required:</em> No<br />
+<em>Default:</em> None</p>
 <h5 id="codesettingscode"><code>settings</code></h5>
-<p><em>Type</em>: Array<br />
-<em>Required</em>: No<br />
-<em>Default</em>: None</p>
-<h5 id="codenamecode"><code>name</code></h5>
-<p>A name of your choice for the Skupper site.  This name is
-displayed in the console and CLI output.</p>
-<p><em>Type</em>: <br />
-<em>Required</em>: No<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> Array<br />
+<em>Required:</em> No<br />
+<em>Default:</em> None</p>
 <h5 id="codeenablelinkaccesscode"><code>enableLinkAccess</code></h5>
 <p>Enable external access for links from remote sites.</p>
-<p><em>Type</em>: Boolean<br />
-<em>Required</em>: No<br />
-<em>Default</em>: False</p>
+<p><em>Type:</em> Boolean<br />
+<em>Required:</em> No<br />
+<em>Default:</em> False</p>
 <h5 id="codelinkaccesstypecode"><code>linkAccessType</code></h5>
 <p>Select the means of opening external access.</p>
-<p>The default is <code>route</code> on OpenShift and <code>loadbalancer</code>
-otherwise.</p>
-<p><em>Type</em>: String<br />
-<em>Required</em>: No<br />
-<em>Default</em>: <code>route</code> if the environment is OpenShift, otherwise
+<p><em>Type:</em> String<br />
+<em>Required:</em> No<br />
+<em>Default:</em> <code>route</code> if the environment is OpenShift, otherwise
 <code>loadbalancer</code></p>
 <h5 id="codelinkaccesshostcode"><code>linkAccessHost</code></h5>
-<p>The host or IP used to expose link access.</p>
-<p><em>Type</em>: String<br />
-<em>Required</em>: No<br />
-<em>Default</em>: None</p>
+<p>The host or IP address at which to expose link access.</p>
+<p><em>Type:</em> String<br />
+<em>Required:</em> No<br />
+<em>Default:</em> None</p>
 <h2 id="site-linking">Site linking</h2>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -113,17 +105,17 @@ comes from the Grant.</p>
 <h4 id="examples">Examples</h4>
 <h4 id="spec-properties">Spec properties</h4>
 <h5 id="codeurlcode"><code>url</code></h5>
-<p><em>Type</em>: String<br />
-<em>Required</em>: Yes<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> String<br />
+<em>Required:</em> Yes<br />
+<em>Default:</em> None</p>
 <h5 id="codesecretcode"><code>secret</code></h5>
-<p><em>Type</em>: String<br />
-<em>Required</em>: Yes<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> String<br />
+<em>Required:</em> Yes<br />
+<em>Default:</em> None</p>
 <h5 id="codecacode"><code>ca</code></h5>
-<p><em>Type</em>: String<br />
-<em>Required</em>: Yes<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> String<br />
+<em>Required:</em> Yes<br />
+<em>Default:</em> None</p>
 <h3 id="grant">Grant</h3>
 <p>XXX</p>
 <p>Grant is the offering of access.</p>
@@ -136,17 +128,17 @@ expiration and for the number of allowed claims.</p>
 <h4 id="examples">Examples</h4>
 <h4 id="spec-properties">Spec properties</h4>
 <h5 id="codeclaimscode"><code>claims</code></h5>
-<p><em>Type</em>: Int<br />
-<em>Required</em>: No<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> Int<br />
+<em>Required:</em> No<br />
+<em>Default:</em> None</p>
 <h5 id="codevalidforcode"><code>validFor</code></h5>
-<p><em>Type</em>: String<br />
-<em>Required</em>: No<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> String<br />
+<em>Required:</em> No<br />
+<em>Default:</em> None</p>
 <h5 id="codesecretcode"><code>secret</code></h5>
-<p><em>Type</em>: String<br />
-<em>Required</em>: No<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> String<br />
+<em>Required:</em> No<br />
+<em>Default:</em> None</p>
 <h3 id="linkaccess">LinkAccess</h3>
 <p>A <a href="XXX">link access</a> defines a point of external access
 for links from remote sites.</p>
@@ -175,9 +167,9 @@ spec:
 </code></pre>
 <h4 id="spec-properties">Spec properties</h4>
 <h5 id="coderolescode"><code>roles</code></h5>
-<p><em>Type</em>: Array<br />
-<em>Required</em>: Yes<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> Array<br />
+<em>Required:</em> Yes<br />
+<em>Default:</em> None</p>
 <h5 id="codecacode"><code>ca</code></h5>
 <p>XXX</p>
 <p>A reference to a secret.</p>
@@ -190,33 +182,31 @@ certificate.</p>
 <p>If the CA is supplied in a LinkAccess, it is assumed it
 exists already (for the current mode of certificate
 management).</p>
-<p><em>Type</em>: String<br />
-<em>Required</em>: No<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> String<br />
+<em>Required:</em> No<br />
+<em>Default:</em> None</p>
 <h5 id="codetlscredentialscode"><code>tlsCredentials</code></h5>
 <p>The name of a Kubernetes secret containing TLS
 credentials. The secret contains the trusted server
 certificate (typically a CA certificate).</p>
 <p>It can optionally include a client certificate and key for
 mutual TLS.</p>
-<p><em>Type</em>: String<br />
-<em>Required</em>: Yes<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> String<br />
+<em>Required:</em> Yes<br />
+<em>Default:</em> None</p>
 <h5 id="codeaccesstypecode"><code>accessType</code></h5>
 <p>accessType is a hint or constraint on the kind of ingress
 that can/should be used (route, nodePort, LB, nginx, etc.).</p>
-<p><em>Type</em>: String<br />
-<em>Required</em>: No<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> String<br />
+<em>Required:</em> No<br />
+<em>Default:</em> None</p>
 <h5 id="codeoptionscode"><code>options</code></h5>
-<p><em>Type</em>: Object<br />
-<em>Required</em>: No<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> Object<br />
+<em>Required:</em> No<br />
+<em>Default:</em> None</p>
 <h3 id="link">Link</h3>
-<p>A <a href="concepts.md#link">link</a> is a site-to-site communication channel. Links
+<p>A <a href="concepts.html#link">link</a> is a site-to-site communication channel. Links
 serve as a transport for application connections and requests.</p>
-<p>XXX</p>
-<p>The Link would has the details from its associated LinkAccess.</p>
 <h4 id="examples">Examples</h4>
 <p>A typical link definition</p>
 <pre><code class="language-yaml">apiVersion: skupper.io/v1alpha1
@@ -230,37 +220,37 @@ spec:
 </code></pre>
 <h4 id="spec-properties">Spec properties</h4>
 <h5 id="codeinterroutercode"><code>interRouter</code></h5>
-<p><em>Type</em>: Object<br />
-<em>Required</em>: Yes<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> Object<br />
+<em>Required:</em> Yes<br />
+<em>Default:</em> None</p>
 <h5 id="codeedgecode"><code>edge</code></h5>
-<p><em>Type</em>: Object<br />
-<em>Required</em>: Yes<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> Object<br />
+<em>Required:</em> Yes<br />
+<em>Default:</em> None</p>
 <h5 id="codetlscredentialscode"><code>tlsCredentials</code></h5>
 <p>The name of a Kubernetes secret containing TLS
 credentials. The secret contains the trusted server
 certificate (typically a CA certificate).</p>
 <p>It can optionally include a client certificate and key for
 mutual TLS.</p>
-<p><em>Type</em>: String<br />
-<em>Required</em>: No<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> String<br />
+<em>Required:</em> No<br />
+<em>Default:</em> None</p>
 <h5 id="codecostcode"><code>cost</code></h5>
-<p><em>Type</em>: Integer<br />
-<em>Required</em>: No<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> Integer<br />
+<em>Required:</em> No<br />
+<em>Default:</em> None</p>
 <h5 id="codenoclientauthcode"><code>noClientAuth</code></h5>
-<p><em>Type</em>: Boolean<br />
-<em>Required</em>: No<br />
-<em>Default</em>: False</p>
+<p><em>Type:</em> Boolean<br />
+<em>Required:</em> No<br />
+<em>Default:</em> False</p>
 <h2 id="service-exposure">Service exposure</h2>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
 enim ad minim veniam, quis nostrud exercitation ullamco laboris
 nisi ut aliquip ex ea commodo consequat.</p>
 <h3 id="connector">Connector</h3>
-<p>A <a href="concepts.md#connector">connector</a> binds local servers to listeners in
+<p>A <a href="concepts.html#connector">connector</a> binds local servers to listeners in
 remote sites.</p>
 <p>Each namespace can contain multiple connector definitions.</p>
 <h4 id="examples">Examples</h4>
@@ -281,46 +271,46 @@ spec:
 <p>The identifier used to route traffic from listeners to
 connectors.  To connect to a service at a remote site, the
 listener and connector must have matching routing keys.</p>
-<p><em>Type</em>: String<br />
-<em>Required</em>: Yes<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> String<br />
+<em>Required:</em> Yes<br />
+<em>Default:</em> None</p>
 <h5 id="codeportcode"><code>port</code></h5>
 <p>The port number of the server listener.</p>
-<p><em>Type</em>: Integer<br />
-<em>Required</em>: Yes<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> Integer<br />
+<em>Required:</em> Yes<br />
+<em>Default:</em> None</p>
 <h5 id="codeselectorcode"><code>selector</code></h5>
 <p>A Kubernetes <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">label selector</a> for identifying
 server pods.</p>
-<p><em>Type</em>: String<br />
-<em>Required</em>: No<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> String<br />
+<em>Required:</em> No<br />
+<em>Default:</em> None</p>
 <h5 id="codehostcode"><code>host</code></h5>
 <p>The hostname or IP address of the server.  This is an
 alternative to <code>selector</code> for specifying the target
 server.</p>
-<p><em>Type</em>: String<br />
-<em>Required</em>: No<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> String<br />
+<em>Required:</em> No<br />
+<em>Default:</em> None</p>
 <h5 id="codetlscredentialscode"><code>tlsCredentials</code></h5>
 <p>The name of a Kubernetes secret containing TLS
 credentials.  The secret contains the trusted server
 certificate (typically a CA certificate).</p>
 <p>It can optionally include a client certificate and key for
 mutual TLS.</p>
-<p><em>Type</em>: String<br />
-<em>Required</em>: No<br />
-<em>Default</em>: <em>None</em></p>
+<p><em>Type:</em> String<br />
+<em>Required:</em> No<br />
+<em>Default:</em> <em>None</em></p>
 <h5 id="codetypecode"><code>type</code></h5>
-<p><em>Type</em>: String<br />
-<em>Required</em>: No<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> String<br />
+<em>Required:</em> No<br />
+<em>Default:</em> None</p>
 <h5 id="codeincludenotreadycode"><code>includeNotReady</code></h5>
-<p><em>Type</em>: Boolean<br />
-<em>Required</em>: No<br />
-<em>Default</em>: False</p>
+<p><em>Type:</em> Boolean<br />
+<em>Required:</em> No<br />
+<em>Default:</em> False</p>
 <h3 id="listener">Listener</h3>
-<p>A <a href="concepts.md#listener">listener</a> is a local connection endpoint bound to
+<p>A <a href="concepts.html#listener">listener</a> is a local connection endpoint bound to
 servers in remote sites.</p>
 <p>Each namespace can contain multiple listener definitions.</p>
 <h4 id="examples">Examples</h4>
@@ -342,36 +332,36 @@ spec:
 <p>The identifier used to route traffic from listeners to
 connectors.  To connect to a service at a remote site, the
 listener and connector must have matching routing keys.</p>
-<p><em>Type</em>: String<br />
-<em>Required</em>: Yes<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> String<br />
+<em>Required:</em> Yes<br />
+<em>Default:</em> None</p>
 <h5 id="codehostcode"><code>host</code></h5>
 <p>The hostname or IP address of the local listener.  Clients
 at this site use the listener host and port to
 establish connections to the remote service.</p>
-<p><em>Type</em>: String<br />
-<em>Required</em>: Yes<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> String<br />
+<em>Required:</em> Yes<br />
+<em>Default:</em> None</p>
 <h5 id="codeportcode"><code>port</code></h5>
 <p>The port of the local listener.  Clients at this site use
 the listener host and port to establish connections to
 the remote service.</p>
-<p><em>Type</em>: Integer<br />
-<em>Required</em>: Yes<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> Integer<br />
+<em>Required:</em> Yes<br />
+<em>Default:</em> None</p>
 <h5 id="codetlscredentialscode"><code>tlsCredentials</code></h5>
 <p>The name of a Kubernetes secret containing TLS
 credentials.  The secret contains the server certificate
 and key.</p>
 <p>It can optionally include a client certificate for mutual
 TLS.</p>
-<p><em>Type</em>: String<br />
-<em>Required</em>: No<br />
-<em>Default</em>: <em>None</em></p>
+<p><em>Type:</em> String<br />
+<em>Required:</em> No<br />
+<em>Default:</em> <em>None</em></p>
 <h5 id="codetypecode"><code>type</code></h5>
-<p><em>Type</em>: String<br />
-<em>Required</em>: No<br />
-<em>Default</em>: None</p>
+<p><em>Type:</em> String<br />
+<em>Required:</em> No<br />
+<em>Default:</em> None</p>
 <h2 id="everything-else">Everything else</h2>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut

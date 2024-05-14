@@ -28,8 +28,8 @@ running.  Sites are linked to form application
 
 There can be only one site definition per namespace.
 
-[site]: concepts.md#site
-[network]: concepts.md#network
+[site]: concepts.html#site
+[network]: concepts.html#network
 
 #### Examples
 
@@ -49,54 +49,42 @@ metadata:
 
 
 
-_Type_: String\
-_Required_: No\
-_Default_: None
+_Type:_ String\
+_Required:_ No\
+_Default:_ None
 ##### `settings`
 
 
 
-_Type_: Array\
-_Required_: No\
-_Default_: None
-##### `name`
-
-A name of your choice for the Skupper site.  This name is
-displayed in the console and CLI output.
-
-
-_Type_: \
-_Required_: No\
-_Default_: None
+_Type:_ Array\
+_Required:_ No\
+_Default:_ None
 ##### `enableLinkAccess`
 
 Enable external access for links from remote sites.
 
 
-_Type_: Boolean\
-_Required_: No\
-_Default_: False
+_Type:_ Boolean\
+_Required:_ No\
+_Default:_ False
 ##### `linkAccessType`
 
 Select the means of opening external access.
 
-The default is `route` on OpenShift and `loadbalancer`
-otherwise.
 
-
-_Type_: String\
-_Required_: No\
-_Default_: `route` if the environment is OpenShift, otherwise
+_Type:_ String\
+_Required:_ No\
+_Default:_ `route` if the environment is OpenShift, otherwise
 `loadbalancer`
 
 ##### `linkAccessHost`
 
-The host or IP used to expose link access.
+The host or IP address at which to expose link access.
 
 
-_Type_: String\
-_Required_: No\
-_Default_: None
+_Type:_ String\
+_Required:_ No\
+_Default:_ None
 ## Site linking
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -129,23 +117,23 @@ The Claim has the details from its associated Grant.
 
 
 
-_Type_: String\
-_Required_: Yes\
-_Default_: None
+_Type:_ String\
+_Required:_ Yes\
+_Default:_ None
 ##### `secret`
 
 
 
-_Type_: String\
-_Required_: Yes\
-_Default_: None
+_Type:_ String\
+_Required:_ Yes\
+_Default:_ None
 ##### `ca`
 
 
 
-_Type_: String\
-_Required_: Yes\
-_Default_: None
+_Type:_ String\
+_Required:_ Yes\
+_Default:_ None
 ### Grant
 
 XXX
@@ -169,23 +157,23 @@ Then, on the site you want to use that, you create a Claim.
 
 
 
-_Type_: Int\
-_Required_: No\
-_Default_: None
+_Type:_ Int\
+_Required:_ No\
+_Default:_ None
 ##### `validFor`
 
 
 
-_Type_: String\
-_Required_: No\
-_Default_: None
+_Type:_ String\
+_Required:_ No\
+_Default:_ None
 ##### `secret`
 
 
 
-_Type_: String\
-_Required_: No\
-_Default_: None
+_Type:_ String\
+_Required:_ No\
+_Default:_ None
 ### LinkAccess
 
 A [link access][link-access] defines a point of external access
@@ -229,9 +217,9 @@ spec:
 
 
 
-_Type_: Array\
-_Required_: Yes\
-_Default_: None
+_Type:_ Array\
+_Required:_ Yes\
+_Default:_ None
 ##### `ca`
 
 XXX
@@ -251,9 +239,9 @@ exists already (for the current mode of certificate
 management).
 
 
-_Type_: String\
-_Required_: No\
-_Default_: None
+_Type:_ String\
+_Required:_ No\
+_Default:_ None
 ##### `tlsCredentials`
 
 The name of a Kubernetes secret containing TLS
@@ -264,35 +252,31 @@ It can optionally include a client certificate and key for
 mutual TLS.
 
 
-_Type_: String\
-_Required_: Yes\
-_Default_: None
+_Type:_ String\
+_Required:_ Yes\
+_Default:_ None
 ##### `accessType`
 
 accessType is a hint or constraint on the kind of ingress
 that can/should be used (route, nodePort, LB, nginx, etc.).
 
 
-_Type_: String\
-_Required_: No\
-_Default_: None
+_Type:_ String\
+_Required:_ No\
+_Default:_ None
 ##### `options`
 
 
 
-_Type_: Object\
-_Required_: No\
-_Default_: None
+_Type:_ Object\
+_Required:_ No\
+_Default:_ None
 ### Link
 
 A [link][link] is a site-to-site communication channel. Links
 serve as a transport for application connections and requests.
 
-XXX
-
-The Link would has the details from its associated LinkAccess.
-
-[link]: concepts.md#link
+[link]: concepts.html#link
 
 #### Examples
 
@@ -314,16 +298,16 @@ spec:
 
 
 
-_Type_: Object\
-_Required_: Yes\
-_Default_: None
+_Type:_ Object\
+_Required:_ Yes\
+_Default:_ None
 ##### `edge`
 
 
 
-_Type_: Object\
-_Required_: Yes\
-_Default_: None
+_Type:_ Object\
+_Required:_ Yes\
+_Default:_ None
 ##### `tlsCredentials`
 
 The name of a Kubernetes secret containing TLS
@@ -334,23 +318,23 @@ It can optionally include a client certificate and key for
 mutual TLS.
 
 
-_Type_: String\
-_Required_: No\
-_Default_: None
+_Type:_ String\
+_Required:_ No\
+_Default:_ None
 ##### `cost`
 
 
 
-_Type_: Integer\
-_Required_: No\
-_Default_: None
+_Type:_ Integer\
+_Required:_ No\
+_Default:_ None
 ##### `noClientAuth`
 
 
 
-_Type_: Boolean\
-_Required_: No\
-_Default_: False
+_Type:_ Boolean\
+_Required:_ No\
+_Default:_ False
 ## Service exposure
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -366,7 +350,7 @@ remote sites.
 
 Each namespace can contain multiple connector definitions.
 
-[connector]: concepts.md#connector
+[connector]: concepts.html#connector
 
 #### Examples
 
@@ -394,17 +378,17 @@ connectors.  To connect to a service at a remote site, the
 listener and connector must have matching routing keys.
 
 
-_Type_: String\
-_Required_: Yes\
-_Default_: None
+_Type:_ String\
+_Required:_ Yes\
+_Default:_ None
 ##### `port`
 
 The port number of the server listener.
 
 
-_Type_: Integer\
-_Required_: Yes\
-_Default_: None
+_Type:_ Integer\
+_Required:_ Yes\
+_Default:_ None
 ##### `selector`
 
 A Kubernetes [label selector][selector] for identifying
@@ -413,9 +397,9 @@ server pods.
 [selector]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
 
 
-_Type_: String\
-_Required_: No\
-_Default_: None
+_Type:_ String\
+_Required:_ No\
+_Default:_ None
 ##### `host`
 
 The hostname or IP address of the server.  This is an
@@ -423,9 +407,9 @@ alternative to `selector` for specifying the target
 server.
 
 
-_Type_: String\
-_Required_: No\
-_Default_: None
+_Type:_ String\
+_Required:_ No\
+_Default:_ None
 ##### `tlsCredentials`
 
 The name of a Kubernetes secret containing TLS
@@ -436,23 +420,23 @@ It can optionally include a client certificate and key for
 mutual TLS.
 
 
-_Type_: String\
-_Required_: No\
-_Default_: *None*
+_Type:_ String\
+_Required:_ No\
+_Default:_ *None*
 ##### `type`
 
 
 
-_Type_: String\
-_Required_: No\
-_Default_: None
+_Type:_ String\
+_Required:_ No\
+_Default:_ None
 ##### `includeNotReady`
 
 
 
-_Type_: Boolean\
-_Required_: No\
-_Default_: False
+_Type:_ Boolean\
+_Required:_ No\
+_Default:_ False
 ### Listener
 
 A [listener][listener] is a local connection endpoint bound to
@@ -460,7 +444,7 @@ servers in remote sites.
 
 Each namespace can contain multiple listener definitions.
 
-[listener]: concepts.md#listener
+[listener]: concepts.html#listener
 
 #### Examples
 
@@ -489,9 +473,9 @@ connectors.  To connect to a service at a remote site, the
 listener and connector must have matching routing keys.
 
 
-_Type_: String\
-_Required_: Yes\
-_Default_: None
+_Type:_ String\
+_Required:_ Yes\
+_Default:_ None
 ##### `host`
 
 The hostname or IP address of the local listener.  Clients
@@ -499,9 +483,9 @@ at this site use the listener host and port to
 establish connections to the remote service.
 
 
-_Type_: String\
-_Required_: Yes\
-_Default_: None
+_Type:_ String\
+_Required:_ Yes\
+_Default:_ None
 ##### `port`
 
 The port of the local listener.  Clients at this site use
@@ -509,9 +493,9 @@ the listener host and port to establish connections to
 the remote service.
 
 
-_Type_: Integer\
-_Required_: Yes\
-_Default_: None
+_Type:_ Integer\
+_Required:_ Yes\
+_Default:_ None
 ##### `tlsCredentials`
 
 The name of a Kubernetes secret containing TLS
@@ -522,16 +506,16 @@ It can optionally include a client certificate for mutual
 TLS.
 
 
-_Type_: String\
-_Required_: No\
-_Default_: *None*
+_Type:_ String\
+_Required:_ No\
+_Default:_ *None*
 ##### `type`
 
 
 
-_Type_: String\
-_Required_: No\
-_Default_: None
+_Type:_ String\
+_Required:_ No\
+_Default:_ None
 ## Everything else
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

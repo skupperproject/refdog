@@ -37,8 +37,8 @@ resources:
 
       There can be only one site definition per namespace.
 
-      [site]: concepts.md#site
-      [network]: concepts.md#network
+      [site]: concepts.html#site
+      [network]: concepts.html#network
     examples:
       - description: A minimal site definition
         yaml: |
@@ -48,10 +48,6 @@ resources:
             name: east
             namespace: hello-world-east
     properties:
-      name:
-        description: |
-          A name of your choice for the Skupper site.  This name is
-          displayed in the console and CLI output.
       enableLinkAccess:
         type: boolean
         description: |
@@ -60,9 +56,6 @@ resources:
         type: string
         description: |
           Select the means of opening external access.
-
-          The default is `route` on OpenShift and `loadbalancer`
-          otherwise.
         default: |
           `route` if the environment is OpenShift, otherwise
           `loadbalancer`
@@ -70,18 +63,14 @@ resources:
       linkAccessHost:
         type: string
         description: |
-          The host or IP used to expose link access.
+          The host or IP address at which to expose link access.
   Link:
     group: site-linking
     description: |
       A [link][link] is a site-to-site communication channel. Links
       serve as a transport for application connections and requests.
 
-      XXX
-
-      The Link would has the details from its associated LinkAccess.
-
-      [link]: concepts.md#link
+      [link]: concepts.html#link
     examples:
       - description: A typical link definition
         yaml: |
@@ -204,7 +193,7 @@ resources:
 
       Each namespace can contain multiple connector definitions.
 
-      [connector]: concepts.md#connector
+      [connector]: concepts.html#connector
     examples:
       - description: |
           A connector in site East for the Hello World backend service
@@ -255,7 +244,7 @@ resources:
 
       Each namespace can contain multiple listener definitions.
 
-      [listener]: concepts.md#listener
+      [listener]: concepts.html#listener
     examples:
       - description: |
           A listener in site West for the Hello World backend service

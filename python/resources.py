@@ -65,7 +65,7 @@ def generate_resource(resource, append):
     # append()
 
 def generate_property(prop, append):
-    debug(f"Generating   {prop}")
+    debug(f"Generating {prop}")
 
     append(f"##### `{prop.name}`")
     append()
@@ -73,9 +73,9 @@ def generate_property(prop, append):
     append(prop.description or "")
     append()
 
-    append(f"_Type_: {capitalize(prop.type)}\\")
-    append(f"_Required_: {'Yes' if prop.required else 'No'}\\")
-    append(f"_Default_: {'False' if prop.default is None and prop.type == 'boolean' else prop.default}")
+    append(f"_Type:_ {capitalize(prop.type)}\\")
+    append(f"_Required:_ {'Yes' if prop.required else 'No'}\\")
+    append(f"_Default:_ {'False' if prop.default is None and prop.type == 'boolean' else prop.default}")
 
 
 class ResourceModel:

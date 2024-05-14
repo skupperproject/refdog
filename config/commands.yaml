@@ -38,8 +38,10 @@ groups:
           Site "<name>" is ready
         arguments:
           - name: name
+            variable: string
             description: |
-              The name of the site resource.
+              A name of your choice for the Skupper site.  This name is
+              displayed in the console and CLI output.
           - property: enableLinkAccess
           - property: linkAccessType
           - property: linkAccessHost
@@ -64,6 +66,7 @@ groups:
           Site "<name>" is updated
         arguments:
           - name: name
+            variable: string
             description: |
               The name of the site resource.
           - property: enableLinkAccess
@@ -83,6 +86,7 @@ groups:
           Site "<name>" is deleted
         arguments:
           - name: name
+            variable: string
             description: |
               The name of the site resource.
         errors:
@@ -117,6 +121,7 @@ groups:
           The token expires after 1 use or after 15 minutes
         arguments:
           - name: file
+            variable: string
             description: |
               The name of the token file.
           - property: validFor
@@ -133,6 +138,8 @@ groups:
         title: skupper link create
         description: |
           Create a link.
+
+          @resource_description@
         usage: skupper link create <file> [options]
         output: |
           Waiting for status...
@@ -163,6 +170,8 @@ groups:
         title: skupper connector create
         description: |
           Create a connector.
+
+          @resource_description@
         usage: skupper connector create <name> [options]
         examples: |
           # Create a connector for a database
@@ -172,10 +181,11 @@ groups:
           Connector "<name>" is ready
         arguments:
           - name: name
+            variable: string
             description: |
               The name of the connector resource.
           - property: routingKey
-            default: _value of name_
+            default: _Value of name_
           - name: --workload
             variable: string
           - property: port
@@ -193,6 +203,7 @@ groups:
           Connector "<name>" is deleted
         arguments:
           - name: name
+            variable: string
             description: |
               The name of the connector resource.
       - title: skupper connector status
@@ -221,10 +232,11 @@ groups:
           Listener "<name>" is ready
         arguments:
           - name: name
+            variable: string
             description: |
               The name of the listener resource.
           - property: routingKey
-            default: _value of name_
+            default: _Value of name_
           - property: host
           - property: port
           - property: tlsCredentials
@@ -238,6 +250,7 @@ groups:
           Listener "<name>" is deleted
         arguments:
           - name: name
+            variable: string
             description: |
               The name of the listener resource.
       - title: skupper listener status
@@ -264,7 +277,7 @@ groups:
       - title: skupper debug dump
         description: |
           Generate a debug dump file.
-        usage: skupper debug dump [FILE]
+        usage: skupper debug dump [file]
         output: |
           Debug dump file generated at <file>
   - title: Other operations

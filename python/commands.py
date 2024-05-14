@@ -100,21 +100,22 @@ def generate_command(command, append):
 def generate_argument(argument, append):
     assert argument.property_ or argument.name
 
-    debug(f"Generating   {argument}")
+    debug(f"Generating {argument}")
 
     title = f"**{argument.name}**"
-    default = argument.default
 
     if argument.variable:
         title = f"**{argument.name}** _{argument.variable}_"
 
-    if argument.default in (True, False):
-        default = str(argument.default).lower()
-
     append(f"- {title}")
     append()
 
-    if argument.default:
+    if argument.default is not None:
+        default = argument.default
+
+        if argument.default in (True, False):
+            default = str(argument.default).lower()
+
         append(f"  _Default:_ {default}")
         append()
 
@@ -131,9 +132,6 @@ def generate_argument(argument, append):
         append()
         append(notes)
         append()
-
-def fragment_id(title):
-    return title.lower().replace(" ", "-")
 
 class CommandModel:
     def __init__(self):
@@ -185,13 +183,6 @@ class Command:
         self.errors = list()
 
         for argument_data in self.data.get("arguments", []):
-            # if "include" in argument_data:
-            #     argument_group = argument_data["include"]
-
-            #     for item_data in self.model.data["arguments"][argument_group]:
-            #         self.arguments.append(Argument(self.model, self, item_data))
-            # else:
-
             self.arguments.append(Argument(self.model, self, argument_data))
 
         for error_data in self.data.get("errors", []):
@@ -271,6 +262,11 @@ class Argument:
     @property
     def default(self):
         default = self.property_.default if self.property_ else None
+
+        # XXX
+        if default is None and self.variable == "boolean":
+            default = False
+
         return self.data.get("default", default)
 
     @property
@@ -315,6 +311,9 @@ class Error:
     @property
     def notes(self):
         return self.data.get("notes")
+
+def fragment_id(title):
+    return title.lower().replace(" ", "-")
 
 def argument_name(property_name, positional):
     chars = list()
