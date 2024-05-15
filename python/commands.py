@@ -319,16 +319,25 @@ class Error:
 
 def argument_name(property_name, positional):
     chars = list()
+    prevprev = None
+    prev = None
 
     if not positional:
         chars.append("--")
 
-    chars.append(property_name[0].lower())
-
-    for char in property_name[1:]:
+    for char in property_name:
         if char.isupper():
-            chars.append(f"-{char.lower()}")
+            if prev and prev.islower():
+                chars.append("-")
+
+            chars.append(char.lower())
         else:
+            if prev and prev.isupper() and chars[-2] != "-":
+                chars.insert(-1, "-")
+
             chars.append(char)
+
+        prevprev = prev
+        prev = char
 
     return "".join(chars)

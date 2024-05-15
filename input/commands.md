@@ -391,7 +391,7 @@ skupper connector create database --workload deployment/postgresql --port 5432
   server.
   
 
-- **--enable-t-l-s** _boolean_
+- **--enable-tls** _boolean_
 
   _Default:_ false
 
@@ -516,7 +516,7 @@ skupper listener create database --host database --port 5432
   the remote service.
   
 
-- **--enable-t-l-s** _boolean_
+- **--enable-tls** _boolean_
 
   _Default:_ false
 

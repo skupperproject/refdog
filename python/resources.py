@@ -192,7 +192,7 @@ class Property:
         debug(f"Loading {self}")
 
     def __repr__(self):
-        return f"property '{self.name}' (type={self.type}, required={self.required})"
+        return f"property '{self.name}'"
 
     @property
     def name(self):
