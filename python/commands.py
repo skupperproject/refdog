@@ -131,9 +131,11 @@ def generate_argument(argument, append):
 
 class CommandModel:
     def __init__(self):
-        self.data = read_yaml("config/commands.yaml")
-        self.global_arguments = list()
+        debug(f"Loading {self}")
 
+        self.data = read_yaml("config/commands.yaml")
+
+        self.global_arguments = list()
         self.groups = list()
 
         for argument_data in self.data["global_arguments"]:
@@ -151,6 +153,8 @@ class Group:
     def __init__(self, model, data):
         self.model = model
         self.data = data
+
+        debug(f"Loading {self}")
 
         self.commands = list()
 
@@ -173,10 +177,12 @@ class Group:
         return self.data.get("description")
 
 class Command:
-    def __init__(self, model, parent, data):
+    def __init__(self, model, group, data):
         self.model = model
-        self.parent = parent
+        self.group = group
         self.data = data
+
+        debug(f"Loading {self}")
 
         self.arguments = list()
         self.errors = list()
