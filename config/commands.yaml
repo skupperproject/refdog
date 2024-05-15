@@ -191,7 +191,7 @@ groups:
           - property: port
           - property: selector
           - property: host
-          - property: enableTls
+          - property: enableTLS
           - property: tlsCredentials
           - property: type
           - property: includeNotReady
@@ -240,7 +240,7 @@ groups:
             default: _value of name_
           - property: host
           - property: port
-          - property: enableTls
+          - property: enableTLS
           - property: tlsCredentials
           - property: type
       - title: skupper listener delete

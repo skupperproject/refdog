@@ -96,7 +96,7 @@ def generate_command(command, append):
         append()
 
 def generate_argument(argument, append):
-    assert argument.property_ or argument.name
+    assert argument.property_ or argument.name, argument
 
     debug(f"Generating {argument}")
 
@@ -133,6 +133,7 @@ class CommandModel:
     def __init__(self):
         self.data = read_yaml("config/commands.yaml")
         self.global_arguments = list()
+
         self.groups = list()
 
         for argument_data in self.data["global_arguments"]:
@@ -150,9 +151,10 @@ class Group:
     def __init__(self, model, data):
         self.model = model
         self.data = data
+
         self.commands = list()
 
-        for command_data in self.data["commands"]:
+        for command_data in self.data.get("commands", []):
             self.commands.append(Command(self.model, self, command_data))
 
     def __repr__(self):
@@ -175,6 +177,7 @@ class Command:
         self.model = model
         self.parent = parent
         self.data = data
+
         self.arguments = list()
         self.errors = list()
 
@@ -238,12 +241,10 @@ class Argument:
     def property_(self):
         if "property" in self.data:
             assert self.command.resource is not None
+            assert self.data["property"] in self.command.resource.properties_by_name, \
+                (self.data["property"], self.command.resource.properties_by_name)
 
-            try:
-                return self.command.resource.properties[self.data["property"]]
-            except KeyError:
-                pprint(self.data)
-                pprint(self.command.resource.properties)
+            return self.command.resource.properties_by_name[self.data["property"]]
 
     @property
     def name(self):
@@ -308,9 +309,6 @@ class Error:
     @property
     def notes(self):
         return self.data.get("notes")
-
-def fragment_id(title):
-    return title.lower().replace(" ", "-")
 
 def argument_name(property_name, positional):
     chars = list()

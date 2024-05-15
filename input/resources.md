@@ -4,20 +4,16 @@
 - [Site configuration](#site-configuration)
   - [Site](#site)
 - [Site linking](#site-linking)
-  - [Claim](#claim)
-  - [Grant](#grant)
-  - [LinkAccess](#linkaccess)
   - [Link](#link)
+  - [LinkAccess](#linkaccess)
+  - [Grant](#grant)
+  - [Claim](#claim)
 - [Service exposure](#service-exposure)
   - [Connector](#connector)
   - [Listener](#listener)
-- [Everything else](#everything-else)
+- [Internal](#internal)
+  - [SecuredAccess](#securedaccess)
 ## Site configuration
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-enim ad minim veniam, quis nostrud exercitation ullamco laboris
-nisi ut aliquip ex ea commodo consequat.
 
 
 ### Site
@@ -87,93 +83,71 @@ _Required:_ No\
 _Default:_ None
 ## Site linking
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-enim ad minim veniam, quis nostrud exercitation ullamco laboris
-nisi ut aliquip ex ea commodo consequat.
 
+### Link
 
-### Claim
+A [link][link] is a site-to-site communication channel. Links
+serve as a transport for application connections and requests.
 
-XXX
-
-The Claim declares desire to initiate access based on a previous
-Grant.
-
-Does "claim" mean something more than an asserted grant?  That
-is essentially what it is.
-
-The Claim url is obtained from the status of the grant along
-with the secret and the ca, i.e. the information for a Claim
-comes from the Grant.
-
-The Claim has the details from its associated Grant.
+[link]: concepts.html#link
 
 #### Examples
 
+A typical link definition
+
+~~~ yaml
+apiVersion: skupper.io/v1alpha1
+kind: Link
+metadata:
+  name: link-to-west
+  namespace: hello-world-east
+spec:
+  [...]
+
+~~~
 #### Spec properties
 
-##### `url`
+##### `interRouter`
 
 
 
-_Type:_ String\
+_Type:_ Object\
 _Required:_ Yes\
 _Default:_ None
-##### `secret`
+##### `edge`
 
 
 
-_Type:_ String\
+_Type:_ Object\
 _Required:_ Yes\
 _Default:_ None
-##### `ca`
+##### `tlsCredentials`
 
+The name of a Kubernetes secret containing TLS
+credentials. The secret contains the trusted server
+certificate (typically a CA certificate).
 
-
-_Type:_ String\
-_Required:_ Yes\
-_Default:_ None
-### Grant
-
-XXX
-
-Grant is the offering of access.
-
-It is the 'server side' of a Claim.
-
-A Grant is essentially a way to declare that someone with the
-given secret can present that in exchange for a certificate
-signed by the ca associated with the grant, up to the given
-expiration and for the number of allowed claims.
-
-Then, on the site you want to use that, you create a Claim.
-
-#### Examples
-
-#### Spec properties
-
-##### `claims`
-
-
-
-_Type:_ Int\
-_Required:_ No\
-_Default:_ None
-##### `validFor`
-
+It can optionally include a client certificate and key for
+mutual TLS.
 
 
 _Type:_ String\
 _Required:_ No\
 _Default:_ None
-##### `secret`
+##### `cost`
 
 
 
-_Type:_ String\
+_Type:_ Integer\
 _Required:_ No\
 _Default:_ None
+##### `noClientAuth`
+
+
+
+_Type:_ Boolean\
+_Required:_ No\
+_Default:_ False
 ### LinkAccess
 
 A [link access][link-access] defines a point of external access
@@ -271,76 +245,88 @@ _Default:_ None
 _Type:_ Object\
 _Required:_ No\
 _Default:_ None
-### Link
+### Grant
 
-A [link][link] is a site-to-site communication channel. Links
-serve as a transport for application connections and requests.
+XXX
 
-[link]: concepts.html#link
+Grant is the offering of access.
+
+It is the 'server side' of a Claim.
+
+A Grant is essentially a way to declare that someone with the
+given secret can present that in exchange for a certificate
+signed by the ca associated with the grant, up to the given
+expiration and for the number of allowed claims.
+
+Then, on the site you want to use that, you create a Claim.
 
 #### Examples
 
-A typical link definition
-
-~~~ yaml
-apiVersion: skupper.io/v1alpha1
-kind: Link
-metadata:
-  name: link-to-west
-  namespace: hello-world-east
-spec:
-  [...]
-
-~~~
 #### Spec properties
 
-##### `interRouter`
+##### `claims`
 
 
 
-_Type:_ Object\
-_Required:_ Yes\
+_Type:_ Int\
+_Required:_ No\
 _Default:_ None
-##### `edge`
+##### `validFor`
 
-
-
-_Type:_ Object\
-_Required:_ Yes\
-_Default:_ None
-##### `tlsCredentials`
-
-The name of a Kubernetes secret containing TLS
-credentials. The secret contains the trusted server
-certificate (typically a CA certificate).
-
-It can optionally include a client certificate and key for
-mutual TLS.
 
 
 _Type:_ String\
 _Required:_ No\
 _Default:_ None
-##### `cost`
+##### `secret`
 
 
 
-_Type:_ Integer\
+_Type:_ String\
 _Required:_ No\
 _Default:_ None
-##### `noClientAuth`
+### Claim
+
+XXX
+
+The Claim declares desire to initiate access based on a previous
+Grant.
+
+Does "claim" mean something more than an asserted grant?  That
+is essentially what it is.
+
+The Claim url is obtained from the status of the grant along
+with the secret and the ca, i.e. the information for a Claim
+comes from the Grant.
+
+The Claim has the details from its associated Grant.
+
+#### Examples
+
+#### Spec properties
+
+##### `url`
 
 
 
-_Type:_ Boolean\
-_Required:_ No\
-_Default:_ False
+_Type:_ String\
+_Required:_ Yes\
+_Default:_ None
+##### `secret`
+
+
+
+_Type:_ String\
+_Required:_ Yes\
+_Default:_ None
+##### `ca`
+
+
+
+_Type:_ String\
+_Required:_ Yes\
+_Default:_ None
 ## Service exposure
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-enim ad minim veniam, quis nostrud exercitation ullamco laboris
-nisi ut aliquip ex ea commodo consequat.
 
 
 ### Connector
@@ -437,7 +423,7 @@ _Default:_ None
 _Type:_ Boolean\
 _Required:_ No\
 _Default:_ False
-##### `enableTls`
+##### `enableTLS`
 
 Use TLS to encrypt communication between the router and servers.
 
@@ -527,7 +513,7 @@ _Default:_ None
 _Type:_ String\
 _Required:_ No\
 _Default:_ None
-##### `enableTls`
+##### `enableTLS`
 
 Use TLS to encrypt communication between clients and the router.
 
@@ -538,11 +524,73 @@ a secret at XXX.
 _Type:_ Boolean\
 _Required:_ No\
 _Default:_ False
-## Everything else
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-enim ad minim veniam, quis nostrud exercitation ullamco laboris
-nisi ut aliquip ex ea commodo consequat.
+## Internal
 
 
+### SecuredAccess
+
+XXX
+
+SecuredAccess is a generic way of exposing a workload (a set of
+pods).
+
+SecuredAccess just creates and necessary service/ingress
+resources and optionally any secrets with tls credentials.
+
+The implementation of LinkAccess creates a SecuredAccess and
+also configures the router.
+
+SecuredAccess is a lower level concept.  It just exposes a
+workload, including if desired, generation of necessary certs
+(though those can also be provided if preferred).
+
+SecuredAccess is not in any way tied to the router.  LInkAccess
+*is* tied to the router.  LinkAccess can be thought of as a
+specialization of SecuredAccess.
+
+#### Examples
+
+#### Spec properties
+
+##### `ports`
+
+
+
+_Type:_ Array\
+_Required:_ Yes\
+_Default:_ None
+##### `selector`
+
+
+
+_Type:_ Object\
+_Required:_ Yes\
+_Default:_ None
+##### `ca`
+
+
+
+_Type:_ String\
+_Required:_ No\
+_Default:_ None
+##### `certificate`
+
+
+
+_Type:_ String\
+_Required:_ No\
+_Default:_ None
+##### `accessType`
+
+
+
+_Type:_ String\
+_Required:_ No\
+_Default:_ None
+##### `options`
+
+
+
+_Type:_ Object\
+_Required:_ No\
+_Default:_ None

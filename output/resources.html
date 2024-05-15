@@ -30,10 +30,10 @@
 </ul>
 </li>
 <li><a href="#site-linking">Site linking</a><ul>
-<li><a href="#claim">Claim</a></li>
-<li><a href="#grant">Grant</a></li>
-<li><a href="#linkaccess">LinkAccess</a></li>
 <li><a href="#link">Link</a></li>
+<li><a href="#linkaccess">LinkAccess</a></li>
+<li><a href="#grant">Grant</a></li>
+<li><a href="#claim">Claim</a></li>
 </ul>
 </li>
 <li><a href="#service-exposure">Service exposure</a><ul>
@@ -41,13 +41,12 @@
 <li><a href="#listener">Listener</a></li>
 </ul>
 </li>
-<li><a href="#everything-else">Everything else</a></li>
+<li><a href="#internal">Internal</a><ul>
+<li><a href="#securedaccess">SecuredAccess</a></li>
+</ul>
+</li>
 </ul>
 <h2 id="site-configuration">Site configuration</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-enim ad minim veniam, quis nostrud exercitation ullamco laboris
-nisi ut aliquip ex ea commodo consequat.</p>
 <h3 id="site">Site</h3>
 <p>A <a href="concepts.html#site">site</a> is a place where components of your application are
 running.  Sites are linked to form application
@@ -88,57 +87,46 @@ metadata:
 <em>Required:</em> No<br />
 <em>Default:</em> None</p>
 <h2 id="site-linking">Site linking</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-enim ad minim veniam, quis nostrud exercitation ullamco laboris
-nisi ut aliquip ex ea commodo consequat.</p>
-<h3 id="claim">Claim</h3>
-<p>XXX</p>
-<p>The Claim declares desire to initiate access based on a previous
-Grant.</p>
-<p>Does &quot;claim&quot; mean something more than an asserted grant?  That
-is essentially what it is.</p>
-<p>The Claim url is obtained from the status of the grant along
-with the secret and the ca, i.e. the information for a Claim
-comes from the Grant.</p>
-<p>The Claim has the details from its associated Grant.</p>
+<h3 id="link">Link</h3>
+<p>A <a href="concepts.html#link">link</a> is a site-to-site communication channel. Links
+serve as a transport for application connections and requests.</p>
 <h4 id="examples">Examples</h4>
+<p>A typical link definition</p>
+<pre><code class="language-yaml">apiVersion: skupper.io/v1alpha1
+kind: Link
+metadata:
+  name: link-to-west
+  namespace: hello-world-east
+spec:
+  [...]
+
+</code></pre>
 <h4 id="spec-properties">Spec properties</h4>
-<h5 id="codeurlcode"><code>url</code></h5>
-<p><em>Type:</em> String<br />
+<h5 id="codeinterroutercode"><code>interRouter</code></h5>
+<p><em>Type:</em> Object<br />
 <em>Required:</em> Yes<br />
 <em>Default:</em> None</p>
-<h5 id="codesecretcode"><code>secret</code></h5>
-<p><em>Type:</em> String<br />
+<h5 id="codeedgecode"><code>edge</code></h5>
+<p><em>Type:</em> Object<br />
 <em>Required:</em> Yes<br />
 <em>Default:</em> None</p>
-<h5 id="codecacode"><code>ca</code></h5>
-<p><em>Type:</em> String<br />
-<em>Required:</em> Yes<br />
-<em>Default:</em> None</p>
-<h3 id="grant">Grant</h3>
-<p>XXX</p>
-<p>Grant is the offering of access.</p>
-<p>It is the 'server side' of a Claim.</p>
-<p>A Grant is essentially a way to declare that someone with the
-given secret can present that in exchange for a certificate
-signed by the ca associated with the grant, up to the given
-expiration and for the number of allowed claims.</p>
-<p>Then, on the site you want to use that, you create a Claim.</p>
-<h4 id="examples">Examples</h4>
-<h4 id="spec-properties">Spec properties</h4>
-<h5 id="codeclaimscode"><code>claims</code></h5>
-<p><em>Type:</em> Int<br />
-<em>Required:</em> No<br />
-<em>Default:</em> None</p>
-<h5 id="codevalidforcode"><code>validFor</code></h5>
+<h5 id="codetlscredentialscode"><code>tlsCredentials</code></h5>
+<p>The name of a Kubernetes secret containing TLS
+credentials. The secret contains the trusted server
+certificate (typically a CA certificate).</p>
+<p>It can optionally include a client certificate and key for
+mutual TLS.</p>
 <p><em>Type:</em> String<br />
 <em>Required:</em> No<br />
 <em>Default:</em> None</p>
-<h5 id="codesecretcode"><code>secret</code></h5>
-<p><em>Type:</em> String<br />
+<h5 id="codecostcode"><code>cost</code></h5>
+<p><em>Type:</em> Integer<br />
 <em>Required:</em> No<br />
 <em>Default:</em> None</p>
+<h5 id="codenoclientauthcode"><code>noClientAuth</code></h5>
+<p><em>Type:</em> Boolean<br />
+<em>Required:</em> No<br />
+<em>Default:</em> False</p>
 <h3 id="linkaccess">LinkAccess</h3>
 <p>A <a href="XXX">link access</a> defines a point of external access
 for links from remote sites.</p>
@@ -204,51 +192,54 @@ that can/should be used (route, nodePort, LB, nginx, etc.).</p>
 <p><em>Type:</em> Object<br />
 <em>Required:</em> No<br />
 <em>Default:</em> None</p>
-<h3 id="link">Link</h3>
-<p>A <a href="concepts.html#link">link</a> is a site-to-site communication channel. Links
-serve as a transport for application connections and requests.</p>
+<h3 id="grant">Grant</h3>
+<p>XXX</p>
+<p>Grant is the offering of access.</p>
+<p>It is the 'server side' of a Claim.</p>
+<p>A Grant is essentially a way to declare that someone with the
+given secret can present that in exchange for a certificate
+signed by the ca associated with the grant, up to the given
+expiration and for the number of allowed claims.</p>
+<p>Then, on the site you want to use that, you create a Claim.</p>
 <h4 id="examples">Examples</h4>
-<p>A typical link definition</p>
-<pre><code class="language-yaml">apiVersion: skupper.io/v1alpha1
-kind: Link
-metadata:
-  name: link-to-west
-  namespace: hello-world-east
-spec:
-  [...]
-
-</code></pre>
 <h4 id="spec-properties">Spec properties</h4>
-<h5 id="codeinterroutercode"><code>interRouter</code></h5>
-<p><em>Type:</em> Object<br />
-<em>Required:</em> Yes<br />
+<h5 id="codeclaimscode"><code>claims</code></h5>
+<p><em>Type:</em> Int<br />
+<em>Required:</em> No<br />
 <em>Default:</em> None</p>
-<h5 id="codeedgecode"><code>edge</code></h5>
-<p><em>Type:</em> Object<br />
-<em>Required:</em> Yes<br />
-<em>Default:</em> None</p>
-<h5 id="codetlscredentialscode"><code>tlsCredentials</code></h5>
-<p>The name of a Kubernetes secret containing TLS
-credentials. The secret contains the trusted server
-certificate (typically a CA certificate).</p>
-<p>It can optionally include a client certificate and key for
-mutual TLS.</p>
+<h5 id="codevalidforcode"><code>validFor</code></h5>
 <p><em>Type:</em> String<br />
 <em>Required:</em> No<br />
 <em>Default:</em> None</p>
-<h5 id="codecostcode"><code>cost</code></h5>
-<p><em>Type:</em> Integer<br />
+<h5 id="codesecretcode"><code>secret</code></h5>
+<p><em>Type:</em> String<br />
 <em>Required:</em> No<br />
 <em>Default:</em> None</p>
-<h5 id="codenoclientauthcode"><code>noClientAuth</code></h5>
-<p><em>Type:</em> Boolean<br />
-<em>Required:</em> No<br />
-<em>Default:</em> False</p>
+<h3 id="claim">Claim</h3>
+<p>XXX</p>
+<p>The Claim declares desire to initiate access based on a previous
+Grant.</p>
+<p>Does &quot;claim&quot; mean something more than an asserted grant?  That
+is essentially what it is.</p>
+<p>The Claim url is obtained from the status of the grant along
+with the secret and the ca, i.e. the information for a Claim
+comes from the Grant.</p>
+<p>The Claim has the details from its associated Grant.</p>
+<h4 id="examples">Examples</h4>
+<h4 id="spec-properties">Spec properties</h4>
+<h5 id="codeurlcode"><code>url</code></h5>
+<p><em>Type:</em> String<br />
+<em>Required:</em> Yes<br />
+<em>Default:</em> None</p>
+<h5 id="codesecretcode"><code>secret</code></h5>
+<p><em>Type:</em> String<br />
+<em>Required:</em> Yes<br />
+<em>Default:</em> None</p>
+<h5 id="codecacode"><code>ca</code></h5>
+<p><em>Type:</em> String<br />
+<em>Required:</em> Yes<br />
+<em>Default:</em> None</p>
 <h2 id="service-exposure">Service exposure</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-enim ad minim veniam, quis nostrud exercitation ullamco laboris
-nisi ut aliquip ex ea commodo consequat.</p>
 <h3 id="connector">Connector</h3>
 <p>A <a href="concepts.html#connector">connector</a> binds local servers to listeners in
 remote sites.</p>
@@ -309,7 +300,7 @@ mutual TLS.</p>
 <p><em>Type:</em> Boolean<br />
 <em>Required:</em> No<br />
 <em>Default:</em> False</p>
-<h5 id="codeenabletlscode"><code>enableTls</code></h5>
+<h5 id="codeenabletlscode"><code>enableTLS</code></h5>
 <p>Use TLS to encrypt communication between the router and servers.</p>
 <p>By default, the TLS credentials are generated and stored in
 a secret at XXX.</p>
@@ -369,18 +360,54 @@ TLS.</p>
 <p><em>Type:</em> String<br />
 <em>Required:</em> No<br />
 <em>Default:</em> None</p>
-<h5 id="codeenabletlscode"><code>enableTls</code></h5>
+<h5 id="codeenabletlscode"><code>enableTLS</code></h5>
 <p>Use TLS to encrypt communication between clients and the router.</p>
 <p>By default, the TLS credentials are generated and stored in
 a secret at XXX.</p>
 <p><em>Type:</em> Boolean<br />
 <em>Required:</em> No<br />
 <em>Default:</em> False</p>
-<h2 id="everything-else">Everything else</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-enim ad minim veniam, quis nostrud exercitation ullamco laboris
-nisi ut aliquip ex ea commodo consequat.</p>
+<h2 id="internal">Internal</h2>
+<h3 id="securedaccess">SecuredAccess</h3>
+<p>XXX</p>
+<p>SecuredAccess is a generic way of exposing a workload (a set of
+pods).</p>
+<p>SecuredAccess just creates and necessary service/ingress
+resources and optionally any secrets with tls credentials.</p>
+<p>The implementation of LinkAccess creates a SecuredAccess and
+also configures the router.</p>
+<p>SecuredAccess is a lower level concept.  It just exposes a
+workload, including if desired, generation of necessary certs
+(though those can also be provided if preferred).</p>
+<p>SecuredAccess is not in any way tied to the router.  LInkAccess
+<em>is</em> tied to the router.  LinkAccess can be thought of as a
+specialization of SecuredAccess.</p>
+<h4 id="examples">Examples</h4>
+<h4 id="spec-properties">Spec properties</h4>
+<h5 id="codeportscode"><code>ports</code></h5>
+<p><em>Type:</em> Array<br />
+<em>Required:</em> Yes<br />
+<em>Default:</em> None</p>
+<h5 id="codeselectorcode"><code>selector</code></h5>
+<p><em>Type:</em> Object<br />
+<em>Required:</em> Yes<br />
+<em>Default:</em> None</p>
+<h5 id="codecacode"><code>ca</code></h5>
+<p><em>Type:</em> String<br />
+<em>Required:</em> No<br />
+<em>Default:</em> None</p>
+<h5 id="codecertificatecode"><code>certificate</code></h5>
+<p><em>Type:</em> String<br />
+<em>Required:</em> No<br />
+<em>Default:</em> None</p>
+<h5 id="codeaccesstypecode"><code>accessType</code></h5>
+<p><em>Type:</em> String<br />
+<em>Required:</em> No<br />
+<em>Default:</em> None</p>
+<h5 id="codeoptionscode"><code>options</code></h5>
+<p><em>Type:</em> Object<br />
+<em>Required:</em> No<br />
+<em>Default:</em> None</p>
 
 
     </div>

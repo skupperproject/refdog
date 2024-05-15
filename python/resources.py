@@ -1,4 +1,4 @@
-from plano import *
+from common import *
 
 def generate():
     model = ResourceModel()
@@ -12,25 +12,19 @@ def generate():
 
     append("#### Contents")
 
-    for group_name, group in model.groups.items():
-        append(f"- [{group.title}](#{group_name})")
+    for group in model.groups:
+        append(f"- [{group.title}](#{group.id})")
 
-        for resource_name, resource in model.resources.items():
-            if resource.group != group_name or (resource.group is None and group_name != "everything-else"):
-                continue
+        for resource in group.resources:
+            append(f"  - [{resource.name}](#{resource.name.lower()})") # XXX resource.id
 
-            append(f"  - [{resource_name}](#{resource_name.lower()})")
-
-    for group_name, group in model.groups.items():
+    for group in model.groups:
         append(f"## {group.title}")
         append()
         append(group.description)
         append()
 
-        for resource in model.resources.values():
-            if resource.group != group_name or (resource.group is None and group_name != "everything-else"):
-                continue
-
+        for resource in group.resources:
             generate_resource(resource, append)
 
     markdown = read("config/resources.md.in")
@@ -49,6 +43,7 @@ def generate_resource(resource, append):
     append()
 
     for example in resource.examples:
+        # XXX An example object
         append(example["description"])
         append()
         append("~~~ yaml")
@@ -58,7 +53,7 @@ def generate_resource(resource, append):
     append("#### Spec properties")
     append()
 
-    for prop in resource.properties.values():
+    for prop in resource.properties:
         generate_property(prop, append)
 
     # append("#### Status properties")
@@ -77,42 +72,59 @@ def generate_property(prop, append):
     append(f"_Required:_ {'Yes' if prop.required else 'No'}\\")
     append(f"_Default:_ {'False' if prop.default is None and prop.type == 'boolean' else prop.default}")
 
-
 class ResourceModel:
     def __init__(self):
+        debug(f"Loading {self}")
+
         self.data = read_yaml("config/resources.yaml")
-        self.groups = dict()
+
+        self.groups = list()
+        self.crds = dict()
         self.resources = dict()
 
-        for name, data in self.data["groups"].items():
-            self.groups[name] = Group(self, name, data)
-
         with working_dir("crds"):
-            for crd_name in list_dir():
-                if crd_name == "skupper_cluster_policy_crd.yaml":
+            for crd_file in list_dir():
+                if crd_file == "skupper_cluster_policy_crd.yaml":
                     continue
 
-                crd_data = read_yaml(crd_name)
+                crd_data = read_yaml(crd_file)
 
                 if crd_data["kind"] != "CustomResourceDefinition":
                     continue
 
-                name = crd_data["spec"]["names"]["kind"]
-                data = self.data["resources"].get(name, {"properties": {}})
+                kind = crd_data["spec"]["names"]["kind"]
 
-                self.resources[name] = Resource(self, name, data, crd_data)
+                self.crds[kind] = crd_data
+
+        for group_data in self.data["groups"]:
+            self.groups.append(Group(self, group_data))
+
+        for group in self.groups:
+            for resource in group.resources:
+                self.resources[resource.name] = resource
 
     def __repr__(self):
         return "resource model"
 
 class Group:
-    def __init__(self, model, name, data):
+    def __init__(self, model, data):
         self.model = model
-        self.name = name
         self.data = data
 
+        debug(f"Loading {self}")
+
+        self.resources = list()
+
+        for resource_data in self.data.get("resources", []):
+            crd_data = self.model.crds[resource_data["name"]]
+            self.resources.append(Resource(self.model, self, resource_data, crd_data))
+
     def __repr__(self):
-        return f"group '{self.name}'"
+        return f"group '{self.title}'"
+
+    @property
+    def id(self):
+        return fragment_id(self.title)
 
     @property
     def title(self):
@@ -123,32 +135,44 @@ class Group:
         return self.data.get("description")
 
 class Resource:
-    def __init__(self, model, name, data, crd_data):
+    def __init__(self, model, group, data, crd_data):
         self.model = model
-        self.name = name
+        self.group = group
         self.data = data
         self.crd_data = crd_data
 
-        self.properties = dict()
+        debug(f"Loading {self}")
+
+        self.properties = list()
+        self.properties_by_name = dict()
 
         schema = self.crd_data["spec"]["versions"][0]["schema"]["openAPIV3Schema"]
 
         for name, crd_data in schema["properties"]["spec"]["properties"].items():
-            data = self.data.get("properties", {}).get(name, {})
-            self.properties[name] = Property(self.model, self, name, data, crd_data)
+            for property_data in self.data.get("properties", []):
+                if property_data["name"] == name:
+                    break
+            else:
+                property_data = {"name": name}
 
-        for name, data in self.data.get("properties", {}).items():
-            if name in self.properties:
-                continue
+            prop = Property(self.model, self, property_data, crd_data)
 
-            self.properties[name] = Property(self.model, self, name, data, None)
+            self.properties.append(prop)
+            self.properties_by_name[prop.name] = prop
+
+        for property_data in self.data.get("properties", []):
+            if property_data["name"] not in self.properties_by_name:
+                prop = Property(self.model, self, property_data, None)
+
+                self.properties.append(prop)
+                self.properties_by_name[prop.name] = prop
 
     def __repr__(self):
-        return f"resource '{self.name}' (group={nvl(self.group, '-')}, description={mlen(self.examples)}, examples={mlen(self.examples)})"
+        return f"resource '{self.name}'"
 
     @property
-    def group(self):
-        return self.data.get("group")
+    def name(self):
+        return self.data["name"]
 
     @property
     def description(self):
@@ -159,15 +183,20 @@ class Resource:
         return self.data.get("examples", [])
 
 class Property:
-    def __init__(self, model, resource, name, data, crd_data):
+    def __init__(self, model, resource, data, crd_data):
         self.model = model
         self.resource = resource
-        self.name = name
         self.data = data
         self.crd_data = crd_data
 
+        debug(f"Loading {self}")
+
     def __repr__(self):
         return f"property '{self.name}' (type={self.type}, required={self.required}, default={mlen(self.default)})"
+
+    @property
+    def name(self):
+        return self.data["name"]
 
     @property
     def type(self):
