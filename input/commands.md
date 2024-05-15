@@ -268,7 +268,7 @@ The token expires after 1 use or after 15 minutes
 
   _Default:_ 15m
 
-- **--uses** _int_
+- **--uses** _integer_
 
   _Default:_ 1
 
@@ -332,7 +332,7 @@ Create a connector.
 A [connector][connector] binds local servers to listeners in
 remote sites.
 
-Each namespace can contain multiple connector definitions.
+Each site can have multiple connector definitions.
 
 [connector]: concepts.html#connector
 
@@ -465,7 +465,7 @@ Create a listener.
 A [listener][listener] is a local connection endpoint bound to
 servers in remote sites.
 
-Each namespace can contain multiple listener definitions.
+Each site can have multiple listener definitions.
 
 [listener]: concepts.html#listener
 

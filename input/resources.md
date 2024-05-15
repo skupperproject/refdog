@@ -153,12 +153,18 @@ spec:
     port: 55671
   - role: edge
     port: 45671
-  accessType: loadbalancer
   tlsCredentials: skupper-site-server
 
 ~~~
 #### Spec properties
 
+##### `roles`
+
+
+
+_Type:_ Array\
+_Required:_ Yes\
+_Default:_ None
 ##### `tlsCredentials`
 
 The name of a Kubernetes secret containing TLS
@@ -174,7 +180,7 @@ _Required:_ Yes\
 _Default:_ None
 ##### `ca`
 
-XXX
+XXX FOR GENERATION OF tlsCredentials XXX
 
 A reference to a secret.
 
@@ -194,13 +200,18 @@ management).
 _Type:_ String\
 _Required:_ No\
 _Default:_ None
-##### `accessType`
+##### `bindHost`
 
-accessType is a hint or constraint on the kind of ingress
-that can/should be used (route, nodePort, LB, nginx, etc.).
 
 
 _Type:_ String\
+_Required:_ No\
+_Default:_ None
+##### `subjectAlternativeNames`
+
+
+
+_Type:_ Array\
 _Required:_ No\
 _Default:_ None
 ### Grant
@@ -233,7 +244,7 @@ _Default:_ None
 
 
 
-_Type:_ Int\
+_Type:_ Integer\
 _Required:_ No\
 _Default:_ None
 ### Claim
@@ -264,7 +275,7 @@ The Claim has the details from its associated Grant.
 A [connector][connector] binds local servers to listeners in
 remote sites.
 
-Each namespace can contain multiple connector definitions.
+Each site can have multiple connector definitions.
 
 [connector]: concepts.html#connector
 
@@ -369,7 +380,7 @@ _Default:_ False
 A [listener][listener] is a local connection endpoint bound to
 servers in remote sites.
 
-Each namespace can contain multiple listener definitions.
+Each site can have multiple listener definitions.
 
 [listener]: concepts.html#listener
 

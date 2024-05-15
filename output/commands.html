@@ -216,7 +216,7 @@ The token expires after 1 use or after 15 minutes
 <li><p><strong>--expiry</strong> <em>string (duration)</em></p>
 <p><em>Default:</em> 15m</p>
 </li>
-<li><p><strong>--uses</strong> <em>int</em></p>
+<li><p><strong>--uses</strong> <em>integer</em></p>
 <p><em>Default:</em> 1</p>
 </li>
 </ul>
@@ -252,7 +252,7 @@ You can now safely delete &lt;file&gt;
 <p>Create a connector.</p>
 <p>A <a href="concepts.html#connector">connector</a> binds local servers to listeners in
 remote sites.</p>
-<p>Each namespace can contain multiple connector definitions.</p>
+<p>Each site can have multiple connector definitions.</p>
 <h4 id="usage">Usage</h4>
 <pre><code class="language-shell">$ skupper connector create &lt;name&gt; [options]
 Waiting for status...
@@ -334,7 +334,7 @@ database   database      app=postgresql   -      5342   1
 <p>Create a listener.</p>
 <p>A <a href="concepts.html#listener">listener</a> is a local connection endpoint bound to
 servers in remote sites.</p>
-<p>Each namespace can contain multiple listener definitions.</p>
+<p>Each site can have multiple listener definitions.</p>
 <h4 id="usage">Usage</h4>
 <pre><code class="language-shell">$ skupper listener create &lt;name&gt; [options]
 Waiting for status...
