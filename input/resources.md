@@ -4,15 +4,17 @@
 - [Site configuration](#site-configuration)
   - [Site](#site)
 - [Site linking](#site-linking)
-  - [Link](#link)
-  - [LinkAccess](#linkaccess)
   - [Grant](#grant)
   - [Claim](#claim)
 - [Service exposure](#service-exposure)
   - [Connector](#connector)
   - [Listener](#listener)
-- [Internal](#internal)
+- [Advanced stuff](#advanced-stuff)
+  - [Link](#link)
+  - [LinkAccess](#linkaccess)
+- [Internal stuff](#internal-stuff)
   - [SecuredAccess](#securedaccess)
+  - [Certificate](#certificate)
 ## Site configuration
 
 
@@ -37,235 +39,72 @@ kind: Site
 metadata:
   name: east
   namespace: hello-world-east
-
 ~~~
 #### Spec properties
 
-##### `enableLinkAccess`
+- **enableLinkAccess** _boolean_
 
-Enable external access for links from remote sites.
+  _Default:_ false
 
+  Enable external access for links from remote sites.
+  
 
-_Type:_ Boolean\
-_Required:_ No\
-_Default:_ False
-##### `linkAccessType`
+- **linkAccessType** _string_
 
-Select the means of opening external access.
-
-
-_Type:_ String\
-_Required:_ No\
-_Default:_ `route` if the environment is OpenShift, otherwise
+  _Default:_ `route` if the environment is OpenShift, otherwise
 `loadbalancer`
 
-##### `linkAccessHost`
 
-The host or IP address at which to expose link access.
+  Select the means of opening external access.
+  
 
+- **linkAccessHost** _string_
 
-_Type:_ String\
-_Required:_ No\
-_Default:_ None
-##### `serviceAccount`
+  The host or IP address at which to expose link access.
+  
 
+- **serviceAccount** _string_
 
+- **settings** _array_
 
-_Type:_ String\
-_Required:_ No\
-_Default:_ None
 ## Site linking
 
 
-### Link
-
-A [link][link] is a site-to-site communication channel. Links
-serve as a transport for application connections and requests.
-
-[link]: concepts.html#link
-
-#### Examples
-
-A typical link definition
-
-~~~ yaml
-apiVersion: skupper.io/v1alpha1
-kind: Link
-metadata:
-  name: link-to-west
-  namespace: hello-world-east
-spec:
-  [...]
-
-~~~
-#### Spec properties
-
-##### `tlsCredentials`
-
-The name of a Kubernetes secret containing TLS
-credentials. The secret contains the trusted server
-certificate (typically a CA certificate).
-
-It can optionally include a client certificate and key for
-mutual TLS.
-
-
-_Type:_ String\
-_Required:_ No\
-_Default:_ None
-##### `cost`
-
-
-
-_Type:_ Integer\
-_Required:_ No\
-_Default:_ None
-### LinkAccess
-
-A [link access][link-access] defines a point of external access
-for links from remote sites.
-
-XXX
-
-LinkAccess is specifically about configuring and providing
-access to router Listeners.
-
-LinkAccess is a way of configuring and exposing router listeners.
-
-A LinkAccess will be implemented in part by the controller
-creating an underlying SecuredAccess object, but LinkAccess will
-also cause the router config to be adjusted.
-
-[link-access]: XXX
-
-#### Examples
-
-A typical link access definition
-
-~~~ yaml
-apiVersion: skupper.io/v1alpha1
-kind: LinkAccess
-metadata:
-  name: skupper-router
-spec:
-  roles:
-  - role: inter-router
-    port: 55671
-  - role: edge
-    port: 45671
-  tlsCredentials: skupper-site-server
-
-~~~
-#### Spec properties
-
-##### `roles`
-
-
-
-_Type:_ Array\
-_Required:_ Yes\
-_Default:_ None
-##### `tlsCredentials`
-
-The name of a Kubernetes secret containing TLS
-credentials. The secret contains the trusted server
-certificate (typically a CA certificate).
-
-It can optionally include a client certificate and key for
-mutual TLS.
-
-
-_Type:_ String\
-_Required:_ Yes\
-_Default:_ None
-##### `ca`
-
-XXX FOR GENERATION OF tlsCredentials XXX
-
-A reference to a secret.
-
-Why have this when tlsCredentials has a CA?  The CA is only
-needed if you want the controller to generate the
-tlsCredentials for you, and must then refer to a secret
-containing the private key of the CA as well as its
-certificate.
-
-So ca and tlsCredentials are alternatives.
-
-If the CA is supplied in a LinkAccess, it is assumed it
-exists already (for the current mode of certificate
-management).
-
-
-_Type:_ String\
-_Required:_ No\
-_Default:_ None
-##### `bindHost`
-
-
-
-_Type:_ String\
-_Required:_ No\
-_Default:_ None
-##### `subjectAlternativeNames`
-
-
-
-_Type:_ Array\
-_Required:_ No\
-_Default:_ None
 ### Grant
 
-XXX
-
-Grant is the offering of access.
-
-It is the 'server side' of a Claim.
-
-A Grant is essentially a way to declare that someone with the
-given secret can present that in exchange for a certificate
-signed by the ca associated with the grant, up to the given
-expiration and for the number of allowed claims.
-
-Then, on the site you want to use that, you create a Claim.
-
-#### Examples
+An offer to accept links to the local site.  A remote site
+can use a claim containing the grant URL and secret to
+obtain a certificate signed by the grant's certificate
+authority (CA), within a certain expiration period and for a
+limited number of claims.
 
 #### Spec properties
 
-##### `validFor`
+- **claims** _integer_
 
+  _Consider maxClaims, claimsAllowed, and maxClaimsAllowed_
 
+- **validFor** _string (duration)_
 
-_Type:_ String\
-_Required:_ No\
-_Default:_ None
-##### `claims`
+  _Look for what would be conventional for this._
+  _"validFor" doesn't necessarily make it clear that it's_
+  _about time: "valid for 3 uses"._
 
+- **secret** _string_
 
-
-_Type:_ Integer\
-_Required:_ No\
-_Default:_ None
 ### Claim
 
-XXX
-
-The Claim declares desire to initiate access based on a previous
-Grant.
-
-Does "claim" mean something more than an asserted grant?  That
-is essentially what it is.
-
-The Claim url is obtained from the status of the grant along
-with the secret and the ca, i.e. the information for a Claim
-comes from the Grant.
-
-The Claim has the details from its associated Grant.
-
-#### Examples
+A verifiable assertion of permission to link to a remote
+site.  A claim contains the URL and secret of a previous
+grant.
 
 #### Spec properties
+
+- **url** _string_
+
+- **secret** _string_
+
+- **ca** _string_
 
 ## Service exposure
 
@@ -294,87 +133,63 @@ spec:
   routingKey: backend
   port: 8080
   selector: app=backend
-
 ~~~
 #### Spec properties
 
-##### `routingKey`
+- **routingKey** _string_
 
-The identifier used to route traffic from listeners to
-connectors.  To connect to a service at a remote site, the
-listener and connector must have matching routing keys.
+  The identifier used to route traffic from listeners to
+  connectors.  To connect to a service at a remote site, the
+  listener and connector must have matching routing keys.
+  
 
+- **selector** _string_
 
-_Type:_ String\
-_Required:_ Yes\
-_Default:_ None
-##### `selector`
+  A Kubernetes [label selector][selector] for targeting server
+  pods.
+  
+  [selector]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
+  
 
-A Kubernetes [label selector][selector] for targeting server
-pods.
+- **host** _string_
 
-[selector]: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
+  The hostname or IP address of the server.  This is an
+  alternative to `selector` for specifying the target
+  server.
+  
 
+- **port** _integer_
 
-_Type:_ String\
-_Required:_ No\
-_Default:_ None
-##### `host`
+  The port number of the server listener.
+  
 
-The hostname or IP address of the server.  This is an
-alternative to `selector` for specifying the target
-server.
+- **enableTLS** _boolean_
 
+  _Default:_ false
 
-_Type:_ String\
-_Required:_ No\
-_Default:_ None
-##### `port`
+  Use TLS to encrypt communication between the router and servers.
+  
+  By default, the TLS credentials are generated and stored in
+  a secret at XXX.
+  
 
-The port number of the server listener.
+- **tlsCredentials** _string_
 
+  The name of a Kubernetes secret containing the trusted
+  server certificate (typically a CA).
+  
+  It can optionally include a client certificate and key for
+  mutual TLS.
+  
 
-_Type:_ Integer\
-_Required:_ Yes\
-_Default:_ None
-##### `enableTLS`
+- **type** _string_
 
-Use TLS to encrypt communication between the router and servers.
+  _What is this again?  I think we need a qualifier on "type"._
 
-By default, the TLS credentials are generated and stored in
-a secret at XXX.
+- **includeNotReady** _boolean_
 
+  _Default:_ false
 
-_Type:_ Boolean\
-_Required:_ No\
-_Default:_ False
-##### `tlsCredentials`
-
-The name of a Kubernetes secret containing TLS
-credentials.  The secret contains the trusted server
-certificate (typically a CA certificate).
-
-It can optionally include a client certificate and key for
-mutual TLS.
-
-
-_Type:_ String\
-_Required:_ No\
-_Default:_ None
-##### `type`
-
-
-
-_Type:_ String\
-_Required:_ No\
-_Default:_ None
-##### `includeNotReady`
-
-
-
-_Type:_ Boolean\
-_Required:_ No\
-_Default:_ False
 ### Listener
 
 A [listener][listener] is a local connection endpoint bound to
@@ -400,96 +215,200 @@ spec:
   routingKey: backend
   port: 8080
   host: backend
-
 ~~~
 #### Spec properties
 
-##### `routingKey`
+- **routingKey** _string_
 
-The identifier used to route traffic from listeners to
-connectors.  To connect to a service at a remote site, the
-listener and connector must have matching routing keys.
+  The identifier used to route traffic from listeners to
+  connectors.  To connect to a service at a remote site, the
+  listener and connector must have matching routing keys.
+  
 
+- **host** _string_
 
-_Type:_ String\
-_Required:_ Yes\
-_Default:_ None
-##### `host`
+  The hostname or IP address of the local listener.  Clients
+  at this site use the listener host and port to
+  establish connections to the remote service.
+  
 
-The hostname or IP address of the local listener.  Clients
-at this site use the listener host and port to
-establish connections to the remote service.
+- **port** _integer_
 
+  The port of the local listener.  Clients at this site use
+  the listener host and port to establish connections to
+  the remote service.
+  
 
-_Type:_ String\
-_Required:_ Yes\
-_Default:_ None
-##### `port`
+- **enableTLS** _boolean_
 
-The port of the local listener.  Clients at this site use
-the listener host and port to establish connections to
-the remote service.
+  _Default:_ false
 
+  Use TLS to encrypt communication between clients and the router.
+  
+  By default, the TLS credentials are generated and stored in
+  a secret at XXX.
+  
 
-_Type:_ Integer\
-_Required:_ Yes\
-_Default:_ None
-##### `enableTLS`
+- **tlsCredentials** _string_
 
-Use TLS to encrypt communication between clients and the router.
+  The name of a Kubernetes secret containing TLS
+  credentials.  The secret contains the trusted server
+  certificate (typically a CA).
+  
+  It can optionally include a client certificate and key for
+  mutual TLS.
+  
 
-By default, the TLS credentials are generated and stored in
-a secret at XXX.
+- **tlsCA** _string_
 
+  _Doesn't this follow, if the TLS credentials can be generated?_
 
-_Type:_ Boolean\
-_Required:_ No\
-_Default:_ False
-##### `tlsCredentials`
+- **type** _string_
 
-The name of a Kubernetes secret containing TLS
-credentials.  The secret contains the server certificate
-and key.
+  _What is this again?  I think we need a qualifier on "type"._
 
-It can optionally include a client certificate for mutual
-TLS.
-
-
-_Type:_ String\
-_Required:_ No\
-_Default:_ None
-##### `type`
+## Advanced stuff
 
 
+### Link
 
-_Type:_ String\
-_Required:_ No\
-_Default:_ None
-## Internal
+A [link][link] is a site-to-site communication channel. Links
+serve as a transport for application connections and requests.
+
+[link]: concepts.html#link
+
+#### Examples
+
+A typical link definition
+
+~~~ yaml
+apiVersion: skupper.io/v1alpha1
+kind: Link
+metadata:
+  name: link-to-west
+  namespace: hello-world-east
+spec:
+  [...]
+~~~
+#### Spec properties
+
+- **tlsCredentials** _string_
+
+  The name of a Kubernetes secret containing TLS
+  credentials. The secret contains the trusted server
+  certificate (typically a CA).
+  
+  It can optionally include a client certificate and key for
+  mutual TLS.
+  
+
+- **cost** _integer_
+
+- **interRouter** _object_
+
+- **edge** _object_
+
+- **noClientAuth** _boolean_
+
+  _Default:_ false
+
+### LinkAccess
+
+A point of external access for links from remote sites.  A
+LinkAccess configures the router to accept inter-router
+links and creates the Kubernetes resources for external
+access.
+
+#### Examples
+
+A typical link access definition
+
+~~~ yaml
+apiVersion: skupper.io/v1alpha1
+kind: LinkAccess
+metadata:
+  name: skupper-router
+spec:
+  roles:
+  - role: inter-router
+    port: 55671
+  - role: edge
+    port: 45671
+  tlsCredentials: skupper-site-server
+~~~
+#### Spec properties
+
+- **roles** _array_
+
+- **tlsCredentials** _string_
+
+  The name of a Kubernetes secret containing the trusted
+  server certificate (typically a CA).
+  
+  It can optionally include a client certificate and key for
+  mutual TLS.
+  
+
+- **ca** _string_
+
+  The name of a Kubernetes secret containing a CA for
+  generating TLS credentials.  If the `tlsCredentials`
+  property is not set, the controller uses `ca` to
+  generate them.
+  
+
+  _Consider tlsCA.  And "ca" often means "this is what I trust".  This thing has a different meaning._
+
+- **bindHost** _string_
+
+  _Just host?  What does "bind" do here to clarify?  I have a related attribute on site: linkAccessHost._
+
+- **subjectAlternativeNames** _array_
+
+- **options** _object_
+
+## Internal stuff
 
 
 ### SecuredAccess
 
-XXX
-
-SecuredAccess is a generic way of exposing a workload (a set of
-pods).
-
-SecuredAccess just creates and necessary service/ingress
-resources and optionally any secrets with tls credentials.
-
-The implementation of LinkAccess creates a SecuredAccess and
-also configures the router.
-
-SecuredAccess is a lower level concept.  It just exposes a
-workload, including if desired, generation of necessary certs
-(though those can also be provided if preferred).
-
-SecuredAccess is not in any way tied to the router.  LInkAccess
-*is* tied to the router.  LinkAccess can be thought of as a
-specialization of SecuredAccess.
-
-#### Examples
+A generic resource for exposing a workload by creating the
+necessary service and ingress resources and optionally
+generating TLS credentials.
 
 #### Spec properties
+
+- **ports** _array_
+
+- **selector** _object_
+
+- **ca** _string_
+
+- **certificate** _string_
+
+- **accessType** _string_
+
+- **options** _object_
+
+### Certificate
+
+#### Spec properties
+
+- **ca** _string_
+
+- **subject** _string_
+
+- **hosts** _array_
+
+- **client** _boolean_
+
+  _Default:_ false
+
+- **server** _boolean_
+
+  _Default:_ false
+
+- **signing** _boolean_
+
+  _Default:_ false
 

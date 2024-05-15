@@ -47,7 +47,7 @@ groups:
           - property: linkAccessHost
           - property: serviceAccount
         errors:
-          - message: Site resource already exists
+          - message: A site resource already exists
             description: |
               There is already a site resource defined for the namespace.
       - name: skupper site update

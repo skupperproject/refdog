@@ -39,22 +39,24 @@ def generate_resource(resource, append):
     append()
     append(resource.description)
 
-    append("#### Examples")
-    append()
-
-    for example in resource.examples:
-        # XXX An example object
-        append(example["description"])
+    if resource.examples:
+        append("#### Examples")
         append()
-        append("~~~ yaml")
-        append(example["yaml"])
-        append("~~~")
 
-    append("#### Spec properties")
-    append()
+        for example in resource.examples:
+            # XXX An example object
+            append(example["description"])
+            append()
+            append("~~~ yaml")
+            append(example["yaml"].strip())
+            append("~~~")
 
-    for prop in resource.properties:
-        generate_property(prop, append)
+    if resource.properties:
+        append("#### Spec properties")
+        append()
+
+        for prop in resource.properties:
+            generate_property(prop, append)
 
     # append("#### Status properties")
     # append()
@@ -62,15 +64,38 @@ def generate_resource(resource, append):
 def generate_property(prop, append):
     debug(f"Generating {prop}")
 
-    append(f"##### `{prop.name}`")
+    title = f"**{prop.name}** _{prop.type}_"
+
+    if prop.format:
+        title = f"**{prop.name}** _{prop.type} ({prop.format})_"
+
+    append(f"- {title}")
     append()
 
-    append(prop.description or "")
-    append()
+    if prop.default is not None:
+        default = prop.default
 
-    append(f"_Type:_ {capitalize(prop.type)}\\")
-    append(f"_Required:_ {'Yes' if prop.required else 'No'}\\")
-    append(f"_Default:_ {'False' if prop.default is None and prop.type == 'boolean' else prop.default}")
+        if prop.default in (True, False):
+            default = str(prop.default).lower()
+
+        append(f"  _Default:_ {default}")
+        append()
+
+    if prop.description:
+        description = "\n".join(f"  {line}" for line in prop.description.split("\n"))
+
+        append(description)
+        append()
+
+    if prop.notes:
+        notes = "\n".join(f"  _{line}_" for line in prop.notes.strip().split("\n") if line != "")
+
+        append(notes)
+        append()
+
+    # append(f"_Type:_ {capitalize(prop.type)}\\")
+    # append(f"_Required:_ {'Yes' if prop.required else 'No'}\\")
+    # append(f"_Default:_ {'False' if prop.default is None and prop.type == 'boolean' else prop.default}")
 
 class ResourceModel:
     def __init__(self):
@@ -103,8 +128,19 @@ class ResourceModel:
 
                 self.crds_by_name[kind] = crd_data
 
+        self.check_properties()
+
     def __repr__(self):
         return "resource model"
+
+    def check_properties(self):
+        for name, data in self.crds_by_name.items():
+            assert name in self.resources_by_name, f"Missing: resource '{name}'"
+
+            resource = self.resources_by_name[name]
+
+            for name, data in data["spec"]["versions"][0]["schema"]["openAPIV3Schema"]["properties"]["spec"]["properties"].items():
+                assert name in resource.properties_by_name, f"Missing: {resource}: {name}"
 
     def get_resource_schema(self, resource):
         crd = self.crds_by_name[resource.name]

@@ -124,7 +124,7 @@ def generate_argument(argument, append):
         append()
 
     if argument.notes:
-        notes = "\n".join(f"  _Notes: {line}_" for line in argument.notes.strip().split("\n"))
+        notes = "\n".join(f"  _{line}_" for line in argument.notes.strip().split("\n"))
 
         append(notes)
         append()

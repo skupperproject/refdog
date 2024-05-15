@@ -37,126 +37,34 @@ groups:
             description: |
               The host or IP address at which to expose link access.
           - name: serviceAccount
+          - name: settings
   - title: Site linking
     resources:
-      - name: Link
-        description: |
-          A [link][link] is a site-to-site communication channel. Links
-          serve as a transport for application connections and requests.
-
-          [link]: concepts.html#link
-        examples:
-          - description: A typical link definition
-            yaml: |
-              apiVersion: skupper.io/v1alpha1
-              kind: Link
-              metadata:
-                name: link-to-west
-                namespace: hello-world-east
-              spec:
-                [...]
-        properties:
-          - name: tlsCredentials
-            description: |
-              The name of a Kubernetes secret containing TLS
-              credentials. The secret contains the trusted server
-              certificate (typically a CA certificate).
-
-              It can optionally include a client certificate and key for
-              mutual TLS.
-          - name: cost
-      - name: LinkAccess
-        description: |
-          A [link access][link-access] defines a point of external access
-          for links from remote sites.
-
-          XXX
-
-          LinkAccess is specifically about configuring and providing
-          access to router Listeners.
-
-          LinkAccess is a way of configuring and exposing router listeners.
-
-          A LinkAccess will be implemented in part by the controller
-          creating an underlying SecuredAccess object, but LinkAccess will
-          also cause the router config to be adjusted.
-
-          [link-access]: XXX
-        examples:
-          - description: A typical link access definition
-            yaml: |
-              apiVersion: skupper.io/v1alpha1
-              kind: LinkAccess
-              metadata:
-                name: skupper-router
-              spec:
-                roles:
-                - role: inter-router
-                  port: 55671
-                - role: edge
-                  port: 45671
-                tlsCredentials: skupper-site-server
-        properties:
-          - name: roles
-          - name: tlsCredentials
-            description: |
-              The name of a Kubernetes secret containing TLS
-              credentials. The secret contains the trusted server
-              certificate (typically a CA certificate).
-
-              It can optionally include a client certificate and key for
-              mutual TLS.
-          - name: ca
-            description: |
-              XXX FOR GENERATION OF tlsCredentials XXX
-
-              A reference to a secret.
-
-              Why have this when tlsCredentials has a CA?  The CA is only
-              needed if you want the controller to generate the
-              tlsCredentials for you, and must then refer to a secret
-              containing the private key of the CA as well as its
-              certificate.
-
-              So ca and tlsCredentials are alternatives.
-
-              If the CA is supplied in a LinkAccess, it is assumed it
-              exists already (for the current mode of certificate
-              management).
-          - name: bindHost
-          - name: subjectAlternativeNames
       - name: Grant
         description: |
-          XXX
-
-          Grant is the offering of access.
-
-          It is the 'server side' of a Claim.
-
-          A Grant is essentially a way to declare that someone with the
-          given secret can present that in exchange for a certificate
-          signed by the ca associated with the grant, up to the given
-          expiration and for the number of allowed claims.
-
-          Then, on the site you want to use that, you create a Claim.
+          An offer to accept links to the local site.  A remote site
+          can use a claim containing the grant URL and secret to
+          obtain a certificate signed by the grant's certificate
+          authority (CA), within a certain expiration period and for a
+          limited number of claims.
         properties:
-          - name: validFor
           - name: claims
+            notes: Consider maxClaims, claimsAllowed, and maxClaimsAllowed
+          - name: validFor
+            notes: |
+              Look for what would be conventional for this.
+              "validFor" doesn't necessarily make it clear that it's
+              about time: "valid for 3 uses".
+          - name: secret
       - name: Claim
         description: |
-          XXX
-
-          The Claim declares desire to initiate access based on a previous
-          Grant.
-
-          Does "claim" mean something more than an asserted grant?  That
-          is essentially what it is.
-
-          The Claim url is obtained from the status of the grant along
-          with the secret and the ca, i.e. the information for a Claim
-          comes from the Grant.
-
-          The Claim has the details from its associated Grant.
+          A verifiable assertion of permission to link to a remote
+          site.  A claim contains the URL and secret of a previous
+          grant.
+        properties:
+          - name: url
+          - name: secret
+          - name: ca
   - title: Service exposure
     resources:
       - name: Connector
@@ -209,9 +117,8 @@ groups:
               a secret at XXX.
           - name: tlsCredentials
             description: |
-              The name of a Kubernetes secret containing TLS
-              credentials.  The secret contains the trusted server
-              certificate (typically a CA certificate).
+              The name of a Kubernetes secret containing the trusted
+              server certificate (typically a CA).
 
               It can optionally include a client certificate and key for
               mutual TLS.
@@ -267,33 +174,110 @@ groups:
           - name: tlsCredentials
             description: |
               The name of a Kubernetes secret containing TLS
-              credentials.  The secret contains the server certificate
-              and key.
+              credentials.  The secret contains the trusted server
+              certificate (typically a CA).
 
-              It can optionally include a client certificate for mutual
-              TLS.
+              It can optionally include a client certificate and key for
+              mutual TLS.
+          - name: tlsCA
+            type: string
+            notes: |
+              Doesn't this follow, if the TLS credentials can be generated?
           - name: type
             notes: |
               What is this again?  I think we need a qualifier on "type".
-  - title: Internal
+  - title: Advanced stuff
+    resources:
+      - name: Link
+        description: |
+          A [link][link] is a site-to-site communication channel. Links
+          serve as a transport for application connections and requests.
+
+          [link]: concepts.html#link
+        examples:
+          - description: A typical link definition
+            yaml: |
+              apiVersion: skupper.io/v1alpha1
+              kind: Link
+              metadata:
+                name: link-to-west
+                namespace: hello-world-east
+              spec:
+                [...]
+        properties:
+          - name: tlsCredentials
+            description: |
+              The name of a Kubernetes secret containing TLS
+              credentials. The secret contains the trusted server
+              certificate (typically a CA).
+
+              It can optionally include a client certificate and key for
+              mutual TLS.
+          - name: cost
+          - name: interRouter
+          - name: edge
+          - name: noClientAuth
+      - name: LinkAccess
+        description: |
+          A point of external access for links from remote sites.  A
+          LinkAccess configures the router to accept inter-router
+          links and creates the Kubernetes resources for external
+          access.
+        examples:
+          - description: A typical link access definition
+            yaml: |
+              apiVersion: skupper.io/v1alpha1
+              kind: LinkAccess
+              metadata:
+                name: skupper-router
+              spec:
+                roles:
+                - role: inter-router
+                  port: 55671
+                - role: edge
+                  port: 45671
+                tlsCredentials: skupper-site-server
+        properties:
+          - name: roles
+          - name: tlsCredentials
+            description: |
+              The name of a Kubernetes secret containing the trusted
+              server certificate (typically a CA).
+
+              It can optionally include a client certificate and key for
+              mutual TLS.
+          - name: ca
+            description: |
+              The name of a Kubernetes secret containing a CA for
+              generating TLS credentials.  If the `tlsCredentials`
+              property is not set, the controller uses `ca` to
+              generate them.
+            notes: |
+              Consider tlsCA.  And "ca" often means "this is what I trust".  This thing has a different meaning.
+          - name: bindHost
+            notes: |
+              Just host?  What does "bind" do here to clarify?  I have a related attribute on site: linkAccessHost.
+          - name: subjectAlternativeNames
+          - name: options
+  - title: Internal stuff
     resources:
       - name: SecuredAccess
         description: |
-          XXX
-
-          SecuredAccess is a generic way of exposing a workload (a set of
-          pods).
-
-          SecuredAccess just creates and necessary service/ingress
-          resources and optionally any secrets with tls credentials.
-
-          The implementation of LinkAccess creates a SecuredAccess and
-          also configures the router.
-
-          SecuredAccess is a lower level concept.  It just exposes a
-          workload, including if desired, generation of necessary certs
-          (though those can also be provided if preferred).
-
-          SecuredAccess is not in any way tied to the router.  LInkAccess
-          *is* tied to the router.  LinkAccess can be thought of as a
-          specialization of SecuredAccess.
+          A generic resource for exposing a workload by creating the
+          necessary service and ingress resources and optionally
+          generating TLS credentials.
+        properties:
+          - name: ports
+          - name: selector
+          - name: ca
+          - name: certificate
+          - name: accessType
+          - name: options
+      - name: Certificate
+        properties:
+          - name: ca
+          - name: subject
+          - name: hosts
+          - name: client
+          - name: server
+          - name: signing

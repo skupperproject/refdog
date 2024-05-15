@@ -126,7 +126,7 @@ skupper site create west --enable-link-access
 
 #### Errors
 
-- **Site resource already exists**
+- **A site resource already exists**
 
   There is already a site resource defined for the namespace.
   
@@ -268,9 +268,15 @@ The token expires after 1 use or after 15 minutes
 
   _Default:_ 15m
 
+  _Look for what would be conventional for this._
+  _"validFor" doesn't necessarily make it clear that it's_
+  _about time: "valid for 3 uses"._
+
 - **--uses** _integer_
 
   _Default:_ 1
+
+  _Consider maxClaims, claimsAllowed, and maxClaimsAllowed_
 
 ### skupper link
 
@@ -403,9 +409,8 @@ skupper connector create database --workload deployment/postgresql --port 5432
 
 - **--tls-credentials** _string_
 
-  The name of a Kubernetes secret containing TLS
-  credentials.  The secret contains the trusted server
-  certificate (typically a CA certificate).
+  The name of a Kubernetes secret containing the trusted
+  server certificate (typically a CA).
   
   It can optionally include a client certificate and key for
   mutual TLS.
@@ -413,7 +418,7 @@ skupper connector create database --workload deployment/postgresql --port 5432
 
 - **--type** _string_
 
-  _Notes: What is this again?  I think we need a qualifier on "type"._
+  _What is this again?  I think we need a qualifier on "type"._
 
 - **--include-not-ready** _boolean_
 
@@ -529,16 +534,16 @@ skupper listener create database --host database --port 5432
 - **--tls-credentials** _string_
 
   The name of a Kubernetes secret containing TLS
-  credentials.  The secret contains the server certificate
-  and key.
+  credentials.  The secret contains the trusted server
+  certificate (typically a CA).
   
-  It can optionally include a client certificate for mutual
-  TLS.
+  It can optionally include a client certificate and key for
+  mutual TLS.
   
 
 - **--type** _string_
 
-  _Notes: What is this again?  I think we need a qualifier on "type"._
+  _What is this again?  I think we need a qualifier on "type"._
 
 ### skupper listener delete
 

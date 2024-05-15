@@ -123,7 +123,7 @@ displayed in the console and CLI output.</p>
 </ul>
 <h4 id="errors">Errors</h4>
 <ul>
-<li><p><strong>Site resource already exists</strong></p>
+<li><p><strong>A site resource already exists</strong></p>
 <p>There is already a site resource defined for the namespace.</p>
 </li>
 </ul>
@@ -215,9 +215,13 @@ The token expires after 1 use or after 15 minutes
 </li>
 <li><p><strong>--expiry</strong> <em>string (duration)</em></p>
 <p><em>Default:</em> 15m</p>
+<p><em>Look for what would be conventional for this.</em>
+<em>&quot;validFor&quot; doesn't necessarily make it clear that it's</em>
+<em>about time: &quot;valid for 3 uses&quot;.</em></p>
 </li>
 <li><p><strong>--uses</strong> <em>integer</em></p>
 <p><em>Default:</em> 1</p>
+<p><em>Consider maxClaims, claimsAllowed, and maxClaimsAllowed</em></p>
 </li>
 </ul>
 <h3 id="skupper-link">skupper link</h3>
@@ -294,14 +298,13 @@ server.</p>
 a secret at XXX.</p>
 </li>
 <li><p><strong>--tls-credentials</strong> <em>string</em></p>
-<p>The name of a Kubernetes secret containing TLS
-credentials.  The secret contains the trusted server
-certificate (typically a CA certificate).</p>
+<p>The name of a Kubernetes secret containing the trusted
+server certificate (typically a CA).</p>
 <p>It can optionally include a client certificate and key for
 mutual TLS.</p>
 </li>
 <li><p><strong>--type</strong> <em>string</em></p>
-<p><em>Notes: What is this again?  I think we need a qualifier on &quot;type&quot;.</em></p>
+<p><em>What is this again?  I think we need a qualifier on &quot;type&quot;.</em></p>
 </li>
 <li><p><strong>--include-not-ready</strong> <em>boolean</em></p>
 <p><em>Default:</em> false</p>
@@ -373,13 +376,13 @@ a secret at XXX.</p>
 </li>
 <li><p><strong>--tls-credentials</strong> <em>string</em></p>
 <p>The name of a Kubernetes secret containing TLS
-credentials.  The secret contains the server certificate
-and key.</p>
-<p>It can optionally include a client certificate for mutual
-TLS.</p>
+credentials.  The secret contains the trusted server
+certificate (typically a CA).</p>
+<p>It can optionally include a client certificate and key for
+mutual TLS.</p>
 </li>
 <li><p><strong>--type</strong> <em>string</em></p>
-<p><em>Notes: What is this again?  I think we need a qualifier on &quot;type&quot;.</em></p>
+<p><em>What is this again?  I think we need a qualifier on &quot;type&quot;.</em></p>
 </li>
 </ul>
 <h3 id="skupper-listener-delete">skupper listener delete</h3>
