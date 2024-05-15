@@ -206,7 +206,7 @@ class Command:
     @property
     def resource(self):
         if "resource" in self.data:
-            return self.model.resource_model.resources[self.data["resource"]]
+            return self.model.resource_model.resources_by_name[self.data["resource"]]
 
     @property
     def description(self):

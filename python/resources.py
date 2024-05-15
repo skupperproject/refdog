@@ -79,8 +79,8 @@ class ResourceModel:
         self.data = read_yaml("config/resources.yaml")
 
         self.groups = list()
-        self.crds = dict()
-        self.resources = dict()
+        self.crds_by_name = dict()
+        self.resources_by_name = dict()
 
         with working_dir("crds"):
             for crd_file in list_dir():
@@ -94,14 +94,14 @@ class ResourceModel:
 
                 kind = crd_data["spec"]["names"]["kind"]
 
-                self.crds[kind] = crd_data
+                self.crds_by_name[kind] = crd_data
 
         for group_data in self.data["groups"]:
             self.groups.append(Group(self, group_data))
 
         for group in self.groups:
             for resource in group.resources:
-                self.resources[resource.name] = resource
+                self.resources_by_name[resource.name] = resource
 
     def __repr__(self):
         return "resource model"
@@ -116,7 +116,7 @@ class Group:
         self.resources = list()
 
         for resource_data in self.data.get("resources", []):
-            crd_data = self.model.crds[resource_data["name"]]
+            crd_data = self.model.crds_by_name[resource_data["name"]]
             self.resources.append(Resource(self.model, self, resource_data, crd_data))
 
     def __repr__(self):
