@@ -36,6 +36,7 @@ groups:
             type: string
             description: |
               The host or IP address at which to expose link access.
+          - name: serviceAccount
   - title: Site linking
     resources:
       - name: Link
@@ -63,6 +64,7 @@ groups:
 
               It can optionally include a client certificate and key for
               mutual TLS.
+          - name: cost
       - name: LinkAccess
         description: |
           A [link access][link-access] defines a point of external access
@@ -139,6 +141,9 @@ groups:
           expiration and for the number of allowed claims.
 
           Then, on the site you want to use that, you create a Claim.
+        properties:
+          - name: validFor
+          - name: claims
       - name: Claim
         description: |
           XXX
@@ -215,6 +220,7 @@ groups:
           - name: type
             notes: |
               What is this again?  I think we need a qualifier on "type".
+          - name: includeNotReady
       - name: Listener
         description: |
           A [listener][listener] is a local connection endpoint bound to

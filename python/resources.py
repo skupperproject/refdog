@@ -79,8 +79,15 @@ class ResourceModel:
         self.data = read_yaml("config/resources.yaml")
 
         self.groups = list()
-        self.crds_by_name = dict()
         self.resources_by_name = dict()
+        self.crds_by_name = dict()
+
+        for group_data in self.data["groups"]:
+            self.groups.append(Group(self, group_data))
+
+        for group in self.groups:
+            for resource in group.resources:
+                self.resources_by_name[resource.name] = resource
 
         with working_dir("crds"):
             for crd_file in list_dir():
@@ -96,15 +103,24 @@ class ResourceModel:
 
                 self.crds_by_name[kind] = crd_data
 
-        for group_data in self.data["groups"]:
-            self.groups.append(Group(self, group_data))
-
-        for group in self.groups:
-            for resource in group.resources:
-                self.resources_by_name[resource.name] = resource
-
     def __repr__(self):
         return "resource model"
+
+    def get_resource_schema(self, resource):
+        crd = self.crds_by_name[resource.name]
+
+        try:
+            return crd["spec"]["versions"][0]["schema"]["openAPIV3Schema"]
+        except KeyError:
+            return {}
+
+    def get_property_spec(self, prop):
+        schema = self.get_resource_schema(prop.resource)
+
+        try:
+            return schema["properties"]["spec"]["properties"][prop.name]
+        except KeyError:
+            return {}
 
 class Group:
     def __init__(self, model, data):
@@ -116,8 +132,7 @@ class Group:
         self.resources = list()
 
         for resource_data in self.data.get("resources", []):
-            crd_data = self.model.crds_by_name[resource_data["name"]]
-            self.resources.append(Resource(self.model, self, resource_data, crd_data))
+            self.resources.append(Resource(self.model, self, resource_data))
 
     def __repr__(self):
         return f"group '{self.title}'"
@@ -135,37 +150,21 @@ class Group:
         return self.data.get("description")
 
 class Resource:
-    def __init__(self, model, group, data, crd_data):
+    def __init__(self, model, group, data):
         self.model = model
         self.group = group
         self.data = data
-        self.crd_data = crd_data
 
         debug(f"Loading {self}")
 
         self.properties = list()
         self.properties_by_name = dict()
 
-        schema = self.crd_data["spec"]["versions"][0]["schema"]["openAPIV3Schema"]
-
-        for name, crd_data in schema["properties"]["spec"]["properties"].items():
-            for property_data in self.data.get("properties", []):
-                if property_data["name"] == name:
-                    break
-            else:
-                property_data = {"name": name}
-
-            prop = Property(self.model, self, property_data, crd_data)
+        for property_data in self.data.get("properties", []):
+            prop = Property(self.model, self, property_data)
 
             self.properties.append(prop)
             self.properties_by_name[prop.name] = prop
-
-        for property_data in self.data.get("properties", []):
-            if property_data["name"] not in self.properties_by_name:
-                prop = Property(self.model, self, property_data, None)
-
-                self.properties.append(prop)
-                self.properties_by_name[prop.name] = prop
 
     def __repr__(self):
         return f"resource '{self.name}'"
@@ -176,6 +175,7 @@ class Resource:
 
     @property
     def description(self):
+        # XXX Default to CRD description
         return self.data.get("description")
 
     @property
@@ -183,11 +183,10 @@ class Resource:
         return self.data.get("examples", [])
 
 class Property:
-    def __init__(self, model, resource, data, crd_data):
+    def __init__(self, model, resource, data):
         self.model = model
         self.resource = resource
         self.data = data
-        self.crd_data = crd_data
 
         debug(f"Loading {self}")
 
@@ -200,18 +199,20 @@ class Property:
 
     @property
     def type(self):
-        default = self.crd_data.get("type") if self.crd_data else None
+        default = self.model.get_property_spec(self).get("type")
         return self.data.get("type", default)
 
     @property
     def format(self):
-        default = self.crd_data.get("format") if self.crd_data else None
+        default = self.model.get_property_spec(self).get("format")
         return self.data.get("format", default)
 
     @property
     def required(self):
-        required_names = self.resource.crd_data["spec"]["versions"][0]["schema"]["openAPIV3Schema"]["properties"]["spec"].get("required", [])
+        schema = self.model.get_resource_schema(self.resource)
+        required_names = schema["properties"]["spec"].get("required", [])
         default = self.name in required_names
+
         return self.data.get("required", default)
 
     @property
@@ -221,7 +222,7 @@ class Property:
 
     @property
     def description(self):
-        default = self.crd_data.get("description") if self.crd_data else None
+        default = self.model.get_property_spec(self).get("description")
         return self.data.get("description", default)
 
     @property

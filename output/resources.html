@@ -62,14 +62,6 @@ metadata:
 
 </code></pre>
 <h4 id="spec-properties">Spec properties</h4>
-<h5 id="codeserviceaccountcode"><code>serviceAccount</code></h5>
-<p><em>Type:</em> String<br />
-<em>Required:</em> No<br />
-<em>Default:</em> None</p>
-<h5 id="codesettingscode"><code>settings</code></h5>
-<p><em>Type:</em> Array<br />
-<em>Required:</em> No<br />
-<em>Default:</em> None</p>
 <h5 id="codeenablelinkaccesscode"><code>enableLinkAccess</code></h5>
 <p>Enable external access for links from remote sites.</p>
 <p><em>Type:</em> Boolean<br />
@@ -83,6 +75,10 @@ metadata:
 <code>loadbalancer</code></p>
 <h5 id="codelinkaccesshostcode"><code>linkAccessHost</code></h5>
 <p>The host or IP address at which to expose link access.</p>
+<p><em>Type:</em> String<br />
+<em>Required:</em> No<br />
+<em>Default:</em> None</p>
+<h5 id="codeserviceaccountcode"><code>serviceAccount</code></h5>
 <p><em>Type:</em> String<br />
 <em>Required:</em> No<br />
 <em>Default:</em> None</p>
@@ -102,14 +98,6 @@ spec:
 
 </code></pre>
 <h4 id="spec-properties">Spec properties</h4>
-<h5 id="codeinterroutercode"><code>interRouter</code></h5>
-<p><em>Type:</em> Object<br />
-<em>Required:</em> Yes<br />
-<em>Default:</em> None</p>
-<h5 id="codeedgecode"><code>edge</code></h5>
-<p><em>Type:</em> Object<br />
-<em>Required:</em> Yes<br />
-<em>Default:</em> None</p>
 <h5 id="codetlscredentialscode"><code>tlsCredentials</code></h5>
 <p>The name of a Kubernetes secret containing TLS
 credentials. The secret contains the trusted server
@@ -123,10 +111,6 @@ mutual TLS.</p>
 <p><em>Type:</em> Integer<br />
 <em>Required:</em> No<br />
 <em>Default:</em> None</p>
-<h5 id="codenoclientauthcode"><code>noClientAuth</code></h5>
-<p><em>Type:</em> Boolean<br />
-<em>Required:</em> No<br />
-<em>Default:</em> False</p>
 <h3 id="linkaccess">LinkAccess</h3>
 <p>A <a href="XXX">link access</a> defines a point of external access
 for links from remote sites.</p>
@@ -154,8 +138,13 @@ spec:
 
 </code></pre>
 <h4 id="spec-properties">Spec properties</h4>
-<h5 id="coderolescode"><code>roles</code></h5>
-<p><em>Type:</em> Array<br />
+<h5 id="codetlscredentialscode"><code>tlsCredentials</code></h5>
+<p>The name of a Kubernetes secret containing TLS
+credentials. The secret contains the trusted server
+certificate (typically a CA certificate).</p>
+<p>It can optionally include a client certificate and key for
+mutual TLS.</p>
+<p><em>Type:</em> String<br />
 <em>Required:</em> Yes<br />
 <em>Default:</em> None</p>
 <h5 id="codecacode"><code>ca</code></h5>
@@ -173,23 +162,10 @@ management).</p>
 <p><em>Type:</em> String<br />
 <em>Required:</em> No<br />
 <em>Default:</em> None</p>
-<h5 id="codetlscredentialscode"><code>tlsCredentials</code></h5>
-<p>The name of a Kubernetes secret containing TLS
-credentials. The secret contains the trusted server
-certificate (typically a CA certificate).</p>
-<p>It can optionally include a client certificate and key for
-mutual TLS.</p>
-<p><em>Type:</em> String<br />
-<em>Required:</em> Yes<br />
-<em>Default:</em> None</p>
 <h5 id="codeaccesstypecode"><code>accessType</code></h5>
 <p>accessType is a hint or constraint on the kind of ingress
 that can/should be used (route, nodePort, LB, nginx, etc.).</p>
 <p><em>Type:</em> String<br />
-<em>Required:</em> No<br />
-<em>Default:</em> None</p>
-<h5 id="codeoptionscode"><code>options</code></h5>
-<p><em>Type:</em> Object<br />
 <em>Required:</em> No<br />
 <em>Default:</em> None</p>
 <h3 id="grant">Grant</h3>
@@ -203,16 +179,12 @@ expiration and for the number of allowed claims.</p>
 <p>Then, on the site you want to use that, you create a Claim.</p>
 <h4 id="examples">Examples</h4>
 <h4 id="spec-properties">Spec properties</h4>
-<h5 id="codeclaimscode"><code>claims</code></h5>
-<p><em>Type:</em> Int<br />
-<em>Required:</em> No<br />
-<em>Default:</em> None</p>
 <h5 id="codevalidforcode"><code>validFor</code></h5>
 <p><em>Type:</em> String<br />
 <em>Required:</em> No<br />
 <em>Default:</em> None</p>
-<h5 id="codesecretcode"><code>secret</code></h5>
-<p><em>Type:</em> String<br />
+<h5 id="codeclaimscode"><code>claims</code></h5>
+<p><em>Type:</em> Int<br />
 <em>Required:</em> No<br />
 <em>Default:</em> None</p>
 <h3 id="claim">Claim</h3>
@@ -227,18 +199,6 @@ comes from the Grant.</p>
 <p>The Claim has the details from its associated Grant.</p>
 <h4 id="examples">Examples</h4>
 <h4 id="spec-properties">Spec properties</h4>
-<h5 id="codeurlcode"><code>url</code></h5>
-<p><em>Type:</em> String<br />
-<em>Required:</em> Yes<br />
-<em>Default:</em> None</p>
-<h5 id="codesecretcode"><code>secret</code></h5>
-<p><em>Type:</em> String<br />
-<em>Required:</em> Yes<br />
-<em>Default:</em> None</p>
-<h5 id="codecacode"><code>ca</code></h5>
-<p><em>Type:</em> String<br />
-<em>Required:</em> Yes<br />
-<em>Default:</em> None</p>
 <h2 id="service-exposure">Service exposure</h2>
 <h3 id="connector">Connector</h3>
 <p>A <a href="concepts.html#connector">connector</a> binds local servers to listeners in
@@ -265,11 +225,6 @@ listener and connector must have matching routing keys.</p>
 <p><em>Type:</em> String<br />
 <em>Required:</em> Yes<br />
 <em>Default:</em> None</p>
-<h5 id="codeportcode"><code>port</code></h5>
-<p>The port number of the server listener.</p>
-<p><em>Type:</em> Integer<br />
-<em>Required:</em> Yes<br />
-<em>Default:</em> None</p>
 <h5 id="codeselectorcode"><code>selector</code></h5>
 <p>A Kubernetes <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">label selector</a> for targeting server
 pods.</p>
@@ -283,6 +238,18 @@ server.</p>
 <p><em>Type:</em> String<br />
 <em>Required:</em> No<br />
 <em>Default:</em> None</p>
+<h5 id="codeportcode"><code>port</code></h5>
+<p>The port number of the server listener.</p>
+<p><em>Type:</em> Integer<br />
+<em>Required:</em> Yes<br />
+<em>Default:</em> None</p>
+<h5 id="codeenabletlscode"><code>enableTLS</code></h5>
+<p>Use TLS to encrypt communication between the router and servers.</p>
+<p>By default, the TLS credentials are generated and stored in
+a secret at XXX.</p>
+<p><em>Type:</em> Boolean<br />
+<em>Required:</em> No<br />
+<em>Default:</em> False</p>
 <h5 id="codetlscredentialscode"><code>tlsCredentials</code></h5>
 <p>The name of a Kubernetes secret containing TLS
 credentials.  The secret contains the trusted server
@@ -297,13 +264,6 @@ mutual TLS.</p>
 <em>Required:</em> No<br />
 <em>Default:</em> None</p>
 <h5 id="codeincludenotreadycode"><code>includeNotReady</code></h5>
-<p><em>Type:</em> Boolean<br />
-<em>Required:</em> No<br />
-<em>Default:</em> False</p>
-<h5 id="codeenabletlscode"><code>enableTLS</code></h5>
-<p>Use TLS to encrypt communication between the router and servers.</p>
-<p>By default, the TLS credentials are generated and stored in
-a secret at XXX.</p>
 <p><em>Type:</em> Boolean<br />
 <em>Required:</em> No<br />
 <em>Default:</em> False</p>
@@ -347,6 +307,13 @@ the remote service.</p>
 <p><em>Type:</em> Integer<br />
 <em>Required:</em> Yes<br />
 <em>Default:</em> None</p>
+<h5 id="codeenabletlscode"><code>enableTLS</code></h5>
+<p>Use TLS to encrypt communication between clients and the router.</p>
+<p>By default, the TLS credentials are generated and stored in
+a secret at XXX.</p>
+<p><em>Type:</em> Boolean<br />
+<em>Required:</em> No<br />
+<em>Default:</em> False</p>
 <h5 id="codetlscredentialscode"><code>tlsCredentials</code></h5>
 <p>The name of a Kubernetes secret containing TLS
 credentials.  The secret contains the server certificate
@@ -360,13 +327,6 @@ TLS.</p>
 <p><em>Type:</em> String<br />
 <em>Required:</em> No<br />
 <em>Default:</em> None</p>
-<h5 id="codeenabletlscode"><code>enableTLS</code></h5>
-<p>Use TLS to encrypt communication between clients and the router.</p>
-<p>By default, the TLS credentials are generated and stored in
-a secret at XXX.</p>
-<p><em>Type:</em> Boolean<br />
-<em>Required:</em> No<br />
-<em>Default:</em> False</p>
 <h2 id="internal">Internal</h2>
 <h3 id="securedaccess">SecuredAccess</h3>
 <p>XXX</p>
@@ -384,30 +344,6 @@ workload, including if desired, generation of necessary certs
 specialization of SecuredAccess.</p>
 <h4 id="examples">Examples</h4>
 <h4 id="spec-properties">Spec properties</h4>
-<h5 id="codeportscode"><code>ports</code></h5>
-<p><em>Type:</em> Array<br />
-<em>Required:</em> Yes<br />
-<em>Default:</em> None</p>
-<h5 id="codeselectorcode"><code>selector</code></h5>
-<p><em>Type:</em> Object<br />
-<em>Required:</em> Yes<br />
-<em>Default:</em> None</p>
-<h5 id="codecacode"><code>ca</code></h5>
-<p><em>Type:</em> String<br />
-<em>Required:</em> No<br />
-<em>Default:</em> None</p>
-<h5 id="codecertificatecode"><code>certificate</code></h5>
-<p><em>Type:</em> String<br />
-<em>Required:</em> No<br />
-<em>Default:</em> None</p>
-<h5 id="codeaccesstypecode"><code>accessType</code></h5>
-<p><em>Type:</em> String<br />
-<em>Required:</em> No<br />
-<em>Default:</em> None</p>
-<h5 id="codeoptionscode"><code>options</code></h5>
-<p><em>Type:</em> Object<br />
-<em>Required:</em> No<br />
-<em>Default:</em> None</p>
 
 
     </div>

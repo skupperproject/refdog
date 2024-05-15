@@ -41,20 +41,6 @@ metadata:
 ~~~
 #### Spec properties
 
-##### `serviceAccount`
-
-
-
-_Type:_ String\
-_Required:_ No\
-_Default:_ None
-##### `settings`
-
-
-
-_Type:_ Array\
-_Required:_ No\
-_Default:_ None
 ##### `enableLinkAccess`
 
 Enable external access for links from remote sites.
@@ -76,6 +62,13 @@ _Default:_ `route` if the environment is OpenShift, otherwise
 ##### `linkAccessHost`
 
 The host or IP address at which to expose link access.
+
+
+_Type:_ String\
+_Required:_ No\
+_Default:_ None
+##### `serviceAccount`
+
 
 
 _Type:_ String\
@@ -107,20 +100,6 @@ spec:
 ~~~
 #### Spec properties
 
-##### `interRouter`
-
-
-
-_Type:_ Object\
-_Required:_ Yes\
-_Default:_ None
-##### `edge`
-
-
-
-_Type:_ Object\
-_Required:_ Yes\
-_Default:_ None
 ##### `tlsCredentials`
 
 The name of a Kubernetes secret containing TLS
@@ -141,13 +120,6 @@ _Default:_ None
 _Type:_ Integer\
 _Required:_ No\
 _Default:_ None
-##### `noClientAuth`
-
-
-
-_Type:_ Boolean\
-_Required:_ No\
-_Default:_ False
 ### LinkAccess
 
 A [link access][link-access] defines a point of external access
@@ -187,11 +159,17 @@ spec:
 ~~~
 #### Spec properties
 
-##### `roles`
+##### `tlsCredentials`
+
+The name of a Kubernetes secret containing TLS
+credentials. The secret contains the trusted server
+certificate (typically a CA certificate).
+
+It can optionally include a client certificate and key for
+mutual TLS.
 
 
-
-_Type:_ Array\
+_Type:_ String\
 _Required:_ Yes\
 _Default:_ None
 ##### `ca`
@@ -216,19 +194,6 @@ management).
 _Type:_ String\
 _Required:_ No\
 _Default:_ None
-##### `tlsCredentials`
-
-The name of a Kubernetes secret containing TLS
-credentials. The secret contains the trusted server
-certificate (typically a CA certificate).
-
-It can optionally include a client certificate and key for
-mutual TLS.
-
-
-_Type:_ String\
-_Required:_ Yes\
-_Default:_ None
 ##### `accessType`
 
 accessType is a hint or constraint on the kind of ingress
@@ -236,13 +201,6 @@ that can/should be used (route, nodePort, LB, nginx, etc.).
 
 
 _Type:_ String\
-_Required:_ No\
-_Default:_ None
-##### `options`
-
-
-
-_Type:_ Object\
 _Required:_ No\
 _Default:_ None
 ### Grant
@@ -264,13 +222,6 @@ Then, on the site you want to use that, you create a Claim.
 
 #### Spec properties
 
-##### `claims`
-
-
-
-_Type:_ Int\
-_Required:_ No\
-_Default:_ None
 ##### `validFor`
 
 
@@ -278,11 +229,11 @@ _Default:_ None
 _Type:_ String\
 _Required:_ No\
 _Default:_ None
-##### `secret`
+##### `claims`
 
 
 
-_Type:_ String\
+_Type:_ Int\
 _Required:_ No\
 _Default:_ None
 ### Claim
@@ -305,27 +256,6 @@ The Claim has the details from its associated Grant.
 
 #### Spec properties
 
-##### `url`
-
-
-
-_Type:_ String\
-_Required:_ Yes\
-_Default:_ None
-##### `secret`
-
-
-
-_Type:_ String\
-_Required:_ Yes\
-_Default:_ None
-##### `ca`
-
-
-
-_Type:_ String\
-_Required:_ Yes\
-_Default:_ None
 ## Service exposure
 
 
@@ -367,14 +297,6 @@ listener and connector must have matching routing keys.
 _Type:_ String\
 _Required:_ Yes\
 _Default:_ None
-##### `port`
-
-The port number of the server listener.
-
-
-_Type:_ Integer\
-_Required:_ Yes\
-_Default:_ None
 ##### `selector`
 
 A Kubernetes [label selector][selector] for targeting server
@@ -396,6 +318,25 @@ server.
 _Type:_ String\
 _Required:_ No\
 _Default:_ None
+##### `port`
+
+The port number of the server listener.
+
+
+_Type:_ Integer\
+_Required:_ Yes\
+_Default:_ None
+##### `enableTLS`
+
+Use TLS to encrypt communication between the router and servers.
+
+By default, the TLS credentials are generated and stored in
+a secret at XXX.
+
+
+_Type:_ Boolean\
+_Required:_ No\
+_Default:_ False
 ##### `tlsCredentials`
 
 The name of a Kubernetes secret containing TLS
@@ -418,17 +359,6 @@ _Required:_ No\
 _Default:_ None
 ##### `includeNotReady`
 
-
-
-_Type:_ Boolean\
-_Required:_ No\
-_Default:_ False
-##### `enableTLS`
-
-Use TLS to encrypt communication between the router and servers.
-
-By default, the TLS credentials are generated and stored in
-a secret at XXX.
 
 
 _Type:_ Boolean\
@@ -493,6 +423,17 @@ the remote service.
 _Type:_ Integer\
 _Required:_ Yes\
 _Default:_ None
+##### `enableTLS`
+
+Use TLS to encrypt communication between clients and the router.
+
+By default, the TLS credentials are generated and stored in
+a secret at XXX.
+
+
+_Type:_ Boolean\
+_Required:_ No\
+_Default:_ False
 ##### `tlsCredentials`
 
 The name of a Kubernetes secret containing TLS
@@ -513,17 +454,6 @@ _Default:_ None
 _Type:_ String\
 _Required:_ No\
 _Default:_ None
-##### `enableTLS`
-
-Use TLS to encrypt communication between clients and the router.
-
-By default, the TLS credentials are generated and stored in
-a secret at XXX.
-
-
-_Type:_ Boolean\
-_Required:_ No\
-_Default:_ False
 ## Internal
 
 
@@ -552,45 +482,3 @@ specialization of SecuredAccess.
 
 #### Spec properties
 
-##### `ports`
-
-
-
-_Type:_ Array\
-_Required:_ Yes\
-_Default:_ None
-##### `selector`
-
-
-
-_Type:_ Object\
-_Required:_ Yes\
-_Default:_ None
-##### `ca`
-
-
-
-_Type:_ String\
-_Required:_ No\
-_Default:_ None
-##### `certificate`
-
-
-
-_Type:_ String\
-_Required:_ No\
-_Default:_ None
-##### `accessType`
-
-
-
-_Type:_ String\
-_Required:_ No\
-_Default:_ None
-##### `options`
-
-
-
-_Type:_ Object\
-_Required:_ No\
-_Default:_ None
