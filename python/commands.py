@@ -319,7 +319,6 @@ class Error:
 
 def argument_name(property_name, positional):
     chars = list()
-    prevprev = None
     prev = None
 
     if not positional:
@@ -337,7 +336,6 @@ def argument_name(property_name, positional):
 
             chars.append(char)
 
-        prevprev = prev
         prev = char
 
     return "".join(chars)
