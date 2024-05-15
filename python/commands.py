@@ -133,6 +133,7 @@ class CommandModel:
     def __init__(self):
         debug(f"Loading {self}")
 
+        self.resource_model = ResourceModel()
         self.data = read_yaml("config/commands.yaml")
 
         self.global_arguments = list()
@@ -143,8 +144,6 @@ class CommandModel:
 
         for group_data in self.data["groups"]:
             self.groups.append(Group(self, group_data))
-
-        self.resource_model = ResourceModel()
 
     def __repr__(self):
         return "command model"
