@@ -17,11 +17,11 @@ global_arguments:
 groups:
   - title: Site configuration
     commands:
-      - title: skupper site
+      - name: skupper site
         description: |
           Display help for site commands and exit.
       - resource: Site
-        title: skupper site create
+        name: skupper site create
         description: |
           Create a site.
 
@@ -51,7 +51,7 @@ groups:
             description: |
               There is already a site resource defined for the namespace.
       - resource: Site
-        title: skupper site update
+        name: skupper site update
         description: |
           Change site settings.
         usage: skupper site update <name> [options]
@@ -77,7 +77,7 @@ groups:
           - message: No site resource exists
             description: |
               There is no existing Skupper site resource to update.
-      - title: skupper site delete
+      - name: skupper site delete
         description: |
           Delete a site.
         usage: skupper site delete <name>
@@ -93,7 +93,7 @@ groups:
           - message: No site resource exists
             description: |
               There is no existing Skupper site resource to delete.
-      - title: skupper site status
+      - name: skupper site status
         description: |
           Show the current status of a site.
         usage: skupper site status
@@ -107,12 +107,12 @@ groups:
           routing key?
   - title: Site linking
     commands:
-      - title: skupper token
+      - name: skupper token
         description: |
           Display help for token commands and exit.  Currently there
           is only one token command.
       - resource: Grant
-        title: skupper token create
+        name: skupper token create
         description: |
           Create a token.
         usage: skupper token create <file> [options]
@@ -131,11 +131,11 @@ groups:
           - property: claims
             name: --uses
             default: 1
-      - title: skupper link
+      - name: skupper link
         description: |
           Display help for link commands and exit.
       - resource: Link
-        title: skupper link create
+        name: skupper link create
         description: |
           Create a link.
 
@@ -150,9 +150,9 @@ groups:
             description: |
               The name of the token file.
           - property: cost
-      - title: skupper link delete
+      - name: skupper link delete
         usage: skupper link delete <name>
-      - title: skupper link status
+      - name: skupper link status
         output: |
           NAME    STATUS   COST
           west    Active   1
@@ -163,11 +163,11 @@ groups:
           None
   - title: Service exposure
     commands:
-      - title: skupper connector
+      - name: skupper connector
         description: |
           Display help for connector commands and exit.
       - resource: Connector
-        title: skupper connector create
+        name: skupper connector create
         description: |
           Create a connector.
 
@@ -195,7 +195,7 @@ groups:
           - property: tlsCredentials
           - property: type
           - property: includeNotReady
-      - title: skupper connector delete
+      - name: skupper connector delete
         description: |
           Delete a connector.
         usage: skupper connector delete <name>
@@ -207,7 +207,7 @@ groups:
             variable: string
             description: |
               The name of the connector resource.
-      - title: skupper connector status
+      - name: skupper connector status
         description: |
           Show the status of connectors in the current site.
         usage: skupper connector status
@@ -215,11 +215,11 @@ groups:
           NAME       ROUTING-KEY   SELECTOR         HOST   PORT   MATCHING-LISTENERS
           backend    backend       app=backend      -      8080   1
           database   database      app=postgresql   -      5342   1
-      - title: skupper listener
+      - name: skupper listener
         description: |
           Display help for listener commands and exit.
       - resource: Listener
-        title: skupper listener create
+        name: skupper listener create
         description: |
           Create a listener.
 
@@ -243,7 +243,7 @@ groups:
           - property: enableTLS
           - property: tlsCredentials
           - property: type
-      - title: skupper listener delete
+      - name: skupper listener delete
         description: |
           Delete a listener.
         usage: skupper listener delete <name>
@@ -255,7 +255,7 @@ groups:
             variable: string
             description: |
               The name of the listener resource.
-      - title: skupper listener status
+      - name: skupper listener status
         description: |
           Show the status of listeners in the current site.
         usage: skupper listener status
@@ -265,18 +265,18 @@ groups:
           database   database      database   5432   1
   # - title: Platform operations
   #   commands:
-  #     - title: skupper platform
+  #     - name: skupper platform
   #       description: |
   #         Display help for platform commands and exit.
-  #     - title: skupper platform install
-  #     - title: skupper platform uninstall
-  #     - title: skupper platform switch
+  #     - name: skupper platform install
+  #     - name: skupper platform uninstall
+  #     - name: skupper platform switch
   - title: Debug operations
     commands:
-      - title: skupper debug
+      - name: skupper debug
         description: |
           Display help for debug commands and exit.
-      - title: skupper debug dump
+      - name: skupper debug dump
         description: |
           Generate a debug dump file.
         usage: skupper debug dump [file]
@@ -284,5 +284,5 @@ groups:
           Debug dump file generated at <file>
   - title: Other operations
     commands:
-      # - title: skupper network status
-      - title: skupper version
+      # - name: skupper network status
+      - name: skupper version

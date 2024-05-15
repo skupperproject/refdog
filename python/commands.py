@@ -18,7 +18,7 @@ def generate():
         append(f"- [{group.title}](#{group.id})")
 
         for command in group.commands:
-            append(f"  - [{command.title}](#{command.id})")
+            append(f"  - [{command.name}](#{command.id})")
 
     append()
 
@@ -43,7 +43,7 @@ def generate():
 def generate_command(command, append):
     debug(f"Generating {command}")
 
-    append(f"### {command.title}")
+    append(f"### {command.name}")
     append()
     append(command.description)
     append()
@@ -188,15 +188,15 @@ class Command:
             self.errors.append(Error(self, error_data))
 
     def __repr__(self):
-        return f"command '{self.title}'"
+        return f"command '{self.name}'"
 
     @property
     def id(self):
-        return fragment_id(self.title)
+        return fragment_id(self.name)
 
     @property
-    def title(self):
-        return self.data["title"]
+    def name(self):
+        return self.data["name"]
 
     @property
     def resource(self):
