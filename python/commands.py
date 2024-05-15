@@ -240,6 +240,8 @@ class Argument:
         self.command = command
         self.data = data
 
+        debug(f"Loading {self}")
+
     def __repr__(self):
         return f"argument '{self.name}'"
 
