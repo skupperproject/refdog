@@ -192,7 +192,7 @@ class Property:
         debug(f"Loading {self}")
 
     def __repr__(self):
-        return f"property '{self.name}' (type={self.type}, required={self.required}, default={mlen(self.default)})"
+        return f"property '{self.name}' (type={self.type}, required={self.required})"
 
     @property
     def name(self):
@@ -204,6 +204,11 @@ class Property:
         return self.data.get("type", default)
 
     @property
+    def format(self):
+        default = self.crd_data.get("format") if self.crd_data else None
+        return self.data.get("format", default)
+
+    @property
     def required(self):
         required_names = self.resource.crd_data["spec"]["versions"][0]["schema"]["openAPIV3Schema"]["properties"]["spec"].get("required", [])
         default = self.name in required_names
@@ -211,7 +216,8 @@ class Property:
 
     @property
     def default(self):
-        return self.data.get("default")
+        default = False if self.type == "boolean" else None
+        return self.data.get("default", default)
 
     @property
     def description(self):
@@ -221,9 +227,3 @@ class Property:
     @property
     def notes(self):
         return self.data.get("notes")
-
-def mlen(value):
-    if value is not None:
-        return len(value)
-
-    return "-"

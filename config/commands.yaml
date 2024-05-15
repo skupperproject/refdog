@@ -3,15 +3,15 @@ global_arguments:
     description: |
       Display help and exit.
   - name: --context
-    variable: string
+    type: string
     description: |
       Select the kubeconfig context.
   - name: --namespace
-    variable: string
+    type: string
     description: |
       Select the Kubernetes namespace.
   - name: --platform
-    variable: string
+    type: string
     description: |
       Select the Skupper platform.
 groups:
@@ -20,8 +20,8 @@ groups:
       - name: skupper site
         description: |
           Display help for site commands and exit.
-      - resource: Site
-        name: skupper site create
+      - name: skupper site create
+        resource: Site
         description: |
           Create a site.
 
@@ -38,7 +38,7 @@ groups:
           Site "<name>" is ready
         arguments:
           - name: name
-            variable: string
+            type: string
             description: |
               A name of your choice for the Skupper site.  This name is
               displayed in the console and CLI output.
@@ -50,8 +50,8 @@ groups:
           - message: Site resource already exists
             description: |
               There is already a site resource defined for the namespace.
-      - resource: Site
-        name: skupper site update
+      - name: skupper site update
+        resource: Site
         description: |
           Change site settings.
         usage: skupper site update <name> [options]
@@ -66,7 +66,7 @@ groups:
           Site "<name>" is updated
         arguments:
           - name: name
-            variable: string
+            type: string
             description: |
               The name of the site resource.
           - property: enableLinkAccess
@@ -86,7 +86,7 @@ groups:
           Site "<name>" is deleted
         arguments:
           - name: name
-            variable: string
+            type: string
             description: |
               The name of the site resource.
         errors:
@@ -111,8 +111,8 @@ groups:
         description: |
           Display help for token commands and exit.  Currently there
           is only one token command.
-      - resource: Grant
-        name: skupper token create
+      - name: skupper token create
+        resource: Grant
         description: |
           Create a token.
         usage: skupper token create <file> [options]
@@ -121,12 +121,13 @@ groups:
           The token expires after 1 use or after 15 minutes
         arguments:
           - name: file
-            variable: string
+            type: string
             description: |
               The name of the token file.
           - property: validFor
             name: --expiry
-            variable: duration
+            type: string
+            format: duration
             default: 15m
           - property: claims
             name: --uses
@@ -134,8 +135,8 @@ groups:
       - name: skupper link
         description: |
           Display help for link commands and exit.
-      - resource: Link
-        name: skupper link create
+      - name: skupper link create
+        resource: Link
         description: |
           Create a link.
 
@@ -166,8 +167,8 @@ groups:
       - name: skupper connector
         description: |
           Display help for connector commands and exit.
-      - resource: Connector
-        name: skupper connector create
+      - name: skupper connector create
+        resource: Connector
         description: |
           Create a connector.
 
@@ -181,13 +182,13 @@ groups:
           Connector "<name>" is ready
         arguments:
           - name: name
-            variable: string
+            type: string
             description: |
               The name of the connector resource.
           - property: routingKey
             default: _value of name_
           - name: --workload
-            variable: string
+            type: string
           - property: port
           - property: selector
           - property: host
@@ -204,7 +205,7 @@ groups:
           Connector "<name>" is deleted
         arguments:
           - name: name
-            variable: string
+            type: string
             description: |
               The name of the connector resource.
       - name: skupper connector status
@@ -218,8 +219,8 @@ groups:
       - name: skupper listener
         description: |
           Display help for listener commands and exit.
-      - resource: Listener
-        name: skupper listener create
+      - name: skupper listener create
+        resource: Listener
         description: |
           Create a listener.
 
@@ -233,7 +234,7 @@ groups:
           Listener "<name>" is ready
         arguments:
           - name: name
-            variable: string
+            type: string
             description: |
               The name of the listener resource.
           - property: routingKey
@@ -252,7 +253,7 @@ groups:
           Listener "<name>" is deleted
         arguments:
           - name: name
-            variable: string
+            type: string
             description: |
               The name of the listener resource.
       - name: skupper listener status

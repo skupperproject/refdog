@@ -33,7 +33,7 @@
 
 ## Global options
 
-- **--help**
+- **--help** _None_
 
   Display help and exit.
   
@@ -264,7 +264,7 @@ The token expires after 1 use or after 15 minutes
   The name of the token file.
   
 
-- **--expiry** _duration_
+- **--expiry** _string (duration)_
 
   _Default:_ 15m
 
@@ -299,7 +299,7 @@ You can now safely delete <file>
 
 #### Arguments
 
-- **file**
+- **file** _None_
 
   The name of the token file.
   

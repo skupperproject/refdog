@@ -100,10 +100,10 @@ def generate_argument(argument, append):
 
     debug(f"Generating {argument}")
 
-    title = f"**{argument.name}**"
+    title = f"**{argument.name}** _{argument.type}_"
 
-    if argument.variable:
-        title = f"**{argument.name}** _{argument.variable}_"
+    if argument.format:
+        title = f"**{argument.name}** _{argument.type} ({argument.format})_"
 
     append(f"- {title}")
     append()
@@ -242,7 +242,7 @@ class Argument:
         if "property" in self.data:
             assert self.command.resource is not None
             assert self.data["property"] in self.command.resource.properties_by_name, \
-                (self.data["property"], self.command.resource.properties_by_name)
+                "Property '{}' not found in {}".format(self.data["property"], self.command.resource)
 
             return self.command.resource.properties_by_name[self.data["property"]]
 
@@ -252,18 +252,18 @@ class Argument:
         return self.data.get("name", default)
 
     @property
-    def variable(self):
+    def type(self):
         default = self.property_.type if self.property_ else None
-        return self.data.get("variable", default)
+        return self.data.get("type", default)
+
+    @property
+    def format(self):
+        default = self.property_.format if self.property_ else None
+        return self.data.get("format", default)
 
     @property
     def default(self):
         default = self.property_.default if self.property_ else None
-
-        # XXX
-        if default is None and self.variable == "boolean":
-            default = False
-
         return self.data.get("default", default)
 
     @property
