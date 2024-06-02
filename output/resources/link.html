@@ -10,7 +10,7 @@
   
 </head>
 
-  <body>
+  <body class="resource">
   <header>
 
 <nav class="path-nav"><a href="/index.html">Refdog</a><a href="/resources/index.html">Skupper resources</a><a href="/resources/link.html">Link</a></nav>
@@ -20,8 +20,15 @@
     <article>
 
 <h1 id="link">Link</h1>
+<section>
+
+<h2 id="overview">Overview</h2>
 <p>A <a href="concepts.html#link">link</a> is a site-to-site communication channel. Links
 serve as a transport for application connections and requests.</p>
+</section>
+
+<section>
+
 <h2 id="examples">Examples</h2>
 <p>A typical link definition</p>
 <pre><code class="language-yaml">apiVersion: skupper.io/v1alpha1
@@ -32,6 +39,10 @@ metadata:
 spec:
   [...]
 </code></pre>
+</section>
+
+<section>
+
 <h2 id="spec-properties">Spec properties</h2>
 <ul>
 <li><p><strong>tlsCredentials</strong> <em>string</em></p>
@@ -51,6 +62,8 @@ mutual TLS.</p>
 <p><em>Default:</em> false</p>
 </li>
 </ul>
+</section>
+
 
 
     </article>

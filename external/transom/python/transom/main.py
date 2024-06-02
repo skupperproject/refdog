@@ -399,26 +399,26 @@ class LinkParser(HTMLParser):
             self.link_targets.add(normalized_url)
 
 class TemplatePage(File):
-    __slots__ = "_content", "_attributes", "_page_template", "_head_template", "_body_template"
+    __slots__ = "_content", "metadata", "_page_template", "_head_template", "_body_template"
 
     def _process_input(self):
         self._content = read_file(self.input_path)
-        self._content, self._attributes = extract_metadata(self._content)
+        self._content, self.metadata = extract_metadata(self._content)
 
-        self.title = self._attributes.get("title", self.title)
+        self.title = self.metadata.get("title", self.title)
 
         try:
-            self._page_template = load_page_template(self._attributes["page_template"], "")
+            self._page_template = load_page_template(self.metadata["page_template"], "")
         except KeyError:
             self._page_template = self.site._page_template
 
         try:
-            self._head_template = load_page_template(self._attributes["head_template"], "")
+            self._head_template = load_page_template(self.metadata["head_template"], "")
         except KeyError:
             self._head_template = self.site._head_template
 
         try:
-            self._body_template = load_page_template(self._attributes["body_template"], "{{page.content}}")
+            self._body_template = load_page_template(self.metadata["body_template"], "{{page.content}}")
         except KeyError:
             self._body_template = self.site._body_template
 
@@ -441,7 +441,7 @@ class TemplatePage(File):
 
     @property
     def extra_headers(self):
-        return self._attributes.get("extra_headers", "")
+        return self.metadata.get("extra_headers", "")
 
     @property
     def body(self):

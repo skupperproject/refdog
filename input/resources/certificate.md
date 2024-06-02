@@ -1,4 +1,17 @@
+---
+body_class: resource
+---
+
 # Certificate
+
+<section>
+
+## Overview
+
+
+</section>
+
+<section>
 
 ## Spec properties
 
@@ -19,3 +32,5 @@
 - **signing** _boolean_
 
   _Default:_ false
+
+</section>

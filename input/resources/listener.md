@@ -1,4 +1,12 @@
+---
+body_class: resource
+---
+
 # Listener
+
+<section>
+
+## Overview
 
 A [listener][listener] is a local connection endpoint bound to
 servers in remote sites.
@@ -6,6 +14,11 @@ servers in remote sites.
 Each site can have multiple listener definitions.
 
 [listener]: concepts.html#listener
+
+
+</section>
+
+<section>
 
 ## Examples
 
@@ -24,6 +37,10 @@ spec:
   port: 8080
   host: backend
 ~~~
+</section>
+
+<section>
+
 ## Spec properties
 
 - **routingKey** _string_
@@ -60,3 +77,5 @@ spec:
 - **type** _string_
 
   _What is this again?  I think we need a qualifier on "type"._
+
+</section>

@@ -1,3 +1,7 @@
+---
+body_class: command
+---
+
 # skupper connector create
 
 Create a connector.

@@ -10,7 +10,7 @@
   
 </head>
 
-  <body>
+  <body class="resource">
   <header>
 
 <nav class="path-nav"><a href="/index.html">Refdog</a><a href="/resources/index.html">Skupper resources</a><a href="/resources/listener.html">Listener</a></nav>
@@ -20,9 +20,16 @@
     <article>
 
 <h1 id="listener">Listener</h1>
+<section>
+
+<h2 id="overview">Overview</h2>
 <p>A <a href="concepts.html#listener">listener</a> is a local connection endpoint bound to
 servers in remote sites.</p>
 <p>Each site can have multiple listener definitions.</p>
+</section>
+
+<section>
+
 <h2 id="examples">Examples</h2>
 <p>A listener in site West for the Hello World backend service
 in site East</p>
@@ -36,6 +43,10 @@ spec:
   port: 8080
   host: backend
 </code></pre>
+</section>
+
+<section>
+
 <h2 id="spec-properties">Spec properties</h2>
 <ul>
 <li><p><strong>routingKey</strong> <em>string</em></p>
@@ -64,6 +75,8 @@ mutual TLS.</p>
 <p><em>What is this again?  I think we need a qualifier on &quot;type&quot;.</em></p>
 </li>
 </ul>
+</section>
+
 
 
     </article>

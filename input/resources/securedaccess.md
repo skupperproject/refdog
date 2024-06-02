@@ -1,8 +1,21 @@
+---
+body_class: resource
+---
+
 # SecuredAccess
+
+<section>
+
+## Overview
 
 A generic resource for exposing a workload by creating the
 necessary service and ingress resources and optionally
 generating TLS credentials.
+
+
+</section>
+
+<section>
 
 ## Spec properties
 
@@ -17,3 +30,5 @@ generating TLS credentials.
 - **accessType** _string_
 
 - **options** _object_
+
+</section>

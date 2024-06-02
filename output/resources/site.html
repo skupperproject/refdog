@@ -10,7 +10,7 @@
   
 </head>
 
-  <body>
+  <body class="resource">
   <header>
 
 <nav class="path-nav"><a href="/index.html">Refdog</a><a href="/resources/index.html">Skupper resources</a><a href="/resources/site.html">Site</a></nav>
@@ -20,10 +20,17 @@
     <article>
 
 <h1 id="site">Site</h1>
+<section>
+
+<h2 id="overview">Overview</h2>
 <p>A <a href="concepts.html#site">site</a> is a place where components of your application are
 running.  Sites are linked to form application
 <a href="concepts.html#network">networks</a>.</p>
 <p>There can be only one site definition per namespace.</p>
+</section>
+
+<section>
+
 <h2 id="examples">Examples</h2>
 <p>A minimal site</p>
 <pre><code class="language-yaml">apiVersion: skupper.io/v1alpha1
@@ -41,6 +48,10 @@ metadata:
 spec:
   linkAccess: default
 </code></pre>
+</section>
+
+<section>
+
 <h2 id="spec-properties">Spec properties</h2>
 <ul>
 <li><p><strong>linkAccess</strong> <em>string</em></p>
@@ -55,6 +66,8 @@ OpenShift, otherwise <code>loadbalancer</code>.</p>
 <li><p><strong>settings</strong> <em>array</em></p>
 </li>
 </ul>
+</section>
+
 
 
     </article>

@@ -14,16 +14,16 @@ def generate():
 
         lines.append(line)
 
+    append("# Skupper resources")
+    append()
+
     for group in model.groups:
         append(f"- [{group.title}](#{group.id})")
 
         for resource in group.resources:
-            append(f"  - [{resource.name}]({resource.id}.html)") # XXX resource.id
+            append(f"  - [{resource.name}]({resource.id}.html)")
 
-    markdown = read("config/resources.md.in")
-    markdown = markdown.replace("@content@", "\n".join(lines))
-
-    write("input/resources/index.md", markdown)
+    write("input/resources/index.md", "\n".join(lines))
 
     for group in model.groups:
         for resource in group.resources:
@@ -40,11 +40,24 @@ def generate_resource(resource):
 
         lines.append(line)
 
+    append("---")
+    append("body_class: resource")
+    append("---")
+    append()
     append(f"# {resource.name}")
     append()
+    append("<section>")
+    append()
+    append("## Overview")
+    append()
     append(resource.description)
+    append()
+    append("</section>")
+    append()
 
     if resource.examples:
+        append("<section>")
+        append()
         append("## Examples")
         append()
 
@@ -56,12 +69,20 @@ def generate_resource(resource):
             append(example["yaml"].strip())
             append("~~~")
 
+        append("</section>")
+        append()
+
     if resource.properties:
+        append("<section>")
+        append()
         append("## Spec properties")
         append()
 
         for prop in resource.properties:
             generate_property(prop, append)
+
+        append("</section>")
+        append()
 
     write(f"input/resources/{resource.id}.md", "\n".join(lines))
 

@@ -1,3 +1,7 @@
+---
+body_class: command
+---
+
 # skupper connector status
 
 Show the status of connectors in the current site.

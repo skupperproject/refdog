@@ -14,7 +14,8 @@ def generate():
 
         lines.append(line)
 
-    # append(f"- [Global options](#global-options)")
+    append("# Skupper commands")
+    append()
 
     for group in model.groups:
         append(f"- [{group.title}]({group.id}.html)")
@@ -22,18 +23,7 @@ def generate():
         for command in group.commands:
             append(f"  - [{command.name}]({command.id}.html)")
 
-    append()
-
-    # append(f"## Global options")
-    # append()
-
-    # for argument in model.global_arguments:
-    #     generate_argument(argument, append)
-
-    markdown = read("config/commands.md.in")
-    markdown = markdown.replace("@content@", "\n".join(lines))
-
-    write("input/commands/index.md", markdown)
+    write("input/commands/index.md", "\n".join(lines))
 
     for group in model.groups:
         for command in group.commands:
@@ -50,6 +40,10 @@ def generate_command(command):
 
         lines.append(line)
 
+    append("---")
+    append("body_class: command")
+    append("---")
+    append()
     append(f"# {command.name}")
     append()
     append(command.description)

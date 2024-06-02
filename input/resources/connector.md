@@ -1,4 +1,12 @@
+---
+body_class: resource
+---
+
 # Connector
+
+<section>
+
+## Overview
 
 A [connector][connector] binds local servers to listeners in
 remote sites.
@@ -6,6 +14,11 @@ remote sites.
 Each site can have multiple connector definitions.
 
 [connector]: concepts.html#connector
+
+
+</section>
+
+<section>
 
 ## Examples
 
@@ -23,6 +36,10 @@ spec:
   port: 8080
   selector: app=backend
 ~~~
+</section>
+
+<section>
+
 ## Spec properties
 
 - **routingKey** _string_
@@ -68,3 +85,5 @@ spec:
 - **includeNotReady** _boolean_
 
   _Default:_ false
+
+</section>

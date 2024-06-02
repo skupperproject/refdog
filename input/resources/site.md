@@ -1,4 +1,12 @@
+---
+body_class: resource
+---
+
 # Site
+
+<section>
+
+## Overview
 
 A [site][site] is a place where components of your application are
 running.  Sites are linked to form application
@@ -8,6 +16,11 @@ There can be only one site definition per namespace.
 
 [site]: concepts.html#site
 [network]: concepts.html#network
+
+
+</section>
+
+<section>
 
 ## Examples
 
@@ -31,6 +44,10 @@ metadata:
 spec:
   linkAccess: default
 ~~~
+</section>
+
+<section>
+
 ## Spec properties
 
 - **linkAccess** _string_
@@ -48,3 +65,5 @@ spec:
 - **serviceAccount** _string_
 
 - **settings** _array_
+
+</section>

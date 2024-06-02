@@ -1,9 +1,22 @@
+---
+body_class: resource
+---
+
 # Link
+
+<section>
+
+## Overview
 
 A [link][link] is a site-to-site communication channel. Links
 serve as a transport for application connections and requests.
 
 [link]: concepts.html#link
+
+
+</section>
+
+<section>
 
 ## Examples
 
@@ -18,6 +31,10 @@ metadata:
 spec:
   [...]
 ~~~
+</section>
+
+<section>
+
 ## Spec properties
 
 - **tlsCredentials** _string_
@@ -39,3 +56,5 @@ spec:
 - **noClientAuth** _boolean_
 
   _Default:_ false
+
+</section>

@@ -1,10 +1,23 @@
+---
+body_class: resource
+---
+
 # Grant
+
+<section>
+
+## Overview
 
 An offer to accept links to the local site.  A remote site
 can use a claim containing the grant URL and secret to
 obtain a certificate signed by the grant's certificate
 authority (CA), within a certain expiration period and for a
 limited number of claims.
+
+
+</section>
+
+<section>
 
 ## Spec properties
 
@@ -19,3 +32,5 @@ limited number of claims.
   _about time: "valid for 3 uses"._
 
 - **secret** _string_
+
+</section>

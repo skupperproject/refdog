@@ -27,4 +27,3 @@
   - [skupper debug dump](skupper-debug-dump.html)
 - [Other operations](other-operations.html)
   - [skupper version](skupper-version.html)
-

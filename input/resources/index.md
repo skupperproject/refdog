@@ -14,9 +14,3 @@
 - [Internal stuff](#internal-stuff)
   - [SecuredAccess](securedaccess.html)
   - [Certificate](certificate.html)
-
-<script>
-
-console.log(location);
-
-</script>

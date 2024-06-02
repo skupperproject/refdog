@@ -1,3 +1,7 @@
+---
+body_class: command
+---
+
 # skupper site status
 
 Show the current status of a site.

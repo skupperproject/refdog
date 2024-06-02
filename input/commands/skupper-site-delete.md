@@ -1,3 +1,7 @@
+---
+body_class: command
+---
+
 # skupper site delete
 
 Delete a site.

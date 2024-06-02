@@ -10,7 +10,7 @@
   
 </head>
 
-  <body>
+  <body class="resource">
   <header>
 
 <nav class="path-nav"><a href="/index.html">Refdog</a><a href="/resources/index.html">Skupper resources</a><a href="/resources/connector.html">Connector</a></nav>
@@ -20,9 +20,16 @@
     <article>
 
 <h1 id="connector">Connector</h1>
+<section>
+
+<h2 id="overview">Overview</h2>
 <p>A <a href="concepts.html#connector">connector</a> binds local servers to listeners in
 remote sites.</p>
 <p>Each site can have multiple connector definitions.</p>
+</section>
+
+<section>
+
 <h2 id="examples">Examples</h2>
 <p>A connector in site East for the Hello World backend service</p>
 <pre><code class="language-yaml">apiVersion: skupper.io/v1alpha1
@@ -35,6 +42,10 @@ spec:
   port: 8080
   selector: app=backend
 </code></pre>
+</section>
+
+<section>
+
 <h2 id="spec-properties">Spec properties</h2>
 <ul>
 <li><p><strong>routingKey</strong> <em>string</em></p>
@@ -67,6 +78,8 @@ mutual TLS.</p>
 <p><em>Default:</em> false</p>
 </li>
 </ul>
+</section>
+
 
 
     </article>

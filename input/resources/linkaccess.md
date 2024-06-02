@@ -1,9 +1,22 @@
+---
+body_class: resource
+---
+
 # LinkAccess
+
+<section>
+
+## Overview
 
 A point of external access for links from remote sites.  A
 LinkAccess configures the router to accept inter-router
 links and creates the Kubernetes resources for external
 access.
+
+
+</section>
+
+<section>
 
 ## Examples
 
@@ -22,6 +35,10 @@ spec:
     port: 45671
   tlsCredentials: skupper-site-server
 ~~~
+</section>
+
+<section>
+
 ## Spec properties
 
 - **roles** _array_
@@ -54,3 +71,5 @@ spec:
 - **options** _object_
 
 - **accessType** _string_
+
+</section>

@@ -1,3 +1,7 @@
+---
+body_class: command
+---
+
 # skupper debug dump
 
 Generate a debug dump file.

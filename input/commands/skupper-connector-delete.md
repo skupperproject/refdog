@@ -1,3 +1,7 @@
+---
+body_class: command
+---
+
 # skupper connector delete
 
 Delete a connector.
