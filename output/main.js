@@ -75,6 +75,14 @@ window.addEventListener("load", () => {
 
     const newTocLinks = document.createElement("nav");
 
+    const topLink = document.createElement("a");
+    const topText = document.createTextNode($("h1").textContent);
+
+    topLink.setAttribute("href", "");
+    topLink.appendChild(topText);
+
+    newTocLinks.appendChild(topLink);
+
     for (const heading of headings) {
         const link = document.createElement("a");
         const text = document.createTextNode(heading.textContent);
@@ -87,21 +95,37 @@ window.addEventListener("load", () => {
 
     newToc.appendChild(newTocLinks);
     oldToc.replaceWith(newToc);
+
+    console.log(555);
 });
 
 window.addEventListener("load", () => {
     const tocLinks = $("#-toc nav");
 
+    console.log(333, tocLinks);
+
     if (!tocLinks) {
         return;
     }
 
+    console.log(444);
+
     const updateHeadingSelection = () => {
         const currHash = window.location.hash;
 
+	console.log(222);
+
         if (!currHash) {
+	    console.log(111);
+
+	    const link = tocLinks.$("a");
+
+	    link.classList.add("selected");
+
             return;
         }
+
+	console.log(666);
 
         for (const link of tocLinks.$$("a")) {
             const linkHash = new URL(link.href).hash;

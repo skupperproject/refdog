@@ -56,29 +56,37 @@ dl, ol, ul {
 h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child,
 blockquote:first-child, p:first-child, pre:first-child,
 dl:first-child, ol:first-child, ul:first-child {
-    margin: 0 0 1em 0;
+    margin-top: 0;
 }
 
 h1:last-child, h2:last-child, h3:last-child, h4:last-child, h5:last-child, h6:last-child,
 blockquote:last-child, p:last-child, pre:last-child,
 dl:last-child, ol:last-child, ul:last-child {
-    margin: 1em 0 0 0;
+    margin-bottom: 0;
+}
+
+h1:only-child, h2:only-child, h3:only-child, h4:only-child, h5:only-child, h6:only-child,
+blockquote:only-child, p:only-child, pre:only-child,
+dl:only-child, ol:only-child, ul:only-child {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 article, section {
-    margin: 2em 0;
+    margin: 1.5em 0;
 }
 
 article:first-child, section:first-child {
-    margin: 0 0 2em 0;
+    margin-top: 0;
 }
 
 article:last-child, section:last-child {
-    margin: 2em 0 0 0;
+    margin-bottom: 0;
 }
 
 article:only-child, section:only-child {
-    margin: 0;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 /* Standard page structure */
