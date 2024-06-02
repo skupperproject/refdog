@@ -27,12 +27,16 @@
     /* Colors */
     --body-background-color: rgba(255, 255, 255, 1.0);
     --code-background-color: rgba(247, 247, 247, 1.0);
+    --body-color: rgba(0, 0, 0, 0.95);
+    --line-color: rgba(0, 0, 0, 0.05);
     --link-color: rgba(15, 63, 127, 0.8);
     /* Fonts */
     --body-font-family: sans-serif;
     --body-line-height: 1.5em;
     --code-font-family: monospace;
     --heading-font-family: sans-serif;
+    /* Sizes */
+    --page-width: 1100px;
 }
 
 /* Standard CSS reset */
@@ -63,19 +67,22 @@ dl:last-child, ol:last-child, ul:last-child {
 
 /* Standard page structure */
 
-html, body {
+html {
     height: 100%;
+    overflow-y: scroll;
+    scroll-padding-top: 6em;
 }
 
 body {
     display: grid;
     grid-template-rows: auto 1fr auto;
-    grid-template-columns: minmax(2em, 1fr) 840px 360px minmax(2em, 1fr);
+    grid-template-columns: minmax(2em, 1fr) calc(var(--page-width) * 0.7) calc(var(--page-width) * 0.3) minmax(2em, 1fr);
     grid-template-areas:
         "header header header header"
         ". main sidebar ."
         "footer footer footer footer";
-    height: 100vh;
+    height: 100%;
+    color: var(--body-color);
     background-color: var(--body-background-color);
     font-family: var(--body-font-family);
     line-height: var(--body-line-height);
@@ -85,43 +92,53 @@ header {
     grid-area: header;
     display: flex;
     justify-content: center;
+    background-color: var(--body-background-color);
     padding: 1em 0;
+    border-bottom: 1px solid var(--line-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
 }
 
-header nav { /* Make this a nav */
-    width: 1200px;
+header nav {
+    width: var(--page-width);
+}
+
+main {
+    grid-area: main;
+    position: relative;
+    top: 4em;
+    padding: 2em 0;
 }
 
 aside {
     grid-area: sidebar;
+    position: relative;
+    top: 4em;
     padding: 2em 0;
+    display: flex;
+}
+
+aside > div {
+    align-self: start; /* Important for sticky positioning */
+    position: sticky;
+    top: 6em;
+    margin: 0 0 0 2em;
+    padding: 0 0 0 2em;
+    border-left: 1px solid var(--line-color);
 }
 
 aside nav {
     display: flex;
     flex-direction: column;
-}
-
-/* aside nav a { */
-/*     color: #fff; */
-/*     padding: 8px; */
-/*     text-decoration: none; */
-/* } */
-
-main {
-    grid-area: main;
-    padding: 2em 0;
+    gap: 0.5em;
 }
 
 footer {
     grid-area: footer;
     padding: 1em 0;
-}
-
-article {
-}
-
-section {
 }
 
 @media (max-width: 768px) {
@@ -161,6 +178,10 @@ h4 {
 a {
     text-decoration: none;
     color: var(--link-color);
+}
+
+a.selected {
+    color: var(--body-color);
 }
 
 code, pre {
@@ -214,7 +235,11 @@ li > p:last-child, dd > p:last-child {
 /* Skupper-specific styles for the page structure */
 
 header {
-    border-bottom: 3px solid rgba(0, 0, 0, 0.06);
+    border-bottom: 3px solid var(--line-color);
+}
+
+aside > div {
+    border-left: 3px solid var(--line-color);
 }
 
 /* Skupper-specific styles for prose elements */
