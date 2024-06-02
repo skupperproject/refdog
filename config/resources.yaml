@@ -12,32 +12,39 @@ groups:
           [site]: concepts.html#site
           [network]: concepts.html#network
         examples:
-          - description: A minimal site definition
+          - description: A minimal site
             yaml: |
               apiVersion: skupper.io/v1alpha1
               kind: Site
               metadata:
                 name: east
                 namespace: hello-world-east
+          - description: A site configured to accept links
+            yaml: |
+              apiVersion: skupper.io/v1alpha1
+              kind: Site
+              metadata:
+                name: west
+                namespace: hello-world-west
+              spec:
+                linkAccess: default
         properties:
-          - name: enableLinkAccess
-            type: boolean
-            description: |
-              Enable external access for links from remote sites.
-          - name: linkAccessType
+          - name: linkAccess
             type: string
+            default: none
             description: |
+              Configure external access for links from remote sites.
+
               Select the means of opening external access.
-            default: |
-              `route` if the environment is OpenShift, otherwise
-              `loadbalancer`
-            choices: [route, loadbalancer, nodeport, ingress]
-          - name: linkAccessHost
-            type: string
-            description: |
-              The host or IP address at which to expose link access.
+
+              `default` equates to `route` if the environment is
+              OpenShift, otherwise `loadbalancer`.
+            choices: [none, default, route, loadbalancer, nodeport, ingress]
           - name: serviceAccount
+            links:
+              - https://kubernetes.io/docs/concepts/security/service-accounts/
           - name: settings
+            rename: options
   - title: Site linking
     resources:
       - name: Grant
@@ -108,13 +115,6 @@ groups:
           - name: port
             description: |
               The port number of the server listener.
-          - name: enableTLS
-            type: boolean
-            description: |
-              Use TLS to encrypt communication between the router and servers.
-
-              By default, the TLS credentials are generated and stored in
-              a secret at XXX.
           - name: tlsCredentials
             description: |
               The name of a Kubernetes secret containing the trusted
@@ -164,13 +164,6 @@ groups:
               The port of the local listener.  Clients at this site use
               the listener host and port to establish connections to
               the remote service.
-          - name: enableTLS
-            type: boolean
-            description: |
-              Use TLS to encrypt communication between clients and the router.
-
-              By default, the TLS credentials are generated and stored in
-              a secret at XXX.
           - name: tlsCredentials
             description: |
               The name of a Kubernetes secret containing TLS
@@ -179,10 +172,6 @@ groups:
 
               It can optionally include a client certificate and key for
               mutual TLS.
-          - name: tlsCA
-            type: string
-            notes: |
-              Doesn't this follow, if the TLS credentials can be generated?
           - name: type
             notes: |
               What is this again?  I think we need a qualifier on "type".
@@ -259,6 +248,7 @@ groups:
               Just host?  What does "bind" do here to clarify?  I have a related attribute on site: linkAccessHost.
           - name: subjectAlternativeNames
           - name: options
+          - name: accessType
   - title: Internal stuff
     resources:
       - name: SecuredAccess

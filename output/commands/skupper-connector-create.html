@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>skupper connector create</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="/main.css" type="text/css"/>
+  <link rel="icon" href="data:,"/>
+  <script type="text/javascript" src="/main.js" defer="defer"></script>
+  
+</head>
+
+  <body>
+  <header>
+
+<nav class="path-nav"><a href="/index.html">Refdog</a><a href="/commands/index.html">Skupper commands</a><a href="/commands/skupper-connector-create.html">skupper connector create</a></nav>
+
+  </header>
+  <main>
+    <article>
+
+<h1 id="skupper-connector-create">skupper connector create</h1>
+<p>Create a connector.</p>
+<p>A <a href="concepts.html#connector">connector</a> binds local servers to listeners in
+remote sites.</p>
+<p>Each site can have multiple connector definitions.</p>
+<h2 id="usage">Usage</h2>
+<pre><code class="language-shell">$ skupper connector create &lt;name&gt; [options]
+Waiting for status...
+Connector &quot;&lt;name&gt;&quot; is ready
+</code></pre>
+<h2 id="examples">Examples</h2>
+<pre><code># Create a connector for a database
+skupper connector create database --workload deployment/postgresql --port 5432
+</code></pre>
+<h2 id="arguments">Arguments</h2>
+<ul>
+<li><p><strong>name</strong> <em>string</em></p>
+<p>The name of the connector resource.</p>
+</li>
+<li><p><strong>--routing-key</strong> <em>string</em></p>
+<p><em>Default:</em> <em>value of name</em></p>
+<p>The identifier used to route traffic from listeners to
+connectors.  To connect to a service at a remote site, the
+listener and connector must have matching routing keys.</p>
+</li>
+<li><p><strong>--workload</strong> <em>string</em></p>
+</li>
+<li><p><strong>--port</strong> <em>integer</em></p>
+<p>The port number of the server listener.</p>
+</li>
+<li><p><strong>--selector</strong> <em>string</em></p>
+<p>A Kubernetes <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">label selector</a> for targeting server
+pods.</p>
+</li>
+<li><p><strong>--host</strong> <em>string</em></p>
+<p>The hostname or IP address of the server.  This is an
+alternative to <code>selector</code> for specifying the target
+server.</p>
+</li>
+<li><p><strong>--tls-credentials</strong> <em>string</em></p>
+<p>The name of a Kubernetes secret containing the trusted
+server certificate (typically a CA).</p>
+<p>It can optionally include a client certificate and key for
+mutual TLS.</p>
+</li>
+<li><p><strong>--type</strong> <em>string</em></p>
+<p><em>What is this again?  I think we need a qualifier on &quot;type&quot;.</em></p>
+</li>
+<li><p><strong>--include-not-ready</strong> <em>boolean</em></p>
+<p><em>Default:</em> false</p>
+</li>
+</ul>
+
+
+    </article>
+  </main>
+  <aside>
+    <nav>
+    </nav>
+  </aside>
+  <footer>
+    <nav>
+    </nav>
+  </footer>
+</body>
+
+</html>

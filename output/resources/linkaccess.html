@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>LinkAccess</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="/main.css" type="text/css"/>
+  <link rel="icon" href="data:,"/>
+  <script type="text/javascript" src="/main.js" defer="defer"></script>
+  
+</head>
+
+  <body>
+  <header>
+
+<nav class="path-nav"><a href="/index.html">Refdog</a><a href="/resources/index.html">Skupper resources</a><a href="/resources/linkaccess.html">LinkAccess</a></nav>
+
+  </header>
+  <main>
+    <article>
+
+<h1 id="linkaccess">LinkAccess</h1>
+<p>A point of external access for links from remote sites.  A
+LinkAccess configures the router to accept inter-router
+links and creates the Kubernetes resources for external
+access.</p>
+<h2 id="examples">Examples</h2>
+<p>A typical link access definition</p>
+<pre><code class="language-yaml">apiVersion: skupper.io/v1alpha1
+kind: LinkAccess
+metadata:
+  name: skupper-router
+spec:
+  roles:
+  - role: inter-router
+    port: 55671
+  - role: edge
+    port: 45671
+  tlsCredentials: skupper-site-server
+</code></pre>
+<h2 id="spec-properties">Spec properties</h2>
+<ul>
+<li><p><strong>roles</strong> <em>array</em></p>
+</li>
+<li><p><strong>tlsCredentials</strong> <em>string</em></p>
+<p>The name of a Kubernetes secret containing the trusted
+server certificate (typically a CA).</p>
+<p>It can optionally include a client certificate and key for
+mutual TLS.</p>
+</li>
+<li><p><strong>ca</strong> <em>string</em></p>
+<p>The name of a Kubernetes secret containing a CA for
+generating TLS credentials.  If the <code>tlsCredentials</code>
+property is not set, the controller uses <code>ca</code> to
+generate them.</p>
+<p><em>Consider tlsCA.  And &quot;ca&quot; often means &quot;this is what I trust&quot;.  This thing has a different meaning.</em></p>
+</li>
+<li><p><strong>bindHost</strong> <em>string</em></p>
+<p><em>Just host?  What does &quot;bind&quot; do here to clarify?  I have a related attribute on site: linkAccessHost.</em></p>
+</li>
+<li><p><strong>subjectAlternativeNames</strong> <em>array</em></p>
+</li>
+<li><p><strong>options</strong> <em>object</em></p>
+</li>
+<li><p><strong>accessType</strong> <em>string</em></p>
+</li>
+</ul>
+
+
+    </article>
+  </main>
+  <aside>
+    <nav>
+    </nav>
+  </aside>
+  <footer>
+    <nav>
+    </nav>
+  </footer>
+</body>
+
+</html>

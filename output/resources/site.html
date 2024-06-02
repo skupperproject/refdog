@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Site</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="/main.css" type="text/css"/>
+  <link rel="icon" href="data:,"/>
+  <script type="text/javascript" src="/main.js" defer="defer"></script>
+  
+</head>
+
+  <body>
+  <header>
+
+<nav class="path-nav"><a href="/index.html">Refdog</a><a href="/resources/index.html">Skupper resources</a><a href="/resources/site.html">Site</a></nav>
+
+  </header>
+  <main>
+    <article>
+
+<h1 id="site">Site</h1>
+<p>A <a href="concepts.html#site">site</a> is a place where components of your application are
+running.  Sites are linked to form application
+<a href="concepts.html#network">networks</a>.</p>
+<p>There can be only one site definition per namespace.</p>
+<h2 id="examples">Examples</h2>
+<p>A minimal site</p>
+<pre><code class="language-yaml">apiVersion: skupper.io/v1alpha1
+kind: Site
+metadata:
+  name: east
+  namespace: hello-world-east
+</code></pre>
+<p>A site configured to accept links</p>
+<pre><code class="language-yaml">apiVersion: skupper.io/v1alpha1
+kind: Site
+metadata:
+  name: west
+  namespace: hello-world-west
+spec:
+  linkAccess: default
+</code></pre>
+<h2 id="spec-properties">Spec properties</h2>
+<ul>
+<li><p><strong>linkAccess</strong> <em>string</em></p>
+<p><em>Default:</em> none</p>
+<p>Configure external access for links from remote sites.</p>
+<p>Select the means of opening external access.</p>
+<p><code>default</code> equates to <code>route</code> if the environment is
+OpenShift, otherwise <code>loadbalancer</code>.</p>
+</li>
+<li><p><strong>serviceAccount</strong> <em>string</em></p>
+</li>
+<li><p><strong>settings</strong> <em>array</em></p>
+</li>
+</ul>
+
+
+    </article>
+  </main>
+  <aside>
+    <nav>
+    </nav>
+  </aside>
+  <footer>
+    <nav>
+    </nav>
+  </footer>
+</body>
+
+</html>

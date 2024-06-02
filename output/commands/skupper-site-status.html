@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>skupper site status</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="/main.css" type="text/css"/>
+  <link rel="icon" href="data:,"/>
+  <script type="text/javascript" src="/main.js" defer="defer"></script>
+  
+</head>
+
+  <body>
+  <header>
+
+<nav class="path-nav"><a href="/index.html">Refdog</a><a href="/commands/index.html">Skupper commands</a><a href="/commands/skupper-site-status.html">skupper site status</a></nav>
+
+  </header>
+  <main>
+    <article>
+
+<h1 id="skupper-site-status">skupper site status</h1>
+<p>Show the current status of a site.</p>
+<h2 id="usage">Usage</h2>
+<pre><code class="language-shell">$ skupper site status
+NAME   STATUS   SITES-IN-NETWORK   SERVICES-IN-NETWORK
+west   Ready    1                  0
+</code></pre>
+<p><em>Notes: What is services-in-network?  Is that the total number of</em>
+<em>Notes: unique routing keys defined by connectors?  Or listeners?</em>
+<em>Notes: Or listeners plus connectors (not the orphans), grouped by</em>
+<em>Notes: routing key?</em></p>
+
+
+    </article>
+  </main>
+  <aside>
+    <nav>
+    </nav>
+  </aside>
+  <footer>
+    <nav>
+    </nav>
+  </footer>
+</body>
+
+</html>

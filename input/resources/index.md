@@ -1,0 +1,22 @@
+# Skupper resources
+
+- [Site configuration](#site-configuration)
+  - [Site](site.html)
+- [Site linking](#site-linking)
+  - [Grant](grant.html)
+  - [Claim](claim.html)
+- [Service exposure](#service-exposure)
+  - [Connector](connector.html)
+  - [Listener](listener.html)
+- [Advanced stuff](#advanced-stuff)
+  - [Link](link.html)
+  - [LinkAccess](linkaccess.html)
+- [Internal stuff](#internal-stuff)
+  - [SecuredAccess](securedaccess.html)
+  - [Certificate](certificate.html)
+
+<script>
+
+console.log(location);
+
+</script>

@@ -1,3 +1,9 @@
 # Skupper resources
 
 @content@
+
+<script>
+
+console.log(location);
+
+</script>

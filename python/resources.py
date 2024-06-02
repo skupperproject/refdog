@@ -1,6 +1,10 @@
 from common import *
 
 def generate():
+    debug("Generating resources")
+
+    make_dir("input/resources")
+
     model = ResourceModel()
     lines = list()
 
@@ -10,37 +14,38 @@ def generate():
 
         lines.append(line)
 
-    append("#### Contents")
-
     for group in model.groups:
         append(f"- [{group.title}](#{group.id})")
 
         for resource in group.resources:
-            append(f"  - [{resource.name}](#{resource.name.lower()})") # XXX resource.id
-
-    for group in model.groups:
-        append(f"## {group.title}")
-        append()
-        append(group.description)
-        append()
-
-        for resource in group.resources:
-            generate_resource(resource, append)
+            append(f"  - [{resource.name}]({resource.id}.html)") # XXX resource.id
 
     markdown = read("config/resources.md.in")
     markdown = markdown.replace("@content@", "\n".join(lines))
 
-    write("input/resources.md", markdown)
+    write("input/resources/index.md", markdown)
 
-def generate_resource(resource, append):
+    for group in model.groups:
+        for resource in group.resources:
+            generate_resource(resource)
+
+def generate_resource(resource):
     debug(f"Generating {resource}")
 
-    append(f"### {resource.name}")
+    lines = list()
+
+    def append(line=""):
+        if line is None:
+            return
+
+        lines.append(line)
+
+    append(f"# {resource.name}")
     append()
     append(resource.description)
 
     if resource.examples:
-        append("#### Examples")
+        append("## Examples")
         append()
 
         for example in resource.examples:
@@ -52,11 +57,13 @@ def generate_resource(resource, append):
             append("~~~")
 
     if resource.properties:
-        append("#### Spec properties")
+        append("## Spec properties")
         append()
 
         for prop in resource.properties:
             generate_property(prop, append)
+
+    write(f"input/resources/{resource.id}.md", "\n".join(lines))
 
     # append("#### Status properties")
     # append()
@@ -208,6 +215,10 @@ class Resource:
     @property
     def name(self):
         return self.data["name"]
+
+    @property
+    def id(self):
+        return fragment_id(self.name)
 
     @property
     def description(self):

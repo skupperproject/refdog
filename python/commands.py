@@ -1,6 +1,10 @@
 from resources import *
 
 def generate():
+    debug("Generating commands")
+
+    make_dir("input/commands")
+
     model = CommandModel()
     lines = list()
 
@@ -10,46 +14,49 @@ def generate():
 
         lines.append(line)
 
-    append("#### Contents")
-    append()
-    append(f"- [Global options](#global-options)")
+    # append(f"- [Global options](#global-options)")
 
     for group in model.groups:
-        append(f"- [{group.title}](#{group.id})")
+        append(f"- [{group.title}]({group.id}.html)")
 
         for command in group.commands:
-            append(f"  - [{command.name}](#{command.id})")
+            append(f"  - [{command.name}]({command.id}.html)")
 
     append()
 
-    append(f"## Global options")
-    append()
+    # append(f"## Global options")
+    # append()
 
-    for argument in model.global_arguments:
-        generate_argument(argument, append)
-
-    for group in model.groups:
-        append(f"## {group.title}")
-        append()
-
-        for command in group.commands:
-            generate_command(command, append)
+    # for argument in model.global_arguments:
+    #     generate_argument(argument, append)
 
     markdown = read("config/commands.md.in")
     markdown = markdown.replace("@content@", "\n".join(lines))
 
-    write("input/commands.md", markdown)
+    write("input/commands/index.md", markdown)
 
-def generate_command(command, append):
+    for group in model.groups:
+        for command in group.commands:
+            generate_command(command)
+
+def generate_command(command):
     debug(f"Generating {command}")
 
-    append(f"### {command.name}")
+    lines = list()
+
+    def append(line=""):
+        if line is None:
+            return
+
+        lines.append(line)
+
+    append(f"# {command.name}")
     append()
     append(command.description)
     append()
 
     if command.usage:
-        append("#### Usage")
+        append("## Usage")
         append()
         append("~~~ shell")
         append(f"$ {command.usage.strip()}")
@@ -61,7 +68,7 @@ def generate_command(command, append):
         append()
 
     if command.examples:
-        append("#### Examples")
+        append("## Examples")
         append()
         append("~~~")
         append(command.examples.strip())
@@ -69,14 +76,14 @@ def generate_command(command, append):
         append()
 
     if command.arguments:
-        append("#### Arguments")
+        append("## Arguments")
         append()
 
         for argument in command.arguments:
             generate_argument(argument, append)
 
     if command.errors:
-        append("#### Errors")
+        append("## Errors")
         append()
 
         for error in command.errors:
@@ -94,6 +101,8 @@ def generate_command(command, append):
 
         append(notes)
         append()
+
+    write(f"input/commands/{command.id}.md", "\n".join(lines))
 
 def generate_argument(argument, append):
     assert argument.property_ or argument.name, argument

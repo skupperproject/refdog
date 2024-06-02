@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>skupper site update</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="/main.css" type="text/css"/>
+  <link rel="icon" href="data:,"/>
+  <script type="text/javascript" src="/main.js" defer="defer"></script>
+  
+</head>
+
+  <body>
+  <header>
+
+<nav class="path-nav"><a href="/index.html">Refdog</a><a href="/commands/index.html">Skupper commands</a><a href="/commands/skupper-site-update.html">skupper site update</a></nav>
+
+  </header>
+  <main>
+    <article>
+
+<h1 id="skupper-site-update">skupper site update</h1>
+<p>Change site settings.</p>
+<p>The name argument is optional for update.</p>
+<h2 id="usage">Usage</h2>
+<pre><code class="language-shell">$ skupper site update [name] [options]
+Waiting for update to complete...
+Site &quot;&lt;name&gt;&quot; is updated
+</code></pre>
+<h2 id="examples">Examples</h2>
+<pre><code># Update the site to accept links
+skupper site update --enable-link-access
+
+# Update multiple settings
+skupper site update --enable-link-access --service-account app1:alice
+</code></pre>
+<h2 id="arguments">Arguments</h2>
+<ul>
+<li><p><strong>name</strong> <em>string</em></p>
+<p>This is optional!  We use the site associated with the
+current namespace if the name is not given.</p>
+<p>The name of the site resource.</p>
+</li>
+<li><p><strong>--enable-link-access</strong> <em>boolean</em></p>
+<p>Allow access for incoming links from remote sites.</p>
+</li>
+<li><p><strong>--link-access-type</strong> <em>string</em></p>
+<p><em>Default:</em> default</p>
+<p>Configure external access for links from remote sites.</p>
+<p>Select the means of opening external access.</p>
+<p><code>default</code> equates to <code>route</code> if the environment is
+OpenShift, otherwise <code>loadbalancer</code>.</p>
+</li>
+<li><p><strong>--service-account</strong> <em>string</em></p>
+</li>
+</ul>
+<h2 id="errors">Errors</h2>
+<ul>
+<li><p><strong>No site resource exists</strong></p>
+<p>There is no existing Skupper site resource to update.</p>
+</li>
+</ul>
+
+
+    </article>
+  </main>
+  <aside>
+    <nav>
+    </nav>
+  </aside>
+  <footer>
+    <nav>
+    </nav>
+  </footer>
+</body>
+
+</html>

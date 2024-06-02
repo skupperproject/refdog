@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>skupper token create</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="/main.css" type="text/css"/>
+  <link rel="icon" href="data:,"/>
+  <script type="text/javascript" src="/main.js" defer="defer"></script>
+  
+</head>
+
+  <body>
+  <header>
+
+<nav class="path-nav"><a href="/index.html">Refdog</a><a href="/commands/index.html">Skupper commands</a><a href="/commands/skupper-token-create.html">skupper token create</a></nav>
+
+  </header>
+  <main>
+    <article>
+
+<h1 id="skupper-token-create">skupper token create</h1>
+<p>Create a token.</p>
+<h2 id="usage">Usage</h2>
+<pre><code class="language-shell">$ skupper token create &lt;file&gt; [options]
+Token file &lt;file&gt; created
+The token expires after 1 use or after 15 minutes
+</code></pre>
+<h2 id="arguments">Arguments</h2>
+<ul>
+<li><p><strong>file</strong> <em>string</em></p>
+<p>The name of the token file.</p>
+</li>
+<li><p><strong>--expiry</strong> <em>string (duration)</em></p>
+<p><em>Default:</em> 15m</p>
+<p><em>Look for what would be conventional for this.</em>
+<em>&quot;validFor&quot; doesn't necessarily make it clear that it's</em>
+<em>about time: &quot;valid for 3 uses&quot;.</em></p>
+</li>
+<li><p><strong>--uses</strong> <em>integer</em></p>
+<p><em>Default:</em> 1</p>
+<p><em>Consider maxClaims, claimsAllowed, and maxClaimsAllowed</em></p>
+</li>
+</ul>
+
+
+    </article>
+  </main>
+  <aside>
+    <nav>
+    </nav>
+  </aside>
+  <footer>
+    <nav>
+    </nav>
+  </footer>
+</body>
+
+</html>

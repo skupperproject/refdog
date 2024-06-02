@@ -50,9 +50,9 @@ starter site is really basic.  It just lays down an index page
 $ cd <your-new-project-dir>
 
 $ transom init
-transom: Creating 'config/body.html'
 transom: Creating 'config/config.py'
-transom: Creating 'config/page.html'
+transom: Creating 'config/head.html'
+transom: Creating 'config/body.html'
 transom: Creating 'input/index.md'
 transom: Creating 'input/main.css'
 transom: Creating 'input/main.js'
@@ -125,7 +125,7 @@ You can use `{{{ }}}` to produce literal `{{ }}` output.
 
 ~~~ python
 def get_page_info(page):
-    return page.url, page.title, page.root_class
+    return page.url, page.title, page.parent, page.site
 ~~~
 
 `input/index.md`:

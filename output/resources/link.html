@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Link</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="/main.css" type="text/css"/>
+  <link rel="icon" href="data:,"/>
+  <script type="text/javascript" src="/main.js" defer="defer"></script>
+  
+</head>
+
+  <body>
+  <header>
+
+<nav class="path-nav"><a href="/index.html">Refdog</a><a href="/resources/index.html">Skupper resources</a><a href="/resources/link.html">Link</a></nav>
+
+  </header>
+  <main>
+    <article>
+
+<h1 id="link">Link</h1>
+<p>A <a href="concepts.html#link">link</a> is a site-to-site communication channel. Links
+serve as a transport for application connections and requests.</p>
+<h2 id="examples">Examples</h2>
+<p>A typical link definition</p>
+<pre><code class="language-yaml">apiVersion: skupper.io/v1alpha1
+kind: Link
+metadata:
+  name: link-to-west
+  namespace: hello-world-east
+spec:
+  [...]
+</code></pre>
+<h2 id="spec-properties">Spec properties</h2>
+<ul>
+<li><p><strong>tlsCredentials</strong> <em>string</em></p>
+<p>The name of a Kubernetes secret containing TLS
+credentials. The secret contains the trusted server
+certificate (typically a CA).</p>
+<p>It can optionally include a client certificate and key for
+mutual TLS.</p>
+</li>
+<li><p><strong>cost</strong> <em>integer</em></p>
+</li>
+<li><p><strong>interRouter</strong> <em>object</em></p>
+</li>
+<li><p><strong>edge</strong> <em>object</em></p>
+</li>
+<li><p><strong>noClientAuth</strong> <em>boolean</em></p>
+<p><em>Default:</em> false</p>
+</li>
+</ul>
+
+
+    </article>
+  </main>
+  <aside>
+    <nav>
+    </nav>
+  </aside>
+  <footer>
+    <nav>
+    </nav>
+  </footer>
+</body>
+
+</html>

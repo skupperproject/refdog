@@ -32,7 +32,7 @@ groups:
           skupper site create west
 
           # Create a site that can accept links from remote sites
-          skupper site create west --enable-link-access
+          skupper site create west --link-access default
         output: |
           Waiting for status...
           Site "<name>" is ready
@@ -42,9 +42,13 @@ groups:
             description: |
               A name of your choice for the Skupper site.  This name is
               displayed in the console and CLI output.
-          - property: enableLinkAccess
-          - property: linkAccessType
-          - property: linkAccessHost
+          - name: --enable-link-access
+            type: boolean
+            description: |
+              Allow access for incoming links from remote sites.
+          - property: linkAccess
+            name: --link-access-type
+            default: default
           - property: serviceAccount
         errors:
           - message: A site resource already exists
@@ -54,13 +58,15 @@ groups:
         resource: Site
         description: |
           Change site settings.
-        usage: skupper site update <name> [options]
+
+          The name argument is optional for update.
+        usage: skupper site update [name] [options]
         examples: |
           # Update the site to accept links
-          skupper site update west --enable-link-access
+          skupper site update --enable-link-access
 
           # Update multiple settings
-          skupper site update west --enable-link-access --link-access-type loadbalancer
+          skupper site update --enable-link-access --service-account app1:alice
         output: |
           Waiting for update to complete...
           Site "<name>" is updated
@@ -68,10 +74,17 @@ groups:
           - name: name
             type: string
             description: |
+              This is optional!  We use the site associated with the
+              current namespace if the name is not given.
+
               The name of the site resource.
-          - property: enableLinkAccess
-          - property: linkAccessType
-          - property: linkAccessHost
+          - name: --enable-link-access
+            type: boolean
+            description: |
+              Allow access for incoming links from remote sites.
+          - property: linkAccess
+            name: --link-access-type
+            default: default
           - property: serviceAccount
         errors:
           - message: No site resource exists
@@ -192,7 +205,6 @@ groups:
           - property: port
           - property: selector
           - property: host
-          - property: enableTLS
           - property: tlsCredentials
           - property: type
           - property: includeNotReady
@@ -241,7 +253,6 @@ groups:
             default: _value of name_
           - property: host
           - property: port
-          - property: enableTLS
           - property: tlsCredentials
           - property: type
       - name: skupper listener delete
