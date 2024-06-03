@@ -6,8 +6,6 @@ body_class: resource
 
 <section>
 
-## Overview
-
 A [link][link] is a site-to-site communication channel. Links
 serve as a transport for application connections and requests.
 
@@ -37,7 +35,7 @@ spec:
 
 ## Spec properties
 
-- **tlsCredentials** _string_
+- **tlsSecret** _string_
 
   The name of a Kubernetes secret containing TLS
   credentials. The secret contains the trusted server
@@ -49,12 +47,32 @@ spec:
 
 - **cost** _integer_
 
-- **interRouter** _object_
+- **interRouter** _object_, _required_
 
-- **edge** _object_
+- **edge** _object_, _required_
 
 - **noClientAuth** _boolean_
 
   _Default:_ false
+
+</section>
+
+<section>
+
+## Status properties
+
+- **configured** _boolean_
+
+  _Default:_ false
+
+- **active** _boolean_
+
+  _Default:_ false
+
+- **status** _string_
+
+- **url** _string_
+
+- **site** _string_
 
 </section>

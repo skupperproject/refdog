@@ -6,8 +6,6 @@ body_class: resource
 
 <section>
 
-## Overview
-
 
 </section>
 
@@ -15,9 +13,9 @@ body_class: resource
 
 ## Spec properties
 
-- **ca** _string_
+- **ca** _string_, _required_
 
-- **subject** _string_
+- **subject** _string_, _required_
 
 - **hosts** _array_
 
@@ -32,5 +30,15 @@ body_class: resource
 - **signing** _boolean_
 
   _Default:_ false
+
+</section>
+
+<section>
+
+## Status properties
+
+- **status** _string_
+
+- **expiration** _string_ _(date-time)_
 
 </section>

@@ -62,6 +62,12 @@ skupper site create west --link-access default
 
 - **--service-account** _string_
 
+  _Default:_ `skupper:skupper-controller`
+
+  The Kubernetes service account under which to run the
+  Skupper controller.
+  
+
 ## Errors
 
 - **A site resource already exists**

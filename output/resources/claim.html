@@ -22,7 +22,6 @@
 <h1 id="claim">Claim</h1>
 <section>
 
-<h2 id="overview">Overview</h2>
 <p>A verifiable assertion of permission to link to a remote
 site.  A claim contains the URL and secret of a previous
 grant.</p>
@@ -32,11 +31,24 @@ grant.</p>
 
 <h2 id="spec-properties">Spec properties</h2>
 <ul>
-<li><p><strong>url</strong> <em>string</em></p>
+<li><p><strong>url</strong> <em>string</em>, <em>required</em></p>
 </li>
-<li><p><strong>secret</strong> <em>string</em></p>
+<li><p><strong>secret</strong> <em>string</em>, <em>required</em></p>
 </li>
-<li><p><strong>ca</strong> <em>string</em></p>
+<li><p><strong>ca</strong> <em>string</em>, <em>required</em></p>
+</li>
+</ul>
+</section>
+
+<section>
+
+<h2 id="status-properties">Status properties</h2>
+<ul>
+<li><p><strong>claimed</strong> <em>boolean</em></p>
+<p><em>Default:</em> false</p>
+<p><em>Suggest accepted.</em></p>
+</li>
+<li><p><strong>status</strong> <em>string</em></p>
 </li>
 </ul>
 </section>

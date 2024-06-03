@@ -251,10 +251,10 @@ class Argument:
     def property_(self):
         if "property" in self.data:
             assert self.command.resource is not None
-            assert self.data["property"] in self.command.resource.properties_by_name, \
+            assert self.data["property"] in self.command.resource.spec_properties_by_name, \
                 "Property '{}' not found in {}".format(self.data["property"], self.command.resource)
 
-            return self.command.resource.properties_by_name[self.data["property"]]
+            return self.command.resource.spec_properties_by_name[self.data["property"]]
 
     @property
     def name(self):

@@ -22,7 +22,6 @@
 <h1 id="site">Site</h1>
 <section>
 
-<h2 id="overview">Overview</h2>
 <p>A <a href="concepts.html#site">site</a> is a place where components of your application are
 running.  Sites are linked to form application
 <a href="concepts.html#network">networks</a>.</p>
@@ -55,15 +54,38 @@ spec:
 <h2 id="spec-properties">Spec properties</h2>
 <ul>
 <li><p><strong>linkAccess</strong> <em>string</em></p>
-<p><em>Default:</em> none</p>
+<p><em>Default:</em> <code>none</code></p>
 <p>Configure external access for links from remote sites.</p>
 <p>Select the means of opening external access.</p>
 <p><code>default</code> equates to <code>route</code> if the environment is
 OpenShift, otherwise <code>loadbalancer</code>.</p>
 </li>
 <li><p><strong>serviceAccount</strong> <em>string</em></p>
+<p><em>Default:</em> <code>skupper:skupper-controller</code></p>
+<p>The Kubernetes service account under which to run the
+Skupper controller.</p>
 </li>
-<li><p><strong>settings</strong> <em>array</em></p>
+<li><p><strong>options</strong> <em>array</em></p>
+</li>
+</ul>
+</section>
+
+<section>
+
+<h2 id="status-properties">Status properties</h2>
+<ul>
+<li><p><strong>active</strong> <em>boolean</em></p>
+<p><em>Default:</em> false</p>
+</li>
+<li><p><strong>status</strong> <em>string</em></p>
+</li>
+<li><p><strong>endpoints</strong> <em>array</em></p>
+</li>
+<li><p><strong>sitesInNetwork</strong> <em>integer</em></p>
+</li>
+<li><p><strong>servicesInNetwork</strong> <em>integer</em></p>
+</li>
+<li><p><strong>network</strong> <em>array</em></p>
 </li>
 </ul>
 </section>

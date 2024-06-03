@@ -22,7 +22,6 @@
 <h1 id="linkaccess">LinkAccess</h1>
 <section>
 
-<h2 id="overview">Overview</h2>
 <p>A point of external access for links from remote sites.  A
 LinkAccess configures the router to accept inter-router
 links and creates the Kubernetes resources for external
@@ -51,9 +50,9 @@ spec:
 
 <h2 id="spec-properties">Spec properties</h2>
 <ul>
-<li><p><strong>roles</strong> <em>array</em></p>
+<li><p><strong>roles</strong> <em>array</em>, <em>required</em></p>
 </li>
-<li><p><strong>tlsCredentials</strong> <em>string</em></p>
+<li><p><strong>tlsSecret</strong> <em>string</em>, <em>required</em></p>
 <p>The name of a Kubernetes secret containing the trusted
 server certificate (typically a CA).</p>
 <p>It can optionally include a client certificate and key for
@@ -74,6 +73,20 @@ generate them.</p>
 <li><p><strong>options</strong> <em>object</em></p>
 </li>
 <li><p><strong>accessType</strong> <em>string</em></p>
+</li>
+</ul>
+</section>
+
+<section>
+
+<h2 id="status-properties">Status properties</h2>
+<ul>
+<li><p><strong>active</strong> <em>boolean</em></p>
+<p><em>Default:</em> false</p>
+</li>
+<li><p><strong>status</strong> <em>string</em></p>
+</li>
+<li><p><strong>urls</strong> <em>array</em></p>
 </li>
 </ul>
 </section>

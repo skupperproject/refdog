@@ -6,8 +6,6 @@ body_class: resource
 
 <section>
 
-## Overview
-
 A [listener][listener] is a local connection endpoint bound to
 servers in remote sites.
 
@@ -43,28 +41,28 @@ spec:
 
 ## Spec properties
 
-- **routingKey** _string_
+- **routingKey** _string_, _required_
 
   The identifier used to route traffic from listeners to
   connectors.  To connect to a service at a remote site, the
   listener and connector must have matching routing keys.
   
 
-- **host** _string_
+- **host** _string_, _required_
 
   The hostname or IP address of the local listener.  Clients
   at this site use the listener host and port to
   establish connections to the remote service.
   
 
-- **port** _integer_
+- **port** _integer_, _required_
 
   The port of the local listener.  Clients at this site use
   the listener host and port to establish connections to
   the remote service.
   
 
-- **tlsCredentials** _string_
+- **tlsSecret** _string_
 
   The name of a Kubernetes secret containing TLS
   credentials.  The secret contains the trusted server
@@ -77,5 +75,17 @@ spec:
 - **type** _string_
 
   _What is this again?  I think we need a qualifier on "type"._
+
+</section>
+
+<section>
+
+## Status properties
+
+- **active** _boolean_
+
+  _Default:_ false
+
+- **status** _string_
 
 </section>

@@ -56,6 +56,12 @@ skupper site update --enable-link-access --service-account app1:alice
 
 - **--service-account** _string_
 
+  _Default:_ `skupper:skupper-controller`
+
+  The Kubernetes service account under which to run the
+  Skupper controller.
+  
+
 ## Errors
 
 - **No site resource exists**

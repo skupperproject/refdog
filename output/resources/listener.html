@@ -22,7 +22,6 @@
 <h1 id="listener">Listener</h1>
 <section>
 
-<h2 id="overview">Overview</h2>
 <p>A <a href="concepts.html#listener">listener</a> is a local connection endpoint bound to
 servers in remote sites.</p>
 <p>Each site can have multiple listener definitions.</p>
@@ -49,22 +48,22 @@ spec:
 
 <h2 id="spec-properties">Spec properties</h2>
 <ul>
-<li><p><strong>routingKey</strong> <em>string</em></p>
+<li><p><strong>routingKey</strong> <em>string</em>, <em>required</em></p>
 <p>The identifier used to route traffic from listeners to
 connectors.  To connect to a service at a remote site, the
 listener and connector must have matching routing keys.</p>
 </li>
-<li><p><strong>host</strong> <em>string</em></p>
+<li><p><strong>host</strong> <em>string</em>, <em>required</em></p>
 <p>The hostname or IP address of the local listener.  Clients
 at this site use the listener host and port to
 establish connections to the remote service.</p>
 </li>
-<li><p><strong>port</strong> <em>integer</em></p>
+<li><p><strong>port</strong> <em>integer</em>, <em>required</em></p>
 <p>The port of the local listener.  Clients at this site use
 the listener host and port to establish connections to
 the remote service.</p>
 </li>
-<li><p><strong>tlsCredentials</strong> <em>string</em></p>
+<li><p><strong>tlsSecret</strong> <em>string</em></p>
 <p>The name of a Kubernetes secret containing TLS
 credentials.  The secret contains the trusted server
 certificate (typically a CA).</p>
@@ -73,6 +72,18 @@ mutual TLS.</p>
 </li>
 <li><p><strong>type</strong> <em>string</em></p>
 <p><em>What is this again?  I think we need a qualifier on &quot;type&quot;.</em></p>
+</li>
+</ul>
+</section>
+
+<section>
+
+<h2 id="status-properties">Status properties</h2>
+<ul>
+<li><p><strong>active</strong> <em>boolean</em></p>
+<p><em>Default:</em> false</p>
+</li>
+<li><p><strong>status</strong> <em>string</em></p>
 </li>
 </ul>
 </section>

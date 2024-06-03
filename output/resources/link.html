@@ -22,7 +22,6 @@
 <h1 id="link">Link</h1>
 <section>
 
-<h2 id="overview">Overview</h2>
 <p>A <a href="concepts.html#link">link</a> is a site-to-site communication channel. Links
 serve as a transport for application connections and requests.</p>
 </section>
@@ -45,7 +44,7 @@ spec:
 
 <h2 id="spec-properties">Spec properties</h2>
 <ul>
-<li><p><strong>tlsCredentials</strong> <em>string</em></p>
+<li><p><strong>tlsSecret</strong> <em>string</em></p>
 <p>The name of a Kubernetes secret containing TLS
 credentials. The secret contains the trusted server
 certificate (typically a CA).</p>
@@ -54,12 +53,31 @@ mutual TLS.</p>
 </li>
 <li><p><strong>cost</strong> <em>integer</em></p>
 </li>
-<li><p><strong>interRouter</strong> <em>object</em></p>
+<li><p><strong>interRouter</strong> <em>object</em>, <em>required</em></p>
 </li>
-<li><p><strong>edge</strong> <em>object</em></p>
+<li><p><strong>edge</strong> <em>object</em>, <em>required</em></p>
 </li>
 <li><p><strong>noClientAuth</strong> <em>boolean</em></p>
 <p><em>Default:</em> false</p>
+</li>
+</ul>
+</section>
+
+<section>
+
+<h2 id="status-properties">Status properties</h2>
+<ul>
+<li><p><strong>configured</strong> <em>boolean</em></p>
+<p><em>Default:</em> false</p>
+</li>
+<li><p><strong>active</strong> <em>boolean</em></p>
+<p><em>Default:</em> false</p>
+</li>
+<li><p><strong>status</strong> <em>string</em></p>
+</li>
+<li><p><strong>url</strong> <em>string</em></p>
+</li>
+<li><p><strong>site</strong> <em>string</em></p>
 </li>
 </ul>
 </section>

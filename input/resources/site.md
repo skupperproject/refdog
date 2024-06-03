@@ -6,8 +6,6 @@ body_class: resource
 
 <section>
 
-## Overview
-
 A [site][site] is a place where components of your application are
 running.  Sites are linked to form application
 [networks][network].
@@ -52,7 +50,7 @@ spec:
 
 - **linkAccess** _string_
 
-  _Default:_ none
+  _Default:_ `none`
 
   Configure external access for links from remote sites.
   
@@ -64,6 +62,32 @@ spec:
 
 - **serviceAccount** _string_
 
-- **settings** _array_
+  _Default:_ `skupper:skupper-controller`
+
+  The Kubernetes service account under which to run the
+  Skupper controller.
+  
+
+- **options** _array_
+
+</section>
+
+<section>
+
+## Status properties
+
+- **active** _boolean_
+
+  _Default:_ false
+
+- **status** _string_
+
+- **endpoints** _array_
+
+- **sitesInNetwork** _integer_
+
+- **servicesInNetwork** _integer_
+
+- **network** _array_
 
 </section>

@@ -18,7 +18,7 @@ def generate():
     append()
 
     for group in model.groups:
-        append(f"- [{group.title}](#{group.id})")
+        append(f"- [{group.name}](#{group.id})")
 
         for resource in group.resources:
             append(f"  - [{resource.name}]({resource.id}.html)")
@@ -48,8 +48,6 @@ def generate_resource(resource):
     append()
     append("<section>")
     append()
-    append("## Overview")
-    append()
     append(resource.description)
     append()
     append("</section>")
@@ -72,13 +70,25 @@ def generate_resource(resource):
         append("</section>")
         append()
 
-    if resource.properties:
+    if resource.spec_properties:
         append("<section>")
         append()
         append("## Spec properties")
         append()
 
-        for prop in resource.properties:
+        for prop in resource.spec_properties:
+            generate_property(prop, append)
+
+        append("</section>")
+        append()
+
+    if resource.status_properties:
+        append("<section>")
+        append()
+        append("## Status properties")
+        append()
+
+        for prop in resource.status_properties:
             generate_property(prop, append)
 
         append("</section>")
@@ -86,18 +96,19 @@ def generate_resource(resource):
 
     write(f"input/resources/{resource.id}.md", "\n".join(lines))
 
-    # append("#### Status properties")
-    # append()
-
 def generate_property(prop, append):
     debug(f"Generating {prop}")
 
-    title = f"**{prop.name}** _{prop.type}_"
+    name = nvl(prop.rename, prop.name)
+    name = f"**{name}** _{prop.type}_"
 
     if prop.format:
-        title = f"**{prop.name}** _{prop.type} ({prop.format})_"
+        name += f" _({prop.format})_"
 
-    append(f"- {title}")
+    if prop.required:
+        name += f", _required_"
+
+    append(f"- {name}")
     append()
 
     if prop.default is not None:
@@ -162,15 +173,21 @@ class ResourceModel:
         return "resource model"
 
     def check_properties(self):
-        for name, data in self.crds_by_name.items():
-            assert name in self.resources_by_name, f"Missing: resource '{name}'"
+        for crd_name, crd_data in self.crds_by_name.items():
+            if crd_name not in self.resources_by_name:
+                print(f"Missing: resource '{crd_name}'")
 
-            resource = self.resources_by_name[name]
+            resource = self.resources_by_name[crd_name]
 
-            for name, data in data["spec"]["versions"][0]["schema"]["openAPIV3Schema"]["properties"]["spec"]["properties"].items():
-                assert name in resource.properties_by_name, f"Missing: {resource}: {name}"
+            for name, data in crd_data["spec"]["versions"][0]["schema"]["openAPIV3Schema"]["properties"]["spec"]["properties"].items():
+                if name not in resource.spec_properties_by_name:
+                    print(f"Missing: {resource}: {name}")
 
-    def get_resource_schema(self, resource):
+            for name, data in crd_data["spec"]["versions"][0]["schema"]["openAPIV3Schema"]["properties"]["status"]["properties"].items():
+                if name not in resource.status_properties_by_name:
+                    print(f"Missing: {resource}: {name}")
+
+    def get_schema(self, resource):
         crd = self.crds_by_name[resource.name]
 
         try:
@@ -178,11 +195,11 @@ class ResourceModel:
         except KeyError:
             return {}
 
-    def get_property_spec(self, prop):
-        schema = self.get_resource_schema(prop.resource)
+    def get_schema_property(self, prop):
+        schema = self.get_schema(prop.resource)
 
         try:
-            return schema["properties"]["spec"]["properties"][prop.name]
+            return schema["properties"][prop.group]["properties"][prop.name]
         except KeyError:
             return {}
 
@@ -199,15 +216,15 @@ class Group:
             self.resources.append(Resource(self.model, self, resource_data))
 
     def __repr__(self):
-        return f"group '{self.title}'"
+        return f"group '{self.name}'"
 
     @property
     def id(self):
-        return fragment_id(self.title)
+        return fragment_id(self.name)
 
     @property
-    def title(self):
-        return self.data["title"]
+    def name(self):
+        return self.data["name"]
 
     @property
     def description(self):
@@ -221,14 +238,23 @@ class Resource:
 
         debug(f"Loading {self}")
 
-        self.properties = list()
-        self.properties_by_name = dict()
+        self.spec_properties = list()
+        self.spec_properties_by_name = dict()
 
-        for property_data in self.data.get("properties", []):
-            prop = Property(self.model, self, property_data)
+        for property_data in self.data.get("spec_properties", []):
+            prop = Property(self.model, self, "spec", property_data)
 
-            self.properties.append(prop)
-            self.properties_by_name[prop.name] = prop
+            self.spec_properties.append(prop)
+            self.spec_properties_by_name[prop.name] = prop
+
+        self.status_properties = list()
+        self.status_properties_by_name = dict()
+
+        for property_data in self.data.get("status_properties", []):
+            prop = Property(self.model, self, "status", property_data)
+
+            self.status_properties.append(prop)
+            self.status_properties_by_name[prop.name] = prop
 
     def __repr__(self):
         return f"resource '{self.name}'"
@@ -251,9 +277,10 @@ class Resource:
         return self.data.get("examples", [])
 
 class Property:
-    def __init__(self, model, resource, data):
+    def __init__(self, model, resource, group, data):
         self.model = model
         self.resource = resource
+        self.group = group # "spec" or "status"
         self.data = data
 
         debug(f"Loading {self}")
@@ -266,19 +293,23 @@ class Property:
         return self.data["name"]
 
     @property
+    def rename(self):
+        return self.data.get("rename")
+
+    @property
     def type(self):
-        default = self.model.get_property_spec(self).get("type")
+        default = self.model.get_schema_property(self).get("type")
         return self.data.get("type", default)
 
     @property
     def format(self):
-        default = self.model.get_property_spec(self).get("format")
+        default = self.model.get_schema_property(self).get("format")
         return self.data.get("format", default)
 
     @property
     def required(self):
-        schema = self.model.get_resource_schema(self.resource)
-        required_names = schema["properties"]["spec"].get("required", [])
+        schema = self.model.get_schema(self.resource)
+        required_names = schema["properties"][self.group].get("required", [])
         default = self.name in required_names
 
         return self.data.get("required", default)
@@ -290,7 +321,7 @@ class Property:
 
     @property
     def description(self):
-        default = self.model.get_property_spec(self).get("description")
+        default = self.model.get_schema_property(self).get("description")
         return self.data.get("description", default)
 
     @property

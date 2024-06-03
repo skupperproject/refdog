@@ -6,8 +6,6 @@ body_class: resource
 
 <section>
 
-## Overview
-
 A point of external access for links from remote sites.  A
 LinkAccess configures the router to accept inter-router
 links and creates the Kubernetes resources for external
@@ -41,9 +39,9 @@ spec:
 
 ## Spec properties
 
-- **roles** _array_
+- **roles** _array_, _required_
 
-- **tlsCredentials** _string_
+- **tlsSecret** _string_, _required_
 
   The name of a Kubernetes secret containing the trusted
   server certificate (typically a CA).
@@ -71,5 +69,19 @@ spec:
 - **options** _object_
 
 - **accessType** _string_
+
+</section>
+
+<section>
+
+## Status properties
+
+- **active** _boolean_
+
+  _Default:_ false
+
+- **status** _string_
+
+- **urls** _array_
 
 </section>

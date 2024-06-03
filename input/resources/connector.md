@@ -6,8 +6,6 @@ body_class: resource
 
 <section>
 
-## Overview
-
 A [connector][connector] binds local servers to listeners in
 remote sites.
 
@@ -42,11 +40,16 @@ spec:
 
 ## Spec properties
 
-- **routingKey** _string_
+- **routingKey** _string_, _required_
 
   The identifier used to route traffic from listeners to
   connectors.  To connect to a service at a remote site, the
   listener and connector must have matching routing keys.
+  
+
+- **port** _integer_, _required_
+
+  The port number of the server listener.
   
 
 - **selector** _string_
@@ -64,12 +67,7 @@ spec:
   server.
   
 
-- **port** _integer_
-
-  The port number of the server listener.
-  
-
-- **tlsCredentials** _string_
+- **tlsSecret** _string_
 
   The name of a Kubernetes secret containing the trusted
   server certificate (typically a CA).
@@ -85,5 +83,17 @@ spec:
 - **includeNotReady** _boolean_
 
   _Default:_ false
+
+</section>
+
+<section>
+
+## Status properties
+
+- **active** _boolean_
+
+  _Default:_ false
+
+- **status** _string_
 
 </section>
