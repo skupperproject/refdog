@@ -55,7 +55,7 @@ def generate_resource(resource):
         append()
 
     if resource.links:
-        links = ["[{}]({})".format(x["name"], x["url"]) for x in resource.links]
+        links = ["[{}]({{{{site_prefix}}}}{})".format(x["name"], x["url"]) for x in resource.links]
         append("_See also:_ " + ", ".join(links))
         append()
 
@@ -146,7 +146,7 @@ def generate_property(prop, append):
         append()
 
     if prop.links:
-        links = ["[{}]({})".format(x["name"], x["url"]) for x in prop.links]
+        links = ["[{}]({{{{site_prefix}}}}{})".format(x["name"], x["url"]) for x in prop.links]
         append("  _See also:_ " + ", ".join(links))
         append()
 

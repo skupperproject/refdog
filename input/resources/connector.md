@@ -11,7 +11,7 @@ sites.
 
 Each site can have multiple connector definitions.
 
-_See also:_ [Skupper connectors](/concepts.html#connector), [Skupper connector command](/commands/skupper-connector.html)
+_See also:_ [Skupper connectors]({{site_prefix}}/concepts.html#connector), [Skupper connector command]({{site_prefix}}/commands/skupper-connector.html)
 
 </section>
 
@@ -53,7 +53,7 @@ spec:
 
   A Kubernetes label selector for targeting server pods.
 
-  _See also:_ [Kubernetes label selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors)
+  _See also:_ [Kubernetes label selectors]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors)
 
 - <h3 id="host">host <span class="property-info">string</span></h3>
 

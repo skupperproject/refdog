@@ -11,7 +11,7 @@ running.  Sites are linked to form application networks.
 
 There can be only one site definition per namespace.
 
-_See also:_ [Skupper sites](/concepts.html#site), [Skupper site command](/commands/skupper-site.html)
+_See also:_ [Skupper sites]({{site_prefix}}/concepts.html#site), [Skupper site command]({{site_prefix}}/commands/skupper-site.html)
 
 </section>
 
@@ -68,7 +68,7 @@ is the default.  For other Kubernetes flavors,
 
   _Default:_ `skupper:skupper-controller`
 
-  _See also:_ [Kubernetes service accounts](https://kubernetes.io/docs/concepts/security/service-accounts/)
+  _See also:_ [Kubernetes service accounts]({{site_prefix}}https://kubernetes.io/docs/concepts/security/service-accounts/)
 
 - <h3 id="options">options <span class="property-info">array</span></h3>
 
