@@ -6,10 +6,8 @@ body_class: command
 
 Create a link.
 
-A [link][link] is a site-to-site communication channel. Links
-serve as a transport for application connections and requests.
-
-[link]: concepts.html#link
+A link is a site-to-site communication channel. Links serve
+as a transport for application connections and requests.
 
 ## Usage
 

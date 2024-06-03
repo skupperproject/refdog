@@ -6,28 +6,10 @@ body_class: resource
 
 <section>
 
-A [link][link] is a site-to-site communication channel. Links
-serve as a transport for application connections and requests.
+A link is a site-to-site communication channel. Links serve
+as a transport for application connections and requests.
 
-[link]: concepts.html#link
-
-</section>
-
-<section>
-
-## Examples
-
-A typical link definition:
-
-~~~ yaml
-apiVersion: skupper.io/v1alpha1
-kind: Link
-metadata:
-  name: link-to-west
-  namespace: hello-world-east
-spec:
-  [...]
-~~~
+_See also:_ [Skupper links](/concepts.html#link)
 
 </section>
 

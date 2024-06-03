@@ -15,28 +15,6 @@ access.
 
 <section>
 
-## Examples
-
-A typical link access definition:
-
-~~~ yaml
-apiVersion: skupper.io/v1alpha1
-kind: LinkAccess
-metadata:
-  name: skupper-router
-spec:
-  roles:
-  - role: inter-router
-    port: 55671
-  - role: edge
-    port: 45671
-  tlsCredentials: skupper-site-server
-~~~
-
-</section>
-
-<section>
-
 ## Spec properties
 
 - <h3 id="roles">roles <span class="property-info">array, required</span></h3>
@@ -59,8 +37,6 @@ spec:
   _Consider tlsCA.  And "ca" often means "this is what I trust".  This thing has a different meaning._
 
 - <h3 id="bindhost">bindHost <span class="property-info">string</span></h3>
-
-  _Just host?  What does "bind" do here to clarify?  I have a related attribute on site: linkAccessHost._
 
 - <h3 id="subjectalternativenames">subjectAlternativeNames <span class="property-info">array</span></h3>
 

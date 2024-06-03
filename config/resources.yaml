@@ -231,20 +231,11 @@ groups:
     resources:
       - name: Link
         description: |
-          A [link][link] is a site-to-site communication channel. Links
-          serve as a transport for application connections and requests.
-
-          [link]: concepts.html#link
-        examples:
-          - description: A typical link definition
-            yaml: |
-              apiVersion: skupper.io/v1alpha1
-              kind: Link
-              metadata:
-                name: link-to-west
-                namespace: hello-world-east
-              spec:
-                [...]
+          A link is a site-to-site communication channel. Links serve
+          as a transport for application connections and requests.
+        links:
+          - name: Skupper links
+            url: /concepts.html#link
         spec_properties:
           - name: tlsCredentials
             rename: tlsSecret
@@ -271,20 +262,6 @@ groups:
           LinkAccess configures the router to accept inter-router
           links and creates the Kubernetes resources for external
           access.
-        examples:
-          - description: A typical link access definition
-            yaml: |
-              apiVersion: skupper.io/v1alpha1
-              kind: LinkAccess
-              metadata:
-                name: skupper-router
-              spec:
-                roles:
-                - role: inter-router
-                  port: 55671
-                - role: edge
-                  port: 45671
-                tlsCredentials: skupper-site-server
         spec_properties:
           - name: roles
           - name: tlsCredentials
@@ -304,8 +281,6 @@ groups:
             notes: |
               Consider tlsCA.  And "ca" often means "this is what I trust".  This thing has a different meaning.
           - name: bindHost
-            notes: |
-              Just host?  What does "bind" do here to clarify?  I have a related attribute on site: linkAccessHost.
           - name: subjectAlternativeNames
           - name: options
           - name: accessType
