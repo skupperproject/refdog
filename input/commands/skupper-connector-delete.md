@@ -6,7 +6,6 @@ body_class: command
 
 Delete a connector.
 
-
 ## Usage
 
 ~~~ shell
@@ -17,7 +16,6 @@ Connector "<name>" is deleted
 
 ## Arguments
 
-- **name** _string_
+- <h3 id="name">name <span class="argument-info">string</span></h3>
 
   The name of the connector resource.
-  

@@ -6,7 +6,6 @@ body_class: command
 
 Show the current status of a site.
 
-
 ## Usage
 
 ~~~ shell

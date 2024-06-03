@@ -11,8 +11,6 @@ serve as a transport for application connections and requests.
 
 [link]: concepts.html#link
 
-
-
 ## Usage
 
 ~~~ shell
@@ -24,9 +22,8 @@ You can now safely delete <file>
 
 ## Arguments
 
-- **file** _None_
+- <h3 id="file">file <span class="argument-info">None</span></h3>
 
   The name of the token file.
-  
 
-- **--cost** _integer_
+- <h3 id="--cost">--cost <span class="argument-info">integer</span></h3>

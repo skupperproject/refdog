@@ -11,14 +11,13 @@ serve as a transport for application connections and requests.
 
 [link]: concepts.html#link
 
-
 </section>
 
 <section>
 
 ## Examples
 
-A typical link definition
+A typical link definition:
 
 ~~~ yaml
 apiVersion: skupper.io/v1alpha1
@@ -29,13 +28,14 @@ metadata:
 spec:
   [...]
 ~~~
+
 </section>
 
 <section>
 
 ## Spec properties
 
-- **tlsSecret** _string_
+- <h3 id="tlssecret">tlsSecret <span class="property-info">string</span></h3>
 
   The name of a Kubernetes secret containing TLS
   credentials. The secret contains the trusted server
@@ -43,17 +43,14 @@ spec:
   
   It can optionally include a client certificate and key for
   mutual TLS.
-  
 
-- **cost** _integer_
+- <h3 id="cost">cost <span class="property-info">integer</span></h3>
 
-- **interRouter** _object_, _required_
+- <h3 id="interrouter">interRouter <span class="property-info">object, required</span></h3>
 
-- **edge** _object_, _required_
+- <h3 id="edge">edge <span class="property-info">object, required</span></h3>
 
-- **noClientAuth** _boolean_
-
-  _Default:_ false
+- <h3 id="noclientauth">noClientAuth <span class="property-info">boolean</span></h3>
 
 </section>
 
@@ -61,18 +58,14 @@ spec:
 
 ## Status properties
 
-- **configured** _boolean_
+- <h3 id="configured">configured <span class="property-info">boolean</span></h3>
 
-  _Default:_ false
+- <h3 id="active">active <span class="property-info">boolean</span></h3>
 
-- **active** _boolean_
+- <h3 id="status">status <span class="property-info">string</span></h3>
 
-  _Default:_ false
+- <h3 id="url">url <span class="property-info">string</span></h3>
 
-- **status** _string_
-
-- **url** _string_
-
-- **site** _string_
+- <h3 id="site">site <span class="property-info">string</span></h3>
 
 </section>

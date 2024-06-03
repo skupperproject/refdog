@@ -6,7 +6,6 @@ body_class: command
 
 Show the status of listeners in the current site.
 
-
 ## Usage
 
 ~~~ shell

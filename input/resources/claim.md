@@ -6,10 +6,10 @@ body_class: resource
 
 <section>
 
+XXX
 A verifiable assertion of permission to link to a remote
 site.  A claim contains the URL and secret of a previous
 grant.
-
 
 </section>
 
@@ -17,11 +17,13 @@ grant.
 
 ## Spec properties
 
-- **url** _string_, _required_
+- <h3 id="url">url <span class="property-info">string, required</span></h3>
 
-- **secret** _string_, _required_
+  The URL at which the claim is redeemed.
 
-- **ca** _string_, _required_
+- <h3 id="secret">secret <span class="property-info">string, required</span></h3>
+
+- <h3 id="ca">ca <span class="property-info">string, required</span></h3>
 
 </section>
 
@@ -29,12 +31,12 @@ grant.
 
 ## Status properties
 
-- **claimed** _boolean_
+- <h3 id="claimed">claimed <span class="property-info">boolean</span></h3>
 
-  _Default:_ false
+  Whether the claim has been claimed.
 
-  _Suggest accepted._
+  _Suggest **redeemed**.  "Whether the claim has been redeemed."_
 
-- **status** _string_
+- <h3 id="status">status <span class="property-info">string</span></h3>
 
 </section>

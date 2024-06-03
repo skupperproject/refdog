@@ -6,7 +6,6 @@ body_class: command
 
 Show the status of connectors in the current site.
 
-
 ## Usage
 
 ~~~ shell

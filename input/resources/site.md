@@ -6,15 +6,12 @@ body_class: resource
 
 <section>
 
-A [site][site] is a place where components of your application are
-running.  Sites are linked to form application
-[networks][network].
+A site is a place where components of your application are
+running.  Sites are linked to form application networks.
 
 There can be only one site definition per namespace.
 
-[site]: concepts.html#site
-[network]: concepts.html#network
-
+_See also:_ [Skupper sites](/concepts.html#site), [Skupper site command](/commands/skupper-site.html)
 
 </section>
 
@@ -22,7 +19,7 @@ There can be only one site definition per namespace.
 
 ## Examples
 
-A minimal site
+A minimal site:
 
 ~~~ yaml
 apiVersion: skupper.io/v1alpha1
@@ -31,7 +28,8 @@ metadata:
   name: east
   namespace: hello-world-east
 ~~~
-A site configured to accept links
+
+A site configured to accept links:
 
 ~~~ yaml
 apiVersion: skupper.io/v1alpha1
@@ -42,33 +40,37 @@ metadata:
 spec:
   linkAccess: default
 ~~~
+
 </section>
 
 <section>
 
 ## Spec properties
 
-- **linkAccess** _string_
+- <h3 id="linkaccess">linkAccess <span class="property-info">string</span></h3>
+
+  Configure external access for links from remote sites.
 
   _Default:_ `none`
 
-  Configure external access for links from remote sites.
-  
-  Select the means of opening external access.
-  
-  `default` equates to `route` if the environment is
-  OpenShift, otherwise `loadbalancer`.
-  
+  _Choices:_
+    - `none` - No link access.
+    - `default` - Use the default link access.  On OpenShift, `route`
+is the default.  For other Kubernetes flavors,
+`loadbalancer` is the default.
+    - `route` - Use an OpenShift route.
+    - `loadbalancer` - Use a Kubernetes load balancer.
 
-- **serviceAccount** _string_
-
-  _Default:_ `skupper:skupper-controller`
+- <h3 id="serviceaccount">serviceAccount <span class="property-info">string</span></h3>
 
   The Kubernetes service account under which to run the
   Skupper controller.
-  
 
-- **options** _array_
+  _Default:_ `skupper:skupper-controller`
+
+  _See also:_ [Kubernetes service accounts](https://kubernetes.io/docs/concepts/security/service-accounts/)
+
+- <h3 id="options">options <span class="property-info">array</span></h3>
 
 </section>
 
@@ -76,18 +78,16 @@ spec:
 
 ## Status properties
 
-- **active** _boolean_
+- <h3 id="active">active <span class="property-info">boolean</span></h3>
 
-  _Default:_ false
+- <h3 id="status">status <span class="property-info">string</span></h3>
 
-- **status** _string_
+- <h3 id="endpoints">endpoints <span class="property-info">array</span></h3>
 
-- **endpoints** _array_
+- <h3 id="sitesinnetwork">sitesInNetwork <span class="property-info">integer</span></h3>
 
-- **sitesInNetwork** _integer_
+- <h3 id="servicesinnetwork">servicesInNetwork <span class="property-info">integer</span></h3>
 
-- **servicesInNetwork** _integer_
-
-- **network** _array_
+- <h3 id="network">network <span class="property-info">array</span></h3>
 
 </section>

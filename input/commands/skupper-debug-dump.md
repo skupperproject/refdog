@@ -6,7 +6,6 @@ body_class: command
 
 Generate a debug dump file.
 
-
 ## Usage
 
 ~~~ shell

@@ -6,30 +6,23 @@ body_class: resource
 
 <section>
 
-
 </section>
 
 <section>
 
 ## Spec properties
 
-- **ca** _string_, _required_
+- <h3 id="ca">ca <span class="property-info">string, required</span></h3>
 
-- **subject** _string_, _required_
+- <h3 id="subject">subject <span class="property-info">string, required</span></h3>
 
-- **hosts** _array_
+- <h3 id="hosts">hosts <span class="property-info">array</span></h3>
 
-- **client** _boolean_
+- <h3 id="client">client <span class="property-info">boolean</span></h3>
 
-  _Default:_ false
+- <h3 id="server">server <span class="property-info">boolean</span></h3>
 
-- **server** _boolean_
-
-  _Default:_ false
-
-- **signing** _boolean_
-
-  _Default:_ false
+- <h3 id="signing">signing <span class="property-info">boolean</span></h3>
 
 </section>
 
@@ -37,8 +30,8 @@ body_class: resource
 
 ## Status properties
 
-- **status** _string_
+- <h3 id="status">status <span class="property-info">string</span></h3>
 
-- **expiration** _string_ _(date-time)_
+- <h3 id="expiration">expiration <span class="property-info">string (date-time)</span></h3>
 
 </section>

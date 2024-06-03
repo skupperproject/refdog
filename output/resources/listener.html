@@ -31,7 +31,7 @@ servers in remote sites.</p>
 
 <h2 id="examples">Examples</h2>
 <p>A listener in site West for the Hello World backend service
-in site East</p>
+in site East:</p>
 <pre><code class="language-yaml">apiVersion: skupper.io/v1alpha1
 kind: Listener
 metadata:
@@ -48,29 +48,34 @@ spec:
 
 <h2 id="spec-properties">Spec properties</h2>
 <ul>
-<li><p><strong>routingKey</strong> <em>string</em>, <em>required</em></p>
+<li><h3 id="routingkey">routingKey <span class="property-info">string, required</span></h3>
+
 <p>The identifier used to route traffic from listeners to
 connectors.  To connect to a service at a remote site, the
 listener and connector must have matching routing keys.</p>
 </li>
-<li><p><strong>host</strong> <em>string</em>, <em>required</em></p>
+<li><h3 id="host">host <span class="property-info">string, required</span></h3>
+
 <p>The hostname or IP address of the local listener.  Clients
 at this site use the listener host and port to
 establish connections to the remote service.</p>
 </li>
-<li><p><strong>port</strong> <em>integer</em>, <em>required</em></p>
+<li><h3 id="port">port <span class="property-info">integer, required</span></h3>
+
 <p>The port of the local listener.  Clients at this site use
 the listener host and port to establish connections to
 the remote service.</p>
 </li>
-<li><p><strong>tlsSecret</strong> <em>string</em></p>
+<li><h3 id="tlssecret">tlsSecret <span class="property-info">string</span></h3>
+
 <p>The name of a Kubernetes secret containing TLS
 credentials.  The secret contains the trusted server
 certificate (typically a CA).</p>
 <p>It can optionally include a client certificate and key for
 mutual TLS.</p>
 </li>
-<li><p><strong>type</strong> <em>string</em></p>
+<li><h3 id="type">type <span class="property-info">string</span></h3>
+
 <p><em>What is this again?  I think we need a qualifier on &quot;type&quot;.</em></p>
 </li>
 </ul>
@@ -80,10 +85,11 @@ mutual TLS.</p>
 
 <h2 id="status-properties">Status properties</h2>
 <ul>
-<li><p><strong>active</strong> <em>boolean</em></p>
-<p><em>Default:</em> false</p>
+<li><h3 id="active">active <span class="property-info">boolean</span></h3>
+
 </li>
-<li><p><strong>status</strong> <em>string</em></p>
+<li><h3 id="status">status <span class="property-info">string</span></h3>
+
 </li>
 </ul>
 </section>

@@ -18,7 +18,8 @@ def generate():
     append()
 
     for group in model.groups:
-        append(f"- [{group.name}](#{group.id})")
+        # append(f"- [{group.name}](#{group.id})")
+        append(f"- {group.name}")
 
         for resource in group.resources:
             append(f"  - [{resource.name}]({resource.id}.html)")
@@ -48,8 +49,16 @@ def generate_resource(resource):
     append()
     append("<section>")
     append()
-    append(resource.description)
-    append()
+
+    if resource.description:
+        append(resource.description.strip())
+        append()
+
+    if resource.links:
+        links = ["[{}]({})".format(x["name"], x["url"]) for x in resource.links]
+        append("_See also:_ " + ", ".join(links))
+        append()
+
     append("</section>")
     append()
 
@@ -61,11 +70,12 @@ def generate_resource(resource):
 
         for example in resource.examples:
             # XXX An example object
-            append(example["description"])
+            append(example["description"].strip() + ":")
             append()
             append("~~~ yaml")
             append(example["yaml"].strip())
             append("~~~")
+            append()
 
         append("</section>")
         append()
@@ -100,30 +110,44 @@ def generate_property(prop, append):
     debug(f"Generating {prop}")
 
     name = nvl(prop.rename, prop.name)
-    name = f"**{name}** _{prop.type}_"
+    id_ = fragment_id(name)
+    prop_info = prop.type
 
     if prop.format:
-        name += f" _({prop.format})_"
+        prop_info += f" ({prop.format})"
 
-    if prop.required:
-        name += f", _required_"
+    if prop.required and prop.default is None:
+        prop_info += ", required"
 
-    append(f"- {name}")
+    append(f"- <h3 id=\"{id_}\">{name} <span class=\"property-info\">{prop_info}</span></h3>")
     append()
 
-    if prop.default is not None:
+    if prop.description:
+        description = "\n".join(f"  {line}" for line in prop.description.strip().split("\n"))
+
+        append(description)
+        append()
+
+    if prop.default not in (None, False):
         default = prop.default
 
-        if prop.default in (True, False):
+        if prop.default is True:
             default = str(prop.default).lower()
 
         append(f"  _Default:_ {default}")
         append()
 
-    if prop.description:
-        description = "\n".join(f"  {line}" for line in prop.description.split("\n"))
+    if prop.choices:
+        append(f"  _Choices:_")
 
-        append(description)
+        for choice in prop.choices:
+            append(f"    - `{choice['name']}` - {choice['description']}".rstrip())
+
+        append()
+
+    if prop.links:
+        links = ["[{}]({})".format(x["name"], x["url"]) for x in prop.links]
+        append("  _See also:_ " + ", ".join(links))
         append()
 
     if prop.notes:
@@ -273,6 +297,10 @@ class Resource:
         return self.data.get("description")
 
     @property
+    def links(self):
+        return self.data.get("links", [])
+
+    @property
     def examples(self):
         return self.data.get("examples", [])
 
@@ -315,14 +343,22 @@ class Property:
         return self.data.get("required", default)
 
     @property
+    def description(self):
+        default = self.model.get_schema_property(self).get("description")
+        return self.data.get("description", default)
+
+    @property
+    def links(self):
+        return self.data.get("links", [])
+
+    @property
     def default(self):
         default = False if self.type == "boolean" else None
         return self.data.get("default", default)
 
     @property
-    def description(self):
-        default = self.model.get_schema_property(self).get("description")
-        return self.data.get("description", default)
+    def choices(self):
+        return self.data.get("choices", [])
 
     @property
     def notes(self):

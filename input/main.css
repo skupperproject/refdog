@@ -236,7 +236,11 @@ li > ul, li > ol, dd > dl {
 }
 
 li > p:last-child, dd > p:last-child {
-    margin: 0 0 1em 0;
+    margin-bottom: 1em;
+}
+
+li > p + ul {
+    margin-bottom: 1em !important;
 }
 
 /* Standard styles for path navigation */
@@ -277,6 +281,22 @@ aside > div {
 
 /* Refdog-specific styles for prose eleemnts */
 
-body.resource h2 {
+body.resource h2, body.command h2 {
     font-size: 1.3em;
+}
+
+body.resource h3, body.command h3 {
+    font-family: var(--body-font-family);
+    font-size: 1em;
+}
+
+body.resource span.property-info, body.command span.argument-info {
+    font-weight: 400;
+    font-style: italic;
+}
+
+body.resource main::after, body.command main::after {
+    content: "";
+    display: block;
+    height: 100vh;
 }

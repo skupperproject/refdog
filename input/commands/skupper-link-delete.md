@@ -4,7 +4,6 @@ body_class: command
 
 # skupper link delete
 
-
 ## Usage
 
 ~~~ shell

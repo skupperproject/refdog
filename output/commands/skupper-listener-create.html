@@ -35,33 +35,39 @@ skupper listener create database --host database --port 5432
 </code></pre>
 <h2 id="arguments">Arguments</h2>
 <ul>
-<li><p><strong>name</strong> <em>string</em></p>
+<li><h3 id="name">name <span class="argument-info">string</span></h3>
+
 <p>The name of the listener resource.</p>
 </li>
-<li><p><strong>--routing-key</strong> <em>string</em></p>
-<p><em>Default:</em> <em>value of name</em></p>
+<li><h3 id="--routing-key">--routing-key <span class="argument-info">string</span></h3>
+
 <p>The identifier used to route traffic from listeners to
 connectors.  To connect to a service at a remote site, the
 listener and connector must have matching routing keys.</p>
+<p><em>Default:</em> <em>value of name</em></p>
 </li>
-<li><p><strong>--host</strong> <em>string</em></p>
+<li><h3 id="--host">--host <span class="argument-info">string, required</span></h3>
+
 <p>The hostname or IP address of the local listener.  Clients
 at this site use the listener host and port to
 establish connections to the remote service.</p>
 </li>
-<li><p><strong>--port</strong> <em>integer</em></p>
+<li><h3 id="--port">--port <span class="argument-info">integer, required</span></h3>
+
 <p>The port of the local listener.  Clients at this site use
 the listener host and port to establish connections to
 the remote service.</p>
 </li>
-<li><p><strong>--tls-credentials</strong> <em>string</em></p>
+<li><h3 id="--tls-credentials">--tls-credentials <span class="argument-info">string</span></h3>
+
 <p>The name of a Kubernetes secret containing TLS
 credentials.  The secret contains the trusted server
 certificate (typically a CA).</p>
 <p>It can optionally include a client certificate and key for
 mutual TLS.</p>
 </li>
-<li><p><strong>--type</strong> <em>string</em></p>
+<li><h3 id="--type">--type <span class="argument-info">string</span></h3>
+
 <p><em>What is this again?  I think we need a qualifier on &quot;type&quot;.</em></p>
 </li>
 </ul>

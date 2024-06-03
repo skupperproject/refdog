@@ -6,7 +6,6 @@ body_class: command
 
 Create a token.
 
-
 ## Usage
 
 ~~~ shell
@@ -17,21 +16,18 @@ The token expires after 1 use or after 15 minutes
 
 ## Arguments
 
-- **file** _string_
+- <h3 id="file">file <span class="argument-info">string</span></h3>
 
   The name of the token file.
-  
 
-- **--expiry** _string (duration)_
+- <h3 id="--expiry">--expiry <span class="argument-info">string (duration)</span></h3>
 
   _Default:_ 15m
 
-  _Look for what would be conventional for this._
-  _"validFor" doesn't necessarily make it clear that it's_
-  _about time: "valid for 3 uses"._
+  _Suggest **expirationPeriod**._
 
-- **--uses** _integer_
+- <h3 id="--uses">--uses <span class="argument-info">integer</span></h3>
 
   _Default:_ 1
 
-  _Consider maxClaims, claimsAllowed, and maxClaimsAllowed_
+  _Suggest **claimsAllowed**._

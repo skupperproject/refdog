@@ -12,24 +12,21 @@ obtain a certificate signed by the grant's certificate
 authority (CA), within a certain expiration period and for a
 limited number of claims.
 
-
 </section>
 
 <section>
 
 ## Spec properties
 
-- **claims** _integer_
+- <h3 id="claims">claims <span class="property-info">integer</span></h3>
 
-  _Consider maxClaims, claimsAllowed, and maxClaimsAllowed_
+  _Suggest **claimsAllowed**._
 
-- **validFor** _string_ _(duration)_
+- <h3 id="validfor">validFor <span class="property-info">string (duration)</span></h3>
 
-  _Look for what would be conventional for this._
-  _"validFor" doesn't necessarily make it clear that it's_
-  _about time: "valid for 3 uses"._
+  _Suggest **expirationPeriod**._
 
-- **secret** _string_
+- <h3 id="secret">secret <span class="property-info">string</span></h3>
 
 </section>
 
@@ -37,18 +34,23 @@ limited number of claims.
 
 ## Status properties
 
-- **claimed** _integer_
+- <h3 id="claimed">claimed <span class="property-info">integer</span></h3>
 
-  _Suggest claimsAccepted._
+  The number of times the grant has been claimed.
 
-- **status** _string_
+  _Suggest **claimsRedeemed**.  "The number of times a claim on_
+  _this grant has been redeemed."_
 
-- **url** _string_
+- <h3 id="status">status <span class="property-info">string</span></h3>
 
-- **secret** _string_
+- <h3 id="url">url <span class="property-info">string</span></h3>
 
-- **ca** _string_
+- <h3 id="secret">secret <span class="property-info">string</span></h3>
 
-- **expiration** _string_ _(date-time)_
+- <h3 id="ca">ca <span class="property-info">string</span></h3>
+
+- <h3 id="expiration">expiration <span class="property-info">string (date-time)</span></h3>
+
+  The point in time when the grant expires.
 
 </section>

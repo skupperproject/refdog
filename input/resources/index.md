@@ -1,16 +1,16 @@
 # Skupper resources
 
-- [Site configuration](#site-configuration)
+- Site configuration
   - [Site](site.html)
-- [Site linking](#site-linking)
+- Site linking
   - [Grant](grant.html)
   - [Claim](claim.html)
-- [Service exposure](#service-exposure)
+- Service exposure
   - [Connector](connector.html)
   - [Listener](listener.html)
-- [Advanced stuff](#advanced-stuff)
+- Advanced stuff
   - [Link](link.html)
   - [LinkAccess](linkaccess.html)
-- [Internal stuff](#internal-stuff)
+- Internal stuff
   - [SecuredAccess](securedaccess.html)
   - [Certificate](certificate.html)

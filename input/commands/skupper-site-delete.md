@@ -6,21 +6,19 @@ body_class: command
 
 Delete a site.
 
-
 ## Usage
 
 ~~~ shell
-$ skupper site delete <name>
+$ skupper site delete [name]
 Waiting for deletion to complete...
 Site "<name>" is deleted
 ~~~
 
 ## Arguments
 
-- **name** _string_
+- <h3 id="name">name <span class="argument-info">string</span></h3>
 
   The name of the site resource.
-  
 
 ## Errors
 

@@ -6,16 +6,10 @@ body_class: command
 
 Create a site.
 
-A [site][site] is a place where components of your application are
-running.  Sites are linked to form application
-[networks][network].
+A site is a place where components of your application are
+running.  Sites are linked to form application networks.
 
 There can be only one site definition per namespace.
-
-[site]: concepts.html#site
-[network]: concepts.html#network
-
-
 
 ## Usage
 
@@ -32,41 +26,32 @@ Site "<name>" is ready
 skupper site create west
 
 # Create a site that can accept links from remote sites
-skupper site create west --link-access default
+skupper site create west --enable-link-access
 ~~~
 
 ## Arguments
 
-- **name** _string_
+- <h3 id="name">name <span class="argument-info">string, required</span></h3>
 
   A name of your choice for the Skupper site.  This name is
   displayed in the console and CLI output.
-  
 
-- **--enable-link-access** _boolean_
+- <h3 id="--enable-link-access">--enable-link-access <span class="argument-info">boolean</span></h3>
 
   Allow access for incoming links from remote sites.
-  
 
-- **--link-access-type** _string_
-
-  _Default:_ default
+- <h3 id="--link-access-type">--link-access-type <span class="argument-info">string</span></h3>
 
   Configure external access for links from remote sites.
-  
-  Select the means of opening external access.
-  
-  `default` equates to `route` if the environment is
-  OpenShift, otherwise `loadbalancer`.
-  
 
-- **--service-account** _string_
+  _Default:_ `default`
 
-  _Default:_ `skupper:skupper-controller`
+- <h3 id="--service-account">--service-account <span class="argument-info">string</span></h3>
 
   The Kubernetes service account under which to run the
   Skupper controller.
-  
+
+  _Default:_ `skupper:skupper-controller`
 
 ## Errors
 

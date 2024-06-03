@@ -22,7 +22,8 @@
 <h1 id="claim">Claim</h1>
 <section>
 
-<p>A verifiable assertion of permission to link to a remote
+<p>XXX
+A verifiable assertion of permission to link to a remote
 site.  A claim contains the URL and secret of a previous
 grant.</p>
 </section>
@@ -31,11 +32,15 @@ grant.</p>
 
 <h2 id="spec-properties">Spec properties</h2>
 <ul>
-<li><p><strong>url</strong> <em>string</em>, <em>required</em></p>
+<li><h3 id="url">url <span class="property-info">string, required</span></h3>
+
+<p>The URL at which the claim is redeemed.</p>
 </li>
-<li><p><strong>secret</strong> <em>string</em>, <em>required</em></p>
+<li><h3 id="secret">secret <span class="property-info">string, required</span></h3>
+
 </li>
-<li><p><strong>ca</strong> <em>string</em>, <em>required</em></p>
+<li><h3 id="ca">ca <span class="property-info">string, required</span></h3>
+
 </li>
 </ul>
 </section>
@@ -44,11 +49,13 @@ grant.</p>
 
 <h2 id="status-properties">Status properties</h2>
 <ul>
-<li><p><strong>claimed</strong> <em>boolean</em></p>
-<p><em>Default:</em> false</p>
-<p><em>Suggest accepted.</em></p>
+<li><h3 id="claimed">claimed <span class="property-info">boolean</span></h3>
+
+<p>Whether the claim has been claimed.</p>
+<p><em>Suggest <strong>redeemed</strong>.  &quot;Whether the claim has been redeemed.&quot;</em></p>
 </li>
-<li><p><strong>status</strong> <em>string</em></p>
+<li><h3 id="status">status <span class="property-info">string</span></h3>
+
 </li>
 </ul>
 </section>

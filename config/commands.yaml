@@ -15,7 +15,7 @@ global_arguments:
     description: |
       Select the Skupper platform.
 groups:
-  - title: Site configuration
+  - name: Site configuration
     commands:
       - name: skupper site
         description: |
@@ -32,13 +32,14 @@ groups:
           skupper site create west
 
           # Create a site that can accept links from remote sites
-          skupper site create west --link-access default
+          skupper site create west --enable-link-access
         output: |
           Waiting for status...
           Site "<name>" is ready
         arguments:
           - name: name
             type: string
+            required: true
             description: |
               A name of your choice for the Skupper site.  This name is
               displayed in the console and CLI output.
@@ -48,7 +49,7 @@ groups:
               Allow access for incoming links from remote sites.
           - property: linkAccess
             name: --link-access-type
-            default: default
+            default: "`default`"
           - property: serviceAccount
         errors:
           - message: A site resource already exists
@@ -93,7 +94,7 @@ groups:
       - name: skupper site delete
         description: |
           Delete a site.
-        usage: skupper site delete <name>
+        usage: skupper site delete [name]
         output: |
           Waiting for deletion to complete...
           Site "<name>" is deleted
@@ -118,7 +119,7 @@ groups:
           unique routing keys defined by connectors?  Or listeners?
           Or listeners plus connectors (not the orphans), grouped by
           routing key?
-  - title: Site linking
+  - name: Site linking
     commands:
       - name: skupper token
         description: |
@@ -175,7 +176,7 @@ groups:
           Links from remote sites:
 
           None
-  - title: Service exposure
+  - name: Service exposure
     commands:
       - name: skupper connector
         description: |
@@ -196,6 +197,7 @@ groups:
         arguments:
           - name: name
             type: string
+            required: true
             description: |
               The name of the connector resource.
           - property: routingKey
@@ -275,7 +277,7 @@ groups:
           NAME       ROUTING-KEY   HOST       PORT   MATCHING-CONNECTORS
           backend    backend       backend    8080   1
           database   database      database   5432   1
-  # - title: Platform operations
+  # - name: Platform operations
   #   commands:
   #     - name: skupper platform
   #       description: |
@@ -283,7 +285,7 @@ groups:
   #     - name: skupper platform install
   #     - name: skupper platform uninstall
   #     - name: skupper platform switch
-  - title: Debug operations
+  - name: Debug operations
     commands:
       - name: skupper debug
         description: |
@@ -294,7 +296,7 @@ groups:
         usage: skupper debug dump [file]
         output: |
           Debug dump file generated at <file>
-  - title: Other operations
+  - name: Other operations
     commands:
       # - name: skupper network status
       - name: skupper version

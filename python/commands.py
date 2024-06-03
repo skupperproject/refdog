@@ -18,7 +18,8 @@ def generate():
     append()
 
     for group in model.groups:
-        append(f"- [{group.title}]({group.id}.html)")
+        # append(f"- [{group.title}]({group.id}.html)")
+        append(f"- {group.name}")
 
         for command in group.commands:
             append(f"  - [{command.name}]({command.id}.html)")
@@ -46,8 +47,10 @@ def generate_command(command):
     append()
     append(f"# {command.name}")
     append()
-    append(command.description)
-    append()
+
+    if command.description:
+        append(command.description.strip())
+        append()
 
     if command.usage:
         append("## Usage")
@@ -103,13 +106,24 @@ def generate_argument(argument, append):
 
     debug(f"Generating {argument}")
 
-    title = f"**{argument.name}** _{argument.type}_"
+    name = nvl(argument.rename, argument.name)
+    id_ = fragment_id(name)
+    argument_info = argument.type
 
     if argument.format:
-        title = f"**{argument.name}** _{argument.type} ({argument.format})_"
+        argument_info += f" ({argument.format})"
 
-    append(f"- {title}")
+    if argument.required and argument.default is None:
+        argument_info += ", required"
+
+    append(f"- <h3 id=\"{id_}\">{name} <span class=\"argument-info\">{argument_info}</span></h3>")
     append()
+
+    if argument.description:
+        description = "\n".join(f"  {line}" for line in argument.description.strip().split("\n"))
+
+        append(description)
+        append()
 
     if argument.default is not None:
         default = argument.default
@@ -118,12 +132,6 @@ def generate_argument(argument, append):
             default = str(argument.default).lower()
 
         append(f"  _Default:_ {default}")
-        append()
-
-    if argument.description:
-        description = "\n".join(f"  {line}" for line in argument.description.split("\n"))
-
-        append(description)
         append()
 
     if argument.notes:
@@ -164,15 +172,15 @@ class Group:
             self.commands.append(Command(self.model, self, command_data))
 
     def __repr__(self):
-        return f"group '{self.title}'"
+        return f"group '{self.name}'"
 
     @property
     def id(self):
-        return fragment_id(self.title)
+        return fragment_id(self.name)
 
     @property
-    def title(self):
-        return self.data["title"]
+    def name(self):
+        return self.data["name"]
 
     @property
     def description(self):
@@ -260,6 +268,10 @@ class Argument:
     def name(self):
         default = argument_name(self.property_.name, self.positional) if self.property_ else None
         return self.data.get("name", default)
+
+    @property
+    def rename(self):
+        return self.data.get("rename")
 
     @property
     def type(self):

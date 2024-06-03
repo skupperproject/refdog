@@ -29,7 +29,7 @@ serve as a transport for application connections and requests.</p>
 <section>
 
 <h2 id="examples">Examples</h2>
-<p>A typical link definition</p>
+<p>A typical link definition:</p>
 <pre><code class="language-yaml">apiVersion: skupper.io/v1alpha1
 kind: Link
 metadata:
@@ -44,21 +44,25 @@ spec:
 
 <h2 id="spec-properties">Spec properties</h2>
 <ul>
-<li><p><strong>tlsSecret</strong> <em>string</em></p>
+<li><h3 id="tlssecret">tlsSecret <span class="property-info">string</span></h3>
+
 <p>The name of a Kubernetes secret containing TLS
 credentials. The secret contains the trusted server
 certificate (typically a CA).</p>
 <p>It can optionally include a client certificate and key for
 mutual TLS.</p>
 </li>
-<li><p><strong>cost</strong> <em>integer</em></p>
+<li><h3 id="cost">cost <span class="property-info">integer</span></h3>
+
 </li>
-<li><p><strong>interRouter</strong> <em>object</em>, <em>required</em></p>
+<li><h3 id="interrouter">interRouter <span class="property-info">object, required</span></h3>
+
 </li>
-<li><p><strong>edge</strong> <em>object</em>, <em>required</em></p>
+<li><h3 id="edge">edge <span class="property-info">object, required</span></h3>
+
 </li>
-<li><p><strong>noClientAuth</strong> <em>boolean</em></p>
-<p><em>Default:</em> false</p>
+<li><h3 id="noclientauth">noClientAuth <span class="property-info">boolean</span></h3>
+
 </li>
 </ul>
 </section>
@@ -67,17 +71,20 @@ mutual TLS.</p>
 
 <h2 id="status-properties">Status properties</h2>
 <ul>
-<li><p><strong>configured</strong> <em>boolean</em></p>
-<p><em>Default:</em> false</p>
+<li><h3 id="configured">configured <span class="property-info">boolean</span></h3>
+
 </li>
-<li><p><strong>active</strong> <em>boolean</em></p>
-<p><em>Default:</em> false</p>
+<li><h3 id="active">active <span class="property-info">boolean</span></h3>
+
 </li>
-<li><p><strong>status</strong> <em>string</em></p>
+<li><h3 id="status">status <span class="property-info">string</span></h3>
+
 </li>
-<li><p><strong>url</strong> <em>string</em></p>
+<li><h3 id="url">url <span class="property-info">string</span></h3>
+
 </li>
-<li><p><strong>site</strong> <em>string</em></p>
+<li><h3 id="site">site <span class="property-info">string</span></h3>
+
 </li>
 </ul>
 </section>

@@ -6,4 +6,3 @@ body_class: command
 
 Display help for token commands and exit.  Currently there
 is only one token command.
-

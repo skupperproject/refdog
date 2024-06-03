@@ -21,9 +21,8 @@
 
 <h1 id="skupper-site-create">skupper site create</h1>
 <p>Create a site.</p>
-<p>A <a href="concepts.html#site">site</a> is a place where components of your application are
-running.  Sites are linked to form application
-<a href="concepts.html#network">networks</a>.</p>
+<p>A site is a place where components of your application are
+running.  Sites are linked to form application networks.</p>
 <p>There can be only one site definition per namespace.</p>
 <h2 id="usage">Usage</h2>
 <pre><code class="language-shell">$ skupper site create &lt;name&gt; [options]
@@ -35,28 +34,29 @@ Site &quot;&lt;name&gt;&quot; is ready
 skupper site create west
 
 # Create a site that can accept links from remote sites
-skupper site create west --link-access default
+skupper site create west --enable-link-access
 </code></pre>
 <h2 id="arguments">Arguments</h2>
 <ul>
-<li><p><strong>name</strong> <em>string</em></p>
+<li><h3 id="name">name <span class="argument-info">string, required</span></h3>
+
 <p>A name of your choice for the Skupper site.  This name is
 displayed in the console and CLI output.</p>
 </li>
-<li><p><strong>--enable-link-access</strong> <em>boolean</em></p>
+<li><h3 id="--enable-link-access">--enable-link-access <span class="argument-info">boolean</span></h3>
+
 <p>Allow access for incoming links from remote sites.</p>
 </li>
-<li><p><strong>--link-access-type</strong> <em>string</em></p>
-<p><em>Default:</em> default</p>
+<li><h3 id="--link-access-type">--link-access-type <span class="argument-info">string</span></h3>
+
 <p>Configure external access for links from remote sites.</p>
-<p>Select the means of opening external access.</p>
-<p><code>default</code> equates to <code>route</code> if the environment is
-OpenShift, otherwise <code>loadbalancer</code>.</p>
+<p><em>Default:</em> <code>default</code></p>
 </li>
-<li><p><strong>--service-account</strong> <em>string</em></p>
-<p><em>Default:</em> <code>skupper:skupper-controller</code></p>
+<li><h3 id="--service-account">--service-account <span class="argument-info">string</span></h3>
+
 <p>The Kubernetes service account under which to run the
 Skupper controller.</p>
+<p><em>Default:</em> <code>skupper:skupper-controller</code></p>
 </li>
 </ul>
 <h2 id="errors">Errors</h2>

@@ -1,19 +1,19 @@
 # Skupper commands
 
-- [Site configuration](site-configuration.html)
+- Site configuration
   - [skupper site](skupper-site.html)
   - [skupper site create](skupper-site-create.html)
   - [skupper site update](skupper-site-update.html)
   - [skupper site delete](skupper-site-delete.html)
   - [skupper site status](skupper-site-status.html)
-- [Site linking](site-linking.html)
+- Site linking
   - [skupper token](skupper-token.html)
   - [skupper token create](skupper-token-create.html)
   - [skupper link](skupper-link.html)
   - [skupper link create](skupper-link-create.html)
   - [skupper link delete](skupper-link-delete.html)
   - [skupper link status](skupper-link-status.html)
-- [Service exposure](service-exposure.html)
+- Service exposure
   - [skupper connector](skupper-connector.html)
   - [skupper connector create](skupper-connector-create.html)
   - [skupper connector delete](skupper-connector-delete.html)
@@ -22,8 +22,8 @@
   - [skupper listener create](skupper-listener-create.html)
   - [skupper listener delete](skupper-listener-delete.html)
   - [skupper listener status](skupper-listener-status.html)
-- [Debug operations](debug-operations.html)
+- Debug operations
   - [skupper debug](skupper-debug.html)
   - [skupper debug dump](skupper-debug-dump.html)
-- [Other operations](other-operations.html)
+- Other operations
   - [skupper version](skupper-version.html)
