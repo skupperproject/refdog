@@ -4,7 +4,13 @@ body_class: command
 
 # skupper debug dump
 
+<section>
+
 Generate a debug dump file.
+
+</section>
+
+<section>
 
 ## Usage
 
@@ -12,3 +18,5 @@ Generate a debug dump file.
 $ skupper debug dump [file]
 Debug dump file generated at <file>
 ~~~
+
+</section>

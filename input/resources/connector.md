@@ -72,7 +72,7 @@ spec:
 
 - <h3 id="type">type <span class="property-info">string</span></h3>
 
-  _What is this again?  I think we need a qualifier on "type"._
+  What is this again?  I think we need a qualifier on "type".
 
 - <h3 id="includenotready">includeNotReady <span class="property-info">boolean</span></h3>
 

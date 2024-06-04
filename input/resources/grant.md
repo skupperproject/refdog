@@ -20,11 +20,11 @@ limited number of claims.
 
 - <h3 id="claims">claims <span class="property-info">integer</span></h3>
 
-  _Suggest **claimsAllowed**._
+  Suggest **claimsAllowed**.
 
 - <h3 id="validfor">validFor <span class="property-info">string (duration)</span></h3>
 
-  _Suggest **expirationPeriod**._
+  Suggest **expirationPeriod**.
 
 - <h3 id="secret">secret <span class="property-info">string</span></h3>
 
@@ -38,8 +38,8 @@ limited number of claims.
 
   The number of times the grant has been claimed.
 
-  _Suggest **claimsRedeemed**.  "The number of times a claim on_
-  _this grant has been redeemed."_
+  Suggest **claimsRedeemed**.  "The number of times a claim on
+  this grant has been redeemed."
 
 - <h3 id="status">status <span class="property-info">string</span></h3>
 

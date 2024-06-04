@@ -34,7 +34,7 @@ grant.
 
   Whether the claim has been claimed.
 
-  _Suggest **redeemed**.  "Whether the claim has been redeemed."_
+  Suggest **redeemed**.  "Whether the claim has been redeemed."
 
 - <h3 id="status">status <span class="property-info">string</span></h3>
 

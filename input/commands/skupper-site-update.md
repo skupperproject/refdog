@@ -4,9 +4,15 @@ body_class: command
 
 # skupper site update
 
+<section>
+
 Change site settings.
 
 The name argument is optional for update.
+
+</section>
+
+<section>
 
 ## Usage
 
@@ -15,6 +21,10 @@ $ skupper site update [name] [options]
 Waiting for update to complete...
 Site "<name>" is updated
 ~~~
+
+</section>
+
+<section>
 
 ## Examples
 
@@ -25,6 +35,10 @@ skupper site update --enable-link-access
 # Update multiple settings
 skupper site update --enable-link-access --service-account app1:alice
 ~~~
+
+</section>
+
+<section>
 
 ## Arguments
 
@@ -52,9 +66,14 @@ skupper site update --enable-link-access --service-account app1:alice
 
   _Default:_ `skupper:skupper-controller`
 
+</section>
+
+<section>
+
 ## Errors
 
 - **No site resource exists**
 
   There is no existing Skupper site resource to update.
-  
+
+</section>

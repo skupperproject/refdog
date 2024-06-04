@@ -4,7 +4,13 @@ body_class: command
 
 # skupper listener status
 
+<section>
+
 Show the status of listeners in the current site.
+
+</section>
+
+<section>
 
 ## Usage
 
@@ -14,3 +20,5 @@ NAME       ROUTING-KEY   HOST       PORT   MATCHING-CONNECTORS
 backend    backend       backend    8080   1
 database   database      database   5432   1
 ~~~
+
+</section>

@@ -46,6 +46,8 @@ def generate_command(command):
     append()
     append(f"# {command.name}")
     append()
+    append("<section>")
+    append()
 
     if command.description:
         append(command.description.strip())
@@ -55,7 +57,12 @@ def generate_command(command):
         append(generate_links(command))
         append()
 
+    append("</section>")
+    append()
+
     if command.usage:
+        append("<section>")
+        append()
         append("## Usage")
         append()
         append("~~~ shell")
@@ -66,23 +73,36 @@ def generate_command(command):
 
         append("~~~")
         append()
+        append("</section>")
+        append()
 
     if command.examples:
+        append("<section>")
+        append()
         append("## Examples")
         append()
         append("~~~")
         append(command.examples.strip())
         append("~~~")
         append()
+        append("</section>")
+        append()
 
     if command.arguments:
+        append("<section>")
+        append()
         append("## Arguments")
         append()
 
         for argument in command.arguments:
             generate_argument(argument, append)
 
+        append("</section>")
+        append()
+
     if command.errors:
+        append("<section>")
+        append()
         append("## Errors")
         append()
 
@@ -91,15 +111,20 @@ def generate_command(command):
             append()
 
             if error.description:
-                description = "\n".join(f"  {line}" for line in error.description.split("\n"))
-
-                append(description)
+                append(indent(error.description.strip(), 2))
                 append()
 
-    if command.notes:
-        notes = "\n".join(f"_Notes: {line}_ " for line in command.notes.strip().split("\n"))
+        append("</section>")
+        append()
 
-        append(notes)
+    if command.notes:
+        append("<section>")
+        append()
+        append("## Notes")
+        append()
+        append(command.notes.strip()) # XXX styling
+        append()
+        append("</section>")
         append()
 
     write(f"input/commands/{command.id}.md", "\n".join(lines))
@@ -123,9 +148,7 @@ def generate_argument(argument, append):
     append()
 
     if argument.description:
-        description = "\n".join(f"  {line}" for line in argument.description.strip().split("\n"))
-
-        append(description)
+        append(indent(argument.description.strip(), 2))
         append()
 
     if argument.default is not None:
@@ -142,9 +165,8 @@ def generate_argument(argument, append):
         append()
 
     if argument.notes:
-        notes = "\n".join(f"  _{line}_" for line in argument.notes.strip().split("\n"))
-
-        append(notes)
+        # XXX styling
+        append(indent(argument.notes.strip(), 2))
         append()
 
 class CommandModel:

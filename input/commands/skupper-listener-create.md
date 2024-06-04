@@ -4,6 +4,8 @@ body_class: command
 
 # skupper listener create
 
+<section>
+
 Create a listener.
 
 A listener is a local connection endpoint bound to servers
@@ -11,6 +13,10 @@ in remote sites.
 
 
 Each site can have multiple listener definitions.
+
+</section>
+
+<section>
 
 ## Usage
 
@@ -20,12 +26,20 @@ Waiting for status...
 Listener "<name>" is ready
 ~~~
 
+</section>
+
+<section>
+
 ## Examples
 
 ~~~
 # Create a listener for a database
 skupper listener create database --host database --port 5432
 ~~~
+
+</section>
+
+<section>
 
 ## Arguments
 
@@ -64,4 +78,6 @@ skupper listener create database --host database --port 5432
 
 - <h3 id="--type">--type <span class="argument-info">string</span></h3>
 
-  _What is this again?  I think we need a qualifier on "type"._
+  What is this again?  I think we need a qualifier on "type".
+
+</section>

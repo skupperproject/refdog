@@ -68,7 +68,7 @@ spec:
 
 - <h3 id="type">type <span class="property-info">string</span></h3>
 
-  _What is this again?  I think we need a qualifier on "type"._
+  What is this again?  I think we need a qualifier on "type".
 
 </section>
 

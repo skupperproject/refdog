@@ -34,7 +34,7 @@ access.
   property is not set, the controller uses `ca` to
   generate them.
 
-  _Consider tlsCA.  And "ca" often means "this is what I trust".  This thing has a different meaning._
+  Consider tlsCA.  And "ca" often means "this is what I trust".  This thing has a different meaning.
 
 - <h3 id="bindhost">bindHost <span class="property-info">string</span></h3>
 

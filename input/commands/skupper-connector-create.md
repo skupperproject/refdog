@@ -4,6 +4,8 @@ body_class: command
 
 # skupper connector create
 
+<section>
+
 Create a connector.
 
 A connector binds local servers to listeners in remote
@@ -11,6 +13,10 @@ sites.
 
 
 Each site can have multiple connector definitions.
+
+</section>
+
+<section>
 
 ## Usage
 
@@ -20,12 +26,20 @@ Waiting for status...
 Connector "<name>" is ready
 ~~~
 
+</section>
+
+<section>
+
 ## Examples
 
 ~~~
 # Create a connector for a database
 skupper connector create database --workload deployment/postgresql --port 5432
 ~~~
+
+</section>
+
+<section>
 
 ## Arguments
 
@@ -67,8 +81,10 @@ skupper connector create database --workload deployment/postgresql --port 5432
 
 - <h3 id="--type">--type <span class="argument-info">string</span></h3>
 
-  _What is this again?  I think we need a qualifier on "type"._
+  What is this again?  I think we need a qualifier on "type".
 
 - <h3 id="--include-not-ready">--include-not-ready <span class="argument-info">boolean</span></h3>
 
   _Default:_ false
+
+</section>

@@ -4,7 +4,13 @@ body_class: command
 
 # skupper site status
 
+<section>
+
 Show the current status of a site.
+
+</section>
+
+<section>
 
 ## Usage
 
@@ -14,7 +20,15 @@ NAME   STATUS   SITES-IN-NETWORK   SERVICES-IN-NETWORK
 west   Ready    1                  0
 ~~~
 
-_Notes: What is services-in-network?  Is that the total number of_ 
-_Notes: unique routing keys defined by connectors?  Or listeners?_ 
-_Notes: Or listeners plus connectors (not the orphans), grouped by_ 
-_Notes: routing key?_ 
+</section>
+
+<section>
+
+## Notes
+
+What is services-in-network?  Is that the total number of
+unique routing keys defined by connectors?  Or listeners?
+Or listeners plus connectors (not the orphans), grouped by
+routing key?
+
+</section>

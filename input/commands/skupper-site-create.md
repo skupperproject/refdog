@@ -4,6 +4,8 @@ body_class: command
 
 # skupper site create
 
+<section>
+
 Create a site.
 
 A site is a place where components of your application are
@@ -12,6 +14,10 @@ running.  Sites are linked to form application networks.
 
 There can be only one site definition per namespace.
 
+</section>
+
+<section>
+
 ## Usage
 
 ~~~ shell
@@ -19,6 +25,10 @@ $ skupper site create <name> [options]
 Waiting for status...
 Site "<name>" is ready
 ~~~
+
+</section>
+
+<section>
 
 ## Examples
 
@@ -29,6 +39,10 @@ skupper site create west
 # Create a site that can accept links from remote sites
 skupper site create west --enable-link-access
 ~~~
+
+</section>
+
+<section>
 
 ## Arguments
 
@@ -54,9 +68,14 @@ skupper site create west --enable-link-access
 
   _Default:_ `skupper:skupper-controller`
 
+</section>
+
+<section>
+
 ## Errors
 
 - **A site resource already exists**
 
   There is already a site resource defined for the namespace.
-  
+
+</section>

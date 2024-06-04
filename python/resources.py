@@ -102,6 +102,16 @@ def generate_resource(resource):
         append("</section>")
         append()
 
+    if resource.notes:
+        append("<section>")
+        append()
+        append("## Notes")
+        append()
+        append(resource.notes.strip()) # XXX styling
+        append()
+        append("</section>")
+        append()
+
     write(f"input/resources/{resource.id}.md", "\n".join(lines))
 
 def generate_property(prop, append):
@@ -121,9 +131,7 @@ def generate_property(prop, append):
     append()
 
     if prop.description:
-        description = "\n".join(f"  {line}" for line in prop.description.strip().split("\n"))
-
-        append(description)
+        append(indent(prop.description.strip(), 2))
         append()
 
     if prop.default not in (None, False):
@@ -148,9 +156,8 @@ def generate_property(prop, append):
         append()
 
     if prop.notes:
-        notes = "\n".join(f"  _{line}_" for line in prop.notes.strip().split("\n") if line != "")
-
-        append(notes)
+        # XXX styling
+        append(indent(prop.notes.strip(), 2))
         append()
 
     # append(f"_Type:_ {capitalize(prop.type)}\\")
@@ -312,6 +319,10 @@ class Resource:
     @property
     def examples(self):
         return self.data.get("examples", [])
+
+    @property
+    def notes(self):
+        return self.data.get("notes")
 
 class Property:
     def __init__(self, model, resource, group, data):
