@@ -1,5 +1,8 @@
 ---
 body_class: command
+links:
+  - name: Site resource
+    url: /resources/site.html
 ---
 
 # skupper site update

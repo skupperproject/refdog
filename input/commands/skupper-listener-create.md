@@ -1,5 +1,8 @@
 ---
 body_class: command
+links:
+  - name: Listener resource
+    url: /resources/listener.html
 ---
 
 # skupper listener create

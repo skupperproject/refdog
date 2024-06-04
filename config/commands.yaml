@@ -21,6 +21,7 @@ groups:
         description: |
           Display help for site commands and exit.
       - name: skupper site create
+        concept: site
         resource: Site
         description: |
           Create a site.

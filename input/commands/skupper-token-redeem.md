@@ -1,5 +1,8 @@
 ---
 body_class: command
+links:
+  - name: Claim resource
+    url: /resources/claim.html
 ---
 
 # skupper token redeem

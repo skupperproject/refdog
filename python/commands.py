@@ -42,6 +42,18 @@ def generate_command(command):
 
     append("---")
     append("body_class: command")
+
+    if command.concept or command.resource:
+        append("links:")
+
+    if command.concept:
+        append(f"  - name: {capitalize(command.concept.name)} concept")
+        append(f"    url: /concepts/{command.concept.id}.html")
+
+    if command.resource:
+        append(f"  - name: {command.resource.name} resource")
+        append(f"    url: /resources/{command.resource.id}.html")
+
     append("---")
     append()
     append(f"# {command.name}")

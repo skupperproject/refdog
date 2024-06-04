@@ -1,5 +1,8 @@
 ---
 body_class: command
+links:
+  - name: Connector resource
+    url: /resources/connector.html
 ---
 
 # skupper connector create
