@@ -56,7 +56,7 @@ skupper connector create database --workload deployment/postgresql --port 5432
   alternative to `selector` for specifying the target
   server.
 
-- <h3 id="--tls-credentials">--tls-credentials <span class="argument-info">string</span></h3>
+- <h3 id="--tls-secret">--tls-secret <span class="argument-info">string</span></h3>
 
   The name of a Kubernetes secret containing the trusted
   server certificate (typically a CA).

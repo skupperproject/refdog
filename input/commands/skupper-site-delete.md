@@ -6,6 +6,8 @@ body_class: command
 
 Delete a site.
 
+_See also:_ [Skupper sites]({{site_prefix}}/concepts.html#site)
+
 ## Usage
 
 ~~~ shell

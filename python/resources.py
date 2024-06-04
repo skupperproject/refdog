@@ -55,8 +55,7 @@ def generate_resource(resource):
         append()
 
     if resource.links:
-        links = ["[{}]({{{{site_prefix}}}}{})".format(x["name"], x["url"]) for x in resource.links]
-        append("_See also:_ " + ", ".join(links))
+        append(generate_links(resource))
         append()
 
     append("</section>")
@@ -110,7 +109,7 @@ def generate_property(prop, append):
     debug(f"Generating {prop}")
 
     name = nvl(prop.rename, prop.name)
-    id_ = fragment_id(name)
+    id_ = get_fragment_id(name)
     prop_info = prop.type
 
     if prop.format:
@@ -146,8 +145,7 @@ def generate_property(prop, append):
         append()
 
     if prop.links:
-        links = ["[{}]({{{{site_prefix}}}}{})".format(x["name"], x["url"]) for x in prop.links]
-        append("  _See also:_ " + ", ".join(links))
+        append("  " + generate_links(prop))
         append()
 
     if prop.notes:
@@ -244,7 +242,7 @@ class Group:
 
     @property
     def id(self):
-        return fragment_id(self.name)
+        return get_fragment_id(self.name)
 
     @property
     def name(self):
@@ -289,7 +287,7 @@ class Resource:
 
     @property
     def id(self):
-        return fragment_id(self.name)
+        return get_fragment_id(self.name)
 
     @property
     def description(self):

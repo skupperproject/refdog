@@ -54,7 +54,7 @@ skupper listener create database --host database --port 5432
   the listener host and port to establish connections to
   the remote service.
 
-- <h3 id="--tls-credentials">--tls-credentials <span class="argument-info">string</span></h3>
+- <h3 id="--tls-secret">--tls-secret <span class="argument-info">string</span></h3>
 
   The name of a Kubernetes secret containing TLS
   credentials.  The secret contains the trusted server

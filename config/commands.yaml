@@ -94,6 +94,9 @@ groups:
       - name: skupper site delete
         description: |
           Delete a site.
+        links:
+          - name: Skupper sites
+            url: "/concepts.html#site"
         usage: skupper site delete [name]
         output: |
           Waiting for deletion to complete...

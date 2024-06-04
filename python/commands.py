@@ -52,6 +52,10 @@ def generate_command(command):
         append(command.description.strip())
         append()
 
+    if command.links:
+        append(generate_links(command))
+        append()
+
     if command.usage:
         append("## Usage")
         append()
@@ -107,7 +111,7 @@ def generate_argument(argument, append):
     debug(f"Generating {argument}")
 
     name = nvl(argument.rename, argument.name)
-    id_ = fragment_id(name)
+    id_ = get_fragment_id(name)
     argument_info = argument.type
 
     if argument.format:
@@ -132,6 +136,10 @@ def generate_argument(argument, append):
             default = str(argument.default).lower()
 
         append(f"  _Default:_ {default}")
+        append()
+
+    if argument.links:
+        append("  " + generate_links(argument))
         append()
 
     if argument.notes:
@@ -176,7 +184,7 @@ class Group:
 
     @property
     def id(self):
-        return fragment_id(self.name)
+        return get_fragment_id(self.name)
 
     @property
     def name(self):
@@ -208,7 +216,7 @@ class Command:
 
     @property
     def id(self):
-        return fragment_id(self.name)
+        return get_fragment_id(self.name)
 
     @property
     def name(self):
@@ -227,6 +235,10 @@ class Command:
             description = description.replace("@resource_description@", self.resource.description)
 
         return description
+
+    @property
+    def links(self):
+        return self.data.get("links", [])
 
     @property
     def examples(self):
@@ -271,7 +283,12 @@ class Argument:
 
     @property
     def rename(self):
-        return self.data.get("rename")
+        if self.property_ and self.property_.rename:
+            default = argument_name(self.property_.rename, self.positional)
+        else:
+            default = None
+
+        return self.data.get("rename", default)
 
     @property
     def type(self):
@@ -306,6 +323,10 @@ class Argument:
             value = value.replace("@property_description@", self.property_.description)
 
         return value
+
+    @property
+    def links(self):
+        return self.data.get("links", [])
 
     @property
     def notes(self):
