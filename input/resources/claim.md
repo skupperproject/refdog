@@ -6,10 +6,7 @@ body_class: resource
 
 <section>
 
-XXX
-A verifiable assertion of permission to link to a remote
-site.  A claim contains the URL and secret of a previous
-grant.
+@concept_description@
 
 </section>
 

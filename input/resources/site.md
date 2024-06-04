@@ -6,12 +6,11 @@ body_class: resource
 
 <section>
 
-A site is a place where components of your application are
-running.  Sites are linked to form application networks.
+@concept_description@
 
 There can be only one site definition per namespace.
 
-_See also:_ [Skupper sites]({{site_prefix}}/concepts.html#site), [Skupper site command]({{site_prefix}}/commands/skupper-site.html)
+_See also:_ [Skupper site command]({{site_prefix}}/commands/skupper-site.html)
 
 </section>
 

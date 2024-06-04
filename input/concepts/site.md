@@ -2,7 +2,7 @@
 body_class: concept
 ---
 
-# Site
+# site
 
 <section>
 

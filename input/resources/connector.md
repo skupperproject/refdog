@@ -6,12 +6,11 @@ body_class: resource
 
 <section>
 
-A connector binds local servers to listeners in remote
-sites.
+@concept_description@
 
 Each site can have multiple connector definitions.
 
-_See also:_ [Skupper connectors]({{site_prefix}}/concepts.html#connector), [Skupper connector command]({{site_prefix}}/commands/skupper-connector.html)
+_See also:_ [Skupper connector command]({{site_prefix}}/commands/skupper-connector.html)
 
 </section>
 

@@ -6,10 +6,6 @@ body_class: resource
 
 <section>
 
-A generic resource for exposing a workload by creating the
-necessary service and ingress resources and optionally
-generating TLS credentials.
-
 </section>
 
 <section>

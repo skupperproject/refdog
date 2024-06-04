@@ -3,13 +3,10 @@ groups:
     resources:
       - name: Site
         description: |
-          A site is a place where components of your application are
-          running.  Sites are linked to form application networks.
+          @concept_description@
 
           There can be only one site definition per namespace.
         links:
-          - name: Skupper sites
-            url: /concepts.html#site
           - name: Skupper site command
             url: /commands/skupper-site.html
         examples:
@@ -67,11 +64,7 @@ groups:
     resources:
       - name: Grant
         description: |
-          An offer to accept links to the local site.  A remote site
-          can use a claim containing the grant URL and secret to
-          obtain a certificate signed by the grant's certificate
-          authority (CA), within a certain expiration period and for a
-          limited number of claims.
+          @concept_description@
         spec_properties:
           - name: claims
             notes: |
@@ -96,10 +89,7 @@ groups:
               The point in time when the grant expires.
       - name: Claim
         description: |
-          XXX
-          A verifiable assertion of permission to link to a remote
-          site.  A claim contains the URL and secret of a previous
-          grant.
+          @concept_description@
         spec_properties:
           - name: url
             description: |
@@ -117,13 +107,10 @@ groups:
     resources:
       - name: Connector
         description: |
-          A connector binds local servers to listeners in remote
-          sites.
+          @concept_description@
 
           Each site can have multiple connector definitions.
         links:
-          - name: Skupper connectors
-            url: /concepts.html#connector
           - name: Skupper connector command
             url: /commands/skupper-connector.html
         examples:
@@ -176,12 +163,9 @@ groups:
           - name: status
       - name: Listener
         description: |
-          A [listener][listener] is a local connection endpoint bound to
-          servers in remote sites.
+          @concept_description@
 
           Each site can have multiple listener definitions.
-
-          [listener]: concepts.html#listener
         examples:
           - description: |
               A listener in site West for the Hello World backend service
@@ -231,8 +215,7 @@ groups:
     resources:
       - name: Link
         description: |
-          A link is a site-to-site communication channel. Links serve
-          as a transport for application connections and requests.
+          @concept_description@
         links:
           - name: Skupper links
             url: /concepts.html#link
@@ -291,10 +274,6 @@ groups:
   - name: Internal stuff
     resources:
       - name: SecuredAccess
-        description: |
-          A generic resource for exposing a workload by creating the
-          necessary service and ingress resources and optionally
-          generating TLS credentials.
         spec_properties:
           - name: ports
           - name: selector

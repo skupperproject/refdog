@@ -2,7 +2,7 @@
 body_class: concept
 ---
 
-# Connector
+# connector
 
 <section>
 

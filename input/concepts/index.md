@@ -1,12 +1,12 @@
 # Skupper concepts
 
 - Site configuration
-  - [Site](site.html)
+  - [site](site.html)
 - Site linking
-  - [Grant](grant.html)
-  - [Claim](claim.html)
-  - [Link](link.html)
-  - [Network](network.html)
+  - [network](network.html)
+  - [link](link.html)
+  - [grant](grant.html)
+  - [claim](claim.html)
 - Service exposure
-  - [Connector](connector.html)
-  - [Listener](listener.html)
+  - [connector](connector.html)
+  - [listener](listener.html)

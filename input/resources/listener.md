@@ -6,12 +6,9 @@ body_class: resource
 
 <section>
 
-A [listener][listener] is a local connection endpoint bound to
-servers in remote sites.
+@concept_description@
 
 Each site can have multiple listener definitions.
-
-[listener]: concepts.html#listener
 
 </section>
 
