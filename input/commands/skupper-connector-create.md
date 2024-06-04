@@ -57,21 +57,33 @@ skupper connector create database --workload deployment/postgresql --port 5432
 
   _Default:_ _value of name_
 
+  _Choices:_
+
+
 - <h3 id="--workload">--workload <span class="argument-info">string</span></h3>
 
 - <h3 id="--port">--port <span class="argument-info">integer, required</span></h3>
 
   The port number of the server listener.
 
+  _Choices:_
+
+
 - <h3 id="--selector">--selector <span class="argument-info">string</span></h3>
 
   A Kubernetes label selector for targeting server pods.
+
+  _Choices:_
+
 
 - <h3 id="--host">--host <span class="argument-info">string</span></h3>
 
   The hostname or IP address of the server.  This is an
   alternative to `selector` for specifying the target
   server.
+
+  _Choices:_
+
 
 - <h3 id="--tls-secret">--tls-secret <span class="argument-info">string</span></h3>
 
@@ -81,9 +93,15 @@ skupper connector create database --workload deployment/postgresql --port 5432
   It can optionally include a client certificate and key for
   mutual TLS.
 
+  _Choices:_
+
+
 - <h3 id="--type">--type <span class="argument-info">string</span></h3>
 
   _Default:_ tcp
+
+  _Choices:_
+
 
 - <h3 id="--include-not-ready">--include-not-ready <span class="argument-info">boolean</span></h3>
 
@@ -91,5 +109,8 @@ skupper connector create database --workload deployment/postgresql --port 5432
   state.
 
   _Default:_ false
+
+  _Choices:_
+
 
 </section>

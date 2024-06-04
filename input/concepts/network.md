@@ -2,7 +2,7 @@
 body_class: concept
 ---
 
-# network
+# Network
 
 <section>
 

@@ -50,7 +50,7 @@ groups:
               Allow access for incoming links from remote sites.
           - property: linkAccess
             name: --link-access-type
-            default: "`default`"
+            default: default
           - property: serviceAccount
         errors:
           - message: A site resource already exists

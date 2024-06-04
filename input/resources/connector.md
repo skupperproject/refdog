@@ -3,8 +3,8 @@ body_class: resource
 links:
   - name: Connector concept
     url: /concepts/connector.html
-  - name: Connector command
-    url: /commands/skupper-connector.html
+  - name: Connector create command
+    url: /commands/skupper-connector-create.html
 ---
 
 # Connector
@@ -15,8 +15,6 @@ A connector binds local servers to listeners in remote
 sites.
 
 Each site can have multiple connector definitions.
-
-_See also:_ [Skupper connector command]({{site_prefix}}/commands/skupper-connector.html)
 
 </section>
 
@@ -81,7 +79,7 @@ spec:
 
 - <h3 id="type">type <span class="property-info">string</span></h3>
 
-  _Default:_ tcp
+  _Default:_ `tcp`
 
 </section>
 

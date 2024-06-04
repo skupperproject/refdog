@@ -57,17 +57,26 @@ skupper listener create database --host database --port 5432
 
   _Default:_ _value of name_
 
+  _Choices:_
+
+
 - <h3 id="--host">--host <span class="argument-info">string, required</span></h3>
 
   The hostname or IP address of the local listener.  Clients
   at this site use the listener host and port to
   establish connections to the remote service.
 
+  _Choices:_
+
+
 - <h3 id="--port">--port <span class="argument-info">integer, required</span></h3>
 
   The port of the local listener.  Clients at this site use
   the listener host and port to establish connections to
   the remote service.
+
+  _Choices:_
+
 
 - <h3 id="--tls-secret">--tls-secret <span class="argument-info">string</span></h3>
 
@@ -78,7 +87,13 @@ skupper listener create database --host database --port 5432
   It can optionally include a client certificate and key for
   mutual TLS.
 
+  _Choices:_
+
+
 - <h3 id="--type">--type <span class="argument-info">string</span></h3>
+
+  _Choices:_
+
 
   What is this again?  I think we need a qualifier on "type".
 

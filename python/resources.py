@@ -56,6 +56,9 @@ def generate_resource(resource):
         append(f"  - name: {capitalize(name)} command")
         append(f"    url: /commands/{resource.command.id}.html")
 
+    if resource.links:
+        pass # XXX
+
     append("---")
     append()
     append(f"# {resource.name}")
@@ -65,10 +68,6 @@ def generate_resource(resource):
 
     if resource.description:
         append(resource.description.strip())
-        append()
-
-    if resource.links:
-        append(generate_links(resource))
         append()
 
     append("</section>")
@@ -153,16 +152,14 @@ def generate_property(prop, append):
 
         if prop.default is True:
             default = str(prop.default).lower()
+        elif isinstance(prop.default, str):
+            default = f"`{default}`"
 
         append(f"  _Default:_ {default}")
         append()
 
     if prop.choices:
-        append(f"  _Choices:_")
-
-        for choice in prop.choices:
-            append(f"    - `{choice['name']}` - {choice['description']}".rstrip())
-
+        append(generate_choices(prop))
         append()
 
     if prop.links:
@@ -369,11 +366,6 @@ class Property:
         return self.data.get("type", default)
 
     @property
-    def format(self):
-        default = self.model.get_schema_property(self).get("format")
-        return self.data.get("format", default)
-
-    @property
     def required(self):
         schema = self.model.get_schema(self.resource)
         required_names = schema["properties"][self.group].get("required", [])
@@ -382,13 +374,9 @@ class Property:
         return self.data.get("required", default)
 
     @property
-    def description(self):
-        default = self.model.get_schema_property(self).get("description")
-        return self.data.get("description", default)
-
-    @property
-    def links(self):
-        return self.data.get("links", [])
+    def format(self):
+        default = self.model.get_schema_property(self).get("format")
+        return self.data.get("format", default)
 
     @property
     def default(self):
@@ -398,6 +386,15 @@ class Property:
     @property
     def choices(self):
         return self.data.get("choices", [])
+
+    @property
+    def description(self):
+        default = self.model.get_schema_property(self).get("description")
+        return self.data.get("description", default)
+
+    @property
+    def links(self):
+        return self.data.get("links", [])
 
     @property
     def notes(self):

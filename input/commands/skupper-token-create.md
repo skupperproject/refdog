@@ -37,11 +37,17 @@ The token expires after 1 use or after 15 minutes
 
   _Default:_ 15m
 
+  _Choices:_
+
+
   Suggest **expirationPeriod**.
 
 - <h3 id="--uses">--uses <span class="argument-info">integer</span></h3>
 
   _Default:_ 1
+
+  _Choices:_
+
 
   Suggest **claimsAllowed**.
 

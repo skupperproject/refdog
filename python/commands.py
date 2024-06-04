@@ -172,6 +172,10 @@ def generate_argument(argument, append):
         append(f"  _Default:_ {default}")
         append()
 
+    if argument.choices is not None:
+        append(generate_choices(argument))
+        append()
+
     if argument.links:
         append("  " + generate_links(argument))
         append()
@@ -351,14 +355,19 @@ class Argument:
         return self.data.get("format", default)
 
     @property
+    def required(self):
+        default = self.property_.required if self.property_ else None
+        return self.data.get("required", default)
+
+    @property
     def default(self):
         default = self.property_.default if self.property_ else None
         return self.data.get("default", default)
 
     @property
-    def required(self):
-        default = self.property_.required if self.property_ else None
-        return self.data.get("required", default)
+    def choices(self):
+        default = self.property_.choices if self.property_ else None
+        return self.data.get("choices", default)
 
     @property
     def positional(self):

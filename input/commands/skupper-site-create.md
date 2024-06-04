@@ -63,14 +63,26 @@ skupper site create west --enable-link-access
 
   Configure external access for links from remote sites.
 
-  _Default:_ `default`
+  _Default:_ default
+
+  _Choices:_
+
+    - `none` - No link access.
+    - `default` - Use the default link access.  On OpenShift, `route`
+is the default.  For other Kubernetes flavors,
+`loadbalancer` is the default.
+    - `route` - Use an OpenShift route.
+    - `loadbalancer` - Use a Kubernetes load balancer.
 
 - <h3 id="--service-account">--service-account <span class="argument-info">string</span></h3>
 
   The Kubernetes service account under which to run the
   Skupper controller.
 
-  _Default:_ `skupper:skupper-controller`
+  _Default:_ skupper:skupper-controller
+
+  _Choices:_
+
 
 </section>
 

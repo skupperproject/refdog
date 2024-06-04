@@ -3,7 +3,7 @@ groups:
     resources:
       - name: Site
         concept: site
-        command: skupper site
+        command: skupper site create
         description: |
           @concept_description@
 
@@ -30,7 +30,7 @@ groups:
                 linkAccess: default
         spec_properties:
           - name: linkAccess
-            default: "`none`"
+            default: none
             description: |
               Configure external access for links from remote sites.
             choices:
@@ -46,7 +46,7 @@ groups:
               - name: loadbalancer
                 description: Use a Kubernetes load balancer.
           - name: serviceAccount
-            default: "`skupper:skupper-controller`"
+            default: skupper:skupper-controller
             description: |
               The Kubernetes service account under which to run the
               Skupper controller.
@@ -113,7 +113,7 @@ groups:
     resources:
       - name: Connector
         concept: connector
-        command: skupper connector
+        command: skupper connector create
         description: |
           @concept_description@
 
@@ -173,7 +173,7 @@ groups:
           - name: status
       - name: Listener
         concept: listener
-        command: skupper listener
+        command: skupper listener create
         description: |
           @concept_description@
 

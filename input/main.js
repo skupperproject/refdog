@@ -75,13 +75,13 @@ window.addEventListener("load", () => {
 
     const newTocLinks = document.createElement("nav");
 
-    const overviewLink = document.createElement("a");
-    const overviewText = document.createTextNode("Overview");
+    const topLink = document.createElement("a");
+    const topText = document.createTextNode($("h1").textContent);
 
-    overviewLink.setAttribute("href", "");
-    overviewLink.appendChild(overviewText);
+    topLink.setAttribute("href", "");
+    topLink.appendChild(topText);
 
-    newTocLinks.appendChild(overviewLink);
+    newTocLinks.appendChild(topLink);
 
     for (const heading of headings) {
         const link = document.createElement("a");

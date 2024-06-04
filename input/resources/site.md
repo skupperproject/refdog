@@ -3,8 +3,8 @@ body_class: resource
 links:
   - name: Site concept
     url: /concepts/site.html
-  - name: Site command
-    url: /commands/skupper-site.html
+  - name: Site create command
+    url: /commands/skupper-site-create.html
 ---
 
 # Site
@@ -15,8 +15,6 @@ A site is a place where components of your application are
 running.  Sites are linked to form application networks.
 
 There can be only one site definition per namespace.
-
-_See also:_ [Skupper site command]({{site_prefix}}/commands/skupper-site.html)
 
 </section>
 
@@ -59,6 +57,7 @@ spec:
   _Default:_ `none`
 
   _Choices:_
+
     - `none` - No link access.
     - `default` - Use the default link access.  On OpenShift, `route`
 is the default.  For other Kubernetes flavors,

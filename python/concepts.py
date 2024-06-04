@@ -21,7 +21,7 @@ def generate(model):
         append(f"- {group.name}")
 
         for concept in group.concepts:
-            append(f"  - [{concept.name}]({concept.id}.html)")
+            append(f"  - [{capitalize(concept.name)}]({concept.id}.html)")
 
     write("input/concepts/index.md", "\n".join(lines))
 
@@ -44,7 +44,7 @@ def generate_concept(concept):
     append("body_class: concept")
     append("---")
     append()
-    append(f"# {concept.name}")
+    append(f"# {capitalize(concept.name)}")
     append()
     append("<section>")
     append()

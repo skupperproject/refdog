@@ -2,7 +2,7 @@
 body_class: concept
 ---
 
-# claim
+# Claim
 
 <section>
 

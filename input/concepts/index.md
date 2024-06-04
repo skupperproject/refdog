@@ -1,12 +1,12 @@
 # Skupper concepts
 
 - Sites and networks
-  - [site](site.html)
-  - [network](network.html)
+  - [Site](site.html)
+  - [Network](network.html)
 - Site linking
-  - [link](link.html)
-  - [grant](grant.html)
-  - [claim](claim.html)
+  - [Link](link.html)
+  - [Grant](grant.html)
+  - [Claim](claim.html)
 - Service exposure
-  - [connector](connector.html)
-  - [listener](listener.html)
+  - [Connector](connector.html)
+  - [Listener](listener.html)
