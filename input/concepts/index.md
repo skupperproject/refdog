@@ -1,9 +1,9 @@
 # Skupper concepts
 
-- Site configuration
+- Sites and networks
   - [site](site.html)
-- Site linking
   - [network](network.html)
+- Site linking
   - [link](link.html)
   - [grant](grant.html)
   - [claim](claim.html)

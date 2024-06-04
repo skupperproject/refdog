@@ -1,5 +1,10 @@
 ---
 body_class: resource
+links:
+  - name: Claim concept
+    url: /concepts/claim.html
+  - name: Token redeem command
+    url: /commands/skupper-token-redeem.html
 ---
 
 # Claim

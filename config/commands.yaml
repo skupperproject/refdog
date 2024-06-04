@@ -149,16 +149,13 @@ groups:
           - property: claims
             name: --uses
             default: 1
-      - name: skupper link
+      - name: skupper token redeem
+        resource: Claim
         description: |
-          Display help for link commands and exit.
-      - name: skupper link create
-        resource: Link
-        description: |
-          Create a link.
+          Redeem a token for a link.
 
           @resource_description@
-        usage: skupper link create <file> [options]
+        usage: skupper token redeem <file> [options]
         output: |
           Waiting for status...
           Link "<name>" is active
@@ -167,7 +164,9 @@ groups:
           - name: file
             description: |
               The name of the token file.
-          - property: cost
+      - name: skupper link
+        description: |
+          Display help for link commands and exit.
       - name: skupper link delete
         usage: skupper link delete <name>
       - name: skupper link status

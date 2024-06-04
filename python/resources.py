@@ -42,6 +42,20 @@ def generate_resource(resource):
 
     append("---")
     append("body_class: resource")
+
+    if resource.concept or resource.command:
+        append("links:")
+
+    if resource.concept:
+        append(f"  - name: {capitalize(resource.concept.name)} concept")
+        append(f"    url: /concepts/{resource.concept.id}.html")
+
+    if resource.command:
+        name = resource.command.name.removeprefix("skupper ")
+
+        append(f"  - name: {capitalize(name)} command")
+        append(f"    url: /commands/{resource.command.id}.html")
+
     append("---")
     append()
     append(f"# {resource.name}")
@@ -302,13 +316,18 @@ class Resource:
             return self.model.concept_model.concepts_by_name[self.data["concept"]]
 
     @property
+    def command(self):
+        if "command" in self.data:
+            return self.model.command_model.commands_by_name[self.data["command"]]
+
+    @property
     def description(self):
         # XXX Default to CRD description
 
         description = self.data.get("description")
 
         if description and self.concept and self.concept.description:
-            description = description.replace("@concept_description@", self.concept.description)
+            description = description.replace("@concept_description@", self.concept.description.strip())
 
         return description
 

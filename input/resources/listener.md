@@ -1,5 +1,10 @@
 ---
 body_class: resource
+links:
+  - name: Listener concept
+    url: /concepts/listener.html
+  - name: Listener command
+    url: /commands/skupper-listener.html
 ---
 
 # Listener
@@ -8,7 +13,6 @@ body_class: resource
 
 A listener is a local connection endpoint bound to servers
 in remote sites.
-
 
 Each site can have multiple listener definitions.
 

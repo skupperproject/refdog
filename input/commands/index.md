@@ -9,8 +9,8 @@
 - Site linking
   - [skupper token](skupper-token.html)
   - [skupper token create](skupper-token-create.html)
+  - [skupper token redeem](skupper-token-redeem.html)
   - [skupper link](skupper-link.html)
-  - [skupper link create](skupper-link-create.html)
   - [skupper link delete](skupper-link-delete.html)
   - [skupper link status](skupper-link-status.html)
 - Service exposure

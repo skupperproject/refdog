@@ -11,7 +11,6 @@ Create a site.
 A site is a place where components of your application are
 running.  Sites are linked to form application networks.
 
-
 There can be only one site definition per namespace.
 
 </section>

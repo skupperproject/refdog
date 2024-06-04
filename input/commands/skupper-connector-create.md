@@ -11,7 +11,6 @@ Create a connector.
 A connector binds local servers to listeners in remote
 sites.
 
-
 Each site can have multiple connector definitions.
 
 </section>

@@ -1,5 +1,10 @@
 ---
 body_class: resource
+links:
+  - name: Connector concept
+    url: /concepts/connector.html
+  - name: Connector command
+    url: /commands/skupper-connector.html
 ---
 
 # Connector
@@ -8,7 +13,6 @@ body_class: resource
 
 A connector binds local servers to listeners in remote
 sites.
-
 
 Each site can have multiple connector definitions.
 

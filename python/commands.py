@@ -174,16 +174,25 @@ class CommandModel:
         debug(f"Loading {self}")
 
         self.resource_model = resource_model
+
+        # XXX
+        self.resource_model.command_model = self
+
         self.data = read_yaml("config/commands.yaml")
 
         self.global_arguments = list()
         self.groups = list()
+        self.commands_by_name = dict()
 
         for argument_data in self.data["global_arguments"]:
             self.global_arguments.append(Argument(self, self, argument_data))
 
         for group_data in self.data["groups"]:
             self.groups.append(Group(self, group_data))
+
+        for group in self.groups:
+            for command in group.commands:
+                self.commands_by_name[command.name] = command
 
     def __repr__(self):
         return "command model"
@@ -258,10 +267,10 @@ class Command:
         description = self.data.get("description")
 
         if description and self.concept and self.concept.description:
-            description = description.replace("@concept_description@", self.concept.description)
+            description = description.replace("@concept_description@", self.concept.description.strip())
 
         if description and self.resource and self.resource.description:
-            description = description.replace("@resource_description@", self.resource.description)
+            description = description.replace("@resource_description@", self.resource.description.strip())
 
         return description
 

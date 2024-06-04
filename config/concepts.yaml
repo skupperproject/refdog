@@ -1,15 +1,15 @@
 groups:
-  - name: Site configuration
+  - name: Sites and networks
     concepts:
       - name: site
         description: |
           A site is a place where components of your application are
           running.  Sites are linked to form application networks.
-  - name: Site linking
-    concepts:
       - name: network
         description: |
           XXX
+  - name: Site linking
+    concepts:
       - name: link
         description: |
           A link is a site-to-site communication channel. Links serve

@@ -1,5 +1,10 @@
 ---
 body_class: resource
+links:
+  - name: Link concept
+    url: /concepts/link.html
+  - name: Link command
+    url: /commands/skupper-link.html
 ---
 
 # Link

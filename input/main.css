@@ -206,7 +206,7 @@ a {
 
 a.selected {
     color: var(--body-color);
-    font-weight: 700;
+    font-weight: 500;
 }
 
 code, pre {
@@ -271,7 +271,7 @@ aside > div {
     border-left: 3px solid var(--line-color);
 }
 
-#-toc > h4 {
+aside h4 {
     font-size: 0.9em;
     font-weight: 500;
     text-transform: uppercase;
