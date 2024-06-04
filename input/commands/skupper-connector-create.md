@@ -83,9 +83,12 @@ skupper connector create database --workload deployment/postgresql --port 5432
 
 - <h3 id="--type">--type <span class="argument-info">string</span></h3>
 
-  What is this again?  I think we need a qualifier on "type".
+  _Default:_ tcp
 
 - <h3 id="--include-not-ready">--include-not-ready <span class="argument-info">boolean</span></h3>
+
+  If set, include server pods that are not in the ready
+  state.
 
   _Default:_ false
 

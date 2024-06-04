@@ -74,11 +74,14 @@ spec:
   It can optionally include a client certificate and key for
   mutual TLS.
 
+- <h3 id="includenotready">includeNotReady <span class="property-info">boolean</span></h3>
+
+  If set, include server pods that are not in the ready
+  state.
+
 - <h3 id="type">type <span class="property-info">string</span></h3>
 
-  What is this again?  I think we need a qualifier on "type".
-
-- <h3 id="includenotready">includeNotReady <span class="property-info">boolean</span></h3>
+  _Default:_ tcp
 
 </section>
 
