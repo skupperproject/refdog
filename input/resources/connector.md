@@ -6,7 +6,9 @@ body_class: resource
 
 <section>
 
-@concept_description@
+A connector binds local servers to listeners in remote
+sites.
+
 
 Each site can have multiple connector definitions.
 

@@ -6,7 +6,8 @@ body_class: resource
 
 <section>
 
-@concept_description@
+A link is a site-to-site communication channel. Links serve
+as a transport for application connections and requests.
 
 _See also:_ [Skupper links]({{site_prefix}}/concepts.html#link)
 

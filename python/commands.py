@@ -222,6 +222,11 @@ class Command:
         return self.data["name"]
 
     @property
+    def concept(self):
+        if "concept" in self.data:
+            return self.model.resource_model.concept_model.concepts_by_name[self.data["concept"]]
+
+    @property
     def resource(self):
         if "resource" in self.data:
             return self.model.resource_model.resources_by_name[self.data["resource"]]
@@ -229,6 +234,9 @@ class Command:
     @property
     def description(self):
         description = self.data.get("description")
+
+        if description and self.concept and self.concept.description:
+            description = description.replace("@concept_description@", self.concept.description)
 
         if description and self.resource and self.resource.description:
             description = description.replace("@resource_description@", self.resource.description)

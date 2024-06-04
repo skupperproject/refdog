@@ -6,7 +6,9 @@ body_class: command
 
 Create a listener.
 
-@concept_description@
+A listener is a local connection endpoint bound to servers
+in remote sites.
+
 
 Each site can have multiple listener definitions.
 

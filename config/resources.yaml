@@ -2,6 +2,7 @@ groups:
   - name: Site configuration
     resources:
       - name: Site
+        concept: site
         description: |
           @concept_description@
 
@@ -63,6 +64,7 @@ groups:
   - name: Site linking
     resources:
       - name: Grant
+        concept: grant
         description: |
           @concept_description@
         spec_properties:
@@ -88,6 +90,7 @@ groups:
             description: |
               The point in time when the grant expires.
       - name: Claim
+        concept: claim
         description: |
           @concept_description@
         spec_properties:
@@ -106,6 +109,7 @@ groups:
   - name: Service exposure
     resources:
       - name: Connector
+        concept: connector
         description: |
           @concept_description@
 
@@ -162,6 +166,7 @@ groups:
           - name: active
           - name: status
       - name: Listener
+        concept: listener
         description: |
           @concept_description@
 
@@ -214,6 +219,7 @@ groups:
   - name: Advanced stuff
     resources:
       - name: Link
+        concept: link
         description: |
           @concept_description@
         links:

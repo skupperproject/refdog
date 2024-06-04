@@ -6,7 +6,8 @@ body_class: command
 
 Create a link.
 
-@concept_description@
+A link is a site-to-site communication channel. Links serve
+as a transport for application connections and requests.
 
 ## Usage
 

@@ -290,9 +290,20 @@ class Resource:
         return get_fragment_id(self.name)
 
     @property
+    def concept(self):
+        if "concept" in self.data:
+            return self.model.concept_model.concepts_by_name[self.data["concept"]]
+
+    @property
     def description(self):
         # XXX Default to CRD description
-        return self.data.get("description")
+
+        description = self.data.get("description")
+
+        if description and self.concept and self.concept.description:
+            description = description.replace("@concept_description@", self.concept.description)
+
+        return description
 
     @property
     def links(self):

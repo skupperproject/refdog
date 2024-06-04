@@ -67,11 +67,16 @@ class ConceptModel:
         debug(f"Loading {self}")
 
         self.data = read_yaml("config/concepts.yaml")
+        self.concepts_by_name = dict()
 
         self.groups = list()
 
         for group_data in self.data["groups"]:
             self.groups.append(Group(self, group_data))
+
+        for group in self.groups:
+            for concept in group.concepts:
+                self.concepts_by_name[concept.name] = concept
 
     def __repr__(self):
         return "concept model"
