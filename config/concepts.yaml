@@ -1,0 +1,38 @@
+groups:
+  - name: Site configuration
+    concepts:
+      - name: Site
+        description: |
+          A site is a place where components of your application are
+          running.  Sites are linked to form application networks.
+  - name: Site linking
+    concepts:
+      - name: Grant
+        description: |
+          An offer to accept links to the local site.  A remote site
+          can use a claim containing the grant URL and secret to
+          obtain a certificate signed by the grant's certificate
+          authority (CA), within a certain expiration period and for a
+          limited number of claims.
+      - name: Claim
+        description: |
+          XXX A verifiable assertion of permission to link to a remote
+          site.  A claim contains the URL and secret of an existing
+          grant.
+      - name: Link
+        description: |
+          A link is a site-to-site communication channel. Links serve
+          as a transport for application connections and requests.
+      - name: Network
+        description: |
+          XXX
+  - name: Service exposure
+    concepts:
+      - name: Connector
+        description: |
+          A connector binds local servers to listeners in remote
+          sites.
+      - name: Listener
+        description: |
+          A listener is a local connection endpoint bound to servers
+          in remote sites.

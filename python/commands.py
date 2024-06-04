@@ -1,11 +1,10 @@
 from resources import *
 
-def generate():
+def generate(model):
     debug("Generating commands")
 
     make_dir("input/commands")
 
-    model = CommandModel()
     lines = list()
 
     def append(line=""):
@@ -149,10 +148,10 @@ def generate_argument(argument, append):
         append()
 
 class CommandModel:
-    def __init__(self):
+    def __init__(self, resource_model):
         debug(f"Loading {self}")
 
-        self.resource_model = ResourceModel()
+        self.resource_model = resource_model
         self.data = read_yaml("config/commands.yaml")
 
         self.global_arguments = list()

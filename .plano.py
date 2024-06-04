@@ -1,15 +1,18 @@
-from plano import *
-from plano.github import *
 from transom.planocommands import *
 
-import collections
 import commands
+import concepts
 import resources
 
 @command
 def generate():
-    resources.generate()
-    commands.generate()
+    concept_model = concepts.ConceptModel()
+    resource_model = resources.ResourceModel(concept_model)
+    command_model = commands.CommandModel(resource_model)
+
+    concepts.generate(concept_model)
+    resources.generate(resource_model)
+    commands.generate(command_model)
 
 @command
 def update_crds():

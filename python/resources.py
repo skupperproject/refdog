@@ -1,11 +1,10 @@
 from common import *
 
-def generate():
+def generate(model):
     debug("Generating resources")
 
     make_dir("input/resources")
 
-    model = ResourceModel()
     lines = list()
 
     def append(line=""):
@@ -159,9 +158,10 @@ def generate_property(prop, append):
     # append(f"_Default:_ {'False' if prop.default is None and prop.type == 'boolean' else prop.default}")
 
 class ResourceModel:
-    def __init__(self):
+    def __init__(self, concept_model):
         debug(f"Loading {self}")
 
+        self.concept_model = concept_model
         self.data = read_yaml("config/resources.yaml")
 
         self.groups = list()
