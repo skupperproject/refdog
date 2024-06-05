@@ -2,6 +2,8 @@ groups:
   - name: Sites and networks
     concepts:
       - name: site
+        resource: Site
+        command: skupper site create
         description: |
           A site is a place where components of your application are
           running.  Sites are linked to form application networks.
@@ -11,10 +13,14 @@ groups:
   - name: Site linking
     concepts:
       - name: link
+        resource: Link
+        command: skupper link
         description: |
           A link is a site-to-site communication channel. Links serve
           as a transport for application connections and requests.
       - name: grant
+        resource: Grant
+        command: skupper token create
         description: |
           An offer to accept links to the local site.  A remote site
           can use a claim containing the grant URL and secret to
@@ -22,6 +28,8 @@ groups:
           authority (CA), within a certain expiration period and for a
           limited number of claims.
       - name: claim
+        resource: Claim
+        command: skupper token redeem
         description: |
           XXX A verifiable assertion of permission to link to a remote
           site.  A claim contains the URL and secret of an existing
@@ -29,10 +37,14 @@ groups:
   - name: Service exposure
     concepts:
       - name: connector
+        resource: Connector
+        command: skupper connector create
         description: |
           A connector binds local servers to listeners in remote
           sites.
       - name: listener
+        resource: Listener
+        command: skupper listener create
         description: |
           A listener is a local connection endpoint bound to servers
           in remote sites.

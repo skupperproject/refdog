@@ -185,9 +185,8 @@ class CommandModel:
         debug(f"Loading {self}")
 
         self.resource_model = resource_model
-
-        # XXX
         self.resource_model.command_model = self
+        self.resource_model.concept_model.command_model = self
 
         self.data = read_yaml("config/commands.yaml")
 

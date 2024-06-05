@@ -169,6 +169,8 @@ class ResourceModel:
         debug(f"Loading {self}")
 
         self.concept_model = concept_model
+        self.concept_model.resource_model = self
+
         self.data = read_yaml("config/resources.yaml")
 
         self.groups = list()

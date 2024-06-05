@@ -42,6 +42,23 @@ def generate_concept(concept):
 
     append("---")
     append("body_class: concept")
+
+    if concept.resource or concept.command:
+        append("links:")
+
+    if concept.resource:
+        append(f"  - name: {capitalize(concept.resource.name)} resource")
+        append(f"    url: /resources/{concept.resource.id}.html")
+
+    if concept.command:
+        name = concept.command.name.removeprefix("skupper ")
+
+        append(f"  - name: {capitalize(name)} command")
+        append(f"    url: /commands/{concept.command.id}.html")
+
+    if concept.links:
+        pass # XXX
+
     append("---")
     append()
     append(f"# {capitalize(concept.name)}")
@@ -126,6 +143,16 @@ class Concept:
     @property
     def id(self):
         return get_fragment_id(self.name)
+
+    @property
+    def resource(self):
+        if "resource" in self.data:
+            return self.model.resource_model.resources_by_name[self.data["resource"]]
+
+    @property
+    def command(self):
+        if "command" in self.data:
+            return self.model.command_model.commands_by_name[self.data["command"]]
 
     @property
     def description(self):

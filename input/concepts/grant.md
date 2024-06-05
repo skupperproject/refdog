@@ -1,5 +1,10 @@
 ---
 body_class: concept
+links:
+  - name: Grant resource
+    url: /resources/grant.html
+  - name: Token create command
+    url: /commands/skupper-token-create.html
 ---
 
 # Grant

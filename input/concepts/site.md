@@ -1,5 +1,10 @@
 ---
 body_class: concept
+links:
+  - name: Site resource
+    url: /resources/site.html
+  - name: Site create command
+    url: /commands/skupper-site-create.html
 ---
 
 # Site
