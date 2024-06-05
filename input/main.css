@@ -247,6 +247,11 @@ li > p + ul {
 
 .path-nav > a:after {
     content: " \00a0\003e\00a0\00a0 ";
+    color: var(--body-color);
+}
+
+.path-nav > a:last-child {
+    color: var(--body-color);
 }
 
 .path-nav > a:last-child:after {

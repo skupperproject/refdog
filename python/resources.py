@@ -42,23 +42,7 @@ def generate_resource(resource):
 
     append("---")
     append("body_class: resource")
-
-    if resource.concept or resource.command:
-        append("links:")
-
-    if resource.concept:
-        append(f"  - name: {capitalize(resource.concept.name)} concept")
-        append(f"    url: /concepts/{resource.concept.id}.html")
-
-    if resource.command:
-        name = resource.command.name.removeprefix("skupper ")
-
-        append(f"  - name: {capitalize(name)} command")
-        append(f"    url: /commands/{resource.command.id}.html")
-
-    if resource.links:
-        pass # XXX
-
+    append(generate_object_links(resource))
     append("---")
     append()
     append(f"# {resource.name}")
@@ -148,15 +132,15 @@ def generate_property(prop, append):
         append()
 
     if prop.default not in (None, False):
-        append(indent(generate_default(prop), 2))
+        append(indent(generate_attribute_default(prop), 2))
         append()
 
     if prop.choices:
-        append(indent(generate_choices(prop), 2))
+        append(indent(generate_attribute_choices(prop), 2))
         append()
 
     if prop.links:
-        append(indent(generate_links(prop), 2))
+        append(indent(generate_attribute_links(prop), 2))
         append()
 
     if prop.notes:

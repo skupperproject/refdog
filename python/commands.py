@@ -42,18 +42,7 @@ def generate_command(command):
 
     append("---")
     append("body_class: command")
-
-    if command.concept or command.resource:
-        append("links:")
-
-    if command.concept:
-        append(f"  - name: {capitalize(command.concept.name)} concept")
-        append(f"    url: /concepts/{command.concept.id}.html")
-
-    if command.resource:
-        append(f"  - name: {command.resource.name} resource")
-        append(f"    url: /resources/{command.resource.id}.html")
-
+    append(generate_object_links(command))
     append("---")
     append()
     append(f"# {command.name}")
@@ -63,10 +52,6 @@ def generate_command(command):
 
     if command.description:
         append(command.description.strip())
-        append()
-
-    if command.links:
-        append(generate_links(command))
         append()
 
     append("</section>")
@@ -164,15 +149,15 @@ def generate_argument(argument, append):
         append()
 
     if argument.default not in (None, False):
-        append(indent(generate_default(argument), 2))
+        append(indent(generate_attribute_default(argument), 2))
         append()
 
     if argument.choices:
-        append(indent(generate_choices(argument), 2))
+        append(indent(generate_attribute_choices(argument), 2))
         append()
 
     if argument.links:
-        append(indent(generate_links(argument), 2))
+        append(indent(generate_attribute_links(argument), 2))
         append()
 
     if argument.notes:

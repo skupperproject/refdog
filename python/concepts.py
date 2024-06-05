@@ -42,23 +42,7 @@ def generate_concept(concept):
 
     append("---")
     append("body_class: concept")
-
-    if concept.resource or concept.command:
-        append("links:")
-
-    if concept.resource:
-        append(f"  - name: {capitalize(concept.resource.name)} resource")
-        append(f"    url: /resources/{concept.resource.id}.html")
-
-    if concept.command:
-        name = concept.command.name.removeprefix("skupper ")
-
-        append(f"  - name: {capitalize(name)} command")
-        append(f"    url: /commands/{concept.command.id}.html")
-
-    if concept.links:
-        pass # XXX
-
+    append(generate_object_links(concept))
     append("---")
     append()
     append(f"# {capitalize(concept.name)}")
@@ -68,10 +52,6 @@ def generate_concept(concept):
 
     if concept.description:
         append(concept.description.strip())
-        append()
-
-    if concept.links:
-        append(generate_links(concept))
         append()
 
     append("</section>")
