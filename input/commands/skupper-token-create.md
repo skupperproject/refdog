@@ -35,10 +35,7 @@ The token expires after 1 use or after 15 minutes
 
 - <h3 id="--expiry">--expiry <span class="argument-info">string (duration)</span></h3>
 
-  _Default:_ 15m
-
-  _Choices:_
-
+  _Default:_ `15m`
 
   Suggest **expirationPeriod**.
 
@@ -46,9 +43,6 @@ The token expires after 1 use or after 15 minutes
 
   _Default:_ 1
 
-  _Choices:_
-
-
-  Suggest **claimsAllowed**.
+  Suggest **redemptionsAllowed**.
 
 </section>

@@ -163,21 +163,16 @@ def generate_argument(argument, append):
         append(indent(argument.description.strip(), 2))
         append()
 
-    if argument.default is not None:
-        default = argument.default
-
-        if argument.default in (True, False):
-            default = str(argument.default).lower()
-
-        append(f"  _Default:_ {default}")
+    if argument.default not in (None, False):
+        append(indent(generate_default(argument), 2))
         append()
 
-    if argument.choices is not None:
-        append(generate_choices(argument))
+    if argument.choices:
+        append(indent(generate_choices(argument), 2))
         append()
 
     if argument.links:
-        append("  " + generate_links(argument))
+        append(indent(generate_links(argument), 2))
         append()
 
     if argument.notes:

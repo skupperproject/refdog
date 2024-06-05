@@ -148,32 +148,21 @@ def generate_property(prop, append):
         append()
 
     if prop.default not in (None, False):
-        default = prop.default
-
-        if prop.default is True:
-            default = str(prop.default).lower()
-        elif isinstance(prop.default, str):
-            default = f"`{default}`"
-
-        append(f"  _Default:_ {default}")
+        append(indent(generate_default(prop), 2))
         append()
 
     if prop.choices:
-        append(generate_choices(prop))
+        append(indent(generate_choices(prop), 2))
         append()
 
     if prop.links:
-        append("  " + generate_links(prop))
+        append(indent(generate_links(prop), 2))
         append()
 
     if prop.notes:
         # XXX styling
         append(indent(prop.notes.strip(), 2))
         append()
-
-    # append(f"_Type:_ {capitalize(prop.type)}\\")
-    # append(f"_Required:_ {'Yes' if prop.required else 'No'}\\")
-    # append(f"_Default:_ {'False' if prop.default is None and prop.type == 'boolean' else prop.default}")
 
 class ResourceModel:
     def __init__(self, concept_model):

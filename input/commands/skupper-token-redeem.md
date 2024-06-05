@@ -15,6 +15,8 @@ XXX A verifiable assertion of permission to link to a remote
 site.  A claim contains the URL and secret of an existing
 grant.
 
+A claim is redeemed for a link and a secret.
+
 </section>
 
 <section>

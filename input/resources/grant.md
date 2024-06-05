@@ -25,7 +25,7 @@ limited number of claims.
 
 - <h3 id="claims">claims <span class="property-info">integer</span></h3>
 
-  Suggest **claimsAllowed**.
+  Suggest **redemptionsAllowed**.
 
 - <h3 id="validfor">validFor <span class="property-info">string (duration)</span></h3>
 
@@ -43,7 +43,7 @@ limited number of claims.
 
   The number of times the grant has been claimed.
 
-  Suggest **claimsRedeemed**.  "The number of times a claim on
+  Suggest **redemptions**.  "The number of times a claim on
   this grant has been redeemed."
 
 - <h3 id="status">status <span class="property-info">string</span></h3>
@@ -57,5 +57,13 @@ limited number of claims.
 - <h3 id="expiration">expiration <span class="property-info">string (date-time)</span></h3>
 
   The point in time when the grant expires.
+
+</section>
+
+<section>
+
+## Notes
+
+Suggest **AccessGrant**.
 
 </section>

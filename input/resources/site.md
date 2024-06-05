@@ -57,13 +57,13 @@ spec:
   _Default:_ `none`
 
   _Choices:_
-
-    - `none` - No link access.
-    - `default` - Use the default link access.  On OpenShift, `route`
-is the default.  For other Kubernetes flavors,
-`loadbalancer` is the default.
-    - `route` - Use an OpenShift route.
-    - `loadbalancer` - Use a Kubernetes load balancer.
+  
+   - `none` - No link access.
+   - `default` - Use the default link access.  On OpenShift, `route`
+  is the default.  For other Kubernetes flavors,
+  `loadbalancer` is the default.
+   - `route` - Use an OpenShift route.
+   - `loadbalancer` - Use a Kubernetes load balancer.
 
 - <h3 id="serviceaccount">serviceAccount <span class="property-info">string</span></h3>
 
@@ -83,6 +83,8 @@ is the default.  For other Kubernetes flavors,
 ## Status properties
 
 - <h3 id="active">active <span class="property-info">boolean</span></h3>
+
+  "This thing is working."
 
 - <h3 id="status">status <span class="property-info">string</span></h3>
 
