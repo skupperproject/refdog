@@ -80,6 +80,4 @@ skupper listener create database --host database --port 5432
 
 - <h3 id="--type">--type <span class="argument-info">string</span></h3>
 
-  What is this again?  I think we need a qualifier on "type".
-
 </section>

@@ -66,8 +66,8 @@ def generate_attribute_choices(attr):
     return "\n".join(lines)
 
 class ModelObject:
-    def __init__(self, type, model, group, data):
-        self.type = type
+    def __init__(self, type_name, model, group, data):
+        self.type_name = type_name
         self.model = model
         self.group = group
         self.data = data
@@ -75,7 +75,7 @@ class ModelObject:
         debug(f"Loading {self}")
 
     def __repr__(self):
-        return f"{self.type} '{self.name}'"
+        return f"{self.type_name} '{self.name}'"
 
     @property
     def name(self):
@@ -103,6 +103,34 @@ class ModelObject:
     @property
     def description(self):
         return self.data.get("description")
+
+    @property
+    def links(self):
+        return self.data.get("links", [])
+
+    @property
+    def notes(self):
+        return self.data.get("notes")
+
+class ModelObjectAttribute:
+    def __init__(self, type_name, model, object, data):
+        self.type_name = type_name
+        self.model = model
+        self.object = object
+        self.data = data
+
+        debug(f"Loading {self}")
+
+    def __repr__(self):
+        return f"{self.type_name} '{self.name}'"
+
+    @property
+    def name(self):
+        return self.data["name"]
+
+    @property
+    def rename(self):
+        return self.data.get("rename", self.name)
 
     @property
     def links(self):

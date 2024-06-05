@@ -177,8 +177,8 @@ class CommandModel:
         self.groups = list()
         self.commands_by_name = dict()
 
-        for argument_data in self.data["global_arguments"]:
-            self.global_arguments.append(Argument(self, self, argument_data))
+        # for argument_data in self.data["global_arguments"]:
+        #     self.global_arguments.append(Argument(self, self, argument_data))
 
         for group_data in self.data["groups"]:
             self.groups.append(Group(self, group_data))
@@ -254,16 +254,13 @@ class Command(ModelObject):
     def output(self):
         return self.data.get("output")
 
-class Argument:
+class Argument(ModelObjectAttribute):
     def __init__(self, model, command, data):
-        self.model = model
-        self.command = command
-        self.data = data
+        super().__init__("argument", model, command, data)
 
-        debug(f"Loading {self}")
-
-    def __repr__(self):
-        return f"argument '{self.name}'"
+    @property
+    def command(self):
+        return self.object
 
     @property
     def property_(self):
@@ -326,15 +323,6 @@ class Argument:
             value = value.replace("@property_description@", self.property_.description)
 
         return value
-
-    @property
-    def links(self):
-        return self.data.get("links", [])
-
-    @property
-    def notes(self):
-        default = self.property_.notes if self.property_ else None
-        return self.data.get("notes", default)
 
 class Error:
     def __init__(self, model, data):

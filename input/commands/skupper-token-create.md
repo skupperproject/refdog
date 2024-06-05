@@ -33,16 +33,12 @@ The token expires after 1 use or after 15 minutes
 
   The name of the token file.
 
-- <h3 id="--expiry">--expiry <span class="argument-info">string (duration)</span></h3>
+- <h3 id="--valid-for">--valid-for <span class="argument-info">string (duration)</span></h3>
 
   _Default:_ `15m`
 
-  Suggest **expirationPeriod**.
-
-- <h3 id="--uses">--uses <span class="argument-info">integer</span></h3>
+- <h3 id="--claims">--claims <span class="argument-info">integer</span></h3>
 
   _Default:_ 1
-
-  Suggest **redemptionsAllowed**.
 
 </section>

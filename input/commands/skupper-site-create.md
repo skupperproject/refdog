@@ -59,7 +59,7 @@ skupper site create west --enable-link-access
 
   Allow access for incoming links from remote sites.
 
-- <h3 id="--link-access-type">--link-access-type <span class="argument-info">string</span></h3>
+- <h3 id="--link-access">--link-access <span class="argument-info">string</span></h3>
 
   Configure external access for links from remote sites.
 

@@ -252,7 +252,7 @@ class Resource(ModelObject):
         self.spec_properties_by_name = dict()
 
         for property_data in self.data.get("spec_properties", []):
-            prop = Property(self.model, self, "spec", property_data)
+            prop = Property(self.model, self, property_data, "spec")
 
             self.spec_properties.append(prop)
             self.spec_properties_by_name[prop.name] = prop
@@ -261,7 +261,7 @@ class Resource(ModelObject):
         self.status_properties_by_name = dict()
 
         for property_data in self.data.get("status_properties", []):
-            prop = Property(self.model, self, "status", property_data)
+            prop = Property(self.model, self, property_data, "status")
 
             self.status_properties.append(prop)
             self.status_properties_by_name[prop.name] = prop
@@ -281,25 +281,15 @@ class Resource(ModelObject):
     def examples(self):
         return self.data.get("examples", [])
 
-class Property:
-    def __init__(self, model, resource, group, data):
-        self.model = model
-        self.resource = resource
-        self.group = group # "spec" or "status"
-        self.data = data
+class Property(ModelObjectAttribute):
+    def __init__(self, model, resource, data, group):
+        super().__init__("property", model, resource, data)
 
-        debug(f"Loading {self}")
-
-    def __repr__(self):
-        return f"property '{self.name}'"
+        self.group = group
 
     @property
-    def name(self):
-        return self.data["name"]
-
-    @property
-    def rename(self):
-        return self.data.get("rename")
+    def resource(self):
+        return self.object
 
     @property
     def type(self):
@@ -332,11 +322,3 @@ class Property:
     def description(self):
         default = self.model.get_schema_property(self).get("description")
         return self.data.get("description", default)
-
-    @property
-    def links(self):
-        return self.data.get("links", [])
-
-    @property
-    def notes(self):
-        return self.data.get("notes")
