@@ -170,8 +170,6 @@ class CommandModel:
         debug(f"Loading {self}")
 
         self.resource_model = resource_model
-        self.resource_model.command_model = self
-        self.resource_model.concept_model.command_model = self
 
         self.data = read_yaml("config/commands.yaml")
 
@@ -219,13 +217,9 @@ class Group:
     def description(self):
         return self.data.get("description")
 
-class Command:
+class Command(ModelObject):
     def __init__(self, model, group, data):
-        self.model = model
-        self.group = group
-        self.data = data
-
-        debug(f"Loading {self}")
+        super().__init__("command", model, group, data)
 
         self.arguments = list()
         self.errors = list()
@@ -235,27 +229,6 @@ class Command:
 
         for error_data in self.data.get("errors", []):
             self.errors.append(Error(self, error_data))
-
-    def __repr__(self):
-        return f"command '{self.name}'"
-
-    @property
-    def id(self):
-        return get_fragment_id(self.name)
-
-    @property
-    def name(self):
-        return self.data["name"]
-
-    @property
-    def concept(self):
-        if "concept" in self.data:
-            return self.model.resource_model.concept_model.concepts_by_name[self.data["concept"]]
-
-    @property
-    def resource(self):
-        if "resource" in self.data:
-            return self.model.resource_model.resources_by_name[self.data["resource"]]
 
     @property
     def description(self):
@@ -270,10 +243,6 @@ class Command:
         return description
 
     @property
-    def links(self):
-        return self.data.get("links", [])
-
-    @property
     def examples(self):
         return self.data.get("examples")
 
@@ -284,10 +253,6 @@ class Command:
     @property
     def output(self):
         return self.data.get("output")
-
-    @property
-    def notes(self):
-        return self.data.get("notes")
 
 class Argument:
     def __init__(self, model, command, data):

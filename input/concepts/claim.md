@@ -3,8 +3,6 @@ body_class: concept
 links:
   - name: Claim resource
     url: /resources/claim.html
-  - name: Token redeem command
-    url: /commands/skupper-token-redeem.html
 ---
 
 # Claim

@@ -10,6 +10,10 @@ def generate():
     resource_model = resources.ResourceModel(concept_model)
     command_model = commands.CommandModel(resource_model)
 
+    concept_model.resource_model = resource_model
+    resource_model.command_model = command_model
+    command_model.concept_model = concept_model
+
     concepts.generate(concept_model)
     resources.generate(resource_model)
     commands.generate(command_model)

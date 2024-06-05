@@ -7,10 +7,7 @@ groups:
         description: |
           @concept_description@
 
-          There can be only one site definition per namespace.
-        links:
-          - name: Skupper site command
-            url: /commands/skupper-site.html
+          There can be only one site resource per namespace.
         examples:
           - description: A minimal site
             yaml: |
@@ -122,13 +119,13 @@ groups:
       - name: Connector
         concept: connector
         command: skupper connector create
+        links:
+          - name: Listener resource
+            url: /resources/listener.html
         description: |
           @concept_description@
 
           Each site can have multiple connector definitions.
-        links:
-          - name: Skupper connector command
-            url: /commands/skupper-connector.html
         examples:
           - description: |
               A connector in site East for the Hello World backend service
@@ -182,6 +179,9 @@ groups:
       - name: Listener
         concept: listener
         command: skupper listener create
+        links:
+          - name: Connector resource
+            url: /resources/connector.html
         description: |
           @concept_description@
 

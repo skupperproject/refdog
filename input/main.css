@@ -225,6 +225,10 @@ ol, ul, dd {
     padding: 0 0 0 1em;
 }
 
+li {
+    list-style-type: disc;
+}
+
 li, dt, dd {
     margin: 0;
     -webkit-column-break-inside: avoid;
@@ -245,17 +249,13 @@ li > p + ul {
 
 /* Standard styles for path navigation */
 
-.path-nav > a:after {
+.path-nav > a:not(:last-child)::after {
     content: " \00a0\003e\00a0\00a0 ";
     color: var(--body-color);
 }
 
 .path-nav > a:last-child {
     color: var(--body-color);
-}
-
-.path-nav > a:last-child:after {
-    content: none;
 }
 
 /* Nothing Skupper-specific above here! */

@@ -153,7 +153,6 @@ class ResourceModel:
         debug(f"Loading {self}")
 
         self.concept_model = concept_model
-        self.concept_model.resource_model = self
 
         self.data = read_yaml("config/resources.yaml")
 
@@ -245,13 +244,9 @@ class Group:
     def description(self):
         return self.data.get("description")
 
-class Resource:
+class Resource(ModelObject):
     def __init__(self, model, group, data):
-        self.model = model
-        self.group = group
-        self.data = data
-
-        debug(f"Loading {self}")
+        super().__init__("resource", model, group, data)
 
         self.spec_properties = list()
         self.spec_properties_by_name = dict()
@@ -271,27 +266,6 @@ class Resource:
             self.status_properties.append(prop)
             self.status_properties_by_name[prop.name] = prop
 
-    def __repr__(self):
-        return f"resource '{self.name}'"
-
-    @property
-    def name(self):
-        return self.data["name"]
-
-    @property
-    def id(self):
-        return get_fragment_id(self.name)
-
-    @property
-    def concept(self):
-        if "concept" in self.data:
-            return self.model.concept_model.concepts_by_name[self.data["concept"]]
-
-    @property
-    def command(self):
-        if "command" in self.data:
-            return self.model.command_model.commands_by_name[self.data["command"]]
-
     @property
     def description(self):
         # XXX Default to CRD description
@@ -304,16 +278,8 @@ class Resource:
         return description
 
     @property
-    def links(self):
-        return self.data.get("links", [])
-
-    @property
     def examples(self):
         return self.data.get("examples", [])
-
-    @property
-    def notes(self):
-        return self.data.get("notes")
 
 class Property:
     def __init__(self, model, resource, group, data):

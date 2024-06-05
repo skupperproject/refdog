@@ -3,8 +3,6 @@ body_class: concept
 links:
   - name: Listener resource
     url: /resources/listener.html
-  - name: Listener create command
-    url: /commands/skupper-listener-create.html
 ---
 
 # Listener

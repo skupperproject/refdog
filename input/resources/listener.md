@@ -5,6 +5,8 @@ links:
     url: /concepts/listener.html
   - name: Listener create command
     url: /commands/skupper-listener-create.html
+  - name: Connector resource
+    url: /resources/connector.html
 ---
 
 # Listener

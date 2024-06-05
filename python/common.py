@@ -24,6 +24,9 @@ def generate_object_links(obj):
         name = capitalize(command.name.removeprefix("skupper "))
         links.append((f"{name} command", f"/commands/{command.id}.html"))
 
+    for link_data in obj.links:
+        links.append((link_data["name"], link_data["url"]))
+
     if not links:
         return
 
@@ -61,3 +64,50 @@ def generate_attribute_choices(attr):
         lines.append(f" - `{choice['name']}` - {choice['description']}".rstrip())
 
     return "\n".join(lines)
+
+class ModelObject:
+    def __init__(self, type, model, group, data):
+        self.type = type
+        self.model = model
+        self.group = group
+        self.data = data
+
+        debug(f"Loading {self}")
+
+    def __repr__(self):
+        return f"{self.type} '{self.name}'"
+
+    @property
+    def name(self):
+        return self.data["name"]
+
+    @property
+    def id(self):
+        return get_fragment_id(self.name)
+
+    @property
+    def concept(self):
+        if "concept" in self.data:
+            return self.model.concept_model.concepts_by_name[self.data["concept"]]
+
+    @property
+    def resource(self):
+        if "resource" in self.data:
+            return self.model.resource_model.resources_by_name[self.data["resource"]]
+
+    @property
+    def command(self):
+        if "command" in self.data:
+            return self.model.command_model.commands_by_name[self.data["command"]]
+
+    @property
+    def description(self):
+        return self.data.get("description")
+
+    @property
+    def links(self):
+        return self.data.get("links", [])
+
+    @property
+    def notes(self):
+        return self.data.get("notes")

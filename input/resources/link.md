@@ -5,6 +5,8 @@ links:
     url: /concepts/link.html
   - name: Link command
     url: /commands/skupper-link.html
+  - name: Skupper links
+    url: /concepts.html#link
 ---
 
 # Link

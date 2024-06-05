@@ -1,5 +1,8 @@
 ---
 body_class: command
+links:
+  - name: Skupper sites
+    url: /concepts.html#site
 ---
 
 # skupper site delete

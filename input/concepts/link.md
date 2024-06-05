@@ -3,8 +3,6 @@ body_class: concept
 links:
   - name: Link resource
     url: /resources/link.html
-  - name: Link command
-    url: /commands/skupper-link.html
 ---
 
 # Link

@@ -105,39 +105,6 @@ class Group:
     def description(self):
         return self.data.get("description")
 
-class Concept:
+class Concept(ModelObject):
     def __init__(self, model, group, data):
-        self.model = model
-        self.group = group
-        self.data = data
-
-        debug(f"Loading {self}")
-
-    def __repr__(self):
-        return f"concept '{self.name}'"
-
-    @property
-    def name(self):
-        return self.data["name"]
-
-    @property
-    def id(self):
-        return get_fragment_id(self.name)
-
-    @property
-    def resource(self):
-        if "resource" in self.data:
-            return self.model.resource_model.resources_by_name[self.data["resource"]]
-
-    @property
-    def command(self):
-        if "command" in self.data:
-            return self.model.command_model.commands_by_name[self.data["command"]]
-
-    @property
-    def description(self):
-        return self.data.get("description")
-
-    @property
-    def links(self):
-        return self.data.get("links", [])
+        super().__init__("concept", model, group, data)
