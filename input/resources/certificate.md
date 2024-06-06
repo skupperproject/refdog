@@ -2,7 +2,7 @@
 body_class: resource
 ---
 
-# Certificate
+# Certificate resource
 
 <section>
 

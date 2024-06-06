@@ -4,12 +4,12 @@ links:
   - name: Listener concept
     url: /concepts/listener.html
   - name: Listener create command
-    url: /commands/skupper-listener-create.html
+    url: /commands/listener-create.html
   - name: Connector resource
     url: /resources/connector.html
 ---
 
-# Listener
+# Listener resource
 
 <section>
 

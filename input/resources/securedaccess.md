@@ -2,7 +2,7 @@
 body_class: resource
 ---
 
-# SecuredAccess
+# SecuredAccess resource
 
 <section>
 

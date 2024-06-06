@@ -4,10 +4,10 @@ links:
   - name: Grant concept
     url: /concepts/grant.html
   - name: Token create command
-    url: /commands/skupper-token-create.html
+    url: /commands/token-create.html
 ---
 
-# Grant
+# Grant resource
 
 <section>
 

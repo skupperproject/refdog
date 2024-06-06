@@ -2,7 +2,7 @@
 body_class: command
 ---
 
-# skupper listener delete
+# Listener delete command
 
 <section>
 

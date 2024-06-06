@@ -5,7 +5,7 @@ links:
     url: /resources/listener.html
 ---
 
-# skupper listener create
+# Listener create command
 
 <section>
 

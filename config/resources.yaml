@@ -3,7 +3,7 @@ groups:
     resources:
       - name: Site
         concept: site
-        command: skupper site create
+        command: site create
         description: |
           @concept_description@
 
@@ -65,7 +65,7 @@ groups:
     resources:
       - name: Grant
         concept: grant
-        command: skupper token create
+        command: token create
         description: |
           @concept_description@
         notes: |
@@ -94,7 +94,7 @@ groups:
               The point in time when the grant expires.
       - name: Claim
         concept: claim
-        command: skupper token redeem
+        command: token redeem
         description: |
           @concept_description@
 
@@ -118,7 +118,7 @@ groups:
     resources:
       - name: Connector
         concept: connector
-        command: skupper connector create
+        command: connector create
         links:
           - name: Listener resource
             url: /resources/listener.html
@@ -178,7 +178,7 @@ groups:
           - name: status
       - name: Listener
         concept: listener
-        command: skupper listener create
+        command: listener create
         links:
           - name: Connector resource
             url: /resources/connector.html
@@ -235,7 +235,7 @@ groups:
     resources:
       - name: Link
         concept: link
-        command: skupper link
+        command: link
         description: |
           @concept_description@
         links:

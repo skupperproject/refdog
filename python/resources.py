@@ -45,7 +45,7 @@ def generate_resource(resource):
     append(generate_object_links(resource))
     append("---")
     append()
-    append(f"# {resource.name}")
+    append(f"# {capitalize(resource.name)} resource")
     append()
     append("<section>")
     append()

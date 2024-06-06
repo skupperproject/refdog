@@ -2,7 +2,7 @@
 body_class: resource
 ---
 
-# LinkAccess
+# LinkAccess resource
 
 <section>
 

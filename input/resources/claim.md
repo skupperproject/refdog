@@ -4,10 +4,10 @@ links:
   - name: Claim concept
     url: /concepts/claim.html
   - name: Token redeem command
-    url: /commands/skupper-token-redeem.html
+    url: /commands/token-redeem.html
 ---
 
-# Claim
+# Claim resource
 
 <section>
 

@@ -2,7 +2,7 @@
 body_class: command
 ---
 
-# skupper debug
+# Debug command
 
 <section>
 

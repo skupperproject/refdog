@@ -5,7 +5,7 @@ links:
     url: /resources/claim.html
 ---
 
-# skupper token redeem
+# Token redeem command
 
 <section>
 

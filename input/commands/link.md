@@ -2,7 +2,7 @@
 body_class: command
 ---
 
-# skupper link
+# Link command
 
 <section>
 

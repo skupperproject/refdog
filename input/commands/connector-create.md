@@ -5,7 +5,7 @@ links:
     url: /resources/connector.html
 ---
 
-# skupper connector create
+# Connector create command
 
 <section>
 

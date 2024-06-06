@@ -2,7 +2,7 @@
 body_class: command
 ---
 
-# skupper connector status
+# Connector status command
 
 <section>
 

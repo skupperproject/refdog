@@ -4,10 +4,10 @@ links:
   - name: Site concept
     url: /concepts/site.html
   - name: Site create command
-    url: /commands/skupper-site-create.html
+    url: /commands/site-create.html
 ---
 
-# Site
+# Site resource
 
 <section>
 

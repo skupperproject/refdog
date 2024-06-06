@@ -1,22 +1,17 @@
 ---
 body_class: command
 links:
-  - name: Site concept
-    url: /concepts/site.html
   - name: Site resource
     url: /resources/site.html
 ---
 
-# skupper site create
+# Site update command
 
 <section>
 
-Create a site.
+Change site settings.
 
-A site is a place where components of your application are
-running.  Sites are linked to form application networks.
-
-There can be only one site resource per namespace.
+The name argument is optional for update.
 
 </section>
 
@@ -25,9 +20,9 @@ There can be only one site resource per namespace.
 ## Usage
 
 ~~~ shell
-$ skupper site create <name> [options]
-Waiting for status...
-Site "<name>" is ready
+$ skupper site update [name] [options]
+Waiting for update to complete...
+Site "<name>" is updated
 ~~~
 
 </section>
@@ -37,11 +32,11 @@ Site "<name>" is ready
 ## Examples
 
 ~~~
-# Create a site
-skupper site create west
+# Update the site to accept links
+skupper site update --enable-link-access
 
-# Create a site that can accept links from remote sites
-skupper site create west --enable-link-access
+# Update multiple settings
+skupper site update --enable-link-access --service-account app1:alice
 ~~~
 
 </section>
@@ -50,10 +45,12 @@ skupper site create west --enable-link-access
 
 ## Arguments
 
-- <h3 id="name">name <span class="argument-info">string, required</span></h3>
+- <h3 id="name">name <span class="argument-info">string</span></h3>
 
-  A name of your choice for the Skupper site.  This name is
-  displayed in the console and CLI output.
+  This is optional!  We use the site associated with the
+  current namespace if the name is not given.
+  
+  The name of the site resource.
 
 - <h3 id="--enable-link-access">--enable-link-access <span class="argument-info">boolean</span></h3>
 
@@ -87,8 +84,8 @@ skupper site create west --enable-link-access
 
 ## Errors
 
-- **A site resource already exists**
+- **No site resource exists**
 
-  There is already a site resource defined for the namespace.
+  There is no existing Skupper site resource to update.
 
 </section>

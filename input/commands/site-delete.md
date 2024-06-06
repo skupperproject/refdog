@@ -5,7 +5,7 @@ links:
     url: /concepts.html#site
 ---
 
-# skupper site delete
+# Site delete command
 
 <section>
 

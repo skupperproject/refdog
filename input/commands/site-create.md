@@ -1,17 +1,22 @@
 ---
 body_class: command
 links:
+  - name: Site concept
+    url: /concepts/site.html
   - name: Site resource
     url: /resources/site.html
 ---
 
-# skupper site update
+# Site create command
 
 <section>
 
-Change site settings.
+Create a site.
 
-The name argument is optional for update.
+A site is a place where components of your application are
+running.  Sites are linked to form application networks.
+
+There can be only one site resource per namespace.
 
 </section>
 
@@ -20,9 +25,9 @@ The name argument is optional for update.
 ## Usage
 
 ~~~ shell
-$ skupper site update [name] [options]
-Waiting for update to complete...
-Site "<name>" is updated
+$ skupper site create <name> [options]
+Waiting for status...
+Site "<name>" is ready
 ~~~
 
 </section>
@@ -32,11 +37,11 @@ Site "<name>" is updated
 ## Examples
 
 ~~~
-# Update the site to accept links
-skupper site update --enable-link-access
+# Create a site
+skupper site create west
 
-# Update multiple settings
-skupper site update --enable-link-access --service-account app1:alice
+# Create a site that can accept links from remote sites
+skupper site create west --enable-link-access
 ~~~
 
 </section>
@@ -45,12 +50,10 @@ skupper site update --enable-link-access --service-account app1:alice
 
 ## Arguments
 
-- <h3 id="name">name <span class="argument-info">string</span></h3>
+- <h3 id="name">name <span class="argument-info">string, required</span></h3>
 
-  This is optional!  We use the site associated with the
-  current namespace if the name is not given.
-  
-  The name of the site resource.
+  A name of your choice for the Skupper site.  This name is
+  displayed in the console and CLI output.
 
 - <h3 id="--enable-link-access">--enable-link-access <span class="argument-info">boolean</span></h3>
 
@@ -84,8 +87,8 @@ skupper site update --enable-link-access --service-account app1:alice
 
 ## Errors
 
-- **No site resource exists**
+- **A site resource already exists**
 
-  There is no existing Skupper site resource to update.
+  There is already a site resource defined for the namespace.
 
 </section>

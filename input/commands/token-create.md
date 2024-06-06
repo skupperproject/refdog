@@ -5,7 +5,7 @@ links:
     url: /resources/grant.html
 ---
 
-# skupper token create
+# Token create command
 
 <section>
 

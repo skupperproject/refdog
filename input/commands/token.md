@@ -2,7 +2,7 @@
 body_class: command
 ---
 
-# skupper token
+# Token command
 
 <section>
 

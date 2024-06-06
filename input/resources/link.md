@@ -4,12 +4,12 @@ links:
   - name: Link concept
     url: /concepts/link.html
   - name: Link command
-    url: /commands/skupper-link.html
+    url: /commands/link.html
   - name: Skupper links
     url: /concepts.html#link
 ---
 
-# Link
+# Link resource
 
 <section>
 

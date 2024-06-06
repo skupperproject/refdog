@@ -2,7 +2,7 @@
 body_class: command
 ---
 
-# skupper site status
+# Site status command
 
 <section>
 

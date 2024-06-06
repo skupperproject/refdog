@@ -2,7 +2,7 @@
 body_class: command
 ---
 
-# skupper connector delete
+# Connector delete command
 
 <section>
 

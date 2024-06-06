@@ -2,7 +2,7 @@
 body_class: command
 ---
 
-# skupper listener status
+# Listener status command
 
 <section>
 

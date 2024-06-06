@@ -2,7 +2,7 @@
 body_class: command
 ---
 
-# skupper link status
+# Version command
 
 <section>
 
