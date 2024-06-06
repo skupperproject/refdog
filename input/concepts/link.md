@@ -5,7 +5,7 @@ links:
     url: /resources/link.html
 ---
 
-# Link
+# Link concept
 
 <section>
 

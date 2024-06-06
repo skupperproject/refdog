@@ -5,8 +5,8 @@
   - [Network](network.html)
 - Site linking
   - [Link](link.html)
-  - [Grant](grant.html)
-  - [Claim](claim.html)
+  - [Access grant](grant.html)
+  - [Access token](claim.html)
 - Service exposure
   - [Connector](connector.html)
   - [Listener](listener.html)

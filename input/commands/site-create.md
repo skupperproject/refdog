@@ -67,7 +67,7 @@ skupper site create west --enable-link-access
 
   _Choices:_
   
-   - `none` - No link access.
+   - `none` - No linking to this site is permitted.
    - `default` - Use the default link access.  On OpenShift, `route`
   is the default.  For other Kubernetes flavors,
   `loadbalancer` is the default.

@@ -5,7 +5,7 @@ links:
     url: /resources/site.html
 ---
 
-# Site
+# Site concept
 
 <section>
 

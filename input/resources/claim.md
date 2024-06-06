@@ -1,21 +1,21 @@
 ---
 body_class: resource
 links:
-  - name: Claim concept
+  - name: Access token concept
     url: /concepts/claim.html
   - name: Token redeem command
     url: /commands/token-redeem.html
+  - name: AccessGrant resource
+    url: /resources/grant.html
 ---
 
-# Claim resource
+# AccessToken resource
 
 <section>
 
-XXX A verifiable assertion of permission to link to a remote
-site.  A claim contains the URL and secret of an existing
-grant.
-
-A claim is redeemed for a link and a secret.
+A transferrable authentication token redeemable for a link
+to a remote site.  An access token contains the URL and
+secret of a corresponding access grant.
 
 </section>
 
@@ -23,13 +23,20 @@ A claim is redeemed for a link and a secret.
 
 ## Spec properties
 
-- <h3 id="url">url <span class="property-info">string, required</span></h3>
+- <h3 id="redemptionsecret">redemptionSecret <span class="property-info">string, required</span></h3>
 
-  The URL at which the claim is redeemed.
+  The secret used to authenticate the token when submitted
+  for redemption.
 
-- <h3 id="secret">secret <span class="property-info">string, required</span></h3>
+- <h3 id="redemptionurl">redemptionURL <span class="property-info">string, required</span></h3>
 
-- <h3 id="ca">ca <span class="property-info">string, required</span></h3>
+  The URL of the token redemption service at the target
+  site.
+
+- <h3 id="redemptionca">redemptionCA <span class="property-info">string, required</span></h3>
+
+  The trusted server certificate of the token redemption
+  service at the target site.
 
 </section>
 
@@ -37,20 +44,12 @@ A claim is redeemed for a link and a secret.
 
 ## Status properties
 
-- <h3 id="claimed">claimed <span class="property-info">boolean</span></h3>
-
-  True if the claim has been redeemed.
-
-  Suggest **redeemed**.
-
 - <h3 id="status">status <span class="property-info">string</span></h3>
 
-</section>
+  The current state of the resource.
 
-<section>
+- <h3 id="redeemed">redeemed <span class="property-info">boolean</span></h3>
 
-## Notes
-
-Suggest **AccessToken**.
+  True if the token has been redeemed.
 
 </section>

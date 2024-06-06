@@ -3,7 +3,7 @@ groups:
     concepts:
       - name: site
         resource: Site
-        command: skupper site create
+        command: site create
         description: |
           A site is a place where components of your application are
           running.  Sites are linked to form application networks.
@@ -14,37 +14,39 @@ groups:
     concepts:
       - name: link
         resource: Link
-        command: skupper link
+        command: link
         description: |
           A link is a site-to-site communication channel. Links serve
           as a transport for application connections and requests.
       - name: grant
+        rename: access grant
         resource: Grant
-        command: skupper token create
+        command: token create
         description: |
-          An offer to accept links to the local site.  A remote site
-          can use a claim containing the grant URL and secret to
-          obtain a certificate signed by the grant's certificate
-          authority (CA), within a certain expiration period and for a
-          limited number of claims.
+          Permission to redeem access tokens for links to the local
+          site.  A remote site can use a token containing the grant
+          URL and secret to obtain a certificate signed by the grant's
+          certificate authority (CA), within a certain expiration
+          period and for a limited number of redemptions.
       - name: claim
+        rename: access token
         resource: Claim
-        command: skupper token redeem
+        command: token redeem
         description: |
-          XXX A verifiable assertion of permission to link to a remote
-          site.  A claim contains the URL and secret of an existing
-          grant.
+          A transferrable authentication token redeemable for a link
+          to a remote site.  An access token contains the URL and
+          secret of a corresponding access grant.
   - name: Service exposure
     concepts:
       - name: connector
         resource: Connector
-        command: skupper connector create
+        command: connector create
         description: |
           A connector binds local servers to listeners in remote
           sites.
       - name: listener
         resource: Listener
-        command: skupper listener create
+        command: listener create
         description: |
           A listener is a local connection endpoint bound to servers
           in remote sites.

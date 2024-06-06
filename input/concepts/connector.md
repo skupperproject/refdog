@@ -5,7 +5,7 @@ links:
     url: /resources/connector.html
 ---
 
-# Connector
+# Connector concept
 
 <section>
 

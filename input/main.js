@@ -76,9 +76,9 @@ window.addEventListener("load", () => {
     const newTocLinks = document.createElement("nav");
 
     const topLink = document.createElement("a");
-    const topText = document.createTextNode($("h1").textContent);
+    const topText = document.createTextNode("Top");
 
-    topLink.setAttribute("href", "");
+    topLink.setAttribute("href", "#");
     topLink.appendChild(topText);
 
     newTocLinks.appendChild(topLink);
@@ -111,6 +111,10 @@ window.addEventListener("load", () => {
 	    const link = tocLinks.$("a");
 
 	    link.classList.add("selected");
+
+            for (const link of tocLinks.$$("a:not(:first-child)")) {
+                link.classList.remove("selected");
+            }
 
             return;
         }

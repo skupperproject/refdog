@@ -1,21 +1,23 @@
 ---
 body_class: resource
 links:
-  - name: Grant concept
+  - name: Access grant concept
     url: /concepts/grant.html
   - name: Token create command
     url: /commands/token-create.html
+  - name: AccessToken resource
+    url: /resources/claim.html
 ---
 
-# Grant resource
+# AccessGrant resource
 
 <section>
 
-An offer to accept links to the local site.  A remote site
-can use a claim containing the grant URL and secret to
-obtain a certificate signed by the grant's certificate
-authority (CA), within a certain expiration period and for a
-limited number of claims.
+Permission to redeem access tokens for links to the local
+site.  A remote site can use a token containing the grant
+URL and secret to obtain a certificate signed by the grant's
+certificate authority (CA), within a certain expiration
+period and for a limited number of redemptions.
 
 </section>
 
@@ -23,15 +25,28 @@ limited number of claims.
 
 ## Spec properties
 
-- <h3 id="claims">claims <span class="property-info">integer</span></h3>
+- <h3 id="redemptionsallowed">redemptionsAllowed <span class="property-info">integer</span></h3>
 
-  Suggest **redemptionsAllowed**.
+  The number of times an access token for this grant can
+  be redeemed.
 
-- <h3 id="validfor">validFor <span class="property-info">string (duration)</span></h3>
+  _Default:_ 1
 
-  Suggest **expirationPeriod**.
+- <h3 id="expirationperiod">expirationPeriod <span class="property-info">string (duration)</span></h3>
+
+  The period of time in which an access token for this
+  grant can be redeemed.
+
+  _Default:_ `15m`
 
 - <h3 id="secret">secret <span class="property-info">string</span></h3>
+
+  What is this secret as compared to the one in the
+  status?  The description above says "containing the
+  grant URL and secret".  Which secret is it referring to?
+  
+  "The certificate authority (CA) used to sign the
+  certificate resulting from successful redemption"?
 
 </section>
 
@@ -39,31 +54,31 @@ limited number of claims.
 
 ## Status properties
 
-- <h3 id="claimed">claimed <span class="property-info">integer</span></h3>
-
-  The number of times the grant has been claimed.
-
-  Suggest **redemptions**.  "The number of times a claim on
-  this grant has been redeemed."
-
 - <h3 id="status">status <span class="property-info">string</span></h3>
 
-- <h3 id="url">url <span class="property-info">string</span></h3>
+  The current state of the resource.
 
-- <h3 id="secret">secret <span class="property-info">string</span></h3>
+- <h3 id="redemptions">redemptions <span class="property-info">integer</span></h3>
 
-- <h3 id="ca">ca <span class="property-info">string</span></h3>
+  The number of times an access token for this grant has
+  been redeemed.
 
 - <h3 id="expiration">expiration <span class="property-info">string (date-time)</span></h3>
 
-  The point in time when the grant expires.
+  The point in time when the access grant expires.
 
-</section>
+- <h3 id="redemptionsecret">redemptionSecret <span class="property-info">string</span></h3>
 
-<section>
+  The secret used to authenticate access tokens submitted
+  for redemption.
 
-## Notes
+- <h3 id="redemptionurl">redemptionURL <span class="property-info">string</span></h3>
 
-Suggest **AccessGrant**.
+  The URL of the token redemption service for this grant.
+
+- <h3 id="redemptionca">redemptionCA <span class="property-info">string</span></h3>
+
+  The trusted server certificate of the token redemption
+  service for this grant.
 
 </section>

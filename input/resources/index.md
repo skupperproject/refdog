@@ -3,14 +3,14 @@
 - Site configuration
   - [Site](site.html)
 - Site linking
-  - [Grant](grant.html)
-  - [Claim](claim.html)
+  - [AccessGrant](grant.html)
+  - [AccessToken](claim.html)
+  - [Link](link.html)
 - Service exposure
   - [Connector](connector.html)
   - [Listener](listener.html)
 - Advanced stuff
-  - [Link](link.html)
-  - [LinkAccess](linkaccess.html)
+  - [RouterAccess](linkaccess.html)
 - Internal stuff
   - [SecuredAccess](securedaccess.html)
   - [Certificate](certificate.html)

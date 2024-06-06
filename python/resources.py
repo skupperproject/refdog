@@ -21,7 +21,7 @@ def generate(model):
         append(f"- {group.name}")
 
         for resource in group.resources:
-            append(f"  - [{resource.name}]({resource.id}.html)")
+            append(f"  - [{resource.rename}]({resource.id}.html)")
 
     write("input/resources/index.md", "\n".join(lines))
 
@@ -45,7 +45,7 @@ def generate_resource(resource):
     append(generate_object_links(resource))
     append("---")
     append()
-    append(f"# {capitalize(resource.name)} resource")
+    append(f"# {capitalize(resource.rename)} resource")
     append()
     append("<section>")
     append()

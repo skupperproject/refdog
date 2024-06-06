@@ -45,7 +45,7 @@ def generate_command(command):
     append(generate_object_links(command))
     append("---")
     append()
-    append(f"# {capitalize(command.name)} command")
+    append(f"# {capitalize(command.rename)} command")
     append()
     append("<section>")
     append()

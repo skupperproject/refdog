@@ -58,7 +58,7 @@ spec:
 
   _Choices:_
   
-   - `none` - No link access.
+   - `none` - No linking to this site is permitted.
    - `default` - Use the default link access.  On OpenShift, `route`
   is the default.  For other Kubernetes flavors,
   `loadbalancer` is the default.
@@ -82,11 +82,13 @@ spec:
 
 ## Status properties
 
+- <h3 id="status">status <span class="property-info">string</span></h3>
+
+  The current state of the resource.
+
 - <h3 id="active">active <span class="property-info">boolean</span></h3>
 
   "This thing is working."
-
-- <h3 id="status">status <span class="property-info">string</span></h3>
 
 - <h3 id="endpoints">endpoints <span class="property-info">array</span></h3>
 

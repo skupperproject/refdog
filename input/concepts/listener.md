@@ -5,7 +5,7 @@ links:
     url: /resources/listener.html
 ---
 
-# Listener
+# Listener concept
 
 <section>
 

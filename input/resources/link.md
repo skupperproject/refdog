@@ -5,8 +5,6 @@ links:
     url: /concepts/link.html
   - name: Link command
     url: /commands/link.html
-  - name: Skupper links
-    url: /concepts.html#link
 ---
 
 # Link resource
@@ -45,11 +43,13 @@ as a transport for application connections and requests.
 
 ## Status properties
 
+- <h3 id="status">status <span class="property-info">string</span></h3>
+
+  The current state of the resource.
+
 - <h3 id="configured">configured <span class="property-info">boolean</span></h3>
 
 - <h3 id="active">active <span class="property-info">boolean</span></h3>
-
-- <h3 id="status">status <span class="property-info">string</span></h3>
 
 - <h3 id="url">url <span class="property-info">string</span></h3>
 

@@ -1,16 +1,16 @@
 ---
 body_class: concept
 links:
-  - name: Claim resource
+  - name: AccessToken resource
     url: /resources/claim.html
 ---
 
-# Claim
+# Access token concept
 
 <section>
 
-XXX A verifiable assertion of permission to link to a remote
-site.  A claim contains the URL and secret of an existing
-grant.
+A transferrable authentication token redeemable for a link
+to a remote site.  An access token contains the URL and
+secret of a corresponding access grant.
 
 </section>

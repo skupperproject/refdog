@@ -32,7 +32,7 @@ groups:
               Configure external access for links from remote sites.
             choices:
               - name: none
-                description: No link access.
+                description: No linking to this site is permitted.
               - name: default
                 description: |
                   Use the default link access.  On OpenShift, `route`
@@ -53,10 +53,12 @@ groups:
           - name: settings
             rename: options
         status_properties:
+          - name: status
+            description: |
+              The current state of the resource.
           - name: active
             description: |
               "This thing is working."
-          - name: status
           - name: endpoints
           - name: sitesInNetwork
           - name: servicesInNetwork
@@ -64,56 +66,121 @@ groups:
   - name: Site linking
     resources:
       - name: Grant
+        rename: AccessGrant
         concept: grant
         command: token create
+        links:
+          - name: AccessToken resource
+            url: /resources/claim.html
         description: |
           @concept_description@
-        notes: |
-          Suggest **AccessGrant**.
         spec_properties:
           - name: claims
-            notes: |
-              Suggest **redemptionsAllowed**.
-          - name: validFor
-            notes: |
-              Suggest **expirationPeriod**.
-          - name: secret
-        status_properties:
-          - name: claimed
+            rename: redemptionsAllowed
             description: |
-              The number of times the grant has been claimed.
-            notes: |
-              Suggest **redemptions**.  "The number of times a claim on
-              this grant has been redeemed."
-          - name: status
-          - name: url
+              The number of times an access token for this grant can
+              be redeemed.
+            default: 1
+          - name: validFor
+            rename: expirationPeriod
+            description: |
+              The period of time in which an access token for this
+              grant can be redeemed.
+            default: 15m
           - name: secret
-          - name: ca
+            notes: |
+              What is this secret as compared to the one in the
+              status?  The description above says "containing the
+              grant URL and secret".  Which secret is it referring to?
+
+              "The certificate authority (CA) used to sign the
+              certificate resulting from successful redemption"?
+        status_properties:
+          - name: status
+            description: |
+              The current state of the resource.
+          - name: claimed
+            rename: redemptions
+            description: |
+              The number of times an access token for this grant has
+              been redeemed.
           - name: expiration
             description: |
-              The point in time when the grant expires.
+              The point in time when the access grant expires.
+          - name: secret
+            rename: redemptionSecret
+            description: |
+              The secret used to authenticate access tokens submitted
+              for redemption.
+          - name: url
+            rename: redemptionURL
+            description: |
+              The URL of the token redemption service for this grant.
+          - name: ca
+            rename: redemptionCA
+            description: |
+              The trusted server certificate of the token redemption
+              service for this grant.
       - name: Claim
+        rename: AccessToken
         concept: claim
         command: token redeem
+        links:
+          - name: AccessGrant resource
+            url: /resources/grant.html
         description: |
           @concept_description@
-
-          A claim is redeemed for a link and a secret.
-        notes: |
-          Suggest **AccessToken**.
         spec_properties:
-          - name: url
-            description: |
-              The URL at which the claim is redeemed.
           - name: secret
-          - name: ca
-        status_properties:
-          - name: claimed
+            rename: redemptionSecret
             description: |
-              True if the claim has been redeemed.
+              The secret used to authenticate the token when submitted
+              for redemption.
+          - name: url
+            rename: redemptionURL
+            description: |
+              The URL of the token redemption service at the target
+              site.
+          - name: ca
+            rename: redemptionCA
             notes: |
-              Suggest **redeemed**.
+              The trusted server certificate of the token redemption
+              service at the target site.
+        status_properties:
           - name: status
+            description: |
+              The current state of the resource.
+          - name: claimed
+            rename: redeemed
+            description: |
+              True if the token has been redeemed.
+      - name: Link
+        concept: link
+        command: link
+        description: |
+          @concept_description@
+        spec_properties:
+          - name: tlsCredentials
+            rename: tlsSecret
+            description: |
+              The name of a Kubernetes secret containing TLS
+              credentials. The secret contains the trusted server
+              certificate (typically a CA).
+
+              It can optionally include a client certificate and key for
+              mutual TLS.
+          - name: cost
+          - name: interRouter
+          - name: edge
+          - name: noClientAuth
+        status_properties:
+          - name: status
+            description: |
+              The current state of the resource.
+          - name: configured
+          - name: active
+          - name: url
+          - name: site
   - name: Service exposure
     resources:
       - name: Connector
@@ -174,8 +241,10 @@ groups:
           - name: type
             default: tcp
         status_properties:
-          - name: active
           - name: status
+            description: |
+              The current state of the resource.
+          - name: active
       - name: Listener
         concept: listener
         command: listener create
@@ -229,39 +298,14 @@ groups:
             notes: |
               What is this again?  I think we need a qualifier on "type".
         status_properties:
-          - name: active
           - name: status
+            description: |
+              The current state of the resource.
+          - name: active
   - name: Advanced stuff
     resources:
-      - name: Link
-        concept: link
-        command: link
-        description: |
-          @concept_description@
-        links:
-          - name: Skupper links
-            url: /concepts.html#link
-        spec_properties:
-          - name: tlsCredentials
-            rename: tlsSecret
-            description: |
-              The name of a Kubernetes secret containing TLS
-              credentials. The secret contains the trusted server
-              certificate (typically a CA).
-
-              It can optionally include a client certificate and key for
-              mutual TLS.
-          - name: cost
-          - name: interRouter
-          - name: edge
-          - name: noClientAuth
-        status_properties:
-          - name: configured
-          - name: active
-          - name: status
-          - name: url
-          - name: site
       - name: LinkAccess
+        rename: RouterAccess
         description: |
           A point of external access for links from remote sites.  A
           LinkAccess configures the router to accept inter-router

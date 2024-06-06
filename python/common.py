@@ -13,15 +13,15 @@ def generate_object_links(obj):
     command = getattr(obj, "command", None)
 
     if concept:
-        name = capitalize(concept.name)
+        name = capitalize(concept.rename)
         links.append((f"{name} concept", f"/concepts/{concept.id}.html"))
 
     if resource:
-        name = capitalize(resource.name)
+        name = capitalize(resource.rename)
         links.append((f"{name} resource", f"/resources/{resource.id}.html"))
 
     if command:
-        name = capitalize(command.name.removeprefix("skupper "))
+        name = capitalize(command.rename.removeprefix("skupper "))
         links.append((f"{name} command", f"/commands/{command.id}.html"))
 
     for link_data in obj.links:
@@ -80,6 +80,10 @@ class ModelObject:
     @property
     def name(self):
         return self.data["name"]
+
+    @property
+    def rename(self):
+        return self.data.get("rename", self.name)
 
     @property
     def id(self):
