@@ -207,12 +207,24 @@ groups:
             default: _value of name_
           - name: --workload
             type: string
+            description: |
+              A Kubernetes resource name that identifies a workload.
+              This resolves to an equivalent label selector and
+              servers as an alternative to setting the host or
+              selector options.
           - property: port
           - property: selector
           - property: host
           - property: tlsCredentials
           - property: type
           - property: includeNotReady
+          - name: --output
+            type: string
+            choices:
+              - name: json
+                description: JSON
+              - name: yaml
+                description: YAML
       - name: connector delete
         description: |
           Delete a connector.

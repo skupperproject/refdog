@@ -18,7 +18,8 @@ def generate(model):
 
     for group in model.groups:
         # append(f"- [{group.name}](#{group.id})")
-        append(f"- {group.name}")
+        append(f"#### {group.name}")
+        append()
 
         for concept in group.concepts:
             append(f"  - [{capitalize(concept.rename)}]({concept.id}.html)")

@@ -55,7 +55,7 @@ skupper listener create database --host database --port 5432
   connectors.  To connect to a service at a remote site, the
   listener and connector must have matching routing keys.
 
-  _Default:_ `_value of name_`
+  _Default:_ _value of name_
 
 - <h3 id="--host">--host <span class="argument-info">string, required</span></h3>
 

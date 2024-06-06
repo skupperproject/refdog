@@ -49,7 +49,7 @@ def generate_attribute_default(attr):
 
     if attr.default is True:
         default = str(attr.default).lower()
-    elif isinstance(attr.default, str):
+    elif isinstance(attr.default, str) and not attr.default.startswith("_"):
         default = f"`{default}`"
 
     return f"_Default:_ {default}"

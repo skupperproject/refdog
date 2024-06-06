@@ -55,9 +55,14 @@ skupper connector create database --workload deployment/postgresql --port 5432
   connectors.  To connect to a service at a remote site, the
   listener and connector must have matching routing keys.
 
-  _Default:_ `_value of name_`
+  _Default:_ _value of name_
 
 - <h3 id="--workload">--workload <span class="argument-info">string</span></h3>
+
+  A Kubernetes resource name that identifies a workload.
+  This resolves to an equivalent label selector and
+  servers as an alternative to setting the host or
+  selector options.
 
 - <h3 id="--port">--port <span class="argument-info">integer, required</span></h3>
 
@@ -89,5 +94,12 @@ skupper connector create database --workload deployment/postgresql --port 5432
 
   If set, include server pods that are not in the ready
   state.
+
+- <h3 id="--output">--output <span class="argument-info">string</span></h3>
+
+  _Choices:_
+  
+   - `json` - JSON
+   - `yaml` - YAML
 
 </section>

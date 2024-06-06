@@ -18,7 +18,8 @@ def generate(model):
 
     for group in model.groups:
         # append(f"- [{group.title}]({group.id}.html)")
-        append(f"- {group.name}")
+        append(f"#### {group.name}")
+        append()
 
         for command in group.commands:
             append(f"  - [{command.name}]({command.id}.html)")

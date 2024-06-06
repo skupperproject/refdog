@@ -18,7 +18,8 @@ def generate(model):
 
     for group in model.groups:
         # append(f"- [{group.name}](#{group.id})")
-        append(f"- {group.name}")
+        append(f"#### {group.name}")
+        append()
 
         for resource in group.resources:
             append(f"  - [{resource.rename}]({resource.id}.html)")
