@@ -193,15 +193,26 @@ groups:
         description: |
           Display help for connector commands and exit.
       - name: connector create
+        concept: connector
         resource: Connector
+        command: listener create
         description: |
           Create a connector.
 
           @resource_description@
-        usage: skupper connector create <name> [options]
+
+          When creating a connector, you must supply a target workload
+          using the `--workload`, `--selector`, or `--host` options.
+        usage: skupper connector create <name> <port> [options]
         examples: |
           # Create a connector for a database
-          skupper connector create database --workload deployment/postgresql --port 5432
+          skupper connector create database 5432 --workload deployment/postgresql
+
+          # Set the routing key explicitly
+          skupper connector create backend 8080 --workload deployment/backend --routing-key be1
+
+          # Produce YAML output
+          skupper connector create frontend 8080 --workload deployment/frontend --output yaml
         output: |
           Waiting for status...
           Connector "<name>" is ready
@@ -211,22 +222,42 @@ groups:
             required: true
             description: |
               The name of the connector resource.
+
+              The name also serves as the default routing key if the
+              `--routing-key` option is not set.
+          - name: port
+            property: port
+            positional: true
           - name: --routing-key
             property: routingKey
-            default: _value of name_
+            default: _Value of name_
+          - name: --selector
+            property: selector
+            description: |
+              A Kubernetes label selector for targeting server pods.
+
+              This is an alternative to setting the `--workload` or
+              `--host` options.
           - name: --workload
             type: string
             description: |
               A Kubernetes resource name that identifies a workload.
-              This resolves to an equivalent label selector and
-              servers as an alternative to setting the host or
-              selector options.
-          - name: --port
-            property: port
-          - name: --selector
-            property: selector
+              It resolves to an equivalent pod selector.
+
+              This is an alternative to setting the `--selector` or
+              `--host` options.
+            links:
+              - name: Kubernetes workloads
+                url: XXX
+              - name: Kubernetes resource names
+                url: XXX
           - name: --host
             property: host
+            description: |
+              The hostname or IP address of the server.
+
+              This is an alternative to setting the `--selector` or
+              `--workload` options.
           - name: --tls-secret
             property: tlsCredentials
           - name: --type
@@ -235,11 +266,16 @@ groups:
             property: includeNotReady
           - name: --output
             type: string
+            description: |
+              Produce textual output instead of submitting resources
+              to the Skupper controller.
+
+              XXX Look at how kubectl phrases this.
             choices:
               - name: json
-                description: JSON
+                description: Produce JSON output
               - name: yaml
-                description: YAML
+                description: Produce YAML output
       - name: connector delete
         description: |
           Delete a connector.
@@ -266,6 +302,7 @@ groups:
       - name: listener create
         concept: listener
         resource: Listener
+        command: connector create
         description: |
           Create a listener.
 
@@ -275,8 +312,11 @@ groups:
           # Create a listener for a database
           skupper listener create database 5432
 
-          # Override the routing key and host
-          skupper listener create database 5432 --routing-key db1 --host postgresql
+          # Set the routing key and host explicitly
+          skupper listener create backend 8080 --routing-key be1 --host apiserver
+
+          # Produce YAML output
+          skupper listener create frontend 8080 --output yaml
         output: |
           Waiting for status...
           Listener "<name>" is ready
@@ -286,15 +326,18 @@ groups:
             required: true
             description: |
               The name of the listener resource.
+
+              The name also serves as the default routing key and host
+              if the `--routing-key` and `--host` options are not set.
           - name: port
             property: port
             positional: true
           - name: --routing-key
             property: routingKey
-            default: _value of name_
+            default: _Value of name_
           - name: --host
             property: host
-            default: _value of name_
+            default: _Value of name_
           - name: --tls-secret
             property: tlsCredentials
           - name: --type

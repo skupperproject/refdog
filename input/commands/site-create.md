@@ -81,6 +81,8 @@ skupper site create west --enable-link-access
 
   _Default:_ `skupper:skupper-controller`
 
+  _See also:_ [Kubernetes service accounts]({{site_prefix}}https://kubernetes.io/docs/concepts/security/service-accounts/)
+
 </section>
 
 <section>

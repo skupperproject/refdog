@@ -12,12 +12,15 @@ def generate():
 
     concept_model.resource_model = resource_model
     concept_model.command_model = command_model
+    concept_model.concept_model = concept_model
 
     resource_model.concept_model = concept_model
     resource_model.command_model = command_model
+    resource_model.resource_model = resource_model
 
     command_model.concept_model = concept_model
     command_model.resource_model = resource_model
+    command_model.command_model = command_model
 
     concepts.generate(concept_model)
     resources.generate(resource_model)

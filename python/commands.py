@@ -301,7 +301,7 @@ class Argument(ModelObjectAttribute):
 
     @property
     def choices(self):
-        default = self.property_.choices if self.property_ else None
+        default = self.property_.choices if self.property_ else []
         return self.data.get("choices", default)
 
     @property
@@ -317,6 +317,11 @@ class Argument(ModelObjectAttribute):
             value = value.replace("@property_description@", self.property_.description)
 
         return value
+
+    @property
+    def links(self):
+        default = self.property_.links if self.property_ else []
+        return self.data.get("links", default)
 
 class Error:
     def __init__(self, model, data):

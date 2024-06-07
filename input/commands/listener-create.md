@@ -5,6 +5,8 @@ links:
     url: /concepts/listener.html
   - name: Listener resource
     url: /resources/listener.html
+  - name: Connector create command
+    url: /commands/connector-create.html
 ---
 
 # Listener create command
@@ -40,8 +42,11 @@ Listener "<name>" is ready
 # Create a listener for a database
 skupper listener create database 5432
 
-# Override the routing key and host
-skupper listener create database 5432 --routing-key db1 --host postgresql
+# Set the routing key and host explicitly
+skupper listener create backend 8080 --routing-key be1 --host apiserver
+
+# Produce YAML output
+skupper listener create frontend 8080 --output yaml
 ~~~
 
 </section>
@@ -53,6 +58,9 @@ skupper listener create database 5432 --routing-key db1 --host postgresql
 - <h3 id="name">name <span class="argument-info">string, required</span></h3>
 
   The name of the listener resource.
+  
+  The name also serves as the default routing key and host
+  if the `--routing-key` and `--host` options are not set.
 
 - <h3 id="port">port <span class="argument-info">integer, required</span></h3>
 
@@ -63,10 +71,13 @@ skupper listener create database 5432 --routing-key db1 --host postgresql
 - <h3 id="--routing-key">--routing-key <span class="argument-info">string</span></h3>
 
   The identifier used to route traffic from listeners to
-  connectors.  To connect to a service at a remote site, the
-  listener and connector must have matching routing keys.
+  connectors.  To enable connecting to a service at a
+  remote site, the local listener and the remote connector
+  must have matching routing keys.
 
-  _Default:_ _value of name_
+  _Default:_ _Value of name_
+
+  _See also:_ [Routing key concept]({{site_prefix}}/concepts/routing-key.html)
 
 - <h3 id="--host">--host <span class="argument-info">string</span></h3>
 
@@ -74,7 +85,7 @@ skupper listener create database 5432 --routing-key db1 --host postgresql
   at this site use the listener host and port to
   establish connections to the remote service.
 
-  _Default:_ _value of name_
+  _Default:_ _Value of name_
 
 - <h3 id="--tls-secret">--tls-secret <span class="argument-info">string</span></h3>
 
@@ -87,6 +98,8 @@ skupper listener create database 5432 --routing-key db1 --host postgresql
   
   This option is used when setting up router-to-server TLS
   encryption.
+
+  _See also:_ [TLS re-encrypt]({{site_prefix}}XXX)
 
 - <h3 id="--type">--type <span class="argument-info">string</span></h3>
 

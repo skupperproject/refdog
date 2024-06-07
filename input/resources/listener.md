@@ -3,10 +3,10 @@ body_class: resource
 links:
   - name: Listener concept
     url: /concepts/listener.html
-  - name: Listener command
-    url: /commands/listener.html
   - name: Connector resource
     url: /resources/connector.html
+  - name: Listener command
+    url: /commands/listener.html
 ---
 
 # Listener resource
@@ -48,8 +48,11 @@ spec:
 - <h3 id="routingkey">routingKey <span class="property-info">string, required</span></h3>
 
   The identifier used to route traffic from listeners to
-  connectors.  To connect to a service at a remote site, the
-  listener and connector must have matching routing keys.
+  connectors.  To enable connecting to a service at a
+  remote site, the local listener and the remote connector
+  must have matching routing keys.
+
+  _See also:_ [Routing key concept]({{site_prefix}}/concepts/routing-key.html)
 
 - <h3 id="host">host <span class="property-info">string, required</span></h3>
 

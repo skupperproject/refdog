@@ -78,6 +78,8 @@ skupper site update --enable-link-access --service-account app1:alice
 
   _Default:_ `skupper:skupper-controller`
 
+  _See also:_ [Kubernetes service accounts]({{site_prefix}}https://kubernetes.io/docs/concepts/security/service-accounts/)
+
 </section>
 
 <section>

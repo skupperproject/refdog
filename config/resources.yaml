@@ -195,14 +195,12 @@ groups:
     resources:
       - name: Connector
         concept: connector
-        command: connector create
-        links:
-          - name: Listener resource
-            url: /resources/listener.html
+        command: connector
+        resource: Listener
         description: |
           @concept_description@
 
-          Each site can have multiple connector definitions.
+          Each site can have multiple connector resources.
         examples:
           - description: |
               A connector in site East for the Hello World backend service
@@ -220,17 +218,23 @@ groups:
           - name: routingKey
             description: |
               The identifier used to route traffic from listeners to
-              connectors.  To connect to a service at a remote site, the
-              listener and connector must have matching routing keys.
+              connectors.  To expose a local workload to a remote
+              site, the remote listener and the local connector must
+              have matching routing keys.
+            links:
+              - name: Routing key concept
+                url: /concepts/routing-key.html
           - name: port
             description: |
-              The port number of the server listener.
+              The port number the target workload is listening on.
           - name: selector
             description: |
               A Kubernetes label selector for targeting server pods.
             links:
               - name: Kubernetes label selectors
                 url: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
+              - name: Kubernetes pods
+                url: XXX
           - name: host
             description: |
               The hostname or IP address of the server.  This is an
@@ -247,6 +251,9 @@ groups:
 
               This option is used when setting up client-to-router TLS
               encryption.
+            links:
+              - name: TLS re-encrypt
+                url: XXX
           - name: includeNotReady
             description: |
               If set, include server pods that are not in the ready
@@ -263,9 +270,7 @@ groups:
       - name: Listener
         concept: listener
         command: listener
-        links:
-          - name: Connector resource
-            url: /resources/connector.html
+        resource: Connector
         description: |
           @concept_description@
 
@@ -288,8 +293,12 @@ groups:
           - name: routingKey
             description: |
               The identifier used to route traffic from listeners to
-              connectors.  To connect to a service at a remote site, the
-              listener and connector must have matching routing keys.
+              connectors.  To enable connecting to a service at a
+              remote site, the local listener and the remote connector
+              must have matching routing keys.
+            links:
+              - name: Routing key concept
+                url: /concepts/routing-key.html
           - name: host
             description: |
               The hostname or IP address of the local listener.  Clients

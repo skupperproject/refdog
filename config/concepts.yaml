@@ -52,21 +52,24 @@ groups:
       - name: listener
         resource: Listener
         command: listener
-        links:
-          - name: Connector concept
-            url: /concepts/connector.html
+        concept: connector
         description: |
           A listener is a local connection endpoint bound to servers
           in remote sites.
       - name: connector
         resource: Connector
         command: connector
-        links:
-          - name: Listener concept
-            url: /concepts/listener.html
+        concept: listener
         description: |
           A connector binds local servers to listeners in remote
           sites.
+
+          Theses:
+
+            - A connector targets a workload in the local site (or
+              reachable on the local network).
+            - A connector forwards connections from matching listeners
+              at remote sites to the workload in the local site.
       - name: routing key
         links:
           - name: Listener concept
