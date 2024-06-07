@@ -248,6 +248,7 @@ groups:
               `--host` options.
           - name: --workload
             type: string
+            format: "&lt;resource-kind&gt;/&lt;resource-name&gt;"
             description: |
               A Kubernetes resource name that identifies a workload.
               It resolves to an equivalent pod selector.
@@ -256,9 +257,7 @@ groups:
               `--host` options.
             links:
               - name: Kubernetes workloads
-                url: XXX
-              - name: Kubernetes resource names
-                url: XXX
+                url: https://kubernetes.io/docs/concepts/workloads/
           - name: --host
             property: host
             description: |
@@ -275,10 +274,8 @@ groups:
           - name: --output
             type: string
             description: |
-              Produce textual output instead of submitting resources
-              to the Skupper controller.
-
-              XXX Look at how kubectl phrases this.
+              Print resources to the console instead of submitting
+              them to the Skupper controller.
             choices:
               - name: json
                 description: Produce JSON output

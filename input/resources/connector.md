@@ -68,7 +68,7 @@ spec:
 
   A Kubernetes label selector for targeting server pods.
 
-  _See also:_ [Kubernetes label selectors]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors), [Kubernetes pods]({{site_prefix}}XXX)
+  _See also:_ [Kubernetes label selectors]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors), [Kubernetes pods]({{site_prefix}}https://kubernetes.io/docs/concepts/workloads/pods/)
 
 - <h3 id="host">host <span class="property-info">string</span></h3>
 
@@ -87,7 +87,7 @@ spec:
   This option is used when setting up client-to-router TLS
   encryption.
 
-  _See also:_ [TLS re-encrypt]({{site_prefix}}XXX)
+  _See also:_ [TLS re-encrypt]({{site_prefix}})
 
 - <h3 id="includenotready">includeNotReady <span class="property-info">boolean</span></h3>
 

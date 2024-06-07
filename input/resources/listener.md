@@ -78,7 +78,7 @@ spec:
   This option is used when setting up router-to-server TLS
   encryption.
 
-  _See also:_ [TLS re-encrypt]({{site_prefix}}XXX)
+  _See also:_ [TLS re-encrypt]({{site_prefix}})
 
 - <h3 id="type">type <span class="property-info">string</span></h3>
 

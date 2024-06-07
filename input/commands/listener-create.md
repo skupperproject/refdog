@@ -99,7 +99,7 @@ skupper listener create frontend 8080 --output yaml
   This option is used when setting up router-to-server TLS
   encryption.
 
-  _See also:_ [TLS re-encrypt]({{site_prefix}}XXX)
+  _See also:_ [TLS re-encrypt]({{site_prefix}})
 
 - <h3 id="--type">--type <span class="argument-info">string</span></h3>
 

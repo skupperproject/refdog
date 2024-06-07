@@ -94,9 +94,9 @@ skupper connector create frontend 8080 --workload deployment/frontend --output y
   This is an alternative to setting the `--workload` or
   `--host` options.
 
-  _See also:_ [Kubernetes label selectors]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors), [Kubernetes pods]({{site_prefix}}XXX)
+  _See also:_ [Kubernetes label selectors]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors), [Kubernetes pods]({{site_prefix}}https://kubernetes.io/docs/concepts/workloads/pods/)
 
-- <h3 id="--workload">--workload <span class="argument-info">string</span></h3>
+- <h3 id="--workload">--workload <span class="argument-info">string (&lt;resource-kind&gt;/&lt;resource-name&gt;)</span></h3>
 
   A Kubernetes resource name that identifies a workload.
   It resolves to an equivalent pod selector.
@@ -104,7 +104,7 @@ skupper connector create frontend 8080 --workload deployment/frontend --output y
   This is an alternative to setting the `--selector` or
   `--host` options.
 
-  _See also:_ [Kubernetes workloads]({{site_prefix}}XXX), [Kubernetes resource names]({{site_prefix}}XXX)
+  _See also:_ [Kubernetes workloads]({{site_prefix}}https://kubernetes.io/docs/concepts/workloads/)
 
 - <h3 id="--host">--host <span class="argument-info">string</span></h3>
 
@@ -124,7 +124,7 @@ skupper connector create frontend 8080 --workload deployment/frontend --output y
   This option is used when setting up client-to-router TLS
   encryption.
 
-  _See also:_ [TLS re-encrypt]({{site_prefix}}XXX)
+  _See also:_ [TLS re-encrypt]({{site_prefix}})
 
 - <h3 id="--type">--type <span class="argument-info">string</span></h3>
 
@@ -139,10 +139,8 @@ skupper connector create frontend 8080 --workload deployment/frontend --output y
 
 - <h3 id="--output">--output <span class="argument-info">string</span></h3>
 
-  Produce textual output instead of submitting resources
-  to the Skupper controller.
-  
-  XXX Look at how kubectl phrases this.
+  Print resources to the console instead of submitting
+  them to the Skupper controller.
 
   _Choices:_
   
