@@ -5,8 +5,8 @@ links:
     url: /concepts/grant.html
   - name: Grant resource
     url: /resources/grant.html
-  - name: Grant resource
-    url: /resources/grant.html
+  - name: Token redeem command
+    url: /commands/token-redeem.html
 ---
 
 # Token issue command
@@ -24,8 +24,15 @@ can be redeemed for a link to the local site.
 
 ~~~ shell
 $ skupper token issue <file> [options]
-Token file <file> created
-The token expires after 1 use or after 15 minutes
+Token file <file> created.
+
+Transfer this file to a remote site. At the remote site,
+create a link to this site using the 'skupper token redeem'
+command:
+
+   $ skupper token redeem <file>
+
+The token expires after 1 use or after 15 minutes.
 ~~~
 
 </section>
@@ -34,7 +41,7 @@ The token expires after 1 use or after 15 minutes
 
 ## Arguments
 
-- <h3 id="file">file <span class="argument-info">string</span></h3>
+- <h3 id="file">file <span class="argument-info">string, required</span></h3>
 
   The name of the token file.
 

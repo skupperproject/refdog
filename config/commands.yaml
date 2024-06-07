@@ -127,46 +127,6 @@ groups:
           routing key?
   - name: Site linking
     commands:
-      - name: token
-        description: |
-          Display help for token commands and exit.
-      - name: token issue
-        concept: grant
-        resource: Grant
-        links:
-          - name: Grant resource
-            url: /resources/grant.html
-        description: |
-          Create a grant and then use it to create a token file that
-          can be redeemed for a link to the local site.
-        usage: skupper token issue <file> [options]
-        output: |
-          Token file <file> created
-          The token expires after 1 use or after 15 minutes
-        arguments:
-          - name: file
-            type: string
-            description: |
-              The name of the token file.
-          - name: --expiration-period
-            property: validFor
-          - name: --redemptions-allowed
-            property: claims
-      - name: token redeem
-        resource: Claim
-        description: |
-          Redeem a token for a link to a remote site.
-
-          @resource_description@
-        usage: skupper token redeem <file> [options]
-        output: |
-          Waiting for status...
-          Link "<name>" is active
-          You can now safely delete <file>
-        arguments:
-          - name: file
-            description: |
-              The name of the token file.
       - name: link
         description: |
           Display help for link commands and exit.
@@ -187,6 +147,54 @@ groups:
         resource: Grant
       - name: grant status
         resource: Grant
+      - name: token
+        description: |
+          Display help for token commands and exit.
+      - name: token issue
+        concept: grant
+        resource: Grant
+        command: token redeem
+        description: |
+          Create a grant and then use it to create a token file that
+          can be redeemed for a link to the local site.
+        usage: skupper token issue <file> [options]
+        output: |
+          Token file <file> created.
+
+          Transfer this file to a remote site. At the remote site,
+          create a link to this site using the 'skupper token redeem'
+          command:
+
+             $ skupper token redeem <file>
+
+          The token expires after 1 use or after 15 minutes.
+        arguments:
+          - name: file
+            type: string
+            required: true
+            description: |
+              The name of the token file.
+          - name: --expiration-period
+            property: validFor
+          - name: --redemptions-allowed
+            property: claims
+      - name: token redeem
+        concept: claim
+        resource: Claim
+        command: token issue
+        description: |
+          Redeem a token for a link to a remote site.
+        usage: skupper token redeem <file> [options]
+        output: |
+          Waiting for status...
+          Link "<name>" is active.
+          You can now safely delete <file>.
+        arguments:
+          - name: file
+            type: string
+            required: true
+            description: |
+              The name of the token file.
   - name: Service exposure
     commands:
       - name: connector

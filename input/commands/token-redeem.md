@@ -1,8 +1,12 @@
 ---
 body_class: command
 links:
+  - name: Token concept
+    url: /concepts/claim.html
   - name: Token resource
     url: /resources/claim.html
+  - name: Token issue command
+    url: /commands/token-issue.html
 ---
 
 # Token redeem command
@@ -10,10 +14,6 @@ links:
 <section>
 
 Redeem a token for a link to a remote site.
-
-A transferrable authentication token redeemable for a link
-to a remote site.  A token contains the URL and secret of a
-corresponding grant.
 
 </section>
 
@@ -24,8 +24,8 @@ corresponding grant.
 ~~~ shell
 $ skupper token redeem <file> [options]
 Waiting for status...
-Link "<name>" is active
-You can now safely delete <file>
+Link "<name>" is active.
+You can now safely delete <file>.
 ~~~
 
 </section>
@@ -34,7 +34,7 @@ You can now safely delete <file>
 
 ## Arguments
 
-- <h3 id="file">file <span class="argument-info">None</span></h3>
+- <h3 id="file">file <span class="argument-info">string, required</span></h3>
 
   The name of the token file.
 

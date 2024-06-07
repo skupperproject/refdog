@@ -9,15 +9,15 @@
   - [site status](site-status.html)
 #### Site linking
 
-  - [token](token.html)
-  - [token issue](token-issue.html)
-  - [token redeem](token-redeem.html)
   - [link](link.html)
   - [link delete](link-delete.html)
   - [link status](link-status.html)
   - [grant](grant.html)
   - [grant delete](grant-delete.html)
   - [grant status](grant-status.html)
+  - [token](token.html)
+  - [token issue](token-issue.html)
+  - [token redeem](token-redeem.html)
 #### Service exposure
 
   - [connector](connector.html)

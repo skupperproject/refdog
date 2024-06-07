@@ -68,6 +68,41 @@ groups:
           - name: network
   - name: Site linking
     resources:
+      - name: Link
+        concept: link
+        command: link
+        links:
+          - name: Grant resource
+            url: /resources/grant.html
+          - name: Token resource
+            url: /resources/claim.html
+        description: |
+          @concept_description@
+
+          Links are not usually created directly.  Instead, you use a
+          grant and token to obtain a link.
+        spec_properties:
+          - name: tlsCredentials
+            rename: tlsSecret
+            description: |
+              The name of a Kubernetes secret containing TLS
+              credentials. The secret contains the trusted server
+              certificate (typically a CA).
+
+              It can optionally include a client certificate and key for
+              mutual TLS.
+          - name: cost
+          - name: interRouter
+          - name: edge
+          - name: noClientAuth
+        status_properties:
+          - name: status
+            description: |
+              The current state of the resource.
+          - name: configured
+          - name: active
+          - name: url
+          - name: site
       - name: Grant
         concept: grant
         command: grant
@@ -156,41 +191,6 @@ groups:
             rename: redeemed
             description: |
               True if the token has been redeemed.
-      - name: Link
-        concept: link
-        command: link
-        links:
-          - name: Grant resource
-            url: /resources/grant.html
-          - name: Token resource
-            url: /resources/claim.html
-        description: |
-          @concept_description@
-
-          Links are not usually created directly.  Instead, you use a
-          grant and token to obtain a link.
-        spec_properties:
-          - name: tlsCredentials
-            rename: tlsSecret
-            description: |
-              The name of a Kubernetes secret containing TLS
-              credentials. The secret contains the trusted server
-              certificate (typically a CA).
-
-              It can optionally include a client certificate and key for
-              mutual TLS.
-          - name: cost
-          - name: interRouter
-          - name: edge
-          - name: noClientAuth
-        status_properties:
-          - name: status
-            description: |
-              The current state of the resource.
-          - name: configured
-          - name: active
-          - name: url
-          - name: site
   - name: Service exposure
     resources:
       - name: Connector

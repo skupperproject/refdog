@@ -5,9 +5,9 @@
   - [Site](site.html)
 #### Site linking
 
+  - [Link](link.html)
   - [Grant](grant.html)
   - [Token](claim.html)
-  - [Link](link.html)
 #### Service exposure
 
   - [Connector](connector.html)
