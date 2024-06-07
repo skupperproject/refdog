@@ -1,21 +1,21 @@
 ---
 body_class: resource
 links:
-  - name: Access token concept
+  - name: Token concept
     url: /concepts/claim.html
   - name: Token redeem command
     url: /commands/token-redeem.html
-  - name: AccessGrant resource
+  - name: Grant resource
     url: /resources/grant.html
 ---
 
-# AccessToken resource
+# Token resource
 
 <section>
 
 A transferrable authentication token redeemable for a link
-to a remote site.  An access token contains the URL and
-secret of a corresponding access grant.
+to a remote site.  A token contains the URL and secret of a
+corresponding grant.
 
 </section>
 

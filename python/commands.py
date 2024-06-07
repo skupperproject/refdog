@@ -167,10 +167,8 @@ def generate_argument(argument, append):
         append()
 
 class CommandModel:
-    def __init__(self, resource_model):
+    def __init__(self):
         debug(f"Loading {self}")
-
-        self.resource_model = resource_model
 
         self.data = read_yaml("config/commands.yaml")
 
@@ -271,11 +269,6 @@ class Argument(ModelObjectAttribute):
                 "Property '{}' not found in {}".format(self.data["property"], self.command.resource)
 
             return self.command.resource.spec_properties_by_name[self.data["property"]]
-
-    @property
-    def name(self):
-        default = argument_name(self.property_.name, self.positional) if self.property_ else None
-        return self.data.get("name", default)
 
     @property
     def rename(self):

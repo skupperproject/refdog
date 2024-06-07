@@ -5,8 +5,8 @@
   - [Site](site.html)
 #### Site linking
 
-  - [AccessGrant](grant.html)
-  - [AccessToken](claim.html)
+  - [Grant](grant.html)
+  - [Token](claim.html)
   - [Link](link.html)
 #### Service exposure
 

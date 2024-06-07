@@ -6,6 +6,8 @@ body_class: concept
 
 <section>
 
-XXX
+Theses:
+
+  - One network corresponds to one distributed application.
 
 </section>

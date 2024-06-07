@@ -3,8 +3,10 @@ body_class: resource
 links:
   - name: Site concept
     url: /concepts/site.html
-  - name: Site create command
-    url: /commands/site-create.html
+  - name: Site command
+    url: /commands/site.html
+  - name: Link resource
+    url: /resources/link.html
 ---
 
 # Site resource

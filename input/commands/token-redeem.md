@@ -1,7 +1,7 @@
 ---
 body_class: command
 links:
-  - name: AccessToken resource
+  - name: Token resource
     url: /resources/claim.html
 ---
 
@@ -9,11 +9,11 @@ links:
 
 <section>
 
-Redeem a token for a link.
+Redeem a token for a link to a remote site.
 
 A transferrable authentication token redeemable for a link
-to a remote site.  An access token contains the URL and
-secret of a corresponding access grant.
+to a remote site.  A token contains the URL and secret of a
+corresponding grant.
 
 </section>
 

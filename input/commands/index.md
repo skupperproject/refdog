@@ -10,11 +10,14 @@
 #### Site linking
 
   - [token](token.html)
-  - [token create](token-create.html)
+  - [token issue](token-issue.html)
   - [token redeem](token-redeem.html)
   - [link](link.html)
   - [link delete](link-delete.html)
   - [link status](link-status.html)
+  - [grant](grant.html)
+  - [grant delete](grant-delete.html)
+  - [grant status](grant-status.html)
 #### Service exposure
 
   - [connector](connector.html)

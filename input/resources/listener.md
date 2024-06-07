@@ -3,8 +3,8 @@ body_class: resource
 links:
   - name: Listener concept
     url: /concepts/listener.html
-  - name: Listener create command
-    url: /commands/listener-create.html
+  - name: Listener command
+    url: /commands/listener.html
   - name: Connector resource
     url: /resources/connector.html
 ---
@@ -71,10 +71,17 @@ spec:
   
   It can optionally include a client certificate and key for
   mutual TLS.
+  
+  This option is used when setting up router-to-server TLS
+  encryption.
+
+  _See also:_ [TLS re-encrypt]({{site_prefix}}XXX)
 
 - <h3 id="type">type <span class="property-info">string</span></h3>
 
-  What is this again?  I think we need a qualifier on "type".
+  The listener type.
+
+  _Default:_ `tcp`
 
 </section>
 

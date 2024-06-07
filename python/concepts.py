@@ -17,7 +17,6 @@ def generate(model):
     append()
 
     for group in model.groups:
-        # append(f"- [{group.name}](#{group.id})")
         append(f"#### {group.name}")
         append()
 

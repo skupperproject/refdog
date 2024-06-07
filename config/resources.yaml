@@ -3,7 +3,10 @@ groups:
     resources:
       - name: Site
         concept: site
-        command: site create
+        command: site
+        links:
+          - name: Link resource
+            url: /resources/link.html
         description: |
           @concept_description@
 
@@ -66,11 +69,10 @@ groups:
   - name: Site linking
     resources:
       - name: Grant
-        rename: AccessGrant
         concept: grant
-        command: token create
+        command: grant
         links:
-          - name: AccessToken resource
+          - name: Token resource
             url: /resources/claim.html
         description: |
           @concept_description@
@@ -78,14 +80,14 @@ groups:
           - name: claims
             rename: redemptionsAllowed
             description: |
-              The number of times an access token for this grant can
-              be redeemed.
+              The number of times a token for this grant can be
+              redeemed.
             default: 1
           - name: validFor
             rename: expirationPeriod
             description: |
-              The period of time in which an access token for this
-              grant can be redeemed.
+              The period of time in which a token for this grant can
+              be redeemed.
             default: 15m
           - name: secret
             notes: |
@@ -102,16 +104,16 @@ groups:
           - name: claimed
             rename: redemptions
             description: |
-              The number of times an access token for this grant has
-              been redeemed.
+              The number of times a token for this grant has been
+              redeemed.
           - name: expiration
             description: |
-              The point in time when the access grant expires.
+              The point in time when the grant expires.
           - name: secret
             rename: redemptionSecret
             description: |
-              The secret used to authenticate access tokens submitted
-              for redemption.
+              The secret used to authenticate tokens submitted for
+              redemption.
           - name: url
             rename: redemptionURL
             description: |
@@ -122,11 +124,11 @@ groups:
               The trusted server certificate of the token redemption
               service for this grant.
       - name: Claim
-        rename: AccessToken
+        rename: Token
         concept: claim
         command: token redeem
         links:
-          - name: AccessGrant resource
+          - name: Grant resource
             url: /resources/grant.html
         description: |
           @concept_description@
@@ -157,8 +159,16 @@ groups:
       - name: Link
         concept: link
         command: link
+        links:
+          - name: Grant resource
+            url: /resources/grant.html
+          - name: Token resource
+            url: /resources/claim.html
         description: |
           @concept_description@
+
+          Links are not usually created directly.  Instead, you use a
+          grant and token to obtain a link.
         spec_properties:
           - name: tlsCredentials
             rename: tlsSecret
@@ -234,12 +244,17 @@ groups:
 
               It can optionally include a client certificate and key for
               mutual TLS.
+
+              This option is used when setting up client-to-router TLS
+              encryption.
           - name: includeNotReady
             description: |
               If set, include server pods that are not in the ready
               state.
           - name: type
             default: tcp
+            description: |
+              The connector type.
         status_properties:
           - name: status
             description: |
@@ -247,7 +262,7 @@ groups:
           - name: active
       - name: Listener
         concept: listener
-        command: listener create
+        command: listener
         links:
           - name: Connector resource
             url: /resources/connector.html
@@ -294,9 +309,16 @@ groups:
 
               It can optionally include a client certificate and key for
               mutual TLS.
+
+              This option is used when setting up router-to-server TLS
+              encryption.
+            links:
+              - name: TLS re-encrypt
+                url: XXX
           - name: type
-            notes: |
-              What is this again?  I think we need a qualifier on "type".
+            default: tcp
+            description: |
+              The listener type.
         status_properties:
           - name: status
             description: |

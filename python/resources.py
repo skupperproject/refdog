@@ -150,10 +150,8 @@ def generate_property(prop, append):
         append()
 
 class ResourceModel:
-    def __init__(self, concept_model):
+    def __init__(self):
         debug(f"Loading {self}")
-
-        self.concept_model = concept_model
 
         self.data = read_yaml("config/resources.yaml")
 

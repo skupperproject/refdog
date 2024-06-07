@@ -7,12 +7,17 @@ import resources
 @command
 def generate():
     concept_model = concepts.ConceptModel()
-    resource_model = resources.ResourceModel(concept_model)
-    command_model = commands.CommandModel(resource_model)
+    resource_model = resources.ResourceModel()
+    command_model = commands.CommandModel()
 
     concept_model.resource_model = resource_model
+    concept_model.command_model = command_model
+
+    resource_model.concept_model = concept_model
     resource_model.command_model = command_model
+
     command_model.concept_model = concept_model
+    command_model.resource_model = resource_model
 
     concepts.generate(concept_model)
     resources.generate(resource_model)

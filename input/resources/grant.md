@@ -1,21 +1,21 @@
 ---
 body_class: resource
 links:
-  - name: Access grant concept
+  - name: Grant concept
     url: /concepts/grant.html
-  - name: Token create command
-    url: /commands/token-create.html
-  - name: AccessToken resource
+  - name: Grant command
+    url: /commands/grant.html
+  - name: Token resource
     url: /resources/claim.html
 ---
 
-# AccessGrant resource
+# Grant resource
 
 <section>
 
-Permission to redeem access tokens for links to the local
-site.  A remote site can use a token containing the grant
-URL and secret to obtain a certificate signed by the grant's
+Permission to redeem tokens for links to the local site.  A
+remote site can use a token containing the grant URL and
+secret to obtain a certificate signed by the grant's
 certificate authority (CA), within a certain expiration
 period and for a limited number of redemptions.
 
@@ -27,15 +27,15 @@ period and for a limited number of redemptions.
 
 - <h3 id="redemptionsallowed">redemptionsAllowed <span class="property-info">integer</span></h3>
 
-  The number of times an access token for this grant can
-  be redeemed.
+  The number of times a token for this grant can be
+  redeemed.
 
   _Default:_ 1
 
 - <h3 id="expirationperiod">expirationPeriod <span class="property-info">string (duration)</span></h3>
 
-  The period of time in which an access token for this
-  grant can be redeemed.
+  The period of time in which a token for this grant can
+  be redeemed.
 
   _Default:_ `15m`
 
@@ -60,17 +60,17 @@ period and for a limited number of redemptions.
 
 - <h3 id="redemptions">redemptions <span class="property-info">integer</span></h3>
 
-  The number of times an access token for this grant has
-  been redeemed.
+  The number of times a token for this grant has been
+  redeemed.
 
 - <h3 id="expiration">expiration <span class="property-info">string (date-time)</span></h3>
 
-  The point in time when the access grant expires.
+  The point in time when the grant expires.
 
 - <h3 id="redemptionsecret">redemptionSecret <span class="property-info">string</span></h3>
 
-  The secret used to authenticate access tokens submitted
-  for redemption.
+  The secret used to authenticate tokens submitted for
+  redemption.
 
 - <h3 id="redemptionurl">redemptionURL <span class="property-info">string</span></h3>
 

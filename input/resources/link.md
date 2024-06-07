@@ -5,6 +5,10 @@ links:
     url: /concepts/link.html
   - name: Link command
     url: /commands/link.html
+  - name: Grant resource
+    url: /resources/grant.html
+  - name: Token resource
+    url: /resources/claim.html
 ---
 
 # Link resource
@@ -12,7 +16,11 @@ links:
 <section>
 
 A link is a site-to-site communication channel. Links serve
-as a transport for application connections and requests.
+as a transport for application connections and requests.  A
+set of linked sites constitute a network.
+
+Links are not usually created directly.  Instead, you use a
+grant and token to obtain a link.
 
 </section>
 

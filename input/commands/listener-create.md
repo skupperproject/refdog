@@ -1,6 +1,8 @@
 ---
 body_class: command
 links:
+  - name: Listener concept
+    url: /concepts/listener.html
   - name: Listener resource
     url: /resources/listener.html
 ---
@@ -23,7 +25,7 @@ Each site can have multiple listener definitions.
 ## Usage
 
 ~~~ shell
-$ skupper listener create <name> [options]
+$ skupper listener create <name> <port> [options]
 Waiting for status...
 Listener "<name>" is ready
 ~~~
@@ -36,7 +38,10 @@ Listener "<name>" is ready
 
 ~~~
 # Create a listener for a database
-skupper listener create database --host database --port 5432
+skupper listener create database 5432
+
+# Override the routing key and host
+skupper listener create database 5432 --routing-key db1 --host postgresql
 ~~~
 
 </section>
@@ -45,9 +50,15 @@ skupper listener create database --host database --port 5432
 
 ## Arguments
 
-- <h3 id="name">name <span class="argument-info">string</span></h3>
+- <h3 id="name">name <span class="argument-info">string, required</span></h3>
 
   The name of the listener resource.
+
+- <h3 id="port">port <span class="argument-info">integer, required</span></h3>
+
+  The port of the local listener.  Clients at this site use
+  the listener host and port to establish connections to
+  the remote service.
 
 - <h3 id="--routing-key">--routing-key <span class="argument-info">string</span></h3>
 
@@ -57,17 +68,13 @@ skupper listener create database --host database --port 5432
 
   _Default:_ _value of name_
 
-- <h3 id="--host">--host <span class="argument-info">string, required</span></h3>
+- <h3 id="--host">--host <span class="argument-info">string</span></h3>
 
   The hostname or IP address of the local listener.  Clients
   at this site use the listener host and port to
   establish connections to the remote service.
 
-- <h3 id="--port">--port <span class="argument-info">integer, required</span></h3>
-
-  The port of the local listener.  Clients at this site use
-  the listener host and port to establish connections to
-  the remote service.
+  _Default:_ _value of name_
 
 - <h3 id="--tls-secret">--tls-secret <span class="argument-info">string</span></h3>
 
@@ -77,7 +84,14 @@ skupper listener create database --host database --port 5432
   
   It can optionally include a client certificate and key for
   mutual TLS.
+  
+  This option is used when setting up router-to-server TLS
+  encryption.
 
 - <h3 id="--type">--type <span class="argument-info">string</span></h3>
+
+  The listener type.
+
+  _Default:_ `tcp`
 
 </section>

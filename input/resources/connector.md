@@ -73,6 +73,9 @@ spec:
   
   It can optionally include a client certificate and key for
   mutual TLS.
+  
+  This option is used when setting up client-to-router TLS
+  encryption.
 
 - <h3 id="includenotready">includeNotReady <span class="property-info">boolean</span></h3>
 
@@ -80,6 +83,8 @@ spec:
   state.
 
 - <h3 id="type">type <span class="property-info">string</span></h3>
+
+  The connector type.
 
   _Default:_ `tcp`
 

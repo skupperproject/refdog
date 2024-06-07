@@ -8,21 +8,18 @@ def get_fragment_id(name):
 
 def generate_object_links(obj):
     links = list()
-    concept = getattr(obj, "concept", None)
-    resource = getattr(obj, "resource", None)
-    command = getattr(obj, "command", None)
 
-    if concept:
-        name = capitalize(concept.rename)
-        links.append((f"{name} concept", f"/concepts/{concept.id}.html"))
+    if obj.concept:
+        name = capitalize(obj.concept.rename)
+        links.append((f"{name} concept", f"/concepts/{obj.concept.id}.html"))
 
-    if resource:
-        name = capitalize(resource.rename)
-        links.append((f"{name} resource", f"/resources/{resource.id}.html"))
+    if obj.resource:
+        name = capitalize(obj.resource.rename)
+        links.append((f"{name} resource", f"/resources/{obj.resource.id}.html"))
 
-    if command:
-        name = capitalize(command.rename.removeprefix("skupper "))
-        links.append((f"{name} command", f"/commands/{command.id}.html"))
+    if obj.command:
+        name = capitalize(obj.command.rename)
+        links.append((f"{name} command", f"/commands/{obj.command.id}.html"))
 
     for link_data in obj.links:
         links.append((link_data["name"], link_data["url"]))

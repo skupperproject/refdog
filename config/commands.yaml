@@ -48,10 +48,11 @@ groups:
             type: boolean
             description: |
               Allow access for incoming links from remote sites.
-          - property: linkAccess
-            name: --link-access-type
+          - name: --link-access-type
+            property: linkAccess
             default: default
-          - property: serviceAccount
+          - name: --service-account
+            property: serviceAccount
         errors:
           - message: A site resource already exists
             description: |
@@ -84,10 +85,11 @@ groups:
             type: boolean
             description: |
               Allow access for incoming links from remote sites.
-          - property: linkAccess
-            name: --link-access-type
+          - name: --link-access-type
+            property: linkAccess
             default: default
-          - property: serviceAccount
+          - name: --service-account
+            property: serviceAccount
         errors:
           - message: No site resource exists
             description: |
@@ -127,13 +129,17 @@ groups:
     commands:
       - name: token
         description: |
-          Display help for token commands and exit.  Currently there
-          is only one token command.
-      - name: token create
+          Display help for token commands and exit.
+      - name: token issue
+        concept: grant
         resource: Grant
+        links:
+          - name: Grant resource
+            url: /resources/grant.html
         description: |
-          Create a token.
-        usage: skupper token create <file> [options]
+          Create a grant and then use it to create a token file that
+          can be redeemed for a link to the local site.
+        usage: skupper token issue <file> [options]
         output: |
           Token file <file> created
           The token expires after 1 use or after 15 minutes
@@ -142,18 +148,14 @@ groups:
             type: string
             description: |
               The name of the token file.
-          - property: validFor
-            name: --expiry
-            type: string
-            format: duration
-            default: 15m
-          - property: claims
-            name: --uses
-            default: 1
+          - name: --expiration-period
+            property: validFor
+          - name: --redemptions-allowed
+            property: claims
       - name: token redeem
         resource: Claim
         description: |
-          Redeem a token for a link.
+          Redeem a token for a link to a remote site.
 
           @resource_description@
         usage: skupper token redeem <file> [options]
@@ -179,6 +181,12 @@ groups:
           Links from remote sites:
 
           None
+      - name: grant
+        resource: Grant
+      - name: grant delete
+        resource: Grant
+      - name: grant status
+        resource: Grant
   - name: Service exposure
     commands:
       - name: connector
@@ -203,7 +211,8 @@ groups:
             required: true
             description: |
               The name of the connector resource.
-          - property: routingKey
+          - name: --routing-key
+            property: routingKey
             default: _value of name_
           - name: --workload
             type: string
@@ -212,12 +221,18 @@ groups:
               This resolves to an equivalent label selector and
               servers as an alternative to setting the host or
               selector options.
-          - property: port
-          - property: selector
-          - property: host
-          - property: tlsCredentials
-          - property: type
-          - property: includeNotReady
+          - name: --port
+            property: port
+          - name: --selector
+            property: selector
+          - name: --host
+            property: host
+          - name: --tls-secret
+            property: tlsCredentials
+          - name: --type
+            property: type
+          - name: --include-not-ready
+            property: includeNotReady
           - name: --output
             type: string
             choices:
@@ -249,29 +264,41 @@ groups:
         description: |
           Display help for listener commands and exit.
       - name: listener create
+        concept: listener
         resource: Listener
         description: |
           Create a listener.
 
           @resource_description@
-        usage: skupper listener create <name> [options]
+        usage: skupper listener create <name> <port> [options]
         examples: |
           # Create a listener for a database
-          skupper listener create database --host database --port 5432
+          skupper listener create database 5432
+
+          # Override the routing key and host
+          skupper listener create database 5432 --routing-key db1 --host postgresql
         output: |
           Waiting for status...
           Listener "<name>" is ready
         arguments:
           - name: name
             type: string
+            required: true
             description: |
               The name of the listener resource.
-          - property: routingKey
+          - name: port
+            property: port
+            positional: true
+          - name: --routing-key
+            property: routingKey
             default: _value of name_
-          - property: host
-          - property: port
-          - property: tlsCredentials
-          - property: type
+          - name: --host
+            property: host
+            default: _value of name_
+          - name: --tls-secret
+            property: tlsCredentials
+          - name: --type
+            property: type
       - name: listener delete
         description: |
           Delete a listener.
