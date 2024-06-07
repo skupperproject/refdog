@@ -1,3 +1,11 @@
+---
+links:
+  - name: Skupper resources
+    url: /resources/index.html
+  - name: Skupper commands
+    url: /commands/index.html
+---
+
 # Skupper concepts
 
 #### Networks and sites

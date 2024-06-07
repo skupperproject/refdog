@@ -1,3 +1,11 @@
+---
+links:
+  - name: Skupper concepts
+    url: /concepts/index.html
+  - name: Skupper commands
+    url: /commands/index.html
+---
+
 # Skupper resources
 
 #### Site configuration

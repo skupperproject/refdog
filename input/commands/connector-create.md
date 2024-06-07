@@ -96,7 +96,7 @@ skupper connector create frontend 8080 --workload deployment/frontend --output y
 
   _See also:_ [Kubernetes label selectors]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors), [Kubernetes pods]({{site_prefix}}https://kubernetes.io/docs/concepts/workloads/pods/)
 
-- <h3 id="--workload">--workload <span class="argument-info">string (&lt;resource-kind&gt;/&lt;resource-name&gt;)</span></h3>
+- <h3 id="--workload">--workload <span class="argument-info">string (<code>&lt;resource-kind&gt;/&lt;resource-name&gt;</code>)</span></h3>
 
   A Kubernetes resource name that identifies a workload.
   It resolves to an equivalent pod selector.

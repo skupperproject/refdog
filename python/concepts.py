@@ -13,6 +13,14 @@ def generate(model):
 
         lines.append(line)
 
+    append("---")
+    append("links:")
+    append("  - name: Skupper resources")
+    append("    url: /resources/index.html")
+    append("  - name: Skupper commands")
+    append("    url: /commands/index.html")
+    append("---")
+    append()
     append("# Skupper concepts")
     append()
 

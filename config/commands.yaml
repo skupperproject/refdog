@@ -248,7 +248,7 @@ groups:
               `--host` options.
           - name: --workload
             type: string
-            format: "&lt;resource-kind&gt;/&lt;resource-name&gt;"
+            format: "<code>&lt;resource-kind&gt;/&lt;resource-name&gt;</code>"
             description: |
               A Kubernetes resource name that identifies a workload.
               It resolves to an equivalent pod selector.
@@ -300,7 +300,7 @@ groups:
         output: |
           NAME       ROUTING-KEY   SELECTOR         HOST   PORT   MATCHING-LISTENERS
           backend    backend       app=backend      -      8080   1
-          database   database      app=postgresql   -      5342   1
+          database   database      app=postgresql   -      5432   1
       - name: listener
         description: |
           Display help for listener commands and exit.
