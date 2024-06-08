@@ -3,7 +3,7 @@ groups:
     resources:
       - name: Site
         concept: site
-        command: site
+        command: site create
         links:
           - name: Link resource
             url: /resources/link.html
@@ -195,7 +195,7 @@ groups:
     resources:
       - name: Connector
         concept: connector
-        command: connector
+        command: connector create
         resource: Listener
         description: |
           @concept_description@
@@ -269,7 +269,7 @@ groups:
           - name: active
       - name: Listener
         concept: listener
-        command: listener
+        command: listener create
         resource: Connector
         description: |
           @concept_description@
