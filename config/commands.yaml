@@ -177,6 +177,8 @@ groups:
           can be redeemed for a link to the local site.
         usage: skupper token issue <file> [options]
         output: |
+          Waiting for status...
+          Grant "<name>" is ready.
           Token file <file> created.
 
           Transfer this file to a remote site. At the remote site,

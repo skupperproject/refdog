@@ -24,6 +24,8 @@ can be redeemed for a link to the local site.
 
 ~~~ shell
 $ skupper token issue <file> [options]
+Waiting for status...
+Grant "<name>" is ready.
 Token file <file> created.
 
 Transfer this file to a remote site. At the remote site,

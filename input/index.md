@@ -1,6 +1,6 @@
 # Refdog
 
-## Reference guides
+## Reference documentation
 
 - [Concepts](concepts/index.html)
 - [Resources](resources/index.html)
