@@ -1,5 +1,10 @@
 ---
 body_class: command
+links:
+  - name: Token concept
+    url: /concepts/claim.html
+  - name: Token resource
+    url: /resources/claim.html
 ---
 
 # Token command

@@ -15,11 +15,6 @@ links:
 
 Delete a listener.
 
-A listener binds a connection endpoint in the local site to
-target workloads in remote sites.
-
-Each site can have multiple listener definitions.
-
 </section>
 
 <section>

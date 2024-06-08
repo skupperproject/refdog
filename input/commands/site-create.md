@@ -5,6 +5,8 @@ links:
     url: /concepts/site.html
   - name: Site resource
     url: /resources/site.html
+  - name: Site update command
+    url: /commands/site-update.html
 ---
 
 # Site create command
@@ -12,11 +14,6 @@ links:
 <section>
 
 Create a site.
-
-A site is a place where components of your application are
-running.  Sites are linked to form application networks.
-
-There can be only one site resource per namespace.
 
 </section>
 
@@ -59,7 +56,7 @@ skupper site create west --enable-link-access
 
   Allow access for incoming links from remote sites.
 
-- <h3 id="link-access">--link-access <span class="argument-info">string</span></h3>
+- <h3 id="link-access-type">--link-access-type <span class="argument-info">string</span></h3>
 
   Configure external access for links from remote sites.
 

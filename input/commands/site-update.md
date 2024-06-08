@@ -1,8 +1,12 @@
 ---
 body_class: command
 links:
+  - name: Site concept
+    url: /concepts/site.html
   - name: Site resource
     url: /resources/site.html
+  - name: Site create command
+    url: /commands/site-create.html
 ---
 
 # Site update command
@@ -10,8 +14,6 @@ links:
 <section>
 
 Change site settings.
-
-The name argument is optional for update.
 
 </section>
 
@@ -45,11 +47,18 @@ skupper site update --enable-link-access --service-account app1:alice
 
 ## Arguments
 
+- <h3 id="name">name <span class="argument-info">string, optional</span></h3>
+
+  The name of the site resource.
+  
+  If not specified, the name is that of the site
+  associated with the current namespace.
+
 - <h3 id="enable-link-access">--enable-link-access <span class="argument-info">boolean</span></h3>
 
   Allow access for incoming links from remote sites.
 
-- <h3 id="link-access">--link-access <span class="argument-info">string</span></h3>
+- <h3 id="link-access-type">--link-access-type <span class="argument-info">string</span></h3>
 
   Configure external access for links from remote sites.
 

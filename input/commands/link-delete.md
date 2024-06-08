@@ -1,10 +1,17 @@
 ---
 body_class: command
+links:
+  - name: Link concept
+    url: /concepts/link.html
+  - name: Link resource
+    url: /resources/link.html
 ---
 
 # Link delete command
 
 <section>
+
+Delete a link.
 
 </section>
 

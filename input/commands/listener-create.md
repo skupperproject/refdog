@@ -15,11 +15,6 @@ links:
 
 Create a listener.
 
-A listener binds a connection endpoint in the local site to
-target workloads in remote sites.
-
-Each site can have multiple listener definitions.
-
 </section>
 
 <section>
@@ -58,9 +53,6 @@ skupper listener create frontend 8080 --output yaml
 - <h3 id="name">name <span class="argument-info">string, required</span></h3>
 
   The name of the listener resource.
-  
-  The name also serves as the default routing key and host
-  if the `--routing-key` and `--host` options are not set.
 
 - <h3 id="port">port <span class="argument-info">integer, required</span></h3>
 

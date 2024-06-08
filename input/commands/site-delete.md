@@ -1,8 +1,10 @@
 ---
 body_class: command
 links:
-  - name: Skupper sites
-    url: /concepts.html#site
+  - name: Site concept
+    url: /concepts/site.html
+  - name: Site resource
+    url: /resources/site.html
 ---
 
 # Site delete command
@@ -29,9 +31,12 @@ Site "<name>" is deleted.
 
 ## Arguments
 
-- <h3 id="name">--name <span class="argument-info">string</span></h3>
+- <h3 id="name">name <span class="argument-info">string, optional</span></h3>
 
   The name of the site resource.
+  
+  If not specified, the name is that of the site
+  associated with the current namespace.
 
 </section>
 

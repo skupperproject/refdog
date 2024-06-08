@@ -18,15 +18,18 @@ groups:
   - name: Site configuration
     commands:
       - name: site
-        description: |
-          Display help for site commands and exit.
-      - name: site create
         concept: site
         resource: Site
         description: |
-          Create a site.
+          Display help for site commands and exit.
 
           @resource_description@
+      - name: site create
+        concept: site
+        resource: Site
+        command: site update
+        description: |
+          Create a site.
         usage: skupper site create <name> [options]
         examples: |
           # Create a site
@@ -58,11 +61,11 @@ groups:
             description: |
               There is already a site resource defined for the namespace.
       - name: site update
+        concept: site
         resource: Site
+        command: site create
         description: |
           Change site settings.
-
-          The name argument is optional for update.
         usage: skupper site update [name] [options]
         examples: |
           # Update the site to accept links
@@ -75,10 +78,11 @@ groups:
           Site "<name>" is updated.
         inherit_arguments:
           from: site create
-          exclude: [name]
         arguments:
           - name: name
             type: string
+            required: false
+            positional: true
             description: |
               The name of the site resource.
 
@@ -89,11 +93,10 @@ groups:
             description: |
               There is no existing Skupper site resource to update.
       - name: site delete
+        concept: site
+        resource: Site
         description: |
           Delete a site.
-        links:
-          - name: Skupper sites
-            url: "/concepts.html#site"
         usage: skupper site delete [name]
         output: |
           Waiting for deletion to complete...
@@ -101,13 +104,19 @@ groups:
         arguments:
           - name: name
             type: string
+            positional: true
             description: |
               The name of the site resource.
+
+              If not specified, the name is that of the site
+              associated with the current namespace.
         errors:
           - message: No site resource exists
             description: |
               There is no existing Skupper site resource to delete.
       - name: site status
+        concept: site
+        resource: Site
         description: |
           Show the current status of a site.
         usage: skupper site status
@@ -122,11 +131,21 @@ groups:
   - name: Site linking
     commands:
       - name: link
+        concept: link
+        resource: Link
         description: |
           Display help for link commands and exit.
+
+          @resource_description@
       - name: link delete
+        concept: link
+        resource: Link
+        description: |
+          Delete a link.
         usage: skupper link delete <name>
       - name: link status
+        description: |
+          Show the current status of links for the site.
         output: |
           NAME    STATUS   COST
           west    Active   1
@@ -136,12 +155,17 @@ groups:
 
           None
       - name: grant
+        concept: grant
         resource: Grant
       - name: grant delete
+        concept: grant
         resource: Grant
       - name: grant status
+        concept: grant
         resource: Grant
       - name: token
+        concept: claim
+        resource: Claim
         description: |
           Display help for token commands and exit.
       - name: token issue
@@ -200,21 +224,16 @@ groups:
         command: listener create
         description: |
           Create a connector.
-
-          @resource_description@
-
-          When creating a connector, you must supply a target workload
-          using the `--workload`, `--selector`, or `--host` options.
         usage: skupper connector create <name> <port> [options]
         examples: |
           # Create a connector for a database
-          skupper connector create database 5432 --workload deployment/postgresql
+          skupper connector create database 5432
 
-          # Set the routing key explicitly
-          skupper connector create backend 8080 --workload deployment/backend --routing-key be1
+          # Set the routing key and workload explicitly
+          skupper connector create backend 8080 --routing-key be1 --workload deployment/backend
 
           # Produce YAML output
-          skupper connector create frontend 8080 --workload deployment/frontend --output yaml
+          skupper connector create backend 8080 --output yaml
         output: |
           Waiting for status...
           Connector "<name>" is ready.
@@ -224,9 +243,6 @@ groups:
             required: true
             description: |
               The name of the connector resource.
-
-              The name also serves as the default routing key if the
-              `--routing-key` option is not set.
           - name: port
             property: port
             positional: true
@@ -235,14 +251,10 @@ groups:
             default: _Value of name_
           - name: selector
             property: selector
-            description: |
-              @property_description@
-
-              This is an alternative to setting the `--workload` or
-              `--host` options.
+            default: app=<value-of-name>
           - name: workload
             type: string
-            format: "<code>&lt;resource-kind&gt;/&lt;resource-name&gt;</code>"
+            format: resource name
             description: |
               A Kubernetes resource name that identifies a workload.
               It resolves to an equivalent pod selector.
@@ -281,8 +293,6 @@ groups:
         command: listener update
         description: |
           Update a connector.
-
-          @resource_description@
         usage: skupper connector update <name> [options]
         examples: |
           # Change the workload and port
@@ -308,8 +318,6 @@ groups:
         command: listener delete
         description: |
           Delete a connector.
-
-          @resource_description@
         usage: skupper connector delete <name>
         output: |
           Waiting for deletion to complete...
@@ -337,8 +345,6 @@ groups:
         command: connector create
         description: |
           Create a listener.
-
-          @resource_description@
         usage: skupper listener create <name> <port> [options]
         examples: |
           # Create a listener for a database
@@ -358,9 +364,6 @@ groups:
             required: true
             description: |
               The name of the listener resource.
-
-              The name also serves as the default routing key and host
-              if the `--routing-key` and `--host` options are not set.
           - name: port
             property: port
             positional: true
@@ -380,8 +383,6 @@ groups:
         command: connector update
         description: |
           Update a listener.
-
-          @resource_description@
         usage: skupper listener update <name> [options]
         examples: |
           # Change the host and port
@@ -407,8 +408,6 @@ groups:
         command: connector delete
         description: |
           Delete a listener.
-
-          @resource_description@
         usage: skupper listener delete <name>
         output: |
           Waiting for deletion to complete...

@@ -6,6 +6,8 @@ body_class: command
 
 <section>
 
+Show the current status of links for the site.
+
 </section>
 
 <section>

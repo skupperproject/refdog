@@ -1,5 +1,10 @@
 ---
 body_class: command
+links:
+  - name: Site concept
+    url: /concepts/site.html
+  - name: Site resource
+    url: /resources/site.html
 ---
 
 # Site status command

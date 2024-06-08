@@ -15,14 +15,6 @@ links:
 
 Create a connector.
 
-A connector binds target workloads in the local site to
-listeners in remote sites.
-
-Each site can have multiple connector resources.
-
-When creating a connector, you must supply a target workload
-using the `--workload`, `--selector`, or `--host` options.
-
 </section>
 
 <section>
@@ -43,13 +35,13 @@ Connector "<name>" is ready.
 
 ~~~
 # Create a connector for a database
-skupper connector create database 5432 --workload deployment/postgresql
+skupper connector create database 5432
 
-# Set the routing key explicitly
-skupper connector create backend 8080 --workload deployment/backend --routing-key be1
+# Set the routing key and workload explicitly
+skupper connector create backend 8080 --routing-key be1 --workload deployment/backend
 
 # Produce YAML output
-skupper connector create frontend 8080 --workload deployment/frontend --output yaml
+skupper connector create backend 8080 --output yaml
 ~~~
 
 </section>
@@ -61,9 +53,6 @@ skupper connector create frontend 8080 --workload deployment/frontend --output y
 - <h3 id="name">name <span class="argument-info">string, required</span></h3>
 
   The name of the connector resource.
-  
-  The name also serves as the default routing key if the
-  `--routing-key` option is not set.
 
 - <h3 id="port">port <span class="argument-info">integer, required</span></h3>
 
@@ -82,15 +71,13 @@ skupper connector create frontend 8080 --workload deployment/frontend --output y
 
 - <h3 id="selector">--selector <span class="argument-info">string</span></h3>
 
-  A Kubernetes label selector for targeting server pods.
-  
-  
-  This is an alternative to setting the `--workload` or
-  `--host` options.
+  A Kubernetes label selector for specifying target pods.
+
+  _Default:_ `app=<value-of-name>`
 
   _See also:_ [Kubernetes label selectors]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors), [Kubernetes pods]({{site_prefix}}https://kubernetes.io/docs/concepts/workloads/pods/)
 
-- <h3 id="workload">--workload <span class="argument-info">string (<code>&lt;resource-kind&gt;/&lt;resource-name&gt;</code>)</span></h3>
+- <h3 id="workload">--workload <span class="argument-info">string (resource name)</span></h3>
 
   A Kubernetes resource name that identifies a workload.
   It resolves to an equivalent pod selector.

@@ -59,7 +59,7 @@ spec:
 
 - <h3 id="selector">selector <span class="property-info">string</span></h3>
 
-  A Kubernetes label selector for targeting server pods.
+  A Kubernetes label selector for specifying target pods.
 
   _See also:_ [Kubernetes label selectors]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors), [Kubernetes pods]({{site_prefix}}https://kubernetes.io/docs/concepts/workloads/pods/)
 

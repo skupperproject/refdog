@@ -150,6 +150,9 @@ def generate_argument(argument, append):
     if argument.required and argument.default is None:
         argument_info += ", required"
 
+    if not argument.required and argument.positional:
+        argument_info += ", optional"
+
     append(f"- <h3 id=\"{id_}\">{prefix}{name} <span class=\"argument-info\">{argument_info}</span></h3>")
     append()
 
@@ -297,15 +300,6 @@ class Argument(ModelObjectAttribute):
                 "Property '{}' not found in {}".format(self.data["property"], self.command.resource)
 
             return self.command.resource.spec_properties_by_name[self.data["property"]]
-
-    @property
-    def rename(self):
-        if self.property_ and self.property_.rename:
-            default = argument_name(self.property_.rename)
-        else:
-            default = None
-
-        return self.data.get("rename", default)
 
     @property
     def type(self):
