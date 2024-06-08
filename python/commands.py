@@ -99,7 +99,7 @@ def generate_command(command):
         append("## Arguments")
         append()
 
-        for argument in command.arguments():
+        for argument in command.arguments:
             generate_argument(argument, append)
 
         append("</section>")
@@ -255,26 +255,18 @@ class Command(ModelObject):
     def examples(self):
         return self.data.get("examples")
 
-    def arguments(self, include=None, exclude=None):
+    @property
+    def arguments(self):
         arguments_by_name = dict()
 
-        if "inherit_arguments" in self.data:
-            from_command = self.data["inherit_arguments"]["from"]
-            include = self.data["inherit_arguments"].get("include")
-            exclude = self.data["inherit_arguments"].get("exclude")
-            inherited = self.model.commands_by_name[from_command].arguments(include, exclude)
+        if "inherit_command_arguments" in self.data:
+            command = self.data["inherit_command_arguments"]
+            arguments = self.model.commands_by_name[command].arguments
 
-            arguments_by_name.update(((x.name, x) for x in inherited))
+            arguments_by_name.update(((x.name, x) for x in arguments))
 
         for argument_data in self.data.get("arguments", []):
             name = argument_data["name"]
-
-            if include is not None and name not in include:
-                continue
-
-            if exclude is not None and name in exclude:
-                continue
-
             arguments_by_name[name] = Argument(self.model, self, argument_data)
 
         yield from arguments_by_name.values()

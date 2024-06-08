@@ -1,3 +1,17 @@
+standard_arguments:
+  output:
+    name: Output options
+    arguments:
+      - name: output
+        type: string
+        description: |
+          Print resources to the console instead of submitting
+          them to the Skupper controller.
+        choices:
+          - name: json
+            description: Produce JSON output
+          - name: yaml
+            description: Produce YAML output
 global_arguments:
   - name: help
     description: |
@@ -76,8 +90,8 @@ groups:
         output: |
           Waiting for update to complete...
           Site "<name>" is updated.
-        inherit_arguments:
-          from: site create
+        inherit_command_arguments: site create
+        inherit_standard_arguments: [output]
         arguments:
           - name: name
             type: string
@@ -320,8 +334,7 @@ groups:
         output: |
           Waiting for update to complete...
           Connector "<name>" is updated.
-        inherit_arguments:
-          from: connector create
+        inherit_command_arguments: connector create
         arguments:
           - name: port
             property: port
@@ -410,8 +423,7 @@ groups:
         output: |
           Waiting for update to complete...
           Listener "<name>" is updated.
-        inherit_arguments:
-          from: listener create
+        inherit_command_arguments: listener create
         arguments:
           - name: port
             property: port
