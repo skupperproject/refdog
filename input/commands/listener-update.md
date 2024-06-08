@@ -48,7 +48,7 @@ skupper listener update frontend --port 9090 --output yaml
 
 <section>
 
-## Arguments
+## Options
 
 - <h3 id="name">name <span class="argument-info">string, required</span></h3>
 

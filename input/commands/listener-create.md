@@ -48,7 +48,7 @@ skupper listener create frontend 8080 --output yaml
 
 <section>
 
-## Arguments
+## Options
 
 - <h3 id="name">name <span class="argument-info">string, required</span></h3>
 

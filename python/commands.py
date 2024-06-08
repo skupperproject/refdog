@@ -96,7 +96,7 @@ def generate_command(command):
     if command.arguments:
         append("<section>")
         append()
-        append("## Arguments")
+        append("## Options")
         append()
 
         for argument in command.arguments:
@@ -104,6 +104,19 @@ def generate_command(command):
 
         append("</section>")
         append()
+
+    if command.standard_arguments:
+        for name, arguments in command.standard_arguments:
+            append("<section>")
+            append()
+            append(f"## {name}")
+            append()
+
+            for argument in arguments:
+                generate_argument(argument, append)
+
+            append("</section>")
+            append()
 
     if command.errors:
         append("<section>")
@@ -270,6 +283,17 @@ class Command(ModelObject):
             arguments_by_name[name] = Argument(self.model, self, argument_data)
 
         yield from arguments_by_name.values()
+
+    @property
+    def standard_arguments(self):
+        if "inherit_standard_arguments" not in self.data:
+            return
+
+        for key in self.data["inherit_standard_arguments"]:
+            group = self.model.data["standard_arguments"][key]
+            arguments = [Argument(self.model, self, x) for x in group["arguments"]]
+
+            yield group["name"], arguments
 
     @property
     def errors(self):

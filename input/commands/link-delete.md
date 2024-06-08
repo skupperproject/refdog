@@ -27,7 +27,7 @@ $ skupper link delete <name>
 
 <section>
 
-## Arguments
+## Options
 
 </section>
 

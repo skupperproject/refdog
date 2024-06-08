@@ -12,7 +12,7 @@ Display help for connector commands and exit.
 
 <section>
 
-## Arguments
+## Options
 
 </section>
 

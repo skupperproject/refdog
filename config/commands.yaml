@@ -1,4 +1,19 @@
 standard_arguments:
+  context:
+    name: Context options
+    arguments:
+      - name: namespace
+        type: string
+        description: |
+          Select the current namespace.
+      - name: context
+        type: string
+        description: |
+          Select the current kubeconfig context.
+      - name: platform
+        type: string
+        description: |
+          Select the current Skupper platform.
   output:
     name: Output options
     arguments:
@@ -12,22 +27,12 @@ standard_arguments:
             description: Produce JSON output
           - name: yaml
             description: Produce YAML output
-global_arguments:
-  - name: help
-    description: |
-      Display help and exit.
-  - name: context
-    type: string
-    description: |
-      Select the kubeconfig context.
-  - name: namespace
-    type: string
-    description: |
-      Select the Kubernetes namespace.
-  - name: platform
-    type: string
-    description: |
-      Select the Skupper platform.
+  global:
+    name: Global options
+    arguments:
+      - name: help
+        description: |
+          Display help and exit.
 groups:
   - name: Site configuration
     commands:
@@ -54,6 +59,7 @@ groups:
         output: |
           Waiting for status...
           Site "<name>" is ready.
+        inherit_standard_arguments: [output, context, global]
         arguments:
           - name: name
             type: string
@@ -91,7 +97,7 @@ groups:
           Waiting for update to complete...
           Site "<name>" is updated.
         inherit_command_arguments: site create
-        inherit_standard_arguments: [output]
+        inherit_standard_arguments: [output, context, global]
         arguments:
           - name: name
             type: string
@@ -115,6 +121,7 @@ groups:
         output: |
           Waiting for deletion to complete...
           Site "<name>" is deleted.
+        inherit_standard_arguments: [context, global]
         arguments:
           - name: name
             type: string
@@ -137,6 +144,7 @@ groups:
         output: |
           NAME   STATUS   SITES-IN-NETWORK   SERVICES-IN-NETWORK
           west   Ready    1                  0
+        inherit_standard_arguments: [context, global]
         notes: |
           What is services-in-network?  Is that the total number of
           unique routing keys defined by connectors?  Or listeners?

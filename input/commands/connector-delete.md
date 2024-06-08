@@ -31,7 +31,7 @@ Connector "<name>" is deleted.
 
 <section>
 
-## Arguments
+## Options
 
 - <h3 id="name">name <span class="argument-info">string, required</span></h3>
 

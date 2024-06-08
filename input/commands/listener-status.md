@@ -25,7 +25,7 @@ database   database      database   5432   1
 
 <section>
 
-## Arguments
+## Options
 
 </section>
 

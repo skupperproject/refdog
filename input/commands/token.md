@@ -17,7 +17,7 @@ Display help for token commands and exit.
 
 <section>
 
-## Arguments
+## Options
 
 </section>
 

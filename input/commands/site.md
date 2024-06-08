@@ -22,7 +22,7 @@ There can be only one site resource per namespace.
 
 <section>
 
-## Arguments
+## Options
 
 </section>
 

@@ -15,7 +15,7 @@ links:
 
 <section>
 
-## Arguments
+## Options
 
 </section>
 

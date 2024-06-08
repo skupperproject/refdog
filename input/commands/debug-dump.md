@@ -23,7 +23,7 @@ Debug dump file generated at <file>.
 
 <section>
 
-## Arguments
+## Options
 
 </section>
 

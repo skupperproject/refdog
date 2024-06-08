@@ -55,7 +55,7 @@ skupper token issue ~/token.yaml --expiration-period 24h --redemptions-allowed 3
 
 <section>
 
-## Arguments
+## Options
 
 - <h3 id="file">file <span class="argument-info">string, required</span></h3>
 

@@ -12,7 +12,7 @@ Display help for debug commands and exit.
 
 <section>
 
-## Arguments
+## Options
 
 </section>
 

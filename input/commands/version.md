@@ -10,7 +10,7 @@ body_class: command
 
 <section>
 
-## Arguments
+## Options
 
 </section>
 

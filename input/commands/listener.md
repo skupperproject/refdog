@@ -12,7 +12,7 @@ Display help for listener commands and exit.
 
 <section>
 
-## Arguments
+## Options
 
 </section>
 

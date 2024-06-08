@@ -32,7 +32,7 @@ You can now safely delete <file>.
 
 <section>
 
-## Arguments
+## Options
 
 - <h3 id="file">file <span class="argument-info">string, required</span></h3>
 

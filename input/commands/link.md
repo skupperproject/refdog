@@ -24,7 +24,7 @@ grant and token to obtain a link.
 
 <section>
 
-## Arguments
+## Options
 
 </section>
 
