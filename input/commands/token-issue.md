@@ -41,6 +41,20 @@ The token expires after 1 use or after 15 minutes.
 
 <section>
 
+## Examples
+
+~~~
+# Issue a token
+skupper token issue ~/token.yaml
+
+# Issue a token with non-default limits
+skupper token issue ~/token.yaml --expiration-period 24h --redemptions-allowed 3
+~~~
+
+</section>
+
+<section>
+
 ## Arguments
 
 - <h3 id="file">file <span class="argument-info">string, required</span></h3>
@@ -66,5 +80,11 @@ The token expires after 1 use or after 15 minutes.
 <section>
 
 ## Errors
+
+- **Link access is not enabled**
+
+  Link access at this site is not currently enabled.  You
+  can use "skupper site update --enable-link-access" to
+  enable it.
 
 </section>
