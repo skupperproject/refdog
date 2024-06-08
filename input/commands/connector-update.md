@@ -5,23 +5,20 @@ links:
     url: /concepts/connector.html
   - name: Connector resource
     url: /resources/connector.html
-  - name: Listener create command
-    url: /commands/listener-create.html
+  - name: Listener update command
+    url: /commands/listener-update.html
 ---
 
-# Connector create command
+# Connector update command
 
 <section>
 
-Create a connector.
+Update a connector.
 
 A connector binds target workloads in the local site to
 listeners in remote sites.
 
 Each site can have multiple connector resources.
-
-When creating a connector, you must supply a target workload
-using the `--workload`, `--selector`, or `--host` options.
 
 </section>
 
@@ -30,9 +27,9 @@ using the `--workload`, `--selector`, or `--host` options.
 ## Usage
 
 ~~~ shell
-$ skupper connector create <name> <port> [options]
-Waiting for status...
-Connector "<name>" is ready.
+$ skupper connector update <name> [options]
+Waiting for update to complete...
+Connector "<name>" is updated.
 ~~~
 
 </section>
@@ -42,14 +39,14 @@ Connector "<name>" is ready.
 ## Examples
 
 ~~~
-# Create a connector for a database
-skupper connector create database 5432 --workload deployment/postgresql
+# Change the workload and port
+skupper connector update database --workload deployment/mysql --port 3306
 
-# Set the routing key explicitly
-skupper connector create backend 8080 --workload deployment/backend --routing-key be1
+# Change the routing key
+skupper connector update backend --routing-key be2
 
 # Produce YAML output
-skupper connector create frontend 8080 --workload deployment/frontend --output yaml
+skupper connector update frontend --port 9090 --output yaml
 ~~~
 
 </section>
@@ -65,7 +62,7 @@ skupper connector create frontend 8080 --workload deployment/frontend --output y
   The name also serves as the default routing key if the
   `--routing-key` option is not set.
 
-- <h3 id="port">port <span class="argument-info">integer, required</span></h3>
+- <h3 id="port">--port <span class="argument-info">integer</span></h3>
 
   The port on the target workload to forward traffic to.
 

@@ -10,3 +10,15 @@ links:
 <section>
 
 </section>
+
+<section>
+
+## Arguments
+
+</section>
+
+<section>
+
+## Errors
+
+</section>

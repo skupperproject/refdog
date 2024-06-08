@@ -226,7 +226,7 @@ groups:
                 url: /concepts/routing-key.html
           - name: port
             description: |
-              The port number the target workload is listening on.
+              The port on the target workload to forward traffic to.
           - name: selector
             description: |
               A Kubernetes label selector for targeting server pods.

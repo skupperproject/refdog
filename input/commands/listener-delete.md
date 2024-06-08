@@ -1,5 +1,12 @@
 ---
 body_class: command
+links:
+  - name: Listener concept
+    url: /concepts/listener.html
+  - name: Listener resource
+    url: /resources/listener.html
+  - name: Connector delete command
+    url: /commands/connector-delete.html
 ---
 
 # Listener delete command
@@ -7,6 +14,11 @@ body_class: command
 <section>
 
 Delete a listener.
+
+A listener binds a connection endpoint in the local site to
+target workloads in remote sites.
+
+Each site can have multiple listener definitions.
 
 </section>
 
@@ -17,7 +29,7 @@ Delete a listener.
 ~~~ shell
 $ skupper listener delete <name>
 Waiting for deletion to complete...
-Listener "<name>" is deleted
+Listener "<name>" is deleted.
 ~~~
 
 </section>
@@ -26,8 +38,14 @@ Listener "<name>" is deleted
 
 ## Arguments
 
-- <h3 id="name">name <span class="argument-info">string</span></h3>
+- <h3 id="name">name <span class="argument-info">string, required</span></h3>
 
   The name of the listener resource.
+
+</section>
+
+<section>
+
+## Errors
 
 </section>

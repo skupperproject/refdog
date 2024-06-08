@@ -13,8 +13,8 @@ links:
 
 <section>
 
-A listener is a local connection endpoint bound to servers
-in remote sites.
+A listener binds a connection endpoint in the local site to
+target workloads in remote sites.
 
 Each site can have multiple listener definitions.
 

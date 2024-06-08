@@ -13,14 +13,7 @@ links:
 
 <section>
 
-A connector binds local servers to listeners in remote
-sites.
-
-Theses:
-
-  - A connector targets a workload in the local site (or
-    reachable on the local network).
-  - A connector forwards connections from matching listeners
-    at remote sites to the workload in the local site.
+A connector binds target workloads in the local site to
+listeners in remote sites.
 
 </section>

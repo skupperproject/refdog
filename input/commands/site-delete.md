@@ -20,7 +20,7 @@ Delete a site.
 ~~~ shell
 $ skupper site delete [name]
 Waiting for deletion to complete...
-Site "<name>" is deleted
+Site "<name>" is deleted.
 ~~~
 
 </section>
@@ -29,7 +29,7 @@ Site "<name>" is deleted
 
 ## Arguments
 
-- <h3 id="name">name <span class="argument-info">string</span></h3>
+- <h3 id="name">--name <span class="argument-info">string</span></h3>
 
   The name of the site resource.
 

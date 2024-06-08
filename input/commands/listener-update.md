@@ -5,15 +5,15 @@ links:
     url: /concepts/listener.html
   - name: Listener resource
     url: /resources/listener.html
-  - name: Connector create command
-    url: /commands/connector-create.html
+  - name: Connector update command
+    url: /commands/connector-update.html
 ---
 
-# Listener create command
+# Listener update command
 
 <section>
 
-Create a listener.
+Update a listener.
 
 A listener binds a connection endpoint in the local site to
 target workloads in remote sites.
@@ -27,9 +27,9 @@ Each site can have multiple listener definitions.
 ## Usage
 
 ~~~ shell
-$ skupper listener create <name> <port> [options]
-Waiting for status...
-Listener "<name>" is ready.
+$ skupper listener update <name> [options]
+Waiting for update to complete...
+Listener "<name>" is updated.
 ~~~
 
 </section>
@@ -39,14 +39,14 @@ Listener "<name>" is ready.
 ## Examples
 
 ~~~
-# Create a listener for a database
-skupper listener create database 5432
+# Change the host and port
+skupper listener update database --host mysql --port 3306
 
-# Set the routing key and host explicitly
-skupper listener create backend 8080 --routing-key be1 --host apiserver
+# Change the routing key
+skupper listener update backend --routing-key be2
 
 # Produce YAML output
-skupper listener create frontend 8080 --output yaml
+skupper listener update frontend --port 9090 --output yaml
 ~~~
 
 </section>
@@ -62,7 +62,7 @@ skupper listener create frontend 8080 --output yaml
   The name also serves as the default routing key and host
   if the `--routing-key` and `--host` options are not set.
 
-- <h3 id="port">port <span class="argument-info">integer, required</span></h3>
+- <h3 id="port">--port <span class="argument-info">integer</span></h3>
 
   The port of the local listener.  Clients at this site use
   the listener host and port to establish connections to

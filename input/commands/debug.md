@@ -9,3 +9,15 @@ body_class: command
 Display help for debug commands and exit.
 
 </section>
+
+<section>
+
+## Arguments
+
+</section>
+
+<section>
+
+## Errors
+
+</section>

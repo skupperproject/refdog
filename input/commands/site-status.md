@@ -24,6 +24,18 @@ west   Ready    1                  0
 
 <section>
 
+## Arguments
+
+</section>
+
+<section>
+
+## Errors
+
+</section>
+
+<section>
+
 ## Notes
 
 What is services-in-network?  Is that the total number of

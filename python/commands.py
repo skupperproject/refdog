@@ -25,7 +25,6 @@ def generate(model):
     append()
 
     for group in model.groups:
-        # append(f"- [{group.title}]({group.id}.html)")
         append(f"#### {group.name}")
         append()
 
@@ -100,7 +99,7 @@ def generate_command(command):
         append("## Arguments")
         append()
 
-        for argument in command.arguments:
+        for argument in command.arguments():
             generate_argument(argument, append)
 
         append("</section>")
@@ -140,6 +139,7 @@ def generate_argument(argument, append):
 
     debug(f"Generating {argument}")
 
+    prefix = "" if argument.positional else "--"
     name = nvl(argument.rename, argument.name)
     id_ = get_fragment_id(name)
     argument_info = argument.type
@@ -150,7 +150,7 @@ def generate_argument(argument, append):
     if argument.required and argument.default is None:
         argument_info += ", required"
 
-    append(f"- <h3 id=\"{id_}\">{name} <span class=\"argument-info\">{argument_info}</span></h3>")
+    append(f"- <h3 id=\"{id_}\">{prefix}{name} <span class=\"argument-info\">{argument_info}</span></h3>")
     append()
 
     if argument.description:
@@ -228,15 +228,6 @@ class Command(ModelObject):
     def __init__(self, model, group, data):
         super().__init__("command", model, group, data)
 
-        self.arguments = list()
-        self.errors = list()
-
-        for argument_data in self.data.get("arguments", []):
-            self.arguments.append(Argument(self.model, self, argument_data))
-
-        for error_data in self.data.get("errors", []):
-            self.errors.append(Error(self, error_data))
-
     @property
     def description(self):
         description = self.data.get("description")
@@ -250,16 +241,45 @@ class Command(ModelObject):
         return description
 
     @property
-    def examples(self):
-        return self.data.get("examples")
-
-    @property
     def usage(self):
         return self.data.get("usage")
 
     @property
     def output(self):
         return self.data.get("output")
+
+    @property
+    def examples(self):
+        return self.data.get("examples")
+
+    def arguments(self, include=None, exclude=None):
+        arguments_by_name = dict()
+
+        if "inherit_arguments" in self.data:
+            from_command = self.data["inherit_arguments"]["from"]
+            include = self.data["inherit_arguments"].get("include")
+            exclude = self.data["inherit_arguments"].get("exclude")
+            inherited = self.model.commands_by_name[from_command].arguments(include, exclude)
+
+            arguments_by_name.update(((x.name, x) for x in inherited))
+
+        for argument_data in self.data.get("arguments", []):
+            name = argument_data["name"]
+
+            if include is not None and name not in include:
+                continue
+
+            if exclude is not None and name in exclude:
+                continue
+
+            arguments_by_name[name] = Argument(self.model, self, argument_data)
+
+        yield from arguments_by_name.values()
+
+    @property
+    def errors(self):
+        for error_data in self.data.get("errors", []):
+            yield Error(self, error_data)
 
 class Argument(ModelObjectAttribute):
     def __init__(self, model, command, data):
@@ -281,7 +301,7 @@ class Argument(ModelObjectAttribute):
     @property
     def rename(self):
         if self.property_ and self.property_.rename:
-            default = argument_name(self.property_.rename, self.positional)
+            default = argument_name(self.property_.rename)
         else:
             default = None
 
@@ -314,7 +334,8 @@ class Argument(ModelObjectAttribute):
 
     @property
     def positional(self):
-        return self.data.get("positional")
+        default = self.required and self.default is None
+        return self.data.get("positional", default)
 
     @property
     def description(self):
@@ -351,12 +372,9 @@ class Error:
     def notes(self):
         return self.data.get("notes")
 
-def argument_name(property_name, positional):
+def argument_name(property_name):
     chars = list()
     prev = None
-
-    if not positional:
-        chars.append("--")
 
     for char in property_name:
         if char.isupper():

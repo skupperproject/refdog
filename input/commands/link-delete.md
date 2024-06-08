@@ -17,3 +17,15 @@ $ skupper link delete <name>
 ~~~
 
 </section>
+
+<section>
+
+## Arguments
+
+</section>
+
+<section>
+
+## Errors
+
+</section>

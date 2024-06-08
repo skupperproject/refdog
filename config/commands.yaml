@@ -1,16 +1,16 @@
 global_arguments:
-  - name: --help
+  - name: help
     description: |
       Display help and exit.
-  - name: --context
+  - name: context
     type: string
     description: |
       Select the kubeconfig context.
-  - name: --namespace
+  - name: namespace
     type: string
     description: |
       Select the Kubernetes namespace.
-  - name: --platform
+  - name: platform
     type: string
     description: |
       Select the Skupper platform.
@@ -36,7 +36,7 @@ groups:
           skupper site create west --enable-link-access
         output: |
           Waiting for status...
-          Site "<name>" is ready
+          Site "<name>" is ready.
         arguments:
           - name: name
             type: string
@@ -44,14 +44,14 @@ groups:
             description: |
               A name of your choice for the Skupper site.  This name is
               displayed in the console and CLI output.
-          - name: --enable-link-access
+          - name: enable-link-access
             type: boolean
             description: |
               Allow access for incoming links from remote sites.
-          - name: --link-access-type
+          - name: link-access-type
             property: linkAccess
             default: default
-          - name: --service-account
+          - name: service-account
             property: serviceAccount
         errors:
           - message: A site resource already exists
@@ -72,24 +72,18 @@ groups:
           skupper site update --enable-link-access --service-account app1:alice
         output: |
           Waiting for update to complete...
-          Site "<name>" is updated
+          Site "<name>" is updated.
+        inherit_arguments:
+          from: site create
+          exclude: [name]
         arguments:
           - name: name
             type: string
             description: |
-              This is optional!  We use the site associated with the
-              current namespace if the name is not given.
-
               The name of the site resource.
-          - name: --enable-link-access
-            type: boolean
-            description: |
-              Allow access for incoming links from remote sites.
-          - name: --link-access-type
-            property: linkAccess
-            default: default
-          - name: --service-account
-            property: serviceAccount
+
+              If not specified, the name is that of the site
+              associated with the current namespace.
         errors:
           - message: No site resource exists
             description: |
@@ -103,7 +97,7 @@ groups:
         usage: skupper site delete [name]
         output: |
           Waiting for deletion to complete...
-          Site "<name>" is deleted
+          Site "<name>" is deleted.
         arguments:
           - name: name
             type: string
@@ -174,9 +168,9 @@ groups:
             required: true
             description: |
               The name of the token file.
-          - name: --expiration-period
+          - name: expiration-period
             property: validFor
-          - name: --redemptions-allowed
+          - name: redemptions-allowed
             property: claims
       - name: token redeem
         concept: claim
@@ -223,7 +217,7 @@ groups:
           skupper connector create frontend 8080 --workload deployment/frontend --output yaml
         output: |
           Waiting for status...
-          Connector "<name>" is ready
+          Connector "<name>" is ready.
         arguments:
           - name: name
             type: string
@@ -236,17 +230,17 @@ groups:
           - name: port
             property: port
             positional: true
-          - name: --routing-key
+          - name: routing-key
             property: routingKey
             default: _Value of name_
-          - name: --selector
+          - name: selector
             property: selector
             description: |
-              A Kubernetes label selector for targeting server pods.
+              @property_description@
 
               This is an alternative to setting the `--workload` or
               `--host` options.
-          - name: --workload
+          - name: workload
             type: string
             format: "<code>&lt;resource-kind&gt;/&lt;resource-name&gt;</code>"
             description: |
@@ -258,20 +252,20 @@ groups:
             links:
               - name: Kubernetes workloads
                 url: https://kubernetes.io/docs/concepts/workloads/
-          - name: --host
+          - name: host
             property: host
             description: |
               The hostname or IP address of the server.
 
               This is an alternative to setting the `--selector` or
               `--workload` options.
-          - name: --tls-secret
+          - name: tls-secret
             property: tlsCredentials
-          - name: --type
+          - name: type
             property: type
-          - name: --include-not-ready
+          - name: include-not-ready
             property: includeNotReady
-          - name: --output
+          - name: output
             type: string
             description: |
               Print resources to the console instead of submitting
@@ -281,16 +275,49 @@ groups:
                 description: Produce JSON output
               - name: yaml
                 description: Produce YAML output
+      - name: connector update
+        concept: connector
+        resource: Connector
+        command: listener update
+        description: |
+          Update a connector.
+
+          @resource_description@
+        usage: skupper connector update <name> [options]
+        examples: |
+          # Change the workload and port
+          skupper connector update database --workload deployment/mysql --port 3306
+
+          # Change the routing key
+          skupper connector update backend --routing-key be2
+
+          # Produce YAML output
+          skupper connector update frontend --port 9090 --output yaml
+        output: |
+          Waiting for update to complete...
+          Connector "<name>" is updated.
+        inherit_arguments:
+          from: connector create
+        arguments:
+          - name: port
+            property: port
+            required: false
       - name: connector delete
+        concept: connector
+        resource: Connector
+        command: listener delete
         description: |
           Delete a connector.
+
+          @resource_description@
         usage: skupper connector delete <name>
         output: |
           Waiting for deletion to complete...
-          Connector "<name>" is deleted
+          Connector "<name>" is deleted.
         arguments:
           - name: name
             type: string
+            required: true
             description: |
               The name of the connector resource.
       - name: connector status
@@ -324,7 +351,7 @@ groups:
           skupper listener create frontend 8080 --output yaml
         output: |
           Waiting for status...
-          Listener "<name>" is ready
+          Listener "<name>" is ready.
         arguments:
           - name: name
             type: string
@@ -337,26 +364,59 @@ groups:
           - name: port
             property: port
             positional: true
-          - name: --routing-key
+          - name: routing-key
             property: routingKey
             default: _Value of name_
-          - name: --host
+          - name: host
             property: host
             default: _Value of name_
-          - name: --tls-secret
+          - name: tls-secret
             property: tlsCredentials
-          - name: --type
+          - name: type
             property: type
+      - name: listener update
+        concept: listener
+        resource: Listener
+        command: connector update
+        description: |
+          Update a listener.
+
+          @resource_description@
+        usage: skupper listener update <name> [options]
+        examples: |
+          # Change the host and port
+          skupper listener update database --host mysql --port 3306
+
+          # Change the routing key
+          skupper listener update backend --routing-key be2
+
+          # Produce YAML output
+          skupper listener update frontend --port 9090 --output yaml
+        output: |
+          Waiting for update to complete...
+          Listener "<name>" is updated.
+        inherit_arguments:
+          from: listener create
+        arguments:
+          - name: port
+            property: port
+            required: false
       - name: listener delete
+        concept: listener
+        resource: Listener
+        command: connector delete
         description: |
           Delete a listener.
+
+          @resource_description@
         usage: skupper listener delete <name>
         output: |
           Waiting for deletion to complete...
-          Listener "<name>" is deleted
+          Listener "<name>" is deleted.
         arguments:
           - name: name
             type: string
+            required: true
             description: |
               The name of the listener resource.
       - name: listener status
@@ -385,7 +445,7 @@ groups:
           Generate a debug dump file.
         usage: skupper debug dump [file]
         output: |
-          Debug dump file generated at <file>
+          Debug dump file generated at <file>.
   - name: Other operations
     commands:
       # - name: network status

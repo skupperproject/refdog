@@ -16,7 +16,19 @@ Generate a debug dump file.
 
 ~~~ shell
 $ skupper debug dump [file]
-Debug dump file generated at <file>
+Debug dump file generated at <file>.
 ~~~
+
+</section>
+
+<section>
+
+## Arguments
+
+</section>
+
+<section>
+
+## Errors
 
 </section>

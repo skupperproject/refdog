@@ -1,5 +1,12 @@
 ---
 body_class: command
+links:
+  - name: Connector concept
+    url: /concepts/connector.html
+  - name: Connector resource
+    url: /resources/connector.html
+  - name: Listener delete command
+    url: /commands/listener-delete.html
 ---
 
 # Connector delete command
@@ -7,6 +14,11 @@ body_class: command
 <section>
 
 Delete a connector.
+
+A connector binds target workloads in the local site to
+listeners in remote sites.
+
+Each site can have multiple connector resources.
 
 </section>
 
@@ -17,7 +29,7 @@ Delete a connector.
 ~~~ shell
 $ skupper connector delete <name>
 Waiting for deletion to complete...
-Connector "<name>" is deleted
+Connector "<name>" is deleted.
 ~~~
 
 </section>
@@ -26,8 +38,14 @@ Connector "<name>" is deleted
 
 ## Arguments
 
-- <h3 id="name">name <span class="argument-info">string</span></h3>
+- <h3 id="name">name <span class="argument-info">string, required</span></h3>
 
   The name of the connector resource.
+
+</section>
+
+<section>
+
+## Errors
 
 </section>

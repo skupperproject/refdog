@@ -39,3 +39,9 @@ You can now safely delete <file>.
   The name of the token file.
 
 </section>
+
+<section>
+
+## Errors
+
+</section>

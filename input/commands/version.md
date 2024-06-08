@@ -7,3 +7,15 @@ body_class: command
 <section>
 
 </section>
+
+<section>
+
+## Arguments
+
+</section>
+
+<section>
+
+## Errors
+
+</section>

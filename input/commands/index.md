@@ -30,10 +30,12 @@ links:
 
   - [connector](connector.html)
   - [connector create](connector-create.html)
+  - [connector update](connector-update.html)
   - [connector delete](connector-delete.html)
   - [connector status](connector-status.html)
   - [listener](listener.html)
   - [listener create](listener-create.html)
+  - [listener update](listener-update.html)
   - [listener delete](listener-delete.html)
   - [listener status](listener-status.html)
 #### Debug operations

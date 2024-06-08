@@ -45,18 +45,24 @@ The token expires after 1 use or after 15 minutes.
 
   The name of the token file.
 
-- <h3 id="--expiration-period">--expiration-period <span class="argument-info">string (duration)</span></h3>
+- <h3 id="expiration-period">--expiration-period <span class="argument-info">string (duration)</span></h3>
 
   The period of time in which a token for this grant can
   be redeemed.
 
   _Default:_ `15m`
 
-- <h3 id="--redemptions-allowed">--redemptions-allowed <span class="argument-info">integer</span></h3>
+- <h3 id="redemptions-allowed">--redemptions-allowed <span class="argument-info">integer</span></h3>
 
   The number of times a token for this grant can be
   redeemed.
 
   _Default:_ 1
+
+</section>
+
+<section>
+
+## Errors
 
 </section>

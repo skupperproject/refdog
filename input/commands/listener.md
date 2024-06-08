@@ -9,3 +9,15 @@ body_class: command
 Display help for listener commands and exit.
 
 </section>
+
+<section>
+
+## Arguments
+
+</section>
+
+<section>
+
+## Errors
+
+</section>
