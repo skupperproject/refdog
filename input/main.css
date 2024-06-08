@@ -277,7 +277,7 @@ aside > div {
 }
 
 aside h4 {
-    font-size: 0.9em;
+    font-size: 0.9em !important;
     font-weight: 500;
     text-transform: uppercase;
 }
@@ -291,6 +291,10 @@ body.resource h2, body.command h2 {
 }
 
 body.resource h3, body.command h3 {
+    font-size: 1.1em;
+}
+
+body.resource h4, body.command h4 {
     font-family: var(--body-font-family);
     font-size: 1em;
 }

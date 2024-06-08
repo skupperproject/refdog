@@ -19,6 +19,12 @@ Display help for token commands and exit.
 
 ## Options
 
+### Global options
+
+- <h4 id="help">--help <span class="argument-info">None</span></h3>
+
+  Display help and exit.
+
 </section>
 
 <section>

@@ -159,12 +159,14 @@ groups:
           Display help for link commands and exit.
 
           @resource_description@
+        inherit_standard_arguments: [global]
       - name: link delete
         concept: link
         resource: Link
         description: |
           Delete a link.
         usage: skupper link delete <name>
+        inherit_standard_arguments: [context, global]
       - name: link status
         description: |
           Show the current status of links for the site.
@@ -176,20 +178,25 @@ groups:
           Links from remote sites:
 
           None
+        inherit_standard_arguments: [output, context, global]
       - name: grant
         concept: grant
         resource: Grant
+        inherit_standard_arguments: [global]
       - name: grant delete
         concept: grant
         resource: Grant
+        inherit_standard_arguments: [context, global]
       - name: grant status
         concept: grant
         resource: Grant
+        inherit_standard_arguments: [output, context, global]
       - name: token
         concept: claim
         resource: Claim
         description: |
           Display help for token commands and exit.
+        inherit_standard_arguments: [global]
       - name: token issue
         concept: grant
         resource: Grant
@@ -216,6 +223,7 @@ groups:
 
           # Issue a token with non-default limits
           skupper token issue ~/token.yaml --expiration-period 24h --redemptions-allowed 3
+        inherit_standard_arguments: [context, global]
         arguments:
           - name: file
             type: string
@@ -243,6 +251,7 @@ groups:
           Waiting for status...
           Link "<name>" is active.
           You can now safely delete <file>.
+        inherit_standard_arguments: [context, global]
         arguments:
           - name: file
             type: string
@@ -254,6 +263,7 @@ groups:
       - name: connector
         description: |
           Display help for connector commands and exit.
+        inherit_standard_arguments: [global]
       - name: connector create
         concept: connector
         resource: Connector
@@ -273,6 +283,7 @@ groups:
         output: |
           Waiting for status...
           Connector "<name>" is ready.
+        inherit_standard_arguments: [output, context, global]
         arguments:
           - name: name
             type: string
@@ -313,16 +324,6 @@ groups:
             property: type
           - name: include-not-ready
             property: includeNotReady
-          - name: output
-            type: string
-            description: |
-              Print resources to the console instead of submitting
-              them to the Skupper controller.
-            choices:
-              - name: json
-                description: Produce JSON output
-              - name: yaml
-                description: Produce YAML output
       - name: connector update
         concept: connector
         resource: Connector
@@ -343,6 +344,7 @@ groups:
           Waiting for update to complete...
           Connector "<name>" is updated.
         inherit_command_arguments: connector create
+        inherit_standard_arguments: [output, context, global]
         arguments:
           - name: port
             property: port
@@ -357,6 +359,7 @@ groups:
         output: |
           Waiting for deletion to complete...
           Connector "<name>" is deleted.
+        inherit_standard_arguments: [context, global]
         arguments:
           - name: name
             type: string
@@ -393,6 +396,7 @@ groups:
         output: |
           Waiting for status...
           Listener "<name>" is ready.
+        inherit_standard_arguments: [output, context, global]
         arguments:
           - name: name
             type: string
@@ -432,6 +436,7 @@ groups:
           Waiting for update to complete...
           Listener "<name>" is updated.
         inherit_command_arguments: listener create
+        inherit_standard_arguments: [output, context, global]
         arguments:
           - name: port
             property: port
@@ -446,6 +451,7 @@ groups:
         output: |
           Waiting for deletion to complete...
           Listener "<name>" is deleted.
+        inherit_standard_arguments: [context, global]
         arguments:
           - name: name
             type: string
@@ -460,14 +466,7 @@ groups:
           NAME       ROUTING-KEY   HOST       PORT   MATCHING-CONNECTORS
           backend    backend       backend    8080   1
           database   database      database   5432   1
-  # - name: Platform operations
-  #   commands:
-  #     - name: platform
-  #       description: |
-  #         Display help for platform commands and exit.
-  #     - name: platform install
-  #     - name: platform uninstall
-  #     - name: platform switch
+        inherit_standard_arguments: [output, context, global]
   - name: Debug operations
     commands:
       - name: debug

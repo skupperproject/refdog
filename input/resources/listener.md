@@ -45,7 +45,7 @@ spec:
 
 ## Spec properties
 
-- <h3 id="routingkey">routingKey <span class="property-info">string, required</span></h3>
+- <h4 id="routingkey">routingKey <span class="property-info">string, required</span></h3>
 
   The identifier used to route traffic from listeners to
   connectors.  To enable connecting to a service at a
@@ -54,19 +54,19 @@ spec:
 
   _See also:_ [Routing key concept]({{site_prefix}}/concepts/routing-key.html)
 
-- <h3 id="host">host <span class="property-info">string, required</span></h3>
+- <h4 id="host">host <span class="property-info">string, required</span></h3>
 
   The hostname or IP address of the local listener.  Clients
   at this site use the listener host and port to
   establish connections to the remote service.
 
-- <h3 id="port">port <span class="property-info">integer, required</span></h3>
+- <h4 id="port">port <span class="property-info">integer, required</span></h3>
 
   The port of the local listener.  Clients at this site use
   the listener host and port to establish connections to
   the remote service.
 
-- <h3 id="tlssecret">tlsSecret <span class="property-info">string</span></h3>
+- <h4 id="tlssecret">tlsSecret <span class="property-info">string</span></h3>
 
   The name of a Kubernetes secret containing TLS
   credentials.  The secret contains the trusted server
@@ -80,7 +80,7 @@ spec:
 
   _See also:_ [TLS re-encrypt]({{site_prefix}})
 
-- <h3 id="type">type <span class="property-info">string</span></h3>
+- <h4 id="type">type <span class="property-info">string</span></h3>
 
   The listener type.
 
@@ -92,10 +92,10 @@ spec:
 
 ## Status properties
 
-- <h3 id="status">status <span class="property-info">string</span></h3>
+- <h4 id="status">status <span class="property-info">string</span></h3>
 
   The current state of the resource.
 
-- <h3 id="active">active <span class="property-info">boolean</span></h3>
+- <h4 id="active">active <span class="property-info">boolean</span></h3>
 
 </section>

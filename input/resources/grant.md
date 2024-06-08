@@ -25,21 +25,21 @@ period and for a limited number of redemptions.
 
 ## Spec properties
 
-- <h3 id="redemptionsallowed">redemptionsAllowed <span class="property-info">integer</span></h3>
+- <h4 id="redemptionsallowed">redemptionsAllowed <span class="property-info">integer</span></h3>
 
   The number of times a token for this grant can be
   redeemed.
 
   _Default:_ 1
 
-- <h3 id="expirationperiod">expirationPeriod <span class="property-info">string (duration)</span></h3>
+- <h4 id="expirationperiod">expirationPeriod <span class="property-info">string (duration)</span></h3>
 
   The period of time in which a token for this grant can
   be redeemed.
 
   _Default:_ `15m`
 
-- <h3 id="secret">secret <span class="property-info">string</span></h3>
+- <h4 id="secret">secret <span class="property-info">string</span></h3>
 
   What is this secret as compared to the one in the
   status?  The description above says "containing the
@@ -54,29 +54,29 @@ period and for a limited number of redemptions.
 
 ## Status properties
 
-- <h3 id="status">status <span class="property-info">string</span></h3>
+- <h4 id="status">status <span class="property-info">string</span></h3>
 
   The current state of the resource.
 
-- <h3 id="redemptions">redemptions <span class="property-info">integer</span></h3>
+- <h4 id="redemptions">redemptions <span class="property-info">integer</span></h3>
 
   The number of times a token for this grant has been
   redeemed.
 
-- <h3 id="expiration">expiration <span class="property-info">string (date-time)</span></h3>
+- <h4 id="expiration">expiration <span class="property-info">string (date-time)</span></h3>
 
   The point in time when the grant expires.
 
-- <h3 id="redemptionsecret">redemptionSecret <span class="property-info">string</span></h3>
+- <h4 id="redemptionsecret">redemptionSecret <span class="property-info">string</span></h3>
 
   The secret used to authenticate tokens submitted for
   redemption.
 
-- <h3 id="redemptionurl">redemptionURL <span class="property-info">string</span></h3>
+- <h4 id="redemptionurl">redemptionURL <span class="property-info">string</span></h3>
 
   The URL of the token redemption service for this grant.
 
-- <h3 id="redemptionca">redemptionCA <span class="property-info">string</span></h3>
+- <h4 id="redemptionca">redemptionCA <span class="property-info">string</span></h3>
 
   The trusted server certificate of the token redemption
   service for this grant.

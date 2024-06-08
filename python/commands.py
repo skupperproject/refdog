@@ -102,21 +102,16 @@ def generate_command(command):
         for argument in command.arguments:
             generate_argument(argument, append)
 
+        if command.standard_arguments:
+            for name, arguments in command.standard_arguments:
+                append(f"### {name}")
+                append()
+
+                for argument in arguments:
+                    generate_argument(argument, append)
+
         append("</section>")
         append()
-
-    if command.standard_arguments:
-        for name, arguments in command.standard_arguments:
-            append("<section>")
-            append()
-            append(f"## {name}")
-            append()
-
-            for argument in arguments:
-                generate_argument(argument, append)
-
-            append("</section>")
-            append()
 
     if command.errors:
         append("<section>")
@@ -166,7 +161,7 @@ def generate_argument(argument, append):
     if not argument.required and argument.positional:
         argument_info += ", optional"
 
-    append(f"- <h3 id=\"{id_}\">{prefix}{name} <span class=\"argument-info\">{argument_info}</span></h3>")
+    append(f"- <h4 id=\"{id_}\">{prefix}{name} <span class=\"argument-info\">{argument_info}</span></h3>")
     append()
 
     if argument.description:

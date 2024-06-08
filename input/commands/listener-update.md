@@ -50,17 +50,17 @@ skupper listener update frontend --port 9090 --output yaml
 
 ## Options
 
-- <h3 id="name">name <span class="argument-info">string, required</span></h3>
+- <h4 id="name">name <span class="argument-info">string, required</span></h3>
 
   The name of the listener resource.
 
-- <h3 id="port">--port <span class="argument-info">integer</span></h3>
+- <h4 id="port">--port <span class="argument-info">integer</span></h3>
 
   The port of the local listener.  Clients at this site use
   the listener host and port to establish connections to
   the remote service.
 
-- <h3 id="routing-key">--routing-key <span class="argument-info">string</span></h3>
+- <h4 id="routing-key">--routing-key <span class="argument-info">string</span></h3>
 
   The identifier used to route traffic from listeners to
   connectors.  To enable connecting to a service at a
@@ -71,7 +71,7 @@ skupper listener update frontend --port 9090 --output yaml
 
   _See also:_ [Routing key concept]({{site_prefix}}/concepts/routing-key.html)
 
-- <h3 id="host">--host <span class="argument-info">string</span></h3>
+- <h4 id="host">--host <span class="argument-info">string</span></h3>
 
   The hostname or IP address of the local listener.  Clients
   at this site use the listener host and port to
@@ -79,7 +79,7 @@ skupper listener update frontend --port 9090 --output yaml
 
   _Default:_ _Value of name_
 
-- <h3 id="tls-secret">--tls-secret <span class="argument-info">string</span></h3>
+- <h4 id="tls-secret">--tls-secret <span class="argument-info">string</span></h3>
 
   The name of a Kubernetes secret containing TLS
   credentials.  The secret contains the trusted server
@@ -93,11 +93,43 @@ skupper listener update frontend --port 9090 --output yaml
 
   _See also:_ [TLS re-encrypt]({{site_prefix}})
 
-- <h3 id="type">--type <span class="argument-info">string</span></h3>
+- <h4 id="type">--type <span class="argument-info">string</span></h3>
 
   The listener type.
 
   _Default:_ `tcp`
+
+### Output options
+
+- <h4 id="output">--output <span class="argument-info">string</span></h3>
+
+  Print resources to the console instead of submitting
+  them to the Skupper controller.
+
+  _Choices:_
+  
+   - `json` - Produce JSON output
+   - `yaml` - Produce YAML output
+
+### Context options
+
+- <h4 id="namespace">--namespace <span class="argument-info">string</span></h3>
+
+  Select the current namespace.
+
+- <h4 id="context">--context <span class="argument-info">string</span></h3>
+
+  Select the current kubeconfig context.
+
+- <h4 id="platform">--platform <span class="argument-info">string</span></h3>
+
+  Select the current Skupper platform.
+
+### Global options
+
+- <h4 id="help">--help <span class="argument-info">None</span></h3>
+
+  Display help and exit.
 
 </section>
 
