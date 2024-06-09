@@ -1,5 +1,10 @@
 ---
 body_class: command
+links:
+  - name: Link resource
+    url: /resources/link.html
+  - name: Link command
+    url: /commands/link.html
 ---
 
 # Link status command

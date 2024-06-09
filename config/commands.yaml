@@ -42,7 +42,6 @@ groups:
 
           @resource_description@
       - name: site create
-        parent: site
         description: |
           Create a site.
         usage: skupper site create <name> [options]
@@ -77,7 +76,6 @@ groups:
             description: |
               There is already a site resource defined for the namespace.
       - name: site update
-        parent: site
         description: |
           Change site settings.
         usage: skupper site update [name] [options]
@@ -107,7 +105,6 @@ groups:
             description: |
               There is no existing Skupper site resource to update.
       - name: site delete
-        parent: site
         description: |
           Delete a site.
         usage: skupper site delete [name]
@@ -129,7 +126,6 @@ groups:
             description: |
               There is no existing Skupper site resource to delete.
       - name: site status
-        parent: site
         description: |
           Show the current status of a site.
         usage: skupper site status
@@ -151,7 +147,6 @@ groups:
           @resource_description@
         inherit_standard_options: [global]
       - name: link delete
-        parent: link
         description: |
           Delete a link.
         usage: skupper link delete <name>
@@ -171,10 +166,8 @@ groups:
       - name: grant
         inherit_standard_options: [global]
       - name: grant delete
-        parent: grant
         inherit_standard_options: [context, global]
       - name: grant status
-        parent: grant
         inherit_standard_options: [output, context, global]
       - name: token
         resource: Claim
@@ -182,7 +175,6 @@ groups:
           Display help for token commands and exit.
         inherit_standard_options: [global]
       - name: token issue
-        parent: token
         resource: Grant
         links:
           - name: Token redeem command
@@ -227,7 +219,6 @@ groups:
               can use "skupper site update --enable-link-access" to
               enable it.
       - name: token redeem
-        parent: token
         links:
           - name: Token issue command
             url: /commands/token-issue.html
@@ -252,7 +243,6 @@ groups:
           Display help for connector commands and exit.
         inherit_standard_options: [global]
       - name: connector create
-        parent: connector
         links:
           - name: Listener create command
             url: /commands/listener-create.html
@@ -313,7 +303,6 @@ groups:
           - name: include-not-ready
             property: includeNotReady
       - name: connector update
-        parent: connector
         links:
           - name: Listener update command
             url: /commands/listener-update.html
@@ -339,7 +328,6 @@ groups:
             property: port
             required: false
       - name: connector delete
-        parent: connector
         links:
           - name: Listener delete command
             url: /commands/listener-delete.html
@@ -357,7 +345,6 @@ groups:
             description: |
               The name of the connector resource.
       - name: connector status
-        parent: connector
         description: |
           Show the status of connectors in the current site.
         usage: skupper connector status
@@ -369,7 +356,6 @@ groups:
         description: |
           Display help for listener commands and exit.
       - name: listener create
-        parent: listener
         links:
           - name: Connector create command
             url: /commands/connector-create.html
@@ -409,7 +395,6 @@ groups:
           - name: type
             property: type
       - name: listener update
-        parent: listener
         links:
           - name: Connector update command
             url: /commands/connector-update.html
@@ -435,7 +420,6 @@ groups:
             property: port
             required: false
       - name: listener delete
-        parent: listener
         links:
           - name: Connector delete command
             url: /commands/connector-delete.html
@@ -453,7 +437,6 @@ groups:
             description: |
               The name of the listener resource.
       - name: listener status
-        parent: listener
         description: |
           Show the status of listeners in the current site.
         usage: skupper listener status

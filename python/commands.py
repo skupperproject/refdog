@@ -220,10 +220,14 @@ class Command(ModelObject):
 
     @property
     def parent(self):
-        try:
-            return self.model.commands_by_name[self.data["parent"]]
-        except KeyError:
-            pass
+        tokens = self.name.split(" ")
+        default = tokens[0] if len(tokens) > 1 else None
+        name = self.data.get("parent", default)
+
+        if name is None:
+            return
+
+        return self.model.commands_by_name[name]
 
     @property
     def resource(self):
