@@ -19,7 +19,7 @@ links:
 
 ### Global options
 
-- <h4 id="help">--help <span class="argument-info">None</span></h3>
+- <h4 id="help">--help <span class="argument-info">None</span></h4>
 
   Display help and exit.
 

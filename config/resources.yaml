@@ -229,7 +229,11 @@ groups:
               The port on the target workload to forward traffic to.
           - name: selector
             description: |
-              A Kubernetes label selector for specifying target pods.
+              A Kubernetes label selector for specifying target server
+              pods.
+
+              On Kubernetes, you usually want to use this.  As an
+              alternative, you can use `host`.
             links:
               - name: Kubernetes label selectors
                 url: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors

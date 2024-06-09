@@ -47,16 +47,16 @@ skupper site create west --enable-link-access
 
 ## Options
 
-- <h4 id="name">name <span class="argument-info">string, required</span></h3>
+- <h4 id="name">name <span class="argument-info">string, required</span></h4>
 
   A name of your choice for the Skupper site.  This name is
   displayed in the console and CLI output.
 
-- <h4 id="enable-link-access">--enable-link-access <span class="argument-info">boolean</span></h3>
+- <h4 id="enable-link-access">--enable-link-access <span class="argument-info">boolean</span></h4>
 
   Allow access for incoming links from remote sites.
 
-- <h4 id="link-access-type">--link-access-type <span class="argument-info">string</span></h3>
+- <h4 id="link-access-type">--link-access-type <span class="argument-info">string</span></h4>
 
   Configure external access for links from remote sites.
 
@@ -71,7 +71,7 @@ skupper site create west --enable-link-access
    - `route` - Use an OpenShift route.
    - `loadbalancer` - Use a Kubernetes load balancer.
 
-- <h4 id="service-account">--service-account <span class="argument-info">string</span></h3>
+- <h4 id="service-account">--service-account <span class="argument-info">string</span></h4>
 
   The Kubernetes service account under which to run the
   Skupper controller.
@@ -82,7 +82,7 @@ skupper site create west --enable-link-access
 
 ### Output options
 
-- <h4 id="output">--output <span class="argument-info">string</span></h3>
+- <h4 id="output">--output <span class="argument-info">string</span></h4>
 
   Print resources to the console instead of submitting
   them to the Skupper controller.
@@ -94,21 +94,21 @@ skupper site create west --enable-link-access
 
 ### Context options
 
-- <h4 id="namespace">--namespace <span class="argument-info">string</span></h3>
+- <h4 id="namespace">--namespace <span class="argument-info">string</span></h4>
 
   Select the current namespace.
 
-- <h4 id="context">--context <span class="argument-info">string</span></h3>
+- <h4 id="context">--context <span class="argument-info">string</span></h4>
 
   Select the current kubeconfig context.
 
-- <h4 id="platform">--platform <span class="argument-info">string</span></h3>
+- <h4 id="platform">--platform <span class="argument-info">string</span></h4>
 
   Select the current Skupper platform.
 
 ### Global options
 
-- <h4 id="help">--help <span class="argument-info">None</span></h3>
+- <h4 id="help">--help <span class="argument-info">None</span></h4>
 
   Display help and exit.
 

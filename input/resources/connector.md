@@ -44,7 +44,7 @@ spec:
 
 ## Spec properties
 
-- <h4 id="routingkey">routingKey <span class="property-info">string, required</span></h3>
+- <h4 id="routingkey">routingKey <span class="property-info">string, required</span></h4>
 
   The identifier used to route traffic from listeners to
   connectors.  To expose a local workload to a remote
@@ -53,23 +53,27 @@ spec:
 
   _See also:_ [Routing key concept]({{site_prefix}}/concepts/routing-key.html)
 
-- <h4 id="port">port <span class="property-info">integer, required</span></h3>
+- <h4 id="port">port <span class="property-info">integer, required</span></h4>
 
   The port on the target workload to forward traffic to.
 
-- <h4 id="selector">selector <span class="property-info">string</span></h3>
+- <h4 id="selector">selector <span class="property-info">string</span></h4>
 
-  A Kubernetes label selector for specifying target pods.
+  A Kubernetes label selector for specifying target server
+  pods.
+  
+  On Kubernetes, you usually want to use this.  As an
+  alternative, you can use `host`.
 
   _See also:_ [Kubernetes label selectors]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors), [Kubernetes pods]({{site_prefix}}https://kubernetes.io/docs/concepts/workloads/pods/)
 
-- <h4 id="host">host <span class="property-info">string</span></h3>
+- <h4 id="host">host <span class="property-info">string</span></h4>
 
   The hostname or IP address of the server.  This is an
   alternative to `selector` for specifying the target
   server.
 
-- <h4 id="tlssecret">tlsSecret <span class="property-info">string</span></h3>
+- <h4 id="tlssecret">tlsSecret <span class="property-info">string</span></h4>
 
   The name of a Kubernetes secret containing the trusted
   server certificate (typically a CA).
@@ -82,12 +86,12 @@ spec:
 
   _See also:_ [TLS re-encrypt]({{site_prefix}})
 
-- <h4 id="includenotready">includeNotReady <span class="property-info">boolean</span></h3>
+- <h4 id="includenotready">includeNotReady <span class="property-info">boolean</span></h4>
 
   If set, include server pods that are not in the ready
   state.
 
-- <h4 id="type">type <span class="property-info">string</span></h3>
+- <h4 id="type">type <span class="property-info">string</span></h4>
 
   The connector type.
 
@@ -99,10 +103,10 @@ spec:
 
 ## Status properties
 
-- <h4 id="status">status <span class="property-info">string</span></h3>
+- <h4 id="status">status <span class="property-info">string</span></h4>
 
   The current state of the resource.
 
-- <h4 id="active">active <span class="property-info">boolean</span></h3>
+- <h4 id="active">active <span class="property-info">boolean</span></h4>
 
 </section>

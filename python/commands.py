@@ -161,7 +161,7 @@ def generate_argument(argument, append):
     if not argument.required and argument.positional:
         argument_info += ", optional"
 
-    append(f"- <h4 id=\"{id_}\">{prefix}{name} <span class=\"argument-info\">{argument_info}</span></h3>")
+    append(f"- <h4 id=\"{id_}\">{prefix}{name} <span class=\"argument-info\">{argument_info}</span></h4>")
     append()
 
     if argument.description:

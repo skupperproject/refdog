@@ -52,7 +52,7 @@ spec:
 
 ## Spec properties
 
-- <h4 id="linkaccess">linkAccess <span class="property-info">string</span></h3>
+- <h4 id="linkaccess">linkAccess <span class="property-info">string</span></h4>
 
   Configure external access for links from remote sites.
 
@@ -67,7 +67,7 @@ spec:
    - `route` - Use an OpenShift route.
    - `loadbalancer` - Use a Kubernetes load balancer.
 
-- <h4 id="serviceaccount">serviceAccount <span class="property-info">string</span></h3>
+- <h4 id="serviceaccount">serviceAccount <span class="property-info">string</span></h4>
 
   The Kubernetes service account under which to run the
   Skupper controller.
@@ -76,7 +76,7 @@ spec:
 
   _See also:_ [Kubernetes service accounts]({{site_prefix}}https://kubernetes.io/docs/concepts/security/service-accounts/)
 
-- <h4 id="options">options <span class="property-info">array</span></h3>
+- <h4 id="options">options <span class="property-info">array</span></h4>
 
 </section>
 
@@ -84,20 +84,20 @@ spec:
 
 ## Status properties
 
-- <h4 id="status">status <span class="property-info">string</span></h3>
+- <h4 id="status">status <span class="property-info">string</span></h4>
 
   The current state of the resource.
 
-- <h4 id="active">active <span class="property-info">boolean</span></h3>
+- <h4 id="active">active <span class="property-info">boolean</span></h4>
 
   "This thing is working."
 
-- <h4 id="endpoints">endpoints <span class="property-info">array</span></h3>
+- <h4 id="endpoints">endpoints <span class="property-info">array</span></h4>
 
-- <h4 id="sitesinnetwork">sitesInNetwork <span class="property-info">integer</span></h3>
+- <h4 id="sitesinnetwork">sitesInNetwork <span class="property-info">integer</span></h4>
 
-- <h4 id="servicesinnetwork">servicesInNetwork <span class="property-info">integer</span></h3>
+- <h4 id="servicesinnetwork">servicesInNetwork <span class="property-info">integer</span></h4>
 
-- <h4 id="network">network <span class="property-info">array</span></h3>
+- <h4 id="network">network <span class="property-info">array</span></h4>
 
 </section>

@@ -133,7 +133,7 @@ def generate_property(prop, append):
     if prop.required and prop.default is None:
         prop_info += ", required"
 
-    append(f"- <h4 id=\"{id_}\">{name} <span class=\"property-info\">{prop_info}</span></h3>")
+    append(f"- <h4 id=\"{id_}\">{name} <span class=\"property-info\">{prop_info}</span></h4>")
     append()
 
     if prop.description:

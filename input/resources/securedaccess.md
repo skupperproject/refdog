@@ -12,17 +12,17 @@ body_class: resource
 
 ## Spec properties
 
-- <h4 id="ports">ports <span class="property-info">array, required</span></h3>
+- <h4 id="ports">ports <span class="property-info">array, required</span></h4>
 
-- <h4 id="selector">selector <span class="property-info">object, required</span></h3>
+- <h4 id="selector">selector <span class="property-info">object, required</span></h4>
 
-- <h4 id="ca">ca <span class="property-info">string</span></h3>
+- <h4 id="ca">ca <span class="property-info">string</span></h4>
 
-- <h4 id="certificate">certificate <span class="property-info">string</span></h3>
+- <h4 id="certificate">certificate <span class="property-info">string</span></h4>
 
-- <h4 id="accesstype">accessType <span class="property-info">string</span></h3>
+- <h4 id="accesstype">accessType <span class="property-info">string</span></h4>
 
-- <h4 id="options">options <span class="property-info">object</span></h3>
+- <h4 id="options">options <span class="property-info">object</span></h4>
 
 </section>
 
@@ -30,12 +30,12 @@ body_class: resource
 
 ## Status properties
 
-- <h4 id="active">active <span class="property-info">boolean</span></h3>
+- <h4 id="active">active <span class="property-info">boolean</span></h4>
 
-- <h4 id="status">status <span class="property-info">string</span></h3>
+- <h4 id="status">status <span class="property-info">string</span></h4>
 
-- <h4 id="urls">urls <span class="property-info">array</span></h3>
+- <h4 id="urls">urls <span class="property-info">array</span></h4>
 
-- <h4 id="ca">ca <span class="property-info">string</span></h3>
+- <h4 id="ca">ca <span class="property-info">string</span></h4>
 
 </section>
