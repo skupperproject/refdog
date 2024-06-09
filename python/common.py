@@ -62,13 +62,21 @@ def generate_attribute_choices(attr):
 
     return "\n".join(lines)
 
-def object_property(name, default=None):
+def object_property(name, default=None, required=False):
     def get(obj):
-        return obj.data.get(name, default)
+        value = obj.data.get(name, default)
+
+        if required and value is None:
+            raise Error(f"Property {name} on {obj} is required")
+
+        return value
 
     return property(get)
 
 class ModelObjectGroup:
+    name = object_property("name", required=True)
+    description = object_property("description")
+
     def __init__(self, model, data):
         self.model = model
         self.data = data
@@ -82,17 +90,10 @@ class ModelObjectGroup:
     def id(self):
         return get_fragment_id(self.name)
 
-    @property
-    def name(self):
-        return self.data["name"]
-
-    @property
-    def description(self):
-        return self.data.get("description")
-
 class ModelObject:
+    name = object_property("name", required=True)
     description = object_property("description")
-    links = object_property("links", [])
+    links = object_property("links", default=[])
     notes = object_property("notes")
 
     def __init__(self, model, group, data):
@@ -104,10 +105,6 @@ class ModelObject:
 
     def __repr__(self):
         return f"{self.__class__.__name__} '{self.name}'"
-
-    @property
-    def name(self):
-        return self.data["name"]
 
     @property
     def rename(self):
@@ -133,8 +130,9 @@ class ModelObject:
             return self.model.command_model.commands_by_name[self.data["command"]]
 
 class ModelObjectAttribute:
+    name = object_property("name", required=True)
     description = object_property("description")
-    links = object_property("links", [])
+    links = object_property("links", default=[])
     notes = object_property("notes")
 
     def __init__(self, model, object, data):
@@ -146,10 +144,6 @@ class ModelObjectAttribute:
 
     def __repr__(self):
         return f"{self.__class__.__name__} '{self.name}'"
-
-    @property
-    def name(self):
-        return self.data["name"]
 
     @property
     def rename(self):

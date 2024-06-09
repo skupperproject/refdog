@@ -331,6 +331,7 @@ class Argument(ModelObjectAttribute):
         return value
 
 class Error:
+    message = object_property("message", required=True)
     description = object_property("description")
     notes = object_property("notes")
 
@@ -339,8 +340,4 @@ class Error:
         self.data = data
 
     def __repr__(self):
-        return f"error '{self.message}'"
-
-    @property
-    def message(self):
-        return self.data["message"]
+        return f"{self.__class__.__name__} '{self.message}'"
