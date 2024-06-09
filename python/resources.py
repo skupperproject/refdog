@@ -168,7 +168,7 @@ class ResourceModel:
         self.crds_by_name = dict()
 
         for group_data in self.data["groups"]:
-            self.groups.append(Group(self, group_data))
+            self.groups.append(ResourceGroup(self, group_data))
 
         for group in self.groups:
             for resource in group.resources:
@@ -191,7 +191,7 @@ class ResourceModel:
         self.check_properties()
 
     def __repr__(self):
-        return "resource model"
+        return self.__class__.__name__
 
     def check_properties(self):
         for crd_name, crd_data in self.crds_by_name.items():
@@ -224,36 +224,18 @@ class ResourceModel:
         except KeyError:
             return {}
 
-class Group:
+class ResourceGroup(ModelObjectGroup):
     def __init__(self, model, data):
-        self.model = model
-        self.data = data
-
-        debug(f"Loading {self}")
+        super().__init__(model, data)
 
         self.resources = list()
 
         for resource_data in self.data.get("resources", []):
             self.resources.append(Resource(self.model, self, resource_data))
 
-    def __repr__(self):
-        return f"group '{self.name}'"
-
-    @property
-    def id(self):
-        return get_fragment_id(self.name)
-
-    @property
-    def name(self):
-        return self.data["name"]
-
-    @property
-    def description(self):
-        return self.data.get("description")
-
 class Resource(ModelObject):
     def __init__(self, model, group, data):
-        super().__init__("resource", model, group, data)
+        super().__init__(model, group, data)
 
         self.spec_properties = list()
         self.spec_properties_by_name = dict()
@@ -290,7 +272,7 @@ class Resource(ModelObject):
 
 class Property(ModelObjectAttribute):
     def __init__(self, model, resource, data, group):
-        super().__init__("property", model, resource, data)
+        super().__init__(model, resource, data)
 
         self.group = group
 

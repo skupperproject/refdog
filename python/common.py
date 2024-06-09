@@ -62,9 +62,30 @@ def generate_attribute_choices(attr):
 
     return "\n".join(lines)
 
+class ModelObjectGroup:
+    def __init__(self, model, data):
+        self.model = model
+        self.data = data
+
+        debug(f"Loading {self}")
+
+    def __repr__(self):
+        return f"{self.__class__.__name__} '{self.name}'"
+
+    @property
+    def id(self):
+        return get_fragment_id(self.name)
+
+    @property
+    def name(self):
+        return self.data["name"]
+
+    @property
+    def description(self):
+        return self.data.get("description")
+
 class ModelObject:
-    def __init__(self, type_name, model, group, data):
-        self.type_name = type_name
+    def __init__(self, model, group, data):
         self.model = model
         self.group = group
         self.data = data
@@ -72,7 +93,7 @@ class ModelObject:
         debug(f"Loading {self}")
 
     def __repr__(self):
-        return f"{self.type_name} '{self.name}'"
+        return f"{self.__class__.__name__} '{self.name}'"
 
     @property
     def name(self):
@@ -114,8 +135,7 @@ class ModelObject:
         return self.data.get("notes")
 
 class ModelObjectAttribute:
-    def __init__(self, type_name, model, object, data):
-        self.type_name = type_name
+    def __init__(self, model, object, data):
         self.model = model
         self.object = object
         self.data = data
@@ -123,7 +143,7 @@ class ModelObjectAttribute:
         debug(f"Loading {self}")
 
     def __repr__(self):
-        return f"{self.type_name} '{self.name}'"
+        return f"{self.__class__.__name__} '{self.name}'"
 
     @property
     def name(self):

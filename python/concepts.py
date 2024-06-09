@@ -77,7 +77,7 @@ class ConceptModel:
         self.groups = list()
 
         for group_data in self.data["groups"]:
-            self.groups.append(Group(self, group_data))
+            self.groups.append(ConceptGroup(self, group_data))
 
         for group in self.groups:
             for concept in group.concepts:
@@ -86,33 +86,14 @@ class ConceptModel:
     def __repr__(self):
         return "concept model"
 
-class Group:
+class ConceptGroup(ModelObjectGroup):
     def __init__(self, model, data):
-        self.model = model
-        self.data = data
-
-        debug(f"Loading {self}")
+        super().__init__(model, data)
 
         self.concepts = list()
 
         for concept_data in self.data.get("concepts", []):
             self.concepts.append(Concept(self.model, self, concept_data))
 
-    def __repr__(self):
-        return f"group '{self.name}'"
-
-    @property
-    def id(self):
-        return get_fragment_id(self.name)
-
-    @property
-    def name(self):
-        return self.data["name"]
-
-    @property
-    def description(self):
-        return self.data.get("description")
-
 class Concept(ModelObject):
-    def __init__(self, model, group, data):
-        super().__init__("concept", model, group, data)
+    pass

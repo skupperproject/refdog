@@ -195,50 +195,26 @@ class CommandModel:
         self.groups = list()
         self.commands_by_name = dict()
 
-        # for argument_data in self.data["global_arguments"]:
-        #     self.global_arguments.append(Argument(self, self, argument_data))
-
         for group_data in self.data["groups"]:
-            self.groups.append(Group(self, group_data))
+            self.groups.append(CommandGroup(self, group_data))
 
         for group in self.groups:
             for command in group.commands:
                 self.commands_by_name[command.name] = command
 
     def __repr__(self):
-        return "command model"
+        return self.__class__.__name__
 
-class Group:
+class CommandGroup(ModelObjectGroup):
     def __init__(self, model, data):
-        self.model = model
-        self.data = data
-
-        debug(f"Loading {self}")
+        super().__init__(model, data)
 
         self.commands = list()
 
         for command_data in self.data.get("commands", []):
             self.commands.append(Command(self.model, self, command_data))
 
-    def __repr__(self):
-        return f"group '{self.name}'"
-
-    @property
-    def id(self):
-        return get_fragment_id(self.name)
-
-    @property
-    def name(self):
-        return self.data["name"]
-
-    @property
-    def description(self):
-        return self.data.get("description")
-
 class Command(ModelObject):
-    def __init__(self, model, group, data):
-        super().__init__("command", model, group, data)
-
     @property
     def description(self):
         description = self.data.get("description")
@@ -296,9 +272,6 @@ class Command(ModelObject):
             yield Error(self, error_data)
 
 class Argument(ModelObjectAttribute):
-    def __init__(self, model, command, data):
-        super().__init__("argument", model, command, data)
-
     @property
     def command(self):
         return self.object
