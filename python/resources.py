@@ -234,7 +234,7 @@ class ResourceGroup(ModelObjectGroup):
             self.resources.append(Resource(self.model, self, resource_data))
 
 class Resource(ModelObject):
-    examples = object_property("examples", [])
+    examples = object_property("examples", default=[])
 
     def __init__(self, model, group, data):
         super().__init__(model, group, data)
@@ -259,9 +259,8 @@ class Resource(ModelObject):
 
     @property
     def description(self):
-        # XXX Default to CRD description
-
-        description = self.data.get("description")
+        default = self.model.get_schema(self).get("description")
+        description = self.data.get("description", default)
 
         if description and self.concept and self.concept.description:
             description = description.replace("@concept_description@", self.concept.description.strip())
@@ -301,5 +300,5 @@ class Property(ModelObjectAttribute):
 
     @property
     def choices(self):
-        # XXX Also get this from the CRD
+        default = self.model.get_schema_property(self).get("enum")
         return self.data.get("choices", [])

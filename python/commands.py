@@ -300,7 +300,6 @@ class Argument(ModelObjectAttribute):
 
     def __init__(self, model, command, data):
         super().__init__(model, command, data)
-
         self.command = command
 
     @property
