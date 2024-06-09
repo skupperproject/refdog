@@ -299,7 +299,7 @@ body.resource h4, body.command h4 {
     font-size: 1em;
 }
 
-body.resource span.property-info, body.command span.argument-info {
+body.resource span.property-info, body.command span.option-info {
     font-weight: 400;
     font-style: italic;
 }
