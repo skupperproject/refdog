@@ -65,6 +65,16 @@ def generate_concept(concept):
     append("</section>")
     append()
 
+    if concept.notes:
+        append("<section class=\"notes\">")
+        append()
+        append("## Notes")
+        append()
+        append(concept.notes.strip())
+        append()
+        append("</section>")
+        append()
+
     write(f"input/concepts/{concept.id}.md", "\n".join(lines))
 
 class ConceptModel:

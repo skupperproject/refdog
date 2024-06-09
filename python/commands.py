@@ -120,22 +120,17 @@ def generate_command(command):
         append()
 
         for error in command.errors:
-            append(f"- **{error.message}**")
-            append()
-
-            if error.description:
-                append(indent(error.description.strip(), 2))
-                append()
+            generate_error(error, append)
 
         append("</section>")
         append()
 
     if command.notes:
-        append("<section>")
+        append("<section class=\"notes\">")
         append()
         append("## Notes")
         append()
-        append(command.notes.strip()) # XXX styling
+        append(command.notes.strip())
         append()
         append("</section>")
         append()
@@ -143,8 +138,6 @@ def generate_command(command):
     write(f"input/commands/{command.id}.md", "\n".join(lines))
 
 def generate_option(option, append):
-    assert option.property_ or option.name, option
-
     debug(f"Generating {option}")
 
     prefix = "" if option.positional else "--"
@@ -185,13 +178,19 @@ def generate_option(option, append):
         append(indent(option.notes.strip(), 2))
         append()
 
+def generate_error(error, append):
+    append(f"- **{error.message}**")
+    append()
+
+    if error.description:
+        append(indent(error.description.strip(), 2))
+        append()
+
 class CommandModel:
     def __init__(self):
         debug(f"Loading {self}")
 
         self.data = read_yaml("config/commands.yaml")
-
-        self.global_options = list()
         self.groups = list()
         self.commands_by_name = dict()
 

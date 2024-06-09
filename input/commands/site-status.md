@@ -39,7 +39,7 @@ west   Ready    1                  0
 
 </section>
 
-<section>
+<section class="notes">
 
 ## Notes
 

@@ -25,7 +25,6 @@ def generate(model):
     append()
 
     for group in model.groups:
-        # append(f"- [{group.name}](#{group.id})")
         append(f"#### {group.name}")
         append()
 
@@ -109,11 +108,11 @@ def generate_resource(resource):
         append()
 
     if resource.notes:
-        append("<section>")
+        append("<section class=\"notes\">")
         append()
         append("## Notes")
         append()
-        append(resource.notes.strip()) # XXX styling
+        append(resource.notes.strip())
         append()
         append("</section>")
         append()
