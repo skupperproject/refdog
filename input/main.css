@@ -209,14 +209,15 @@ a.selected {
     font-weight: 700;
 }
 
-code, pre {
+code {
     font-family: var(--code-font-family);
-    font-size: 0.9em;
+    font-size: 0.8em;
     background-color: var(--code-background-color);
 }
 
 pre {
     padding: 1em;
+    background-color: var(--code-background-color);
 }
 
 /* Standard styles for lists */
