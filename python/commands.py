@@ -295,11 +295,13 @@ class Argument(ModelObjectAttribute):
     format = argument_property("format")
     required = argument_property("required", False)
     default = argument_property("default")
+    choices = argument_property("choices")
     links = argument_property("links", [])
 
-    @property
-    def command(self):
-        return self.object
+    def __init__(self, model, command, data):
+        super().__init__(model, command, data)
+
+        self.command = command
 
     @property
     def property_(self):
@@ -309,11 +311,6 @@ class Argument(ModelObjectAttribute):
                 "Property '{}' not found in {}".format(self.data["property"], self.command.resource)
 
             return self.command.resource.spec_properties_by_name[self.data["property"]]
-
-    @property
-    def choices(self):
-        default = self.property_.choices if self.property_ else []
-        return self.data.get("choices", default)
 
     @property
     def positional(self):
