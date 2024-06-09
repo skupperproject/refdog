@@ -234,6 +234,8 @@ class ResourceGroup(ModelObjectGroup):
             self.resources.append(Resource(self.model, self, resource_data))
 
 class Resource(ModelObject):
+    examples = object_property("examples", [])
+
     def __init__(self, model, group, data):
         super().__init__(model, group, data)
 
@@ -266,24 +268,23 @@ class Resource(ModelObject):
 
         return description
 
-    @property
-    def examples(self):
-        return self.data.get("examples", [])
+def property_property(name):
+    def get(obj):
+        default = obj.model.get_schema_property(obj).get(name)
+        return obj.data.get(name, default)
+
+    return property(get)
 
 class Property(ModelObjectAttribute):
+    type = property_property("type")
+    format = property_property("format")
+    description = property_property("description")
+
     def __init__(self, model, resource, data, group):
         super().__init__(model, resource, data)
 
+        self.resource = resource
         self.group = group
-
-    @property
-    def resource(self):
-        return self.object
-
-    @property
-    def type(self):
-        default = self.model.get_schema_property(self).get("type")
-        return self.data.get("type", default)
 
     @property
     def required(self):
@@ -294,20 +295,11 @@ class Property(ModelObjectAttribute):
         return self.data.get("required", default)
 
     @property
-    def format(self):
-        default = self.model.get_schema_property(self).get("format")
-        return self.data.get("format", default)
-
-    @property
     def default(self):
         default = False if self.type == "boolean" else None
         return self.data.get("default", default)
 
     @property
     def choices(self):
+        # XXX Also get this from the CRD
         return self.data.get("choices", [])
-
-    @property
-    def description(self):
-        default = self.model.get_schema_property(self).get("description")
-        return self.data.get("description", default)

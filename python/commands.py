@@ -215,6 +215,10 @@ class CommandGroup(ModelObjectGroup):
             self.commands.append(Command(self.model, self, command_data))
 
 class Command(ModelObject):
+    usage = object_property("usage")
+    output = object_property("output")
+    examples = object_property("examples")
+
     @property
     def description(self):
         description = self.data.get("description")
@@ -226,18 +230,6 @@ class Command(ModelObject):
             description = description.replace("@resource_description@", self.resource.description.strip())
 
         return description
-
-    @property
-    def usage(self):
-        return self.data.get("usage")
-
-    @property
-    def output(self):
-        return self.data.get("output")
-
-    @property
-    def examples(self):
-        return self.data.get("examples")
 
     @property
     def arguments(self):
@@ -271,7 +263,40 @@ class Command(ModelObject):
         for error_data in self.data.get("errors", []):
             yield Error(self, error_data)
 
+def argument_property(name, default=None):
+    def get(obj):
+        default_ = getattr(obj.property_, name) if obj.property_ else default
+        return obj.data.get(name, default_)
+
+    return property(get)
+
+def argument_name(property_name):
+    chars = list()
+    prev = None
+
+    for char in property_name:
+        if char.isupper():
+            if prev and prev.islower():
+                chars.append("-")
+
+            chars.append(char.lower())
+        else:
+            if prev and prev.isupper() and chars[-2] != "-":
+                chars.insert(-1, "-")
+
+            chars.append(char)
+
+        prev = char
+
+    return "".join(chars)
+
 class Argument(ModelObjectAttribute):
+    type = argument_property("type")
+    format = argument_property("format")
+    required = argument_property("required", False)
+    default = argument_property("default")
+    links = argument_property("links", [])
+
     @property
     def command(self):
         return self.object
@@ -284,26 +309,6 @@ class Argument(ModelObjectAttribute):
                 "Property '{}' not found in {}".format(self.data["property"], self.command.resource)
 
             return self.command.resource.spec_properties_by_name[self.data["property"]]
-
-    @property
-    def type(self):
-        default = self.property_.type if self.property_ else None
-        return self.data.get("type", default)
-
-    @property
-    def format(self):
-        default = self.property_.format if self.property_ else None
-        return self.data.get("format", default)
-
-    @property
-    def required(self):
-        default = self.property_.required if self.property_ else None
-        return self.data.get("required", default)
-
-    @property
-    def default(self):
-        default = self.property_.default if self.property_ else None
-        return self.data.get("default", default)
 
     @property
     def choices(self):
@@ -325,12 +330,10 @@ class Argument(ModelObjectAttribute):
 
         return value
 
-    @property
-    def links(self):
-        default = self.property_.links if self.property_ else []
-        return self.data.get("links", default)
-
 class Error:
+    description = object_property("description")
+    notes = object_property("notes")
+
     def __init__(self, model, data):
         self.model = model
         self.data = data
@@ -341,31 +344,3 @@ class Error:
     @property
     def message(self):
         return self.data["message"]
-
-    @property
-    def description(self):
-        return self.data.get("description")
-
-    @property
-    def notes(self):
-        return self.data.get("notes")
-
-def argument_name(property_name):
-    chars = list()
-    prev = None
-
-    for char in property_name:
-        if char.isupper():
-            if prev and prev.islower():
-                chars.append("-")
-
-            chars.append(char.lower())
-        else:
-            if prev and prev.isupper() and chars[-2] != "-":
-                chars.insert(-1, "-")
-
-            chars.append(char)
-
-        prev = char
-
-    return "".join(chars)

@@ -62,6 +62,12 @@ def generate_attribute_choices(attr):
 
     return "\n".join(lines)
 
+def object_property(name, default=None):
+    def get(obj):
+        return obj.data.get(name, default)
+
+    return property(get)
+
 class ModelObjectGroup:
     def __init__(self, model, data):
         self.model = model
@@ -85,6 +91,10 @@ class ModelObjectGroup:
         return self.data.get("description")
 
 class ModelObject:
+    description = object_property("description")
+    links = object_property("links", [])
+    notes = object_property("notes")
+
     def __init__(self, model, group, data):
         self.model = model
         self.group = group
@@ -122,19 +132,11 @@ class ModelObject:
         if "command" in self.data:
             return self.model.command_model.commands_by_name[self.data["command"]]
 
-    @property
-    def description(self):
-        return self.data.get("description")
-
-    @property
-    def links(self):
-        return self.data.get("links", [])
-
-    @property
-    def notes(self):
-        return self.data.get("notes")
-
 class ModelObjectAttribute:
+    description = object_property("description")
+    links = object_property("links", [])
+    notes = object_property("notes")
+
     def __init__(self, model, object, data):
         self.model = model
         self.object = object
@@ -152,11 +154,3 @@ class ModelObjectAttribute:
     @property
     def rename(self):
         return self.data.get("rename", self.name)
-
-    @property
-    def links(self):
-        return self.data.get("links", [])
-
-    @property
-    def notes(self):
-        return self.data.get("notes")
