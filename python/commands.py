@@ -93,22 +93,22 @@ def generate_command(command):
         append("</section>")
         append()
 
-    if command.arguments:
+    if command.options:
         append("<section>")
         append()
         append("## Options")
         append()
 
-        for argument in command.arguments:
-            generate_argument(argument, append)
+        for option in command.options:
+            generate_option(option, append)
 
-        if command.standard_arguments:
-            for name, arguments in command.standard_arguments:
+        if command.standard_options:
+            for name, options in command.standard_options:
                 append(f"### {name}")
                 append()
 
-                for argument in arguments:
-                    generate_argument(argument, append)
+                for option in options:
+                    generate_option(option, append)
 
         append("</section>")
         append()
@@ -142,47 +142,47 @@ def generate_command(command):
 
     write(f"input/commands/{command.id}.md", "\n".join(lines))
 
-def generate_argument(argument, append):
-    assert argument.property_ or argument.name, argument
+def generate_option(option, append):
+    assert option.property_ or option.name, option
 
-    debug(f"Generating {argument}")
+    debug(f"Generating {option}")
 
-    prefix = "" if argument.positional else "--"
-    name = nvl(argument.rename, argument.name)
+    prefix = "" if option.positional else "--"
+    name = nvl(option.rename, option.name)
     id_ = get_fragment_id(name)
-    argument_info = argument.type
+    option_info = option.type
 
-    if argument.format:
-        argument_info += f" ({argument.format})"
+    if option.format:
+        option_info += f" ({option.format})"
 
-    if argument.required and argument.default is None:
-        argument_info += ", required"
+    if option.required and option.default is None:
+        option_info += ", required"
 
-    if not argument.required and argument.positional:
-        argument_info += ", optional"
+    if not option.required and option.positional:
+        option_info += ", optional"
 
-    append(f"- <h4 id=\"{id_}\">{prefix}{name} <span class=\"argument-info\">{argument_info}</span></h4>")
+    append(f"- <h4 id=\"{id_}\">{prefix}{name} <span class=\"option-info\">{option_info}</span></h4>")
     append()
 
-    if argument.description:
-        append(indent(argument.description.strip(), 2))
+    if option.description:
+        append(indent(option.description.strip(), 2))
         append()
 
-    if argument.default not in (None, False):
-        append(indent(generate_attribute_default(argument), 2))
+    if option.default not in (None, False):
+        append(indent(generate_attribute_default(option), 2))
         append()
 
-    if argument.choices:
-        append(indent(generate_attribute_choices(argument), 2))
+    if option.choices:
+        append(indent(generate_attribute_choices(option), 2))
         append()
 
-    if argument.links:
-        append(indent(generate_attribute_links(argument), 2))
+    if option.links:
+        append(indent(generate_attribute_links(option), 2))
         append()
 
-    if argument.notes:
+    if option.notes:
         # XXX styling
-        append(indent(argument.notes.strip(), 2))
+        append(indent(option.notes.strip(), 2))
         append()
 
 class CommandModel:
@@ -191,7 +191,7 @@ class CommandModel:
 
         self.data = read_yaml("config/commands.yaml")
 
-        self.global_arguments = list()
+        self.global_options = list()
         self.groups = list()
         self.commands_by_name = dict()
 
@@ -232,45 +232,45 @@ class Command(ModelObject):
         return description
 
     @property
-    def arguments(self):
-        arguments_by_name = dict()
+    def options(self):
+        options_by_name = dict()
 
-        if "inherit_command_arguments" in self.data:
-            command = self.data["inherit_command_arguments"]
-            arguments = self.model.commands_by_name[command].arguments
+        if "inherit_command_options" in self.data:
+            command = self.data["inherit_command_options"]
+            options = self.model.commands_by_name[command].options
 
-            arguments_by_name.update(((x.name, x) for x in arguments))
+            options_by_name.update(((x.name, x) for x in options))
 
-        for argument_data in self.data.get("arguments", []):
-            name = argument_data["name"]
-            arguments_by_name[name] = Argument(self.model, self, argument_data)
+        for option_data in self.data.get("options", []):
+            name = option_data["name"]
+            options_by_name[name] = Option(self.model, self, option_data)
 
-        yield from arguments_by_name.values()
+        yield from options_by_name.values()
 
     @property
-    def standard_arguments(self):
-        if "inherit_standard_arguments" not in self.data:
+    def standard_options(self):
+        if "inherit_standard_options" not in self.data:
             return
 
-        for key in self.data["inherit_standard_arguments"]:
-            group = self.model.data["standard_arguments"][key]
-            arguments = [Argument(self.model, self, x) for x in group["arguments"]]
+        for key in self.data["inherit_standard_options"]:
+            group = self.model.data["standard_options"][key]
+            options = [Option(self.model, self, x) for x in group["options"]]
 
-            yield group["name"], arguments
+            yield group["name"], options
 
     @property
     def errors(self):
         for error_data in self.data.get("errors", []):
             yield Error(self, error_data)
 
-def argument_property(name, default=None):
+def option_property(name, default=None):
     def get(obj):
         default_ = getattr(obj.property_, name) if obj.property_ else default
         return obj.data.get(name, default_)
 
     return property(get)
 
-def argument_name(property_name):
+def option_name(property_name):
     chars = list()
     prev = None
 
@@ -290,13 +290,13 @@ def argument_name(property_name):
 
     return "".join(chars)
 
-class Argument(ModelObjectAttribute):
-    type = argument_property("type")
-    format = argument_property("format")
-    required = argument_property("required", False)
-    default = argument_property("default")
-    choices = argument_property("choices")
-    links = argument_property("links", [])
+class Option(ModelObjectAttribute):
+    type = option_property("type")
+    format = option_property("format")
+    required = option_property("required", False)
+    default = option_property("default")
+    choices = option_property("choices")
+    links = option_property("links", [])
 
     @property
     def property_(self):
