@@ -1,7 +1,7 @@
-standard_arguments:
+standard_options:
   context:
     name: Context options
-    arguments:
+    options:
       - name: namespace
         type: string
         description: |
@@ -16,7 +16,7 @@ standard_arguments:
           Select the current Skupper platform.
   output:
     name: Output options
-    arguments:
+    options:
       - name: output
         type: string
         description: |
@@ -29,7 +29,7 @@ standard_arguments:
             description: Produce YAML output
   global:
     name: Global options
-    arguments:
+    options:
       - name: help
         description: |
           Display help and exit.
@@ -37,16 +37,13 @@ groups:
   - name: Site configuration
     commands:
       - name: site
-        concept: site
         resource: Site
         description: |
           Display help for site commands and exit.
 
           @resource_description@
       - name: site create
-        concept: site
         resource: Site
-        command: site update
         description: |
           Create a site.
         usage: skupper site create <name> [options]
@@ -59,8 +56,8 @@ groups:
         output: |
           Waiting for status...
           Site "<name>" is ready.
-        inherit_standard_arguments: [output, context, global]
-        arguments:
+        inherit_standard_options: [output, context, global]
+        options:
           - name: name
             type: string
             required: true
@@ -81,9 +78,7 @@ groups:
             description: |
               There is already a site resource defined for the namespace.
       - name: site update
-        concept: site
         resource: Site
-        command: site create
         description: |
           Change site settings.
         usage: skupper site update [name] [options]
@@ -96,9 +91,9 @@ groups:
         output: |
           Waiting for update to complete...
           Site "<name>" is updated.
-        inherit_command_arguments: site create
-        inherit_standard_arguments: [output, context, global]
-        arguments:
+        inherit_command_options: site create
+        inherit_standard_options: [output, context, global]
+        options:
           - name: name
             type: string
             required: false
@@ -113,7 +108,6 @@ groups:
             description: |
               There is no existing Skupper site resource to update.
       - name: site delete
-        concept: site
         resource: Site
         description: |
           Delete a site.
@@ -121,8 +115,8 @@ groups:
         output: |
           Waiting for deletion to complete...
           Site "<name>" is deleted.
-        inherit_standard_arguments: [context, global]
-        arguments:
+        inherit_standard_options: [context, global]
+        options:
           - name: name
             type: string
             positional: true
@@ -136,15 +130,13 @@ groups:
             description: |
               There is no existing Skupper site resource to delete.
       - name: site status
-        concept: site
-        resource: Site
         description: |
           Show the current status of a site.
         usage: skupper site status
         output: |
           NAME   STATUS   SITES-IN-NETWORK   SERVICES-IN-NETWORK
           west   Ready    1                  0
-        inherit_standard_arguments: [context, global]
+        inherit_standard_options: [context, global]
         notes: |
           What is services-in-network?  Is that the total number of
           unique routing keys defined by connectors?  Or listeners?
@@ -153,20 +145,18 @@ groups:
   - name: Site linking
     commands:
       - name: link
-        concept: link
         resource: Link
         description: |
           Display help for link commands and exit.
 
           @resource_description@
-        inherit_standard_arguments: [global]
+        inherit_standard_options: [global]
       - name: link delete
-        concept: link
         resource: Link
         description: |
           Delete a link.
         usage: skupper link delete <name>
-        inherit_standard_arguments: [context, global]
+        inherit_standard_options: [context, global]
       - name: link status
         description: |
           Show the current status of links for the site.
@@ -178,29 +168,26 @@ groups:
           Links from remote sites:
 
           None
-        inherit_standard_arguments: [output, context, global]
+        inherit_standard_options: [output, context, global]
       - name: grant
-        concept: grant
         resource: Grant
-        inherit_standard_arguments: [global]
+        inherit_standard_options: [global]
       - name: grant delete
-        concept: grant
         resource: Grant
-        inherit_standard_arguments: [context, global]
+        inherit_standard_options: [context, global]
       - name: grant status
-        concept: grant
         resource: Grant
-        inherit_standard_arguments: [output, context, global]
+        inherit_standard_options: [output, context, global]
       - name: token
-        concept: claim
         resource: Claim
         description: |
           Display help for token commands and exit.
-        inherit_standard_arguments: [global]
+        inherit_standard_options: [global]
       - name: token issue
-        concept: grant
         resource: Grant
-        command: token redeem
+        links:
+          - name: Token redeem command
+            url: /commands/token-redeem.html
         description: |
           Create a grant and then use it to create a token file that
           can be redeemed for a link to the local site.
@@ -223,8 +210,8 @@ groups:
 
           # Issue a token with non-default limits
           skupper token issue ~/token.yaml --expiration-period 24h --redemptions-allowed 3
-        inherit_standard_arguments: [context, global]
-        arguments:
+        inherit_standard_options: [context, global]
+        options:
           - name: file
             type: string
             required: true
@@ -241,9 +228,10 @@ groups:
               can use "skupper site update --enable-link-access" to
               enable it.
       - name: token redeem
-        concept: claim
         resource: Claim
-        command: token issue
+        links:
+          - name: Token issue command
+            url: /commands/token-issue.html
         description: |
           Redeem a token for a link to a remote site.
         usage: skupper token redeem <file> [options]
@@ -251,8 +239,8 @@ groups:
           Waiting for status...
           Link "<name>" is active.
           You can now safely delete <file>.
-        inherit_standard_arguments: [context, global]
-        arguments:
+        inherit_standard_options: [context, global]
+        options:
           - name: file
             type: string
             required: true
@@ -261,13 +249,15 @@ groups:
   - name: Service exposure
     commands:
       - name: connector
+        resource: Connector
         description: |
           Display help for connector commands and exit.
-        inherit_standard_arguments: [global]
+        inherit_standard_options: [global]
       - name: connector create
-        concept: connector
         resource: Connector
-        command: listener create
+        links:
+          - name: Listener create command
+            url: /commands/listener-create.html
         description: |
           Create a connector.
         usage: skupper connector create <name> <port> [options]
@@ -283,8 +273,8 @@ groups:
         output: |
           Waiting for status...
           Connector "<name>" is ready.
-        inherit_standard_arguments: [output, context, global]
-        arguments:
+        inherit_standard_options: [output, context, global]
+        options:
           - name: name
             type: string
             required: true
@@ -325,9 +315,10 @@ groups:
           - name: include-not-ready
             property: includeNotReady
       - name: connector update
-        concept: connector
         resource: Connector
-        command: listener update
+        links:
+          - name: Listener update command
+            url: /commands/listener-update.html
         description: |
           Update a connector.
         usage: skupper connector update <name> [options]
@@ -343,30 +334,32 @@ groups:
         output: |
           Waiting for update to complete...
           Connector "<name>" is updated.
-        inherit_command_arguments: connector create
-        inherit_standard_arguments: [output, context, global]
-        arguments:
+        inherit_command_options: connector create
+        inherit_standard_options: [output, context, global]
+        options:
           - name: port
             property: port
             required: false
       - name: connector delete
-        concept: connector
         resource: Connector
-        command: listener delete
+        links:
+          - name: Listener delete command
+            url: /commands/listener-delete.html
         description: |
           Delete a connector.
         usage: skupper connector delete <name>
         output: |
           Waiting for deletion to complete...
           Connector "<name>" is deleted.
-        inherit_standard_arguments: [context, global]
-        arguments:
+        inherit_standard_options: [context, global]
+        options:
           - name: name
             type: string
             required: true
             description: |
               The name of the connector resource.
       - name: connector status
+        resource: Connector
         description: |
           Show the status of connectors in the current site.
         usage: skupper connector status
@@ -375,12 +368,14 @@ groups:
           backend    backend       app=backend      -      8080   1
           database   database      app=postgresql   -      5432   1
       - name: listener
+        resource: Listener
         description: |
           Display help for listener commands and exit.
       - name: listener create
-        concept: listener
         resource: Listener
-        command: connector create
+        links:
+          - name: Connector create command
+            url: /commands/connector-create.html
         description: |
           Create a listener.
         usage: skupper listener create <name> <port> [options]
@@ -396,8 +391,8 @@ groups:
         output: |
           Waiting for status...
           Listener "<name>" is ready.
-        inherit_standard_arguments: [output, context, global]
-        arguments:
+        inherit_standard_options: [output, context, global]
+        options:
           - name: name
             type: string
             required: true
@@ -417,9 +412,10 @@ groups:
           - name: type
             property: type
       - name: listener update
-        concept: listener
         resource: Listener
-        command: connector update
+        links:
+          - name: Connector update command
+            url: /commands/connector-update.html
         description: |
           Update a listener.
         usage: skupper listener update <name> [options]
@@ -435,30 +431,32 @@ groups:
         output: |
           Waiting for update to complete...
           Listener "<name>" is updated.
-        inherit_command_arguments: listener create
-        inherit_standard_arguments: [output, context, global]
-        arguments:
+        inherit_command_options: listener create
+        inherit_standard_options: [output, context, global]
+        options:
           - name: port
             property: port
             required: false
       - name: listener delete
-        concept: listener
         resource: Listener
-        command: connector delete
+        links:
+          - name: Connector delete command
+            url: /commands/connector-delete.html
         description: |
           Delete a listener.
         usage: skupper listener delete <name>
         output: |
           Waiting for deletion to complete...
           Listener "<name>" is deleted.
-        inherit_standard_arguments: [context, global]
-        arguments:
+        inherit_standard_options: [context, global]
+        options:
           - name: name
             type: string
             required: true
             description: |
               The name of the listener resource.
       - name: listener status
+        resource: Listener
         description: |
           Show the status of listeners in the current site.
         usage: skupper listener status
@@ -466,7 +464,7 @@ groups:
           NAME       ROUTING-KEY   HOST       PORT   MATCHING-CONNECTORS
           backend    backend       backend    8080   1
           database   database      database   5432   1
-        inherit_standard_arguments: [output, context, global]
+        inherit_standard_options: [output, context, global]
   - name: Debug operations
     commands:
       - name: debug

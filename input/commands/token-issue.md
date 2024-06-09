@@ -1,10 +1,6 @@
 ---
 body_class: command
 links:
-  - name: Grant concept
-    url: /concepts/grant.html
-  - name: Grant resource
-    url: /resources/grant.html
   - name: Token redeem command
     url: /commands/token-redeem.html
 ---
@@ -56,6 +52,44 @@ skupper token issue ~/token.yaml --expiration-period 24h --redemptions-allowed 3
 <section>
 
 ## Options
+
+- <h4 id="file">file <span class="option-info">string, required</span></h4>
+
+  The name of the token file.
+
+- <h4 id="expiration-period">--expiration-period <span class="option-info">string (duration)</span></h4>
+
+  The period of time in which a token for this grant can
+  be redeemed.
+
+  _Default:_ `15m`
+
+- <h4 id="redemptions-allowed">--redemptions-allowed <span class="option-info">integer</span></h4>
+
+  The number of times a token for this grant can be
+  redeemed.
+
+  _Default:_ 1
+
+### Context options
+
+- <h4 id="namespace">--namespace <span class="option-info">string</span></h4>
+
+  Select the current namespace.
+
+- <h4 id="context">--context <span class="option-info">string</span></h4>
+
+  Select the current kubeconfig context.
+
+- <h4 id="platform">--platform <span class="option-info">string</span></h4>
+
+  Select the current Skupper platform.
+
+### Global options
+
+- <h4 id="help">--help <span class="option-info">None</span></h4>
+
+  Display help and exit.
 
 </section>
 

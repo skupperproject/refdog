@@ -1,10 +1,5 @@
 ---
 body_class: command
-links:
-  - name: Site concept
-    url: /concepts/site.html
-  - name: Site resource
-    url: /resources/site.html
 ---
 
 # Site status command
@@ -30,6 +25,26 @@ west   Ready    1                  0
 <section>
 
 ## Options
+
+### Context options
+
+- <h4 id="namespace">--namespace <span class="option-info">string</span></h4>
+
+  Select the current namespace.
+
+- <h4 id="context">--context <span class="option-info">string</span></h4>
+
+  Select the current kubeconfig context.
+
+- <h4 id="platform">--platform <span class="option-info">string</span></h4>
+
+  Select the current Skupper platform.
+
+### Global options
+
+- <h4 id="help">--help <span class="option-info">None</span></h4>
+
+  Display help and exit.
 
 </section>
 

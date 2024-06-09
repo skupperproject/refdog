@@ -7,33 +7,49 @@ def get_fragment_id(name):
     return name.lower().replace(" ", "-")
 
 def generate_object_links(obj):
-    links = list()
-
-    if obj.concept:
-        name = capitalize(obj.concept.rename)
-        links.append((f"{name} concept", f"/concepts/{obj.concept.id}.html"))
-
-    if obj.resource:
-        name = capitalize(obj.resource.rename)
-        links.append((f"{name} resource", f"/resources/{obj.resource.id}.html"))
-
-    if obj.command:
-        name = capitalize(obj.command.rename)
-        links.append((f"{name} command", f"/commands/{obj.command.id}.html"))
-
-    for link_data in obj.links:
-        links.append((link_data["name"], link_data["url"]))
-
-    if not links:
-        return
+    from concepts import Concept
+    from resources import Resource
+    from commands import Command
 
     lines = list()
 
-    lines.append("links:")
+    def add_link(other):
+        if not other:
+            return
 
-    for name, url in links:
-        lines.append(f"  - name: {name}")
-        lines.append(f"    url: {url}")
+        type = other.__class__.__name__.lower()
+
+        lines.append(f"  - name: {capitalize(other.rename)} {type}")
+        lines.append(f"    url: /{plural(type)}/{other.id}.html")
+
+    match obj:
+        case Concept():
+            resource = obj.model.resource_model.resources_by_name.get(capitalize(obj.name))
+            command = obj.model.command_model.commands_by_name.get(obj.name)
+
+            add_link(resource)
+            add_link(command)
+        case Resource():
+            concept = obj.model.concept_model.concepts_by_name.get(obj.name.lower())
+            command = obj.model.command_model.commands_by_name.get(obj.name.lower())
+
+            add_link(concept)
+            add_link(command)
+        case Command():
+            concept = obj.model.concept_model.concepts_by_name.get(obj.name.lower())
+            resource = obj.model.resource_model.resources_by_name.get(capitalize(obj.name))
+
+            add_link(concept)
+            add_link(resource)
+
+    for link_data in obj.links:
+        lines.append(f"  - name: {link_data['name']}")
+        lines.append(f"    url: {link_data['url']}")
+
+    if not lines:
+        return
+
+    lines.insert(0, "links:")
 
     return "\n".join(lines)
 

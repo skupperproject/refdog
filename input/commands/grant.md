@@ -17,6 +17,12 @@ links:
 
 ## Options
 
+### Global options
+
+- <h4 id="help">--help <span class="option-info">None</span></h4>
+
+  Display help and exit.
+
 </section>
 
 <section>

@@ -1,10 +1,6 @@
 ---
 body_class: command
 links:
-  - name: Listener concept
-    url: /concepts/listener.html
-  - name: Listener resource
-    url: /resources/listener.html
   - name: Connector delete command
     url: /commands/connector-delete.html
 ---
@@ -32,6 +28,30 @@ Listener "<name>" is deleted.
 <section>
 
 ## Options
+
+- <h4 id="name">name <span class="option-info">string, required</span></h4>
+
+  The name of the listener resource.
+
+### Context options
+
+- <h4 id="namespace">--namespace <span class="option-info">string</span></h4>
+
+  Select the current namespace.
+
+- <h4 id="context">--context <span class="option-info">string</span></h4>
+
+  Select the current kubeconfig context.
+
+- <h4 id="platform">--platform <span class="option-info">string</span></h4>
+
+  Select the current Skupper platform.
+
+### Global options
+
+- <h4 id="help">--help <span class="option-info">None</span></h4>
+
+  Display help and exit.
 
 </section>
 

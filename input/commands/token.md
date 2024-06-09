@@ -1,10 +1,5 @@
 ---
 body_class: command
-links:
-  - name: Token concept
-    url: /concepts/claim.html
-  - name: Token resource
-    url: /resources/claim.html
 ---
 
 # Token command
@@ -18,6 +13,12 @@ Display help for token commands and exit.
 <section>
 
 ## Options
+
+### Global options
+
+- <h4 id="help">--help <span class="option-info">None</span></h4>
+
+  Display help and exit.
 
 </section>
 

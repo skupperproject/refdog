@@ -13,9 +13,7 @@ links:
 
 Display help for link commands and exit.
 
-A link is a site-to-site communication channel. Links serve
-as a transport for application connections and requests.  A
-set of linked sites constitute a network.
+@concept_description@
 
 Links are not usually created directly.  Instead, you use a
 grant and token to obtain a link.
@@ -25,6 +23,12 @@ grant and token to obtain a link.
 <section>
 
 ## Options
+
+### Global options
+
+- <h4 id="help">--help <span class="option-info">None</span></h4>
+
+  Display help and exit.
 
 </section>
 

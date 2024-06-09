@@ -3,18 +3,17 @@ body_class: resource
 links:
   - name: Connector concept
     url: /concepts/connector.html
+  - name: Connector command
+    url: /commands/connector.html
   - name: Listener resource
     url: /resources/listener.html
-  - name: Connector create command
-    url: /commands/connector-create.html
 ---
 
 # Connector resource
 
 <section>
 
-A connector binds target workloads in the local site to
-listeners in remote sites.
+@concept_description@
 
 Each site can have multiple connector resources.
 

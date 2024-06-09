@@ -2,8 +2,6 @@ groups:
   - name: Site configuration
     resources:
       - name: Site
-        concept: site
-        command: site create
         links:
           - name: Link resource
             url: /resources/link.html
@@ -69,8 +67,6 @@ groups:
   - name: Site linking
     resources:
       - name: Link
-        concept: link
-        command: link
         links:
           - name: Grant resource
             url: /resources/grant.html
@@ -104,8 +100,6 @@ groups:
           - name: url
           - name: site
       - name: Grant
-        concept: grant
-        command: grant
         links:
           - name: Token resource
             url: /resources/claim.html
@@ -160,9 +154,9 @@ groups:
               service for this grant.
       - name: Claim
         rename: Token
-        concept: claim
-        command: token redeem
         links:
+          - name: Token redeem command
+            url: /commands/token-redeem.html
           - name: Grant resource
             url: /resources/grant.html
         description: |
@@ -194,9 +188,9 @@ groups:
   - name: Service exposure
     resources:
       - name: Connector
-        concept: connector
-        command: connector create
-        resource: Listener
+        links:
+          - name: Listener resource
+            url: /resources/listener.html
         description: |
           @concept_description@
 

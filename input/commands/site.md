@@ -13,8 +13,7 @@ links:
 
 Display help for site commands and exit.
 
-A site is a place where components of your application are
-running.  Sites are linked to form application networks.
+@concept_description@
 
 There can be only one site resource per namespace.
 

@@ -1,5 +1,10 @@
 ---
 body_class: command
+links:
+  - name: Listener concept
+    url: /concepts/listener.html
+  - name: Listener resource
+    url: /resources/listener.html
 ---
 
 # Listener command
