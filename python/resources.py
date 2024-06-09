@@ -217,7 +217,7 @@ class ResourceModel:
             return {}
 
     def get_schema_property(self, prop):
-        schema = self.get_schema(prop.resource)
+        schema = self.get_schema(prop.object)
 
         try:
             return schema["properties"][prop.group]["properties"][prop.name]
@@ -281,13 +281,11 @@ class Property(ModelObjectAttribute):
 
     def __init__(self, model, resource, data, group):
         super().__init__(model, resource, data)
-
-        self.resource = resource
         self.group = group
 
     @property
     def required(self):
-        schema = self.model.get_schema(self.resource)
+        schema = self.model.get_schema(self.object)
         required_names = schema["properties"][self.group].get("required", [])
         default = self.name in required_names
 

@@ -298,18 +298,14 @@ class Argument(ModelObjectAttribute):
     choices = argument_property("choices")
     links = argument_property("links", [])
 
-    def __init__(self, model, command, data):
-        super().__init__(model, command, data)
-        self.command = command
-
     @property
     def property_(self):
         if "property" in self.data:
-            assert self.command.resource is not None
-            assert self.data["property"] in self.command.resource.spec_properties_by_name, \
-                "Property '{}' not found in {}".format(self.data["property"], self.command.resource)
+            assert self.object.resource is not None
+            assert self.data["property"] in self.object.resource.spec_properties_by_name, \
+                "Property '{}' not found in {}".format(self.data["property"], self.object.resource)
 
-            return self.command.resource.spec_properties_by_name[self.data["property"]]
+            return self.object.resource.spec_properties_by_name[self.data["property"]]
 
     @property
     def positional(self):
