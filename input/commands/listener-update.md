@@ -1,6 +1,10 @@
 ---
 body_class: command
 links:
+  - name: Listener resource
+    url: /resources/listener.html
+  - name: Listener command
+    url: /commands/listener.html
   - name: Connector update command
     url: /commands/connector-update.html
 ---

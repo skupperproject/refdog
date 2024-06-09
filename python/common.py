@@ -24,23 +24,15 @@ def generate_object_links(obj):
 
     match obj:
         case Concept():
-            resource = obj.model.resource_model.resources_by_name.get(capitalize(obj.name))
-            command = obj.model.command_model.commands_by_name.get(obj.name)
-
-            add_link(resource)
-            add_link(command)
+            add_link(obj.resource)
+            add_link(obj.command)
         case Resource():
-            concept = obj.model.concept_model.concepts_by_name.get(obj.name.lower())
-            command = obj.model.command_model.commands_by_name.get(obj.name.lower())
-
-            add_link(concept)
-            add_link(command)
+            add_link(obj.concept)
+            add_link(obj.command)
         case Command():
-            concept = obj.model.concept_model.concepts_by_name.get(obj.name.lower())
-            resource = obj.model.resource_model.resources_by_name.get(capitalize(obj.name))
-
-            add_link(concept)
-            add_link(resource)
+            add_link(obj.concept)
+            add_link(obj.resource)
+            add_link(obj.parent)
 
     for link_data in obj.links:
         lines.append(f"  - name: {link_data['name']}")
@@ -132,18 +124,30 @@ class ModelObject:
 
     @property
     def concept(self):
-        if "concept" in self.data:
-            return self.model.concept_model.concepts_by_name[self.data["concept"]]
+        name = self.data.get("concept", self.name.lower())
+
+        try:
+            return self.model.concept_model.concepts_by_name[name]
+        except KeyError:
+            pass
 
     @property
     def resource(self):
-        if "resource" in self.data:
-            return self.model.resource_model.resources_by_name[self.data["resource"]]
+        name = self.data.get("resource", capitalize(self.name))
+
+        try:
+            return self.model.resource_model.resources_by_name[name]
+        except KeyError:
+            pass
 
     @property
     def command(self):
-        if "command" in self.data:
-            return self.model.command_model.commands_by_name[self.data["command"]]
+        name = self.data.get("command", self.name.lower())
+
+        try:
+            return self.model.command_model.commands_by_name[name]
+        except KeyError:
+            pass
 
 class ModelObjectAttribute:
     name = object_property("name", required=True)

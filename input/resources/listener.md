@@ -3,8 +3,8 @@ body_class: resource
 links:
   - name: Listener concept
     url: /concepts/listener.html
-  - name: Listener command
-    url: /commands/listener.html
+  - name: Listener create command
+    url: /commands/listener-create.html
 ---
 
 # Listener resource

@@ -219,6 +219,22 @@ class Command(ModelObject):
     examples = object_property("examples")
 
     @property
+    def parent(self):
+        try:
+            return self.model.commands_by_name[self.data["parent"]]
+        except KeyError:
+            pass
+
+    @property
+    def resource(self):
+        resource = super().resource
+
+        if resource is None and self.parent is not None:
+            return self.parent.resource
+
+        return resource
+
+    @property
     def description(self):
         description = self.data.get("description")
 

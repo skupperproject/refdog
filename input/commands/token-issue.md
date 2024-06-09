@@ -1,6 +1,10 @@
 ---
 body_class: command
 links:
+  - name: Grant resource
+    url: /resources/grant.html
+  - name: Token command
+    url: /commands/token.html
   - name: Token redeem command
     url: /commands/token-redeem.html
 ---

@@ -1,6 +1,10 @@
 ---
 body_class: command
 links:
+  - name: Token resource
+    url: /resources/claim.html
+  - name: Token command
+    url: /commands/token.html
   - name: Token issue command
     url: /commands/token-issue.html
 ---

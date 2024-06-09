@@ -13,7 +13,8 @@ links:
 
 <section>
 
-@concept_description@
+A connector binds target workloads in the local site to
+listeners in remote sites.
 
 Each site can have multiple connector resources.
 

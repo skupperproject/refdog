@@ -1,5 +1,8 @@
 ---
 body_class: command
+links:
+  - name: Token resource
+    url: /resources/claim.html
 ---
 
 # Token command

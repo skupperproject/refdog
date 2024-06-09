@@ -15,7 +15,9 @@ links:
 
 <section>
 
-@concept_description@
+A link is a site-to-site communication channel. Links serve
+as a transport for application connections and requests.  A
+set of linked sites constitute a network.
 
 Links are not usually created directly.  Instead, you use a
 grant and token to obtain a link.

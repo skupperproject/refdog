@@ -1,5 +1,10 @@
 ---
 body_class: command
+links:
+  - name: Grant resource
+    url: /resources/grant.html
+  - name: Grant command
+    url: /commands/grant.html
 ---
 
 # Grant delete command

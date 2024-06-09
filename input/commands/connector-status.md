@@ -1,5 +1,10 @@
 ---
 body_class: command
+links:
+  - name: Connector resource
+    url: /resources/connector.html
+  - name: Connector command
+    url: /commands/connector.html
 ---
 
 # Connector status command
