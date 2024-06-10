@@ -29,7 +29,7 @@ def generate(model):
         append()
 
         for command in group.commands:
-            append(f"  - [{command.name}]({command.id}.html)")
+            append(f"  - [{capitalize(command.name)}]({command.id}.html)")
 
     write("input/commands/index.md", "\n".join(lines))
 
@@ -78,6 +78,18 @@ def generate_command(command):
 
         append("~~~")
         append()
+        append("</section>")
+        append()
+
+    if command.subcommands:
+        append("<section>")
+        append()
+        append("## Subcommands")
+        append()
+
+        for subcommand in command.subcommands:
+            append(f"- [{capitalize(subcommand.name)}](/commands/{subcommand.id}.html)")
+
         append("</section>")
         append()
 
@@ -249,6 +261,12 @@ class Command(ModelObject):
             description = description.replace("@resource_description@", self.resource.description.strip())
 
         return description
+
+    @property
+    def subcommands(self):
+        for command in self.model.commands_by_name.values():
+            if command.parent is self:
+                yield command
 
     @property
     def options(self):

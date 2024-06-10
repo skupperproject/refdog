@@ -30,6 +30,12 @@ database   database      database   5432   1
 
 <section>
 
+## Subcommands
+
+</section>
+
+<section>
+
 ## Options
 
 ### Output options

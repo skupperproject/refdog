@@ -15,6 +15,12 @@ links:
 
 <section>
 
+## Subcommands
+
+</section>
+
+<section>
+
 ## Options
 
 ### Context options

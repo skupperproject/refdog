@@ -29,6 +29,12 @@ Site "<name>" is deleted.
 
 <section>
 
+## Subcommands
+
+</section>
+
+<section>
+
 ## Options
 
 - <h4 id="name">name <span class="option-info">string, optional</span></h4>

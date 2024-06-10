@@ -27,6 +27,12 @@ $ skupper link delete <name>
 
 <section>
 
+## Subcommands
+
+</section>
+
+<section>
+
 ## Options
 
 ### Context options

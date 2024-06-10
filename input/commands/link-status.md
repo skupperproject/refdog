@@ -17,6 +17,12 @@ Show the current status of links for the site.
 
 <section>
 
+## Subcommands
+
+</section>
+
+<section>
+
 ## Options
 
 ### Output options

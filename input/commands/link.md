@@ -24,6 +24,14 @@ grant and token to obtain a link.
 
 <section>
 
+## Subcommands
+
+- [Link delete](/commands/link-delete.html)
+- [Link status](/commands/link-status.html)
+</section>
+
+<section>
+
 ## Options
 
 ### Global options

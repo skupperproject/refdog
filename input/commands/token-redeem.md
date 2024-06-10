@@ -32,6 +32,12 @@ You can now safely delete <file>.
 
 <section>
 
+## Subcommands
+
+</section>
+
+<section>
+
 ## Options
 
 - <h4 id="file">file <span class="option-info">string, required</span></h4>

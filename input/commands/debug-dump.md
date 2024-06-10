@@ -26,6 +26,12 @@ Debug dump file generated at <file>.
 
 <section>
 
+## Subcommands
+
+</section>
+
+<section>
+
 ## Options
 
 </section>

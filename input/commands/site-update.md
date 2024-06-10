@@ -29,6 +29,12 @@ Site "<name>" is updated.
 
 <section>
 
+## Subcommands
+
+</section>
+
+<section>
+
 ## Examples
 
 ~~~

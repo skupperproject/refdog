@@ -15,6 +15,14 @@ links:
 
 <section>
 
+## Subcommands
+
+- [Grant delete](/commands/grant-delete.html)
+- [Grant status](/commands/grant-status.html)
+</section>
+
+<section>
+
 ## Options
 
 ### Global options

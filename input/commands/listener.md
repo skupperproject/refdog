@@ -17,6 +17,16 @@ Display help for listener commands and exit.
 
 <section>
 
+## Subcommands
+
+- [Listener create](/commands/listener-create.html)
+- [Listener update](/commands/listener-update.html)
+- [Listener delete](/commands/listener-delete.html)
+- [Listener status](/commands/listener-status.html)
+</section>
+
+<section>
+
 ## Options
 
 </section>

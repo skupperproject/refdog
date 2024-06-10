@@ -29,6 +29,12 @@ west   Ready    1                  0
 
 <section>
 
+## Subcommands
+
+</section>
+
+<section>
+
 ## Options
 
 ### Context options

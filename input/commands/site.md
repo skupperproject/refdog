@@ -22,6 +22,16 @@ There can be only one site resource per namespace.
 
 <section>
 
+## Subcommands
+
+- [Site create](/commands/site-create.html)
+- [Site update](/commands/site-update.html)
+- [Site delete](/commands/site-delete.html)
+- [Site status](/commands/site-status.html)
+</section>
+
+<section>
+
 ## Options
 
 </section>

@@ -12,6 +12,13 @@ Display help for debug commands and exit.
 
 <section>
 
+## Subcommands
+
+- [Debug dump](/commands/debug-dump.html)
+</section>
+
+<section>
+
 ## Options
 
 </section>

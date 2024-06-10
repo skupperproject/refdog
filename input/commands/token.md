@@ -15,6 +15,14 @@ Display help for token commands and exit.
 
 <section>
 
+## Subcommands
+
+- [Token issue](/commands/token-issue.html)
+- [Token redeem](/commands/token-redeem.html)
+</section>
+
+<section>
+
 ## Options
 
 ### Global options
