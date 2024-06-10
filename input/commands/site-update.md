@@ -68,6 +68,7 @@ skupper site update --enable-link-access --service-account app1:alice
   |-|-|
   | Default | `default` |
   | Choices | `none`, `default`, `route`, `loadbalancer` |
+  
 - <h4 id="service-account">--service-account <span class="option-info">string</span></h4>
 
   The Kubernetes service account under which to run the
@@ -77,6 +78,7 @@ skupper site update --enable-link-access --service-account app1:alice
   |-|-|
   | Default | `skupper:skupper-controller` |
   | See also | [Kubernetes service accounts]({{site_prefix}}https://kubernetes.io/docs/concepts/security/service-accounts/) |
+  
 ### Output options
 
 - <h4 id="output">--output <span class="option-info">string</span></h4>
@@ -87,6 +89,7 @@ skupper site update --enable-link-access --service-account app1:alice
   | | |
   |-|-|
   | Choices | `json`, `yaml` |
+  
 ### Context options
 
 - <h4 id="namespace">--namespace <span class="option-info">string</span></h4>
@@ -103,6 +106,9 @@ skupper site update --enable-link-access --service-account app1:alice
 
   Select the current Skupper platform.
 
+  | | |
+  |-|-|
+  | Choices | `kubernetes`, `docker`, `systemd` |
   
 ### Global options
 

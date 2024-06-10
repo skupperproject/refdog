@@ -55,6 +55,9 @@ You can now safely delete <file>.
 
   Select the current Skupper platform.
 
+  | | |
+  |-|-|
+  | Choices | `kubernetes`, `docker`, `systemd` |
   
 ### Global options
 

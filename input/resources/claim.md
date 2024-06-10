@@ -60,6 +60,9 @@ corresponding grant.
 
   True if the token has been redeemed.
 
+  | | |
+  |-|-|
+  | Default | False |
   
 
 </section>

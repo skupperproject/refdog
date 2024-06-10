@@ -53,6 +53,9 @@ grant and token to obtain a link.
 
 - <h4 id="noclientauth">noClientAuth <span class="property-info">boolean</span></h4>
 
+  | | |
+  |-|-|
+  | Default | False |
   
 
 </section>
@@ -69,10 +72,16 @@ grant and token to obtain a link.
 
 - <h4 id="configured">configured <span class="property-info">boolean</span></h4>
 
+  | | |
+  |-|-|
+  | Default | False |
   
 
 - <h4 id="active">active <span class="property-info">boolean</span></h4>
 
+  | | |
+  |-|-|
+  | Default | False |
   
 
 - <h4 id="url">url <span class="property-info">string</span></h4>

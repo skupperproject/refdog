@@ -70,6 +70,7 @@ skupper token issue ~/token.yaml --expiration-period 24h --redemptions-allowed 3
   | | |
   |-|-|
   | Default | `15m` |
+  
 - <h4 id="redemptions-allowed">--redemptions-allowed <span class="option-info">integer</span></h4>
 
   The number of times a token for this grant can be
@@ -78,6 +79,7 @@ skupper token issue ~/token.yaml --expiration-period 24h --redemptions-allowed 3
   | | |
   |-|-|
   | Default | 1 |
+  
 ### Context options
 
 - <h4 id="namespace">--namespace <span class="option-info">string</span></h4>
@@ -94,6 +96,9 @@ skupper token issue ~/token.yaml --expiration-period 24h --redemptions-allowed 3
 
   Select the current Skupper platform.
 
+  | | |
+  |-|-|
+  | Choices | `kubernetes`, `docker`, `systemd` |
   
 ### Global options
 

@@ -53,6 +53,7 @@ spec:
   | | |
   |-|-|
   | See also | [Routing key concept]({{site_prefix}}/concepts/routing-key.html) |
+  
 
 - <h4 id="host">host <span class="property-info">string, required</span></h4>
 
@@ -85,6 +86,7 @@ spec:
   | | |
   |-|-|
   | See also | [TLS re-encrypt]({{site_prefix}}) |
+  
 
 - <h4 id="type">type <span class="property-info">string</span></h4>
 
@@ -93,6 +95,7 @@ spec:
   | | |
   |-|-|
   | Default | `tcp` |
+  
 
 </section>
 
@@ -108,6 +111,9 @@ spec:
 
 - <h4 id="active">active <span class="property-info">boolean</span></h4>
 
+  | | |
+  |-|-|
+  | Default | False |
   
 
 </section>

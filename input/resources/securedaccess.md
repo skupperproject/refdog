@@ -44,6 +44,9 @@ body_class: resource
 
 - <h4 id="active">active <span class="property-info">boolean</span></h4>
 
+  | | |
+  |-|-|
+  | Default | False |
   
 
 - <h4 id="status">status <span class="property-info">string</span></h4>

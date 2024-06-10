@@ -73,6 +73,7 @@ skupper connector create backend 8080 --output yaml
   |-|-|
   | Default | _Value of name_ |
   | See also | [Routing key concept]({{site_prefix}}/concepts/routing-key.html) |
+  
 - <h4 id="selector">--selector <span class="option-info">string</span></h4>
 
   A Kubernetes label selector for specifying target server
@@ -85,6 +86,7 @@ skupper connector create backend 8080 --output yaml
   |-|-|
   | Default | `app=<value-of-name>` |
   | See also | [Kubernetes label selectors]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors), [Kubernetes pods]({{site_prefix}}https://kubernetes.io/docs/concepts/workloads/pods/) |
+  
 - <h4 id="workload">--workload <span class="option-info">string (resource name)</span></h4>
 
   A Kubernetes resource name that identifies a workload.
@@ -96,6 +98,7 @@ skupper connector create backend 8080 --output yaml
   | | |
   |-|-|
   | See also | [Kubernetes workloads]({{site_prefix}}https://kubernetes.io/docs/concepts/workloads/) |
+  
 - <h4 id="host">--host <span class="option-info">string</span></h4>
 
   The hostname or IP address of the server.
@@ -118,6 +121,7 @@ skupper connector create backend 8080 --output yaml
   | | |
   |-|-|
   | See also | [TLS re-encrypt]({{site_prefix}}) |
+  
 - <h4 id="type">--type <span class="option-info">string</span></h4>
 
   The connector type.
@@ -125,11 +129,15 @@ skupper connector create backend 8080 --output yaml
   | | |
   |-|-|
   | Default | `tcp` |
+  
 - <h4 id="include-not-ready">--include-not-ready <span class="option-info">boolean</span></h4>
 
   If set, include server pods that are not in the ready
   state.
 
+  | | |
+  |-|-|
+  | Default | False |
   
 ### Output options
 
@@ -141,6 +149,7 @@ skupper connector create backend 8080 --output yaml
   | | |
   |-|-|
   | Choices | `json`, `yaml` |
+  
 ### Context options
 
 - <h4 id="namespace">--namespace <span class="option-info">string</span></h4>
@@ -157,6 +166,9 @@ skupper connector create backend 8080 --output yaml
 
   Select the current Skupper platform.
 
+  | | |
+  |-|-|
+  | Choices | `kubernetes`, `docker`, `systemd` |
   
 ### Global options
 

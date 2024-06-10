@@ -75,6 +75,7 @@ skupper listener update frontend --port 9090 --output yaml
   |-|-|
   | Default | _Value of name_ |
   | See also | [Routing key concept]({{site_prefix}}/concepts/routing-key.html) |
+  
 - <h4 id="host">--host <span class="option-info">string</span></h4>
 
   The hostname or IP address of the local listener.  Clients
@@ -84,6 +85,7 @@ skupper listener update frontend --port 9090 --output yaml
   | | |
   |-|-|
   | Default | _Value of name_ |
+  
 - <h4 id="tls-secret">--tls-secret <span class="option-info">string</span></h4>
 
   The name of a Kubernetes secret containing TLS
@@ -99,6 +101,7 @@ skupper listener update frontend --port 9090 --output yaml
   | | |
   |-|-|
   | See also | [TLS re-encrypt]({{site_prefix}}) |
+  
 - <h4 id="type">--type <span class="option-info">string</span></h4>
 
   The listener type.
@@ -106,6 +109,7 @@ skupper listener update frontend --port 9090 --output yaml
   | | |
   |-|-|
   | Default | `tcp` |
+  
 ### Output options
 
 - <h4 id="output">--output <span class="option-info">string</span></h4>
@@ -116,6 +120,7 @@ skupper listener update frontend --port 9090 --output yaml
   | | |
   |-|-|
   | Choices | `json`, `yaml` |
+  
 ### Context options
 
 - <h4 id="namespace">--namespace <span class="option-info">string</span></h4>
@@ -132,6 +137,9 @@ skupper listener update frontend --port 9090 --output yaml
 
   Select the current Skupper platform.
 
+  | | |
+  |-|-|
+  | Choices | `kubernetes`, `docker`, `systemd` |
   
 ### Global options
 

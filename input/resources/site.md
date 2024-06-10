@@ -60,6 +60,7 @@ spec:
   |-|-|
   | Default | `none` |
   | Choices | `none`, `default`, `route`, `loadbalancer` |
+  
 
 - <h4 id="serviceaccount">serviceAccount <span class="property-info">string</span></h4>
 
@@ -70,6 +71,7 @@ spec:
   |-|-|
   | Default | `skupper:skupper-controller` |
   | See also | [Kubernetes service accounts]({{site_prefix}}https://kubernetes.io/docs/concepts/security/service-accounts/) |
+  
 
 - <h4 id="options">options <span class="property-info">array</span></h4>
 
@@ -91,6 +93,9 @@ spec:
 
   This thing is working.
 
+  | | |
+  |-|-|
+  | Default | False |
   
 
 - <h4 id="endpoints">endpoints <span class="property-info">array</span></h4>

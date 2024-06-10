@@ -54,6 +54,7 @@ spec:
   | | |
   |-|-|
   | See also | [Routing key concept]({{site_prefix}}/concepts/routing-key.html) |
+  
 
 - <h4 id="port">port <span class="property-info">integer, required</span></h4>
 
@@ -72,6 +73,7 @@ spec:
   | | |
   |-|-|
   | See also | [Kubernetes label selectors]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors), [Kubernetes pods]({{site_prefix}}https://kubernetes.io/docs/concepts/workloads/pods/) |
+  
 
 - <h4 id="host">host <span class="property-info">string</span></h4>
 
@@ -95,12 +97,16 @@ spec:
   | | |
   |-|-|
   | See also | [TLS re-encrypt]({{site_prefix}}) |
+  
 
 - <h4 id="includenotready">includeNotReady <span class="property-info">boolean</span></h4>
 
   If set, include server pods that are not in the ready
   state.
 
+  | | |
+  |-|-|
+  | Default | False |
   
 
 - <h4 id="type">type <span class="property-info">string</span></h4>
@@ -110,6 +116,7 @@ spec:
   | | |
   |-|-|
   | Default | `tcp` |
+  
 
 </section>
 
@@ -125,6 +132,9 @@ spec:
 
 - <h4 id="active">active <span class="property-info">boolean</span></h4>
 
+  | | |
+  |-|-|
+  | Default | False |
   
 
 </section>

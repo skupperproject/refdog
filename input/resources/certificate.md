@@ -26,14 +26,23 @@ body_class: resource
 
 - <h4 id="client">client <span class="property-info">boolean</span></h4>
 
+  | | |
+  |-|-|
+  | Default | False |
   
 
 - <h4 id="server">server <span class="property-info">boolean</span></h4>
 
+  | | |
+  |-|-|
+  | Default | False |
   
 
 - <h4 id="signing">signing <span class="property-info">boolean</span></h4>
 
+  | | |
+  |-|-|
+  | Default | False |
   
 
 </section>

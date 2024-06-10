@@ -56,6 +56,9 @@ Connector "<name>" is deleted.
 
   Select the current Skupper platform.
 
+  | | |
+  |-|-|
+  | Choices | `kubernetes`, `docker`, `systemd` |
   
 ### Global options
 

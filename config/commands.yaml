@@ -4,6 +4,7 @@ standard_options:
     options:
       - name: namespace
         type: string
+        platforms: [kubernetes, docker, systemd]
         description: |
           Select the current namespace.
       - name: context
@@ -12,6 +13,13 @@ standard_options:
           Select the current kubeconfig context.
       - name: platform
         type: string
+        choices:
+          - name: kubernetes
+            description: XXX
+          - name: docker
+            description: XXX
+          - name: systemd
+            description: XXX
         description: |
           Select the current Skupper platform.
   output:

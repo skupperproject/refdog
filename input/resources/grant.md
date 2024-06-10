@@ -33,6 +33,7 @@ period and for a limited number of redemptions.
   | | |
   |-|-|
   | Default | 1 |
+  
 
 - <h4 id="expirationperiod">expirationPeriod <span class="property-info">string (duration)</span></h4>
 
@@ -42,6 +43,7 @@ period and for a limited number of redemptions.
   | | |
   |-|-|
   | Default | `15m` |
+  
 
 - <h4 id="secret">secret <span class="property-info">string</span></h4>
 

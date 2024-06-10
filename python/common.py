@@ -48,7 +48,7 @@ def generate_object_links(obj):
 def generate_attribute_fields(attr):
     lines = list()
 
-    if attr.default not in (None, False):
+    if attr.default is not None:
         default = attr.default
 
         if attr.default is True:
@@ -69,6 +69,7 @@ def generate_attribute_fields(attr):
     if lines:
         lines.insert(0, "| | |")
         lines.insert(1, "|-|-|")
+        lines.append("")
 
     return "\n".join(lines)
 
