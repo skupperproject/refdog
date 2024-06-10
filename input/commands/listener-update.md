@@ -1,6 +1,8 @@
 ---
 body_class: command
 links:
+  - name: Listener concept
+    url: /concepts/listener.html
   - name: Listener resource
     url: /resources/listener.html
   - name: Listener command
@@ -26,12 +28,6 @@ $ skupper listener update <name> [options]
 Waiting for update to complete...
 Listener "<name>" is updated.
 ~~~
-
-</section>
-
-<section>
-
-## Subcommands
 
 </section>
 
@@ -136,11 +132,5 @@ skupper listener update frontend --port 9090 --output yaml
 - <h4 id="help">--help <span class="option-info">None</span></h4>
 
   Display help and exit.
-
-</section>
-
-<section>
-
-## Errors
 
 </section>

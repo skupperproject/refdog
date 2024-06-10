@@ -23,21 +23,3 @@ Debug dump file generated at <file>.
 ~~~
 
 </section>
-
-<section>
-
-## Subcommands
-
-</section>
-
-<section>
-
-## Options
-
-</section>
-
-<section>
-
-## Errors
-
-</section>

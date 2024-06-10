@@ -1,6 +1,8 @@
 ---
 body_class: command
 links:
+  - name: Connector concept
+    url: /concepts/connector.html
   - name: Connector resource
     url: /resources/connector.html
   - name: Connector command
@@ -26,12 +28,6 @@ $ skupper connector update <name> [options]
 Waiting for update to complete...
 Connector "<name>" is updated.
 ~~~
-
-</section>
-
-<section>
-
-## Subcommands
 
 </section>
 
@@ -159,11 +155,5 @@ skupper connector update frontend --port 9090 --output yaml
 - <h4 id="help">--help <span class="option-info">None</span></h4>
 
   Display help and exit.
-
-</section>
-
-<section>
-
-## Errors
 
 </section>

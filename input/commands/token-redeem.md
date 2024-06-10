@@ -32,12 +32,6 @@ You can now safely delete <file>.
 
 <section>
 
-## Subcommands
-
-</section>
-
-<section>
-
 ## Options
 
 - <h4 id="file">file <span class="option-info">string, required</span></h4>
@@ -63,11 +57,5 @@ You can now safely delete <file>.
 - <h4 id="help">--help <span class="option-info">None</span></h4>
 
   Display help and exit.
-
-</section>
-
-<section>
-
-## Errors
 
 </section>

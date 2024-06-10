@@ -24,15 +24,3 @@ Display help for listener commands and exit.
 - [Listener delete](/commands/listener-delete.html)
 - [Listener status](/commands/listener-status.html)
 </section>
-
-<section>
-
-## Options
-
-</section>
-
-<section>
-
-## Errors
-
-</section>

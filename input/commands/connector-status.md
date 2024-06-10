@@ -1,6 +1,8 @@
 ---
 body_class: command
 links:
+  - name: Connector concept
+    url: /concepts/connector.html
   - name: Connector resource
     url: /resources/connector.html
   - name: Connector command
@@ -25,23 +27,5 @@ NAME       ROUTING-KEY   SELECTOR         HOST   PORT   MATCHING-LISTENERS
 backend    backend       app=backend      -      8080   1
 database   database      app=postgresql   -      5432   1
 ~~~
-
-</section>
-
-<section>
-
-## Subcommands
-
-</section>
-
-<section>
-
-## Options
-
-</section>
-
-<section>
-
-## Errors
 
 </section>

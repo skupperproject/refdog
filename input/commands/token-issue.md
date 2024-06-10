@@ -41,12 +41,6 @@ The token expires after 1 use or after 15 minutes.
 
 <section>
 
-## Subcommands
-
-</section>
-
-<section>
-
 ## Examples
 
 ~~~

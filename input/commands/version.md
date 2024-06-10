@@ -7,21 +7,3 @@ body_class: command
 <section>
 
 </section>
-
-<section>
-
-## Subcommands
-
-</section>
-
-<section>
-
-## Options
-
-</section>
-
-<section>
-
-## Errors
-
-</section>

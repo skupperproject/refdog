@@ -216,6 +216,11 @@ class CommandModel:
     def __repr__(self):
         return self.__class__.__name__
 
+    def init(self):
+        for group in self.groups:
+            for command in group.commands:
+                command.init()
+
 class CommandGroup(ModelObjectGroup):
     def __init__(self, model, data):
         super().__init__(model, data)
@@ -230,6 +235,38 @@ class Command(ModelObject):
     output = object_property("output")
     examples = object_property("examples")
 
+    def init(self):
+        options_by_name = dict()
+
+        if "inherit_command_options" in self.data:
+            command = self.data["inherit_command_options"]
+            options = self.model.commands_by_name[command].options
+
+            options_by_name.update(((x.name, x) for x in options))
+
+        for option_data in self.data.get("options", []):
+            name = option_data["name"]
+            options_by_name[name] = Option(self.model, self, option_data)
+
+        self.options = options_by_name.values() # XXX
+        self.standard_options = list()
+        self.subcommands = list()
+        self.errors = list()
+
+        if "inherit_standard_options" in self.data:
+            for key in self.data["inherit_standard_options"]:
+                group = self.model.data["standard_options"][key]
+                options = [Option(self.model, self, x) for x in group["options"]]
+
+                self.standard_options.append((group["name"], options))
+
+        for command in self.model.commands_by_name.values():
+            if command.parent is self:
+                self.subcommands.append(command)
+
+        for error_data in self.data.get("errors", []):
+            self.errors.append(Error(self, error_data))
+
     @property
     def parent(self):
         tokens = self.name.split(" ")
@@ -240,6 +277,15 @@ class Command(ModelObject):
             return
 
         return self.model.commands_by_name[name]
+
+    @property
+    def concept(self):
+        concept = super().concept
+
+        if concept is None and self.parent is not None:
+            return self.parent.concept
+
+        return concept
 
     @property
     def resource(self):
@@ -261,44 +307,6 @@ class Command(ModelObject):
             description = description.replace("@resource_description@", self.resource.description.strip())
 
         return description
-
-    @property
-    def subcommands(self):
-        for command in self.model.commands_by_name.values():
-            if command.parent is self:
-                yield command
-
-    @property
-    def options(self):
-        options_by_name = dict()
-
-        if "inherit_command_options" in self.data:
-            command = self.data["inherit_command_options"]
-            options = self.model.commands_by_name[command].options
-
-            options_by_name.update(((x.name, x) for x in options))
-
-        for option_data in self.data.get("options", []):
-            name = option_data["name"]
-            options_by_name[name] = Option(self.model, self, option_data)
-
-        yield from options_by_name.values()
-
-    @property
-    def standard_options(self):
-        if "inherit_standard_options" not in self.data:
-            return
-
-        for key in self.data["inherit_standard_options"]:
-            group = self.model.data["standard_options"][key]
-            options = [Option(self.model, self, x) for x in group["options"]]
-
-            yield group["name"], options
-
-    @property
-    def errors(self):
-        for error_data in self.data.get("errors", []):
-            yield Error(self, error_data)
 
 def option_property(name, default=None):
     def get(obj):

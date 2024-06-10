@@ -29,15 +29,3 @@ There can be only one site resource per namespace.
 - [Site delete](/commands/site-delete.html)
 - [Site status](/commands/site-status.html)
 </section>
-
-<section>
-
-## Options
-
-</section>
-
-<section>
-
-## Errors
-
-</section>

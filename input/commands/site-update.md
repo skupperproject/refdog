@@ -1,6 +1,8 @@
 ---
 body_class: command
 links:
+  - name: Site concept
+    url: /concepts/site.html
   - name: Site resource
     url: /resources/site.html
   - name: Site command
@@ -24,12 +26,6 @@ $ skupper site update [name] [options]
 Waiting for update to complete...
 Site "<name>" is updated.
 ~~~
-
-</section>
-
-<section>
-
-## Subcommands
 
 </section>
 

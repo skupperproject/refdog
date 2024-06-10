@@ -16,15 +16,3 @@ Display help for debug commands and exit.
 
 - [Debug dump](/commands/debug-dump.html)
 </section>
-
-<section>
-
-## Options
-
-</section>
-
-<section>
-
-## Errors
-
-</section>

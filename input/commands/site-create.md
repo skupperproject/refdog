@@ -1,6 +1,8 @@
 ---
 body_class: command
 links:
+  - name: Site concept
+    url: /concepts/site.html
   - name: Site resource
     url: /resources/site.html
   - name: Site command
@@ -24,12 +26,6 @@ $ skupper site create <name> [options]
 Waiting for status...
 Site "<name>" is ready.
 ~~~
-
-</section>
-
-<section>
-
-## Subcommands
 
 </section>
 

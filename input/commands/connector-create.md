@@ -1,6 +1,8 @@
 ---
 body_class: command
 links:
+  - name: Connector concept
+    url: /concepts/connector.html
   - name: Connector resource
     url: /resources/connector.html
   - name: Connector command
@@ -26,12 +28,6 @@ $ skupper connector create <name> <port> [options]
 Waiting for status...
 Connector "<name>" is ready.
 ~~~
-
-</section>
-
-<section>
-
-## Subcommands
 
 </section>
 
@@ -159,11 +155,5 @@ skupper connector create backend 8080 --output yaml
 - <h4 id="help">--help <span class="option-info">None</span></h4>
 
   Display help and exit.
-
-</section>
-
-<section>
-
-## Errors
 
 </section>

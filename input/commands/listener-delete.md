@@ -1,6 +1,8 @@
 ---
 body_class: command
 links:
+  - name: Listener concept
+    url: /concepts/listener.html
   - name: Listener resource
     url: /resources/listener.html
   - name: Listener command
@@ -31,12 +33,6 @@ Listener "<name>" is deleted.
 
 <section>
 
-## Subcommands
-
-</section>
-
-<section>
-
 ## Options
 
 - <h4 id="name">name <span class="option-info">string, required</span></h4>
@@ -62,11 +58,5 @@ Listener "<name>" is deleted.
 - <h4 id="help">--help <span class="option-info">None</span></h4>
 
   Display help and exit.
-
-</section>
-
-<section>
-
-## Errors
 
 </section>
