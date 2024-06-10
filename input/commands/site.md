@@ -24,8 +24,8 @@ There can be only one site resource per namespace.
 
 ## Subcommands
 
-- [{{site_prefix}}Site create](/commands/site-create.html)
-- [{{site_prefix}}Site update](/commands/site-update.html)
-- [{{site_prefix}}Site delete](/commands/site-delete.html)
-- [{{site_prefix}}Site status](/commands/site-status.html)
+- [Site create]({{site_prefix}}/commands/site-create.html)
+- [Site update]({{site_prefix}}/commands/site-update.html)
+- [Site delete]({{site_prefix}}/commands/site-delete.html)
+- [Site status]({{site_prefix}}/commands/site-status.html)
 </section>

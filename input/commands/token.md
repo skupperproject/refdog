@@ -17,6 +17,6 @@ Display help for token commands and exit.
 
 ## Subcommands
 
-- [{{site_prefix}}Token issue](/commands/token-issue.html)
-- [{{site_prefix}}Token redeem](/commands/token-redeem.html)
+- [Token issue]({{site_prefix}}/commands/token-issue.html)
+- [Token redeem]({{site_prefix}}/commands/token-redeem.html)
 </section>

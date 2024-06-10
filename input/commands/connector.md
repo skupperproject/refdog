@@ -19,8 +19,8 @@ Display help for connector commands and exit.
 
 ## Subcommands
 
-- [{{site_prefix}}Connector create](/commands/connector-create.html)
-- [{{site_prefix}}Connector update](/commands/connector-update.html)
-- [{{site_prefix}}Connector delete](/commands/connector-delete.html)
-- [{{site_prefix}}Connector status](/commands/connector-status.html)
+- [Connector create]({{site_prefix}}/commands/connector-create.html)
+- [Connector update]({{site_prefix}}/commands/connector-update.html)
+- [Connector delete]({{site_prefix}}/commands/connector-delete.html)
+- [Connector status]({{site_prefix}}/commands/connector-status.html)
 </section>
