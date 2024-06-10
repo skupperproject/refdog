@@ -104,7 +104,7 @@ skupper site update --enable-link-access --service-account app1:alice
   
 - <h4 id="platform">--platform <span class="option-info">string</span></h4>
 
-  Select the current Skupper platform.
+  Set the Skupper platform.
 
   | | |
   |-|-|
@@ -112,7 +112,7 @@ skupper site update --enable-link-access --service-account app1:alice
   
 ### Global options
 
-- <h4 id="help">--help <span class="option-info">None</span></h4>
+- <h4 id="help">--help <span class="option-info"></span></h4>
 
   Display help and exit.
 

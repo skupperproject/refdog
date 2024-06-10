@@ -54,7 +54,7 @@ Listener "<name>" is deleted.
   
 - <h4 id="platform">--platform <span class="option-info">string</span></h4>
 
-  Select the current Skupper platform.
+  Set the Skupper platform.
 
   | | |
   |-|-|
@@ -62,7 +62,7 @@ Listener "<name>" is deleted.
   
 ### Global options
 
-- <h4 id="help">--help <span class="option-info">None</span></h4>
+- <h4 id="help">--help <span class="option-info"></span></h4>
 
   Display help and exit.
 

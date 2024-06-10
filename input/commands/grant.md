@@ -19,6 +19,8 @@ Display help for grant commands and exit
 
 ## Subcommands
 
+- [Grant create]({{site_prefix}}/commands/grant-create.html)
+- [Grant update]({{site_prefix}}/commands/grant-update.html)
 - [Grant delete]({{site_prefix}}/commands/grant-delete.html)
 - [Grant status]({{site_prefix}}/commands/grant-status.html)
 </section>

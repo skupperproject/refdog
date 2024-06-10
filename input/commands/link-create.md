@@ -1,21 +1,19 @@
 ---
 body_class: command
 links:
-  - name: Connector concept
-    url: /concepts/connector.html
-  - name: Connector resource
-    url: /resources/connector.html
-  - name: Connector command
-    url: /commands/connector.html
-  - name: Listener delete command
-    url: /commands/listener-delete.html
+  - name: Link concept
+    url: /concepts/link.html
+  - name: Link resource
+    url: /resources/link.html
+  - name: Link command
+    url: /commands/link.html
 ---
 
-# Connector delete command
+# Link create command
 
 <section>
 
-Delete a connector.
+Create a link.
 
 </section>
 
@@ -24,9 +22,9 @@ Delete a connector.
 ## Usage
 
 ~~~ shell
-$ skupper connector delete <name>
-Waiting for deletion to complete...
-Connector "<name>" is deleted.
+$ skupper link create <name> <tls-secret>
+Waiting for status...
+Link "<name>" is ready.
 ~~~
 
 </section>
@@ -37,7 +35,17 @@ Connector "<name>" is deleted.
 
 - <h4 id="name">name <span class="option-info">string, required</span></h4>
 
-  The name of the connector resource.
+  The name of the link.
+
+  
+- <h4 id="tls-secret">tls-secret <span class="option-info">string, required</span></h4>
+
+  The name of a Kubernetes secret containing TLS
+  credentials. The secret contains the trusted server
+  certificate (typically a CA).
+  
+  It can optionally include a client certificate and key for
+  mutual TLS.
 
   
 ### Context options

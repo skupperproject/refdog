@@ -3,8 +3,6 @@ body_class: concept
 links:
   - name: Grant resource
     url: /resources/grant.html
-  - name: Grant command
-    url: /commands/grant.html
   - name: Token concept
     url: /concepts/claim.html
   - name: Token issue command

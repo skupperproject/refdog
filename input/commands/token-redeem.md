@@ -13,7 +13,7 @@ links:
 
 <section>
 
-Redeem a token for a link to a remote site.
+Redeem a token in order to obtain a link to a remote site.
 
 </section>
 
@@ -53,7 +53,7 @@ You can now safely delete <file>.
   
 - <h4 id="platform">--platform <span class="option-info">string</span></h4>
 
-  Select the current Skupper platform.
+  Set the Skupper platform.
 
   | | |
   |-|-|
@@ -61,7 +61,7 @@ You can now safely delete <file>.
   
 ### Global options
 
-- <h4 id="help">--help <span class="option-info">None</span></h4>
+- <h4 id="help">--help <span class="option-info"></span></h4>
 
   Display help and exit.
 

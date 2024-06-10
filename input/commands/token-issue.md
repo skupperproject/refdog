@@ -97,7 +97,7 @@ skupper token issue ~/token.yaml --expiration-period 24h --redemptions-allowed 3
   
 - <h4 id="platform">--platform <span class="option-info">string</span></h4>
 
-  Select the current Skupper platform.
+  Set the Skupper platform.
 
   | | |
   |-|-|
@@ -105,7 +105,7 @@ skupper token issue ~/token.yaml --expiration-period 24h --redemptions-allowed 3
   
 ### Global options
 
-- <h4 id="help">--help <span class="option-info">None</span></h4>
+- <h4 id="help">--help <span class="option-info"></span></h4>
 
   Display help and exit.
 

@@ -21,15 +21,14 @@ links:
 
 | | |
 |-|-|
-| [Link](link.html) | Display help for link commands and exit |
-| [Link delete](link-delete.html) | Delete a link |
-| [Link status](link-status.html) | Show the status of links in the current site |
-| [Grant](grant.html) | Display help for grant commands and exit  |
-| [Grant delete](grant-delete.html) | Delete a grant |
-| [Grant status](grant-status.html) | Show the status of grants in the current site |
 | [Token](token.html) | Display help for token commands and exit |
 | [Token issue](token-issue.html) | Issue a token that can be redeemed at a remote site for a link to the current site |
-| [Token redeem](token-redeem.html) | Redeem a token for a link to a remote site |
+| [Token redeem](token-redeem.html) | Redeem a token in order to obtain a link to a remote site |
+| [Link](link.html) | Display help for link commands and exit |
+| [Link create](link-create.html) | Create a link |
+| [Link update](link-update.html) | Change link settings |
+| [Link delete](link-delete.html) | Delete a link |
+| [Link status](link-status.html) | Show the status of links in the current site |
 #### Service exposure
 
 | | |
