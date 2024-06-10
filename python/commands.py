@@ -173,17 +173,7 @@ def generate_option(option, append):
         append(indent(option.description.strip(), 2))
         append()
 
-    if option.default not in (None, False):
-        append(indent(generate_attribute_default(option), 2))
-        append()
-
-    if option.choices:
-        append(indent(generate_attribute_choices(option), 2))
-        append()
-
-    if option.links:
-        append(indent(generate_attribute_links(option), 2))
-        append()
+    append(indent(generate_attribute_fields(option), 2))
 
     if option.notes:
         # XXX styling

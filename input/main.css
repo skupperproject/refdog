@@ -222,6 +222,8 @@ pre {
 
 /* Standard styles for lists */
 
+/* XXX The handling of only versus multiple child elements needs work */
+
 ol, ul, dd {
     padding: 0 0 0 1em;
 }
@@ -246,6 +248,10 @@ li > p:last-child, dd > p:last-child {
 
 li > p + ul {
     margin-bottom: 1em !important;
+}
+
+li > table {
+    margin-bottom: 1em;
 }
 
 /* Standard styles for path navigation */
@@ -285,7 +291,7 @@ aside h4 {
 
 /* Skupper-specific styles for prose elements */
 
-/* Refdog-specific styles for prose eleemnts */
+/* Refdog-specific styles for prose elements */
 
 body.resource h2, body.command h2 {
     font-size: 1.3em;
@@ -309,4 +315,11 @@ body.resource main::after, body.command main::after {
     content: "";
     display: block;
     height: 100vh;
+}
+
+body.resource table td:nth-child(1), body.command table td:nth-child(1) {
+    width: 5em;
+    padding-right: 1em;
+    font-style: italic;
+    vertical-align: middle;
 }

@@ -150,7 +150,16 @@ groups:
         description: |
           Delete a link.
         usage: skupper link delete <name>
+        output: |
+          Waiting for deletion to complete...
+          Link "<name>" is deleted.
         inherit_standard_options: [context, global]
+        options:
+          - name: name
+            type: string
+            required: true
+            description: |
+              The name of the link.
       - name: link status
         description: |
           Show the current status of links for the site.
@@ -161,12 +170,24 @@ groups:
 
           Links from remote sites:
 
-          None
+          [None]
         inherit_standard_options: [output, context, global]
       - name: grant
         inherit_standard_options: [global]
       - name: grant delete
+        description: |
+          Delate a grant.
+        usage: skupper grant delete <name>
+        output: |
+          Waiting for deletion to complete...
+          Grant "<name>" is deleted.
         inherit_standard_options: [context, global]
+        options:
+          - name: name
+            type: string
+            required: true
+            description: |
+              The name of the grant.
       - name: grant status
         inherit_standard_options: [output, context, global]
       - name: token
@@ -180,8 +201,8 @@ groups:
           - name: Token redeem command
             url: /commands/token-redeem.html
         description: |
-          Create a grant and then use it to create a token file that
-          can be redeemed for a link to the local site.
+          Create a grant and then use it to issue a token that can be
+          redeemed at a remote site for a link to the local site.
         usage: skupper token issue <file> [options]
         output: |
           Waiting for status...

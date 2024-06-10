@@ -59,7 +59,7 @@ groups:
               The current state of the resource.
           - name: active
             description: |
-              "This thing is working."
+              This thing is working.
           - name: endpoints
           - name: sitesInNetwork
           - name: servicesInNetwork

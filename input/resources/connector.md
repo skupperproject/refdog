@@ -51,11 +51,15 @@ spec:
   site, the remote listener and the local connector must
   have matching routing keys.
 
-  _See also:_ [Routing key concept]({{site_prefix}}/concepts/routing-key.html)
+  | | |
+  |-|-|
+  | See also | [Routing key concept]({{site_prefix}}/concepts/routing-key.html) |
 
 - <h4 id="port">port <span class="property-info">integer, required</span></h4>
 
   The port on the target workload to forward traffic to.
+
+  
 
 - <h4 id="selector">selector <span class="property-info">string</span></h4>
 
@@ -65,13 +69,17 @@ spec:
   On Kubernetes, you usually want to use this.  As an
   alternative, you can use `host`.
 
-  _See also:_ [Kubernetes label selectors]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors), [Kubernetes pods]({{site_prefix}}https://kubernetes.io/docs/concepts/workloads/pods/)
+  | | |
+  |-|-|
+  | See also | [Kubernetes label selectors]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors), [Kubernetes pods]({{site_prefix}}https://kubernetes.io/docs/concepts/workloads/pods/) |
 
 - <h4 id="host">host <span class="property-info">string</span></h4>
 
   The hostname or IP address of the server.  This is an
   alternative to `selector` for specifying the target
   server.
+
+  
 
 - <h4 id="tlssecret">tlsSecret <span class="property-info">string</span></h4>
 
@@ -84,18 +92,24 @@ spec:
   This option is used when setting up client-to-router TLS
   encryption.
 
-  _See also:_ [TLS re-encrypt]({{site_prefix}})
+  | | |
+  |-|-|
+  | See also | [TLS re-encrypt]({{site_prefix}}) |
 
 - <h4 id="includenotready">includeNotReady <span class="property-info">boolean</span></h4>
 
   If set, include server pods that are not in the ready
   state.
 
+  
+
 - <h4 id="type">type <span class="property-info">string</span></h4>
 
   The connector type.
 
-  _Default:_ `tcp`
+  | | |
+  |-|-|
+  | Default | `tcp` |
 
 </section>
 
@@ -107,6 +121,10 @@ spec:
 
   The current state of the resource.
 
+  
+
 - <h4 id="active">active <span class="property-info">boolean</span></h4>
+
+  
 
 </section>

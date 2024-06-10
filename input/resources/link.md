@@ -37,13 +37,23 @@ grant and token to obtain a link.
   It can optionally include a client certificate and key for
   mutual TLS.
 
+  
+
 - <h4 id="cost">cost <span class="property-info">integer</span></h4>
+
+  
 
 - <h4 id="interrouter">interRouter <span class="property-info">object, required</span></h4>
 
+  
+
 - <h4 id="edge">edge <span class="property-info">object, required</span></h4>
 
+  
+
 - <h4 id="noclientauth">noClientAuth <span class="property-info">boolean</span></h4>
+
+  
 
 </section>
 
@@ -55,12 +65,22 @@ grant and token to obtain a link.
 
   The current state of the resource.
 
+  
+
 - <h4 id="configured">configured <span class="property-info">boolean</span></h4>
+
+  
 
 - <h4 id="active">active <span class="property-info">boolean</span></h4>
 
+  
+
 - <h4 id="url">url <span class="property-info">string</span></h4>
 
+  
+
 - <h4 id="site">site <span class="property-info">string</span></h4>
+
+  
 
 </section>

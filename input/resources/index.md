@@ -20,10 +20,3 @@ links:
 
   - [Connector](connector.html)
   - [Listener](listener.html)
-#### Advanced stuff
-
-  - [RouterAccess](linkaccess.html)
-#### Internal stuff
-
-  - [SecuredAccess](securedaccess.html)
-  - [Certificate](certificate.html)

@@ -25,6 +25,10 @@ def generate(model):
     append()
 
     for group in model.groups:
+        # XXX
+        if "stuff" in group.name:
+            continue
+
         append(f"#### {group.name}")
         append()
 
@@ -139,17 +143,8 @@ def generate_property(prop, append):
         append(indent(prop.description.strip(), 2))
         append()
 
-    if prop.default not in (None, False):
-        append(indent(generate_attribute_default(prop), 2))
-        append()
-
-    if prop.choices:
-        append(indent(generate_attribute_choices(prop), 2))
-        append()
-
-    if prop.links:
-        append(indent(generate_attribute_links(prop), 2))
-        append()
+    append(indent(generate_attribute_fields(prop), 2))
+    append()
 
     if prop.notes:
         # XXX styling

@@ -835,6 +835,7 @@ class HtmlRenderer(_mistune.renderers.html.HTMLRenderer):
 class MarkdownLocal(_threading.local):
     def __init__(self):
         self.value = _mistune.create_markdown(renderer=HtmlRenderer(escape=False), plugins=["table"])
+        self.value.block.list_rules += ['table', 'nptable']
 
 _markdown_local = MarkdownLocal()
 

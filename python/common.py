@@ -45,28 +45,30 @@ def generate_object_links(obj):
 
     return "\n".join(lines)
 
-def generate_attribute_links(attr):
-    links = ["[{}]({{{{site_prefix}}}}{})".format(x["name"], x["url"]) for x in attr.links]
-    return "_See also:_ " + ", ".join(links)
-
-def generate_attribute_default(attr):
-    default = attr.default
-
-    if attr.default is True:
-        default = str(attr.default).lower()
-    elif isinstance(attr.default, str) and not attr.default.startswith("_"):
-        default = f"`{default}`"
-
-    return f"_Default:_ {default}"
-
-def generate_attribute_choices(attr):
+def generate_attribute_fields(attr):
     lines = list()
 
-    lines.append(f"_Choices:_")
-    lines.append("")
+    if attr.default not in (None, False):
+        default = attr.default
 
-    for choice in attr.choices:
-        lines.append(f" - `{choice['name']}` - {choice['description']}".rstrip())
+        if attr.default is True:
+            default = str(attr.default).lower()
+        elif isinstance(attr.default, str) and not attr.default.startswith("_"):
+            default = f"`{default}`"
+
+        lines.append(f"| Default | {default} |")
+
+    if attr.links:
+        links = ["[{}]({{{{site_prefix}}}}{})".format(x["name"], x["url"]) for x in attr.links]
+        lines.append(f"| See also | {', '.join(links)} |")
+
+    if attr.choices:
+        choices = [f"`{x['name']}`" for x in attr.choices]
+        lines.append(f"| Choices | {', '.join(choices)} |")
+
+    if lines:
+        lines.insert(0, "| | |")
+        lines.insert(1, "|-|-|")
 
     return "\n".join(lines)
 

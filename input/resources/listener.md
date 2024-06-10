@@ -50,7 +50,9 @@ spec:
   remote site, the local listener and the remote connector
   must have matching routing keys.
 
-  _See also:_ [Routing key concept]({{site_prefix}}/concepts/routing-key.html)
+  | | |
+  |-|-|
+  | See also | [Routing key concept]({{site_prefix}}/concepts/routing-key.html) |
 
 - <h4 id="host">host <span class="property-info">string, required</span></h4>
 
@@ -58,11 +60,15 @@ spec:
   at this site use the listener host and port to
   establish connections to the remote service.
 
+  
+
 - <h4 id="port">port <span class="property-info">integer, required</span></h4>
 
   The port of the local listener.  Clients at this site use
   the listener host and port to establish connections to
   the remote service.
+
+  
 
 - <h4 id="tlssecret">tlsSecret <span class="property-info">string</span></h4>
 
@@ -76,13 +82,17 @@ spec:
   This option is used when setting up router-to-server TLS
   encryption.
 
-  _See also:_ [TLS re-encrypt]({{site_prefix}})
+  | | |
+  |-|-|
+  | See also | [TLS re-encrypt]({{site_prefix}}) |
 
 - <h4 id="type">type <span class="property-info">string</span></h4>
 
   The listener type.
 
-  _Default:_ `tcp`
+  | | |
+  |-|-|
+  | Default | `tcp` |
 
 </section>
 
@@ -94,6 +104,10 @@ spec:
 
   The current state of the resource.
 
+  
+
 - <h4 id="active">active <span class="property-info">boolean</span></h4>
+
+  
 
 </section>

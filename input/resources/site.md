@@ -56,27 +56,24 @@ spec:
 
   Configure external access for links from remote sites.
 
-  _Default:_ `none`
-
-  _Choices:_
-  
-   - `none` - No linking to this site is permitted.
-   - `default` - Use the default link access.  On OpenShift, `route`
-  is the default.  For other Kubernetes flavors,
-  `loadbalancer` is the default.
-   - `route` - Use an OpenShift route.
-   - `loadbalancer` - Use a Kubernetes load balancer.
+  | | |
+  |-|-|
+  | Default | `none` |
+  | Choices | `none`, `default`, `route`, `loadbalancer` |
 
 - <h4 id="serviceaccount">serviceAccount <span class="property-info">string</span></h4>
 
   The Kubernetes service account under which to run the
   Skupper controller.
 
-  _Default:_ `skupper:skupper-controller`
-
-  _See also:_ [Kubernetes service accounts]({{site_prefix}}https://kubernetes.io/docs/concepts/security/service-accounts/)
+  | | |
+  |-|-|
+  | Default | `skupper:skupper-controller` |
+  | See also | [Kubernetes service accounts]({{site_prefix}}https://kubernetes.io/docs/concepts/security/service-accounts/) |
 
 - <h4 id="options">options <span class="property-info">array</span></h4>
+
+  
 
 </section>
 
@@ -88,16 +85,28 @@ spec:
 
   The current state of the resource.
 
+  
+
 - <h4 id="active">active <span class="property-info">boolean</span></h4>
 
-  "This thing is working."
+  This thing is working.
+
+  
 
 - <h4 id="endpoints">endpoints <span class="property-info">array</span></h4>
 
+  
+
 - <h4 id="sitesinnetwork">sitesInNetwork <span class="property-info">integer</span></h4>
+
+  
 
 - <h4 id="servicesinnetwork">servicesInNetwork <span class="property-info">integer</span></h4>
 
+  
+
 - <h4 id="network">network <span class="property-info">array</span></h4>
+
+  
 
 </section>
