@@ -13,7 +13,7 @@ links:
 
 <section>
 
-Delate a grant.
+Delete a grant.
 
 </section>
 

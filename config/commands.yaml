@@ -170,7 +170,7 @@ groups:
               The name of the link.
       - name: link status
         description: |
-          Show the current status of links for the site.
+          Show the status of links in the current site.
         output: |
           NAME    STATUS   COST
           west    Active   1
@@ -181,10 +181,12 @@ groups:
           [None]
         inherit_standard_options: [output, context, global]
       - name: grant
+        description: |
+          Display help for grant commands and exit
         inherit_standard_options: [global]
       - name: grant delete
         description: |
-          Delate a grant.
+          Delete a grant.
         usage: skupper grant delete <name>
         output: |
           Waiting for deletion to complete...
@@ -197,6 +199,8 @@ groups:
             description: |
               The name of the grant.
       - name: grant status
+        description: |
+          Show the status of grants in the current site.
         inherit_standard_options: [output, context, global]
       - name: token
         resource: Claim
@@ -209,8 +213,11 @@ groups:
           - name: Token redeem command
             url: /commands/token-redeem.html
         description: |
-          Create a grant and then use it to issue a token that can be
-          redeemed at a remote site for a link to the local site.
+          Issue a token that can be redeemed at a remote site for a
+          link to the current site.
+
+          This command first creates a grant in order to issue the
+          token.
         usage: skupper token issue <file> [options]
         output: |
           Waiting for status...
@@ -489,3 +496,5 @@ groups:
     commands:
       # - name: network status
       - name: version
+        description: |
+          Show versions of Skupper components

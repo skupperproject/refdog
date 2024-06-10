@@ -13,8 +13,11 @@ links:
 
 <section>
 
-Create a grant and then use it to issue a token that can be
-redeemed at a remote site for a link to the local site.
+Issue a token that can be redeemed at a remote site for a
+link to the current site.
+
+This command first creates a grant in order to issue the
+token.
 
 </section>
 

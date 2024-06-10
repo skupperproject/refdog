@@ -13,4 +13,6 @@ links:
 
 <section>
 
+Show the status of grants in the current site.
+
 </section>

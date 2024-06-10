@@ -13,6 +13,6 @@ links:
 
 <section>
 
-Show the current status of links for the site.
+Show the status of links in the current site.
 
 </section>

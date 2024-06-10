@@ -28,8 +28,15 @@ def generate(model):
         append(f"#### {group.name}")
         append()
 
+        append("| | |")
+        append("|-|-|")
+
         for command in group.commands:
-            append(f"  - [{capitalize(command.name)}]({command.id}.html)")
+            # append(f"  - [{capitalize(command.name)}]({command.id}.html)")
+            description = nvl(command.description, "").replace("\n", " ")
+            description = description.split(".")[0]
+
+            append(f"| [{capitalize(command.name)}]({command.id}.html) | {description} |")
 
     write("input/commands/index.md", "\n".join(lines))
 

@@ -324,3 +324,8 @@ body.resource table td:nth-child(1), body.command table td:nth-child(1) {
     font-style: italic;
     vertical-align: middle;
 }
+
+/* XXX .none */
+body.none table td:nth-child(1) {
+    width: 10em;
+}

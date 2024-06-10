@@ -11,6 +11,8 @@ links:
 
 <section>
 
+Display help for grant commands and exit
+
 </section>
 
 <section>
