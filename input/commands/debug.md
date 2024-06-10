@@ -14,5 +14,5 @@ Display help for debug commands and exit.
 
 ## Subcommands
 
-- [Debug dump](/commands/debug-dump.html)
+- [{{site_prefix}}Debug dump](/commands/debug-dump.html)
 </section>

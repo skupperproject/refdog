@@ -88,7 +88,7 @@ def generate_command(command):
         append()
 
         for subcommand in command.subcommands:
-            append(f"- [{capitalize(subcommand.name)}](/commands/{subcommand.id}.html)")
+            append(f"- [{{{{site_prefix}}}}{capitalize(subcommand.name)}](/commands/{subcommand.id}.html)")
 
         append("</section>")
         append()

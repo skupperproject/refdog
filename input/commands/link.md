@@ -26,6 +26,6 @@ grant and token to obtain a link.
 
 ## Subcommands
 
-- [Link delete](/commands/link-delete.html)
-- [Link status](/commands/link-status.html)
+- [{{site_prefix}}Link delete](/commands/link-delete.html)
+- [{{site_prefix}}Link status](/commands/link-status.html)
 </section>

@@ -19,8 +19,8 @@ Display help for listener commands and exit.
 
 ## Subcommands
 
-- [Listener create](/commands/listener-create.html)
-- [Listener update](/commands/listener-update.html)
-- [Listener delete](/commands/listener-delete.html)
-- [Listener status](/commands/listener-status.html)
+- [{{site_prefix}}Listener create](/commands/listener-create.html)
+- [{{site_prefix}}Listener update](/commands/listener-update.html)
+- [{{site_prefix}}Listener delete](/commands/listener-delete.html)
+- [{{site_prefix}}Listener status](/commands/listener-status.html)
 </section>

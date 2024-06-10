@@ -17,6 +17,6 @@ links:
 
 ## Subcommands
 
-- [Grant delete](/commands/grant-delete.html)
-- [Grant status](/commands/grant-status.html)
+- [{{site_prefix}}Grant delete](/commands/grant-delete.html)
+- [{{site_prefix}}Grant status](/commands/grant-status.html)
 </section>
