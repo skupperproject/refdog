@@ -89,7 +89,6 @@ access.
 
   | | |
   |-|-|
-  | Default | False |
   | Platforms | Kubernetes, Docker |
   
 

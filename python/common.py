@@ -52,7 +52,8 @@ def generate_object_links(obj):
 def generate_attribute_fields(attr):
     lines = list()
 
-    if attr.default is not None:
+    # No default for status fields
+    if attr.default is not None and getattr(attr, "group", None) != "status":
         default = attr.default
 
         if attr.default is True:

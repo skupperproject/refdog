@@ -103,7 +103,6 @@ spec:
 
   | | |
   |-|-|
-  | Default | False |
   | Platforms | Kubernetes, Docker |
   
 

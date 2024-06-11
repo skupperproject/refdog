@@ -74,7 +74,6 @@ corresponding access grant.
 
   | | |
   |-|-|
-  | Default | False |
   | Platforms | Kubernetes, Docker |
   
 

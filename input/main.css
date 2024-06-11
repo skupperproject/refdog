@@ -318,13 +318,13 @@ body.resource main::after, body.command main::after {
     height: 100vh;
 }
 
-body.resource td {
+body.resource td, body.command td {
     vertical-align: top;
     border-bottom: 2px solid var(--line-color);
     padding: 0.2em 0;
 }
 
-body.resource td table td {
+body.resource td table td, body.command td table td {
     border: none;
 }
 

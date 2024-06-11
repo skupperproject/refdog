@@ -64,7 +64,6 @@ body_class: resource
 
   | | |
   |-|-|
-  | Default | False |
   | Platforms | Kubernetes, Docker |
   
 

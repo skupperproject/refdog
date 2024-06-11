@@ -90,7 +90,6 @@ typically use an access token to obtain a link.
 
   | | |
   |-|-|
-  | Default | False |
   | Platforms | Kubernetes, Docker |
   
 
@@ -98,7 +97,6 @@ typically use an access token to obtain a link.
 
   | | |
   |-|-|
-  | Default | False |
   | Platforms | Kubernetes, Docker |
   
 

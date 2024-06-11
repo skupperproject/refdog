@@ -106,7 +106,6 @@ status are used to generate access tokens from the grant.
 
   | | |
   |-|-|
-  | Default | _Generated_ |
   | Platforms | Kubernetes, Docker |
   
 
