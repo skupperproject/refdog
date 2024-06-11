@@ -54,6 +54,18 @@ Link "<name>" is ready.
   |-|-|
   | Platforms | Kubernetes, Docker |
   
+### Output options
+
+- <h4 id="output">--output <span class="option-info">string</span></h4>
+
+  Print resources to the console instead of submitting
+  them to the Skupper controller.
+
+  | | |
+  |-|-|
+  | Choices | <table><tr><td><code>json</code></td><td>Produce JSON output</td></tr><tr><td><code>yaml</code></td><td>Produce YAML output</td></tr></table> |
+  | Platforms | Kubernetes, Docker |
+  
 ### Context options
 
 - <h4 id="namespace">--namespace <span class="option-info">string</span></h4>

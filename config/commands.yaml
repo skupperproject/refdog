@@ -242,7 +242,7 @@ groups:
         output: |
           Waiting for status...
           Link "<name>" is ready.
-        inherit_standard_options: [context, global]
+        inherit_standard_options: [output, context, global]
         options:
           - name: name
             type: string
@@ -256,6 +256,15 @@ groups:
       - name: link update
         description: |
           Change link settings.
+        usage: skupper link update <name> [options]
+        output: |
+          Waiting for update to complete...
+          Link "<name>" is updated.
+        inherit_command_options: link create
+        inherit_standard_options: [output, context, global]
+        options:
+          - name: tls-secret
+            property: tlsCredentials
       - name: link delete
         description: |
           Delete a link.
