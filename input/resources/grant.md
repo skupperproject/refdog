@@ -1,8 +1,6 @@
 ---
 body_class: resource
 links:
-  - name: Access grant concept
-    url: /concepts/grant.html
   - name: AccessToken resource
     url: /resources/claim.html
   - name: token issue command

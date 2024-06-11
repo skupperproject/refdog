@@ -1,8 +1,6 @@
 ---
 body_class: resource
 links:
-  - name: Link concept
-    url: /concepts/link.html
   - name: link command
     url: /commands/link.html
   - name: AccessGrant resource

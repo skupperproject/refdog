@@ -324,8 +324,17 @@ body.resource td, body.command td {
     padding: 0.2em 0;
 }
 
+/* XXX use a choices class for this table */
+body.resource td table, body.command td table {
+    position: relative;
+    top: -0.2em;
+    border: none;
+    font-style: normal !important;
+}
+
 body.resource td table td, body.command td table td {
     border: none;
+    font-style: normal !important;
 }
 
 body.resource table td:nth-child(1), body.command table td:nth-child(1) {

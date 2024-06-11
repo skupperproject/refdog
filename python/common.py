@@ -31,10 +31,10 @@ def generate_object_links(obj):
             add_link(obj.resource)
             add_link(obj.command)
         case Resource():
-            add_link(obj.concept)
+            # add_link(obj.concept)
             add_link(obj.command)
         case Command():
-            add_link(obj.concept)
+            # add_link(obj.concept)
             add_link(obj.resource)
             add_link(obj.parent)
 

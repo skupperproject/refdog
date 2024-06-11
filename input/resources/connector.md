@@ -1,8 +1,6 @@
 ---
 body_class: resource
 links:
-  - name: Connector concept
-    url: /concepts/connector.html
   - name: connector command
     url: /commands/connector.html
   - name: Listener resource

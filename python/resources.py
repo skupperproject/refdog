@@ -15,8 +15,8 @@ def generate(model):
 
     append("---")
     append("links:")
-    append("  - name: Skupper concepts")
-    append("    url: /concepts/index.html")
+    # append("  - name: Skupper concepts")
+    # append("    url: /concepts/index.html")
     append("  - name: Skupper commands")
     append("    url: /commands/index.html")
     append("---")

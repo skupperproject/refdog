@@ -36,9 +36,9 @@ groups:
                 description: No linking to this site is permitted.
               - name: default
                 description: |
-                  Use the default link access.  On OpenShift, `route`
-                  is the default.  For other Kubernetes flavors,
-                  `loadbalancer` is the default.
+                  Use the default link access.  On OpenShift, the
+                  default is `route`.  For other Kubernetes flavors,
+                  the default is `loadbalancer`.
               - name: route
                 description: Use an OpenShift route.  _OpenShift only._
               - name: loadbalancer
