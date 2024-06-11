@@ -7,7 +7,7 @@ links:
     url: /resources/listener.html
   - name: listener command
     url: /commands/listener.html
-  - name: Connector delete command
+  - name: connector delete command
     url: /commands/connector-delete.html
 ---
 

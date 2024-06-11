@@ -23,17 +23,17 @@ corresponding access grant.
 
 ## Spec properties
 
-- <h4 id="redemptionsecret">redemptionSecret <span class="property-info">string, required</span></h4>
+- <h4 id="code">code <span class="property-info">string, required</span></h4>
 
-  The secret used to authenticate the token when submitted
-  for redemption.
+  The secret code used to authenticate the token when
+  submitted for redemption.
 
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
   
 
-- <h4 id="redemptionurl">redemptionURL <span class="property-info">string, required</span></h4>
+- <h4 id="url">url <span class="property-info">string, required</span></h4>
 
   The URL of the token redemption service at the target
   site.
@@ -43,15 +43,15 @@ corresponding access grant.
   | Platforms | Kubernetes, Docker |
   
 
-- <h4 id="redemptionca">redemptionCA <span class="property-info">string, required</span></h4>
+- <h4 id="ca">ca <span class="property-info">string, required</span></h4>
+
+  The trusted server certificate of the token redemption
+  service at the target site.
 
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
   
-
-  The trusted server certificate of the token redemption
-  service at the target site.
 
 </section>
 

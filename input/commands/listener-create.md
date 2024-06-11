@@ -7,7 +7,7 @@ links:
     url: /resources/listener.html
   - name: listener command
     url: /commands/listener.html
-  - name: Connector create command
+  - name: connector create command
     url: /commands/connector-create.html
 ---
 

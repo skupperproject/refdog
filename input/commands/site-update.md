@@ -73,7 +73,7 @@ skupper site update --enable-link-access --service-account app1:alice
   | | |
   |-|-|
   | Default | `default` |
-  | Choices | <table><tr><td><code>none</code></td><td>No linking to this site is permitted.</td></tr><tr><td><code>default</code></td><td>Use the default link access.  On OpenShift, `route` is the default.  For other Kubernetes flavors, `loadbalancer` is the default.</td></tr><tr><td><code>route</code></td><td>Use an OpenShift route.  _OpenShift only._</td></tr><tr><td><code>loadbalancer</code></td><td>Use a Kubernetes load balancer.  _Kubernetes only._</td></tr></table> |
+  | Choices | <table><tr><td><code>default</code></td><td>Use the default link access.  On OpenShift, `route` is the default.  For other Kubernetes flavors, `loadbalancer` is the default.</td></tr><tr><td><code>route</code></td><td>Use an OpenShift route.  _OpenShift only._</td></tr><tr><td><code>loadbalancer</code></td><td>Use a Kubernetes load balancer.  _Kubernetes only._</td></tr></table> |
   | Platforms | Kubernetes, Docker |
   
 - <h4 id="service-account">--service-account <span class="option-info">string</span></h4>
@@ -84,7 +84,7 @@ skupper site update --enable-link-access --service-account app1:alice
   | | |
   |-|-|
   | Default | `skupper:skupper-controller` |
-  | Platforms | Kubernetes, Docker |
+  | Platforms | Kubernetes |
   | See also | [Kubernetes service accounts]({{site_prefix}}https://kubernetes.io/docs/concepts/security/service-accounts/) |
   
 ### Output options

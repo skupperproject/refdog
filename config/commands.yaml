@@ -76,6 +76,16 @@ groups:
           - name: link-access-type
             property: linkAccess
             default: default
+            choices:
+              - name: default
+                description: |
+                  Use the default link access.  On OpenShift, `route`
+                  is the default.  For other Kubernetes flavors,
+                  `loadbalancer` is the default.
+              - name: route
+                description: Use an OpenShift route.  _OpenShift only._
+              - name: loadbalancer
+                description: Use a Kubernetes load balancer.  _Kubernetes only._
           - name: service-account
             property: serviceAccount
         errors:
@@ -280,7 +290,7 @@ groups:
         inherit_standard_options: [global]
       - name: connector create
         links:
-          - name: Listener create command
+          - name: listener create command
             url: /commands/listener-create.html
         description: |
           Create a connector.
@@ -322,6 +332,7 @@ groups:
 
               This is an alternative to setting the `--selector` or
               `--host` options.
+            platforms: [Kubernetes]
             links:
               - name: Kubernetes workloads
                 url: https://kubernetes.io/docs/concepts/workloads/
@@ -340,7 +351,7 @@ groups:
             property: includeNotReady
       - name: connector update
         links:
-          - name: Listener update command
+          - name: listener update command
             url: /commands/listener-update.html
         description: |
           Update a connector.
@@ -365,7 +376,7 @@ groups:
             required: false
       - name: connector delete
         links:
-          - name: Listener delete command
+          - name: listener delete command
             url: /commands/listener-delete.html
         description: |
           Delete a connector.
@@ -393,7 +404,7 @@ groups:
           Display help for listener commands and exit.
       - name: listener create
         links:
-          - name: Connector create command
+          - name: connector create command
             url: /commands/connector-create.html
         description: |
           Create a listener.
@@ -432,7 +443,7 @@ groups:
             property: type
       - name: listener update
         links:
-          - name: Connector update command
+          - name: connector update command
             url: /commands/connector-update.html
         description: |
           Update a listener.
@@ -457,7 +468,7 @@ groups:
             required: false
       - name: listener delete
         links:
-          - name: Connector delete command
+          - name: connector delete command
             url: /commands/connector-delete.html
         description: |
           Delete a listener.

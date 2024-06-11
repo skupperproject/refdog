@@ -336,10 +336,11 @@ def option_name(property_name):
 class Option(ModelObjectAttribute):
     type = option_property("type")
     format = option_property("format")
-    required = option_property("required", False)
+    required = option_property("required", default=False)
     default = option_property("default")
     choices = option_property("choices")
-    links = option_property("links", [])
+    platforms = option_property("platforms", default=["Kubernetes", "Docker"])
+    links = option_property("links", default=[])
 
     @property
     def property_(self):

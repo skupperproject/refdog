@@ -7,7 +7,7 @@ links:
     url: /resources/connector.html
   - name: connector command
     url: /commands/connector.html
-  - name: Listener update command
+  - name: listener update command
     url: /commands/listener-update.html
 ---
 
@@ -92,7 +92,7 @@ skupper connector update frontend --port 9090 --output yaml
   | | |
   |-|-|
   | Default | `app=<value-of-name>` |
-  | Platforms | Kubernetes, Docker |
+  | Platforms | Kubernetes |
   | See also | [Kubernetes label selectors]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors), [Kubernetes pods]({{site_prefix}}https://kubernetes.io/docs/concepts/workloads/pods/) |
   
 - <h4 id="workload">--workload <span class="option-info">string (resource name)</span></h4>
@@ -105,7 +105,7 @@ skupper connector update frontend --port 9090 --output yaml
 
   | | |
   |-|-|
-  | Platforms | Kubernetes, Docker |
+  | Platforms | Kubernetes |
   | See also | [Kubernetes workloads]({{site_prefix}}https://kubernetes.io/docs/concepts/workloads/) |
   
 - <h4 id="host">--host <span class="option-info">string</span></h4>
@@ -152,7 +152,7 @@ skupper connector update frontend --port 9090 --output yaml
   | | |
   |-|-|
   | Default | False |
-  | Platforms | Kubernetes, Docker |
+  | Platforms | Kubernetes |
   
 ### Output options
 

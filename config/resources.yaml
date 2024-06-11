@@ -172,18 +172,16 @@ groups:
           @concept_description@
         spec_properties:
           - name: secret
-            rename: redemptionSecret
+            rename: code
             description: |
-              The secret used to authenticate the token when submitted
-              for redemption.
+              The secret code used to authenticate the token when
+              submitted for redemption.
           - name: url
-            rename: redemptionURL
             description: |
               The URL of the token redemption service at the target
               site.
           - name: ca
-            rename: redemptionCA
-            notes: |
+            description: |
               The trusted server certificate of the token redemption
               service at the target site.
         status_properties:
@@ -237,6 +235,7 @@ groups:
 
               On Kubernetes, you usually want to use this.  As an
               alternative, you can use `host`.
+            platforms: [Kubernetes]
             links:
               - name: Kubernetes label selectors
                 url: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
@@ -265,6 +264,7 @@ groups:
             description: |
               If set, include server pods that are not in the ready
               state.
+            platforms: [Kubernetes]
           - name: type
             default: tcp
             description: |

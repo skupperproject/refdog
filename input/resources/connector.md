@@ -76,7 +76,7 @@ spec:
 
   | | |
   |-|-|
-  | Platforms | Kubernetes, Docker |
+  | Platforms | Kubernetes |
   | See also | [Kubernetes label selectors]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors), [Kubernetes pods]({{site_prefix}}https://kubernetes.io/docs/concepts/workloads/pods/) |
   
 
@@ -116,7 +116,7 @@ spec:
   | | |
   |-|-|
   | Default | False |
-  | Platforms | Kubernetes, Docker |
+  | Platforms | Kubernetes |
   
 
 - <h4 id="type">type <span class="property-info">string</span></h4>
