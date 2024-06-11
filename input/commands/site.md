@@ -7,7 +7,7 @@ links:
     url: /resources/site.html
 ---
 
-# Site command
+# site command
 
 <section>
 
@@ -24,8 +24,8 @@ There can be only one site resource per namespace.
 
 ## Subcommands
 
-- [Site create]({{site_prefix}}/commands/site-create.html)
-- [Site update]({{site_prefix}}/commands/site-update.html)
-- [Site delete]({{site_prefix}}/commands/site-delete.html)
-- [Site status]({{site_prefix}}/commands/site-status.html)
+- [site create]({{site_prefix}}/commands/site-create.html)
+- [site update]({{site_prefix}}/commands/site-update.html)
+- [site delete]({{site_prefix}}/commands/site-delete.html)
+- [site status]({{site_prefix}}/commands/site-status.html)
 </section>

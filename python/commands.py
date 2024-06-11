@@ -36,7 +36,9 @@ def generate(model):
             description = nvl(command.description, "").replace("\n", " ")
             description = description.split(".")[0]
 
-            append(f"| [{capitalize(command.name)}]({command.id}.html) | {description} |")
+            append(f"| [{command.name}]({command.id}.html) | {description} |")
+
+        append()
 
     write("input/commands/index.md", "\n".join(lines))
 
@@ -60,7 +62,7 @@ def generate_command(command):
     append(generate_object_links(command))
     append("---")
     append()
-    append(f"# {capitalize(command.rename)} command")
+    append(f"# {command.rename} command")
     append()
     append("<section>")
     append()
@@ -95,7 +97,7 @@ def generate_command(command):
         append()
 
         for subcommand in command.subcommands:
-            append(f"- [{capitalize(subcommand.name)}]({{{{site_prefix}}}}/commands/{subcommand.id}.html)")
+            append(f"- [{subcommand.rename}]({{{{site_prefix}}}}/commands/{subcommand.id}.html)")
 
         append("</section>")
         append()

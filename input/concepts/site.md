@@ -3,7 +3,7 @@ body_class: concept
 links:
   - name: Site resource
     url: /resources/site.html
-  - name: Site command
+  - name: site command
     url: /commands/site.html
   - name: Network concept
     url: /concepts/network.html

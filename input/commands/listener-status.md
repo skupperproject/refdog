@@ -5,11 +5,11 @@ links:
     url: /concepts/listener.html
   - name: Listener resource
     url: /resources/listener.html
-  - name: Listener command
+  - name: listener command
     url: /commands/listener.html
 ---
 
-# Listener status command
+# listener status command
 
 <section>
 

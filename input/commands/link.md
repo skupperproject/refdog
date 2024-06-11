@@ -7,7 +7,7 @@ links:
     url: /resources/link.html
 ---
 
-# Link command
+# link command
 
 <section>
 
@@ -26,8 +26,8 @@ grant and token to obtain a link.
 
 ## Subcommands
 
-- [Link create]({{site_prefix}}/commands/link-create.html)
-- [Link update]({{site_prefix}}/commands/link-update.html)
-- [Link delete]({{site_prefix}}/commands/link-delete.html)
-- [Link status]({{site_prefix}}/commands/link-status.html)
+- [link create]({{site_prefix}}/commands/link-create.html)
+- [link update]({{site_prefix}}/commands/link-update.html)
+- [link delete]({{site_prefix}}/commands/link-delete.html)
+- [link status]({{site_prefix}}/commands/link-status.html)
 </section>

@@ -3,7 +3,7 @@ body_class: concept
 links:
   - name: Connector resource
     url: /resources/connector.html
-  - name: Connector command
+  - name: connector command
     url: /commands/connector.html
   - name: Listener concept
     url: /concepts/listener.html

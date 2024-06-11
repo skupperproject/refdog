@@ -5,11 +5,11 @@ links:
     url: /concepts/site.html
   - name: Site resource
     url: /resources/site.html
-  - name: Site command
+  - name: site command
     url: /commands/site.html
 ---
 
-# Site status command
+# site status command
 
 <section>
 

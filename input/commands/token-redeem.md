@@ -1,7 +1,7 @@
 ---
 body_class: command
 links:
-  - name: Token resource
+  - name: AccessToken resource
     url: /resources/claim.html
   - name: Token command
     url: /commands/token.html

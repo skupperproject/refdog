@@ -5,11 +5,11 @@ links:
     url: /concepts/link.html
   - name: Link resource
     url: /resources/link.html
-  - name: Link command
+  - name: link command
     url: /commands/link.html
 ---
 
-# Link update command
+# link update command
 
 <section>
 

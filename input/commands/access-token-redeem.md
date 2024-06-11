@@ -1,19 +1,19 @@
 ---
 body_class: command
 links:
-  - name: Link concept
-    url: /concepts/link.html
-  - name: Link resource
-    url: /resources/link.html
-  - name: link command
-    url: /commands/link.html
+  - name: AccessToken resource
+    url: /resources/claim.html
+  - name: access-token command
+    url: /commands/access-token.html
+  - name: Token issue command
+    url: /commands/access-token-issue.html
 ---
 
-# link create command
+# access-token redeem command
 
 <section>
 
-Create a link.
+Redeem a token in order to obtain a link to a remote site.
 
 </section>
 
@@ -22,9 +22,10 @@ Create a link.
 ## Usage
 
 ~~~ shell
-$ skupper link create <name> <tls-secret>
+$ skupper access-token redeem <file> [options]
 Waiting for status...
-Link "<name>" is ready.
+Link "<name>" is active.
+You can now safely delete <file>.
 ~~~
 
 </section>
@@ -33,19 +34,9 @@ Link "<name>" is ready.
 
 ## Options
 
-- <h4 id="name">name <span class="option-info">string, required</span></h4>
+- <h4 id="file">file <span class="option-info">string, required</span></h4>
 
-  The name of the link.
-
-  
-- <h4 id="tls-secret">tls-secret <span class="option-info">string, required</span></h4>
-
-  The name of a Kubernetes secret containing TLS
-  credentials. The secret contains the trusted server
-  certificate (typically a CA).
-  
-  It can optionally include a client certificate and key for
-  mutual TLS.
+  The name of the token file.
 
   
 ### Context options

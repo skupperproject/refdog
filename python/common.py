@@ -17,9 +17,13 @@ def generate_object_links(obj):
         if not other:
             return
 
+        name = other.rename
         type = other.__class__.__name__.lower()
 
-        lines.append(f"  - name: {capitalize(other.rename)} {type}")
+        if not isinstance(other, Command):
+            name = capitalize(name)
+
+        lines.append(f"  - name: {name} {type}")
         lines.append(f"    url: /{plural(type)}/{other.id}.html")
 
     match obj:

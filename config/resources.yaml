@@ -68,9 +68,9 @@ groups:
     resources:
       - name: Link
         links:
-          - name: Grant resource
+          - name: AccessGrant resource
             url: /resources/grant.html
-          - name: Token resource
+          - name: AccessToken resource
             url: /resources/claim.html
         description: |
           @concept_description@
@@ -100,9 +100,12 @@ groups:
           - name: url
           - name: site
       - name: Grant
+        rename: AccessGrant
         links:
-          - name: Token resource
+          - name: AccessToken resource
             url: /resources/claim.html
+          - name: access-token issue command
+            url: /commands/access-token-issue.html
         description: |
           @concept_description@
         spec_properties:
@@ -153,11 +156,11 @@ groups:
               The trusted server certificate of the token redemption
               service for this grant.
       - name: Claim
-        rename: Token
+        rename: AccessToken
         links:
-          - name: Token redeem command
-            url: /commands/token-redeem.html
-          - name: Grant resource
+          - name: access-token redeem command
+            url: /commands/access-token-redeem.html
+          - name: AccessGrant resource
             url: /resources/grant.html
         description: |
           @concept_description@

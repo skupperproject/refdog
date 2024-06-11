@@ -149,23 +149,25 @@ groups:
           routing key?
   - name: Site linking
     commands:
-      - name: token
+      - name: access-token
         resource: Claim
         description: |
           Display help for token commands and exit.
         inherit_standard_options: [global]
-      - name: token issue
+      - name: access-token issue
         resource: Grant
         links:
-          - name: Token redeem command
-            url: /commands/token-redeem.html
+          - name: access-token redeem command
+            url: /commands/access-token-redeem.html
         description: |
+          Issue a token redeemable for a link to the current site.
+
           Issue a token that can be redeemed at a remote site for a
           link to the current site.
 
           This command first creates a grant in order to issue the
           token.
-        usage: skupper token issue <file> [options]
+        usage: skupper access-token issue <file> [options]
         output: |
           Waiting for status...
           Grant "<name>" is ready.
@@ -175,15 +177,15 @@ groups:
           create a link to this site using the 'skupper token redeem'
           command:
 
-             $ skupper token redeem <file>
+             $ skupper access-token redeem <file>
 
           The token expires after 1 use or after 15 minutes.
         examples: |
           # Issue a token
-          skupper token issue ~/token.yaml
+          skupper access-token issue ~/token.yaml
 
           # Issue a token with non-default limits
-          skupper token issue ~/token.yaml --expiration-period 24h --redemptions-allowed 3
+          skupper access-token issue ~/token.yaml --expiration-period 24h --redemptions-allowed 3
         inherit_standard_options: [context, global]
         options:
           - name: file
@@ -201,13 +203,13 @@ groups:
               Link access at this site is not currently enabled.  You
               can use "skupper site update --enable-link-access" to
               enable it.
-      - name: token redeem
+      - name: access-token redeem
         links:
           - name: Token issue command
-            url: /commands/token-issue.html
+            url: /commands/access-token-issue.html
         description: |
           Redeem a token in order to obtain a link to a remote site.
-        usage: skupper token redeem <file> [options]
+        usage: skupper access-token redeem <file> [options]
         output: |
           Waiting for status...
           Link "<name>" is active.

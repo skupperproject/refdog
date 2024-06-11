@@ -327,5 +327,5 @@ body.resource table td:nth-child(1), body.command table td:nth-child(1) {
 
 /* XXX .none */
 body.none table td:nth-child(1) {
-    width: 10em;
+    width: 12em;
 }

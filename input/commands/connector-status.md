@@ -5,11 +5,11 @@ links:
     url: /concepts/connector.html
   - name: Connector resource
     url: /resources/connector.html
-  - name: Connector command
+  - name: connector command
     url: /commands/connector.html
 ---
 
-# Connector status command
+# connector status command
 
 <section>
 

@@ -3,13 +3,13 @@ body_class: command
 links:
   - name: AccessGrant resource
     url: /resources/grant.html
-  - name: Token command
-    url: /commands/token.html
-  - name: Token redeem command
-    url: /commands/token-redeem.html
+  - name: access-token command
+    url: /commands/access-token.html
+  - name: access-token redeem command
+    url: /commands/access-token-redeem.html
 ---
 
-# Token issue command
+# access-token issue command
 
 <section>
 
@@ -28,7 +28,7 @@ token.
 ## Usage
 
 ~~~ shell
-$ skupper token issue <file> [options]
+$ skupper access-token issue <file> [options]
 Waiting for status...
 Grant "<name>" is ready.
 Token file <file> created.
@@ -37,7 +37,7 @@ Transfer this file to a remote site. At the remote site,
 create a link to this site using the 'skupper token redeem'
 command:
 
-   $ skupper token redeem <file>
+   $ skupper access-token redeem <file>
 
 The token expires after 1 use or after 15 minutes.
 ~~~
@@ -50,10 +50,10 @@ The token expires after 1 use or after 15 minutes.
 
 ~~~
 # Issue a token
-skupper token issue ~/token.yaml
+skupper access-token issue ~/token.yaml
 
 # Issue a token with non-default limits
-skupper token issue ~/token.yaml --expiration-period 24h --redemptions-allowed 3
+skupper access-token issue ~/token.yaml --expiration-period 24h --redemptions-allowed 3
 ~~~
 
 </section>

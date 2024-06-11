@@ -1,15 +1,15 @@
 ---
 body_class: concept
 links:
-  - name: Token resource
+  - name: AccessToken resource
     url: /resources/claim.html
-  - name: Grant concept
+  - name: Access grant concept
     url: /concepts/grant.html
   - name: Token redeem command
     url: /commands/token-redeem.html
 ---
 
-# Token concept
+# Access token concept
 
 <section>
 

@@ -15,8 +15,8 @@ links:
 #### Site linking
 
   - [Link](link.html)
-  - [Grant](grant.html)
-  - [Token](claim.html)
+  - [Access grant](grant.html)
+  - [Access token](claim.html)
 #### Service exposure
 
   - [Listener](listener.html)

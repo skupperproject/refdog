@@ -2,7 +2,7 @@
 body_class: command
 ---
 
-# Debug command
+# debug command
 
 <section>
 
@@ -14,5 +14,5 @@ Display help for debug commands and exit.
 
 ## Subcommands
 
-- [Debug dump]({{site_prefix}}/commands/debug-dump.html)
+- [debug dump]({{site_prefix}}/commands/debug-dump.html)
 </section>

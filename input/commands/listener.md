@@ -7,7 +7,7 @@ links:
     url: /resources/listener.html
 ---
 
-# Listener command
+# listener command
 
 <section>
 
@@ -19,8 +19,8 @@ Display help for listener commands and exit.
 
 ## Subcommands
 
-- [Listener create]({{site_prefix}}/commands/listener-create.html)
-- [Listener update]({{site_prefix}}/commands/listener-update.html)
-- [Listener delete]({{site_prefix}}/commands/listener-delete.html)
-- [Listener status]({{site_prefix}}/commands/listener-status.html)
+- [listener create]({{site_prefix}}/commands/listener-create.html)
+- [listener update]({{site_prefix}}/commands/listener-update.html)
+- [listener delete]({{site_prefix}}/commands/listener-delete.html)
+- [listener status]({{site_prefix}}/commands/listener-status.html)
 </section>

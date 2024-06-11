@@ -31,8 +31,9 @@ groups:
           as a transport for application connections and requests.  A
           set of linked sites constitute a network.
       - name: grant
+        rename: Access grant
         links:
-          - name: Token concept
+          - name: Access token concept
             url: /concepts/claim.html
           - name: Token issue command
             url: /commands/token-issue.html
@@ -43,9 +44,9 @@ groups:
           certificate authority (CA), within a certain expiration
           period and for a limited number of redemptions.
       - name: claim
-        rename: token
+        rename: Access token
         links:
-          - name: Grant concept
+          - name: Access grant concept
             url: /concepts/grant.html
           - name: Token redeem command
             url: /commands/token-redeem.html
