@@ -13,11 +13,14 @@ links:
 
 <section>
 
-Permission to redeem tokens for links to the local site.  A
-remote site can use a token containing the grant URL and
-secret to obtain a certificate signed by the grant's
-certificate authority (CA), within a certain expiration
-period and for a limited number of redemptions.
+Permission to redeem access tokens for links to the current
+site.  A remote site can use a token containing the grant
+URL and a secret code to obtain a certificate signed by the
+grant's certificate authority (CA), within a certain
+expiration window and for a limited number of redemptions.
+
+The `code`, `url`, and `ca` properties of the resource
+status are used to generate access tokens from the grant.
 
 </section>
 
@@ -27,34 +30,33 @@ period and for a limited number of redemptions.
 
 - <h4 id="redemptionsallowed">redemptionsAllowed <span class="property-info">integer</span></h4>
 
-  The number of times a token for this grant can be
-  redeemed.
+  The number of times an access token for this grant can
+  be redeemed.
 
   | | |
   |-|-|
   | Default | 1 |
   
 
-- <h4 id="expirationperiod">expirationPeriod <span class="property-info">string (duration)</span></h4>
+- <h4 id="expirationwindow">expirationWindow <span class="property-info">string (duration)</span></h4>
 
-  The period of time in which a token for this grant can
-  be redeemed.
+  The period of time in which an access token for this
+  grant can be redeemed.
 
   | | |
   |-|-|
   | Default | `15m` |
   
 
-- <h4 id="secret">secret <span class="property-info">string</span></h4>
+- <h4 id="code">code <span class="property-info">string</span></h4>
 
   
 
-  What is this secret as compared to the one in the
-  status?  The description above says "containing the
-  grant URL and secret".  Which secret is it referring to?
+  The secret code used to authenticate access tokens
+  submitted for redemption.
   
-  "The certificate authority (CA) used to sign the
-  certificate resulting from successful redemption"?
+  If not set, a value for the code field in the status is
+  generated.
 
 </section>
 
@@ -75,28 +77,33 @@ period and for a limited number of redemptions.
 
   
 
-- <h4 id="expiration">expiration <span class="property-info">string (date-time)</span></h4>
+- <h4 id="expirationtime">expirationTime <span class="property-info">string (date-time)</span></h4>
 
   The point in time when the grant expires.
 
   
 
-- <h4 id="redemptionsecret">redemptionSecret <span class="property-info">string</span></h4>
+  expirationTime seems to be the most conventional name.
 
-  The secret used to authenticate tokens submitted for
-  redemption.
+- <h4 id="code">code <span class="property-info">string</span></h4>
+
+  The secret code used to authenticate access tokens
+  submitted for redemption.
+
+  | | |
+  |-|-|
+  | Default | _Generated_ |
+  
+
+- <h4 id="url">url <span class="property-info">string</span></h4>
+
+  The URL of the token-redemption service for this grant.
 
   
 
-- <h4 id="redemptionurl">redemptionURL <span class="property-info">string</span></h4>
+- <h4 id="ca">ca <span class="property-info">string</span></h4>
 
-  The URL of the token redemption service for this grant.
-
-  
-
-- <h4 id="redemptionca">redemptionCA <span class="property-info">string</span></h4>
-
-  The trusted server certificate of the token redemption
+  The trusted server certificate of the token-redemption
   service for this grant.
 
   

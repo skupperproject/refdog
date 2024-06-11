@@ -5,7 +5,7 @@ links:
     url: /resources/claim.html
   - name: access-token command
     url: /commands/access-token.html
-  - name: Token issue command
+  - name: access-token issue command
     url: /commands/access-token-issue.html
 ---
 

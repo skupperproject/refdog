@@ -108,27 +108,30 @@ groups:
             url: /commands/access-token-issue.html
         description: |
           @concept_description@
+
+          The `code`, `url`, and `ca` properties of the resource
+          status are used to generate access tokens from the grant.
         spec_properties:
           - name: claims
             rename: redemptionsAllowed
             description: |
-              The number of times a token for this grant can be
-              redeemed.
+              The number of times an access token for this grant can
+              be redeemed.
             default: 1
           - name: validFor
-            rename: expirationPeriod
+            rename: expirationWindow
             description: |
-              The period of time in which a token for this grant can
-              be redeemed.
+              The period of time in which an access token for this
+              grant can be redeemed.
             default: 15m
           - name: secret
+            rename: code
             notes: |
-              What is this secret as compared to the one in the
-              status?  The description above says "containing the
-              grant URL and secret".  Which secret is it referring to?
+              The secret code used to authenticate access tokens
+              submitted for redemption.
 
-              "The certificate authority (CA) used to sign the
-              certificate resulting from successful redemption"?
+              If not set, a value for the code field in the status is
+              generated.
         status_properties:
           - name: status
             description: |
@@ -139,21 +142,23 @@ groups:
               The number of times a token for this grant has been
               redeemed.
           - name: expiration
+            rename: expirationTime
             description: |
               The point in time when the grant expires.
+            notes: |
+              expirationTime seems to be the most conventional name.
           - name: secret
-            rename: redemptionSecret
+            rename: code
             description: |
-              The secret used to authenticate tokens submitted for
-              redemption.
+              The secret code used to authenticate access tokens
+              submitted for redemption.
+            default: _Generated_
           - name: url
-            rename: redemptionURL
             description: |
-              The URL of the token redemption service for this grant.
+              The URL of the token-redemption service for this grant.
           - name: ca
-            rename: redemptionCA
             description: |
-              The trusted server certificate of the token redemption
+              The trusted server certificate of the token-redemption
               service for this grant.
       - name: Claim
         rename: AccessToken

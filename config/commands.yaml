@@ -174,18 +174,18 @@ groups:
           Token file <file> created.
 
           Transfer this file to a remote site. At the remote site,
-          create a link to this site using the 'skupper token redeem'
-          command:
+          create a link to this site using the 'skupper access-token
+          redeem' command:
 
              $ skupper access-token redeem <file>
 
           The token expires after 1 use or after 15 minutes.
         examples: |
-          # Issue a token
+          # Issue an access token
           skupper access-token issue ~/token.yaml
 
-          # Issue a token with non-default limits
-          skupper access-token issue ~/token.yaml --expiration-period 24h --redemptions-allowed 3
+          # Issue an access token with non-default limits
+          skupper access-token issue ~/token.yaml --expiration-window 24h --redemptions-allowed 3
         inherit_standard_options: [context, global]
         options:
           - name: file
@@ -193,7 +193,7 @@ groups:
             required: true
             description: |
               The name of the token file.
-          - name: expiration-period
+          - name: expiration-window
             property: validFor
           - name: redemptions-allowed
             property: claims
@@ -205,7 +205,7 @@ groups:
               enable it.
       - name: access-token redeem
         links:
-          - name: Token issue command
+          - name: access-token issue command
             url: /commands/access-token-issue.html
         description: |
           Redeem a token in order to obtain a link to a remote site.
@@ -221,34 +221,6 @@ groups:
             required: true
             description: |
               The name of the token file.
-      # - name: grant
-      #   description: |
-      #     Display help for grant commands and exit
-      #   inherit_standard_options: [global]
-      # - name: grant create
-      #   description: |
-      #     Create a grant.
-      # - name: grant update
-      #   description: |
-      #     Change grant settings.
-      # - name: grant delete
-      #   description: |
-      #     Delete a grant.
-      #   usage: skupper grant delete <name>
-      #   output: |
-      #     Waiting for deletion to complete...
-      #     Grant "<name>" is deleted.
-      #   inherit_standard_options: [context, global]
-      #   options:
-      #     - name: name
-      #       type: string
-      #       required: true
-      #       description: |
-      #         The name of the grant.
-      # - name: grant status
-      #   description: |
-      #     Show the status of grants in the current site.
-      #   inherit_standard_options: [output, context, global]
       - name: link
         description: |
           Display help for link commands and exit.

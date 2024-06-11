@@ -13,8 +13,8 @@ links:
 
 <section>
 
-A transferrable authentication token redeemable for a link
-to a remote site.  A token contains the URL and secret of a
-corresponding grant.
+A transferrable token redeemable for a link to a remote
+site.  An access token contains the URL and secret code of a
+corresponding access grant.
 
 </section>
