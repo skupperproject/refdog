@@ -66,6 +66,9 @@ skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed 3
 
   The name of the token file.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 - <h4 id="expiration-window">--expiration-window <span class="option-info">string (duration)</span></h4>
 
@@ -75,6 +78,7 @@ skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed 3
   | | |
   |-|-|
   | Default | `15m` |
+  | Platforms | Kubernetes, Docker |
   
 - <h4 id="redemptions-allowed">--redemptions-allowed <span class="option-info">integer</span></h4>
 
@@ -84,6 +88,7 @@ skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed 3
   | | |
   |-|-|
   | Default | 1 |
+  | Platforms | Kubernetes, Docker |
   
 ### Context options
 
@@ -91,11 +96,17 @@ skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed 3
 
   Select the current namespace.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 - <h4 id="context">--context <span class="option-info">string</span></h4>
 
   Select the current kubeconfig context.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes |
   
 - <h4 id="platform">--platform <span class="option-info">string</span></h4>
 
@@ -103,7 +114,8 @@ skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed 3
 
   | | |
   |-|-|
-  | Choices | `kubernetes`, `docker`, `systemd` |
+  | Choices | <table><tr><td><code>kubernetes</code></td><td>Kubernetes</td></tr><tr><td><code>docker</code></td><td>Docker or Podman</td></tr></table> |
+  | Platforms | Kubernetes, Docker |
   
 ### Global options
 
@@ -111,6 +123,9 @@ skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed 3
 
   Display help and exit.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 </section>
 

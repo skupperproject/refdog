@@ -38,6 +38,9 @@ You can now safely delete <file>.
 
   The name of the token file.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 ### Context options
 
@@ -45,11 +48,17 @@ You can now safely delete <file>.
 
   Select the current namespace.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 - <h4 id="context">--context <span class="option-info">string</span></h4>
 
   Select the current kubeconfig context.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes |
   
 - <h4 id="platform">--platform <span class="option-info">string</span></h4>
 
@@ -57,7 +66,8 @@ You can now safely delete <file>.
 
   | | |
   |-|-|
-  | Choices | `kubernetes`, `docker`, `systemd` |
+  | Choices | <table><tr><td><code>kubernetes</code></td><td>Kubernetes</td></tr><tr><td><code>docker</code></td><td>Docker or Podman</td></tr></table> |
+  | Platforms | Kubernetes, Docker |
   
 ### Global options
 
@@ -65,5 +75,8 @@ You can now safely delete <file>.
 
   Display help and exit.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 </section>

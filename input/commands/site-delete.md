@@ -40,6 +40,9 @@ Site "<name>" is deleted.
   If not specified, the name is that of the site
   associated with the current namespace.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 ### Context options
 
@@ -47,11 +50,17 @@ Site "<name>" is deleted.
 
   Select the current namespace.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 - <h4 id="context">--context <span class="option-info">string</span></h4>
 
   Select the current kubeconfig context.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes |
   
 - <h4 id="platform">--platform <span class="option-info">string</span></h4>
 
@@ -59,7 +68,8 @@ Site "<name>" is deleted.
 
   | | |
   |-|-|
-  | Choices | `kubernetes`, `docker`, `systemd` |
+  | Choices | <table><tr><td><code>kubernetes</code></td><td>Kubernetes</td></tr><tr><td><code>docker</code></td><td>Docker or Podman</td></tr></table> |
+  | Platforms | Kubernetes, Docker |
   
 ### Global options
 
@@ -67,6 +77,9 @@ Site "<name>" is deleted.
 
   Display help and exit.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 </section>
 

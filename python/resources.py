@@ -31,9 +31,16 @@ def generate(model):
 
         append(f"#### {group.name}")
         append()
+        append("| | |")
+        append("|-|-|")
 
         for resource in group.resources:
-            append(f"  - [{resource.rename}]({resource.id}.html)")
+            description = nvl(resource.description, "").replace("\n", " ")
+            description = description.split(".")[0]
+
+            append(f"| [{resource.rename}]({resource.id}.html) | {description} |")
+
+        append()
 
     write("input/resources/index.md", "\n".join(lines))
 

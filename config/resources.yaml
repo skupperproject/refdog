@@ -1,5 +1,5 @@
 groups:
-  - name: Site configuration
+  - name: Sites
     resources:
       - name: Site
         links:
@@ -40,11 +40,12 @@ groups:
                   is the default.  For other Kubernetes flavors,
                   `loadbalancer` is the default.
               - name: route
-                description: Use an OpenShift route.
+                description: Use an OpenShift route.  _OpenShift only._
               - name: loadbalancer
-                description: Use a Kubernetes load balancer.
+                description: Use a Kubernetes load balancer.  _Kubernetes only._
           - name: serviceAccount
             default: skupper:skupper-controller
+            platforms: [Kubernetes]
             description: |
               The Kubernetes service account under which to run the
               Skupper controller.
@@ -75,8 +76,8 @@ groups:
         description: |
           @concept_description@
 
-          Links are not usually created directly.  Instead, you use a
-          grant and token to obtain a link.
+          Links are not usually created directly.  Instead, you
+          typically use an access token to obtain a link.
         spec_properties:
           - name: tlsCredentials
             rename: tlsSecret

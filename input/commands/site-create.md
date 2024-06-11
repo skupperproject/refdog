@@ -52,11 +52,17 @@ skupper site create west --enable-link-access
   A name of your choice for the Skupper site.  This name is
   displayed in the console and CLI output.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 - <h4 id="enable-link-access">--enable-link-access <span class="option-info">boolean</span></h4>
 
   Allow access for incoming links from remote sites.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 - <h4 id="link-access-type">--link-access-type <span class="option-info">string</span></h4>
 
@@ -65,7 +71,8 @@ skupper site create west --enable-link-access
   | | |
   |-|-|
   | Default | `default` |
-  | Choices | `none`, `default`, `route`, `loadbalancer` |
+  | Choices | <table><tr><td><code>none</code></td><td>No linking to this site is permitted.</td></tr><tr><td><code>default</code></td><td>Use the default link access.  On OpenShift, `route` is the default.  For other Kubernetes flavors, `loadbalancer` is the default.</td></tr><tr><td><code>route</code></td><td>Use an OpenShift route.  _OpenShift only._</td></tr><tr><td><code>loadbalancer</code></td><td>Use a Kubernetes load balancer.  _Kubernetes only._</td></tr></table> |
+  | Platforms | Kubernetes, Docker |
   
 - <h4 id="service-account">--service-account <span class="option-info">string</span></h4>
 
@@ -75,6 +82,7 @@ skupper site create west --enable-link-access
   | | |
   |-|-|
   | Default | `skupper:skupper-controller` |
+  | Platforms | Kubernetes, Docker |
   | See also | [Kubernetes service accounts]({{site_prefix}}https://kubernetes.io/docs/concepts/security/service-accounts/) |
   
 ### Output options
@@ -86,7 +94,8 @@ skupper site create west --enable-link-access
 
   | | |
   |-|-|
-  | Choices | `json`, `yaml` |
+  | Choices | <table><tr><td><code>json</code></td><td>Produce JSON output</td></tr><tr><td><code>yaml</code></td><td>Produce YAML output</td></tr></table> |
+  | Platforms | Kubernetes, Docker |
   
 ### Context options
 
@@ -94,11 +103,17 @@ skupper site create west --enable-link-access
 
   Select the current namespace.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 - <h4 id="context">--context <span class="option-info">string</span></h4>
 
   Select the current kubeconfig context.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes |
   
 - <h4 id="platform">--platform <span class="option-info">string</span></h4>
 
@@ -106,7 +121,8 @@ skupper site create west --enable-link-access
 
   | | |
   |-|-|
-  | Choices | `kubernetes`, `docker`, `systemd` |
+  | Choices | <table><tr><td><code>kubernetes</code></td><td>Kubernetes</td></tr><tr><td><code>docker</code></td><td>Docker or Podman</td></tr></table> |
+  | Platforms | Kubernetes, Docker |
   
 ### Global options
 
@@ -114,6 +130,9 @@ skupper site create west --enable-link-access
 
   Display help and exit.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 </section>
 

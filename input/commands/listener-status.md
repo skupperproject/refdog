@@ -13,7 +13,7 @@ links:
 
 <section>
 
-Show the status of listeners in the current site.
+Display the status of listeners in the current site.
 
 </section>
 

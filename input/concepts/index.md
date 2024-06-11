@@ -8,10 +8,10 @@ links:
 
 # Skupper concepts
 
-#### Networks and sites
+#### Sites and networks
 
-  - [Network](network.html)
   - [Site](site.html)
+  - [Network](network.html)
 #### Site linking
 
   - [Link](link.html)

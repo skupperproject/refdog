@@ -13,8 +13,8 @@ links:
 
 <section>
 
-A connector binds target workloads in the local site to
-listeners in remote sites.
+Binds target workloads in the local site to listeners in
+remote sites.
 
 Each site can have multiple connector resources.
 
@@ -53,6 +53,7 @@ spec:
 
   | | |
   |-|-|
+  | Platforms | Kubernetes, Docker |
   | See also | [Routing key concept]({{site_prefix}}/concepts/routing-key.html) |
   
 
@@ -60,6 +61,9 @@ spec:
 
   The port on the target workload to forward traffic to.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 
 - <h4 id="selector">selector <span class="property-info">string</span></h4>
@@ -72,6 +76,7 @@ spec:
 
   | | |
   |-|-|
+  | Platforms | Kubernetes, Docker |
   | See also | [Kubernetes label selectors]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors), [Kubernetes pods]({{site_prefix}}https://kubernetes.io/docs/concepts/workloads/pods/) |
   
 
@@ -81,6 +86,9 @@ spec:
   alternative to `selector` for specifying the target
   server.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 
 - <h4 id="tlssecret">tlsSecret <span class="property-info">string</span></h4>
@@ -96,6 +104,7 @@ spec:
 
   | | |
   |-|-|
+  | Platforms | Kubernetes, Docker |
   | See also | [TLS re-encrypt]({{site_prefix}}) |
   
 
@@ -107,6 +116,7 @@ spec:
   | | |
   |-|-|
   | Default | False |
+  | Platforms | Kubernetes, Docker |
   
 
 - <h4 id="type">type <span class="property-info">string</span></h4>
@@ -116,6 +126,7 @@ spec:
   | | |
   |-|-|
   | Default | `tcp` |
+  | Platforms | Kubernetes, Docker |
   
 
 </section>
@@ -128,6 +139,9 @@ spec:
 
   The current state of the resource.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 
 - <h4 id="active">active <span class="property-info">boolean</span></h4>
@@ -135,6 +149,7 @@ spec:
   | | |
   |-|-|
   | Default | False |
+  | Platforms | Kubernetes, Docker |
   
 
 </section>

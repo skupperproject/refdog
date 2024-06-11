@@ -11,8 +11,8 @@ links:
 
 <section>
 
-A listener binds a connection endpoint in the local site to
-target workloads in remote sites.
+Binds a connection endpoint in the local site to target
+workloads in remote sites.
 
 Each site can have multiple listener definitions.
 
@@ -52,6 +52,7 @@ spec:
 
   | | |
   |-|-|
+  | Platforms | Kubernetes, Docker |
   | See also | [Routing key concept]({{site_prefix}}/concepts/routing-key.html) |
   
 
@@ -61,6 +62,9 @@ spec:
   at this site use the listener host and port to
   establish connections to the remote service.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 
 - <h4 id="port">port <span class="property-info">integer, required</span></h4>
@@ -69,6 +73,9 @@ spec:
   the listener host and port to establish connections to
   the remote service.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 
 - <h4 id="tlssecret">tlsSecret <span class="property-info">string</span></h4>
@@ -85,6 +92,7 @@ spec:
 
   | | |
   |-|-|
+  | Platforms | Kubernetes, Docker |
   | See also | [TLS re-encrypt]({{site_prefix}}) |
   
 
@@ -95,6 +103,7 @@ spec:
   | | |
   |-|-|
   | Default | `tcp` |
+  | Platforms | Kubernetes, Docker |
   
 
 </section>
@@ -107,6 +116,9 @@ spec:
 
   The current state of the resource.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 
 - <h4 id="active">active <span class="property-info">boolean</span></h4>
@@ -114,6 +126,7 @@ spec:
   | | |
   |-|-|
   | Default | False |
+  | Platforms | Kubernetes, Docker |
   
 
 </section>

@@ -56,6 +56,9 @@ skupper listener create frontend 8080 --output yaml
 
   The name of the listener resource.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 - <h4 id="port">port <span class="option-info">integer, required</span></h4>
 
@@ -63,6 +66,9 @@ skupper listener create frontend 8080 --output yaml
   the listener host and port to establish connections to
   the remote service.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 - <h4 id="routing-key">--routing-key <span class="option-info">string</span></h4>
 
@@ -74,6 +80,7 @@ skupper listener create frontend 8080 --output yaml
   | | |
   |-|-|
   | Default | _Value of name_ |
+  | Platforms | Kubernetes, Docker |
   | See also | [Routing key concept]({{site_prefix}}/concepts/routing-key.html) |
   
 - <h4 id="host">--host <span class="option-info">string</span></h4>
@@ -85,6 +92,7 @@ skupper listener create frontend 8080 --output yaml
   | | |
   |-|-|
   | Default | _Value of name_ |
+  | Platforms | Kubernetes, Docker |
   
 - <h4 id="tls-secret">--tls-secret <span class="option-info">string</span></h4>
 
@@ -100,6 +108,7 @@ skupper listener create frontend 8080 --output yaml
 
   | | |
   |-|-|
+  | Platforms | Kubernetes, Docker |
   | See also | [TLS re-encrypt]({{site_prefix}}) |
   
 - <h4 id="type">--type <span class="option-info">string</span></h4>
@@ -109,6 +118,7 @@ skupper listener create frontend 8080 --output yaml
   | | |
   |-|-|
   | Default | `tcp` |
+  | Platforms | Kubernetes, Docker |
   
 ### Output options
 
@@ -119,7 +129,8 @@ skupper listener create frontend 8080 --output yaml
 
   | | |
   |-|-|
-  | Choices | `json`, `yaml` |
+  | Choices | <table><tr><td><code>json</code></td><td>Produce JSON output</td></tr><tr><td><code>yaml</code></td><td>Produce YAML output</td></tr></table> |
+  | Platforms | Kubernetes, Docker |
   
 ### Context options
 
@@ -127,11 +138,17 @@ skupper listener create frontend 8080 --output yaml
 
   Select the current namespace.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 - <h4 id="context">--context <span class="option-info">string</span></h4>
 
   Select the current kubeconfig context.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes |
   
 - <h4 id="platform">--platform <span class="option-info">string</span></h4>
 
@@ -139,7 +156,8 @@ skupper listener create frontend 8080 --output yaml
 
   | | |
   |-|-|
-  | Choices | `kubernetes`, `docker`, `systemd` |
+  | Choices | <table><tr><td><code>kubernetes</code></td><td>Kubernetes</td></tr><tr><td><code>docker</code></td><td>Docker or Podman</td></tr></table> |
+  | Platforms | Kubernetes, Docker |
   
 ### Global options
 
@@ -147,5 +165,8 @@ skupper listener create frontend 8080 --output yaml
 
   Display help and exit.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 </section>

@@ -56,11 +56,17 @@ skupper connector update frontend --port 9090 --output yaml
 
   The name of the connector resource.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 - <h4 id="port">--port <span class="option-info">integer</span></h4>
 
   The port on the target workload to forward traffic to.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 - <h4 id="routing-key">--routing-key <span class="option-info">string</span></h4>
 
@@ -72,6 +78,7 @@ skupper connector update frontend --port 9090 --output yaml
   | | |
   |-|-|
   | Default | _Value of name_ |
+  | Platforms | Kubernetes, Docker |
   | See also | [Routing key concept]({{site_prefix}}/concepts/routing-key.html) |
   
 - <h4 id="selector">--selector <span class="option-info">string</span></h4>
@@ -85,6 +92,7 @@ skupper connector update frontend --port 9090 --output yaml
   | | |
   |-|-|
   | Default | `app=<value-of-name>` |
+  | Platforms | Kubernetes, Docker |
   | See also | [Kubernetes label selectors]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors), [Kubernetes pods]({{site_prefix}}https://kubernetes.io/docs/concepts/workloads/pods/) |
   
 - <h4 id="workload">--workload <span class="option-info">string (resource name)</span></h4>
@@ -97,6 +105,7 @@ skupper connector update frontend --port 9090 --output yaml
 
   | | |
   |-|-|
+  | Platforms | Kubernetes, Docker |
   | See also | [Kubernetes workloads]({{site_prefix}}https://kubernetes.io/docs/concepts/workloads/) |
   
 - <h4 id="host">--host <span class="option-info">string</span></h4>
@@ -106,6 +115,9 @@ skupper connector update frontend --port 9090 --output yaml
   This is an alternative to setting the `--selector` or
   `--workload` options.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 - <h4 id="tls-secret">--tls-secret <span class="option-info">string</span></h4>
 
@@ -120,6 +132,7 @@ skupper connector update frontend --port 9090 --output yaml
 
   | | |
   |-|-|
+  | Platforms | Kubernetes, Docker |
   | See also | [TLS re-encrypt]({{site_prefix}}) |
   
 - <h4 id="type">--type <span class="option-info">string</span></h4>
@@ -129,6 +142,7 @@ skupper connector update frontend --port 9090 --output yaml
   | | |
   |-|-|
   | Default | `tcp` |
+  | Platforms | Kubernetes, Docker |
   
 - <h4 id="include-not-ready">--include-not-ready <span class="option-info">boolean</span></h4>
 
@@ -138,6 +152,7 @@ skupper connector update frontend --port 9090 --output yaml
   | | |
   |-|-|
   | Default | False |
+  | Platforms | Kubernetes, Docker |
   
 ### Output options
 
@@ -148,7 +163,8 @@ skupper connector update frontend --port 9090 --output yaml
 
   | | |
   |-|-|
-  | Choices | `json`, `yaml` |
+  | Choices | <table><tr><td><code>json</code></td><td>Produce JSON output</td></tr><tr><td><code>yaml</code></td><td>Produce YAML output</td></tr></table> |
+  | Platforms | Kubernetes, Docker |
   
 ### Context options
 
@@ -156,11 +172,17 @@ skupper connector update frontend --port 9090 --output yaml
 
   Select the current namespace.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 - <h4 id="context">--context <span class="option-info">string</span></h4>
 
   Select the current kubeconfig context.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes |
   
 - <h4 id="platform">--platform <span class="option-info">string</span></h4>
 
@@ -168,7 +190,8 @@ skupper connector update frontend --port 9090 --output yaml
 
   | | |
   |-|-|
-  | Choices | `kubernetes`, `docker`, `systemd` |
+  | Choices | <table><tr><td><code>kubernetes</code></td><td>Kubernetes</td></tr><tr><td><code>docker</code></td><td>Docker or Podman</td></tr></table> |
+  | Platforms | Kubernetes, Docker |
   
 ### Global options
 
@@ -176,5 +199,8 @@ skupper connector update frontend --port 9090 --output yaml
 
   Display help and exit.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 </section>

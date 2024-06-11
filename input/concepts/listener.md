@@ -13,7 +13,7 @@ links:
 
 <section>
 
-A listener binds a connection endpoint in the local site to
-target workloads in remote sites.
+Binds a connection endpoint in the local site to target
+workloads in remote sites.
 
 </section>

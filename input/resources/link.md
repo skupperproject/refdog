@@ -15,12 +15,12 @@ links:
 
 <section>
 
-A link is a site-to-site communication channel. Links serve
-as a transport for application connections and requests.  A
-set of linked sites constitute a network.
+A site-to-site communication channel. Links serve as a
+transport for application connections and requests.  A set
+of linked sites constitute a network.
 
-Links are not usually created directly.  Instead, you use a
-grant and token to obtain a link.
+Links are not usually created directly.  Instead, you
+typically use an access token to obtain a link.
 
 </section>
 
@@ -37,18 +37,30 @@ grant and token to obtain a link.
   It can optionally include a client certificate and key for
   mutual TLS.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 
 - <h4 id="cost">cost <span class="property-info">integer</span></h4>
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 
 - <h4 id="interrouter">interRouter <span class="property-info">object, required</span></h4>
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 
 - <h4 id="edge">edge <span class="property-info">object, required</span></h4>
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 
 - <h4 id="noclientauth">noClientAuth <span class="property-info">boolean</span></h4>
@@ -56,6 +68,7 @@ grant and token to obtain a link.
   | | |
   |-|-|
   | Default | False |
+  | Platforms | Kubernetes, Docker |
   
 
 </section>
@@ -68,6 +81,9 @@ grant and token to obtain a link.
 
   The current state of the resource.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 
 - <h4 id="configured">configured <span class="property-info">boolean</span></h4>
@@ -75,6 +91,7 @@ grant and token to obtain a link.
   | | |
   |-|-|
   | Default | False |
+  | Platforms | Kubernetes, Docker |
   
 
 - <h4 id="active">active <span class="property-info">boolean</span></h4>
@@ -82,14 +99,21 @@ grant and token to obtain a link.
   | | |
   |-|-|
   | Default | False |
+  | Platforms | Kubernetes, Docker |
   
 
 - <h4 id="url">url <span class="property-info">string</span></h4>
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 
 - <h4 id="site">site <span class="property-info">string</span></h4>
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 
 </section>

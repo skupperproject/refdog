@@ -8,7 +8,7 @@ links:
 
 # Skupper commands
 
-#### Site configuration
+#### Sites
 
 | | |
 |-|-|
@@ -16,7 +16,7 @@ links:
 | [site create](site-create.html) | Create a site |
 | [site update](site-update.html) | Change site settings |
 | [site delete](site-delete.html) | Delete a site |
-| [site status](site-status.html) | Show the current status of a site |
+| [site status](site-status.html) | Display the current status of a site |
 
 #### Site linking
 
@@ -29,7 +29,7 @@ links:
 | [link create](link-create.html) | Create a link |
 | [link update](link-update.html) | Change link settings |
 | [link delete](link-delete.html) | Delete a link |
-| [link status](link-status.html) | Show the status of links in the current site |
+| [link status](link-status.html) | Display the status of links in the current site |
 
 #### Service exposure
 
@@ -39,12 +39,12 @@ links:
 | [connector create](connector-create.html) | Create a connector |
 | [connector update](connector-update.html) | Update a connector |
 | [connector delete](connector-delete.html) | Delete a connector |
-| [connector status](connector-status.html) | Show the status of connectors in the current site |
+| [connector status](connector-status.html) | Display the status of connectors in the current site |
 | [listener](listener.html) | Display help for listener commands and exit |
 | [listener create](listener-create.html) | Create a listener |
 | [listener update](listener-update.html) | Update a listener |
 | [listener delete](listener-delete.html) | Delete a listener |
-| [listener status](listener-status.html) | Show the status of listeners in the current site |
+| [listener status](listener-status.html) | Display the status of listeners in the current site |
 
 #### Debug operations
 
@@ -57,4 +57,4 @@ links:
 
 | | |
 |-|-|
-| [version](version.html) | Show versions of Skupper components  |
+| [version](version.html) | Display versions of Skupper components  |

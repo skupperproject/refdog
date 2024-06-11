@@ -62,13 +62,17 @@ def generate_attribute_fields(attr):
 
         lines.append(f"| Default | {default} |")
 
+    if attr.choices:
+        choices = [f"`{x['name']}`" for x in attr.choices]
+        #lines.append(f"| Choices | {', '.join(choices)} |")
+        lines.append(f"| Choices | {generate_choices_table(attr)} |")
+
+    if attr.platforms:
+        lines.append(f"| Platforms | {', '.join(attr.platforms)} |")
+
     if attr.links:
         links = ["[{}]({{{{site_prefix}}}}{})".format(x["name"], x["url"]) for x in attr.links]
         lines.append(f"| See also | {', '.join(links)} |")
-
-    if attr.choices:
-        choices = [f"`{x['name']}`" for x in attr.choices]
-        lines.append(f"| Choices | {', '.join(choices)} |")
 
     if lines:
         lines.insert(0, "| | |")
@@ -76,6 +80,17 @@ def generate_attribute_fields(attr):
         lines.append("")
 
     return "\n".join(lines)
+
+def generate_choices_table(attr):
+    rows = list()
+
+    for choice_data in attr.choices:
+        name = choice_data["name"]
+        description = choice_data["description"].replace("\n", " ").strip()
+
+        rows.append(f"<tr><td><code>{name}</code></td><td>{description}</td></tr>")
+
+    return "<table>{}</table>".format("".join(rows))
 
 def object_property(name, default=None, required=False):
     def get(obj):
@@ -159,6 +174,7 @@ class ModelObject:
 class ModelObjectAttribute:
     name = object_property("name", required=True)
     description = object_property("description")
+    platforms = object_property("platforms", default=["Kubernetes", "Docker"])
     links = object_property("links", default=[])
     notes = object_property("notes")
 

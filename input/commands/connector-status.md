@@ -13,7 +13,7 @@ links:
 
 <section>
 
-Show the status of connectors in the current site.
+Display the status of connectors in the current site.
 
 </section>
 

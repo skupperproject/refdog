@@ -28,6 +28,9 @@ corresponding access grant.
   The secret used to authenticate the token when submitted
   for redemption.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 
 - <h4 id="redemptionurl">redemptionURL <span class="property-info">string, required</span></h4>
@@ -35,10 +38,16 @@ corresponding access grant.
   The URL of the token redemption service at the target
   site.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 
 - <h4 id="redemptionca">redemptionCA <span class="property-info">string, required</span></h4>
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 
   The trusted server certificate of the token redemption
@@ -54,6 +63,9 @@ corresponding access grant.
 
   The current state of the resource.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 
 - <h4 id="redeemed">redeemed <span class="property-info">boolean</span></h4>
@@ -63,6 +75,7 @@ corresponding access grant.
   | | |
   |-|-|
   | Default | False |
+  | Platforms | Kubernetes, Docker |
   
 
 </section>

@@ -32,7 +32,6 @@ def generate(model):
         append("|-|-|")
 
         for command in group.commands:
-            # append(f"  - [{capitalize(command.name)}]({command.id}.html)")
             description = nvl(command.description, "").replace("\n", " ")
             description = description.split(".")[0]
 

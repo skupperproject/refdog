@@ -13,7 +13,7 @@ links:
 
 <section>
 
-A connector binds target workloads in the local site to
-listeners in remote sites.
+Binds target workloads in the local site to listeners in
+remote sites.
 
 </section>

@@ -4,13 +4,13 @@ standard_options:
     options:
       - name: namespace
         type: string
-        platforms: [kubernetes, docker, systemd]
         description: |
           Select the current namespace.
       - name: context
         type: string
         description: |
           Select the current kubeconfig context.
+        platforms: [Kubernetes]
       - name: platform
         type: string
         choices:
@@ -18,8 +18,6 @@ standard_options:
             description: Kubernetes
           - name: docker
             description: Docker or Podman
-          - name: systemd
-            description: Systemd
         description: |
           Set the Skupper platform.
   output:
@@ -43,7 +41,7 @@ standard_options:
         description: |
           Display help and exit.
 groups:
-  - name: Site configuration
+  - name: Sites
     commands:
       - name: site
         description: |
@@ -136,7 +134,7 @@ groups:
               There is no existing Skupper site resource to delete.
       - name: site status
         description: |
-          Show the current status of a site.
+          Display the current status of a site.
         usage: skupper site status
         output: |
           NAME   STATUS   SITES-IN-NETWORK   SERVICES-IN-NETWORK
@@ -264,7 +262,7 @@ groups:
               The name of the link.
       - name: link status
         description: |
-          Show the status of links in the current site.
+          Display the status of links in the current site.
         output: |
           NAME    STATUS   COST
           west    Active   1
@@ -384,7 +382,7 @@ groups:
               The name of the connector resource.
       - name: connector status
         description: |
-          Show the status of connectors in the current site.
+          Display the status of connectors in the current site.
         usage: skupper connector status
         output: |
           NAME       ROUTING-KEY   SELECTOR         HOST   PORT   MATCHING-LISTENERS
@@ -476,7 +474,7 @@ groups:
               The name of the listener resource.
       - name: listener status
         description: |
-          Show the status of listeners in the current site.
+          Display the status of listeners in the current site.
         usage: skupper listener status
         output: |
           NAME       ROUTING-KEY   HOST       PORT   MATCHING-CONNECTORS
@@ -499,4 +497,4 @@ groups:
       # - name: network status
       - name: version
         description: |
-          Show versions of Skupper components
+          Display versions of Skupper components

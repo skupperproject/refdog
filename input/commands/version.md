@@ -6,6 +6,6 @@ body_class: command
 
 <section>
 
-Show versions of Skupper components
+Display versions of Skupper components
 
 </section>

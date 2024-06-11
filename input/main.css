@@ -318,11 +318,20 @@ body.resource main::after, body.command main::after {
     height: 100vh;
 }
 
+body.resource td {
+    vertical-align: top;
+    border-bottom: 2px solid var(--line-color);
+    padding: 0.2em 0;
+}
+
+body.resource td table td {
+    border: none;
+}
+
 body.resource table td:nth-child(1), body.command table td:nth-child(1) {
-    width: 5em;
+    width: 6em;
     padding-right: 1em;
     font-style: italic;
-    vertical-align: middle;
 }
 
 /* XXX .none */

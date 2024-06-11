@@ -37,6 +37,9 @@ Link "<name>" is ready.
 
   The name of the link.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 - <h4 id="tls-secret">tls-secret <span class="option-info">string, required</span></h4>
 
@@ -47,6 +50,9 @@ Link "<name>" is ready.
   It can optionally include a client certificate and key for
   mutual TLS.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 ### Context options
 
@@ -54,11 +60,17 @@ Link "<name>" is ready.
 
   Select the current namespace.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 - <h4 id="context">--context <span class="option-info">string</span></h4>
 
   Select the current kubeconfig context.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes |
   
 - <h4 id="platform">--platform <span class="option-info">string</span></h4>
 
@@ -66,7 +78,8 @@ Link "<name>" is ready.
 
   | | |
   |-|-|
-  | Choices | `kubernetes`, `docker`, `systemd` |
+  | Choices | <table><tr><td><code>kubernetes</code></td><td>Kubernetes</td></tr><tr><td><code>docker</code></td><td>Docker or Podman</td></tr></table> |
+  | Platforms | Kubernetes, Docker |
   
 ### Global options
 
@@ -74,5 +87,8 @@ Link "<name>" is ready.
 
   Display help and exit.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 </section>
