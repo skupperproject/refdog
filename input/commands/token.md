@@ -5,7 +5,7 @@ links:
     url: /resources/claim.html
 ---
 
-# Token command
+# token command
 
 <section>
 
@@ -17,6 +17,6 @@ Display help for token commands and exit.
 
 ## Subcommands
 
-- [Token issue]({{site_prefix}}/commands/token-issue.html)
-- [Token redeem]({{site_prefix}}/commands/token-redeem.html)
+- [token issue]({{site_prefix}}/commands/token-issue.html)
+- [token redeem]({{site_prefix}}/commands/token-redeem.html)
 </section>

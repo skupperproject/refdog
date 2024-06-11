@@ -3,13 +3,13 @@ body_class: command
 links:
   - name: AccessGrant resource
     url: /resources/grant.html
-  - name: Token command
+  - name: token command
     url: /commands/token.html
-  - name: Token redeem command
+  - name: token redeem command
     url: /commands/token-redeem.html
 ---
 
-# Token issue command
+# token issue command
 
 <section>
 
@@ -34,8 +34,8 @@ Grant "<name>" is ready.
 Token file <file> created.
 
 Transfer this file to a remote site. At the remote site,
-create a link to this site using the 'skupper token redeem'
-command:
+create a link to this site using the 'skupper token
+redeem' command:
 
    $ skupper token redeem <file>
 
@@ -49,11 +49,11 @@ The token expires after 1 use or after 15 minutes.
 ## Examples
 
 ~~~
-# Issue a token
+# Issue an access token
 skupper token issue ~/token.yaml
 
-# Issue a token with non-default limits
-skupper token issue ~/token.yaml --expiration-period 24h --redemptions-allowed 3
+# Issue an access token with non-default limits
+skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed 3
 ~~~
 
 </section>
@@ -67,10 +67,10 @@ skupper token issue ~/token.yaml --expiration-period 24h --redemptions-allowed 3
   The name of the token file.
 
   
-- <h4 id="expiration-period">--expiration-period <span class="option-info">string (duration)</span></h4>
+- <h4 id="expiration-window">--expiration-window <span class="option-info">string (duration)</span></h4>
 
-  The period of time in which a token for this grant can
-  be redeemed.
+  The period of time in which an access token for this
+  grant can be redeemed.
 
   | | |
   |-|-|
@@ -78,8 +78,8 @@ skupper token issue ~/token.yaml --expiration-period 24h --redemptions-allowed 3
   
 - <h4 id="redemptions-allowed">--redemptions-allowed <span class="option-info">integer</span></h4>
 
-  The number of times a token for this grant can be
-  redeemed.
+  The number of times an access token for this grant can
+  be redeemed.
 
   | | |
   |-|-|

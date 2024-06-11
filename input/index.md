@@ -31,7 +31,7 @@ spec:
 ~~~
 
 ~~~
-skupper access-token issue ~/west-token.yaml
+skupper token issue ~/west-token.yaml
 ~~~
 
 Site East:
@@ -55,7 +55,7 @@ spec:
 ~~~
 
 ~~~
-skupper access-token redeem ~/west-token.yaml
+skupper token redeem ~/west-token.yaml
 ~~~
 
 ## Hello World using the CLI
@@ -65,7 +65,7 @@ Site West:
 ~~~
 skupper site create west --enable-link-access
 skupper listener create backend 8080
-skupper access-token issue ~/west-token.yaml
+skupper token issue ~/west-token.yaml
 ~~~
 
 Site East:
@@ -73,5 +73,5 @@ Site East:
 ~~~
 skupper site create east
 skupper connector create backend 8080
-skupper access-token redeem ~/west-token.yaml
+skupper token redeem ~/west-token.yaml
 ~~~

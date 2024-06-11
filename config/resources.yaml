@@ -104,8 +104,8 @@ groups:
         links:
           - name: AccessToken resource
             url: /resources/claim.html
-          - name: access-token issue command
-            url: /commands/access-token-issue.html
+          - name: token issue command
+            url: /commands/token-issue.html
         description: |
           @concept_description@
 
@@ -163,8 +163,8 @@ groups:
       - name: Claim
         rename: AccessToken
         links:
-          - name: access-token redeem command
-            url: /commands/access-token-redeem.html
+          - name: token redeem command
+            url: /commands/token-redeem.html
           - name: AccessGrant resource
             url: /resources/grant.html
         description: |

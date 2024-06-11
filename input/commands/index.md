@@ -22,9 +22,9 @@ links:
 
 | | |
 |-|-|
-| [access-token](access-token.html) | Display help for token commands and exit |
-| [access-token issue](access-token-issue.html) | Issue a token redeemable for a link to the current site |
-| [access-token redeem](access-token-redeem.html) | Redeem a token in order to obtain a link to a remote site |
+| [token](token.html) | Display help for token commands and exit |
+| [token issue](token-issue.html) | Issue a token redeemable for a link to the current site |
+| [token redeem](token-redeem.html) | Redeem a token in order to obtain a link to a remote site |
 | [link](link.html) | Display help for link commands and exit |
 | [link create](link-create.html) | Create a link |
 | [link update](link-update.html) | Change link settings |

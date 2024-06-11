@@ -3,8 +3,8 @@ body_class: resource
 links:
   - name: Access token concept
     url: /concepts/claim.html
-  - name: access-token redeem command
-    url: /commands/access-token-redeem.html
+  - name: token redeem command
+    url: /commands/token-redeem.html
   - name: AccessGrant resource
     url: /resources/grant.html
 ---

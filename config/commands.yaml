@@ -149,16 +149,16 @@ groups:
           routing key?
   - name: Site linking
     commands:
-      - name: access-token
+      - name: token
         resource: Claim
         description: |
           Display help for token commands and exit.
         inherit_standard_options: [global]
-      - name: access-token issue
+      - name: token issue
         resource: Grant
         links:
-          - name: access-token redeem command
-            url: /commands/access-token-redeem.html
+          - name: token redeem command
+            url: /commands/token-redeem.html
         description: |
           Issue a token redeemable for a link to the current site.
 
@@ -167,25 +167,25 @@ groups:
 
           This command first creates a grant in order to issue the
           token.
-        usage: skupper access-token issue <file> [options]
+        usage: skupper token issue <file> [options]
         output: |
           Waiting for status...
           Grant "<name>" is ready.
           Token file <file> created.
 
           Transfer this file to a remote site. At the remote site,
-          create a link to this site using the 'skupper access-token
+          create a link to this site using the 'skupper token
           redeem' command:
 
-             $ skupper access-token redeem <file>
+             $ skupper token redeem <file>
 
           The token expires after 1 use or after 15 minutes.
         examples: |
           # Issue an access token
-          skupper access-token issue ~/token.yaml
+          skupper token issue ~/token.yaml
 
           # Issue an access token with non-default limits
-          skupper access-token issue ~/token.yaml --expiration-window 24h --redemptions-allowed 3
+          skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed 3
         inherit_standard_options: [context, global]
         options:
           - name: file
@@ -203,13 +203,13 @@ groups:
               Link access at this site is not currently enabled.  You
               can use "skupper site update --enable-link-access" to
               enable it.
-      - name: access-token redeem
+      - name: token redeem
         links:
-          - name: access-token issue command
-            url: /commands/access-token-issue.html
+          - name: token issue command
+            url: /commands/token-issue.html
         description: |
           Redeem a token in order to obtain a link to a remote site.
-        usage: skupper access-token redeem <file> [options]
+        usage: skupper token redeem <file> [options]
         output: |
           Waiting for status...
           Link "<name>" is active.

@@ -5,8 +5,8 @@ links:
     url: /concepts/grant.html
   - name: AccessToken resource
     url: /resources/claim.html
-  - name: access-token issue command
-    url: /commands/access-token-issue.html
+  - name: token issue command
+    url: /commands/token-issue.html
 ---
 
 # AccessGrant resource
