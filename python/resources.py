@@ -51,6 +51,10 @@ def generate(model):
 def generate_resource(resource):
     debug(f"Generating {resource}")
 
+    if resource.hidden:
+        debug(f"{resource} is hidden")
+        return
+
     lines = list()
 
     def append(line=""):
@@ -142,6 +146,10 @@ def generate_resource(resource):
 def generate_property(prop, append):
     debug(f"Generating {prop}")
 
+    if prop.hidden:
+        debug(f"{prop} is hidden")
+        return
+
     name = nvl(prop.rename, prop.name)
     id_ = get_fragment_id(name)
     prop_info = prop.type
@@ -152,7 +160,7 @@ def generate_property(prop, append):
     if prop.required and prop.default is None:
         prop_info += ", required"
 
-    append(f"- <h4 id=\"{id_}\">{name} <span class=\"property-info\">{prop_info}</span></h4>")
+    append(f"- <h3 id=\"{id_}\">{name} <span class=\"property-info\">{prop_info}</span></h3>")
     append()
 
     if prop.description:
@@ -163,8 +171,11 @@ def generate_property(prop, append):
     append()
 
     if prop.notes:
-        # XXX styling
+        append("  <section class=\"notes\">")
+        append()
         append(indent(prop.notes.strip(), 2))
+        append()
+        append("  </section>")
         append()
 
 class ResourceModel:

@@ -13,6 +13,8 @@ links:
 
 <section>
 
+`skupper token issue`
+
 Issue a token redeemable for a link to the current site.
 
 Issue a token that can be redeemed at a remote site for a
@@ -62,7 +64,7 @@ skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed 3
 
 ## Options
 
-- <h4 id="file">file <span class="option-info">string, required</span></h4>
+- <h3 id="file">file <span class="option-info">string, required</span></h3>
 
   The name of the token file.
 
@@ -70,7 +72,7 @@ skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed 3
   |-|-|
   | Platforms | Kubernetes, Docker |
   
-- <h4 id="expiration-window">--expiration-window <span class="option-info">string (duration)</span></h4>
+- <h3 id="expiration-window">--expiration-window <span class="option-info">string (duration)</span></h3>
 
   The period of time in which an access token for this
   grant can be redeemed.
@@ -80,7 +82,7 @@ skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed 3
   | Default | `15m` |
   | Platforms | Kubernetes, Docker |
   
-- <h4 id="redemptions-allowed">--redemptions-allowed <span class="option-info">integer</span></h4>
+- <h3 id="redemptions-allowed">--redemptions-allowed <span class="option-info">integer</span></h3>
 
   The number of times an access token for this grant can
   be redeemed.
@@ -92,7 +94,7 @@ skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed 3
   
 ### Context options
 
-- <h4 id="namespace">--namespace <span class="option-info">string</span></h4>
+- <h3 id="namespace">--namespace <span class="option-info">string</span></h3>
 
   Set the namespace.
 
@@ -101,7 +103,7 @@ skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed 3
   | Platforms | Kubernetes, Docker |
   | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) |
   
-- <h4 id="context">--context <span class="option-info">string</span></h4>
+- <h3 id="context">--context <span class="option-info">string</span></h3>
 
   Set the kubeconfig context.
 
@@ -110,7 +112,7 @@ skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed 3
   | Platforms | Kubernetes |
   | See also | [Kubernetes kubeconfigs]({{site_prefix}}https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) |
   
-- <h4 id="platform">--platform <span class="option-info">string</span></h4>
+- <h3 id="platform">--platform <span class="option-info">string</span></h3>
 
   Set the Skupper platform.
 
@@ -122,7 +124,7 @@ skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed 3
   
 ### Global options
 
-- <h4 id="help">--help <span class="option-info"></span></h4>
+- <h3 id="help">--help <span class="option-info"></span></h3>
 
   Display help and exit.
 

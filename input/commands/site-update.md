@@ -11,6 +11,8 @@ links:
 
 <section>
 
+`skupper site update`
+
 Change site settings.
 
 </section>
@@ -45,7 +47,7 @@ skupper site update --enable-link-access --service-account app1:alice
 
 ## Options
 
-- <h4 id="name">name <span class="option-info">string, optional</span></h4>
+- <h3 id="name">name <span class="option-info">string, optional</span></h3>
 
   The name of the site resource.
   
@@ -56,7 +58,7 @@ skupper site update --enable-link-access --service-account app1:alice
   |-|-|
   | Platforms | Kubernetes, Docker |
   
-- <h4 id="enable-link-access">--enable-link-access <span class="option-info">boolean</span></h4>
+- <h3 id="enable-link-access">--enable-link-access <span class="option-info">boolean</span></h3>
 
   Allow access for incoming links from remote sites.
 
@@ -64,7 +66,7 @@ skupper site update --enable-link-access --service-account app1:alice
   |-|-|
   | Platforms | Kubernetes, Docker |
   
-- <h4 id="link-access-type">--link-access-type <span class="option-info">string</span></h4>
+- <h3 id="link-access-type">--link-access-type <span class="option-info">string</span></h3>
 
   Configure external access for links from remote sites.
 
@@ -74,7 +76,7 @@ skupper site update --enable-link-access --service-account app1:alice
   | Choices | <table><tr><td><code>default</code></td><td>Use the default link access.  On OpenShift, the default is `route`.  For other Kubernetes flavors, the default is `loadbalancer`.</td></tr><tr><td><code>route</code></td><td>Use an OpenShift route.  _OpenShift only._</td></tr><tr><td><code>loadbalancer</code></td><td>Use a Kubernetes load balancer.  _Kubernetes only._</td></tr></table> |
   | Platforms | Kubernetes, Docker |
   
-- <h4 id="service-account">--service-account <span class="option-info">string</span></h4>
+- <h3 id="service-account">--service-account <span class="option-info">string</span></h3>
 
   The Kubernetes service account under which to run the
   Skupper controller.
@@ -87,7 +89,7 @@ skupper site update --enable-link-access --service-account app1:alice
   
 ### Output options
 
-- <h4 id="output">--output <span class="option-info">string</span></h4>
+- <h3 id="output">--output <span class="option-info">string</span></h3>
 
   Print resources to the console instead of submitting
   them to the Skupper controller.
@@ -99,7 +101,7 @@ skupper site update --enable-link-access --service-account app1:alice
   
 ### Context options
 
-- <h4 id="namespace">--namespace <span class="option-info">string</span></h4>
+- <h3 id="namespace">--namespace <span class="option-info">string</span></h3>
 
   Set the namespace.
 
@@ -108,7 +110,7 @@ skupper site update --enable-link-access --service-account app1:alice
   | Platforms | Kubernetes, Docker |
   | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) |
   
-- <h4 id="context">--context <span class="option-info">string</span></h4>
+- <h3 id="context">--context <span class="option-info">string</span></h3>
 
   Set the kubeconfig context.
 
@@ -117,7 +119,7 @@ skupper site update --enable-link-access --service-account app1:alice
   | Platforms | Kubernetes |
   | See also | [Kubernetes kubeconfigs]({{site_prefix}}https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) |
   
-- <h4 id="platform">--platform <span class="option-info">string</span></h4>
+- <h3 id="platform">--platform <span class="option-info">string</span></h3>
 
   Set the Skupper platform.
 
@@ -129,7 +131,7 @@ skupper site update --enable-link-access --service-account app1:alice
   
 ### Global options
 
-- <h4 id="help">--help <span class="option-info"></span></h4>
+- <h3 id="help">--help <span class="option-info"></span></h3>
 
   Display help and exit.
 

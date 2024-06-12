@@ -29,19 +29,9 @@ status:    # Status poperties
 
 ## Spec properties
 
-- <h4 id="code">code <span class="property-info">string, required</span></h4>
+- <h3 id="url">url <span class="property-info">string, required</span></h3>
 
-  The secret code used to authenticate the token when
-  submitted for redemption.
-
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
-
-- <h4 id="url">url <span class="property-info">string, required</span></h4>
-
-  The URL of the token redemption service at the target
+  The URL of the token redemption service at the remote
   site.
 
   | | |
@@ -49,10 +39,20 @@ status:    # Status poperties
   | Platforms | Kubernetes, Docker |
   
 
-- <h4 id="ca">ca <span class="property-info">string, required</span></h4>
+- <h3 id="ca">ca <span class="property-info">string, required</span></h3>
 
   The trusted server certificate of the token redemption
-  service at the target site.
+  service at the remote site.
+
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
+  
+
+- <h3 id="code">code <span class="property-info">string, required</span></h3>
+
+  The secret code used to authenticate the token when
+  submitted for redemption.
 
   | | |
   |-|-|
@@ -65,7 +65,7 @@ status:    # Status poperties
 
 ## Status properties
 
-- <h4 id="status">status <span class="property-info">string</span></h4>
+- <h3 id="status">status <span class="property-info">string</span></h3>
 
   The current state of the resource.
 
@@ -74,7 +74,7 @@ status:    # Status poperties
   | Platforms | Kubernetes, Docker |
   
 
-- <h4 id="redeemed">redeemed <span class="property-info">boolean</span></h4>
+- <h3 id="redeemed">redeemed <span class="property-info">boolean</span></h3>
 
   True if the token has been redeemed.
 

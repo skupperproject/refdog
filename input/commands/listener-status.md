@@ -11,6 +11,8 @@ links:
 
 <section>
 
+`skupper listener status`
+
 Display the status of listeners in the current site.
 
 </section>

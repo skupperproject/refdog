@@ -122,6 +122,7 @@ class ModelObjectGroup:
         return get_fragment_id(self.name)
 
 class ModelObject:
+    hidden = object_property("hidden", default=False)
     name = object_property("name", required=True)
     description = object_property("description")
     links = object_property("links", default=[])
@@ -173,6 +174,7 @@ class ModelObject:
             pass
 
 class ModelObjectAttribute:
+    hidden = object_property("hidden", default=False)
     name = object_property("name", required=True)
     description = object_property("description")
     platforms = object_property("platforms", default=["Kubernetes", "Docker"])

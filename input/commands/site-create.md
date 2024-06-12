@@ -11,6 +11,8 @@ links:
 
 <section>
 
+`skupper site create`
+
 Create a site.
 
 </section>
@@ -45,7 +47,7 @@ skupper site create west --enable-link-access
 
 ## Options
 
-- <h4 id="name">name <span class="option-info">string, required</span></h4>
+- <h3 id="name">name <span class="option-info">string, required</span></h3>
 
   A name of your choice for the Skupper site.  This name is
   displayed in the console and CLI output.
@@ -54,7 +56,7 @@ skupper site create west --enable-link-access
   |-|-|
   | Platforms | Kubernetes, Docker |
   
-- <h4 id="enable-link-access">--enable-link-access <span class="option-info">boolean</span></h4>
+- <h3 id="enable-link-access">--enable-link-access <span class="option-info">boolean</span></h3>
 
   Allow access for incoming links from remote sites.
 
@@ -62,7 +64,7 @@ skupper site create west --enable-link-access
   |-|-|
   | Platforms | Kubernetes, Docker |
   
-- <h4 id="link-access-type">--link-access-type <span class="option-info">string</span></h4>
+- <h3 id="link-access-type">--link-access-type <span class="option-info">string</span></h3>
 
   Configure external access for links from remote sites.
 
@@ -72,7 +74,7 @@ skupper site create west --enable-link-access
   | Choices | <table><tr><td><code>default</code></td><td>Use the default link access.  On OpenShift, the default is `route`.  For other Kubernetes flavors, the default is `loadbalancer`.</td></tr><tr><td><code>route</code></td><td>Use an OpenShift route.  _OpenShift only._</td></tr><tr><td><code>loadbalancer</code></td><td>Use a Kubernetes load balancer.  _Kubernetes only._</td></tr></table> |
   | Platforms | Kubernetes, Docker |
   
-- <h4 id="service-account">--service-account <span class="option-info">string</span></h4>
+- <h3 id="service-account">--service-account <span class="option-info">string</span></h3>
 
   The Kubernetes service account under which to run the
   Skupper controller.
@@ -85,7 +87,7 @@ skupper site create west --enable-link-access
   
 ### Output options
 
-- <h4 id="output">--output <span class="option-info">string</span></h4>
+- <h3 id="output">--output <span class="option-info">string</span></h3>
 
   Print resources to the console instead of submitting
   them to the Skupper controller.
@@ -97,7 +99,7 @@ skupper site create west --enable-link-access
   
 ### Context options
 
-- <h4 id="namespace">--namespace <span class="option-info">string</span></h4>
+- <h3 id="namespace">--namespace <span class="option-info">string</span></h3>
 
   Set the namespace.
 
@@ -106,7 +108,7 @@ skupper site create west --enable-link-access
   | Platforms | Kubernetes, Docker |
   | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) |
   
-- <h4 id="context">--context <span class="option-info">string</span></h4>
+- <h3 id="context">--context <span class="option-info">string</span></h3>
 
   Set the kubeconfig context.
 
@@ -115,7 +117,7 @@ skupper site create west --enable-link-access
   | Platforms | Kubernetes |
   | See also | [Kubernetes kubeconfigs]({{site_prefix}}https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) |
   
-- <h4 id="platform">--platform <span class="option-info">string</span></h4>
+- <h3 id="platform">--platform <span class="option-info">string</span></h3>
 
   Set the Skupper platform.
 
@@ -127,7 +129,7 @@ skupper site create west --enable-link-access
   
 ### Global options
 
-- <h4 id="help">--help <span class="option-info"></span></h4>
+- <h3 id="help">--help <span class="option-info"></span></h3>
 
   Display help and exit.
 

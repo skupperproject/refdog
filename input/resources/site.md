@@ -58,7 +58,7 @@ spec:
 
 ## Spec properties
 
-- <h4 id="linkaccess">linkAccess <span class="property-info">string</span></h4>
+- <h3 id="linkaccess">linkAccess <span class="property-info">string</span></h3>
 
   Configure external access for links from remote sites.
 
@@ -69,7 +69,7 @@ spec:
   | Platforms | Kubernetes, Docker |
   
 
-- <h4 id="serviceaccount">serviceAccount <span class="property-info">string</span></h4>
+- <h3 id="serviceaccount">serviceAccount <span class="property-info">string</span></h3>
 
   The Kubernetes service account under which to run the
   Skupper controller.
@@ -81,7 +81,7 @@ spec:
   | See also | [Kubernetes service accounts]({{site_prefix}}https://kubernetes.io/docs/concepts/security/service-accounts/) |
   
 
-- <h4 id="options">options <span class="property-info">array</span></h4>
+- <h3 id="options">options <span class="property-info">array</span></h3>
 
   | | |
   |-|-|
@@ -94,7 +94,7 @@ spec:
 
 ## Status properties
 
-- <h4 id="status">status <span class="property-info">string</span></h4>
+- <h3 id="status">status <span class="property-info">string</span></h3>
 
   The current state of the resource.
 
@@ -103,7 +103,7 @@ spec:
   | Platforms | Kubernetes, Docker |
   
 
-- <h4 id="active">active <span class="property-info">boolean</span></h4>
+- <h3 id="active">active <span class="property-info">boolean</span></h3>
 
   This thing is working.
 
@@ -112,28 +112,28 @@ spec:
   | Platforms | Kubernetes, Docker |
   
 
-- <h4 id="endpoints">endpoints <span class="property-info">array</span></h4>
+- <h3 id="endpoints">endpoints <span class="property-info">array</span></h3>
 
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
   
 
-- <h4 id="sitesinnetwork">sitesInNetwork <span class="property-info">integer</span></h4>
+- <h3 id="sitesinnetwork">sitesInNetwork <span class="property-info">integer</span></h3>
 
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
   
 
-- <h4 id="servicesinnetwork">servicesInNetwork <span class="property-info">integer</span></h4>
+- <h3 id="servicesinnetwork">servicesInNetwork <span class="property-info">integer</span></h3>
 
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
   
 
-- <h4 id="network">network <span class="property-info">array</span></h4>
+- <h3 id="network">network <span class="property-info">array</span></h3>
 
   | | |
   |-|-|

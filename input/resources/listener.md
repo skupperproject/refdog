@@ -51,7 +51,7 @@ spec:
 
 ## Spec properties
 
-- <h4 id="routingkey">routingKey <span class="property-info">string, required</span></h4>
+- <h3 id="routingkey">routingKey <span class="property-info">string, required</span></h3>
 
   The identifier used to route traffic from listeners to
   connectors.  To enable connecting to a service at a
@@ -64,7 +64,7 @@ spec:
   | See also | [Routing key concept]({{site_prefix}}/concepts/routing-key.html) |
   
 
-- <h4 id="host">host <span class="property-info">string, required</span></h4>
+- <h3 id="host">host <span class="property-info">string, required</span></h3>
 
   The hostname or IP address of the local listener.  Clients
   at this site use the listener host and port to
@@ -75,7 +75,7 @@ spec:
   | Platforms | Kubernetes, Docker |
   
 
-- <h4 id="port">port <span class="property-info">integer, required</span></h4>
+- <h3 id="port">port <span class="property-info">integer, required</span></h3>
 
   The port of the local listener.  Clients at this site use
   the listener host and port to establish connections to
@@ -86,7 +86,7 @@ spec:
   | Platforms | Kubernetes, Docker |
   
 
-- <h4 id="tlssecret">tlsSecret <span class="property-info">string</span></h4>
+- <h3 id="tlssecret">tlsSecret <span class="property-info">string</span></h3>
 
   The name of a Kubernetes secret containing TLS
   credentials.  The secret contains the trusted server
@@ -104,7 +104,7 @@ spec:
   | See also | [TLS re-encrypt]({{site_prefix}}) |
   
 
-- <h4 id="type">type <span class="property-info">string</span></h4>
+- <h3 id="type">type <span class="property-info">string</span></h3>
 
   The listener type.
 
@@ -120,7 +120,7 @@ spec:
 
 ## Status properties
 
-- <h4 id="status">status <span class="property-info">string</span></h4>
+- <h3 id="status">status <span class="property-info">string</span></h3>
 
   The current state of the resource.
 
@@ -129,7 +129,7 @@ spec:
   | Platforms | Kubernetes, Docker |
   
 
-- <h4 id="active">active <span class="property-info">boolean</span></h4>
+- <h3 id="active">active <span class="property-info">boolean</span></h3>
 
   | | |
   |-|-|

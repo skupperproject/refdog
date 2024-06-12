@@ -9,6 +9,8 @@ links:
 
 <section>
 
+`skupper debug dump`
+
 Generate a debug dump file.
 
 </section>

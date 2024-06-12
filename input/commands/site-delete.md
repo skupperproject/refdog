@@ -11,6 +11,8 @@ links:
 
 <section>
 
+`skupper site delete`
+
 Delete a site.
 
 </section>
@@ -31,7 +33,7 @@ Site "<name>" is deleted.
 
 ## Options
 
-- <h4 id="name">name <span class="option-info">string, optional</span></h4>
+- <h3 id="name">name <span class="option-info">string, optional</span></h3>
 
   The name of the site resource.
   
@@ -44,7 +46,7 @@ Site "<name>" is deleted.
   
 ### Context options
 
-- <h4 id="namespace">--namespace <span class="option-info">string</span></h4>
+- <h3 id="namespace">--namespace <span class="option-info">string</span></h3>
 
   Set the namespace.
 
@@ -53,7 +55,7 @@ Site "<name>" is deleted.
   | Platforms | Kubernetes, Docker |
   | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) |
   
-- <h4 id="context">--context <span class="option-info">string</span></h4>
+- <h3 id="context">--context <span class="option-info">string</span></h3>
 
   Set the kubeconfig context.
 
@@ -62,7 +64,7 @@ Site "<name>" is deleted.
   | Platforms | Kubernetes |
   | See also | [Kubernetes kubeconfigs]({{site_prefix}}https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) |
   
-- <h4 id="platform">--platform <span class="option-info">string</span></h4>
+- <h3 id="platform">--platform <span class="option-info">string</span></h3>
 
   Set the Skupper platform.
 
@@ -74,7 +76,7 @@ Site "<name>" is deleted.
   
 ### Global options
 
-- <h4 id="help">--help <span class="option-info"></span></h4>
+- <h3 id="help">--help <span class="option-info"></span></h3>
 
   Display help and exit.
 

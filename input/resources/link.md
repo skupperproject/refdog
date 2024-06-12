@@ -34,7 +34,7 @@ status:    # Status poperties
 
 ## Spec properties
 
-- <h4 id="tlssecret">tlsSecret <span class="property-info">string</span></h4>
+- <h3 id="tlssecret">tlsSecret <span class="property-info">string</span></h3>
 
   The name of a Kubernetes secret containing TLS
   credentials. The secret contains the trusted server
@@ -49,7 +49,7 @@ status:    # Status poperties
   | See also | [Custom certificates]({{site_prefix}}) |
   
 
-- <h4 id="cost">cost <span class="property-info">integer</span></h4>
+- <h3 id="cost">cost <span class="property-info">integer</span></h3>
 
   The configured "expense" of sending traffic over the
   link.
@@ -61,35 +61,13 @@ status:    # Status poperties
   | See also | [Load balancing]({{site_prefix}}) |
   
 
-- <h4 id="interrouter">interRouter <span class="property-info">object, required</span></h4>
-
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
-
-- <h4 id="edge">edge <span class="property-info">object, required</span></h4>
-
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
-
-- <h4 id="noclientauth">noClientAuth <span class="property-info">boolean</span></h4>
-
-  | | |
-  |-|-|
-  | Default | False |
-  | Platforms | Kubernetes, Docker |
-  
-
 </section>
 
 <section>
 
 ## Status properties
 
-- <h4 id="status">status <span class="property-info">string</span></h4>
+- <h3 id="status">status <span class="property-info">string</span></h3>
 
   The current state of the resource.
 
@@ -98,32 +76,38 @@ status:    # Status poperties
   | Platforms | Kubernetes, Docker |
   
 
-- <h4 id="configured">configured <span class="property-info">boolean</span></h4>
+- <h3 id="configured">configured <span class="property-info">boolean</span></h3>
 
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
   
 
-- <h4 id="active">active <span class="property-info">boolean</span></h4>
+- <h3 id="active">active <span class="property-info">boolean</span></h3>
 
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
   
 
-- <h4 id="url">url <span class="property-info">string</span></h4>
+- <h3 id="url">url <span class="property-info">string</span></h3>
 
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
   
 
-- <h4 id="site">site <span class="property-info">string</span></h4>
+- <h3 id="site">site <span class="property-info">string</span></h3>
 
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
   
+
+  <section class="notes">
+
+  Is this a site name?  Ambiguous.
+
+  </section>
 
 </section>

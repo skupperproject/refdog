@@ -103,8 +103,11 @@ groups:
               - name: Load balancing
                 url: ""
           - name: interRouter
+            hidden: true
           - name: edge
+            hidden: true
           - name: noClientAuth
+            hidden: true
         status_properties:
           - name: status
             description: |
@@ -113,6 +116,8 @@ groups:
           - name: active
           - name: url
           - name: site
+            notes: |
+              Is this a site name?  Ambiguous.
       - name: Grant
         rename: AccessGrant
         links:
@@ -140,7 +145,7 @@ groups:
             default: 15m
           - name: secret
             rename: code
-            notes: |
+            description: |
               The secret code used to authenticate access tokens
               submitted for redemption.
 
@@ -184,19 +189,19 @@ groups:
         description: |
           @concept_description@
         spec_properties:
+          - name: url
+            description: |
+              The URL of the token redemption service at the remote
+              site.
+          - name: ca
+            description: |
+              The trusted server certificate of the token redemption
+              service at the remote site.
           - name: secret
             rename: code
             description: |
               The secret code used to authenticate the token when
               submitted for redemption.
-          - name: url
-            description: |
-              The URL of the token redemption service at the target
-              site.
-          - name: ca
-            description: |
-              The trusted server certificate of the token redemption
-              service at the target site.
         status_properties:
           - name: status
             description: |

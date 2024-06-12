@@ -9,6 +9,8 @@ links:
 
 <section>
 
+`skupper link`
+
 Display help for link commands and exit.
 
 A site-to-site communication channel. Links serve as a

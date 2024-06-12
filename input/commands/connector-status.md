@@ -11,6 +11,8 @@ links:
 
 <section>
 
+`skupper connector status`
+
 Display the status of connectors in the current site.
 
 </section>

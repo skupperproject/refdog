@@ -13,6 +13,8 @@ links:
 
 <section>
 
+`skupper connector create`
+
 Create a connector.
 
 </section>
@@ -50,7 +52,7 @@ skupper connector create backend 8080 --output yaml
 
 ## Options
 
-- <h4 id="name">name <span class="option-info">string, required</span></h4>
+- <h3 id="name">name <span class="option-info">string, required</span></h3>
 
   The name of the connector resource.
 
@@ -58,7 +60,7 @@ skupper connector create backend 8080 --output yaml
   |-|-|
   | Platforms | Kubernetes, Docker |
   
-- <h4 id="port">port <span class="option-info">integer, required</span></h4>
+- <h3 id="port">port <span class="option-info">integer, required</span></h3>
 
   The port on the target workload to forward traffic to.
 
@@ -66,7 +68,7 @@ skupper connector create backend 8080 --output yaml
   |-|-|
   | Platforms | Kubernetes, Docker |
   
-- <h4 id="routing-key">--routing-key <span class="option-info">string</span></h4>
+- <h3 id="routing-key">--routing-key <span class="option-info">string</span></h3>
 
   The identifier used to route traffic from listeners to
   connectors.  To expose a local workload to a remote
@@ -79,7 +81,7 @@ skupper connector create backend 8080 --output yaml
   | Platforms | Kubernetes, Docker |
   | See also | [Routing key concept]({{site_prefix}}/concepts/routing-key.html) |
   
-- <h4 id="selector">--selector <span class="option-info">string</span></h4>
+- <h3 id="selector">--selector <span class="option-info">string</span></h3>
 
   A Kubernetes label selector for specifying target server
   pods.
@@ -93,7 +95,7 @@ skupper connector create backend 8080 --output yaml
   | Platforms | Kubernetes |
   | See also | [Kubernetes label selectors]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors), [Kubernetes pods]({{site_prefix}}https://kubernetes.io/docs/concepts/workloads/pods/) |
   
-- <h4 id="workload">--workload <span class="option-info">string (resource name)</span></h4>
+- <h3 id="workload">--workload <span class="option-info">string (resource name)</span></h3>
 
   A Kubernetes resource name that identifies a workload.
   It resolves to an equivalent pod selector.
@@ -106,7 +108,7 @@ skupper connector create backend 8080 --output yaml
   | Platforms | Kubernetes |
   | See also | [Kubernetes workloads]({{site_prefix}}https://kubernetes.io/docs/concepts/workloads/) |
   
-- <h4 id="host">--host <span class="option-info">string</span></h4>
+- <h3 id="host">--host <span class="option-info">string</span></h3>
 
   The hostname or IP address of the server.
   
@@ -117,7 +119,7 @@ skupper connector create backend 8080 --output yaml
   |-|-|
   | Platforms | Kubernetes, Docker |
   
-- <h4 id="tls-secret">--tls-secret <span class="option-info">string</span></h4>
+- <h3 id="tls-secret">--tls-secret <span class="option-info">string</span></h3>
 
   The name of a Kubernetes secret containing the trusted
   server certificate (typically a CA).
@@ -133,7 +135,7 @@ skupper connector create backend 8080 --output yaml
   | Platforms | Kubernetes, Docker |
   | See also | [TLS re-encrypt]({{site_prefix}}) |
   
-- <h4 id="type">--type <span class="option-info">string</span></h4>
+- <h3 id="type">--type <span class="option-info">string</span></h3>
 
   The connector type.
 
@@ -142,7 +144,7 @@ skupper connector create backend 8080 --output yaml
   | Default | `tcp` |
   | Platforms | Kubernetes, Docker |
   
-- <h4 id="include-not-ready">--include-not-ready <span class="option-info">boolean</span></h4>
+- <h3 id="include-not-ready">--include-not-ready <span class="option-info">boolean</span></h3>
 
   If set, include server pods that are not in the ready
   state.
@@ -155,7 +157,7 @@ skupper connector create backend 8080 --output yaml
   
 ### Output options
 
-- <h4 id="output">--output <span class="option-info">string</span></h4>
+- <h3 id="output">--output <span class="option-info">string</span></h3>
 
   Print resources to the console instead of submitting
   them to the Skupper controller.
@@ -167,7 +169,7 @@ skupper connector create backend 8080 --output yaml
   
 ### Context options
 
-- <h4 id="namespace">--namespace <span class="option-info">string</span></h4>
+- <h3 id="namespace">--namespace <span class="option-info">string</span></h3>
 
   Set the namespace.
 
@@ -176,7 +178,7 @@ skupper connector create backend 8080 --output yaml
   | Platforms | Kubernetes, Docker |
   | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) |
   
-- <h4 id="context">--context <span class="option-info">string</span></h4>
+- <h3 id="context">--context <span class="option-info">string</span></h3>
 
   Set the kubeconfig context.
 
@@ -185,7 +187,7 @@ skupper connector create backend 8080 --output yaml
   | Platforms | Kubernetes |
   | See also | [Kubernetes kubeconfigs]({{site_prefix}}https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) |
   
-- <h4 id="platform">--platform <span class="option-info">string</span></h4>
+- <h3 id="platform">--platform <span class="option-info">string</span></h3>
 
   Set the Skupper platform.
 
@@ -197,7 +199,7 @@ skupper connector create backend 8080 --output yaml
   
 ### Global options
 
-- <h4 id="help">--help <span class="option-info"></span></h4>
+- <h3 id="help">--help <span class="option-info"></span></h3>
 
   Display help and exit.
 

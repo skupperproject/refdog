@@ -34,7 +34,7 @@ status:    # Status poperties
 
 ## Spec properties
 
-- <h4 id="redemptionsallowed">redemptionsAllowed <span class="property-info">integer</span></h4>
+- <h3 id="redemptionsallowed">redemptionsAllowed <span class="property-info">integer</span></h3>
 
   The number of times an access token for this grant can
   be redeemed.
@@ -45,7 +45,7 @@ status:    # Status poperties
   | Platforms | Kubernetes, Docker |
   
 
-- <h4 id="expirationwindow">expirationWindow <span class="property-info">string (duration)</span></h4>
+- <h3 id="expirationwindow">expirationWindow <span class="property-info">string (duration)</span></h3>
 
   The period of time in which an access token for this
   grant can be redeemed.
@@ -56,12 +56,7 @@ status:    # Status poperties
   | Platforms | Kubernetes, Docker |
   
 
-- <h4 id="code">code <span class="property-info">string</span></h4>
-
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
+- <h3 id="code">code <span class="property-info">string</span></h3>
 
   The secret code used to authenticate access tokens
   submitted for redemption.
@@ -69,13 +64,18 @@ status:    # Status poperties
   If not set, a value for the code field in the status is
   generated.
 
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
+  
+
 </section>
 
 <section>
 
 ## Status properties
 
-- <h4 id="status">status <span class="property-info">string</span></h4>
+- <h3 id="status">status <span class="property-info">string</span></h3>
 
   The current state of the resource.
 
@@ -84,7 +84,7 @@ status:    # Status poperties
   | Platforms | Kubernetes, Docker |
   
 
-- <h4 id="redemptions">redemptions <span class="property-info">integer</span></h4>
+- <h3 id="redemptions">redemptions <span class="property-info">integer</span></h3>
 
   The number of times a token for this grant has been
   redeemed.
@@ -94,7 +94,7 @@ status:    # Status poperties
   | Platforms | Kubernetes, Docker |
   
 
-- <h4 id="expirationtime">expirationTime <span class="property-info">string (date-time)</span></h4>
+- <h3 id="expirationtime">expirationTime <span class="property-info">string (date-time)</span></h3>
 
   The point in time when the grant expires.
 
@@ -103,9 +103,13 @@ status:    # Status poperties
   | Platforms | Kubernetes, Docker |
   
 
+  <section class="notes">
+
   expirationTime seems to be the most conventional name.
 
-- <h4 id="code">code <span class="property-info">string</span></h4>
+  </section>
+
+- <h3 id="code">code <span class="property-info">string</span></h3>
 
   The secret code used to authenticate access tokens
   submitted for redemption.
@@ -115,7 +119,7 @@ status:    # Status poperties
   | Platforms | Kubernetes, Docker |
   
 
-- <h4 id="url">url <span class="property-info">string</span></h4>
+- <h3 id="url">url <span class="property-info">string</span></h3>
 
   The URL of the token-redemption service for this grant.
 
@@ -124,7 +128,7 @@ status:    # Status poperties
   | Platforms | Kubernetes, Docker |
   
 
-- <h4 id="ca">ca <span class="property-info">string</span></h4>
+- <h3 id="ca">ca <span class="property-info">string</span></h3>
 
   The trusted server certificate of the token-redemption
   service for this grant.

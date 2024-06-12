@@ -65,6 +65,8 @@ def generate_command(command):
     append()
     append("<section>")
     append()
+    append(f"`skupper {command.rename}`")
+    append()
 
     if command.description:
         append(command.description.strip())
@@ -174,7 +176,7 @@ def generate_option(option, append):
     if not option.required and option.positional:
         option_info += ", optional"
 
-    append(f"- <h4 id=\"{id_}\">{prefix}{name} <span class=\"option-info\">{option_info}</span></h4>")
+    append(f"- <h3 id=\"{id_}\">{prefix}{name} <span class=\"option-info\">{option_info}</span></h3>")
     append()
 
     if option.description:
@@ -184,8 +186,11 @@ def generate_option(option, append):
     append(indent(generate_attribute_fields(option), 2))
 
     if option.notes:
-        # XXX styling
+        append("  <section class=\"notes\">")
+        append()
         append(indent(option.notes.strip(), 2))
+        append()
+        append("  </section>")
         append()
 
 def generate_error(error, append):

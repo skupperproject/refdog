@@ -11,6 +11,8 @@ links:
 
 <section>
 
+`skupper link delete`
+
 Delete a link.
 
 </section>
@@ -31,7 +33,7 @@ Link "<name>" is deleted.
 
 ## Options
 
-- <h4 id="name">name <span class="option-info">string, required</span></h4>
+- <h3 id="name">name <span class="option-info">string, required</span></h3>
 
   The name of the link.
 
@@ -41,7 +43,7 @@ Link "<name>" is deleted.
   
 ### Context options
 
-- <h4 id="namespace">--namespace <span class="option-info">string</span></h4>
+- <h3 id="namespace">--namespace <span class="option-info">string</span></h3>
 
   Set the namespace.
 
@@ -50,7 +52,7 @@ Link "<name>" is deleted.
   | Platforms | Kubernetes, Docker |
   | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) |
   
-- <h4 id="context">--context <span class="option-info">string</span></h4>
+- <h3 id="context">--context <span class="option-info">string</span></h3>
 
   Set the kubeconfig context.
 
@@ -59,7 +61,7 @@ Link "<name>" is deleted.
   | Platforms | Kubernetes |
   | See also | [Kubernetes kubeconfigs]({{site_prefix}}https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) |
   
-- <h4 id="platform">--platform <span class="option-info">string</span></h4>
+- <h3 id="platform">--platform <span class="option-info">string</span></h3>
 
   Set the Skupper platform.
 
@@ -71,7 +73,7 @@ Link "<name>" is deleted.
   
 ### Global options
 
-- <h4 id="help">--help <span class="option-info"></span></h4>
+- <h3 id="help">--help <span class="option-info"></span></h3>
 
   Display help and exit.
 
