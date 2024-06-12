@@ -5,12 +5,20 @@ standard_options:
       - name: namespace
         type: string
         description: |
-          Select the current namespace.
+          Set the namespace.
+        links:
+          - name: Namespace concept
+            url: /concepts/namespace.html
+          - name: Kubernetes namespaces
+            url: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
       - name: context
         type: string
         description: |
-          Select the current kubeconfig context.
+          Set the kubeconfig context.
         platforms: [Kubernetes]
+        links:
+          - name: Kubernetes kubeconfigs
+            url: https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/
       - name: platform
         type: string
         choices:
@@ -20,6 +28,9 @@ standard_options:
             description: Docker or Podman
         description: |
           Set the Skupper platform.
+        links:
+          - name: Platform concept
+            url: /concepts/platform.html
   output:
     name: Output options
     options:
@@ -216,7 +227,7 @@ groups:
           - name: token issue command
             url: /commands/token-issue.html
         description: |
-          Redeem a token in order to obtain a link to a remote site.
+          Redeem a token in order to create a link to a remote site.
         usage: skupper token redeem <file> [options]
         output: |
           Waiting for status...
@@ -253,6 +264,8 @@ groups:
             property: tlsCredentials
             required: true
             positional: true
+          - name: cost
+            property: cost
       - name: link update
         description: |
           Change link settings.
@@ -358,6 +371,9 @@ groups:
             property: type
           - name: include-not-ready
             property: includeNotReady
+            links:
+              - name: Kubernetes pod lifecycle
+                url: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
       - name: connector update
         links:
           - name: listener update command
@@ -373,7 +389,7 @@ groups:
           skupper connector update backend --routing-key be2
 
           # Produce YAML output
-          skupper connector update frontend --port 9090 --output yaml
+          skupper connector update backend --port 9090 --output yaml
         output: |
           Waiting for update to complete...
           Connector "<name>" is updated.
@@ -426,7 +442,7 @@ groups:
           skupper listener create backend 8080 --routing-key be1 --host apiserver
 
           # Produce YAML output
-          skupper listener create frontend 8080 --output yaml
+          skupper listener create backend 8080 --output yaml
         output: |
           Waiting for status...
           Listener "<name>" is ready.
@@ -465,7 +481,7 @@ groups:
           skupper listener update backend --routing-key be2
 
           # Produce YAML output
-          skupper listener update frontend --port 9090 --output yaml
+          skupper listener update backend --port 9090 --output yaml
         output: |
           Waiting for update to complete...
           Listener "<name>" is updated.

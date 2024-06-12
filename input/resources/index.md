@@ -17,7 +17,7 @@ links:
 | | |
 |-|-|
 | [Link](link.html) | A site-to-site communication channel |
-| [AccessGrant](grant.html) | Permission to redeem access tokens for links to the current site |
+| [AccessGrant](grant.html) | Permission to redeem access tokens for links to the local site |
 | [AccessToken](claim.html) | A transferrable token redeemable for a link to a remote site |
 
 #### Service exposure

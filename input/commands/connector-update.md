@@ -41,7 +41,7 @@ skupper connector update database --workload deployment/mysql --port 3306
 skupper connector update backend --routing-key be2
 
 # Produce YAML output
-skupper connector update frontend --port 9090 --output yaml
+skupper connector update backend --port 9090 --output yaml
 ~~~
 
 </section>
@@ -151,6 +151,7 @@ skupper connector update frontend --port 9090 --output yaml
   |-|-|
   | Default | False |
   | Platforms | Kubernetes |
+  | See also | [Kubernetes pod lifecycle]({{site_prefix}}https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/) |
   
 ### Output options
 
@@ -168,19 +169,21 @@ skupper connector update frontend --port 9090 --output yaml
 
 - <h4 id="namespace">--namespace <span class="option-info">string</span></h4>
 
-  Select the current namespace.
+  Set the namespace.
 
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
+  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) |
   
 - <h4 id="context">--context <span class="option-info">string</span></h4>
 
-  Select the current kubeconfig context.
+  Set the kubeconfig context.
 
   | | |
   |-|-|
   | Platforms | Kubernetes |
+  | See also | [Kubernetes kubeconfigs]({{site_prefix}}https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) |
   
 - <h4 id="platform">--platform <span class="option-info">string</span></h4>
 
@@ -190,6 +193,7 @@ skupper connector update frontend --port 9090 --output yaml
   |-|-|
   | Choices | <table><tr><td><code>kubernetes</code></td><td>Kubernetes</td></tr><tr><td><code>docker</code></td><td>Docker or Podman</td></tr></table> |
   | Platforms | Kubernetes, Docker |
+  | See also | [Platform concept]({{site_prefix}}/concepts/platform.html) |
   
 ### Global options
 

@@ -15,6 +15,11 @@ A site-to-site communication channel. Links serve as a
 transport for application connections and requests.  A set
 of linked sites constitute a network.
 
+- XXX A vessel for bidirectional application traffic
+- XXX link topology
+- XXX link cost
+- XXX only one direction needed
+
 Links are not usually created directly.  Instead, you
 typically use an access token to obtain a link.
 

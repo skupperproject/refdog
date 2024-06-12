@@ -62,6 +62,7 @@ window.addEventListener("load", () => {
     const headings = $$("h2");
 
     if (headings.length == 0) {
+	oldToc.remove();
         return;
     }
 

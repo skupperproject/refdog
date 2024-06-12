@@ -11,8 +11,6 @@ links:
 
 <section>
 
-Theses:
-
-  - One network corresponds to one distributed application.
+- XXX One network corresponds to one distributed application.
 
 </section>

@@ -88,7 +88,17 @@ groups:
 
               It can optionally include a client certificate and key for
               mutual TLS.
+            links:
+              - name: Custom certificates
+                url: ""
           - name: cost
+            default: 1
+            description: |
+              The configured "expense" of sending traffic over the
+              link.
+            links:
+              - name: Load balancing
+                url: ""
           - name: interRouter
           - name: edge
           - name: noClientAuth
@@ -275,9 +285,9 @@ groups:
               The current state of the resource.
           - name: active
       - name: Listener
-        concept: listener
-        command: listener create
-        resource: Connector
+        links:
+          - name: Connector resource
+            url: /resources/connector.html
         description: |
           @concept_description@
 

@@ -51,6 +51,18 @@ Link "<name>" is ready.
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
+  | See also | [Custom certificates]({{site_prefix}}) |
+  
+- <h4 id="cost">--cost <span class="option-info">integer</span></h4>
+
+  The configured "expense" of sending traffic over the
+  link.
+
+  | | |
+  |-|-|
+  | Default | 1 |
+  | Platforms | Kubernetes, Docker |
+  | See also | [Load balancing]({{site_prefix}}) |
   
 ### Output options
 
@@ -68,19 +80,21 @@ Link "<name>" is ready.
 
 - <h4 id="namespace">--namespace <span class="option-info">string</span></h4>
 
-  Select the current namespace.
+  Set the namespace.
 
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
+  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) |
   
 - <h4 id="context">--context <span class="option-info">string</span></h4>
 
-  Select the current kubeconfig context.
+  Set the kubeconfig context.
 
   | | |
   |-|-|
   | Platforms | Kubernetes |
+  | See also | [Kubernetes kubeconfigs]({{site_prefix}}https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) |
   
 - <h4 id="platform">--platform <span class="option-info">string</span></h4>
 
@@ -90,6 +104,7 @@ Link "<name>" is ready.
   |-|-|
   | Choices | <table><tr><td><code>kubernetes</code></td><td>Kubernetes</td></tr><tr><td><code>docker</code></td><td>Docker or Podman</td></tr></table> |
   | Platforms | Kubernetes, Docker |
+  | See also | [Platform concept]({{site_prefix}}/concepts/platform.html) |
   
 ### Global options
 

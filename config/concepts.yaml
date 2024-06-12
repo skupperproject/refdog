@@ -10,6 +10,9 @@ groups:
         description: |
           A place where components of your application are running.
           Sites are linked to form application networks.
+
+          - XXX usually a namespace
+          - XXX on different platforms
       - name: network
         links:
           - name: Site concept
@@ -17,9 +20,15 @@ groups:
           - name: Link concept
             url: /concepts/link.html
         description: |
-          Theses:
+          - XXX One network corresponds to one distributed application.
+      - name: platform
+        description: |
+          A system for running workloads.
 
-            - One network corresponds to one distributed application.
+          - XXX enumerate them
+      - name: namespace
+        description: |
+          - XXX what do they look like on each platform?
   - name: Site linking
     concepts:
       - name: link
@@ -30,6 +39,11 @@ groups:
           A site-to-site communication channel. Links serve as a
           transport for application connections and requests.  A set
           of linked sites constitute a network.
+
+          - XXX A vessel for bidirectional application traffic
+          - XXX link topology
+          - XXX link cost
+          - XXX only one direction needed
       - name: link access
       - name: grant
         rename: Access grant
@@ -39,9 +53,9 @@ groups:
           - name: Token issue command
             url: /commands/token-issue.html
         description: |
-          Permission to redeem access tokens for links to the current
+          Permission to redeem access tokens for links to the local
           site.  A remote site can use a token containing the grant
-          URL and a secret code to obtain a certificate signed by the
+          URL and secret code to obtain a certificate signed by the
           grant's certificate authority (CA), within a certain
           expiration window and for a limited number of redemptions.
       - name: claim

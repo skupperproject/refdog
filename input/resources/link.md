@@ -17,6 +17,11 @@ A site-to-site communication channel. Links serve as a
 transport for application connections and requests.  A set
 of linked sites constitute a network.
 
+- XXX A vessel for bidirectional application traffic
+- XXX link topology
+- XXX link cost
+- XXX only one direction needed
+
 Links are not usually created directly.  Instead, you
 typically use an access token to obtain a link.
 
@@ -38,13 +43,19 @@ typically use an access token to obtain a link.
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
+  | See also | [Custom certificates]({{site_prefix}}) |
   
 
 - <h4 id="cost">cost <span class="property-info">integer</span></h4>
 
+  The configured "expense" of sending traffic over the
+  link.
+
   | | |
   |-|-|
+  | Default | 1 |
   | Platforms | Kubernetes, Docker |
+  | See also | [Load balancing]({{site_prefix}}) |
   
 
 - <h4 id="interrouter">interRouter <span class="property-info">object, required</span></h4>

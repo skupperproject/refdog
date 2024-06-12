@@ -12,6 +12,8 @@ links:
 
   - [Site](site.html)
   - [Network](network.html)
+  - [Platform](platform.html)
+  - [Namespace](namespace.html)
 #### Site linking
 
   - [Link](link.html)
