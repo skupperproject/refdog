@@ -11,6 +11,14 @@ LinkAccess configures the router to accept inter-router
 links and creates the Kubernetes resources for external
 access.
 
+~~~ yaml
+apiVersion: skupper.io/v1alpha1
+kind: RouterAccess
+metadata:  # Metadata properties
+spec:      # Spec properties
+status:    # Status poperties
+~~~
+
 </section>
 
 <section>

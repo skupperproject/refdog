@@ -18,7 +18,4 @@ links:
 A place where components of your application are running.
 Sites are linked to form application networks.
 
-- XXX usually a namespace
-- XXX on different platforms
-
 </section>

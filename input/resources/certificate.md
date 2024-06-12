@@ -6,6 +6,14 @@ body_class: resource
 
 <section>
 
+~~~ yaml
+apiVersion: skupper.io/v1alpha1
+kind: Certificate
+metadata:  # Metadata properties
+spec:      # Spec properties
+status:    # Status poperties
+~~~
+
 </section>
 
 <section>

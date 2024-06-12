@@ -10,24 +10,25 @@ groups:
         description: |
           A place where components of your application are running.
           Sites are linked to form application networks.
-
+        overview: |
           - XXX usually a namespace
           - XXX on different platforms
+          - XXX sites can be added and removed dynamically
       - name: network
         links:
           - name: Site concept
             url: /concepts/site.html
           - name: Link concept
             url: /concepts/link.html
-        description: |
+        overview: |
           - XXX One network corresponds to one distributed application.
       - name: platform
         description: |
           A system for running workloads.
-
+        overview: |
           - XXX enumerate them
       - name: namespace
-        description: |
+        overview: |
           - XXX what do they look like on each platform?
   - name: Site linking
     concepts:
@@ -39,7 +40,7 @@ groups:
           A site-to-site communication channel. Links serve as a
           transport for application connections and requests.  A set
           of linked sites constitute a network.
-
+        overview: |
           - XXX A vessel for bidirectional application traffic
           - XXX link topology
           - XXX link cost
@@ -71,6 +72,10 @@ groups:
           corresponding access grant.
   - name: Service exposure
     concepts:
+      - name: service
+        overview: |
+          - XXX at the network level
+          - XXX a listener and a connector bound together by a routing key
       - name: listener
         links:
           - name: Connector concept

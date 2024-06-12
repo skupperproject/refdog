@@ -2,10 +2,8 @@
 body_class: concept
 ---
 
-# Platform concept
+# Service concept
 
 <section>
-
-A system for running workloads.
 
 </section>

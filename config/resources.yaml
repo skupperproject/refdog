@@ -26,6 +26,9 @@ groups:
                 namespace: hello-world-west
               spec:
                 linkAccess: default
+        metadata_properties:
+          - name: name
+            required: true
         spec_properties:
           - name: linkAccess
             default: none

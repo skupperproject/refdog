@@ -15,6 +15,14 @@ A transferrable token redeemable for a link to a remote
 site.  An access token contains the URL and secret code of a
 corresponding access grant.
 
+~~~ yaml
+apiVersion: skupper.io/v1alpha1
+kind: AccessToken
+metadata:  # Metadata properties
+spec:      # Spec properties
+status:    # Status poperties
+~~~
+
 </section>
 
 <section>

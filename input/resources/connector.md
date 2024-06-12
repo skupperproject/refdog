@@ -16,6 +16,14 @@ remote sites.
 
 Each site can have multiple connector resources.
 
+~~~ yaml
+apiVersion: skupper.io/v1alpha1
+kind: Connector
+metadata:  # Metadata properties
+spec:      # Spec properties
+status:    # Status poperties
+~~~
+
 </section>
 
 <section>

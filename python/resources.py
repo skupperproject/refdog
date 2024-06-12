@@ -73,6 +73,15 @@ def generate_resource(resource):
         append(resource.description.strip())
         append()
 
+    append("~~~ yaml")
+    append("apiVersion: skupper.io/v1alpha1")
+    append(f"kind: {resource.rename}")
+    append("metadata:  # Metadata properties")
+    append("spec:      # Spec properties")
+    append("status:    # Status poperties")
+    append("~~~")
+
+    append()
     append("</section>")
     append()
 

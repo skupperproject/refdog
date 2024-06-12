@@ -22,6 +22,7 @@ links:
   - [Access token](claim.html)
 #### Service exposure
 
+  - [Service](service.html)
   - [Listener](listener.html)
   - [Connector](connector.html)
   - [Routing key](routing-key.html)

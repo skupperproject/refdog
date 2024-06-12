@@ -14,10 +14,15 @@ links:
 A place where components of your application are running.
 Sites are linked to form application networks.
 
-- XXX usually a namespace
-- XXX on different platforms
-
 There can be only one site resource per namespace.
+
+~~~ yaml
+apiVersion: skupper.io/v1alpha1
+kind: Site
+metadata:  # Metadata properties
+spec:      # Spec properties
+status:    # Status poperties
+~~~
 
 </section>
 

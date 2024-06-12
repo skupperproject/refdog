@@ -16,6 +16,14 @@ workloads in remote sites.
 
 Each site can have multiple listener definitions.
 
+~~~ yaml
+apiVersion: skupper.io/v1alpha1
+kind: Listener
+metadata:  # Metadata properties
+spec:      # Spec properties
+status:    # Status poperties
+~~~
+
 </section>
 
 <section>

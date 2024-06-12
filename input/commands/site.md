@@ -14,9 +14,6 @@ Display help for site commands and exit.
 A place where components of your application are running.
 Sites are linked to form application networks.
 
-- XXX usually a namespace
-- XXX on different platforms
-
 There can be only one site resource per namespace.
 
 </section>

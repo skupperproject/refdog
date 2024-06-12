@@ -6,6 +6,4 @@ body_class: concept
 
 <section>
 
-- XXX what do they look like on each platform?
-
 </section>

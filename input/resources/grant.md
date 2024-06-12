@@ -20,6 +20,14 @@ expiration window and for a limited number of redemptions.
 The `code`, `url`, and `ca` properties of the resource
 status are used to generate access tokens from the grant.
 
+~~~ yaml
+apiVersion: skupper.io/v1alpha1
+kind: AccessGrant
+metadata:  # Metadata properties
+spec:      # Spec properties
+status:    # Status poperties
+~~~
+
 </section>
 
 <section>

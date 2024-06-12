@@ -11,6 +11,4 @@ links:
 
 <section>
 
-- XXX One network corresponds to one distributed application.
-
 </section>
