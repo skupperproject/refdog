@@ -106,6 +106,16 @@ def generate_resource(resource):
 
         append("</section>")
         append()
+        append("<section>")
+        append()
+        append("## Metadata properties")
+        append()
+
+        for prop in resource.metadata_properties:
+            generate_property(prop, append)
+
+        append("</section>")
+        append()
 
     if resource.spec_properties:
         append("<section>")
@@ -260,6 +270,13 @@ class Resource(ModelObject):
     def __init__(self, model, group, data):
         super().__init__(model, group, data)
 
+        self.metadata_properties = list()
+
+        for property_data in self.model.data.get("standard_metadata_properties", []):
+            prop = Property(self.model, self, property_data, "metadata")
+
+            self.metadata_properties.append(prop)
+
         self.spec_properties = list()
         self.spec_properties_by_name = dict()
 
@@ -306,6 +323,10 @@ class Property(ModelObjectAttribute):
 
     @property
     def required(self):
+        # XXX
+        if self.group == "metadata":
+            return True
+
         schema = self.model.get_schema(self.object)
         required_names = schema["properties"][self.group].get("required", [])
         default = self.name in required_names

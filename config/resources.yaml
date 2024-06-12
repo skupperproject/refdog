@@ -1,3 +1,17 @@
+standard_metadata_properties:
+  - name: name
+    type: string
+    description: |
+      The name of the resource.
+  - name: namespace
+    type: string
+    description: |
+      The namespace of the resource.
+    links:
+      - name: Namespace concept
+        url: /concepts/namespace.html
+      - name: Kubernetes namespaces
+        url: ""
 groups:
   - name: Sites
     resources:
@@ -26,9 +40,6 @@ groups:
                 namespace: hello-world-west
               spec:
                 linkAccess: default
-        metadata_properties:
-          - name: name
-            required: true
         spec_properties:
           - name: linkAccess
             default: none

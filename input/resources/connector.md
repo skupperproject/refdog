@@ -48,6 +48,31 @@ spec:
 
 <section>
 
+## Metadata properties
+
+- <h3 id="name">name <span class="property-info">string, required</span></h3>
+
+  The name of the resource.
+
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
+  
+
+- <h3 id="namespace">namespace <span class="property-info">string, required</span></h3>
+
+  The namespace of the resource.
+
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
+  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces]({{site_prefix}}) |
+  
+
+</section>
+
+<section>
+
 ## Spec properties
 
 - <h3 id="routingkey">routingKey <span class="property-info">string, required</span></h3>
