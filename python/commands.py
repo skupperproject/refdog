@@ -65,8 +65,6 @@ def generate_command(command):
     append()
     append("<section>")
     append()
-    append(f"`skupper {command.rename}`")
-    append()
 
     if command.description:
         append(command.description.strip())

@@ -13,8 +13,6 @@ links:
 
 <section>
 
-`skupper listener create`
-
 Create a listener.
 
 </section>

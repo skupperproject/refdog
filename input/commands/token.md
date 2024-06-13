@@ -9,8 +9,6 @@ links:
 
 <section>
 
-`skupper token`
-
 Display help for token commands and exit.
 
 </section>

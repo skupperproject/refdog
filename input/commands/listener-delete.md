@@ -13,8 +13,6 @@ links:
 
 <section>
 
-`skupper listener delete`
-
 Delete a listener.
 
 </section>

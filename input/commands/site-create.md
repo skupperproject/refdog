@@ -11,8 +11,6 @@ links:
 
 <section>
 
-`skupper site create`
-
 Create a site.
 
 </section>
@@ -63,6 +61,7 @@ skupper site create west --enable-link-access
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
+  | See also | [Link access concept]({{site_prefix}}/concepts/link-access.html) |
   
 - <h3 id="link-access-type">--link-access-type <span class="option-info">string</span></h3>
 
@@ -73,6 +72,7 @@ skupper site create west --enable-link-access
   | Default | `default` |
   | Choices | <table><tr><td><code>default</code></td><td>Use the default link access.  On OpenShift, the default is `route`.  For other Kubernetes flavors, the default is `loadbalancer`.</td></tr><tr><td><code>route</code></td><td>Use an OpenShift route.  _OpenShift only._</td></tr><tr><td><code>loadbalancer</code></td><td>Use a Kubernetes load balancer.  _Kubernetes only._</td></tr></table> |
   | Platforms | Kubernetes, Docker |
+  | See also | [Link access concept]({{site_prefix}}/concepts/link-access.html), [Kubernetes load balancer services]({{site_prefix}}https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) |
   
 - <h3 id="service-account">--service-account <span class="option-info">string</span></h3>
 

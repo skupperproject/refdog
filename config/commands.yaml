@@ -84,6 +84,9 @@ groups:
             type: boolean
             description: |
               Allow access for incoming links from remote sites.
+            links:
+              - name: Link access concept
+                url: /concepts/link-access.html
           - name: link-access-type
             property: linkAccess
             default: default

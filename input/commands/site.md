@@ -9,8 +9,6 @@ links:
 
 <section>
 
-`skupper site`
-
 Display help for site commands and exit.
 
 A place where components of your application are running.

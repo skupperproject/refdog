@@ -6,8 +6,6 @@ body_class: command
 
 <section>
 
-`skupper debug`
-
 Display help for debug commands and exit.
 
 </section>

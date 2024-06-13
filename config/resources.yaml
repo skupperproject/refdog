@@ -57,6 +57,11 @@ groups:
                 description: Use an OpenShift route.  _OpenShift only._
               - name: loadbalancer
                 description: Use a Kubernetes load balancer.  _Kubernetes only._
+            links:
+              - name: Link access concept
+                url: /concepts/link-access.html
+              - name: Kubernetes load balancer services
+                url: https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer
           - name: serviceAccount
             default: skupper:skupper-controller
             platforms: [Kubernetes]

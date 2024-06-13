@@ -13,8 +13,6 @@ links:
 
 <section>
 
-`skupper connector update`
-
 Update a connector.
 
 </section>

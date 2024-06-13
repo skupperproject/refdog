@@ -13,8 +13,6 @@ links:
 
 <section>
 
-`skupper connector delete`
-
 Delete a connector.
 
 </section>

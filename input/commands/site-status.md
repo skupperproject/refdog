@@ -11,8 +11,6 @@ links:
 
 <section>
 
-`skupper site status`
-
 Display the current status of a site.
 
 </section>

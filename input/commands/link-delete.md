@@ -11,8 +11,6 @@ links:
 
 <section>
 
-`skupper link delete`
-
 Delete a link.
 
 </section>

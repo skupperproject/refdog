@@ -13,8 +13,6 @@ links:
 
 <section>
 
-`skupper connector create`
-
 Create a connector.
 
 </section>

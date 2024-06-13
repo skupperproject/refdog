@@ -13,8 +13,6 @@ links:
 
 <section>
 
-`skupper token issue`
-
 Issue a token redeemable for a link to the current site.
 
 Issue a token that can be redeemed at a remote site for a

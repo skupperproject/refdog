@@ -13,8 +13,6 @@ links:
 
 <section>
 
-`skupper listener update`
-
 Update a listener.
 
 </section>

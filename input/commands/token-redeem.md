@@ -13,8 +13,6 @@ links:
 
 <section>
 
-`skupper token redeem`
-
 Redeem a token in order to create a link to a remote site.
 
 </section>

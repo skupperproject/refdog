@@ -11,8 +11,6 @@ links:
 
 <section>
 
-`skupper link create`
-
 Create a link.
 
 </section>

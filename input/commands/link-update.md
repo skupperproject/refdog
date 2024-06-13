@@ -11,8 +11,6 @@ links:
 
 <section>
 
-`skupper link update`
-
 Change link settings.
 
 </section>

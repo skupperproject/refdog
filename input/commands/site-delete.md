@@ -11,8 +11,6 @@ links:
 
 <section>
 
-`skupper site delete`
-
 Delete a site.
 
 </section>
