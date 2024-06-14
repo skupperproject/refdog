@@ -46,7 +46,7 @@ status:    # Status poperties
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
-  | See also | [Custom certificates]({{site_prefix}}) |
+  | See also | [Custom certificates]() |
   
 
 - <h3 id="cost">cost <span class="property-info">integer</span></h3>
@@ -58,7 +58,7 @@ status:    # Status poperties
   |-|-|
   | Default | 1 |
   | Platforms | Kubernetes, Docker |
-  | See also | [Load balancing]({{site_prefix}}) |
+  | See also | [Load balancing]() |
   
 
 </section>

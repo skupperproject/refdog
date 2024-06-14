@@ -66,7 +66,7 @@ spec:
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
-  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces]({{site_prefix}}) |
+  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces]() |
   
 
 </section>
@@ -108,7 +108,7 @@ spec:
   | | |
   |-|-|
   | Platforms | Kubernetes |
-  | See also | [Kubernetes label selectors]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors), [Kubernetes pods]({{site_prefix}}https://kubernetes.io/docs/concepts/workloads/pods/) |
+  | See also | [Kubernetes label selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors), [Kubernetes pods](https://kubernetes.io/docs/concepts/workloads/pods/) |
   
 
 - <h3 id="host">host <span class="property-info">string</span></h3>
@@ -136,7 +136,7 @@ spec:
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
-  | See also | [TLS re-encrypt]({{site_prefix}}) |
+  | See also | [TLS re-encrypt]() |
   
 
 - <h3 id="includenotready">includeNotReady <span class="property-info">boolean</span></h3>

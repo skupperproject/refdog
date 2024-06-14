@@ -91,7 +91,7 @@ skupper connector update backend --port 9090 --output yaml
   |-|-|
   | Default | `app=<value-of-name>` |
   | Platforms | Kubernetes |
-  | See also | [Kubernetes label selectors]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors), [Kubernetes pods]({{site_prefix}}https://kubernetes.io/docs/concepts/workloads/pods/) |
+  | See also | [Kubernetes label selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors), [Kubernetes pods](https://kubernetes.io/docs/concepts/workloads/pods/) |
   
 - <h3 id="workload">--workload <span class="option-info">string (resource name)</span></h3>
 
@@ -104,7 +104,7 @@ skupper connector update backend --port 9090 --output yaml
   | | |
   |-|-|
   | Platforms | Kubernetes |
-  | See also | [Kubernetes workloads]({{site_prefix}}https://kubernetes.io/docs/concepts/workloads/) |
+  | See also | [Kubernetes workloads](https://kubernetes.io/docs/concepts/workloads/) |
   
 - <h3 id="host">--host <span class="option-info">string</span></h3>
 
@@ -131,7 +131,7 @@ skupper connector update backend --port 9090 --output yaml
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
-  | See also | [TLS re-encrypt]({{site_prefix}}) |
+  | See also | [TLS re-encrypt]() |
   
 - <h3 id="type">--type <span class="option-info">string</span></h3>
 
@@ -151,7 +151,7 @@ skupper connector update backend --port 9090 --output yaml
   |-|-|
   | Default | False |
   | Platforms | Kubernetes |
-  | See also | [Kubernetes pod lifecycle]({{site_prefix}}https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/) |
+  | See also | [Kubernetes pod lifecycle](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/) |
   
 ### Output options
 
@@ -174,7 +174,7 @@ skupper connector update backend --port 9090 --output yaml
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
-  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) |
+  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) |
   
 - <h3 id="context">--context <span class="option-info">string</span></h3>
 
@@ -183,7 +183,7 @@ skupper connector update backend --port 9090 --output yaml
   | | |
   |-|-|
   | Platforms | Kubernetes |
-  | See also | [Kubernetes kubeconfigs]({{site_prefix}}https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) |
+  | See also | [Kubernetes kubeconfigs](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) |
   
 - <h3 id="platform">--platform <span class="option-info">string</span></h3>
 

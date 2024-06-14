@@ -50,7 +50,7 @@ Listener "<name>" is deleted.
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
-  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) |
+  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) |
   
 - <h3 id="context">--context <span class="option-info">string</span></h3>
 
@@ -59,7 +59,7 @@ Listener "<name>" is deleted.
   | | |
   |-|-|
   | Platforms | Kubernetes |
-  | See also | [Kubernetes kubeconfigs]({{site_prefix}}https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) |
+  | See also | [Kubernetes kubeconfigs](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) |
   
 - <h3 id="platform">--platform <span class="option-info">string</span></h3>
 

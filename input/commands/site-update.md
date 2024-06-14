@@ -74,7 +74,7 @@ skupper site update --enable-link-access --service-account app1:alice
   | Default | `default` |
   | Choices | <table><tr><td><code>default</code></td><td>Use the default link access.  On OpenShift, the default is `route`.  For other Kubernetes flavors, the default is `loadbalancer`.</td></tr><tr><td><code>route</code></td><td>Use an OpenShift route.  _OpenShift only._</td></tr><tr><td><code>loadbalancer</code></td><td>Use a Kubernetes load balancer.  _Kubernetes only._</td></tr></table> |
   | Platforms | Kubernetes, Docker |
-  | See also | [Link access concept]({{site_prefix}}/concepts/link-access.html), [Kubernetes load balancer services]({{site_prefix}}https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) |
+  | See also | [Link access concept]({{site_prefix}}/concepts/link-access.html), [Kubernetes load balancer services](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) |
   
 - <h3 id="service-account">--service-account <span class="option-info">string</span></h3>
 
@@ -85,7 +85,7 @@ skupper site update --enable-link-access --service-account app1:alice
   |-|-|
   | Default | `skupper:skupper-controller` |
   | Platforms | Kubernetes |
-  | See also | [Kubernetes service accounts]({{site_prefix}}https://kubernetes.io/docs/concepts/security/service-accounts/) |
+  | See also | [Kubernetes service accounts](https://kubernetes.io/docs/concepts/security/service-accounts/) |
   
 ### Output options
 
@@ -108,7 +108,7 @@ skupper site update --enable-link-access --service-account app1:alice
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
-  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) |
+  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) |
   
 - <h3 id="context">--context <span class="option-info">string</span></h3>
 
@@ -117,7 +117,7 @@ skupper site update --enable-link-access --service-account app1:alice
   | | |
   |-|-|
   | Platforms | Kubernetes |
-  | See also | [Kubernetes kubeconfigs]({{site_prefix}}https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) |
+  | See also | [Kubernetes kubeconfigs](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) |
   
 - <h3 id="platform">--platform <span class="option-info">string</span></h3>
 

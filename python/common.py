@@ -64,16 +64,13 @@ def generate_attribute_fields(attr):
         lines.append(f"| Default | {default} |")
 
     if attr.choices:
-        choices = [f"`{x['name']}`" for x in attr.choices]
-        #lines.append(f"| Choices | {', '.join(choices)} |")
         lines.append(f"| Choices | {generate_choices_table(attr)} |")
 
     if attr.platforms:
         lines.append(f"| Platforms | {', '.join(attr.platforms)} |")
 
     if attr.links:
-        links = ["[{}]({{{{site_prefix}}}}{})".format(x["name"], x["url"]) for x in attr.links]
-        lines.append(f"| See also | {', '.join(links)} |")
+        lines.append(f"| See also | {generate_links(attr)} |")
 
     if lines:
         lines.insert(0, "| | |")
@@ -92,6 +89,20 @@ def generate_choices_table(attr):
         rows.append(f"<tr><td><code>{name}</code></td><td>{description}</td></tr>")
 
     return "<table>{}</table>".format("".join(rows))
+
+def generate_links(attr):
+    links = list()
+
+    for link in attr.links:
+        name = link["name"]
+        url = link["url"]
+
+        if url.startswith("/"):
+            url = "{{site_prefix}}" + url
+
+        links.append(f"[{name}]({url})")
+
+    return ", ".join(links)
 
 def object_property(name, default=None, required=False):
     def get(obj):

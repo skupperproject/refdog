@@ -51,7 +51,7 @@ Link "<name>" is updated.
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
-  | See also | [Custom certificates]({{site_prefix}}) |
+  | See also | [Custom certificates]() |
   
 - <h3 id="cost">--cost <span class="option-info">integer</span></h3>
 
@@ -62,7 +62,7 @@ Link "<name>" is updated.
   |-|-|
   | Default | 1 |
   | Platforms | Kubernetes, Docker |
-  | See also | [Load balancing]({{site_prefix}}) |
+  | See also | [Load balancing]() |
   
 ### Output options
 
@@ -85,7 +85,7 @@ Link "<name>" is updated.
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
-  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces]({{site_prefix}}https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) |
+  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) |
   
 - <h3 id="context">--context <span class="option-info">string</span></h3>
 
@@ -94,7 +94,7 @@ Link "<name>" is updated.
   | | |
   |-|-|
   | Platforms | Kubernetes |
-  | See also | [Kubernetes kubeconfigs]({{site_prefix}}https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) |
+  | See also | [Kubernetes kubeconfigs](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) |
   
 - <h3 id="platform">--platform <span class="option-info">string</span></h3>
 

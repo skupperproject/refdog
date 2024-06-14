@@ -74,7 +74,7 @@ spec:
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
-  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces]({{site_prefix}}) |
+  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces]() |
   
 
 </section>
@@ -92,7 +92,7 @@ spec:
   | Default | `none` |
   | Choices | <table><tr><td><code>none</code></td><td>No linking to this site is permitted.</td></tr><tr><td><code>default</code></td><td>Use the default link access.  On OpenShift, the default is `route`.  For other Kubernetes flavors, the default is `loadbalancer`.</td></tr><tr><td><code>route</code></td><td>Use an OpenShift route.  _OpenShift only._</td></tr><tr><td><code>loadbalancer</code></td><td>Use a Kubernetes load balancer.  _Kubernetes only._</td></tr></table> |
   | Platforms | Kubernetes, Docker |
-  | See also | [Link access concept]({{site_prefix}}/concepts/link-access.html), [Kubernetes load balancer services]({{site_prefix}}https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) |
+  | See also | [Link access concept]({{site_prefix}}/concepts/link-access.html), [Kubernetes load balancer services](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) |
   
 
 - <h3 id="serviceaccount">serviceAccount <span class="property-info">string</span></h3>
@@ -104,10 +104,10 @@ spec:
   |-|-|
   | Default | `skupper:skupper-controller` |
   | Platforms | Kubernetes |
-  | See also | [Kubernetes service accounts]({{site_prefix}}https://kubernetes.io/docs/concepts/security/service-accounts/) |
+  | See also | [Kubernetes service accounts](https://kubernetes.io/docs/concepts/security/service-accounts/) |
   
 
-- <h3 id="options">options <span class="property-info">array</span></h3>
+- <h3 id="options">options <span class="property-info">object</span></h3>
 
   | | |
   |-|-|

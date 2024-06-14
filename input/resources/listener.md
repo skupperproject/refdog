@@ -67,7 +67,7 @@ spec:
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
-  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces]({{site_prefix}}) |
+  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces]() |
   
 
 </section>
@@ -126,7 +126,7 @@ spec:
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
-  | See also | [TLS re-encrypt]({{site_prefix}}) |
+  | See also | [TLS re-encrypt]() |
   
 
 - <h3 id="type">type <span class="property-info">string</span></h3>
