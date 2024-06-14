@@ -60,7 +60,7 @@ spec:
 
 - <h3 id="name">name <span class="property-info">string, required</span></h3>
 
-  The name of the resource.
+  The name of the site.
 
   | | |
   |-|-|
@@ -74,7 +74,7 @@ spec:
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
-  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces]() |
+  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) |
   
 
 </section>
@@ -132,34 +132,6 @@ spec:
 - <h3 id="active">active <span class="property-info">boolean</span></h3>
 
   This thing is working.
-
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
-
-- <h3 id="endpoints">endpoints <span class="property-info">array</span></h3>
-
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
-
-- <h3 id="sitesinnetwork">sitesInNetwork <span class="property-info">integer</span></h3>
-
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
-
-- <h3 id="servicesinnetwork">servicesInNetwork <span class="property-info">integer</span></h3>
-
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
-
-- <h3 id="network">network <span class="property-info">array</span></h3>
 
   | | |
   |-|-|

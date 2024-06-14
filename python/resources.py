@@ -193,6 +193,11 @@ class ResourceModel:
         debug(f"Loading {self}")
 
         self.data = read_yaml("config/resources.yaml")
+        self.standard_metadata_properties_by_name = dict()
+
+        for property_data in self.data.get("standard_metadata_properties", []):
+            prop = Property(self, None, property_data, "metadata")
+            self.standard_metadata_properties_by_name[prop.name] = prop
 
         self.groups = list()
         self.resources_by_name = dict()
@@ -240,20 +245,25 @@ class ResourceModel:
                     print(f"Missing: {resource}: {name}")
 
     def get_schema(self, resource):
-        crd = self.crds_by_name[resource.name]
-
         try:
-            return crd["spec"]["versions"][0]["schema"]["openAPIV3Schema"]
+            return self.crds_by_name[resource.name]["spec"]["versions"][0]["schema"]["openAPIV3Schema"]
         except KeyError:
             return {}
 
     def get_schema_property(self, prop):
+        if prop.object is None:
+            return {}
+
         schema = self.get_schema(prop.object)
 
         try:
             return schema["properties"][prop.group]["properties"][prop.name]
         except KeyError:
             return {}
+
+    # Metadata and spec properties together XXX Could put the prop group in here
+    def get_standard_property(self, prop):
+        return self.standard_metadata_properties_by_name.get(prop.name)
 
 class ResourceGroup(ModelObjectGroup):
     def __init__(self, model, data):
@@ -270,11 +280,7 @@ class Resource(ModelObject):
     def __init__(self, model, group, data):
         super().__init__(model, group, data)
 
-        metadata_properties_by_name = dict()
-
-        for property_data in self.model.data.get("standard_metadata_properties", []):
-            prop = Property(self.model, self, property_data, "metadata")
-            metadata_properties_by_name[prop.name] = prop
+        metadata_properties_by_name = dict(self.model.standard_metadata_properties_by_name)
 
         for property_data in self.data.get("metadata_properties", []):
             prop = Property(self.model, self, property_data, "metadata")
@@ -311,9 +317,19 @@ class Resource(ModelObject):
         return description
 
 def property_property(name):
-    def get(obj):
-        default = obj.model.get_schema_property(obj).get(name)
-        return obj.data.get(name, default)
+    def get(prop):
+        if prop.resource is None:
+            # It's a standard property with nothing further to delegate to
+            return prop.data.get(name)
+
+        default = None
+
+        if prop.group in ("spec", "status"):
+            default = prop.model.get_schema_property(prop).get(name)
+
+        default = getattr(prop.model.get_standard_property(prop), name, default)
+
+        return prop.data.get(name, default)
 
     return property(get)
 
@@ -324,17 +340,23 @@ class Property(ModelObjectAttribute):
 
     def __init__(self, model, resource, data, group):
         super().__init__(model, resource, data)
+
+        self.resource = resource
         self.group = group
 
     @property
     def required(self):
-        # XXX
-        if self.group == "metadata":
-            return True
+        default = None
 
-        schema = self.model.get_schema(self.object)
-        required_names = schema["properties"][self.group].get("required", [])
-        default = self.name in required_names
+        if self.resource is None:
+            return self.data.get("required")
+
+        if self.group in ("spec", "status"):
+            schema = self.model.get_schema(self.resource)
+            required_names = schema["properties"][self.group].get("required", [])
+            default = self.name in required_names
+
+        default = getattr(self.model.get_standard_property(self), "required", default)
 
         return self.data.get("required", default)
 
@@ -345,5 +367,10 @@ class Property(ModelObjectAttribute):
 
     @property
     def choices(self):
-        default = self.model.get_schema_property(self).get("enum")
-        return self.data.get("choices", [])
+        if self.resource is None:
+            return self.data.get("choices")
+
+        default = self.model.get_schema_property(self).get("enum", [])
+        default = getattr(self.model.get_standard_property(self), "choices", default)
+
+        return self.data.get("choices", default)

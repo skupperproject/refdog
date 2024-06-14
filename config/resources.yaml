@@ -1,10 +1,12 @@
 standard_metadata_properties:
   - name: name
     type: string
+    required: true
     description: |
       The name of the resource.
   - name: namespace
     type: string
+    required: true
     description: |
       The namespace of the resource.
     links:
