@@ -270,12 +270,17 @@ class Resource(ModelObject):
     def __init__(self, model, group, data):
         super().__init__(model, group, data)
 
-        self.metadata_properties = list()
+        metadata_properties_by_name = dict()
 
         for property_data in self.model.data.get("standard_metadata_properties", []):
             prop = Property(self.model, self, property_data, "metadata")
+            metadata_properties_by_name[prop.name] = prop
 
-            self.metadata_properties.append(prop)
+        for property_data in self.data.get("metadata_properties", []):
+            prop = Property(self.model, self, property_data, "metadata")
+            metadata_properties_by_name[prop.name] = prop
+
+        self.metadata_properties = metadata_properties_by_name.values()
 
         self.spec_properties = list()
         self.spec_properties_by_name = dict()

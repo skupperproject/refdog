@@ -11,7 +11,7 @@ standard_metadata_properties:
       - name: Namespace concept
         url: /concepts/namespace.html
       - name: Kubernetes namespaces
-        url: ""
+        url: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
 groups:
   - name: Sites
     resources:
@@ -40,6 +40,10 @@ groups:
                 namespace: hello-world-west
               spec:
                 linkAccess: default
+        metadata_properties:
+          - name: name
+            description: |
+              The name of the site.
         spec_properties:
           - name: linkAccess
             default: none
@@ -81,9 +85,13 @@ groups:
             description: |
               This thing is working.
           - name: endpoints
+            hidden: true
           - name: sitesInNetwork
+            hidden: true
           - name: servicesInNetwork
+            hidden: true
           - name: network
+            hidden: true
   - name: Site linking
     resources:
       - name: Link
