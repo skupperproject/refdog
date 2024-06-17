@@ -34,15 +34,6 @@ status:    # Status properties
 
 ## Spec properties
 
-- <h3 id="options">options <span class="property-info">object</span></h3>
-
-  XXX
-
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
-
 - <h3 id="tlssecret">tlsSecret <span class="property-info">string</span></h3>
 
   The name of a Kubernetes secret containing TLS
@@ -70,20 +61,20 @@ status:    # Status properties
   | See also | [Load balancing]() |
   
 
-</section>
+- <h3 id="options">options <span class="property-info">object</span></h3>
 
-<section>
-
-## Status properties
-
-- <h3 id="status">status <span class="property-info">string</span></h3>
-
-  The current state of the resource.
+  XXX
 
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
   
+
+</section>
+
+<section>
+
+## Status properties
 
 - <h3 id="configured">configured <span class="property-info">boolean</span></h3>
 
@@ -112,5 +103,14 @@ status:    # Status properties
   Is this a site name?  Ambiguous.
 
   </section>
+
+- <h3 id="status">status <span class="property-info">string</span></h3>
+
+  The current state of the resource.
+
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
+  
 
 </section>

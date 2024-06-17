@@ -311,29 +311,19 @@ class Resource(ModelObject):
 
 def merge_property_data(resource, section):
     inherited = resource.data[section].get("inherit_standard_properties", [])
-    standard_prop_data = list_to_dict(resource.model.data["standard_properties"], "name", inherited)
-    custom_prop_data = list_to_dict(resource.data[section].get("properties", []), "name")
+    standard_prop_data = {x["name"]: x for x in resource.model.data["standard_properties"] if x["name"] in inherited}
+    custom_prop_data = {x["name"]: x for x in resource.data[section].get("properties", [])}
     prop_data = dict()
 
-    for name, data in standard_prop_data.items():
-        prop_data[name] = data
-
     for name, data in custom_prop_data.items():
-        try:
-            prop_data[name].update(data)
-        except KeyError:
+        prop_data[name] = standard_prop_data.get(name, {})
+        prop_data[name].update(data)
+
+    for name, data in standard_prop_data.items():
+        if name not in prop_data:
             prop_data[name] = data
 
     return prop_data.values()
-
-def list_to_dict(items, key_name, include=None):
-    result = dict()
-
-    for item in items:
-        if include is None or item[key_name] in include:
-            result[item[key_name]] = item
-
-    return result
 
 def property_property(name):
     def get(obj):

@@ -83,15 +83,6 @@ spec:
 
 ## Spec properties
 
-- <h3 id="options">options <span class="property-info">object</span></h3>
-
-  XXX
-
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
-
 - <h3 id="linkaccess">linkAccess <span class="property-info">string</span></h3>
 
   Configure external access for links from remote sites.
@@ -114,6 +105,15 @@ spec:
   | Default | `skupper:skupper-controller` |
   | Platforms | Kubernetes |
   | See also | [Kubernetes service accounts](https://kubernetes.io/docs/concepts/security/service-accounts/) |
+  
+
+- <h3 id="options">options <span class="property-info">object</span></h3>
+
+  XXX
+
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
   
 
 </section>

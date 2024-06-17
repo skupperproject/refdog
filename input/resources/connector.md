@@ -75,15 +75,6 @@ spec:
 
 ## Spec properties
 
-- <h3 id="options">options <span class="property-info">object</span></h3>
-
-  XXX
-
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
-
 - <h3 id="routingkey">routingKey <span class="property-info">string, required</span></h3>
 
   The identifier used to route traffic from listeners to
@@ -166,6 +157,15 @@ spec:
   | | |
   |-|-|
   | Default | `tcp` |
+  | Platforms | Kubernetes, Docker |
+  
+
+- <h3 id="options">options <span class="property-info">object</span></h3>
+
+  XXX
+
+  | | |
+  |-|-|
   | Platforms | Kubernetes, Docker |
   
 

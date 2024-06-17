@@ -29,15 +29,6 @@ status:    # Status properties
 
 ## Spec properties
 
-- <h3 id="options">options <span class="property-info">object</span></h3>
-
-  XXX
-
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
-
 - <h3 id="url">url <span class="property-info">string, required</span></h3>
 
   The URL of the token redemption service at the remote
@@ -68,20 +59,20 @@ status:    # Status properties
   | Platforms | Kubernetes, Docker |
   
 
-</section>
+- <h3 id="options">options <span class="property-info">object</span></h3>
 
-<section>
-
-## Status properties
-
-- <h3 id="status">status <span class="property-info">string</span></h3>
-
-  The current state of the resource.
+  XXX
 
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
   
+
+</section>
+
+<section>
+
+## Status properties
 
 - <h3 id="redeemed">redeemed <span class="property-info">boolean</span></h3>
 
@@ -90,6 +81,15 @@ status:    # Status properties
   | | |
   |-|-|
   | Default | False |
+  | Platforms | Kubernetes, Docker |
+  
+
+- <h3 id="status">status <span class="property-info">string</span></h3>
+
+  The current state of the resource.
+
+  | | |
+  |-|-|
   | Platforms | Kubernetes, Docker |
   
 
