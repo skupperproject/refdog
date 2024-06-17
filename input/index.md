@@ -2,7 +2,7 @@
 
 ## Reference documentation
 
-<!-- - [Concepts](concepts/index.html) -->
+- [Concepts](concepts/index.html)
 - [Resources](resources/index.html)
 - [Commands](commands/index.html)
 

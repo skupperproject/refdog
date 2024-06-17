@@ -8,10 +8,10 @@ links:
 
 # Skupper concepts
 
-#### Sites and networks
+#### Networks and sites
 
-  - [Site](site.html)
   - [Network](network.html)
+  - [Site](site.html)
   - [Platform](platform.html)
   - [Namespace](namespace.html)
 #### Site linking

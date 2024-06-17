@@ -1,6 +1,14 @@
 groups:
-  - name: Sites and networks
+  - name: Networks and sites
     concepts:
+      - name: network
+        links:
+          - name: Site concept
+            url: /concepts/site.html
+          - name: Link concept
+            url: /concepts/link.html
+        overview: |
+          - XXX One network corresponds to one distributed application.
       - name: site
         links:
           - name: Network concept
@@ -14,14 +22,6 @@ groups:
           - XXX usually a namespace
           - XXX on different platforms
           - XXX sites can be added and removed dynamically
-      - name: network
-        links:
-          - name: Site concept
-            url: /concepts/site.html
-          - name: Link concept
-            url: /concepts/link.html
-        overview: |
-          - XXX One network corresponds to one distributed application.
       - name: platform
         description: |
           A system for running workloads.
