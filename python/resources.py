@@ -106,40 +106,37 @@ def generate_resource(resource):
 
         append("</section>")
         append()
-        append("<section>")
-        append()
-        append("## Metadata properties")
-        append()
 
-        for prop in resource.metadata_properties:
-            generate_property(prop, append)
+    append("<section>")
+    append()
+    append("## Metadata properties")
+    append()
 
-        append("</section>")
-        append()
+    for prop in resource.metadata_properties:
+        generate_property(prop, append)
 
-    if resource.spec_properties:
-        append("<section>")
-        append()
-        append("## Spec properties")
-        append()
+    append("</section>")
+    append()
+    append("<section>")
+    append()
+    append("## Spec properties")
+    append()
 
-        for prop in resource.spec_properties:
-            generate_property(prop, append)
+    for prop in resource.spec_properties:
+        generate_property(prop, append)
 
-        append("</section>")
-        append()
+    append("</section>")
+    append()
+    append("<section>")
+    append()
+    append("## Status properties")
+    append()
 
-    if resource.status_properties:
-        append("<section>")
-        append()
-        append("## Status properties")
-        append()
+    for prop in resource.status_properties:
+        generate_property(prop, append)
 
-        for prop in resource.status_properties:
-            generate_property(prop, append)
-
-        append("</section>")
-        append()
+    append("</section>")
+    append()
 
     if resource.notes:
         append("<section class=\"notes\">")
@@ -187,6 +184,8 @@ def generate_property(prop, append):
         append()
         append("  </section>")
         append()
+
+    # return "\n".join(lines)
 
 class ResourceModel:
     def __init__(self):
@@ -301,30 +300,22 @@ class Resource(ModelObject):
             self.status_properties_by_name[prop.name] = prop
 
     def merge_property_data(self, section):
-        inherited = self.data[section].get("inherit_standard_properties", [])
-        standard_prop_data = {x["name"]: x for x in self.model.data["standard_properties"] if x["name"] in inherited}
+        inherited_props = self.data[section].get("inherit_standard_properties", [])
+        standard_prop_data = {x["name"]: x for x in self.model.data.get("standard_properties", [])}
         specific_prop_data = {x["name"]: x for x in self.data[section].get("properties", [])}
+
+        for name in inherited_props:
+            if name not in standard_prop_data:
+                fail(f"Property '{name}' not in standard properties")
+
+        prop_names = list(specific_prop_data.keys()) + inherited_props
         prop_data = dict()
 
-        for name, data in specific_prop_data.items():
+        for name in prop_names:
             prop_data[name] = standard_prop_data.get(name, {})
-            prop_data[name].update(data)
-
-        for name, data in standard_prop_data.items():
-            if name not in prop_data:
-                prop_data[name] = data
+            prop_data[name].update(specific_prop_data.get(name, {}))
 
         return prop_data.values()
-
-    # @property
-    # def description(self):
-    #     default = self.model.get_schema(self).get("description")
-    #     description = self.data.get("description", default)
-
-    #     if description and self.concept and self.concept.description:
-    #         description = description.replace("@concept_description@", self.concept.description.strip())
-
-    #     return description
 
 def property_property(name):
     def get(obj):

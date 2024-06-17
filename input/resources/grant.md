@@ -13,7 +13,11 @@ links:
 
 <section>
 
-@concept_description@
+Permission to redeem access tokens for links to the local
+site.  A remote site can use a token containing the grant
+URL and secret code to obtain a certificate signed by the
+grant's certificate authority (CA), within a certain
+expiration window and for a limited number of redemptions.
 
 The `code`, `url`, and `ca` properties of the resource
 status are used to generate access tokens from the grant.
@@ -25,6 +29,32 @@ metadata:  # Metadata properties
 spec:      # Spec properties
 status:    # Status properties
 ~~~
+
+</section>
+
+<section>
+
+## Metadata properties
+
+- <h3 id="name">name <span class="property-info">string, required</span></h3>
+
+  The name of the resource.
+
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
+  | See also | [Kubernetes object names](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/) |
+  
+
+- <h3 id="namespace">namespace <span class="property-info">string</span></h3>
+
+  The namespace of the resource.
+
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
+  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) |
+  
 
 </section>
 
@@ -69,7 +99,7 @@ status:    # Status properties
 
 - <h3 id="options">options <span class="property-info">object</span></h3>
 
-  XXX
+  Additional settings.
 
   | | |
   |-|-|

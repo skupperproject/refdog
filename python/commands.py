@@ -209,11 +209,6 @@ class CommandModel:
     def __repr__(self):
         return self.__class__.__name__
 
-    def init(self):
-        for group in self.groups:
-            for command in group.commands:
-                command.init()
-
 class CommandGroup(ModelObjectGroup):
     def __init__(self, model, data):
         super().__init__(model, data)
@@ -228,7 +223,9 @@ class Command(ModelObject):
     output = object_property("output")
     examples = object_property("examples")
 
-    def init(self):
+    def __init__(self, model, group, data):
+        super().__init__(model, group, data)
+
         self.options = list()
         self.options_by_name = dict()
 
@@ -291,9 +288,6 @@ class Command(ModelObject):
     @property
     def description(self):
         description = self.data.get("description")
-
-        # if description and self.concept and self.concept.description:
-        #     description = description.replace("@concept_description@", self.concept.description.strip())
 
         if description and self.resource and self.resource.description:
             description = description.replace("@resource_description@", self.resource.description.strip())

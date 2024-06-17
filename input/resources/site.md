@@ -5,6 +5,8 @@ links:
     url: /concepts/site.html
   - name: Network concept
     url: /concepts/network.html
+  - name: Namespace concept
+    url: /concepts/namespace.html
   - name: Link resource
     url: /resources/link.html
   - name: Site command
@@ -15,7 +17,8 @@ links:
 
 <section>
 
-@concept_description@
+A place where components of your application are running.
+Sites are linked to form application networks.
 
 There can be only one site resource per namespace.
 
@@ -63,11 +66,12 @@ spec:
 
 - <h3 id="name">name <span class="property-info">string, required</span></h3>
 
-  The name of the site.
+  The name of the resource.
 
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
+  | See also | [Kubernetes object names](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/) |
   
 
 - <h3 id="namespace">namespace <span class="property-info">string</span></h3>
@@ -112,7 +116,7 @@ spec:
 
 - <h3 id="options">options <span class="property-info">object</span></h3>
 
-  XXX
+  Additional settings.
 
   | | |
   |-|-|

@@ -4,6 +4,9 @@ standard_properties:
     required: true
     description: |
       The name of the resource.
+    links:
+      - name: Kubernetes object names
+        url: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
   - name: namespace
     type: string
     description: |
@@ -14,7 +17,7 @@ standard_properties:
   - name: options
     type: object
     description: |
-      XXX
+      Additional settings.
   - name: status
     description: |
       The current state of the resource.
@@ -25,10 +28,11 @@ groups:
   - name: Sites
     resources:
       - name: Site
-        related_concepts: [network]
+        related_concepts: [network, namespace]
         related_resources: [Link]
         description: |
-          @concept_description@
+          A place where components of your application are running.
+          Sites are linked to form application networks.
 
           There can be only one site resource per namespace.
         examples:
@@ -52,8 +56,6 @@ groups:
           inherit_standard_properties: [name, namespace]
           properties:
             - name: name
-              description: |
-                The name of the site.
         spec:
           inherit_standard_properties: [options]
           properties:
@@ -103,7 +105,9 @@ groups:
       - name: Link
         related_resources: [Grant, Claim]
         description: |
-          @concept_description@
+          A site-to-site communication channel. Links serve as a
+          transport for application connections and requests.  A set
+          of linked sites constitute a network.
 
           Links are not usually created directly.  Instead, you
           typically use an access token to obtain a link.
@@ -151,7 +155,11 @@ groups:
         related_resources: [Claim]
         related_commands: ["token issue"]
         description: |
-          @concept_description@
+          Permission to redeem access tokens for links to the local
+          site.  A remote site can use a token containing the grant
+          URL and secret code to obtain a certificate signed by the
+          grant's certificate authority (CA), within a certain
+          expiration window and for a limited number of redemptions.
 
           The `code`, `url`, and `ca` properties of the resource
           status are used to generate access tokens from the grant.
@@ -209,13 +217,12 @@ groups:
                 service for this grant.
       - name: Claim
         rename: AccessToken
-        links:
-          - name: token redeem command
-            url: /commands/token-redeem.html
-          - name: AccessGrant resource
-            url: /resources/grant.html
+        related_resources: [Grant]
+        related_commands: ["token redeem"]
         description: |
-          @concept_description@
+          A transferrable token redeemable for a link to a remote
+          site.  An access token contains the URL and secret code of a
+          corresponding access grant.
         metadata:
           inherit_standard_properties: [name, namespace]
         spec:
@@ -246,7 +253,8 @@ groups:
       - name: Connector
         related_resources: [Listener]
         description: |
-          @concept_description@
+          Binds a connection endpoint in the local site to target
+          workloads in remote sites.
 
           Each site can have multiple connector resources.
         examples:
@@ -325,7 +333,8 @@ groups:
       - name: Listener
         related_resources: [Connector]
         description: |
-          @concept_description@
+          Binds target workloads in the local site to listeners in
+          remote sites.
 
           Each site can have multiple listener definitions.
         examples:

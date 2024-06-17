@@ -120,6 +120,8 @@ groups:
             required: false
             positional: true
             description: |
+              XXX
+
               The name of the site resource.
 
               If not specified, the name is that of the site

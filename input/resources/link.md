@@ -15,7 +15,9 @@ links:
 
 <section>
 
-@concept_description@
+A site-to-site communication channel. Links serve as a
+transport for application connections and requests.  A set
+of linked sites constitute a network.
 
 Links are not usually created directly.  Instead, you
 typically use an access token to obtain a link.
@@ -27,6 +29,32 @@ metadata:  # Metadata properties
 spec:      # Spec properties
 status:    # Status properties
 ~~~
+
+</section>
+
+<section>
+
+## Metadata properties
+
+- <h3 id="name">name <span class="property-info">string, required</span></h3>
+
+  The name of the resource.
+
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
+  | See also | [Kubernetes object names](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/) |
+  
+
+- <h3 id="namespace">namespace <span class="property-info">string</span></h3>
+
+  The namespace of the resource.
+
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
+  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) |
+  
 
 </section>
 
@@ -63,7 +91,7 @@ status:    # Status properties
 
 - <h3 id="options">options <span class="property-info">object</span></h3>
 
-  XXX
+  Additional settings.
 
   | | |
   |-|-|

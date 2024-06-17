@@ -3,17 +3,19 @@ body_class: resource
 links:
   - name: Access token concept
     url: /concepts/claim.html
-  - name: token redeem command
-    url: /commands/token-redeem.html
   - name: AccessGrant resource
     url: /resources/grant.html
+  - name: Token redeem command
+    url: /commands/token-redeem.html
 ---
 
 # AccessToken resource
 
 <section>
 
-@concept_description@
+A transferrable token redeemable for a link to a remote
+site.  An access token contains the URL and secret code of a
+corresponding access grant.
 
 ~~~ yaml
 apiVersion: skupper.io/v1alpha1
@@ -22,6 +24,32 @@ metadata:  # Metadata properties
 spec:      # Spec properties
 status:    # Status properties
 ~~~
+
+</section>
+
+<section>
+
+## Metadata properties
+
+- <h3 id="name">name <span class="property-info">string, required</span></h3>
+
+  The name of the resource.
+
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
+  | See also | [Kubernetes object names](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/) |
+  
+
+- <h3 id="namespace">namespace <span class="property-info">string</span></h3>
+
+  The namespace of the resource.
+
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
+  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) |
+  
 
 </section>
 
@@ -61,7 +89,7 @@ status:    # Status properties
 
 - <h3 id="options">options <span class="property-info">object</span></h3>
 
-  XXX
+  Additional settings.
 
   | | |
   |-|-|

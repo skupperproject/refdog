@@ -22,6 +22,8 @@ def generate_object_links(obj):
         lines.append(f"  - name: {capitalize(other.rename)} {type}")
         lines.append(f"    url: /{plural(type)}/{other.id}.html")
 
+    # XXX corresponding objects
+
     for concept in obj.related_concepts:
         add_link(concept)
 

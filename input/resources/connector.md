@@ -13,7 +13,8 @@ links:
 
 <section>
 
-@concept_description@
+Binds a connection endpoint in the local site to target
+workloads in remote sites.
 
 Each site can have multiple connector resources.
 
@@ -53,11 +54,12 @@ spec:
 
 - <h3 id="name">name <span class="property-info">string, required</span></h3>
 
-  The name of the site.
+  The name of the resource.
 
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
+  | See also | [Kubernetes object names](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/) |
   
 
 - <h3 id="namespace">namespace <span class="property-info">string</span></h3>
@@ -163,7 +165,7 @@ spec:
 
 - <h3 id="options">options <span class="property-info">object</span></h3>
 
-  XXX
+  Additional settings.
 
   | | |
   |-|-|

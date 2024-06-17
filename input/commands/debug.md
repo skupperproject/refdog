@@ -12,13 +12,6 @@ Display help for debug commands and exit.
 
 <section>
 
-## Subcommands
-
-- [debug dump]({{site_prefix}}/commands/debug-dump.html)
-</section>
-
-<section>
-
 ## Options
 
 - <h3 id="help">--help <span class="option-info"></span></h3>
