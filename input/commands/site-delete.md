@@ -26,12 +26,9 @@ Site "<name>" is deleted.
 
 ## Options
 
-- <h3 id="name">name <span class="option-info">string, optional</span></h3>
+- <h3 id="name">name <span class="option-info">string, required</span></h3>
 
-  The name of the site resource.
-  
-  If not specified, the name is that of the site
-  associated with the current namespace.
+  The name of the listener resource.
 
   | | |
   |-|-|

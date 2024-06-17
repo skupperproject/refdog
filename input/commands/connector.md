@@ -24,3 +24,17 @@ Display help for connector commands and exit.
 - [connector delete]({{site_prefix}}/commands/connector-delete.html)
 - [connector status]({{site_prefix}}/commands/connector-status.html)
 </section>
+
+<section>
+
+## Options
+
+- <h3 id="help">--help <span class="option-info"></span></h3>
+
+  Display help and exit.
+
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
+  
+</section>

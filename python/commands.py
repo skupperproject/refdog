@@ -238,28 +238,8 @@ class Command(ModelObject):
             self.options.append(option)
             self.options_by_name[option.name] = option
 
-        # if "inherit_command_options" in self.data:
-        #     command = self.data["inherit_command_options"]
-        #     options = self.model.commands_by_name[command].options
-
-        #     options_by_name.update(((x.name, x) for x in options))
-
-        # for option_data in self.data.get("options", []):
-        #     name = option_data["name"]
-        #     options_by_name[name] = Option(self.model, self, option_data)
-
-        # self.options = options_by_name.values() # XXX
-        # self.standard_options = list()
-
         self.subcommands = list()
         self.errors = list()
-
-        # if "inherit_standard_options" in self.data:
-        #     for name in self.data["inherit_standard_options"]:
-        #         data = self.model.data["standard_options"][name]
-        #         option = Option(self.model, self, data)
-
-        #         self.standard_options.append((group["name"], options))
 
         for command in self.model.commands_by_name.values():
             if command.parent is self:
@@ -269,18 +249,21 @@ class Command(ModelObject):
             self.errors.append(Error(self, error_data))
 
     def merge_option_data(self):
-        inherited = self.data.get("inherit_standard_options", [])
-        standard_option_data = {x["name"]: x for x in self.model.data["standard_options"] if x["name"] in inherited}
-        custom_option_data = {x["name"]: x for x in self.data.get("options", [])}
+        inherited_options = self.data.get("inherit_standard_options", [])
+        standard_option_data = {x["name"]: x for x in self.model.data.get("standard_options", [])}
+        specific_option_data = {x["name"]: x for x in self.data.get("options", [])}
+
+        for name in inherited_options:
+            if name not in standard_option_data:
+                fail(f"Option '{name}' not in standard options")
+
+        # XXX Duplicates!
+        option_names = list(specific_option_data.keys()) + inherited_options
         option_data = dict()
 
-        for name, data in custom_option_data.items():
+        for name in option_names:
             option_data[name] = standard_option_data.get(name, {})
-            option_data[name].update(data)
-
-        for name, data in standard_option_data.items():
-            if name not in option_data:
-                option_data[name] = data
+            option_data[name].update(specific_option_data.get(name, {}))
 
         return option_data.values()
 

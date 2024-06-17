@@ -32,7 +32,7 @@ You can now safely delete <file>.
 
 - <h3 id="file">file <span class="option-info">string, required</span></h3>
 
-  The name of the token file.
+  The name of the token file to use.
 
   | | |
   |-|-|

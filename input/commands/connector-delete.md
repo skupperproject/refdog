@@ -31,7 +31,7 @@ Connector "<name>" is deleted.
 
 - <h3 id="name">name <span class="option-info">string, required</span></h3>
 
-  The name of the connector resource.
+  The name of the listener resource.
 
   | | |
   |-|-|

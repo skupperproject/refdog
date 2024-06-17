@@ -1,4 +1,10 @@
 standard_options:
+  - name: name
+    type: string
+    required: true
+  - name: file
+    type: string
+    required: true
   - name: output
     type: string
     description: |
@@ -37,7 +43,32 @@ standard_options:
     type: ""
     description: |
       Display help and exit.
-
+  - name: enable-link-access
+    type: boolean
+    description: |
+      Allow access for incoming links from remote sites.
+    links:
+      - name: Link access concept
+        url: /concepts/link-access.html
+  - name: link-access-type
+    property: linkAccess
+    default: default
+    choices:
+      - name: default
+        description: |
+          Use the default link access.  On OpenShift, the
+          default is `route`.  For other Kubernetes flavors,
+          the default is `loadbalancer`.
+      - name: route
+        description: Use an OpenShift route.  _OpenShift only._
+      - name: loadbalancer
+        description: Use a Kubernetes load balancer.  _Kubernetes only._
+  - name: service-account
+    property: serviceAccount
+  - name: tls-secret
+    property: tlsCredentials
+  - name: cost
+    property: cost
 groups:
   - name: Sites
     commands:
@@ -59,36 +90,12 @@ groups:
         output: |
           Waiting for status...
           Site "<name>" is ready.
-        inherit_standard_options: [output, namespace, context, platform, help]
+        inherit_standard_options: [name, enable-link-access, link-access-type, service-account, output, namespace, context, platform, help]
         options:
           - name: name
-            type: string
-            required: true
             description: |
               A name of your choice for the Skupper site.  This name is
               displayed in the console and CLI output.
-          - name: enable-link-access
-            type: boolean
-            description: |
-              Allow access for incoming links from remote sites.
-            links:
-              - name: Link access concept
-                url: /concepts/link-access.html
-          - name: link-access-type
-            property: linkAccess
-            default: default
-            choices:
-              - name: default
-                description: |
-                  Use the default link access.  On OpenShift, the
-                  default is `route`.  For other Kubernetes flavors,
-                  the default is `loadbalancer`.
-              - name: route
-                description: Use an OpenShift route.  _OpenShift only._
-              - name: loadbalancer
-                description: Use a Kubernetes load balancer.  _Kubernetes only._
-          - name: service-account
-            property: serviceAccount
         errors:
           - message: A site resource already exists
             description: |
@@ -106,8 +113,7 @@ groups:
         output: |
           Waiting for update to complete...
           Site "<name>" is updated.
-        inherit_command_options: site create
-        inherit_standard_options: [output, namespace, context, platform, help]
+        inherit_standard_options: [name, enable-link-access, link-access-type, service-account, output, namespace, context, platform, help]
         options:
           - name: name
             type: string
@@ -162,7 +168,7 @@ groups:
         resource: Claim
         description: |
           Display help for token commands and exit.
-        inherit_standard_options: [global]
+        inherit_standard_options: [help]
       - name: token issue
         resource: Grant
         related_commands: ["token redeem"]
@@ -193,13 +199,11 @@ groups:
 
           # Issue an access token with non-default limits
           skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed 3
-        inherit_standard_options: [namespace, context, platform, help]
+        inherit_standard_options: [file, namespace, context, platform, help]
         options:
           - name: file
-            type: string
-            required: true
             description: |
-              The name of the token file.
+              The name of the token file to create.
           - name: expiration-window
             property: validFor
           - name: redemptions-allowed
@@ -219,13 +223,11 @@ groups:
           Waiting for status...
           Link "<name>" is active.
           You can now safely delete <file>.
-        inherit_standard_options: [namespace, context, platform, help]
+        inherit_standard_options: [file, namespace, context, platform, help]
         options:
           - name: file
-            type: string
-            required: true
             description: |
-              The name of the token file.
+              The name of the token file to use.
       - name: link
         related_commands: [token]
         description: |
@@ -240,19 +242,14 @@ groups:
         output: |
           Waiting for status...
           Link "<name>" is ready.
-        inherit_standard_options: [output, namespace, context, platform, help]
+        inherit_standard_options: [name, tls-secret, cost, output, namespace, context, platform, help]
         options:
           - name: name
-            type: string
-            required: true
             description: |
               The name of the link.
           - name: tls-secret
-            property: tlsCredentials
             required: true
             positional: true
-          - name: cost
-            property: cost
       - name: link update
         description: |
           Change link settings.
@@ -260,11 +257,11 @@ groups:
         output: |
           Waiting for update to complete...
           Link "<name>" is updated.
-        inherit_command_options: link create
-        inherit_standard_options: [output, namespace, context, platform, help]
+        inherit_standard_options: [name, tls-secret, cost, output, namespace, context, platform, help]
         options:
+          - name: name
           - name: tls-secret
-            property: tlsCredentials
+            required: false
       - name: link delete
         description: |
           Delete a link.
@@ -272,13 +269,9 @@ groups:
         output: |
           Waiting for deletion to complete...
           Link "<name>" is deleted.
-        inherit_standard_options: [namespace, context, platform, help]
+        inherit_standard_options: [name, namespace, context, platform, help]
         options:
           - name: name
-            type: string
-            required: true
-            description: |
-              The name of the link.
       - name: link status
         description: |
           Display the status of links in the current site.
@@ -296,7 +289,7 @@ groups:
       - name: connector
         description: |
           Display help for connector commands and exit.
-        inherit_standard_options: [global]
+        inherit_standard_options: [help]
       - name: connector create
         related_commands: ["listener create"]
         description: |

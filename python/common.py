@@ -110,7 +110,7 @@ def object_property(name, default=None, required=False):
         value = obj.data.get(name, default)
 
         if required and value is None:
-            raise Error(f"Property {name} on {obj} is required")
+            raise Exception(f"Property '{name}' on {obj.__class__.__name__} is required")
 
         return value
 

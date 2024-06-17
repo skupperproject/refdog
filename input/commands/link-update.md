@@ -26,7 +26,15 @@ Link "<name>" is updated.
 
 ## Options
 
-- <h3 id="tls-secret">--tls-secret <span class="option-info">string</span></h3>
+- <h3 id="name">name <span class="option-info">string, required</span></h3>
+
+  The name of the listener resource.
+
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
+  
+- <h3 id="tls-secret">tls-secret <span class="option-info">string, optional</span></h3>
 
   The name of a Kubernetes secret containing TLS
   credentials. The secret contains the trusted server
@@ -39,6 +47,17 @@ Link "<name>" is updated.
   |-|-|
   | Platforms | Kubernetes, Docker |
   | See also | [Custom certificates]() |
+  
+- <h3 id="cost">--cost <span class="option-info">integer</span></h3>
+
+  The configured "expense" of sending traffic over the
+  link.
+
+  | | |
+  |-|-|
+  | Default | 1 |
+  | Platforms | Kubernetes, Docker |
+  | See also | [Load balancing]() |
   
 - <h3 id="output">--output <span class="option-info">string</span></h3>
 

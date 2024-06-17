@@ -303,10 +303,10 @@ class Resource(ModelObject):
     def merge_property_data(self, section):
         inherited = self.data[section].get("inherit_standard_properties", [])
         standard_prop_data = {x["name"]: x for x in self.model.data["standard_properties"] if x["name"] in inherited}
-        custom_prop_data = {x["name"]: x for x in self.data[section].get("properties", [])}
+        specific_prop_data = {x["name"]: x for x in self.data[section].get("properties", [])}
         prop_data = dict()
 
-        for name, data in custom_prop_data.items():
+        for name, data in specific_prop_data.items():
             prop_data[name] = standard_prop_data.get(name, {})
             prop_data[name].update(data)
 
