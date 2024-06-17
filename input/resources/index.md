@@ -10,19 +10,19 @@ links:
 
 | | |
 |-|-|
-| [Site](site.html) | A place where components of your application are running |
+| [Site](site.html) | @concept_description@  There can be only one site resource per namespace |
 
 #### Site linking
 
 | | |
 |-|-|
-| [Link](link.html) | A site-to-site communication channel |
-| [AccessGrant](grant.html) | Permission to redeem access tokens for links to the local site |
-| [AccessToken](claim.html) | A transferrable token redeemable for a link to a remote site |
+| [Link](link.html) | @concept_description@  Links are not usually created directly |
+| [AccessGrant](grant.html) | @concept_description@  The `code`, `url`, and `ca` properties of the resource status are used to generate access tokens from the grant |
+| [AccessToken](claim.html) | @concept_description@  |
 
 #### Service exposure
 
 | | |
 |-|-|
-| [Connector](connector.html) | Binds target workloads in the local site to listeners in remote sites |
-| [Listener](listener.html) | Binds a connection endpoint in the local site to target workloads in remote sites |
+| [Connector](connector.html) | @concept_description@  Each site can have multiple connector resources |
+| [Listener](listener.html) | @concept_description@  Each site can have multiple listener definitions |

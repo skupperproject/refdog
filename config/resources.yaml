@@ -9,8 +9,6 @@ standard_properties:
     description: |
       The namespace of the resource.
     links:
-      - name: Namespace concept
-        url: /concepts/namespace.html
       - name: Kubernetes namespaces
         url: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
   - name: options
@@ -27,9 +25,8 @@ groups:
   - name: Sites
     resources:
       - name: Site
-        links:
-          - name: Link resource
-            url: /resources/link.html
+        related_concepts: [network]
+        related_resources: [Link]
         description: |
           @concept_description@
 
@@ -104,11 +101,7 @@ groups:
   - name: Site linking
     resources:
       - name: Link
-        links:
-          - name: AccessGrant resource
-            url: /resources/grant.html
-          - name: AccessToken resource
-            url: /resources/claim.html
+        related_resources: [Grant, Claim]
         description: |
           @concept_description@
 
@@ -155,11 +148,8 @@ groups:
                 Is this a site name?  Ambiguous.
       - name: Grant
         rename: AccessGrant
-        links:
-          - name: AccessToken resource
-            url: /resources/claim.html
-          - name: token issue command
-            url: /commands/token-issue.html
+        related_resources: [Claim]
+        related_commands: ["token issue"]
         description: |
           @concept_description@
 
@@ -254,9 +244,7 @@ groups:
   - name: Service exposure
     resources:
       - name: Connector
-        links:
-          - name: Listener resource
-            url: /resources/listener.html
+        related_resources: [Listener]
         description: |
           @concept_description@
 
@@ -321,7 +309,7 @@ groups:
                 This option is used when setting up client-to-router TLS
                 encryption.
               links:
-                - name: TLS re-encrypt
+                - name: Site-scoped TLS
                   url: "" # XXX
             - name: includeNotReady
               description: |
@@ -335,9 +323,7 @@ groups:
         status:
           inherit_standard_properties: [status]
       - name: Listener
-        links:
-          - name: Connector resource
-            url: /resources/connector.html
+        related_resources: [Connector]
         description: |
           @concept_description@
 
@@ -393,7 +379,7 @@ groups:
                 This option is used when setting up router-to-server TLS
                 encryption.
               links:
-                - name: TLS re-encrypt
+                - name: Site-scoped TLS
                   url: "" # XXX
             - name: type
               default: tcp

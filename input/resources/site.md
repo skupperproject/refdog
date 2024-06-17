@@ -1,18 +1,21 @@
 ---
 body_class: resource
 links:
-  - name: site command
-    url: /commands/site.html
+  - name: Site concept
+    url: /concepts/site.html
+  - name: Network concept
+    url: /concepts/network.html
   - name: Link resource
     url: /resources/link.html
+  - name: Site command
+    url: /commands/site.html
 ---
 
 # Site resource
 
 <section>
 
-A place where components of your application are running.
-Sites are linked to form application networks.
+@concept_description@
 
 There can be only one site resource per namespace.
 

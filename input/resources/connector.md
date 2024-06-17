@@ -1,18 +1,19 @@
 ---
 body_class: resource
 links:
-  - name: connector command
-    url: /commands/connector.html
+  - name: Connector concept
+    url: /concepts/connector.html
   - name: Listener resource
     url: /resources/listener.html
+  - name: Connector command
+    url: /commands/connector.html
 ---
 
 # Connector resource
 
 <section>
 
-Binds target workloads in the local site to listeners in
-remote sites.
+@concept_description@
 
 Each site can have multiple connector resources.
 
@@ -136,7 +137,7 @@ spec:
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
-  | See also | [TLS re-encrypt]() |
+  | See also | [Site-scoped TLS]() |
   
 
 - <h3 id="includenotready">includeNotReady <span class="property-info">boolean</span></h3>

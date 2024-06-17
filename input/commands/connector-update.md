@@ -1,15 +1,11 @@
 ---
 body_class: command
 links:
-  - name: Connector resource
-    url: /resources/connector.html
-  - name: connector command
-    url: /commands/connector.html
   - name: listener update command
     url: /commands/listener-update.html
 ---
 
-# connector update command
+# Connector update command
 
 <section>
 
@@ -131,7 +127,7 @@ skupper connector update backend --port 9090 --output yaml
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
-  | See also | [TLS re-encrypt]() |
+  | See also | [Site-scoped TLS]() |
   
 - <h3 id="type">--type <span class="option-info">string</span></h3>
 

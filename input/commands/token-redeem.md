@@ -1,15 +1,11 @@
 ---
 body_class: command
 links:
-  - name: AccessToken resource
-    url: /resources/claim.html
-  - name: token command
-    url: /commands/token.html
   - name: token issue command
     url: /commands/token-issue.html
 ---
 
-# token redeem command
+# Token redeem command
 
 <section>
 

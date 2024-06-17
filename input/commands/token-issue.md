@@ -1,15 +1,11 @@
 ---
 body_class: command
 links:
-  - name: AccessGrant resource
-    url: /resources/grant.html
-  - name: token command
-    url: /commands/token.html
   - name: token redeem command
     url: /commands/token-redeem.html
 ---
 
-# token issue command
+# Token issue command
 
 <section>
 

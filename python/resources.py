@@ -268,6 +268,7 @@ class ResourceGroup(ModelObjectGroup):
 
 class Resource(ModelObject):
     examples = object_property("examples", default=[])
+    description = object_property("description")
 
     def __init__(self, model, group, data):
         super().__init__(model, group, data)
@@ -315,15 +316,15 @@ class Resource(ModelObject):
 
         return prop_data.values()
 
-    @property
-    def description(self):
-        default = self.model.get_schema(self).get("description")
-        description = self.data.get("description", default)
+    # @property
+    # def description(self):
+    #     default = self.model.get_schema(self).get("description")
+    #     description = self.data.get("description", default)
 
-        if description and self.concept and self.concept.description:
-            description = description.replace("@concept_description@", self.concept.description.strip())
+    #     if description and self.concept and self.concept.description:
+    #         description = description.replace("@concept_description@", self.concept.description.strip())
 
-        return description
+    #     return description
 
 def property_property(name):
     def get(obj):

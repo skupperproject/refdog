@@ -1,13 +1,8 @@
 ---
 body_class: command
-links:
-  - name: Site resource
-    url: /resources/site.html
-  - name: site command
-    url: /commands/site.html
 ---
 
-# site create command
+# Site create command
 
 <section>
 

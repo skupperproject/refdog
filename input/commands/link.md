@@ -1,19 +1,21 @@
 ---
 body_class: command
 links:
+  - name: Link concept
+    url: /concepts/link.html
   - name: Link resource
     url: /resources/link.html
+  - name: Token command
+    url: /commands/token.html
 ---
 
-# link command
+# Link command
 
 <section>
 
 Display help for link commands and exit.
 
-A site-to-site communication channel. Links serve as a
-transport for application connections and requests.  A set
-of linked sites constitute a network.
+@concept_description@
 
 Links are not usually created directly.  Instead, you
 typically use an access token to obtain a link.

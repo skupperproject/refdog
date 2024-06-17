@@ -7,8 +7,6 @@ standard_options:
         description: |
           Set the namespace.
         links:
-          - name: Namespace concept
-            url: /concepts/namespace.html
           - name: Kubernetes namespaces
             url: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
       - name: context
@@ -28,9 +26,6 @@ standard_options:
             description: Docker or Podman
         description: |
           Set the Skupper platform.
-        links:
-          - name: Platform concept
-            url: /concepts/platform.html
   output:
     name: Output options
     options:
@@ -244,6 +239,7 @@ groups:
             description: |
               The name of the token file.
       - name: link
+        related_commands: [token]
         description: |
           Display help for link commands and exit.
 

@@ -2,7 +2,7 @@
 body_class: command
 ---
 
-# version command
+# Version command
 
 <section>
 

@@ -1,11 +1,8 @@
 ---
 body_class: command
-links:
-  - name: AccessToken resource
-    url: /resources/claim.html
 ---
 
-# token command
+# Token command
 
 <section>
 

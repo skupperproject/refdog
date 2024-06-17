@@ -1,15 +1,11 @@
 ---
 body_class: command
 links:
-  - name: Connector resource
-    url: /resources/connector.html
-  - name: connector command
-    url: /commands/connector.html
   - name: listener delete command
     url: /commands/listener-delete.html
 ---
 
-# connector delete command
+# Connector delete command
 
 <section>
 

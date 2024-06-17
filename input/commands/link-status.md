@@ -1,13 +1,8 @@
 ---
 body_class: command
-links:
-  - name: Link resource
-    url: /resources/link.html
-  - name: link command
-    url: /commands/link.html
 ---
 
-# link status command
+# Link status command
 
 <section>
 

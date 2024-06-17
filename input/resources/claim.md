@@ -1,6 +1,8 @@
 ---
 body_class: resource
 links:
+  - name: Access token concept
+    url: /concepts/claim.html
   - name: token redeem command
     url: /commands/token-redeem.html
   - name: AccessGrant resource
@@ -11,9 +13,7 @@ links:
 
 <section>
 
-A transferrable token redeemable for a link to a remote
-site.  An access token contains the URL and secret code of a
-corresponding access grant.
+@concept_description@
 
 ~~~ yaml
 apiVersion: skupper.io/v1alpha1

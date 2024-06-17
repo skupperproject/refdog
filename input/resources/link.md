@@ -1,21 +1,21 @@
 ---
 body_class: resource
 links:
-  - name: link command
-    url: /commands/link.html
+  - name: Link concept
+    url: /concepts/link.html
   - name: AccessGrant resource
     url: /resources/grant.html
   - name: AccessToken resource
     url: /resources/claim.html
+  - name: Link command
+    url: /commands/link.html
 ---
 
 # Link resource
 
 <section>
 
-A site-to-site communication channel. Links serve as a
-transport for application connections and requests.  A set
-of linked sites constitute a network.
+@concept_description@
 
 Links are not usually created directly.  Instead, you
 typically use an access token to obtain a link.
@@ -96,6 +96,7 @@ status:    # Status properties
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
+  | See also | [Site concept]({{site_prefix}}/concepts/site.html) |
   
 
   <section class="notes">

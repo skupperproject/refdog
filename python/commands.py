@@ -61,7 +61,7 @@ def generate_command(command):
     append(generate_object_links(command))
     append("---")
     append()
-    append(f"# {command.rename} command")
+    append(f"# {capitalize(command.rename)} command")
     append()
     append("<section>")
     append()
@@ -280,17 +280,9 @@ class Command(ModelObject):
         return self.model.commands_by_name[name]
 
     @property
-    def concept(self):
-        concept = super().concept
-
-        if concept is None and self.parent is not None:
-            return self.parent.concept
-
-        return concept
-
-    @property
     def resource(self):
-        resource = super().resource
+        name = self.data.get("resource", capitalize(self.name.split(" ")[0]))
+        resource = self.model.resource_model.resources_by_name.get(name)
 
         if resource is None and self.parent is not None:
             return self.parent.resource
@@ -301,8 +293,8 @@ class Command(ModelObject):
     def description(self):
         description = self.data.get("description")
 
-        if description and self.concept and self.concept.description:
-            description = description.replace("@concept_description@", self.concept.description.strip())
+        # if description and self.concept and self.concept.description:
+        #     description = description.replace("@concept_description@", self.concept.description.strip())
 
         if description and self.resource and self.resource.description:
             description = description.replace("@resource_description@", self.resource.description.strip())

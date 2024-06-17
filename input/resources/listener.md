@@ -1,18 +1,19 @@
 ---
 body_class: resource
 links:
-  - name: listener command
-    url: /commands/listener.html
+  - name: Listener concept
+    url: /concepts/listener.html
   - name: Connector resource
     url: /resources/connector.html
+  - name: Listener command
+    url: /commands/listener.html
 ---
 
 # Listener resource
 
 <section>
 
-Binds a connection endpoint in the local site to target
-workloads in remote sites.
+@concept_description@
 
 Each site can have multiple listener definitions.
 
@@ -126,7 +127,7 @@ spec:
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
-  | See also | [TLS re-encrypt]() |
+  | See also | [Site-scoped TLS]() |
   
 
 - <h3 id="type">type <span class="property-info">string</span></h3>

@@ -17,26 +17,19 @@ def generate_object_links(obj):
         if not other:
             return
 
-        name = other.rename
         type = other.__class__.__name__.lower()
 
-        if not isinstance(other, Command):
-            name = capitalize(name)
-
-        lines.append(f"  - name: {name} {type}")
+        lines.append(f"  - name: {capitalize(other.rename)} {type}")
         lines.append(f"    url: /{plural(type)}/{other.id}.html")
 
-    match obj:
-        case Concept():
-            add_link(obj.resource)
-            add_link(obj.command)
-        case Resource():
-            # add_link(obj.concept)
-            add_link(obj.command)
-        case Command():
-            # add_link(obj.concept)
-            add_link(obj.resource)
-            add_link(obj.parent)
+    for concept in obj.related_concepts:
+        add_link(concept)
+
+    for resource in obj.related_resources:
+        add_link(resource)
+
+    for command in obj.related_commands:
+        add_link(command)
 
     for link_data in obj.links:
         lines.append(f"  - name: {link_data['name']}")
@@ -64,13 +57,15 @@ def generate_attribute_fields(attr):
         lines.append(f"| Default | {default} |")
 
     if attr.choices:
-        lines.append(f"| Choices | {generate_choices_table(attr)} |")
+        lines.append(f"| Choices | {generate_attribute_choices(attr)} |")
 
     if attr.platforms:
         lines.append(f"| Platforms | {', '.join(attr.platforms)} |")
 
-    if attr.links:
-        lines.append(f"| See also | {generate_links(attr)} |")
+    links = generate_attribute_links(attr)
+
+    if links:
+        lines.append(f"| See also | {links} |")
 
     if lines:
         lines.insert(0, "| | |")
@@ -79,7 +74,7 @@ def generate_attribute_fields(attr):
 
     return "\n".join(lines)
 
-def generate_choices_table(attr):
+def generate_attribute_choices(attr):
     rows = list()
 
     for choice_data in attr.choices:
@@ -90,12 +85,18 @@ def generate_choices_table(attr):
 
     return "<table>{}</table>".format("".join(rows))
 
-def generate_links(attr):
+def generate_attribute_links(attr):
     links = list()
 
-    for link in attr.links:
-        name = link["name"]
-        url = link["url"]
+    for concept in attr.related_concepts:
+        name = f"{capitalize(concept.name)} concept"
+        url = f"{{{{site_prefix}}}}/concepts/{concept.id}.html"
+
+        links.append(f"[{name}]({url})")
+
+    for link_data in attr.links:
+        name = link_data["name"]
+        url = link_data["url"]
 
         if url.startswith("/"):
             url = "{{site_prefix}}" + url
@@ -158,31 +159,52 @@ class ModelObject:
         return get_fragment_id(self.name)
 
     @property
-    def concept(self):
-        name = self.data.get("concept", self.name.lower())
+    def related_concepts(self):
+        from concepts import Concept
 
-        try:
-            return self.model.concept_model.concepts_by_name[name]
-        except KeyError:
-            pass
+        if not isinstance(self, Concept):
+            try:
+                yield self.model.concept_model.concepts_by_name[self.name.lower()]
+            except KeyError:
+                pass
 
-    @property
-    def resource(self):
-        name = self.data.get("resource", capitalize(self.name))
-
-        try:
-            return self.model.resource_model.resources_by_name[name]
-        except KeyError:
-            pass
+        for name in self.data.get("related_concepts", []):
+            try:
+                yield self.model.concept_model.concepts_by_name[name]
+            except KeyError:
+                raise # XXX An error message!
 
     @property
-    def command(self):
-        name = self.data.get("command", self.name.lower())
+    def related_resources(self):
+        from resources import Resource
 
-        try:
-            return self.model.command_model.commands_by_name[name]
-        except KeyError:
-            pass
+        if not isinstance(self, Resource):
+            try:
+                yield self.model.resource_model.resources_by_name[capitalize(self.name)]
+            except KeyError:
+                pass
+
+        for name in self.data.get("related_resources", []):
+            try:
+                yield self.model.resource_model.resources_by_name[name]
+            except KeyError:
+                raise # XXX An error message!
+
+    @property
+    def related_commands(self):
+        from commands import Command
+
+        if not isinstance(self, Command):
+            try:
+                yield self.model.command_model.commands_by_name[self.name.lower()]
+            except KeyError:
+                pass
+
+        for name in self.data.get("related_commands", []):
+            try:
+                yield self.model.command_model.commands_by_name[name]
+            except KeyError:
+                raise # XXX An error message!
 
 class ModelObjectAttribute:
     hidden = object_property("hidden", default=False)
@@ -205,3 +227,18 @@ class ModelObjectAttribute:
     @property
     def rename(self):
         return self.data.get("rename", self.name)
+
+    @property
+    def related_concepts(self):
+        from concepts import Concept
+
+        try:
+            yield self.model.concept_model.concepts_by_name[self.name.lower()]
+        except KeyError:
+            pass
+
+        for name in self.data.get("related_concepts", []):
+            try:
+                yield self.model.concept_model.concepts_by_name[name]
+            except KeyError:
+                raise # XXX An error message!

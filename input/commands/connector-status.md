@@ -1,13 +1,8 @@
 ---
 body_class: command
-links:
-  - name: Connector resource
-    url: /resources/connector.html
-  - name: connector command
-    url: /commands/connector.html
 ---
 
-# connector status command
+# Connector status command
 
 <section>
 

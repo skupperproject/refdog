@@ -1,9 +1,11 @@
 ---
 body_class: resource
 links:
+  - name: Access grant concept
+    url: /concepts/grant.html
   - name: AccessToken resource
     url: /resources/claim.html
-  - name: token issue command
+  - name: Token issue command
     url: /commands/token-issue.html
 ---
 
@@ -11,11 +13,7 @@ links:
 
 <section>
 
-Permission to redeem access tokens for links to the local
-site.  A remote site can use a token containing the grant
-URL and secret code to obtain a certificate signed by the
-grant's certificate authority (CA), within a certain
-expiration window and for a limited number of redemptions.
+@concept_description@
 
 The `code`, `url`, and `ca` properties of the resource
 status are used to generate access tokens from the grant.
