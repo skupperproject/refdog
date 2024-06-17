@@ -259,7 +259,7 @@ class Command(ModelObject):
         option_data = dict()
 
         for name in option_names:
-            option_data[name] = standard_option_data.get(name, {})
+            option_data[name] = dict(standard_option_data.get(name, {}))
             option_data[name].update(specific_option_data.get(name, {}))
 
         return option_data.values()

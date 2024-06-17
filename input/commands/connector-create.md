@@ -48,7 +48,7 @@ skupper connector create backend 8080 --output yaml
 
 - <h3 id="name">name <span class="option-info">string, required</span></h3>
 
-  The name of the listener resource.
+  The name of the connector resource.
 
   | | |
   |-|-|
@@ -113,7 +113,7 @@ skupper connector create backend 8080 --output yaml
   |-|-|
   | Platforms | Kubernetes, Docker |
   
-- <h3 id="tls-secret">tls-secret <span class="option-info">string, optional</span></h3>
+- <h3 id="tls-secret">--tls-secret <span class="option-info">string</span></h3>
 
   The name of a Kubernetes secret containing the trusted
   server certificate (typically a CA).

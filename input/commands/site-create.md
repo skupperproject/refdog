@@ -42,7 +42,8 @@ skupper site create west --enable-link-access
 
 - <h3 id="name">name <span class="option-info">string, required</span></h3>
 
-  The name of the listener resource.
+  A name of your choice for the Skupper site.  This name is
+  displayed in the console and CLI output.
 
   | | |
   |-|-|

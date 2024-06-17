@@ -312,7 +312,7 @@ class Resource(ModelObject):
         prop_data = dict()
 
         for name in prop_names:
-            prop_data[name] = standard_prop_data.get(name, {})
+            prop_data[name] = dict(standard_prop_data.get(name, {}))
             prop_data[name].update(specific_prop_data.get(name, {}))
 
         return prop_data.values()

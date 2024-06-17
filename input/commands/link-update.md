@@ -28,13 +28,11 @@ Link "<name>" is updated.
 
 - <h3 id="name">name <span class="option-info">string, required</span></h3>
 
-  The name of the listener resource.
-
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
   
-- <h3 id="tls-secret">tls-secret <span class="option-info">string, optional</span></h3>
+- <h3 id="tls-secret">--tls-secret <span class="option-info">string</span></h3>
 
   The name of a Kubernetes secret containing TLS
   credentials. The secret contains the trusted server

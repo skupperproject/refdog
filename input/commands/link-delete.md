@@ -28,8 +28,6 @@ Link "<name>" is deleted.
 
 - <h3 id="name">name <span class="option-info">string, required</span></h3>
 
-  The name of the listener resource.
-
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
