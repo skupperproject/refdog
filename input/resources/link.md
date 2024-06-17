@@ -25,7 +25,7 @@ apiVersion: skupper.io/v1alpha1
 kind: Link
 metadata:  # Metadata properties
 spec:      # Spec properties
-status:    # Status poperties
+status:    # Status properties
 ~~~
 
 </section>
@@ -33,6 +33,15 @@ status:    # Status poperties
 <section>
 
 ## Spec properties
+
+- <h3 id="options">options <span class="property-info">object</span></h3>
+
+  XXX
+
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
+  
 
 - <h3 id="tlssecret">tlsSecret <span class="property-info">string</span></h3>
 
@@ -80,13 +89,7 @@ status:    # Status poperties
 
   | | |
   |-|-|
-  | Platforms | Kubernetes, Docker |
-  
-
-- <h3 id="active">active <span class="property-info">boolean</span></h3>
-
-  | | |
-  |-|-|
+  | Default | False |
   | Platforms | Kubernetes, Docker |
   
 

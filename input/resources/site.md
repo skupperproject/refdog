@@ -21,7 +21,7 @@ apiVersion: skupper.io/v1alpha1
 kind: Site
 metadata:  # Metadata properties
 spec:      # Spec properties
-status:    # Status poperties
+status:    # Status properties
 ~~~
 
 </section>
@@ -67,7 +67,7 @@ spec:
   | Platforms | Kubernetes, Docker |
   
 
-- <h3 id="namespace">namespace <span class="property-info">string, required</span></h3>
+- <h3 id="namespace">namespace <span class="property-info">string</span></h3>
 
   The namespace of the resource.
 
@@ -82,6 +82,15 @@ spec:
 <section>
 
 ## Spec properties
+
+- <h3 id="options">options <span class="property-info">object</span></h3>
+
+  XXX
+
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
+  
 
 - <h3 id="linkaccess">linkAccess <span class="property-info">string</span></h3>
 
@@ -107,13 +116,6 @@ spec:
   | See also | [Kubernetes service accounts](https://kubernetes.io/docs/concepts/security/service-accounts/) |
   
 
-- <h3 id="options">options <span class="property-info">object</span></h3>
-
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
-
 </section>
 
 <section>
@@ -123,15 +125,6 @@ spec:
 - <h3 id="status">status <span class="property-info">string</span></h3>
 
   The current state of the resource.
-
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
-
-- <h3 id="active">active <span class="property-info">boolean</span></h3>
-
-  This thing is working.
 
   | | |
   |-|-|

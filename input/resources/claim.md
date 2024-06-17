@@ -20,7 +20,7 @@ apiVersion: skupper.io/v1alpha1
 kind: AccessToken
 metadata:  # Metadata properties
 spec:      # Spec properties
-status:    # Status poperties
+status:    # Status properties
 ~~~
 
 </section>
@@ -28,6 +28,15 @@ status:    # Status poperties
 <section>
 
 ## Spec properties
+
+- <h3 id="options">options <span class="property-info">object</span></h3>
+
+  XXX
+
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
+  
 
 - <h3 id="url">url <span class="property-info">string, required</span></h3>
 
@@ -80,6 +89,7 @@ status:    # Status poperties
 
   | | |
   |-|-|
+  | Default | False |
   | Platforms | Kubernetes, Docker |
   
 

@@ -82,7 +82,7 @@ def generate_resource(resource):
     append(f"kind: {resource.rename}")
     append("metadata:  # Metadata properties")
     append("spec:      # Spec properties")
-    append("status:    # Status poperties")
+    append("status:    # Status properties")
     append("~~~")
 
     append()
@@ -193,11 +193,6 @@ class ResourceModel:
         debug(f"Loading {self}")
 
         self.data = read_yaml("config/resources.yaml")
-        self.standard_metadata_properties_by_name = dict()
-
-        for property_data in self.data.get("standard_metadata_properties", []):
-            prop = Property(self, None, property_data, "metadata")
-            self.standard_metadata_properties_by_name[prop.name] = prop
 
         self.groups = list()
         self.resources_by_name = dict()
@@ -231,18 +226,19 @@ class ResourceModel:
 
     def check_properties(self):
         for crd_name, crd_data in self.crds_by_name.items():
-            if crd_name not in self.resources_by_name:
-                print(f"Missing: resource '{crd_name}'")
-
-            resource = self.resources_by_name[crd_name]
+            try:
+                resource = self.resources_by_name[crd_name]
+            except KeyError:
+                print(f"Missing: Resource '{crd_name}'")
+                continue
 
             for name, data in crd_data["spec"]["versions"][0]["schema"]["openAPIV3Schema"]["properties"]["spec"]["properties"].items():
                 if name not in resource.spec_properties_by_name:
-                    print(f"Missing: {resource}: {name}")
+                    print(f"Missing: Property '{name}' on {resource}")
 
             for name, data in crd_data["spec"]["versions"][0]["schema"]["openAPIV3Schema"]["properties"]["status"]["properties"].items():
                 if name not in resource.status_properties_by_name:
-                    print(f"Missing: {resource}: {name}")
+                    print(f"Missing: Property '{name}' on {resource}")
 
     def get_schema(self, resource):
         try:
@@ -257,13 +253,9 @@ class ResourceModel:
         schema = self.get_schema(prop.object)
 
         try:
-            return schema["properties"][prop.group]["properties"][prop.name]
+            return schema["properties"][prop.section]["properties"][prop.name]
         except KeyError:
             return {}
-
-    # Metadata and spec properties together XXX Could put the prop group in here
-    def get_standard_property(self, prop):
-        return self.standard_metadata_properties_by_name.get(prop.name)
 
 class ResourceGroup(ModelObjectGroup):
     def __init__(self, model, data):
@@ -280,19 +272,20 @@ class Resource(ModelObject):
     def __init__(self, model, group, data):
         super().__init__(model, group, data)
 
-        metadata_properties_by_name = dict(self.model.standard_metadata_properties_by_name)
+        self.metadata_properties = list()
+        self.metadata_properties_by_name = dict()
 
-        for property_data in self.data.get("metadata_properties", []):
-            prop = Property(self.model, self, property_data, "metadata")
-            metadata_properties_by_name[prop.name] = prop
+        for data in merge_property_data(self, "metadata"):
+            prop = Property(self.model, self, data, "metadata")
 
-        self.metadata_properties = metadata_properties_by_name.values()
+            self.metadata_properties.append(prop)
+            self.metadata_properties_by_name[prop.name] = prop
 
         self.spec_properties = list()
         self.spec_properties_by_name = dict()
 
-        for property_data in self.data.get("spec_properties", []):
-            prop = Property(self.model, self, property_data, "spec")
+        for data in merge_property_data(self, "spec"):
+            prop = Property(self.model, self, data, "spec")
 
             self.spec_properties.append(prop)
             self.spec_properties_by_name[prop.name] = prop
@@ -300,8 +293,8 @@ class Resource(ModelObject):
         self.status_properties = list()
         self.status_properties_by_name = dict()
 
-        for property_data in self.data.get("status_properties", []):
-            prop = Property(self.model, self, property_data, "status")
+        for data in merge_property_data(self, "status"):
+            prop = Property(self.model, self, data, "status")
 
             self.status_properties.append(prop)
             self.status_properties_by_name[prop.name] = prop
@@ -316,20 +309,37 @@ class Resource(ModelObject):
 
         return description
 
+def merge_property_data(resource, section):
+    inherited = resource.data[section].get("inherit_standard_properties", [])
+    standard_prop_data = list_to_dict(resource.model.data["standard_properties"], "name", inherited)
+    custom_prop_data = list_to_dict(resource.data[section].get("properties", []), "name")
+    prop_data = dict()
+
+    for name, data in standard_prop_data.items():
+        prop_data[name] = data
+
+    for name, data in custom_prop_data.items():
+        try:
+            prop_data[name].update(data)
+        except KeyError:
+            prop_data[name] = data
+
+    return prop_data.values()
+
+def list_to_dict(items, key_name, include=None):
+    result = dict()
+
+    for item in items:
+        if include is None or item[key_name] in include:
+            result[item[key_name]] = item
+
+    return result
+
 def property_property(name):
-    def get(prop):
-        if prop.resource is None:
-            # It's a standard property with nothing further to delegate to
-            return prop.data.get(name)
-
-        default = None
-
-        if prop.group in ("spec", "status"):
-            default = prop.model.get_schema_property(prop).get(name)
-
-        default = getattr(prop.model.get_standard_property(prop), name, default)
-
-        return prop.data.get(name, default)
+    def get(obj):
+        # XXX if prop.group in ("spec", "status"):
+        default = obj.model.get_schema_property(obj).get(name)
+        return obj.data.get(name, default)
 
     return property(get)
 
@@ -338,25 +348,20 @@ class Property(ModelObjectAttribute):
     format = property_property("format")
     description = property_property("description")
 
-    def __init__(self, model, resource, data, group):
+    def __init__(self, model, resource, data, section):
         super().__init__(model, resource, data)
 
         self.resource = resource
-        self.group = group
+        self.section = section
 
     @property
     def required(self):
         default = None
 
-        if self.resource is None:
-            return self.data.get("required")
-
-        if self.group in ("spec", "status"):
-            schema = self.model.get_schema(self.resource)
-            required_names = schema["properties"][self.group].get("required", [])
+        if self.section in ("spec", "status"):
+            schema = self.model.get_schema(self.object)
+            required_names = schema["properties"][self.section].get("required", [])
             default = self.name in required_names
-
-        default = getattr(self.model.get_standard_property(self), "required", default)
 
         return self.data.get("required", default)
 
@@ -367,10 +372,5 @@ class Property(ModelObjectAttribute):
 
     @property
     def choices(self):
-        if self.resource is None:
-            return self.data.get("choices")
-
-        default = self.model.get_schema_property(self).get("enum", [])
-        default = getattr(self.model.get_standard_property(self), "choices", default)
-
-        return self.data.get("choices", default)
+        default = self.model.get_schema_property(self).get("enum")
+        return self.data.get("choices", [])

@@ -25,7 +25,7 @@ apiVersion: skupper.io/v1alpha1
 kind: AccessGrant
 metadata:  # Metadata properties
 spec:      # Spec properties
-status:    # Status poperties
+status:    # Status properties
 ~~~
 
 </section>
@@ -33,6 +33,15 @@ status:    # Status poperties
 <section>
 
 ## Spec properties
+
+- <h3 id="options">options <span class="property-info">object</span></h3>
+
+  XXX
+
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
+  
 
 - <h3 id="redemptionsallowed">redemptionsAllowed <span class="property-info">integer</span></h3>
 
@@ -116,6 +125,7 @@ status:    # Status poperties
 
   | | |
   |-|-|
+  | Default | _Generated_ |
   | Platforms | Kubernetes, Docker |
   
 

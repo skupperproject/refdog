@@ -21,7 +21,7 @@ apiVersion: skupper.io/v1alpha1
 kind: Listener
 metadata:  # Metadata properties
 spec:      # Spec properties
-status:    # Status poperties
+status:    # Status properties
 ~~~
 
 </section>
@@ -53,14 +53,14 @@ spec:
 
 - <h3 id="name">name <span class="property-info">string, required</span></h3>
 
-  The name of the resource.
+  The name of the site.
 
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
   
 
-- <h3 id="namespace">namespace <span class="property-info">string, required</span></h3>
+- <h3 id="namespace">namespace <span class="property-info">string</span></h3>
 
   The namespace of the resource.
 
@@ -75,6 +75,15 @@ spec:
 <section>
 
 ## Spec properties
+
+- <h3 id="options">options <span class="property-info">object</span></h3>
+
+  XXX
+
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
+  
 
 - <h3 id="routingkey">routingKey <span class="property-info">string, required</span></h3>
 
@@ -148,13 +157,6 @@ spec:
 - <h3 id="status">status <span class="property-info">string</span></h3>
 
   The current state of the resource.
-
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
-
-- <h3 id="active">active <span class="property-info">boolean</span></h3>
 
   | | |
   |-|-|
