@@ -31,3 +31,17 @@ typically use an access token to obtain a link.
 - [link delete]({{site_prefix}}/commands/link-delete.html)
 - [link status]({{site_prefix}}/commands/link-status.html)
 </section>
+
+<section>
+
+## Options
+
+- <h3 id="help">--help <span class="option-info"></span></h3>
+
+  Display help and exit.
+
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
+  
+</section>

@@ -24,3 +24,17 @@ Display help for listener commands and exit.
 - [listener delete]({{site_prefix}}/commands/listener-delete.html)
 - [listener status]({{site_prefix}}/commands/listener-status.html)
 </section>
+
+<section>
+
+## Options
+
+- <h3 id="help">--help <span class="option-info"></span></h3>
+
+  Display help and exit.
+
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
+  
+</section>

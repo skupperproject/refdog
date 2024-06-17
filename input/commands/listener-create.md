@@ -1,7 +1,7 @@
 ---
 body_class: command
 links:
-  - name: connector create command
+  - name: Connector create command
     url: /commands/connector-create.html
 ---
 
@@ -114,8 +114,6 @@ skupper listener create backend 8080 --output yaml
   | Default | `tcp` |
   | Platforms | Kubernetes, Docker |
   
-### Output options
-
 - <h3 id="output">--output <span class="option-info">string</span></h3>
 
   Print resources to the console instead of submitting
@@ -126,8 +124,6 @@ skupper listener create backend 8080 --output yaml
   | Choices | <table><tr><td><code>json</code></td><td>Produce JSON output</td></tr><tr><td><code>yaml</code></td><td>Produce YAML output</td></tr></table> |
   | Platforms | Kubernetes, Docker |
   
-### Context options
-
 - <h3 id="namespace">--namespace <span class="option-info">string</span></h3>
 
   Set the namespace.
@@ -156,8 +152,6 @@ skupper listener create backend 8080 --output yaml
   | Platforms | Kubernetes, Docker |
   | See also | [Platform concept]({{site_prefix}}/concepts/platform.html) |
   
-### Global options
-
 - <h3 id="help">--help <span class="option-info"></span></h3>
 
   Display help and exit.

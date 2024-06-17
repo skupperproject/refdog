@@ -1,7 +1,7 @@
 ---
 body_class: command
 links:
-  - name: listener delete command
+  - name: Listener delete command
     url: /commands/listener-delete.html
 ---
 
@@ -37,8 +37,6 @@ Connector "<name>" is deleted.
   |-|-|
   | Platforms | Kubernetes, Docker |
   
-### Context options
-
 - <h3 id="namespace">--namespace <span class="option-info">string</span></h3>
 
   Set the namespace.
@@ -67,8 +65,6 @@ Connector "<name>" is deleted.
   | Platforms | Kubernetes, Docker |
   | See also | [Platform concept]({{site_prefix}}/concepts/platform.html) |
   
-### Global options
-
 - <h3 id="help">--help <span class="option-info"></span></h3>
 
   Display help and exit.

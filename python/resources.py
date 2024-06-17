@@ -328,7 +328,7 @@ class Resource(ModelObject):
 
 def property_property(name):
     def get(obj):
-        # XXX if prop.group in ("spec", "status"):
+        # XXX if prop.section in ("spec", "status"):
         default = obj.model.get_schema_property(obj).get(name)
         return obj.data.get(name, default)
 

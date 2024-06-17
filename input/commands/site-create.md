@@ -80,8 +80,6 @@ skupper site create west --enable-link-access
   | Platforms | Kubernetes |
   | See also | [Kubernetes service accounts](https://kubernetes.io/docs/concepts/security/service-accounts/) |
   
-### Output options
-
 - <h3 id="output">--output <span class="option-info">string</span></h3>
 
   Print resources to the console instead of submitting
@@ -92,8 +90,6 @@ skupper site create west --enable-link-access
   | Choices | <table><tr><td><code>json</code></td><td>Produce JSON output</td></tr><tr><td><code>yaml</code></td><td>Produce YAML output</td></tr></table> |
   | Platforms | Kubernetes, Docker |
   
-### Context options
-
 - <h3 id="namespace">--namespace <span class="option-info">string</span></h3>
 
   Set the namespace.
@@ -122,8 +118,6 @@ skupper site create west --enable-link-access
   | Platforms | Kubernetes, Docker |
   | See also | [Platform concept]({{site_prefix}}/concepts/platform.html) |
   
-### Global options
-
 - <h3 id="help">--help <span class="option-info"></span></h3>
 
   Display help and exit.

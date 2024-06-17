@@ -230,8 +230,6 @@ class ModelObjectAttribute:
 
     @property
     def related_concepts(self):
-        from concepts import Concept
-
         try:
             yield self.model.concept_model.concepts_by_name[self.name.lower()]
         except KeyError:

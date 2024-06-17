@@ -1,51 +1,43 @@
 standard_options:
-  context:
-    name: Context options
-    options:
-      - name: namespace
-        type: string
-        description: |
-          Set the namespace.
-        links:
-          - name: Kubernetes namespaces
-            url: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
-      - name: context
-        type: string
-        description: |
-          Set the kubeconfig context.
-        platforms: [Kubernetes]
-        links:
-          - name: Kubernetes kubeconfigs
-            url: https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/
-      - name: platform
-        type: string
-        choices:
-          - name: kubernetes
-            description: Kubernetes
-          - name: docker
-            description: Docker or Podman
-        description: |
-          Set the Skupper platform.
-  output:
-    name: Output options
-    options:
-      - name: output
-        type: string
-        description: |
-          Print resources to the console instead of submitting
-          them to the Skupper controller.
-        choices:
-          - name: json
-            description: Produce JSON output
-          - name: yaml
-            description: Produce YAML output
-  global:
-    name: Global options
-    options:
-      - name: help
-        type: ""
-        description: |
-          Display help and exit.
+  - name: output
+    type: string
+    description: |
+      Print resources to the console instead of submitting
+      them to the Skupper controller.
+    choices:
+      - name: json
+        description: Produce JSON output
+      - name: yaml
+        description: Produce YAML output
+  - name: namespace
+    type: string
+    description: |
+      Set the namespace.
+    links:
+      - name: Kubernetes namespaces
+        url: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+  - name: context
+    type: string
+    description: |
+      Set the kubeconfig context.
+    platforms: [Kubernetes]
+    links:
+      - name: Kubernetes kubeconfigs
+        url: https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/
+  - name: platform
+    type: string
+    choices:
+      - name: kubernetes
+        description: Kubernetes
+      - name: docker
+        description: Docker or Podman
+    description: |
+      Set the Skupper platform.
+  - name: help
+    type: ""
+    description: |
+      Display help and exit.
+
 groups:
   - name: Sites
     commands:
@@ -67,7 +59,7 @@ groups:
         output: |
           Waiting for status...
           Site "<name>" is ready.
-        inherit_standard_options: [output, context, global]
+        inherit_standard_options: [output, namespace, context, platform, help]
         options:
           - name: name
             type: string
@@ -115,7 +107,7 @@ groups:
           Waiting for update to complete...
           Site "<name>" is updated.
         inherit_command_options: site create
-        inherit_standard_options: [output, context, global]
+        inherit_standard_options: [output, namespace, context, platform, help]
         options:
           - name: name
             type: string
@@ -137,7 +129,7 @@ groups:
         output: |
           Waiting for deletion to complete...
           Site "<name>" is deleted.
-        inherit_standard_options: [context, global]
+        inherit_standard_options: [namespace, context, platform, help]
         options:
           - name: name
             type: string
@@ -158,7 +150,7 @@ groups:
         output: |
           NAME   STATUS   SITES-IN-NETWORK   SERVICES-IN-NETWORK
           west   Ready    1                  0
-        inherit_standard_options: [context, global]
+        inherit_standard_options: [namespace, context, platform, help]
         notes: |
           What is services-in-network?  Is that the total number of
           unique routing keys defined by connectors?  Or listeners?
@@ -173,9 +165,7 @@ groups:
         inherit_standard_options: [global]
       - name: token issue
         resource: Grant
-        links:
-          - name: token redeem command
-            url: /commands/token-redeem.html
+        related_commands: ["token redeem"]
         description: |
           Issue a token redeemable for a link to the current site.
 
@@ -203,7 +193,7 @@ groups:
 
           # Issue an access token with non-default limits
           skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed 3
-        inherit_standard_options: [context, global]
+        inherit_standard_options: [namespace, context, platform, help]
         options:
           - name: file
             type: string
@@ -221,9 +211,7 @@ groups:
               can use "skupper site update --enable-link-access" to
               enable it.
       - name: token redeem
-        links:
-          - name: token issue command
-            url: /commands/token-issue.html
+        related_commands: ["token issue"]
         description: |
           Redeem a token in order to create a link to a remote site.
         usage: skupper token redeem <file> [options]
@@ -231,7 +219,7 @@ groups:
           Waiting for status...
           Link "<name>" is active.
           You can now safely delete <file>.
-        inherit_standard_options: [context, global]
+        inherit_standard_options: [namespace, context, platform, help]
         options:
           - name: file
             type: string
@@ -244,7 +232,7 @@ groups:
           Display help for link commands and exit.
 
           @resource_description@
-        inherit_standard_options: [global]
+        inherit_standard_options: [help]
       - name: link create
         description: |
           Create a link.
@@ -252,7 +240,7 @@ groups:
         output: |
           Waiting for status...
           Link "<name>" is ready.
-        inherit_standard_options: [output, context, global]
+        inherit_standard_options: [output, namespace, context, platform, help]
         options:
           - name: name
             type: string
@@ -273,7 +261,7 @@ groups:
           Waiting for update to complete...
           Link "<name>" is updated.
         inherit_command_options: link create
-        inherit_standard_options: [output, context, global]
+        inherit_standard_options: [output, namespace, context, platform, help]
         options:
           - name: tls-secret
             property: tlsCredentials
@@ -284,7 +272,7 @@ groups:
         output: |
           Waiting for deletion to complete...
           Link "<name>" is deleted.
-        inherit_standard_options: [context, global]
+        inherit_standard_options: [namespace, context, platform, help]
         options:
           - name: name
             type: string
@@ -302,7 +290,7 @@ groups:
           Links from remote sites:
 
           [None]
-        inherit_standard_options: [output, context, global]
+        inherit_standard_options: [output, namespace, context, platform, help]
   - name: Service exposure
     commands:
       - name: connector
@@ -310,9 +298,7 @@ groups:
           Display help for connector commands and exit.
         inherit_standard_options: [global]
       - name: connector create
-        links:
-          - name: listener create command
-            url: /commands/listener-create.html
+        related_commands: ["listener create"]
         description: |
           Create a connector.
         usage: skupper connector create <name> <port> [options]
@@ -328,7 +314,7 @@ groups:
         output: |
           Waiting for status...
           Connector "<name>" is ready.
-        inherit_standard_options: [output, context, global]
+        inherit_standard_options: [output, namespace, context, platform, help]
         options:
           - name: name
             type: string
@@ -374,9 +360,7 @@ groups:
               - name: Kubernetes pod lifecycle
                 url: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
       - name: connector update
-        links:
-          - name: listener update command
-            url: /commands/listener-update.html
+        related_commands: ["listener update"]
         description: |
           Update a connector.
         usage: skupper connector update <name> [options]
@@ -393,22 +377,20 @@ groups:
           Waiting for update to complete...
           Connector "<name>" is updated.
         inherit_command_options: connector create
-        inherit_standard_options: [output, context, global]
+        inherit_standard_options: [output, namespace, context, platform, help]
         options:
           - name: port
             property: port
             required: false
       - name: connector delete
-        links:
-          - name: listener delete command
-            url: /commands/listener-delete.html
+        related_commands: ["listener delete"]
         description: |
           Delete a connector.
         usage: skupper connector delete <name>
         output: |
           Waiting for deletion to complete...
           Connector "<name>" is deleted.
-        inherit_standard_options: [context, global]
+        inherit_standard_options: [namespace, context, platform, help]
         options:
           - name: name
             type: string
@@ -423,13 +405,13 @@ groups:
           NAME       ROUTING-KEY   SELECTOR         HOST   PORT   MATCHING-LISTENERS
           backend    backend       app=backend      -      8080   1
           database   database      app=postgresql   -      5432   1
+        inherit_standard_options: [output, namespace, context, platform, help]
       - name: listener
         description: |
           Display help for listener commands and exit.
+        inherit_standard_options: [help]
       - name: listener create
-        links:
-          - name: connector create command
-            url: /commands/connector-create.html
+        related_commands: ["connector create"]
         description: |
           Create a listener.
         usage: skupper listener create <name> <port> [options]
@@ -445,7 +427,7 @@ groups:
         output: |
           Waiting for status...
           Listener "<name>" is ready.
-        inherit_standard_options: [output, context, global]
+        inherit_standard_options: [output, namespace, context, platform, help]
         options:
           - name: name
             type: string
@@ -466,9 +448,7 @@ groups:
           - name: type
             property: type
       - name: listener update
-        links:
-          - name: connector update command
-            url: /commands/connector-update.html
+        related_commands: ["connector update"]
         description: |
           Update a listener.
         usage: skupper listener update <name> [options]
@@ -485,22 +465,20 @@ groups:
           Waiting for update to complete...
           Listener "<name>" is updated.
         inherit_command_options: listener create
-        inherit_standard_options: [output, context, global]
+        inherit_standard_options: [output, namespace, context, platform, help]
         options:
           - name: port
             property: port
             required: false
       - name: listener delete
-        links:
-          - name: connector delete command
-            url: /commands/connector-delete.html
+        related_commands: ["connector delete"]
         description: |
           Delete a listener.
         usage: skupper listener delete <name>
         output: |
           Waiting for deletion to complete...
           Listener "<name>" is deleted.
-        inherit_standard_options: [context, global]
+        inherit_standard_options: [namespace, context, platform, help]
         options:
           - name: name
             type: string
@@ -515,21 +493,24 @@ groups:
           NAME       ROUTING-KEY   HOST       PORT   MATCHING-CONNECTORS
           backend    backend       backend    8080   1
           database   database      database   5432   1
-        inherit_standard_options: [output, context, global]
+        inherit_standard_options: [output, namespace, context, platform, help]
   - name: Debug operations
     commands:
       - name: debug
         description: |
           Display help for debug commands and exit.
+        inherit_standard_options: [help]
       - name: debug dump
         description: |
           Generate a debug dump file.
         usage: skupper debug dump [file]
         output: |
           Debug dump file generated at <file>.
+        inherit_standard_options: [namespace, context, platform, help]
   - name: Other operations
     commands:
       # - name: network status
       - name: version
         description: |
           Display versions of Skupper components
+        inherit_standard_options: [output, namespace, context, platform, help]

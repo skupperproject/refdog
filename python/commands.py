@@ -122,14 +122,6 @@ def generate_command(command):
         for option in command.options:
             generate_option(option, append)
 
-        if command.standard_options:
-            for name, options in command.standard_options:
-                append(f"### {name}")
-                append()
-
-                for option in options:
-                    generate_option(option, append)
-
         append("</section>")
         append()
 
@@ -237,29 +229,37 @@ class Command(ModelObject):
     examples = object_property("examples")
 
     def init(self):
-        options_by_name = dict()
+        self.options = list()
+        self.options_by_name = dict()
 
-        if "inherit_command_options" in self.data:
-            command = self.data["inherit_command_options"]
-            options = self.model.commands_by_name[command].options
+        for data in self.merge_option_data():
+            option = Option(self.model, self, data)
 
-            options_by_name.update(((x.name, x) for x in options))
+            self.options.append(option)
+            self.options_by_name[option.name] = option
 
-        for option_data in self.data.get("options", []):
-            name = option_data["name"]
-            options_by_name[name] = Option(self.model, self, option_data)
+        # if "inherit_command_options" in self.data:
+        #     command = self.data["inherit_command_options"]
+        #     options = self.model.commands_by_name[command].options
 
-        self.options = options_by_name.values() # XXX
-        self.standard_options = list()
+        #     options_by_name.update(((x.name, x) for x in options))
+
+        # for option_data in self.data.get("options", []):
+        #     name = option_data["name"]
+        #     options_by_name[name] = Option(self.model, self, option_data)
+
+        # self.options = options_by_name.values() # XXX
+        # self.standard_options = list()
+
         self.subcommands = list()
         self.errors = list()
 
-        if "inherit_standard_options" in self.data:
-            for key in self.data["inherit_standard_options"]:
-                group = self.model.data["standard_options"][key]
-                options = [Option(self.model, self, x) for x in group["options"]]
+        # if "inherit_standard_options" in self.data:
+        #     for name in self.data["inherit_standard_options"]:
+        #         data = self.model.data["standard_options"][name]
+        #         option = Option(self.model, self, data)
 
-                self.standard_options.append((group["name"], options))
+        #         self.standard_options.append((group["name"], options))
 
         for command in self.model.commands_by_name.values():
             if command.parent is self:
@@ -267,6 +267,22 @@ class Command(ModelObject):
 
         for error_data in self.data.get("errors", []):
             self.errors.append(Error(self, error_data))
+
+    def merge_option_data(self):
+        inherited = self.data.get("inherit_standard_options", [])
+        standard_option_data = {x["name"]: x for x in self.model.data["standard_options"] if x["name"] in inherited}
+        custom_option_data = {x["name"]: x for x in self.data.get("options", [])}
+        option_data = dict()
+
+        for name, data in custom_option_data.items():
+            option_data[name] = standard_option_data.get(name, {})
+            option_data[name].update(data)
+
+        for name, data in standard_option_data.items():
+            if name not in option_data:
+                option_data[name] = data
+
+        return option_data.values()
 
     @property
     def parent(self):

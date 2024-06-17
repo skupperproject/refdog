@@ -1,7 +1,7 @@
 ---
 body_class: command
 links:
-  - name: token redeem command
+  - name: Token redeem command
     url: /commands/token-redeem.html
 ---
 
@@ -86,8 +86,6 @@ skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed 3
   | Default | 1 |
   | Platforms | Kubernetes, Docker |
   
-### Context options
-
 - <h3 id="namespace">--namespace <span class="option-info">string</span></h3>
 
   Set the namespace.
@@ -116,8 +114,6 @@ skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed 3
   | Platforms | Kubernetes, Docker |
   | See also | [Platform concept]({{site_prefix}}/concepts/platform.html) |
   
-### Global options
-
 - <h3 id="help">--help <span class="option-info"></span></h3>
 
   Display help and exit.
