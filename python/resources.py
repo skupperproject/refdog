@@ -275,7 +275,7 @@ class Resource(ModelObject):
         self.metadata_properties = list()
         self.metadata_properties_by_name = dict()
 
-        for data in merge_property_data(self, "metadata"):
+        for data in self.merge_property_data("metadata"):
             prop = Property(self.model, self, data, "metadata")
 
             self.metadata_properties.append(prop)
@@ -284,7 +284,7 @@ class Resource(ModelObject):
         self.spec_properties = list()
         self.spec_properties_by_name = dict()
 
-        for data in merge_property_data(self, "spec"):
+        for data in self.merge_property_data("spec"):
             prop = Property(self.model, self, data, "spec")
 
             self.spec_properties.append(prop)
@@ -293,11 +293,27 @@ class Resource(ModelObject):
         self.status_properties = list()
         self.status_properties_by_name = dict()
 
-        for data in merge_property_data(self, "status"):
+        for data in self.merge_property_data("status"):
             prop = Property(self.model, self, data, "status")
 
             self.status_properties.append(prop)
             self.status_properties_by_name[prop.name] = prop
+
+    def merge_property_data(self, section):
+        inherited = self.data[section].get("inherit_standard_properties", [])
+        standard_prop_data = {x["name"]: x for x in self.model.data["standard_properties"] if x["name"] in inherited}
+        custom_prop_data = {x["name"]: x for x in self.data[section].get("properties", [])}
+        prop_data = dict()
+
+        for name, data in custom_prop_data.items():
+            prop_data[name] = standard_prop_data.get(name, {})
+            prop_data[name].update(data)
+
+        for name, data in standard_prop_data.items():
+            if name not in prop_data:
+                prop_data[name] = data
+
+        return prop_data.values()
 
     @property
     def description(self):
@@ -308,22 +324,6 @@ class Resource(ModelObject):
             description = description.replace("@concept_description@", self.concept.description.strip())
 
         return description
-
-def merge_property_data(resource, section):
-    inherited = resource.data[section].get("inherit_standard_properties", [])
-    standard_prop_data = {x["name"]: x for x in resource.model.data["standard_properties"] if x["name"] in inherited}
-    custom_prop_data = {x["name"]: x for x in resource.data[section].get("properties", [])}
-    prop_data = dict()
-
-    for name, data in custom_prop_data.items():
-        prop_data[name] = standard_prop_data.get(name, {})
-        prop_data[name].update(data)
-
-    for name, data in standard_prop_data.items():
-        if name not in prop_data:
-            prop_data[name] = data
-
-    return prop_data.values()
 
 def property_property(name):
     def get(obj):
