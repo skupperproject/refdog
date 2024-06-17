@@ -5,6 +5,36 @@ standard_options:
   - name: file
     type: string
     required: true
+  # Site options
+  - name: enable-link-access
+    type: boolean
+    description: |
+      Allow access for incoming links from remote sites.
+    links:
+      - name: Link access concept
+        url: /concepts/link-access.html
+  - name: link-access-type
+    property: linkAccess
+    default: default
+    choices:
+      - name: default
+        description: |
+          Use the default link access.  On OpenShift, the
+          default is `route`.  For other Kubernetes flavors,
+          the default is `loadbalancer`.
+      - name: route
+        description: Use an OpenShift route.  _OpenShift only._
+      - name: loadbalancer
+        description: Use a Kubernetes load balancer.  _Kubernetes only._
+  - name: service-account
+    property: serviceAccount
+  # Link options
+  - name: cost
+    property: cost
+  # TLS options
+  - name: tls-secret
+    property: tlsCredentials
+  # Output options
   - name: output
     type: string
     description: |
@@ -15,6 +45,7 @@ standard_options:
         description: Produce JSON output
       - name: yaml
         description: Produce YAML output
+  # Context options
   - name: namespace
     type: string
     description: |
@@ -39,36 +70,11 @@ standard_options:
         description: Docker or Podman
     description: |
       Set the Skupper platform.
+  # Global options
   - name: help
     type: ""
     description: |
       Display help and exit.
-  - name: enable-link-access
-    type: boolean
-    description: |
-      Allow access for incoming links from remote sites.
-    links:
-      - name: Link access concept
-        url: /concepts/link-access.html
-  - name: link-access-type
-    property: linkAccess
-    default: default
-    choices:
-      - name: default
-        description: |
-          Use the default link access.  On OpenShift, the
-          default is `route`.  For other Kubernetes flavors,
-          the default is `loadbalancer`.
-      - name: route
-        description: Use an OpenShift route.  _OpenShift only._
-      - name: loadbalancer
-        description: Use a Kubernetes load balancer.  _Kubernetes only._
-  - name: service-account
-    property: serviceAccount
-  - name: tls-secret
-    property: tlsCredentials
-  - name: cost
-    property: cost
 groups:
   - name: Sites
     commands:
