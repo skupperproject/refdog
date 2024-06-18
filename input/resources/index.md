@@ -8,7 +8,7 @@ links:
 
 # Skupper resources
 
-#### Sites
+#### Site configuration
 
 | | |
 |-|-|

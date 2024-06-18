@@ -174,7 +174,7 @@ class ModelObject:
             try:
                 yield self.model.concept_model.concepts_by_name[name]
             except KeyError:
-                raise # XXX An error message!
+                fail(f"Related concept '{name}' on {self} not found")
 
     @property
     def related_resources(self):
@@ -190,7 +190,7 @@ class ModelObject:
             try:
                 yield self.model.resource_model.resources_by_name[name]
             except KeyError:
-                raise # XXX An error message!
+                fail(f"Related resource '{name}' on {self} not found")
 
     @property
     def related_commands(self):
@@ -206,7 +206,7 @@ class ModelObject:
             try:
                 yield self.model.command_model.commands_by_name[name]
             except KeyError:
-                raise # XXX An error message!
+                fail(f"Related command '{name}' on {self} not found")
 
 class ModelObjectAttribute:
     hidden = object_property("hidden", default=False)
@@ -241,4 +241,4 @@ class ModelObjectAttribute:
             try:
                 yield self.model.concept_model.concepts_by_name[name]
             except KeyError:
-                raise # XXX An error message!
+                fail(f"Related concept '{name}' on {self} not found")

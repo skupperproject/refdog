@@ -254,8 +254,8 @@ class Command(ModelObject):
             if name not in standard_option_data:
                 fail(f"Option '{name}' not in standard options")
 
-        # XXX Duplicates!
-        option_names = list(specific_option_data.keys()) + inherited_options
+        option_names = list(specific_option_data.keys()) + \
+            [x for x in inherited_options if x not in specific_option_data]
         option_data = dict()
 
         for name in option_names:

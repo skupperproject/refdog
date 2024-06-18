@@ -76,7 +76,7 @@ standard_options:
     description: |
       Display help and exit.
 groups:
-  - name: Sites
+  - name: Site configuration
     commands:
       - name: site
         description: |
@@ -145,6 +145,7 @@ groups:
         options:
           - name: name
             type: string
+            required: false
             positional: true
             description: |
               The name of the site resource.
@@ -179,10 +180,7 @@ groups:
         resource: Grant
         related_commands: ["token redeem"]
         description: |
-          Issue a token redeemable for a link to the current site.
-
-          Issue a token that can be redeemed at a remote site for a
-          link to the current site.
+          Issue a token file redeemable for a link to the current site.
 
           This command first creates a grant in order to issue the
           token.
@@ -223,7 +221,8 @@ groups:
       - name: token redeem
         related_commands: ["token issue"]
         description: |
-          Redeem a token in order to create a link to a remote site.
+          Redeem a token file in order to create a link to a remote
+          site.
         usage: skupper token redeem <file> [options]
         output: |
           Waiting for status...

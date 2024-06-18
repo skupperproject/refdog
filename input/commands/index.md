@@ -8,7 +8,7 @@ links:
 
 # Skupper commands
 
-#### Sites
+#### Site configuration
 
 | | |
 |-|-|
@@ -23,8 +23,8 @@ links:
 | | |
 |-|-|
 | [token](token.html) | Display help for token commands and exit |
-| [token issue](token-issue.html) | Issue a token redeemable for a link to the current site |
-| [token redeem](token-redeem.html) | Redeem a token in order to create a link to a remote site |
+| [token issue](token-issue.html) | Issue a token file redeemable for a link to the current site |
+| [token redeem](token-redeem.html) | Redeem a token file in order to create a link to a remote site |
 | [link](link.html) | Display help for link commands and exit |
 | [link create](link-create.html) | Create a link |
 | [link update](link-update.html) | Change link settings |

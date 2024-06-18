@@ -25,7 +25,7 @@ standard_properties:
     description: |
       This thing is working.
 groups:
-  - name: Sites
+  - name: Site configuration
     resources:
       - name: Site
         related_concepts: [network, namespace]

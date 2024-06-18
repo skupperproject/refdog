@@ -25,10 +25,6 @@ def generate(model):
     append()
 
     for group in model.groups:
-        # XXX
-        if "stuff" in group.name:
-            continue
-
         append(f"#### {group.name}")
         append()
         append("| | |")
@@ -96,7 +92,6 @@ def generate_resource(resource):
         append()
 
         for example in resource.examples:
-            # XXX An example object
             append(example["description"].strip() + ":")
             append()
             append("~~~ yaml")
@@ -184,8 +179,6 @@ def generate_property(prop, append):
         append()
         append("  </section>")
         append()
-
-    # return "\n".join(lines)
 
 class ResourceModel:
     def __init__(self):
@@ -308,7 +301,7 @@ class Resource(ModelObject):
             if name not in standard_prop_data:
                 fail(f"Property '{name}' not in standard properties")
 
-        prop_names = list(specific_prop_data.keys()) + inherited_props
+        prop_names = list(specific_prop_data.keys()) + [x for x in inherited_props if x not in specific_prop_data]
         prop_data = dict()
 
         for name in prop_names:

@@ -9,10 +9,7 @@ links:
 
 <section>
 
-Issue a token redeemable for a link to the current site.
-
-Issue a token that can be redeemed at a remote site for a
-link to the current site.
+Issue a token file redeemable for a link to the current site.
 
 This command first creates a grant in order to issue the
 token.

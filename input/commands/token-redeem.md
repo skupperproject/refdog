@@ -9,7 +9,8 @@ links:
 
 <section>
 
-Redeem a token in order to create a link to a remote site.
+Redeem a token file in order to create a link to a remote
+site.
 
 </section>
 
