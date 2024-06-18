@@ -1,5 +1,8 @@
 ---
 body_class: command
+links:
+  - name: Debug command
+    url: /commands/debug.html
 ---
 
 # Debug dump command

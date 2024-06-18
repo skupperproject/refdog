@@ -3,10 +3,10 @@ body_class: resource
 links:
   - name: Connector concept
     url: /concepts/connector.html
-  - name: Listener resource
-    url: /resources/listener.html
   - name: Connector command
     url: /commands/connector.html
+  - name: Listener resource
+    url: /resources/listener.html
 ---
 
 # Connector resource

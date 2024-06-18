@@ -3,14 +3,14 @@ body_class: resource
 links:
   - name: Site concept
     url: /concepts/site.html
+  - name: Site command
+    url: /commands/site.html
   - name: Network concept
     url: /concepts/network.html
   - name: Namespace concept
     url: /concepts/namespace.html
   - name: Link resource
     url: /resources/link.html
-  - name: Site command
-    url: /commands/site.html
 ---
 
 # Site resource

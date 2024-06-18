@@ -22,7 +22,8 @@ def generate_object_links(obj):
         lines.append(f"  - name: {capitalize(other.rename)} {type}")
         lines.append(f"    url: /{plural(type)}/{other.id}.html")
 
-    # XXX corresponding objects
+    for other in obj.corresponding_objects:
+        add_link(other)
 
     for concept in obj.related_concepts:
         add_link(concept)
@@ -161,15 +162,36 @@ class ModelObject:
         return get_fragment_id(self.name)
 
     @property
-    def related_concepts(self):
+    def corresponding_objects(self):
         from concepts import Concept
+        from resources import Resource
+        from commands import Command
+
+        name = self.name
+
+        if isinstance(self, Command) and self.parent is not None:
+            name = self.parent.name
 
         if not isinstance(self, Concept):
             try:
-                yield self.model.concept_model.concepts_by_name[self.name.lower()]
+                yield self.model.concept_model.concepts_by_name[name.lower()]
             except KeyError:
                 pass
 
+        if not isinstance(self, Resource):
+            try:
+                yield self.model.resource_model.resources_by_name[capitalize(name)]
+            except KeyError:
+                pass
+
+        if not isinstance(self, Command) or (isinstance(self, Command) and self.parent is not None):
+            try:
+                yield self.model.command_model.commands_by_name[name.lower()]
+            except KeyError:
+                pass
+
+    @property
+    def related_concepts(self):
         for name in self.data.get("related_concepts", []):
             try:
                 yield self.model.concept_model.concepts_by_name[name]
@@ -178,14 +200,6 @@ class ModelObject:
 
     @property
     def related_resources(self):
-        from resources import Resource
-
-        if not isinstance(self, Resource):
-            try:
-                yield self.model.resource_model.resources_by_name[capitalize(self.name)]
-            except KeyError:
-                pass
-
         for name in self.data.get("related_resources", []):
             try:
                 yield self.model.resource_model.resources_by_name[name]
@@ -194,14 +208,6 @@ class ModelObject:
 
     @property
     def related_commands(self):
-        from commands import Command
-
-        if not isinstance(self, Command):
-            try:
-                yield self.model.command_model.commands_by_name[self.name.lower()]
-            except KeyError:
-                pass
-
         for name in self.data.get("related_commands", []):
             try:
                 yield self.model.command_model.commands_by_name[name]

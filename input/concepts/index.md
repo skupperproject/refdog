@@ -18,8 +18,8 @@ links:
 
   - [Link](link.html)
   - [Link access](link-access.html)
-  - [Access grant](grant.html)
-  - [Access token](claim.html)
+  - [Access grant](access-grant.html)
+  - [Access token](access-token.html)
 #### Service exposure
 
   - [Service](service.html)

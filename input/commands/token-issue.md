@@ -1,6 +1,8 @@
 ---
 body_class: command
 links:
+  - name: Token command
+    url: /commands/token.html
   - name: Token redeem command
     url: /commands/token-redeem.html
 ---

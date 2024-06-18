@@ -13,9 +13,18 @@ links:
 
 Display help for site commands and exit.
 
-A place where components of your application are running.
-Sites are linked to form application networks.
+</section>
 
-There can be only one site resource per namespace.
+<section>
 
+## Options
+
+- <h3 id="help">--help <span class="option-info"></span></h3>
+
+  Display help and exit.
+
+  | | |
+  |-|-|
+  | Platforms | Kubernetes, Docker |
+  
 </section>

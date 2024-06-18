@@ -81,8 +81,7 @@ groups:
       - name: site
         description: |
           Display help for site commands and exit.
-
-          @resource_description@
+        inherit_standard_options: [help]
       - name: site create
         description: |
           Create a site.
@@ -173,6 +172,8 @@ groups:
     commands:
       - name: token
         resource: Claim
+        related_concepts: ["access grant", "access token"]
+        related_resources: [Grant, Claim]
         description: |
           Display help for token commands and exit.
         inherit_standard_options: [help]
@@ -237,8 +238,6 @@ groups:
         related_commands: [token]
         description: |
           Display help for link commands and exit.
-
-          @resource_description@
         inherit_standard_options: [help]
       - name: link create
         description: |
@@ -292,6 +291,7 @@ groups:
   - name: Service exposure
     commands:
       - name: connector
+        related_commands: [listener]
         description: |
           Display help for connector commands and exit.
         inherit_standard_options: [help]
@@ -405,6 +405,7 @@ groups:
           database   database      app=postgresql   -      5432   1
         inherit_standard_options: [output, namespace, context, platform, help]
       - name: listener
+        related_commands: [connector]
         description: |
           Display help for listener commands and exit.
         inherit_standard_options: [help]

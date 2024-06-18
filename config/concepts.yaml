@@ -46,8 +46,7 @@ groups:
           - XXX link cost
           - XXX only one direction needed
       - name: link access
-      - name: grant
-        rename: Access grant
+      - name: access grant
         links:
           - name: Access token concept
             url: /concepts/claim.html
@@ -59,8 +58,7 @@ groups:
           URL and secret code to obtain a certificate signed by the
           grant's certificate authority (CA), within a certain
           expiration window and for a limited number of redemptions.
-      - name: claim
-        rename: Access token
+      - name: access token
         links:
           - name: Access grant concept
             url: /concepts/grant.html

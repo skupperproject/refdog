@@ -5,6 +5,8 @@ links:
     url: /concepts/connector.html
   - name: Connector resource
     url: /resources/connector.html
+  - name: Listener command
+    url: /commands/listener.html
 ---
 
 # Connector command

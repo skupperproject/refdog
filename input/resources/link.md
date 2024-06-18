@@ -3,12 +3,12 @@ body_class: resource
 links:
   - name: Link concept
     url: /concepts/link.html
+  - name: Link command
+    url: /commands/link.html
   - name: AccessGrant resource
     url: /resources/grant.html
   - name: AccessToken resource
     url: /resources/claim.html
-  - name: Link command
-    url: /commands/link.html
 ---
 
 # Link resource
