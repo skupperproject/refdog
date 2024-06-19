@@ -89,17 +89,17 @@ groups:
               links:
                 - name: Kubernetes service accounts
                   url: https://kubernetes.io/docs/concepts/security/service-accounts/
+            - name: ha
+            - name: routerMode
+            - name: defaultIssuer
         status:
           inherit_standard_properties: [status, active]
           properties:
             - name: endpoints
-              hidden: true
             - name: sitesInNetwork
-              hidden: true
             - name: servicesInNetwork
-              hidden: true
             - name: network
-              hidden: true
+            - name: defaultIssuer
   - name: Site linking
     resources:
       - name: Link
@@ -136,20 +136,13 @@ groups:
               links:
                 - name: Load balancing
                   url: ""
-            - name: interRouter
-              hidden: true
-            - name: edge
-              hidden: true
+            - name: endpoints
             - name: noClientAuth
               hidden: true
         status:
           inherit_standard_properties: [status, active]
           properties:
             - name: configured
-            - name: url
-            - name: site
-              notes: |
-                Is this a site name?  Ambiguous.
       - name: AccessGrant
         related_resources: [AccessToken]
         related_commands: ["token issue"]
@@ -188,7 +181,7 @@ groups:
               notes: |
                 What is this?
         status:
-          inherit_standard_properties: [status, active]
+          inherit_standard_properties: [status]
           properties:
             - name: redeemed
               description: |
@@ -241,7 +234,7 @@ groups:
                 The secret code used to authenticate the token when
                 submitted for redemption.
         status:
-          inherit_standard_properties: [status, active]
+          inherit_standard_properties: [status]
           properties:
             - name: redeemed
               description: |

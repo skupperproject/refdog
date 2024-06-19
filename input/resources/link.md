@@ -72,6 +72,10 @@ status:    # Status properties
 
   <table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="">Load balancing</a></td></table>
 
+- <h3 id="endpoints">endpoints <span class="attribute-info">array, required</span></h3>
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
 - <h3 id="options">options <span class="attribute-info">object</span></h3>
 
   Additional settings.
@@ -87,20 +91,6 @@ status:    # Status properties
 - <h3 id="configured">configured <span class="attribute-info">boolean</span></h3>
 
   <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
-
-- <h3 id="url">url <span class="attribute-info">None</span></h3>
-
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
-
-- <h3 id="site">site <span class="attribute-info">None</span></h3>
-
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/site.html">Site concept</a></td></table>
-
-  <section class="notes">
-
-  Is this a site name?  Ambiguous.
-
-  </section>
 
 - <h3 id="status">status <span class="attribute-info">string</span></h3>
 

@@ -99,6 +99,18 @@ spec:
 
   <table class="fields"><tr><th>Default</th><td><code>skupper:skupper-controller</code></td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/security/service-accounts/">Kubernetes service accounts</a></td></table>
 
+- <h3 id="ha">ha <span class="attribute-info">boolean</span></h3>
+
+  <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
+- <h3 id="routermode">routerMode <span class="attribute-info">string</span></h3>
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
+- <h3 id="defaultissuer">defaultIssuer <span class="attribute-info">string</span></h3>
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
 - <h3 id="options">options <span class="attribute-info">object</span></h3>
 
   Additional settings.
@@ -110,6 +122,26 @@ spec:
 <section>
 
 ## Status properties
+
+- <h3 id="endpoints">endpoints <span class="attribute-info">array</span></h3>
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
+- <h3 id="sitesinnetwork">sitesInNetwork <span class="attribute-info">integer</span></h3>
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
+- <h3 id="servicesinnetwork">servicesInNetwork <span class="attribute-info">integer</span></h3>
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
+- <h3 id="network">network <span class="attribute-info">array</span></h3>
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/network.html">Network concept</a></td></table>
+
+- <h3 id="defaultissuer">defaultIssuer <span class="attribute-info">string</span></h3>
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="status">status <span class="attribute-info">string</span></h3>
 
