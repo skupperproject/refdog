@@ -14,9 +14,10 @@ Display help for debug commands and exit.
 
 ## Subcommands
 
-| | |
-|-|-|
-| [debug dump](debug-dump.html) | Generate a debug dump file |
+<table class="commands">
+<tr><th><a href="debug-dump.html">debug dump</a></th><td><p>Generate a debug dump file</p>
+</td></tr>
+</table>
 
 </section>
 

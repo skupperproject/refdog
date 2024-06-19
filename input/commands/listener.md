@@ -21,12 +21,16 @@ Display help for listener commands and exit.
 
 ## Subcommands
 
-| | |
-|-|-|
-| [listener create](listener-create.html) | Create a listener |
-| [listener update](listener-update.html) | Update a listener |
-| [listener delete](listener-delete.html) | Delete a listener |
-| [listener status](listener-status.html) | Display the status of listeners in the current site |
+<table class="commands">
+<tr><th><a href="listener-create.html">listener create</a></th><td><p>Create a listener</p>
+</td></tr>
+<tr><th><a href="listener-update.html">listener update</a></th><td><p>Update a listener</p>
+</td></tr>
+<tr><th><a href="listener-delete.html">listener delete</a></th><td><p>Delete a listener</p>
+</td></tr>
+<tr><th><a href="listener-status.html">listener status</a></th><td><p>Display the status of listeners in the current site</p>
+</td></tr>
+</table>
 
 </section>
 

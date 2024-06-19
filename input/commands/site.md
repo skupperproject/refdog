@@ -19,12 +19,16 @@ Display help for site commands and exit.
 
 ## Subcommands
 
-| | |
-|-|-|
-| [site create](site-create.html) | Create a site |
-| [site update](site-update.html) | Change site settings |
-| [site delete](site-delete.html) | Delete a site |
-| [site status](site-status.html) | Display the current status of a site |
+<table class="commands">
+<tr><th><a href="site-create.html">site create</a></th><td><p>Create a site</p>
+</td></tr>
+<tr><th><a href="site-update.html">site update</a></th><td><p>Change site settings</p>
+</td></tr>
+<tr><th><a href="site-delete.html">site delete</a></th><td><p>Delete a site</p>
+</td></tr>
+<tr><th><a href="site-status.html">site status</a></th><td><p>Display the current status of a site</p>
+</td></tr>
+</table>
 
 </section>
 

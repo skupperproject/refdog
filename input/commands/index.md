@@ -10,51 +10,77 @@ links:
 
 #### Site configuration
 
-| | |
-|-|-|
-| [site](site.html) | Display help for site commands and exit |
-| [site create](site-create.html) | Create a site |
-| [site update](site-update.html) | Change site settings |
-| [site delete](site-delete.html) | Delete a site |
-| [site status](site-status.html) | Display the current status of a site |
+<table class="commands">
+<tr><th><a href="site.html">site</a></th><td><p>Display help for site commands and exit</p>
+</td></tr>
+<tr><th><a href="site-create.html">site create</a></th><td><p>Create a site</p>
+</td></tr>
+<tr><th><a href="site-update.html">site update</a></th><td><p>Change site settings</p>
+</td></tr>
+<tr><th><a href="site-delete.html">site delete</a></th><td><p>Delete a site</p>
+</td></tr>
+<tr><th><a href="site-status.html">site status</a></th><td><p>Display the current status of a site</p>
+</td></tr>
+</table>
 
 #### Site linking
 
-| | |
-|-|-|
-| [token](token.html) | Display help for token commands and exit |
-| [token issue](token-issue.html) | Issue a token file redeemable for a link to the current site |
-| [token redeem](token-redeem.html) | Redeem a token file in order to create a link to a remote site |
-| [link](link.html) | Display help for link commands and exit |
-| [link create](link-create.html) | Create a link |
-| [link update](link-update.html) | Change link settings |
-| [link delete](link-delete.html) | Delete a link |
-| [link status](link-status.html) | Display the status of links in the current site |
+<table class="commands">
+<tr><th><a href="token.html">token</a></th><td><p>Display help for token commands and exit</p>
+</td></tr>
+<tr><th><a href="token-issue.html">token issue</a></th><td><p>Issue a token file redeemable for a link to the current site</p>
+</td></tr>
+<tr><th><a href="token-redeem.html">token redeem</a></th><td><p>Redeem a token file in order to create a link to a remote site</p>
+</td></tr>
+<tr><th><a href="link.html">link</a></th><td><p>Display help for link commands and exit</p>
+</td></tr>
+<tr><th><a href="link-create.html">link create</a></th><td><p>Create a link</p>
+</td></tr>
+<tr><th><a href="link-update.html">link update</a></th><td><p>Change link settings</p>
+</td></tr>
+<tr><th><a href="link-delete.html">link delete</a></th><td><p>Delete a link</p>
+</td></tr>
+<tr><th><a href="link-status.html">link status</a></th><td><p>Display the status of links in the current site</p>
+</td></tr>
+</table>
 
 #### Service exposure
 
-| | |
-|-|-|
-| [connector](connector.html) | Display help for connector commands and exit |
-| [connector create](connector-create.html) | Create a connector |
-| [connector update](connector-update.html) | Update a connector |
-| [connector delete](connector-delete.html) | Delete a connector |
-| [connector status](connector-status.html) | Display the status of connectors in the current site |
-| [listener](listener.html) | Display help for listener commands and exit |
-| [listener create](listener-create.html) | Create a listener |
-| [listener update](listener-update.html) | Update a listener |
-| [listener delete](listener-delete.html) | Delete a listener |
-| [listener status](listener-status.html) | Display the status of listeners in the current site |
+<table class="commands">
+<tr><th><a href="connector.html">connector</a></th><td><p>Display help for connector commands and exit</p>
+</td></tr>
+<tr><th><a href="connector-create.html">connector create</a></th><td><p>Create a connector</p>
+</td></tr>
+<tr><th><a href="connector-update.html">connector update</a></th><td><p>Update a connector</p>
+</td></tr>
+<tr><th><a href="connector-delete.html">connector delete</a></th><td><p>Delete a connector</p>
+</td></tr>
+<tr><th><a href="connector-status.html">connector status</a></th><td><p>Display the status of connectors in the current site</p>
+</td></tr>
+<tr><th><a href="listener.html">listener</a></th><td><p>Display help for listener commands and exit</p>
+</td></tr>
+<tr><th><a href="listener-create.html">listener create</a></th><td><p>Create a listener</p>
+</td></tr>
+<tr><th><a href="listener-update.html">listener update</a></th><td><p>Update a listener</p>
+</td></tr>
+<tr><th><a href="listener-delete.html">listener delete</a></th><td><p>Delete a listener</p>
+</td></tr>
+<tr><th><a href="listener-status.html">listener status</a></th><td><p>Display the status of listeners in the current site</p>
+</td></tr>
+</table>
 
 #### Debug operations
 
-| | |
-|-|-|
-| [debug](debug.html) | Display help for debug commands and exit |
-| [debug dump](debug-dump.html) | Generate a debug dump file |
+<table class="commands">
+<tr><th><a href="debug.html">debug</a></th><td><p>Display help for debug commands and exit</p>
+</td></tr>
+<tr><th><a href="debug-dump.html">debug dump</a></th><td><p>Generate a debug dump file</p>
+</td></tr>
+</table>
 
 #### Other operations
 
-| | |
-|-|-|
-| [version](version.html) | Display versions of Skupper components  |
+<table class="commands">
+<tr><th><a href="version.html">version</a></th><td><p>Display versions of Skupper components</p>
+</td></tr>
+</table>

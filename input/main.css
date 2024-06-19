@@ -342,9 +342,10 @@ table.choices td {
     font-style: normal !important;
 }
 
-/* XXX .none */
-body.none table td:nth-child(1) {
-    width: 11em;
+table.commands th {
+    width: 10em;
+    text-align: left;
+    font-weight: normal;
 }
 
 .notes {

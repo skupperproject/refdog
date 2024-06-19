@@ -23,10 +23,12 @@ Display help for token commands and exit.
 
 ## Subcommands
 
-| | |
-|-|-|
-| [token issue](token-issue.html) | Issue a token file redeemable for a link to the current site |
-| [token redeem](token-redeem.html) | Redeem a token file in order to create a link to a remote site |
+<table class="commands">
+<tr><th><a href="token-issue.html">token issue</a></th><td><p>Issue a token file redeemable for a link to the current site</p>
+</td></tr>
+<tr><th><a href="token-redeem.html">token redeem</a></th><td><p>Redeem a token file in order to create a link to a remote site</p>
+</td></tr>
+</table>
 
 </section>
 

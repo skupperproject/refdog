@@ -27,16 +27,16 @@ def generate(model):
     for group in model.groups:
         append(f"#### {group.name}")
         append()
-
-        append("| | |")
-        append("|-|-|")
+        append("<table class=\"commands\">")
 
         for command in group.commands:
             description = nvl(command.description, "").replace("\n", " ")
             description = description.split(".")[0]
+            description = mistune.html(description)
 
-            append(f"| [{command.name}]({command.id}.html) | {description} |")
+            append(f"<tr><th><a href=\"{command.id}.html\">{command.name}</a></th><td>{description}</td></tr>")
 
+        append("</table>")
         append()
 
     write("input/commands/index.md", "\n".join(lines))
@@ -94,15 +94,16 @@ def generate_command(command):
         append()
         append("## Subcommands")
         append()
-        append("| | |")
-        append("|-|-|")
+        append("<table class=\"commands\">")
 
         for subcommand in command.subcommands:
             description = nvl(subcommand.description, "").replace("\n", " ")
             description = description.split(".")[0]
+            description = mistune.html(description)
 
-            append(f"| [{subcommand.name}]({subcommand.id}.html) | {description} |")
+            append(f"<tr><th><a href=\"{subcommand.id}.html\">{subcommand.name}</a></th><td>{description}</td></tr>")
 
+        append("</table>")
         append()
         append("</section>")
         append()
