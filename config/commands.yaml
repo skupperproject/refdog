@@ -173,12 +173,14 @@ groups:
       - name: token
         resource: Claim
         related_concepts: ["access grant", "access token"]
-        related_resources: [Grant, Claim]
+        related_resources: [AccessGrant, AccessToken]
         description: |
           Display help for token commands and exit.
         inherit_standard_options: [help]
       - name: token issue
-        resource: Grant
+        resource: AccessGrant
+        related_concepts: ["access grant", "access token"]
+        related_resources: [AccessGrant, AccessToken]
         related_commands: ["token redeem"]
         description: |
           Issue a token file redeemable for a link to the current site.
@@ -210,9 +212,9 @@ groups:
             description: |
               The name of the token file to create.
           - name: expiration-window
-            property: validFor
+            property: expirationWindow
           - name: redemptions-allowed
-            property: claims
+            property: redemptionsAllowed
         errors:
           - message: Link access is not enabled
             description: |
@@ -220,6 +222,8 @@ groups:
               can use "skupper site update --enable-link-access" to
               enable it.
       - name: token redeem
+        related_concepts: ["access grant", "access token"]
+        related_resources: [AccessGrant, AccessToken]
         related_commands: ["token issue"]
         description: |
           Redeem a token file in order to create a link to a remote

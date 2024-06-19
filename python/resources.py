@@ -188,6 +188,7 @@ class ResourceModel:
         self.data = read_yaml("config/resources.yaml")
 
         self.groups = list()
+        self.resources = list()
         self.resources_by_name = dict()
         self.crds_by_name = dict()
 
@@ -196,6 +197,7 @@ class ResourceModel:
 
         for group in self.groups:
             for resource in group.resources:
+                self.resources.append(resource)
                 self.resources_by_name[resource.name] = resource
 
         with working_dir("crds"):
@@ -222,16 +224,31 @@ class ResourceModel:
             try:
                 resource = self.resources_by_name[crd_name]
             except KeyError:
-                print(f"Missing: Resource '{crd_name}'")
+                warning(f"Resource '{crd_name}' is missing")
                 continue
 
             for name, data in crd_data["spec"]["versions"][0]["schema"]["openAPIV3Schema"]["properties"]["spec"]["properties"].items():
                 if name not in resource.spec_properties_by_name:
-                    print(f"Missing: Property '{name}' on {resource}")
+                    warning(f"{resource}: Spec property '{name}' is missing")
 
             for name, data in crd_data["spec"]["versions"][0]["schema"]["openAPIV3Schema"]["properties"]["status"]["properties"].items():
                 if name not in resource.status_properties_by_name:
-                    print(f"Missing: Property '{name}' on {resource}")
+                    warning(f"{resource}: Status property '{name}' is missing")
+
+        for resource in self.resources:
+            try:
+                crd_data = self.crds_by_name[resource.name]
+            except KeyError:
+                warning(f"Resource '{resource.name}' is extra")
+                continue
+
+            for prop in resource.spec_properties:
+                if prop.name not in crd_data["spec"]["versions"][0]["schema"]["openAPIV3Schema"]["properties"]["spec"]["properties"]:
+                    warning(f"{resource}: Spec property '{prop.name}' is extra")
+
+            for prop in resource.status_properties:
+                if prop.name not in crd_data["spec"]["versions"][0]["schema"]["openAPIV3Schema"]["properties"]["status"]["properties"]:
+                    warning(f"{resource}: Status property '{prop.name}' is extra")
 
     def get_schema(self, resource):
         try:
@@ -294,6 +311,8 @@ class Resource(ModelObject):
             self.status_properties_by_name[prop.name] = prop
 
     def merge_property_data(self, section):
+        # XXX Check that the props are well formed here
+
         inherited_props = self.data[section].get("inherit_standard_properties", [])
         standard_prop_data = {x["name"]: x for x in self.model.data.get("standard_properties", [])}
         specific_prop_data = {x["name"]: x for x in self.data[section].get("properties", [])}

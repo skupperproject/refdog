@@ -20,9 +20,9 @@ links:
 <table class="objects">
 <tr><th><a href="link.html">Link</a></th><td><p>A site-to-site communication channel</p>
 </td></tr>
-<tr><th><a href="grant.html">AccessGrant</a></th><td><p>Permission to redeem access tokens for links to the local site</p>
+<tr><th><a href="accessgrant.html">AccessGrant</a></th><td><p>Permission to redeem access tokens for links to the local site</p>
 </td></tr>
-<tr><th><a href="claim.html">AccessToken</a></th><td><p>A transferrable token redeemable for a link to a remote site</p>
+<tr><th><a href="accesstoken.html">AccessToken</a></th><td><p>A transferrable token redeemable for a link to a remote site</p>
 </td></tr>
 </table>
 

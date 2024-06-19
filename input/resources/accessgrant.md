@@ -2,7 +2,7 @@
 body_class: object resource
 links:
   - name: AccessToken resource
-    url: /resources/claim.html
+    url: /resources/accesstoken.html
   - name: Token issue command
     url: /commands/token-issue.html
 ---
@@ -76,6 +76,16 @@ status:    # Status properties
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
+- <h3 id="issuer">issuer <span class="attribute-info">string</span></h3>
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
+  <section class="notes">
+
+  What is this?
+
+  </section>
+
 - <h3 id="options">options <span class="attribute-info">object</span></h3>
 
   Additional settings.
@@ -88,14 +98,22 @@ status:    # Status properties
 
 ## Status properties
 
-- <h3 id="redemptions">redemptions <span class="attribute-info">integer</span></h3>
+- <h3 id="redeemed">redeemed <span class="attribute-info">integer</span></h3>
 
   The number of times a token for this grant has been
   redeemed.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
-- <h3 id="expirationtime">expirationTime <span class="attribute-info">string (date-time)</span></h3>
+  <section class="notes">
+
+  Suggest "redemptions" instead, to match
+  "redemptionsAllowed" and avoid the impression that
+  it's a boolean.
+
+  </section>
+
+- <h3 id="expiration">expiration <span class="attribute-info">string (date-time)</span></h3>
 
   The point in time when the grant expires.
 
@@ -103,16 +121,10 @@ status:    # Status properties
 
   <section class="notes">
 
-  expirationTime seems to be the most conventional name.
+  Suggest "expirationTime" instead.  It seems to be the
+  most conventional name.
 
   </section>
-
-- <h3 id="code">code <span class="attribute-info">string</span></h3>
-
-  The secret code used to authenticate access tokens
-  submitted for redemption.
-
-  <table class="fields"><tr><th>Default</th><td>_Generated_</td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="url">url <span class="attribute-info">string</span></h3>
 
@@ -127,9 +139,22 @@ status:    # Status properties
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
+- <h3 id="code">code <span class="attribute-info">string</span></h3>
+
+  The secret code used to authenticate access tokens
+  submitted for redemption.
+
+  <table class="fields"><tr><th>Default</th><td>_Generated_</td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
 - <h3 id="status">status <span class="attribute-info">string</span></h3>
 
   The current state of the resource.
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
+- <h3 id="active">active <span class="attribute-info">None</span></h3>
+
+  This thing is working.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 

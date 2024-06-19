@@ -2,7 +2,7 @@
 body_class: object resource
 links:
   - name: AccessGrant resource
-    url: /resources/grant.html
+    url: /resources/accessgrant.html
   - name: Token redeem command
     url: /commands/token-redeem.html
 ---
@@ -89,6 +89,12 @@ status:    # Status properties
 - <h3 id="status">status <span class="attribute-info">string</span></h3>
 
   The current state of the resource.
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
+- <h3 id="active">active <span class="attribute-info">None</span></h3>
+
+  This thing is working.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 

@@ -343,8 +343,10 @@ class Option(ModelObjectAttribute):
     def property_(self):
         if "property" in self.data:
             assert self.object.resource is not None
-            assert self.data["property"] in self.object.resource.spec_properties_by_name, \
-                "Property '{}' not found in {}".format(self.data["property"], self.object.resource)
+
+            if self.data["property"] not in self.object.resource.spec_properties_by_name:
+                fail("{}: Property '{}' not found in {}".format \
+                     (self, self.data["property"], self.object.resource))
 
             return self.object.resource.spec_properties_by_name[self.data["property"]]
 

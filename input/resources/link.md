@@ -6,9 +6,9 @@ links:
   - name: Link command
     url: /commands/link.html
   - name: AccessGrant resource
-    url: /resources/grant.html
+    url: /resources/accessgrant.html
   - name: AccessToken resource
-    url: /resources/claim.html
+    url: /resources/accesstoken.html
 ---
 
 # Link resource
@@ -88,11 +88,11 @@ status:    # Status properties
 
   <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
-- <h3 id="url">url <span class="attribute-info">string</span></h3>
+- <h3 id="url">url <span class="attribute-info">None</span></h3>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
-- <h3 id="site">site <span class="attribute-info">string</span></h3>
+- <h3 id="site">site <span class="attribute-info">None</span></h3>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/site.html">Site concept</a></td></table>
 
@@ -107,5 +107,11 @@ status:    # Status properties
   The current state of the resource.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
+- <h3 id="active">active <span class="attribute-info">boolean</span></h3>
+
+  This thing is working.
+
+  <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 </section>

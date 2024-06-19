@@ -6,9 +6,9 @@ links:
   - name: Access token concept
     url: /concepts/access-token.html
   - name: AccessGrant resource
-    url: /resources/grant.html
+    url: /resources/accessgrant.html
   - name: AccessToken resource
-    url: /resources/claim.html
+    url: /resources/accesstoken.html
 ---
 
 # Token command

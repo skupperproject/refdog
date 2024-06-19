@@ -117,4 +117,10 @@ spec:
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
+- <h3 id="active">active <span class="attribute-info">boolean</span></h3>
+
+  This thing is working.
+
+  <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
 </section>
