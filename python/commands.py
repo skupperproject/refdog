@@ -180,6 +180,7 @@ def generate_option(option, append):
         append()
 
     append(indent(generate_attribute_fields(option), 2))
+    append()
 
     if option.notes:
         append("  <section class=\"notes\">")

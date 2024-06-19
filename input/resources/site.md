@@ -68,21 +68,13 @@ spec:
 
   The name of the resource.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  | See also | [Kubernetes object names](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/) |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
 - <h3 id="namespace">namespace <span class="attribute-info">string</span></h3>
 
   The namespace of the resource.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
 
 </section>
 
@@ -94,34 +86,24 @@ spec:
 
   Configure external access for links from remote sites.
 
-  | | |
-  |-|-|
-  | Default | `none` |
-  | Choices | <table class="choices"><tr><td><code>none</code></td><td>No linking to this site is permitted.</td></tr><tr><td><code>default</code></td><td>Use the default link access.  On OpenShift, the default is `route`.  For other Kubernetes flavors, the default is `loadbalancer`.</td></tr><tr><td><code>route</code></td><td>Use an OpenShift route.  _OpenShift only._</td></tr><tr><td><code>loadbalancer</code></td><td>Use a Kubernetes load balancer.  _Kubernetes only._</td></tr></table> |
-  | Platforms | Kubernetes, Docker |
-  | See also | [Link access concept]({{site_prefix}}/concepts/link-access.html), [Kubernetes load balancer services](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) |
-  
+  <table class="fields"><tr><th>Default</th><td><code>none</code></td><tr><th>Choices</th><td><table class="choices"><tr><td><code>none</code></td><td><p>No linking to this site is permitted.</p>
+  </td></tr><tr><td><code>default</code></td><td><p>Use the default link access.  On OpenShift, the default is <code>route</code>.  For other Kubernetes flavors, the default is <code>loadbalancer</code>.</p>
+  </td></tr><tr><td><code>route</code></td><td><p>Use an OpenShift route.  <em>OpenShift only.</em></p>
+  </td></tr><tr><td><code>loadbalancer</code></td><td><p>Use a Kubernetes load balancer.  <em>Kubernetes only.</em></p>
+  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/link-access.html">Link access concept</a>, <a href="https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer">Kubernetes load balancer services</a></td></table>
 
 - <h3 id="serviceaccount">serviceAccount <span class="attribute-info">string</span></h3>
 
   The Kubernetes service account under which to run the
   Skupper controller.
 
-  | | |
-  |-|-|
-  | Default | `skupper:skupper-controller` |
-  | Platforms | Kubernetes |
-  | See also | [Kubernetes service accounts](https://kubernetes.io/docs/concepts/security/service-accounts/) |
-  
+  <table class="fields"><tr><th>Default</th><td><code>skupper:skupper-controller</code></td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/security/service-accounts/">Kubernetes service accounts</a></td></table>
 
 - <h3 id="options">options <span class="attribute-info">object</span></h3>
 
   Additional settings.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 </section>
 
@@ -133,9 +115,6 @@ spec:
 
   The current state of the resource.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 </section>

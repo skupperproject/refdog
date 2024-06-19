@@ -317,11 +317,17 @@ body.object main::after {
     height: 100vh;
 }
 
-/* XXX */
-body.object td {
+table.fields td, table.fields th {
     vertical-align: top;
     border-bottom: 2px solid var(--line-color);
     padding: 0.2em 0;
+}
+
+table.fields th {
+    width: 6em;
+    padding-right: 1em;
+    font-weight: normal;
+    font-style: italic;
 }
 
 table.choices {
@@ -334,12 +340,6 @@ table.choices {
 table.choices td {
     border: none;
     font-style: normal !important;
-}
-
-body.object table td:nth-child(1) {
-    width: 6em;
-    padding-right: 1em;
-    font-style: italic;
 }
 
 /* XXX .none */

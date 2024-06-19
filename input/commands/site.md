@@ -36,8 +36,6 @@ Display help for site commands and exit.
 
   Display help and exit.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
 </section>

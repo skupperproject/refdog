@@ -33,21 +33,13 @@ status:    # Status properties
 
   The name of the resource.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  | See also | [Kubernetes object names](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/) |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
 - <h3 id="namespace">namespace <span class="attribute-info">string</span></h3>
 
   The namespace of the resource.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
 
 </section>
 
@@ -60,39 +52,27 @@ status:    # Status properties
   The URL of the token redemption service at the remote
   site.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="ca">ca <span class="attribute-info">string, required</span></h3>
 
   The trusted server certificate of the token redemption
   service at the remote site.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="code">code <span class="attribute-info">string, required</span></h3>
 
   The secret code used to authenticate the token when
   submitted for redemption.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="options">options <span class="attribute-info">object</span></h3>
 
   Additional settings.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 </section>
 
@@ -104,19 +84,12 @@ status:    # Status properties
 
   True if the token has been redeemed.
 
-  | | |
-  |-|-|
-  | Default | False |
-  | Platforms | Kubernetes, Docker |
-  
+  <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="status">status <span class="attribute-info">string</span></h3>
 
   The current state of the resource.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 </section>

@@ -56,20 +56,16 @@ skupper listener create backend 8080 --output yaml
 
   The name of the listener resource.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
 - <h3 id="port">port <span class="attribute-info">integer, required</span></h3>
 
   The port of the local listener.  Clients at this site use
   the listener host and port to establish connections to
   the remote service.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
 - <h3 id="routing-key">--routing-key <span class="attribute-info">string</span></h3>
 
   The identifier used to route traffic from listeners to
@@ -77,23 +73,16 @@ skupper listener create backend 8080 --output yaml
   remote site, the local listener and the remote connector
   must have matching routing keys.
 
-  | | |
-  |-|-|
-  | Default | _Value of name_ |
-  | Platforms | Kubernetes, Docker |
-  | See also | [Routing key concept]({{site_prefix}}/concepts/routing-key.html) |
-  
+  <table class="fields"><tr><th>Default</th><td>_Value of name_</td><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/routing-key.html">Routing key concept</a></td></table>
+
 - <h3 id="host">--host <span class="attribute-info">string</span></h3>
 
   The hostname or IP address of the local listener.  Clients
   at this site use the listener host and port to
   establish connections to the remote service.
 
-  | | |
-  |-|-|
-  | Default | _Value of name_ |
-  | Platforms | Kubernetes, Docker |
-  
+  <table class="fields"><tr><th>Default</th><td>_Value of name_</td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
 - <h3 id="tls-secret">--tls-secret <span class="attribute-info">string</span></h3>
 
   The name of a Kubernetes secret containing TLS
@@ -106,64 +95,47 @@ skupper listener create backend 8080 --output yaml
   This option is used when setting up router-to-server TLS
   encryption.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  | See also | [Site-scoped TLS]() |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a></td></table>
+
 - <h3 id="type">--type <span class="attribute-info">string</span></h3>
 
   The listener type.
 
-  | | |
-  |-|-|
-  | Default | `tcp` |
-  | Platforms | Kubernetes, Docker |
-  
+  <table class="fields"><tr><th>Default</th><td><code>tcp</code></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
 - <h3 id="output">--output <span class="attribute-info">string</span></h3>
 
   Print resources to the console instead of submitting
   them to the Skupper controller.
 
-  | | |
-  |-|-|
-  | Choices | <table class="choices"><tr><td><code>json</code></td><td>Produce JSON output</td></tr><tr><td><code>yaml</code></td><td>Produce YAML output</td></tr></table> |
-  | Platforms | Kubernetes, Docker |
-  
+  <table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><td><code>json</code></td><td><p>Produce JSON output</p>
+  </td></tr><tr><td><code>yaml</code></td><td><p>Produce YAML output</p>
+  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
 - <h3 id="namespace">--namespace <span class="attribute-info">string</span></h3>
 
   Set the namespace.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
+
 - <h3 id="context">--context <span class="attribute-info">string</span></h3>
 
   Set the kubeconfig context.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes |
-  | See also | [Kubernetes kubeconfigs](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
+
 - <h3 id="platform">--platform <span class="attribute-info">string</span></h3>
 
   Set the Skupper platform.
 
-  | | |
-  |-|-|
-  | Choices | <table class="choices"><tr><td><code>kubernetes</code></td><td>Kubernetes</td></tr><tr><td><code>docker</code></td><td>Docker or Podman</td></tr></table> |
-  | Platforms | Kubernetes, Docker |
-  | See also | [Platform concept]({{site_prefix}}/concepts/platform.html) |
-  
+  <table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><td><code>kubernetes</code></td><td><p>Kubernetes</p>
+  </td></tr><tr><td><code>docker</code></td><td><p>Docker or Podman</p>
+  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
+
 - <h3 id="help">--help <span class="attribute-info"></span></h3>
 
   Display help and exit.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
 </section>

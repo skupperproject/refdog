@@ -1,5 +1,7 @@
 from plano import *
 
+import mistune
+
 def indent(text, spaces):
     return "\n".join(f"{' ' * spaces}{line}" for line in text.split("\n"))
 
@@ -77,12 +79,43 @@ def generate_attribute_fields(attr):
 
     return "\n".join(lines)
 
+def generate_attribute_fields(attr):
+    rows = list()
+
+    # No default for status fields
+    if attr.default is not None and getattr(attr, "group", None) != "status":
+        default = attr.default
+
+        if attr.default is True:
+            default = str(attr.default).lower()
+        elif isinstance(attr.default, str) and not attr.default.startswith("_"):
+            default = f"<code>{default}</code>"
+
+        rows.append(f"<tr><th>Default</th><td>{default}</td>")
+
+    if attr.choices:
+        rows.append(f"<tr><th>Choices</th><td>{generate_attribute_choices(attr)}</td>")
+
+    if attr.platforms:
+        rows.append(f"<tr><th>Platforms</th><td>{', '.join(attr.platforms)}</td>")
+
+    links = generate_attribute_links(attr)
+
+    if links:
+        rows.append(f"<tr><th>See also</th><td>{links}</td>")
+
+    if rows:
+        return f"<table class=\"fields\">{''.join(rows)}</table>"
+
+    return ""
+
 def generate_attribute_choices(attr):
     rows = list()
 
     for choice_data in attr.choices:
         name = choice_data["name"]
         description = choice_data["description"].replace("\n", " ").strip()
+        description = mistune.html(description)
 
         rows.append(f"<tr><td><code>{name}</code></td><td>{description}</td></tr>")
 
@@ -93,18 +126,15 @@ def generate_attribute_links(attr):
 
     for concept in attr.related_concepts:
         name = f"{capitalize(concept.name)} concept"
-        url = f"{{{{site_prefix}}}}/concepts/{concept.id}.html"
+        url = f"/concepts/{concept.id}.html"
 
-        links.append(f"[{name}]({url})")
+        links.append(f"<a href=\"{url}\">{name}</a>")
 
     for link_data in attr.links:
         name = link_data["name"]
         url = link_data["url"]
 
-        if url.startswith("/"):
-            url = "{{site_prefix}}" + url
-
-        links.append(f"[{name}]({url})")
+        links.append(f"<a href=\"{url}\">{name}</a>")
 
     return ", ".join(links)
 

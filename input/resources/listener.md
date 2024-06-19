@@ -57,21 +57,13 @@ spec:
 
   The name of the resource.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  | See also | [Kubernetes object names](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/) |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
 - <h3 id="namespace">namespace <span class="attribute-info">string</span></h3>
 
   The namespace of the resource.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  | See also | [Namespace concept]({{site_prefix}}/concepts/namespace.html), [Kubernetes namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
 
 </section>
 
@@ -86,11 +78,7 @@ spec:
   remote site, the local listener and the remote connector
   must have matching routing keys.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  | See also | [Routing key concept]({{site_prefix}}/concepts/routing-key.html) |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/routing-key.html">Routing key concept</a></td></table>
 
 - <h3 id="host">host <span class="attribute-info">string, required</span></h3>
 
@@ -98,10 +86,7 @@ spec:
   at this site use the listener host and port to
   establish connections to the remote service.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="port">port <span class="attribute-info">integer, required</span></h3>
 
@@ -109,10 +94,7 @@ spec:
   the listener host and port to establish connections to
   the remote service.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="tlssecret">tlsSecret <span class="attribute-info">string</span></h3>
 
@@ -126,30 +108,19 @@ spec:
   This option is used when setting up router-to-server TLS
   encryption.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  | See also | [Site-scoped TLS]() |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a></td></table>
 
 - <h3 id="type">type <span class="attribute-info">string</span></h3>
 
   The listener type.
 
-  | | |
-  |-|-|
-  | Default | `tcp` |
-  | Platforms | Kubernetes, Docker |
-  
+  <table class="fields"><tr><th>Default</th><td><code>tcp</code></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="options">options <span class="attribute-info">object</span></h3>
 
   Additional settings.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 </section>
 
@@ -161,9 +132,6 @@ spec:
 
   The current state of the resource.
 
-  | | |
-  |-|-|
-  | Platforms | Kubernetes, Docker |
-  
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 </section>
