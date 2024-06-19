@@ -1,5 +1,5 @@
 ---
-body_class: resource
+body_class: object resource
 links:
   - name: Link concept
     url: /concepts/link.html
@@ -36,7 +36,7 @@ status:    # Status properties
 
 ## Metadata properties
 
-- <h3 id="name">name <span class="property-info">string, required</span></h3>
+- <h3 id="name">name <span class="attribute-info">string, required</span></h3>
 
   The name of the resource.
 
@@ -46,7 +46,7 @@ status:    # Status properties
   | See also | [Kubernetes object names](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/) |
   
 
-- <h3 id="namespace">namespace <span class="property-info">string</span></h3>
+- <h3 id="namespace">namespace <span class="attribute-info">string</span></h3>
 
   The namespace of the resource.
 
@@ -62,7 +62,7 @@ status:    # Status properties
 
 ## Spec properties
 
-- <h3 id="tlssecret">tlsSecret <span class="property-info">string</span></h3>
+- <h3 id="tlssecret">tlsSecret <span class="attribute-info">string</span></h3>
 
   The name of a Kubernetes secret containing TLS
   credentials. The secret contains the trusted server
@@ -77,7 +77,7 @@ status:    # Status properties
   | See also | [Custom certificates]() |
   
 
-- <h3 id="cost">cost <span class="property-info">integer</span></h3>
+- <h3 id="cost">cost <span class="attribute-info">integer</span></h3>
 
   The configured "expense" of sending traffic over the
   link.
@@ -89,7 +89,7 @@ status:    # Status properties
   | See also | [Load balancing]() |
   
 
-- <h3 id="options">options <span class="property-info">object</span></h3>
+- <h3 id="options">options <span class="attribute-info">object</span></h3>
 
   Additional settings.
 
@@ -104,7 +104,7 @@ status:    # Status properties
 
 ## Status properties
 
-- <h3 id="configured">configured <span class="property-info">boolean</span></h3>
+- <h3 id="configured">configured <span class="attribute-info">boolean</span></h3>
 
   | | |
   |-|-|
@@ -112,14 +112,14 @@ status:    # Status properties
   | Platforms | Kubernetes, Docker |
   
 
-- <h3 id="url">url <span class="property-info">string</span></h3>
+- <h3 id="url">url <span class="attribute-info">string</span></h3>
 
   | | |
   |-|-|
   | Platforms | Kubernetes, Docker |
   
 
-- <h3 id="site">site <span class="property-info">string</span></h3>
+- <h3 id="site">site <span class="attribute-info">string</span></h3>
 
   | | |
   |-|-|
@@ -133,7 +133,7 @@ status:    # Status properties
 
   </section>
 
-- <h3 id="status">status <span class="property-info">string</span></h3>
+- <h3 id="status">status <span class="attribute-info">string</span></h3>
 
   The current state of the resource.
 

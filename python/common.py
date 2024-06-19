@@ -86,7 +86,7 @@ def generate_attribute_choices(attr):
 
         rows.append(f"<tr><td><code>{name}</code></td><td>{description}</td></tr>")
 
-    return "<table>{}</table>".format("".join(rows))
+    return "<table class=\"choices\">{}</table>".format("".join(rows))
 
 def generate_attribute_links(attr):
     links = list()

@@ -25,11 +25,11 @@
 
 :root {
     /* Colors */
-    --body-background-color: rgba(255, 255, 255, 1.0);
-    --code-background-color: rgba(247, 247, 247, 1.0);
-    --body-color: rgba(0, 0, 0, 0.95);
-    --line-color: rgba(0, 0, 0, 0.05);
-    --link-color: rgba(15, 63, 127, 0.8);
+    --body-background-color: hsl(0, 0%, 100%);
+    --code-background-color: hsl(0, 0%, 97%);
+    --text-color: hsl(0, 0%, 20%);
+    --line-color: hsl(0, 0%, 95%);
+    --link-color: rgb(40, 100, 180);
     /* Fonts */
     --body-font-family: sans-serif;
     --body-line-height: 1.5em;
@@ -106,7 +106,7 @@ body {
         ". main sidebar ."
         "footer footer footer footer";
     height: 100%;
-    color: var(--body-color);
+    color: var(--text-color);
     background-color: var(--body-background-color);
     font-family: var(--body-font-family);
     line-height: var(--body-line-height);
@@ -205,7 +205,7 @@ a {
 }
 
 a.selected {
-    color: var(--body-color);
+    color: var(--text-color);
     font-weight: 700;
 }
 
@@ -262,11 +262,11 @@ li > section {
 
 .path-nav > a:not(:last-child)::after {
     content: " \00a0\003e\00a0\00a0 ";
-    color: var(--body-color);
+    color: var(--text-color);
 }
 
 .path-nav > a:last-child {
-    color: var(--body-color);
+    color: var(--text-color);
 }
 
 /* Nothing Skupper-specific above here! */
@@ -297,51 +297,46 @@ aside h4 {
 
 /* Refdog-specific styles for prose elements */
 
-body.resource h2, body.command h2 {
+body.object h2 {
     font-size: 1.3em;
 }
 
-/* body.resource h3, body.command h3 { */
-/*     font-size: 1.1em; */
-/*     display: none; /\* XXX *\/ */
-/* } */
-
-body.resource h3, body.command h3 {
+body.object h3 {
     font-family: var(--body-font-family);
     font-size: 1em;
 }
 
-body.resource span.property-info, body.command span.option-info {
+body.object span.attribute-info {
     font-weight: 400;
     font-style: italic;
 }
 
-body.resource main::after, body.command main::after {
+body.object main::after {
     content: "";
     display: block;
     height: 100vh;
 }
 
-body.resource td, body.command td {
+/* XXX */
+body.object td {
     vertical-align: top;
     border-bottom: 2px solid var(--line-color);
     padding: 0.2em 0;
 }
 
-/* XXX use a choices class for this table */
-body.resource td table, body.command td table {
+table.choices {
     position: relative;
     top: -0.2em;
     border: none;
     font-style: normal !important;
 }
 
-body.resource td table td, body.command td table td {
+table.choices td {
     border: none;
     font-style: normal !important;
 }
 
-body.resource table td:nth-child(1), body.command table td:nth-child(1) {
+body.object table td:nth-child(1) {
     width: 6em;
     padding-right: 1em;
     font-style: italic;

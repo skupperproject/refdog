@@ -57,7 +57,7 @@ def generate_command(command):
         lines.append(line)
 
     append("---")
-    append("body_class: command")
+    append("body_class: object command")
     append(generate_object_links(command))
     append("---")
     append()
@@ -89,15 +89,21 @@ def generate_command(command):
         append("</section>")
         append()
 
-    if command.subcommands:
+    if list(command.subcommands):
         append("<section>")
         append()
         append("## Subcommands")
         append()
+        append("| | |")
+        append("|-|-|")
 
         for subcommand in command.subcommands:
-            append(f"- [{subcommand.rename}]({{{{site_prefix}}}}/commands/{subcommand.id}.html)")
+            description = nvl(subcommand.description, "").replace("\n", " ")
+            description = description.split(".")[0]
 
+            append(f"| [{subcommand.name}]({subcommand.id}.html) | {description} |")
+
+        append()
         append("</section>")
         append()
 
@@ -166,7 +172,7 @@ def generate_option(option, append):
     if not option.required and option.positional:
         option_info += ", optional"
 
-    append(f"- <h3 id=\"{id_}\">{prefix}{name} <span class=\"option-info\">{option_info}</span></h3>")
+    append(f"- <h3 id=\"{id_}\">{prefix}{name} <span class=\"attribute-info\">{option_info}</span></h3>")
     append()
 
     if option.description:
@@ -235,12 +241,7 @@ class Command(ModelObject):
             self.options.append(option)
             self.options_by_name[option.name] = option
 
-        self.subcommands = list()
         self.errors = list()
-
-        for command in self.model.commands_by_name.values():
-            if command.parent is self:
-                self.subcommands.append(command)
 
         for error_data in self.data.get("errors", []):
             self.errors.append(Error(self, error_data))
@@ -274,6 +275,12 @@ class Command(ModelObject):
             return
 
         return self.model.commands_by_name[name]
+
+    @property
+    def subcommands(self):
+        for command in self.model.commands_by_name.values():
+            if command.parent is self:
+                yield command
 
     @property
     def resource(self):

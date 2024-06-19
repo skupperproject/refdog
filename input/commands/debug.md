@@ -1,5 +1,5 @@
 ---
-body_class: command
+body_class: object command
 ---
 
 # Debug command
@@ -12,9 +12,19 @@ Display help for debug commands and exit.
 
 <section>
 
+## Subcommands
+
+| | |
+|-|-|
+| [debug dump](debug-dump.html) | Generate a debug dump file |
+
+</section>
+
+<section>
+
 ## Options
 
-- <h3 id="help">--help <span class="option-info"></span></h3>
+- <h3 id="help">--help <span class="attribute-info"></span></h3>
 
   Display help and exit.
 

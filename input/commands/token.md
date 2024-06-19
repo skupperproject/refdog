@@ -1,5 +1,5 @@
 ---
-body_class: command
+body_class: object command
 links:
   - name: Access grant concept
     url: /concepts/access-grant.html
@@ -21,9 +21,20 @@ Display help for token commands and exit.
 
 <section>
 
+## Subcommands
+
+| | |
+|-|-|
+| [token issue](token-issue.html) | Issue a token file redeemable for a link to the current site |
+| [token redeem](token-redeem.html) | Redeem a token file in order to create a link to a remote site |
+
+</section>
+
+<section>
+
 ## Options
 
-- <h3 id="help">--help <span class="option-info"></span></h3>
+- <h3 id="help">--help <span class="attribute-info"></span></h3>
 
   Display help and exit.
 

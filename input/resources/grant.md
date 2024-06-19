@@ -1,5 +1,5 @@
 ---
-body_class: resource
+body_class: object resource
 links:
   - name: AccessToken resource
     url: /resources/claim.html
@@ -34,7 +34,7 @@ status:    # Status properties
 
 ## Metadata properties
 
-- <h3 id="name">name <span class="property-info">string, required</span></h3>
+- <h3 id="name">name <span class="attribute-info">string, required</span></h3>
 
   The name of the resource.
 
@@ -44,7 +44,7 @@ status:    # Status properties
   | See also | [Kubernetes object names](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/) |
   
 
-- <h3 id="namespace">namespace <span class="property-info">string</span></h3>
+- <h3 id="namespace">namespace <span class="attribute-info">string</span></h3>
 
   The namespace of the resource.
 
@@ -60,7 +60,7 @@ status:    # Status properties
 
 ## Spec properties
 
-- <h3 id="redemptionsallowed">redemptionsAllowed <span class="property-info">integer</span></h3>
+- <h3 id="redemptionsallowed">redemptionsAllowed <span class="attribute-info">integer</span></h3>
 
   The number of times an access token for this grant can
   be redeemed.
@@ -71,7 +71,7 @@ status:    # Status properties
   | Platforms | Kubernetes, Docker |
   
 
-- <h3 id="expirationwindow">expirationWindow <span class="property-info">string (duration)</span></h3>
+- <h3 id="expirationwindow">expirationWindow <span class="attribute-info">string (duration)</span></h3>
 
   The period of time in which an access token for this
   grant can be redeemed.
@@ -82,7 +82,7 @@ status:    # Status properties
   | Platforms | Kubernetes, Docker |
   
 
-- <h3 id="code">code <span class="property-info">string</span></h3>
+- <h3 id="code">code <span class="attribute-info">string</span></h3>
 
   The secret code used to authenticate access tokens
   submitted for redemption.
@@ -95,7 +95,7 @@ status:    # Status properties
   | Platforms | Kubernetes, Docker |
   
 
-- <h3 id="options">options <span class="property-info">object</span></h3>
+- <h3 id="options">options <span class="attribute-info">object</span></h3>
 
   Additional settings.
 
@@ -110,7 +110,7 @@ status:    # Status properties
 
 ## Status properties
 
-- <h3 id="redemptions">redemptions <span class="property-info">integer</span></h3>
+- <h3 id="redemptions">redemptions <span class="attribute-info">integer</span></h3>
 
   The number of times a token for this grant has been
   redeemed.
@@ -120,7 +120,7 @@ status:    # Status properties
   | Platforms | Kubernetes, Docker |
   
 
-- <h3 id="expirationtime">expirationTime <span class="property-info">string (date-time)</span></h3>
+- <h3 id="expirationtime">expirationTime <span class="attribute-info">string (date-time)</span></h3>
 
   The point in time when the grant expires.
 
@@ -135,7 +135,7 @@ status:    # Status properties
 
   </section>
 
-- <h3 id="code">code <span class="property-info">string</span></h3>
+- <h3 id="code">code <span class="attribute-info">string</span></h3>
 
   The secret code used to authenticate access tokens
   submitted for redemption.
@@ -146,7 +146,7 @@ status:    # Status properties
   | Platforms | Kubernetes, Docker |
   
 
-- <h3 id="url">url <span class="property-info">string</span></h3>
+- <h3 id="url">url <span class="attribute-info">string</span></h3>
 
   The URL of the token-redemption service for this grant.
 
@@ -155,7 +155,7 @@ status:    # Status properties
   | Platforms | Kubernetes, Docker |
   
 
-- <h3 id="ca">ca <span class="property-info">string</span></h3>
+- <h3 id="ca">ca <span class="attribute-info">string</span></h3>
 
   The trusted server certificate of the token-redemption
   service for this grant.
@@ -165,7 +165,7 @@ status:    # Status properties
   | Platforms | Kubernetes, Docker |
   
 
-- <h3 id="status">status <span class="property-info">string</span></h3>
+- <h3 id="status">status <span class="attribute-info">string</span></h3>
 
   The current state of the resource.
 

@@ -60,7 +60,7 @@ def generate_resource(resource):
         lines.append(line)
 
     append("---")
-    append("body_class: resource")
+    append("body_class: object resource")
     append(generate_object_links(resource))
     append("---")
     append()
@@ -162,7 +162,7 @@ def generate_property(prop, append):
     if prop.required and prop.default is None:
         prop_info += ", required"
 
-    append(f"- <h3 id=\"{id_}\">{name} <span class=\"property-info\">{prop_info}</span></h3>")
+    append(f"- <h3 id=\"{id_}\">{name} <span class=\"attribute-info\">{prop_info}</span></h3>")
     append()
 
     if prop.description:

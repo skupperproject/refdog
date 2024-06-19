@@ -1,5 +1,5 @@
 ---
-body_class: command
+body_class: object command
 links:
   - name: Connector concept
     url: /concepts/connector.html
@@ -19,9 +19,22 @@ Display help for connector commands and exit.
 
 <section>
 
+## Subcommands
+
+| | |
+|-|-|
+| [connector create](connector-create.html) | Create a connector |
+| [connector update](connector-update.html) | Update a connector |
+| [connector delete](connector-delete.html) | Delete a connector |
+| [connector status](connector-status.html) | Display the status of connectors in the current site |
+
+</section>
+
+<section>
+
 ## Options
 
-- <h3 id="help">--help <span class="option-info"></span></h3>
+- <h3 id="help">--help <span class="attribute-info"></span></h3>
 
   Display help and exit.
 

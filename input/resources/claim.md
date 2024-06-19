@@ -1,5 +1,5 @@
 ---
-body_class: resource
+body_class: object resource
 links:
   - name: AccessGrant resource
     url: /resources/grant.html
@@ -29,7 +29,7 @@ status:    # Status properties
 
 ## Metadata properties
 
-- <h3 id="name">name <span class="property-info">string, required</span></h3>
+- <h3 id="name">name <span class="attribute-info">string, required</span></h3>
 
   The name of the resource.
 
@@ -39,7 +39,7 @@ status:    # Status properties
   | See also | [Kubernetes object names](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/) |
   
 
-- <h3 id="namespace">namespace <span class="property-info">string</span></h3>
+- <h3 id="namespace">namespace <span class="attribute-info">string</span></h3>
 
   The namespace of the resource.
 
@@ -55,7 +55,7 @@ status:    # Status properties
 
 ## Spec properties
 
-- <h3 id="url">url <span class="property-info">string, required</span></h3>
+- <h3 id="url">url <span class="attribute-info">string, required</span></h3>
 
   The URL of the token redemption service at the remote
   site.
@@ -65,7 +65,7 @@ status:    # Status properties
   | Platforms | Kubernetes, Docker |
   
 
-- <h3 id="ca">ca <span class="property-info">string, required</span></h3>
+- <h3 id="ca">ca <span class="attribute-info">string, required</span></h3>
 
   The trusted server certificate of the token redemption
   service at the remote site.
@@ -75,7 +75,7 @@ status:    # Status properties
   | Platforms | Kubernetes, Docker |
   
 
-- <h3 id="code">code <span class="property-info">string, required</span></h3>
+- <h3 id="code">code <span class="attribute-info">string, required</span></h3>
 
   The secret code used to authenticate the token when
   submitted for redemption.
@@ -85,7 +85,7 @@ status:    # Status properties
   | Platforms | Kubernetes, Docker |
   
 
-- <h3 id="options">options <span class="property-info">object</span></h3>
+- <h3 id="options">options <span class="attribute-info">object</span></h3>
 
   Additional settings.
 
@@ -100,7 +100,7 @@ status:    # Status properties
 
 ## Status properties
 
-- <h3 id="redeemed">redeemed <span class="property-info">boolean</span></h3>
+- <h3 id="redeemed">redeemed <span class="attribute-info">boolean</span></h3>
 
   True if the token has been redeemed.
 
@@ -110,7 +110,7 @@ status:    # Status properties
   | Platforms | Kubernetes, Docker |
   
 
-- <h3 id="status">status <span class="property-info">string</span></h3>
+- <h3 id="status">status <span class="attribute-info">string</span></h3>
 
   The current state of the resource.
 

@@ -1,5 +1,5 @@
 ---
-body_class: command
+body_class: object command
 links:
   - name: Listener concept
     url: /concepts/listener.html
@@ -19,9 +19,22 @@ Display help for listener commands and exit.
 
 <section>
 
+## Subcommands
+
+| | |
+|-|-|
+| [listener create](listener-create.html) | Create a listener |
+| [listener update](listener-update.html) | Update a listener |
+| [listener delete](listener-delete.html) | Delete a listener |
+| [listener status](listener-status.html) | Display the status of listeners in the current site |
+
+</section>
+
+<section>
+
 ## Options
 
-- <h3 id="help">--help <span class="option-info"></span></h3>
+- <h3 id="help">--help <span class="attribute-info"></span></h3>
 
   Display help and exit.
 

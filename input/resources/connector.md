@@ -1,5 +1,5 @@
 ---
-body_class: resource
+body_class: object resource
 links:
   - name: Connector concept
     url: /concepts/connector.html
@@ -52,7 +52,7 @@ spec:
 
 ## Metadata properties
 
-- <h3 id="name">name <span class="property-info">string, required</span></h3>
+- <h3 id="name">name <span class="attribute-info">string, required</span></h3>
 
   The name of the resource.
 
@@ -62,7 +62,7 @@ spec:
   | See also | [Kubernetes object names](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/) |
   
 
-- <h3 id="namespace">namespace <span class="property-info">string</span></h3>
+- <h3 id="namespace">namespace <span class="attribute-info">string</span></h3>
 
   The namespace of the resource.
 
@@ -78,7 +78,7 @@ spec:
 
 ## Spec properties
 
-- <h3 id="routingkey">routingKey <span class="property-info">string, required</span></h3>
+- <h3 id="routingkey">routingKey <span class="attribute-info">string, required</span></h3>
 
   The identifier used to route traffic from listeners to
   connectors.  To expose a local workload to a remote
@@ -91,7 +91,7 @@ spec:
   | See also | [Routing key concept]({{site_prefix}}/concepts/routing-key.html) |
   
 
-- <h3 id="port">port <span class="property-info">integer, required</span></h3>
+- <h3 id="port">port <span class="attribute-info">integer, required</span></h3>
 
   The port on the target workload to forward traffic to.
 
@@ -100,7 +100,7 @@ spec:
   | Platforms | Kubernetes, Docker |
   
 
-- <h3 id="selector">selector <span class="property-info">string</span></h3>
+- <h3 id="selector">selector <span class="attribute-info">string</span></h3>
 
   A Kubernetes label selector for specifying target server
   pods.
@@ -114,7 +114,7 @@ spec:
   | See also | [Kubernetes label selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors), [Kubernetes pods](https://kubernetes.io/docs/concepts/workloads/pods/) |
   
 
-- <h3 id="host">host <span class="property-info">string</span></h3>
+- <h3 id="host">host <span class="attribute-info">string</span></h3>
 
   The hostname or IP address of the server.  This is an
   alternative to `selector` for specifying the target
@@ -125,7 +125,7 @@ spec:
   | Platforms | Kubernetes, Docker |
   
 
-- <h3 id="tlssecret">tlsSecret <span class="property-info">string</span></h3>
+- <h3 id="tlssecret">tlsSecret <span class="attribute-info">string</span></h3>
 
   The name of a Kubernetes secret containing the trusted
   server certificate (typically a CA).
@@ -142,7 +142,7 @@ spec:
   | See also | [Site-scoped TLS]() |
   
 
-- <h3 id="includenotready">includeNotReady <span class="property-info">boolean</span></h3>
+- <h3 id="includenotready">includeNotReady <span class="attribute-info">boolean</span></h3>
 
   If set, include server pods that are not in the ready
   state.
@@ -153,7 +153,7 @@ spec:
   | Platforms | Kubernetes |
   
 
-- <h3 id="type">type <span class="property-info">string</span></h3>
+- <h3 id="type">type <span class="attribute-info">string</span></h3>
 
   The connector type.
 
@@ -163,7 +163,7 @@ spec:
   | Platforms | Kubernetes, Docker |
   
 
-- <h3 id="options">options <span class="property-info">object</span></h3>
+- <h3 id="options">options <span class="attribute-info">object</span></h3>
 
   Additional settings.
 
@@ -178,7 +178,7 @@ spec:
 
 ## Status properties
 
-- <h3 id="status">status <span class="property-info">string</span></h3>
+- <h3 id="status">status <span class="attribute-info">string</span></h3>
 
   The current state of the resource.
 

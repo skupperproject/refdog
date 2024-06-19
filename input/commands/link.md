@@ -1,5 +1,5 @@
 ---
-body_class: command
+body_class: object command
 links:
   - name: Link concept
     url: /concepts/link.html
@@ -19,9 +19,22 @@ Display help for link commands and exit.
 
 <section>
 
+## Subcommands
+
+| | |
+|-|-|
+| [link create](link-create.html) | Create a link |
+| [link update](link-update.html) | Change link settings |
+| [link delete](link-delete.html) | Delete a link |
+| [link status](link-status.html) | Display the status of links in the current site |
+
+</section>
+
+<section>
+
 ## Options
 
-- <h3 id="help">--help <span class="option-info"></span></h3>
+- <h3 id="help">--help <span class="attribute-info"></span></h3>
 
   Display help and exit.
 

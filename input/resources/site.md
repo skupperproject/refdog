@@ -1,5 +1,5 @@
 ---
-body_class: resource
+body_class: object resource
 links:
   - name: Site concept
     url: /concepts/site.html
@@ -64,7 +64,7 @@ spec:
 
 ## Metadata properties
 
-- <h3 id="name">name <span class="property-info">string, required</span></h3>
+- <h3 id="name">name <span class="attribute-info">string, required</span></h3>
 
   The name of the resource.
 
@@ -74,7 +74,7 @@ spec:
   | See also | [Kubernetes object names](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/) |
   
 
-- <h3 id="namespace">namespace <span class="property-info">string</span></h3>
+- <h3 id="namespace">namespace <span class="attribute-info">string</span></h3>
 
   The namespace of the resource.
 
@@ -90,19 +90,19 @@ spec:
 
 ## Spec properties
 
-- <h3 id="linkaccess">linkAccess <span class="property-info">string</span></h3>
+- <h3 id="linkaccess">linkAccess <span class="attribute-info">string</span></h3>
 
   Configure external access for links from remote sites.
 
   | | |
   |-|-|
   | Default | `none` |
-  | Choices | <table><tr><td><code>none</code></td><td>No linking to this site is permitted.</td></tr><tr><td><code>default</code></td><td>Use the default link access.  On OpenShift, the default is `route`.  For other Kubernetes flavors, the default is `loadbalancer`.</td></tr><tr><td><code>route</code></td><td>Use an OpenShift route.  _OpenShift only._</td></tr><tr><td><code>loadbalancer</code></td><td>Use a Kubernetes load balancer.  _Kubernetes only._</td></tr></table> |
+  | Choices | <table class="choices"><tr><td><code>none</code></td><td>No linking to this site is permitted.</td></tr><tr><td><code>default</code></td><td>Use the default link access.  On OpenShift, the default is `route`.  For other Kubernetes flavors, the default is `loadbalancer`.</td></tr><tr><td><code>route</code></td><td>Use an OpenShift route.  _OpenShift only._</td></tr><tr><td><code>loadbalancer</code></td><td>Use a Kubernetes load balancer.  _Kubernetes only._</td></tr></table> |
   | Platforms | Kubernetes, Docker |
   | See also | [Link access concept]({{site_prefix}}/concepts/link-access.html), [Kubernetes load balancer services](https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer) |
   
 
-- <h3 id="serviceaccount">serviceAccount <span class="property-info">string</span></h3>
+- <h3 id="serviceaccount">serviceAccount <span class="attribute-info">string</span></h3>
 
   The Kubernetes service account under which to run the
   Skupper controller.
@@ -114,7 +114,7 @@ spec:
   | See also | [Kubernetes service accounts](https://kubernetes.io/docs/concepts/security/service-accounts/) |
   
 
-- <h3 id="options">options <span class="property-info">object</span></h3>
+- <h3 id="options">options <span class="attribute-info">object</span></h3>
 
   Additional settings.
 
@@ -129,7 +129,7 @@ spec:
 
 ## Status properties
 
-- <h3 id="status">status <span class="property-info">string</span></h3>
+- <h3 id="status">status <span class="attribute-info">string</span></h3>
 
   The current state of the resource.
 
