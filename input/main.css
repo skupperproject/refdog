@@ -258,6 +258,12 @@ li > section {
     margin-bottom: 1em !important;
 }
 
+/* Standard styles for tables */
+
+table {
+    border-collapse: collapse;
+}
+
 /* Standard styles for path navigation */
 
 .path-nav > a:not(:last-child)::after {
@@ -317,6 +323,12 @@ body.object main::after {
     height: 100vh;
 }
 
+table.objects th {
+    width: 10em;
+    text-align: left;
+    font-weight: normal;
+}
+
 table.fields td, table.fields th {
     vertical-align: top;
     border-bottom: 2px solid var(--line-color);
@@ -337,15 +349,16 @@ table.choices {
     font-style: normal !important;
 }
 
+table.choices th {
+    width: 6em;
+    padding-right: 1em;
+    border: none;
+    font-weight: normal;
+}
+
 table.choices td {
     border: none;
     font-style: normal !important;
-}
-
-table.commands th {
-    width: 10em;
-    text-align: left;
-    font-weight: normal;
 }
 
 .notes {

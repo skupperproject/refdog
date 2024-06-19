@@ -27,9 +27,18 @@ def generate(model):
     for group in model.groups:
         append(f"#### {group.name}")
         append()
+        append("<table class=\"objects\">")
 
         for concept in group.concepts:
-            append(f"  - [{capitalize(concept.rename)}]({concept.id}.html)")
+            name = capitalize(concept.rename)
+            description = nvl(concept.description, "").replace("\n", " ")
+            description = description.split(".")[0]
+            description = mistune.html(description)
+
+            append(f"<tr><th><a href=\"{concept.id}.html\">{name}</a></th><td>{description}</td></tr>")
+
+        append("</table>")
+        append()
 
     write("input/concepts/index.md", "\n".join(lines))
 

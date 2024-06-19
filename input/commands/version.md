@@ -19,8 +19,8 @@ Display versions of Skupper components
   Print resources to the console instead of submitting
   them to the Skupper controller.
 
-  <table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><td><code>json</code></td><td><p>Produce JSON output</p>
-  </td></tr><tr><td><code>yaml</code></td><td><p>Produce YAML output</p>
+  <table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
+  </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
   </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="namespace">--namespace <span class="attribute-info">string</span></h3>
@@ -39,8 +39,8 @@ Display versions of Skupper components
 
   Set the Skupper platform.
 
-  <table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><td><code>kubernetes</code></td><td><p>Kubernetes</p>
-  </td></tr><tr><td><code>docker</code></td><td><p>Docker or Podman</p>
+  <table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><th><code>kubernetes</code></th><td><p>Kubernetes</p>
+  </td></tr><tr><th><code>docker</code></th><td><p>Docker or Podman</p>
   </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
 
 - <h3 id="help">--help <span class="attribute-info"></span></h3>

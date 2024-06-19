@@ -27,15 +27,16 @@ def generate(model):
     for group in model.groups:
         append(f"#### {group.name}")
         append()
-        append("| | |")
-        append("|-|-|")
+        append("<table class=\"objects\">")
 
         for resource in group.resources:
             description = nvl(resource.description, "").replace("\n", " ")
             description = description.split(".")[0]
+            description = mistune.html(description)
 
-            append(f"| [{resource.rename}]({resource.id}.html) | {description} |")
+            append(f"<tr><th><a href=\"{resource.id}.html\">{resource.rename}</a></th><td>{description}</td></tr>")
 
+        append("</table>")
         append()
 
     write("input/resources/index.md", "\n".join(lines))

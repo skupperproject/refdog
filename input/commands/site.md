@@ -19,7 +19,7 @@ Display help for site commands and exit.
 
 ## Subcommands
 
-<table class="commands">
+<table class="objects">
 <tr><th><a href="site-create.html">site create</a></th><td><p>Create a site</p>
 </td></tr>
 <tr><th><a href="site-update.html">site update</a></th><td><p>Change site settings</p>

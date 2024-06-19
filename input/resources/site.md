@@ -86,10 +86,10 @@ spec:
 
   Configure external access for links from remote sites.
 
-  <table class="fields"><tr><th>Default</th><td><code>none</code></td><tr><th>Choices</th><td><table class="choices"><tr><td><code>none</code></td><td><p>No linking to this site is permitted.</p>
-  </td></tr><tr><td><code>default</code></td><td><p>Use the default link access.  On OpenShift, the default is <code>route</code>.  For other Kubernetes flavors, the default is <code>loadbalancer</code>.</p>
-  </td></tr><tr><td><code>route</code></td><td><p>Use an OpenShift route.  <em>OpenShift only.</em></p>
-  </td></tr><tr><td><code>loadbalancer</code></td><td><p>Use a Kubernetes load balancer.  <em>Kubernetes only.</em></p>
+  <table class="fields"><tr><th>Default</th><td><code>none</code></td><tr><th>Choices</th><td><table class="choices"><tr><th><code>none</code></th><td><p>No linking to this site is permitted.</p>
+  </td></tr><tr><th><code>default</code></th><td><p>Use the default link access.  On OpenShift, the default is <code>route</code>.  For other Kubernetes flavors, the default is <code>loadbalancer</code>.</p>
+  </td></tr><tr><th><code>route</code></th><td><p>Use an OpenShift route.  <em>OpenShift only.</em></p>
+  </td></tr><tr><th><code>loadbalancer</code></th><td><p>Use a Kubernetes load balancer.  <em>Kubernetes only.</em></p>
   </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/link-access.html">Link access concept</a>, <a href="https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer">Kubernetes load balancer services</a></td></table>
 
 - <h3 id="serviceaccount">serviceAccount <span class="attribute-info">string</span></h3>

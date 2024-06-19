@@ -21,7 +21,7 @@ Display help for link commands and exit.
 
 ## Subcommands
 
-<table class="commands">
+<table class="objects">
 <tr><th><a href="link-create.html">link create</a></th><td><p>Create a link</p>
 </td></tr>
 <tr><th><a href="link-update.html">link update</a></th><td><p>Change link settings</p>

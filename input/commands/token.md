@@ -23,7 +23,7 @@ Display help for token commands and exit.
 
 ## Subcommands
 
-<table class="commands">
+<table class="objects">
 <tr><th><a href="token-issue.html">token issue</a></th><td><p>Issue a token file redeemable for a link to the current site</p>
 </td></tr>
 <tr><th><a href="token-redeem.html">token redeem</a></th><td><p>Redeem a token file in order to create a link to a remote site</p>

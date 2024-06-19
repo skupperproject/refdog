@@ -10,7 +10,7 @@ links:
 
 #### Site configuration
 
-<table class="commands">
+<table class="objects">
 <tr><th><a href="site.html">site</a></th><td><p>Display help for site commands and exit</p>
 </td></tr>
 <tr><th><a href="site-create.html">site create</a></th><td><p>Create a site</p>
@@ -25,7 +25,7 @@ links:
 
 #### Site linking
 
-<table class="commands">
+<table class="objects">
 <tr><th><a href="token.html">token</a></th><td><p>Display help for token commands and exit</p>
 </td></tr>
 <tr><th><a href="token-issue.html">token issue</a></th><td><p>Issue a token file redeemable for a link to the current site</p>
@@ -46,7 +46,7 @@ links:
 
 #### Service exposure
 
-<table class="commands">
+<table class="objects">
 <tr><th><a href="connector.html">connector</a></th><td><p>Display help for connector commands and exit</p>
 </td></tr>
 <tr><th><a href="connector-create.html">connector create</a></th><td><p>Create a connector</p>
@@ -71,7 +71,7 @@ links:
 
 #### Debug operations
 
-<table class="commands">
+<table class="objects">
 <tr><th><a href="debug.html">debug</a></th><td><p>Display help for debug commands and exit</p>
 </td></tr>
 <tr><th><a href="debug-dump.html">debug dump</a></th><td><p>Generate a debug dump file</p>
@@ -80,7 +80,7 @@ links:
 
 #### Other operations
 
-<table class="commands">
+<table class="objects">
 <tr><th><a href="version.html">version</a></th><td><p>Display versions of Skupper components</p>
 </td></tr>
 </table>

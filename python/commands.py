@@ -27,7 +27,7 @@ def generate(model):
     for group in model.groups:
         append(f"#### {group.name}")
         append()
-        append("<table class=\"commands\">")
+        append("<table class=\"objects\">")
 
         for command in group.commands:
             description = nvl(command.description, "").replace("\n", " ")
@@ -94,7 +94,7 @@ def generate_command(command):
         append()
         append("## Subcommands")
         append()
-        append("<table class=\"commands\">")
+        append("<table class=\"objects\">")
 
         for subcommand in command.subcommands:
             description = nvl(subcommand.description, "").replace("\n", " ")

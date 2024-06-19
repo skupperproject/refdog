@@ -48,38 +48,6 @@ def generate_object_links(obj):
     return "\n".join(lines)
 
 def generate_attribute_fields(attr):
-    lines = list()
-
-    # No default for status fields
-    if attr.default is not None and getattr(attr, "group", None) != "status":
-        default = attr.default
-
-        if attr.default is True:
-            default = str(attr.default).lower()
-        elif isinstance(attr.default, str) and not attr.default.startswith("_"):
-            default = f"`{default}`"
-
-        lines.append(f"| Default | {default} |")
-
-    if attr.choices:
-        lines.append(f"| Choices | {generate_attribute_choices(attr)} |")
-
-    if attr.platforms:
-        lines.append(f"| Platforms | {', '.join(attr.platforms)} |")
-
-    links = generate_attribute_links(attr)
-
-    if links:
-        lines.append(f"| See also | {links} |")
-
-    if lines:
-        lines.insert(0, "| | |")
-        lines.insert(1, "|-|-|")
-        lines.append("")
-
-    return "\n".join(lines)
-
-def generate_attribute_fields(attr):
     rows = list()
 
     # No default for status fields
@@ -117,7 +85,7 @@ def generate_attribute_choices(attr):
         description = choice_data["description"].replace("\n", " ").strip()
         description = mistune.html(description)
 
-        rows.append(f"<tr><td><code>{name}</code></td><td>{description}</td></tr>")
+        rows.append(f"<tr><th><code>{name}</code></th><td>{description}</td></tr>")
 
     return "<table class=\"choices\">{}</table>".format("".join(rows))
 

@@ -21,7 +21,7 @@ Display help for listener commands and exit.
 
 ## Subcommands
 
-<table class="commands">
+<table class="objects">
 <tr><th><a href="listener-create.html">listener create</a></th><td><p>Create a listener</p>
 </td></tr>
 <tr><th><a href="listener-update.html">listener update</a></th><td><p>Update a listener</p>
