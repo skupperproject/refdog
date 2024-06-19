@@ -1,9 +1,9 @@
 ---
 links:
   - name: Skupper resources
-    url: /resources/index.html
+    url: ../resources/index.html
   - name: Skupper commands
-    url: /commands/index.html
+    url: ../commands/index.html
 ---
 
 # Skupper concepts
