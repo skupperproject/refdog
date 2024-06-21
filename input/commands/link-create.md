@@ -32,7 +32,6 @@ skupper link create <name> <tls-secret> [options]
 ## Output
 
 ~~~ console
-$ skupper link create <name> <tls-secret> [options]
 Waiting for status...
 Link "<name>" is ready.
 ~~~

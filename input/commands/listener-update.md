@@ -34,7 +34,6 @@ skupper listener update [options]
 ## Output
 
 ~~~ console
-$ skupper listener update [options]
 Waiting for update to complete...
 Listener "<name>" is updated.
 ~~~

@@ -34,7 +34,6 @@ skupper connector create <name> <port> [options]
 ## Output
 
 ~~~ console
-$ skupper connector create <name> <port> [options]
 Waiting for status...
 Connector "<name>" is ready.
 ~~~

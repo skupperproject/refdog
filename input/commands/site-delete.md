@@ -32,7 +32,6 @@ skupper site delete [name] [options]
 ## Output
 
 ~~~ console
-$ skupper site delete [name] [options]
 Waiting for deletion to complete...
 Site "<name>" is deleted.
 ~~~

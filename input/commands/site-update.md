@@ -32,7 +32,6 @@ skupper site update [name] [options]
 ## Output
 
 ~~~ console
-$ skupper site update [name] [options]
 Waiting for update to complete...
 Site "<name>" is updated.
 ~~~

@@ -22,7 +22,7 @@ Display the status of listeners in the current site.
 ## Usage
 
 ~~~ shell
-skupper listener status [options]
+skupper listener status [name] [options]
 ~~~
 
 </section>
@@ -32,10 +32,18 @@ skupper listener status [options]
 ## Output
 
 ~~~ console
-$ skupper listener status [options]
-NAME       ROUTING-KEY   HOST       PORT   MATCHING-CONNECTORS
-backend    backend       backend    8080   1
-database   database      database   5432   1
+$ skupper listener status
+NAME       STATUS   ROUTING-KEY   HOST       PORT   CONNECTORS
+backend    Ready    backend       backend    8080   1
+database   Ready    database      database   5432   1
+
+$ skupper connector status backend
+Name:         backend
+Status:       Ready
+Routing key:  backend
+Host:         backend
+Port:         8080
+Connectors:    1
 ~~~
 
 </section>
@@ -43,6 +51,12 @@ database   database      database   5432   1
 <section>
 
 ## Options
+
+- <h3 id="name">name <span class="attribute-info">string, optional</span></h3>
+
+  The name of the listener resource.
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="output">--output <span class="attribute-info">string</span></h3>
 

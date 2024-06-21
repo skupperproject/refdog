@@ -34,7 +34,6 @@ skupper listener delete <name> [options]
 ## Output
 
 ~~~ console
-$ skupper listener delete <name> [options]
 Waiting for deletion to complete...
 Listener "<name>" is deleted.
 ~~~

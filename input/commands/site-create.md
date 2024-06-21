@@ -32,7 +32,6 @@ skupper site create <name> [options]
 ## Output
 
 ~~~ console
-$ skupper site create <name> [options]
 Waiting for status...
 Site "<name>" is ready.
 ~~~

@@ -32,7 +32,6 @@ skupper link update <name> [options]
 ## Output
 
 ~~~ console
-$ skupper link update <name> [options]
 Waiting for update to complete...
 Link "<name>" is updated.
 ~~~

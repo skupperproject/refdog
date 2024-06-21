@@ -109,7 +109,6 @@ def generate_command(command):
         append("## Output")
         append()
         append("~~~ console")
-        append(f"$ {generate_usage(command)}")
         append(command.output.strip())
         append("~~~")
         append()

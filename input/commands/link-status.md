@@ -32,14 +32,13 @@ skupper link status [options]
 ## Output
 
 ~~~ console
-$ skupper link status [options]
 NAME    STATUS   COST
-west    Active   1
+west    Ready    1
 south   Error    10
 
 Links from remote sites:
 
-[None]
+<none>
 ~~~
 
 </section>

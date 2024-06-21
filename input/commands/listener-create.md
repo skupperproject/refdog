@@ -34,7 +34,6 @@ skupper listener create <name> <port> [options]
 ## Output
 
 ~~~ console
-$ skupper listener create <name> <port> [options]
 Waiting for status...
 Listener "<name>" is ready.
 ~~~

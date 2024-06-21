@@ -28,7 +28,6 @@ skupper debug dump [options]
 ## Output
 
 ~~~ console
-$ skupper debug dump [options]
 Debug dump file generated at <file>.
 ~~~
 

@@ -156,8 +156,8 @@ groups:
         description: |
           Display the current status of a site.
         output: |
-          NAME   STATUS   SITES-IN-NETWORK   SERVICES-IN-NETWORK
-          west   Ready    1                  0
+          NAME   STATUS
+          west   Ready
         inherit_standard_options: [namespace, context, platform, help]
         notes: |
           What is services-in-network?  Is that the total number of
@@ -276,12 +276,12 @@ groups:
           Display the status of links in the current site.
         output: |
           NAME    STATUS   COST
-          west    Active   1
+          west    Ready    1
           south   Error    10
 
           Links from remote sites:
 
-          [None]
+          <none>
         inherit_standard_options: [output, namespace, context, platform, help]
   - name: Service exposure
     commands:
@@ -391,10 +391,26 @@ groups:
         description: |
           Display the status of connectors in the current site.
         output: |
-          NAME       ROUTING-KEY   SELECTOR         HOST   PORT   MATCHING-LISTENERS
-          backend    backend       app=backend      -      8080   1
-          database   database      app=postgresql   -      5432   1
-        inherit_standard_options: [output, namespace, context, platform, help]
+          $ skupper connector status
+          NAME       STATUS   ROUTING-KEY   SELECTOR         HOST     PORT   LISTENERS
+          backend    Ready    backend       app=backend      <none>   8080   1
+          database   Ready    database      app=postgresql   <none>   5432   1
+
+          $ skupper connector status backend
+          Name:         backend
+          Status:       Ready
+          Routing key:  backend
+          Selector:     app=backend
+          Host:         <none>
+          Port:         8080
+          Listeners:    1
+        inherit_standard_options: [name, output, namespace, context, platform, help]
+        options:
+          - name: name
+            required: false
+            positional: true
+            description: |
+              The name of the connector resource.
       - name: listener
         related_commands: [connector]
         description: |
@@ -476,10 +492,25 @@ groups:
         description: |
           Display the status of listeners in the current site.
         output: |
-          NAME       ROUTING-KEY   HOST       PORT   MATCHING-CONNECTORS
-          backend    backend       backend    8080   1
-          database   database      database   5432   1
-        inherit_standard_options: [output, namespace, context, platform, help]
+          $ skupper listener status
+          NAME       STATUS   ROUTING-KEY   HOST       PORT   CONNECTORS
+          backend    Ready    backend       backend    8080   1
+          database   Ready    database      database   5432   1
+
+          $ skupper connector status backend
+          Name:         backend
+          Status:       Ready
+          Routing key:  backend
+          Host:         backend
+          Port:         8080
+          Connectors:    1
+        inherit_standard_options: [name, output, namespace, context, platform, help]
+        options:
+          - name: name
+            required: false
+            positional: true
+            description: |
+              The name of the listener resource.
   - name: Debug operations
     commands:
       - name: debug

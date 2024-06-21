@@ -34,7 +34,6 @@ skupper connector update [options]
 ## Output
 
 ~~~ console
-$ skupper connector update [options]
 Waiting for update to complete...
 Connector "<name>" is updated.
 ~~~

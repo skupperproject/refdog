@@ -32,7 +32,6 @@ skupper link delete <name> [options]
 ## Output
 
 ~~~ console
-$ skupper link delete <name> [options]
 Waiting for deletion to complete...
 Link "<name>" is deleted.
 ~~~

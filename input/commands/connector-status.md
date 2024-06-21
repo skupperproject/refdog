@@ -22,7 +22,7 @@ Display the status of connectors in the current site.
 ## Usage
 
 ~~~ shell
-skupper connector status [options]
+skupper connector status [name] [options]
 ~~~
 
 </section>
@@ -32,10 +32,19 @@ skupper connector status [options]
 ## Output
 
 ~~~ console
-$ skupper connector status [options]
-NAME       ROUTING-KEY   SELECTOR         HOST   PORT   MATCHING-LISTENERS
-backend    backend       app=backend      -      8080   1
-database   database      app=postgresql   -      5432   1
+$ skupper connector status
+NAME       STATUS   ROUTING-KEY   SELECTOR         HOST     PORT   LISTENERS
+backend    Ready    backend       app=backend      <none>   8080   1
+database   Ready    database      app=postgresql   <none>   5432   1
+
+$ skupper connector status backend
+Name:         backend
+Status:       Ready
+Routing key:  backend
+Selector:     app=backend
+Host:         <none>
+Port:         8080
+Listeners:    1
 ~~~
 
 </section>
@@ -43,6 +52,12 @@ database   database      app=postgresql   -      5432   1
 <section>
 
 ## Options
+
+- <h3 id="name">name <span class="attribute-info">string, optional</span></h3>
+
+  The name of the connector resource.
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="output">--output <span class="attribute-info">string</span></h3>
 

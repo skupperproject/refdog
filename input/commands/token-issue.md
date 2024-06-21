@@ -41,7 +41,6 @@ skupper token issue <file> [options]
 ## Output
 
 ~~~ console
-$ skupper token issue <file> [options]
 Waiting for status...
 Grant "<name>" is ready.
 Token file <file> created.

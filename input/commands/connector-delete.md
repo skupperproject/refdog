@@ -34,7 +34,6 @@ skupper connector delete <name> [options]
 ## Output
 
 ~~~ console
-$ skupper connector delete <name> [options]
 Waiting for deletion to complete...
 Connector "<name>" is deleted.
 ~~~

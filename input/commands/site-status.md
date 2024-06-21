@@ -32,9 +32,8 @@ skupper site status [options]
 ## Output
 
 ~~~ console
-$ skupper site status [options]
-NAME   STATUS   SITES-IN-NETWORK   SERVICES-IN-NETWORK
-west   Ready    1                  0
+NAME   STATUS
+west   Ready
 ~~~
 
 </section>

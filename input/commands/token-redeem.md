@@ -39,7 +39,6 @@ skupper token redeem <file> [options]
 ## Output
 
 ~~~ console
-$ skupper token redeem <file> [options]
 Waiting for status...
 Link "<name>" is active.
 You can now safely delete <file>.
