@@ -19,6 +19,16 @@ Display help for connector commands and exit.
 
 <section>
 
+## Usage
+
+~~~ shell
+skupper connector [options]
+~~~
+
+</section>
+
+<section>
+
 ## Subcommands
 
 <table class="objects">

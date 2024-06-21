@@ -24,7 +24,17 @@ Update a connector.
 ## Usage
 
 ~~~ shell
-$ skupper connector update <name> [options]
+skupper connector update [options]
+~~~
+
+</section>
+
+<section>
+
+## Output
+
+~~~ console
+$ skupper connector update [options]
 Waiting for update to complete...
 Connector "<name>" is updated.
 ~~~

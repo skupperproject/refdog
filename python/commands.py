@@ -72,18 +72,25 @@ def generate_command(command):
 
     append("</section>")
     append()
+    append("<section>")
+    append()
+    append("## Usage")
+    append()
+    append("~~~ shell")
+    append(f"{generate_usage(command)}")
+    append("~~~")
+    append()
+    append("</section>")
+    append()
 
-    if command.usage:
+    if command.output:
         append("<section>")
         append()
-        append("## Usage")
+        append("## Output")
         append()
-        append("~~~ shell")
-        append(f"$ {command.usage.strip()}")
-
-        if command.output:
-            append(command.output.strip())
-
+        append("~~~ console")
+        append(f"$ {generate_usage(command)}")
+        append(command.output.strip())
         append("~~~")
         append()
         append("</section>")
@@ -155,6 +162,20 @@ def generate_command(command):
         append()
 
     write(f"input/commands/{command.id}.md", "\n".join(lines))
+
+def generate_usage(command):
+    parts = ["skupper", command.name]
+
+    for option in command.options:
+        if option.positional:
+            if option.required:
+                parts.append(f"<{option.name}>")
+            else:
+                parts.append(f"[{option.name}]")
+
+    parts.append("[options]")
+
+    return " ".join(parts)
 
 def generate_option(option, append):
     debug(f"Generating {option}")

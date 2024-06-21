@@ -19,6 +19,16 @@ Display help for link commands and exit.
 
 <section>
 
+## Usage
+
+~~~ shell
+skupper link [options]
+~~~
+
+</section>
+
+<section>
+
 ## Subcommands
 
 <table class="objects">

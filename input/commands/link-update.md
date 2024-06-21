@@ -22,6 +22,16 @@ Change link settings.
 ## Usage
 
 ~~~ shell
+skupper link update <name> [options]
+~~~
+
+</section>
+
+<section>
+
+## Output
+
+~~~ console
 $ skupper link update <name> [options]
 Waiting for update to complete...
 Link "<name>" is updated.

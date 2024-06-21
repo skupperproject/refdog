@@ -24,7 +24,17 @@ Update a listener.
 ## Usage
 
 ~~~ shell
-$ skupper listener update <name> [options]
+skupper listener update [options]
+~~~
+
+</section>
+
+<section>
+
+## Output
+
+~~~ console
+$ skupper listener update [options]
 Waiting for update to complete...
 Listener "<name>" is updated.
 ~~~

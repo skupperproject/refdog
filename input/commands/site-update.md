@@ -22,6 +22,16 @@ Change site settings.
 ## Usage
 
 ~~~ shell
+skupper site update [name] [options]
+~~~
+
+</section>
+
+<section>
+
+## Output
+
+~~~ console
 $ skupper site update [name] [options]
 Waiting for update to complete...
 Site "<name>" is updated.

@@ -18,7 +18,17 @@ Generate a debug dump file.
 ## Usage
 
 ~~~ shell
-$ skupper debug dump [file]
+skupper debug dump [options]
+~~~
+
+</section>
+
+<section>
+
+## Output
+
+~~~ console
+$ skupper debug dump [options]
 Debug dump file generated at <file>.
 ~~~
 

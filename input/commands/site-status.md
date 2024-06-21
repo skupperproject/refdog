@@ -22,7 +22,17 @@ Display the current status of a site.
 ## Usage
 
 ~~~ shell
-$ skupper site status
+skupper site status [options]
+~~~
+
+</section>
+
+<section>
+
+## Output
+
+~~~ console
+$ skupper site status [options]
 NAME   STATUS   SITES-IN-NETWORK   SERVICES-IN-NETWORK
 west   Ready    1                  0
 ~~~

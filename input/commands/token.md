@@ -21,6 +21,16 @@ Display help for token commands and exit.
 
 <section>
 
+## Usage
+
+~~~ shell
+skupper token [options]
+~~~
+
+</section>
+
+<section>
+
 ## Subcommands
 
 <table class="objects">

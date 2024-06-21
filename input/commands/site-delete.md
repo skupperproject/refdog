@@ -22,7 +22,17 @@ Delete a site.
 ## Usage
 
 ~~~ shell
-$ skupper site delete [name]
+skupper site delete [name] [options]
+~~~
+
+</section>
+
+<section>
+
+## Output
+
+~~~ console
+$ skupper site delete [name] [options]
 Waiting for deletion to complete...
 Site "<name>" is deleted.
 ~~~

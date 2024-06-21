@@ -22,6 +22,16 @@ Create a site.
 ## Usage
 
 ~~~ shell
+skupper site create <name> [options]
+~~~
+
+</section>
+
+<section>
+
+## Output
+
+~~~ console
 $ skupper site create <name> [options]
 Waiting for status...
 Site "<name>" is ready.

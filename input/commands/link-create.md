@@ -22,7 +22,17 @@ Create a link.
 ## Usage
 
 ~~~ shell
-$ skupper link create <name> <tls-secret>
+skupper link create <name> <tls-secret> [options]
+~~~
+
+</section>
+
+<section>
+
+## Output
+
+~~~ console
+$ skupper link create <name> <tls-secret> [options]
 Waiting for status...
 Link "<name>" is ready.
 ~~~

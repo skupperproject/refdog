@@ -24,7 +24,17 @@ Delete a connector.
 ## Usage
 
 ~~~ shell
-$ skupper connector delete <name>
+skupper connector delete <name> [options]
+~~~
+
+</section>
+
+<section>
+
+## Output
+
+~~~ console
+$ skupper connector delete <name> [options]
 Waiting for deletion to complete...
 Connector "<name>" is deleted.
 ~~~

@@ -12,6 +12,16 @@ Display versions of Skupper components
 
 <section>
 
+## Usage
+
+~~~ shell
+skupper version [options]
+~~~
+
+</section>
+
+<section>
+
 ## Options
 
 - <h3 id="output">--output <span class="attribute-info">string</span></h3>

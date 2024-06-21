@@ -24,6 +24,16 @@ Create a listener.
 ## Usage
 
 ~~~ shell
+skupper listener create <name> <port> [options]
+~~~
+
+</section>
+
+<section>
+
+## Output
+
+~~~ console
 $ skupper listener create <name> <port> [options]
 Waiting for status...
 Listener "<name>" is ready.

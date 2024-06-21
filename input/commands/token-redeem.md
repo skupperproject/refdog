@@ -29,6 +29,16 @@ site.
 ## Usage
 
 ~~~ shell
+skupper token redeem <file> [options]
+~~~
+
+</section>
+
+<section>
+
+## Output
+
+~~~ console
 $ skupper token redeem <file> [options]
 Waiting for status...
 Link "<name>" is active.

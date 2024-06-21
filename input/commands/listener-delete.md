@@ -24,7 +24,17 @@ Delete a listener.
 ## Usage
 
 ~~~ shell
-$ skupper listener delete <name>
+skupper listener delete <name> [options]
+~~~
+
+</section>
+
+<section>
+
+## Output
+
+~~~ console
+$ skupper listener delete <name> [options]
 Waiting for deletion to complete...
 Listener "<name>" is deleted.
 ~~~

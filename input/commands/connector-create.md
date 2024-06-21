@@ -24,6 +24,16 @@ Create a connector.
 ## Usage
 
 ~~~ shell
+skupper connector create <name> <port> [options]
+~~~
+
+</section>
+
+<section>
+
+## Output
+
+~~~ console
 $ skupper connector create <name> <port> [options]
 Waiting for status...
 Connector "<name>" is ready.

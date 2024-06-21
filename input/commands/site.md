@@ -17,6 +17,16 @@ Display help for site commands and exit.
 
 <section>
 
+## Usage
+
+~~~ shell
+skupper site [options]
+~~~
+
+</section>
+
+<section>
+
 ## Subcommands
 
 <table class="objects">

@@ -12,6 +12,16 @@ Display help for debug commands and exit.
 
 <section>
 
+## Usage
+
+~~~ shell
+skupper debug [options]
+~~~
+
+</section>
+
+<section>
+
 ## Subcommands
 
 <table class="objects">

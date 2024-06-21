@@ -19,6 +19,33 @@ Display the status of links in the current site.
 
 <section>
 
+## Usage
+
+~~~ shell
+skupper link status [options]
+~~~
+
+</section>
+
+<section>
+
+## Output
+
+~~~ console
+$ skupper link status [options]
+NAME    STATUS   COST
+west    Active   1
+south   Error    10
+
+Links from remote sites:
+
+[None]
+~~~
+
+</section>
+
+<section>
+
 ## Options
 
 - <h3 id="output">--output <span class="attribute-info">string</span></h3>

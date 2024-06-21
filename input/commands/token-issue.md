@@ -31,6 +31,16 @@ token.
 ## Usage
 
 ~~~ shell
+skupper token issue <file> [options]
+~~~
+
+</section>
+
+<section>
+
+## Output
+
+~~~ console
 $ skupper token issue <file> [options]
 Waiting for status...
 Grant "<name>" is ready.

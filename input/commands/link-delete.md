@@ -22,7 +22,17 @@ Delete a link.
 ## Usage
 
 ~~~ shell
-$ skupper link delete <name>
+skupper link delete <name> [options]
+~~~
+
+</section>
+
+<section>
+
+## Output
+
+~~~ console
+$ skupper link delete <name> [options]
 Waiting for deletion to complete...
 Link "<name>" is deleted.
 ~~~

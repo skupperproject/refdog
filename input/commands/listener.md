@@ -19,6 +19,16 @@ Display help for listener commands and exit.
 
 <section>
 
+## Usage
+
+~~~ shell
+skupper listener [options]
+~~~
+
+</section>
+
+<section>
+
 ## Subcommands
 
 <table class="objects">
