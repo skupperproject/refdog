@@ -27,17 +27,37 @@ def generate(model):
     for group in model.groups:
         append(f"#### {group.name}")
         append()
-        append("<table class=\"objects\">")
 
         for command in group.commands:
-            description = nvl(command.description, "").replace("\n", " ")
-            description = description.split(".")[0]
-            description = mistune.html(description)
+            if command.parent is None:
+                # append(f"[{capitalize(command.name)} commands]()")
+                # append()
+                append("<table class=\"objects\">")
 
-            append(f"<tr><th><a href=\"{command.id}.html\">{command.name}</a></th><td>{description}</td></tr>")
+                append(f"<tr><th><a href=\"{command.id}.html\">{capitalize(command.name)} commands</a></th><td>Overview of {command.name} commands</td></tr>")
 
-        append("</table>")
+                for subcommand in command.subcommands:
+                    description = nvl(subcommand.description, "").replace("\n", " ")
+                    description = description.split(".")[0]
+                    description = mistune.html(description)
+
+                    append(f"<tr><th><a href=\"{subcommand.id}.html\">{capitalize(subcommand.name)}</a></th><td>{description}</td></tr>")
+
+                append("</table>")
+                append()
+
         append()
+        # append("<table class=\"objects\">")
+
+        # for command in group.commands:
+        #     description = nvl(command.description, "").replace("\n", " ")
+        #     description = description.split(".")[0]
+        #     description = mistune.html(description)
+
+        #     append(f"<tr><th><a href=\"{command.id}.html\">{command.name}</a></th><td>{description}</td></tr>")
+
+        # append("</table>")
+        # append()
 
     write("input/commands/index.md", "\n".join(lines))
 
