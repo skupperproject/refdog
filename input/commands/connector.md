@@ -22,7 +22,7 @@ Display help for connector commands and exit.
 ## Usage
 
 ~~~ shell
-skupper connector [options]
+skupper connector [subcommand] [options]
 ~~~
 
 </section>

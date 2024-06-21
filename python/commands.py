@@ -166,6 +166,9 @@ def generate_command(command):
 def generate_usage(command):
     parts = ["skupper", command.name]
 
+    if list(command.subcommands):
+        parts.append("[subcommand]")
+
     for option in command.options:
         if option.positional:
             if option.required:

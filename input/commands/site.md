@@ -20,7 +20,7 @@ Display help for site commands and exit.
 ## Usage
 
 ~~~ shell
-skupper site [options]
+skupper site [subcommand] [options]
 ~~~
 
 </section>

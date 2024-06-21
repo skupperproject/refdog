@@ -22,7 +22,7 @@ Display help for link commands and exit.
 ## Usage
 
 ~~~ shell
-skupper link [options]
+skupper link [subcommand] [options]
 ~~~
 
 </section>

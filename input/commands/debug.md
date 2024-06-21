@@ -15,7 +15,7 @@ Display help for debug commands and exit.
 ## Usage
 
 ~~~ shell
-skupper debug [options]
+skupper debug [subcommand] [options]
 ~~~
 
 </section>

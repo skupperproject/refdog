@@ -24,7 +24,7 @@ Display help for token commands and exit.
 ## Usage
 
 ~~~ shell
-skupper token [options]
+skupper token [subcommand] [options]
 ~~~
 
 </section>

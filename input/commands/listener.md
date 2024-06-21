@@ -22,7 +22,7 @@ Display help for listener commands and exit.
 ## Usage
 
 ~~~ shell
-skupper listener [options]
+skupper listener [subcommand] [options]
 ~~~
 
 </section>
