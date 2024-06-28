@@ -63,8 +63,6 @@ skupper connector create backend 8080 --output yaml
 
 - <h3 id="name">name <span class="attribute-info">string, required</span></h3>
 
-  The name of the connector resource.
-
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="port">port <span class="attribute-info">integer, required</span></h3>
@@ -111,6 +109,19 @@ skupper connector create backend 8080 --output yaml
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
+- <h3 id="include-not-ready">--include-not-ready <span class="attribute-info">boolean</span></h3>
+
+  If set, include server pods that are not in the ready
+  state.
+
+  <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/">Kubernetes pod lifecycle</a></td></table>
+
+- <h3 id="type">--type <span class="attribute-info">string</span></h3>
+
+  The connector type.
+
+  <table class="fields"><tr><th>Default</th><td><code>tcp</code></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
 - <h3 id="tls-secret">--tls-secret <span class="attribute-info">string</span></h3>
 
   The name of a Kubernetes secret containing the trusted
@@ -123,19 +134,6 @@ skupper connector create backend 8080 --output yaml
   encryption.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a></td></table>
-
-- <h3 id="type">--type <span class="attribute-info">string</span></h3>
-
-  The connector type.
-
-  <table class="fields"><tr><th>Default</th><td><code>tcp</code></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
-
-- <h3 id="include-not-ready">--include-not-ready <span class="attribute-info">boolean</span></h3>
-
-  If set, include server pods that are not in the ready
-  state.
-
-  <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/">Kubernetes pod lifecycle</a></td></table>
 
 - <h3 id="output">--output <span class="attribute-info">string</span></h3>
 

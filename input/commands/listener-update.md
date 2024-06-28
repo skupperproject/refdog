@@ -24,7 +24,7 @@ Update a listener.
 ## Usage
 
 ~~~ shell
-skupper listener update [options]
+skupper listener update <name> [options]
 ~~~
 
 </section>
@@ -60,6 +60,10 @@ skupper listener update backend --port 9090 --output yaml
 <section>
 
 ## Options
+
+- <h3 id="name">name <span class="attribute-info">string, required</span></h3>
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="port">--port <span class="attribute-info">integer</span></h3>
 
