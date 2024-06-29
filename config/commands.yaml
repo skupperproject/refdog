@@ -19,6 +19,14 @@ options:
         description: Produce JSON output
       - name: yaml
         description: Produce YAML output
+  create/timeout:
+    name: timeout
+    type: string
+    format: duration
+    default: 60s
+    description: |
+      Raise an error if the operation does not complete in the given
+      period of time.
   update/name:
     name: name
     type: string
@@ -39,6 +47,14 @@ options:
         description: Produce JSON output
       - name: yaml
         description: Produce YAML output
+  update/timeout:
+    name: timeout
+    type: string
+    format: duration
+    default: 60s
+    description: |
+      Raise an error if the operation does not complete in the given
+      period of time.
   delete/name:
     name: name
     type: string
@@ -48,6 +64,14 @@ options:
     links:
       - name: Kubernetes object names
         url: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
+  delete/timeout:
+    name: timeout
+    type: string
+    format: duration
+    default: 60s
+    description: |
+      Raise an error if the operation does not complete in the given
+      period of time.
   status/name:
     name: name
     type: string
@@ -69,6 +93,14 @@ options:
         description: Produce JSON output
       - name: yaml
         description: Produce YAML output
+  status/timeout:
+    name: timeout
+    type: string
+    format: duration
+    default: 60s
+    description: |
+      Raise an error if the operation does not complete in the given
+      period of time.
   site/enable_link_access:
     name: enable-link-access
     type: boolean
@@ -326,6 +358,13 @@ groups:
             required: true
             description: |
               The name of the token file to create.
+          - name: timeout
+            type: string
+            format: duration
+            default: 60s
+            description: |
+              Raise an error if the operation does not complete in the given
+              period of time.
           - name: expiration-window
             property: expirationWindow
           - name: redemptions-allowed
@@ -354,6 +393,13 @@ groups:
             required: true
             description: |
               The name of the token file to use.
+          - name: timeout
+            type: string
+            format: duration
+            default: 60s
+            description: |
+              Raise an error if the operation does not complete in the given
+              period of time.
       - name: link
         related_commands: [token]
         description: |

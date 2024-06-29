@@ -68,6 +68,13 @@ Listeners:    1
   </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
   </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
+- <h3 id="timeout">--timeout <span class="attribute-info">string (duration)</span></h3>
+
+  Raise an error if the operation does not complete in the given
+  period of time.
+
+  <table class="fields"><tr><th>Default</th><td><code>60s</code></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
 - <h3 id="namespace">--namespace <span class="attribute-info">string</span></h3>
 
   Set the namespace.

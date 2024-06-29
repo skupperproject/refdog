@@ -50,6 +50,13 @@ Connector "<name>" is deleted.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
+- <h3 id="timeout">--timeout <span class="attribute-info">string (duration)</span></h3>
+
+  Raise an error if the operation does not complete in the given
+  period of time.
+
+  <table class="fields"><tr><th>Default</th><td><code>60s</code></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
 - <h3 id="namespace">--namespace <span class="attribute-info">string</span></h3>
 
   Set the namespace.

@@ -74,6 +74,13 @@ skupper site update --enable-link-access --service-account app1:alice
   </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
   </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
+- <h3 id="timeout">--timeout <span class="attribute-info">string (duration)</span></h3>
+
+  Raise an error if the operation does not complete in the given
+  period of time.
+
+  <table class="fields"><tr><th>Default</th><td><code>60s</code></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
 - <h3 id="enable-link-access">--enable-link-access <span class="attribute-info">boolean</span></h3>
 
   Allow access for incoming links from remote sites.
