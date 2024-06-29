@@ -73,6 +73,43 @@ skupper listener update backend --port 9090 --output yaml
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
+- <h3 id="routing-key">--routing-key <span class="attribute-info">string</span></h3>
+
+  The identifier used to route traffic from listeners to
+  connectors.  To enable connecting to a service at a
+  remote site, the local listener and the remote connector
+  must have matching routing keys.
+
+  <table class="fields"><tr><th>Default</th><td>_Value of name_</td><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/routing-key.html">Routing key concept</a></td></table>
+
+- <h3 id="host">--host <span class="attribute-info">string</span></h3>
+
+  The hostname or IP address of the local listener.  Clients
+  at this site use the listener host and port to
+  establish connections to the remote service.
+
+  <table class="fields"><tr><th>Default</th><td>_Value of name_</td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
+- <h3 id="tls-secret">--tls-secret <span class="attribute-info">string</span></h3>
+
+  The name of a Kubernetes secret containing TLS
+  credentials.  The secret contains the trusted server
+  certificate (typically a CA).
+  
+  It can optionally include a client certificate and key for
+  mutual TLS.
+  
+  This option is used when setting up router-to-server TLS
+  encryption.
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a></td></table>
+
+- <h3 id="type">--type <span class="attribute-info">string</span></h3>
+
+  The listener type.
+
+  <table class="fields"><tr><th>Default</th><td><code>tcp</code></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
 - <h3 id="output">--output <span class="attribute-info">string</span></h3>
 
   Print resources to the console instead of submitting

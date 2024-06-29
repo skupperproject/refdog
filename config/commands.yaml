@@ -31,13 +31,19 @@ standard_options:
   # Link options
   - name: cost
     property: cost
-  # Connector options
+  # Connector and listener options
   - name: port
     property: port
     positional: true
   - name: routing-key
     property: routingKey
     default: _Value of name_
+  - name: host
+    property: host
+    default: _Value of name_
+  - name: type
+    property: type
+  # Connector options
   - name: selector
     property: selector
     default: app=<value-of-name>
@@ -54,20 +60,11 @@ standard_options:
     links:
       - name: Kubernetes workloads
         url: https://kubernetes.io/docs/concepts/workloads/
-  - name: host
-    property: host
-    description: |
-      The hostname or IP address of the server.
-
-      This is an alternative to setting the `--selector` or
-      `--workload` options.
   - name: include-not-ready
     property: includeNotReady
     links:
       - name: Kubernetes pod lifecycle
         url: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
-  - name: type
-    property: type
   # TLS options
   - name: tls-secret
     property: tlsCredentials
@@ -348,6 +345,12 @@ groups:
           - name: name
           - name: port
             required: true
+          - name: host
+            description: |
+              The hostname or IP address of the server.
+
+              This is an alternative to setting the `--selector` or
+              `--workload` options.
       - name: connector update
         related_commands: ["listener update"]
         description: |
@@ -370,6 +373,12 @@ groups:
           - name: port
             required: false
             positional: false
+          - name: host
+            description: |
+              The hostname or IP address of the server.
+
+              This is an alternative to setting the `--selector` or
+              `--workload` options.
       - name: connector delete
         related_commands: ["listener delete"]
         description: |
@@ -429,26 +438,11 @@ groups:
         output: |
           Waiting for status...
           Listener "<name>" is ready.
-        inherit_standard_options: [output, namespace, context, platform, help]
+        inherit_standard_options: [name, port, routing-key, host, tls-secret, type, output, namespace, context, platform, help]
         options:
           - name: name
-            type: string
-            required: true
             description: |
               The name of the listener resource.
-          - name: port
-            property: port
-            positional: true
-          - name: routing-key
-            property: routingKey
-            default: _Value of name_
-          - name: host
-            property: host
-            default: _Value of name_
-          - name: tls-secret
-            property: tlsCredentials
-          - name: type
-            property: type
       - name: listener update
         related_commands: ["connector update"]
         description: |
@@ -465,7 +459,7 @@ groups:
         output: |
           Waiting for update to complete...
           Listener "<name>" is updated.
-        inherit_standard_options: [name, output, namespace, context, platform, help]
+        inherit_standard_options: [name, port, routing-key, host, tls-secret, type, output, namespace, context, platform, help]
         options:
           - name: name
           - name: port

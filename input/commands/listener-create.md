@@ -86,10 +86,9 @@ skupper listener create backend 8080 --output yaml
 
 - <h3 id="host">--host <span class="attribute-info">string</span></h3>
 
-  The hostname or IP address of the server.
-  
-  This is an alternative to setting the `--selector` or
-  `--workload` options.
+  The hostname or IP address of the local listener.  Clients
+  at this site use the listener host and port to
+  establish connections to the remote service.
 
   <table class="fields"><tr><th>Default</th><td>_Value of name_</td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 

@@ -71,6 +71,15 @@ skupper connector update backend --port 9090 --output yaml
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
+- <h3 id="host">--host <span class="attribute-info">string</span></h3>
+
+  The hostname or IP address of the server.
+  
+  This is an alternative to setting the `--selector` or
+  `--workload` options.
+
+  <table class="fields"><tr><th>Default</th><td>_Value of name_</td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
 - <h3 id="routing-key">--routing-key <span class="attribute-info">string</span></h3>
 
   The identifier used to route traffic from listeners to
@@ -99,15 +108,6 @@ skupper connector update backend --port 9090 --output yaml
   `--host` options.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/workloads/">Kubernetes workloads</a></td></table>
-
-- <h3 id="host">--host <span class="attribute-info">string</span></h3>
-
-  The hostname or IP address of the server.
-  
-  This is an alternative to setting the `--selector` or
-  `--workload` options.
-
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="include-not-ready">--include-not-ready <span class="attribute-info">boolean</span></h3>
 
