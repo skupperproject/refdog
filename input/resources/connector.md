@@ -121,7 +121,7 @@ spec:
   If set, include server pods that are not in the ready
   state.
 
-  <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes</td></table>
+  <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/">Kubernetes pod lifecycle</a></td></table>
 
 - <h3 id="type">type <span class="attribute-info">string</span></h3>
 

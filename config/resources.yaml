@@ -131,8 +131,8 @@ groups:
             - name: cost
               default: 1
               description: |
-                The configured "expense" of sending traffic over the
-                link.
+                The configured routing cost of sending traffic over
+                the link.
               links:
                 - name: Load balancing
                   url: ""
@@ -315,6 +315,9 @@ groups:
                 If set, include server pods that are not in the ready
                 state.
               platforms: [Kubernetes]
+              links:
+                - name: Kubernetes pod lifecycle
+                  url: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
             - name: type
               default: tcp
               description: |

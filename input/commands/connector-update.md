@@ -24,7 +24,7 @@ Update a connector.
 ## Usage
 
 ~~~ shell
-skupper connector update <name> [options]
+skupper connector update <name> <port> [options]
 ~~~
 
 </section>
@@ -63,22 +63,24 @@ skupper connector update backend --port 9090 --output yaml
 
 - <h3 id="name">name <span class="attribute-info">string, required</span></h3>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  The name of the resource to be updated.
 
-- <h3 id="port">--port <span class="attribute-info">integer</span></h3>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+
+- <h3 id="output">--output <span class="attribute-info">string</span></h3>
+
+  Print the resource to the console in a structured output format
+  instead of submitting it to the Skupper controller.
+
+  <table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
+  </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
+  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
+- <h3 id="port">port <span class="attribute-info">integer, required</span></h3>
 
   The port on the target workload to forward traffic to.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
-
-- <h3 id="host">--host <span class="attribute-info">string</span></h3>
-
-  The hostname or IP address of the server.
-  
-  This is an alternative to setting the `--selector` or
-  `--workload` options.
-
-  <table class="fields"><tr><th>Default</th><td>_Value of name_</td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="routing-key">--routing-key <span class="attribute-info">string</span></h3>
 
@@ -88,6 +90,20 @@ skupper connector update backend --port 9090 --output yaml
   have matching routing keys.
 
   <table class="fields"><tr><th>Default</th><td>_Value of name_</td><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/routing-key.html">Routing key concept</a></td></table>
+
+- <h3 id="host">--host <span class="attribute-info">string</span></h3>
+
+  The hostname or IP address of the server.  This is an
+  alternative to `selector` for specifying the target
+  server.
+
+  <table class="fields"><tr><th>Default</th><td>_Value of name_</td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
+- <h3 id="type">--type <span class="attribute-info">string</span></h3>
+
+  The connector type.
+
+  <table class="fields"><tr><th>Default</th><td><code>tcp</code></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="selector">--selector <span class="attribute-info">string</span></h3>
 
@@ -116,34 +132,6 @@ skupper connector update backend --port 9090 --output yaml
 
   <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/">Kubernetes pod lifecycle</a></td></table>
 
-- <h3 id="type">--type <span class="attribute-info">string</span></h3>
-
-  The connector type.
-
-  <table class="fields"><tr><th>Default</th><td><code>tcp</code></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
-
-- <h3 id="tls-secret">--tls-secret <span class="attribute-info">string</span></h3>
-
-  The name of a Kubernetes secret containing the trusted
-  server certificate (typically a CA).
-  
-  It can optionally include a client certificate and key for
-  mutual TLS.
-  
-  This option is used when setting up client-to-router TLS
-  encryption.
-
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a></td></table>
-
-- <h3 id="output">--output <span class="attribute-info">string</span></h3>
-
-  Print resources to the console instead of submitting
-  them to the Skupper controller.
-
-  <table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
-  </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
-  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
-
 - <h3 id="namespace">--namespace <span class="attribute-info">string</span></h3>
 
   Set the namespace.
@@ -153,6 +141,12 @@ skupper connector update backend --port 9090 --output yaml
 - <h3 id="context">--context <span class="attribute-info">string</span></h3>
 
   Set the kubeconfig context.
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
+
+- <h3 id="kubeconfig">--kubeconfig <span class="attribute-info">string</span></h3>
+
+  Set the path to the kubeconfig file.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
 

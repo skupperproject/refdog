@@ -63,7 +63,9 @@ skupper listener update backend --port 9090 --output yaml
 
 - <h3 id="name">name <span class="attribute-info">string, required</span></h3>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  The name of the resource to be updated.
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
 - <h3 id="port">--port <span class="attribute-info">integer</span></h3>
 
@@ -72,6 +74,15 @@ skupper listener update backend --port 9090 --output yaml
   the remote service.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
+- <h3 id="output">--output <span class="attribute-info">string</span></h3>
+
+  Print the resource to the console in a structured output format
+  instead of submitting it to the Skupper controller.
+
+  <table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
+  </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
+  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="routing-key">--routing-key <span class="attribute-info">string</span></h3>
 
@@ -110,15 +121,6 @@ skupper listener update backend --port 9090 --output yaml
 
   <table class="fields"><tr><th>Default</th><td><code>tcp</code></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
-- <h3 id="output">--output <span class="attribute-info">string</span></h3>
-
-  Print resources to the console instead of submitting
-  them to the Skupper controller.
-
-  <table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
-  </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
-  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
-
 - <h3 id="namespace">--namespace <span class="attribute-info">string</span></h3>
 
   Set the namespace.
@@ -128,6 +130,12 @@ skupper listener update backend --port 9090 --output yaml
 - <h3 id="context">--context <span class="attribute-info">string</span></h3>
 
   Set the kubeconfig context.
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
+
+- <h3 id="kubeconfig">--kubeconfig <span class="attribute-info">string</span></h3>
+
+  Set the path to the kubeconfig file.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
 

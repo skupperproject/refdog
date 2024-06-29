@@ -1,5 +1,7 @@
 from resources import *
 
+import fnmatch
+
 def generate(model):
     debug("Generating commands")
 
@@ -292,20 +294,26 @@ class Command(ModelObject):
             self.errors.append(Error(self, error_data))
 
     def merge_option_data(self):
-        inherited_options = self.data.get("inherit_standard_options", [])
-        standard_option_data = {x["name"]: x for x in self.model.data.get("standard_options", [])}
+        inherited_option_data = dict()
+
+        for pattern in self.data.get("inherit_options", []):
+            for key, data in self.model.data["options"].items():
+                if fnmatch.fnmatchcase(key, pattern):
+                    inherited_option_data[data["name"]] = data
+            # for else? XXX
+
         specific_option_data = {x["name"]: x for x in self.data.get("options", [])}
 
-        for name in inherited_options:
-            if name not in standard_option_data:
-                fail(f"Option '{name}' not in standard options")
+        # for name in inherited_options:
+        #     if name not in standard_option_data:
+        #         fail(f"Option '{name}' not in standard options")
 
-        option_names = list(specific_option_data.keys()) + \
-            [x for x in inherited_options if x not in specific_option_data]
+        inherited_option_names = [x for x in inherited_option_data if x not in specific_option_data]
+        option_names = list(specific_option_data.keys()) + inherited_option_names
         option_data = dict()
 
         for name in option_names:
-            option_data[name] = dict(standard_option_data.get(name, {}))
+            option_data[name] = dict(inherited_option_data.get(name, {}))
             option_data[name].update(specific_option_data.get(name, {}))
 
         return option_data.values()

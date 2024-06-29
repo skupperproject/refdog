@@ -68,6 +68,12 @@ You can now safely delete <file>.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
 
+- <h3 id="kubeconfig">--kubeconfig <span class="attribute-info">string</span></h3>
+
+  Set the path to the kubeconfig file.
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
+
 - <h3 id="platform">--platform <span class="attribute-info">string</span></h3>
 
   Set the Skupper platform.

@@ -67,8 +67,8 @@ status:    # Status properties
 
 - <h3 id="cost">cost <span class="attribute-info">integer</span></h3>
 
-  The configured "expense" of sending traffic over the
-  link.
+  The configured routing cost of sending traffic over
+  the link.
 
   <table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="">Load balancing</a></td></table>
 

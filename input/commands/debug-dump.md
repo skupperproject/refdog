@@ -18,7 +18,7 @@ Generate a debug dump file.
 ## Usage
 
 ~~~ shell
-skupper debug dump [options]
+skupper debug dump <file> [options]
 ~~~
 
 </section>
@@ -37,6 +37,10 @@ Debug dump file generated at <file>.
 
 ## Options
 
+- <h3 id="file">file <span class="attribute-info">string, required</span></h3>
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+
 - <h3 id="namespace">--namespace <span class="attribute-info">string</span></h3>
 
   Set the namespace.
@@ -46,6 +50,12 @@ Debug dump file generated at <file>.
 - <h3 id="context">--context <span class="attribute-info">string</span></h3>
 
   Set the kubeconfig context.
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
+
+- <h3 id="kubeconfig">--kubeconfig <span class="attribute-info">string</span></h3>
+
+  Set the path to the kubeconfig file.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
 

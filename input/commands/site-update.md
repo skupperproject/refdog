@@ -63,7 +63,16 @@ skupper site update --enable-link-access --service-account app1:alice
   If not specified, the name is that of the site
   associated with the current namespace.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+
+- <h3 id="output">--output <span class="attribute-info">string</span></h3>
+
+  Print the resource to the console in a structured output format
+  instead of submitting it to the Skupper controller.
+
+  <table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
+  </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
+  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="enable-link-access">--enable-link-access <span class="attribute-info">boolean</span></h3>
 
@@ -87,15 +96,6 @@ skupper site update --enable-link-access --service-account app1:alice
 
   <table class="fields"><tr><th>Default</th><td><code>skupper:skupper-controller</code></td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/security/service-accounts/">Kubernetes service accounts</a></td></table>
 
-- <h3 id="output">--output <span class="attribute-info">string</span></h3>
-
-  Print resources to the console instead of submitting
-  them to the Skupper controller.
-
-  <table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
-  </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
-  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
-
 - <h3 id="namespace">--namespace <span class="attribute-info">string</span></h3>
 
   Set the namespace.
@@ -105,6 +105,12 @@ skupper site update --enable-link-access --service-account app1:alice
 - <h3 id="context">--context <span class="attribute-info">string</span></h3>
 
   Set the kubeconfig context.
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
+
+- <h3 id="kubeconfig">--kubeconfig <span class="attribute-info">string</span></h3>
+
+  Set the path to the kubeconfig file.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
 

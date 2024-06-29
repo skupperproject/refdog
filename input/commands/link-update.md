@@ -44,7 +44,18 @@ Link "<name>" is updated.
 
 - <h3 id="name">name <span class="attribute-info">string, required</span></h3>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  The name of the resource to be created.
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+
+- <h3 id="output">--output <span class="attribute-info">string</span></h3>
+
+  Print the resource to the console in a structured output format
+  instead of submitting it to the Skupper controller.
+
+  <table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
+  </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
+  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="tls-secret">--tls-secret <span class="attribute-info">string</span></h3>
 
@@ -59,19 +70,10 @@ Link "<name>" is updated.
 
 - <h3 id="cost">--cost <span class="attribute-info">integer</span></h3>
 
-  The configured "expense" of sending traffic over the
-  link.
+  The configured routing cost of sending traffic over
+  the link.
 
   <table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="">Load balancing</a></td></table>
-
-- <h3 id="output">--output <span class="attribute-info">string</span></h3>
-
-  Print resources to the console instead of submitting
-  them to the Skupper controller.
-
-  <table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
-  </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
-  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="namespace">--namespace <span class="attribute-info">string</span></h3>
 
@@ -82,6 +84,12 @@ Link "<name>" is updated.
 - <h3 id="context">--context <span class="attribute-info">string</span></h3>
 
   Set the kubeconfig context.
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
+
+- <h3 id="kubeconfig">--kubeconfig <span class="attribute-info">string</span></h3>
+
+  Set the path to the kubeconfig file.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
 

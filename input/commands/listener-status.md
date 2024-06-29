@@ -37,13 +37,13 @@ NAME       STATUS   ROUTING-KEY   HOST       PORT   CONNECTORS
 backend    Ready    backend       backend    8080   1
 database   Ready    database      database   5432   1
 
-$ skupper connector status backend
+$ skupper listener status backend
 Name:         backend
 Status:       Ready
 Routing key:  backend
 Host:         backend
 Port:         8080
-Connectors:    1
+Connectors:   1
 ~~~
 
 </section>
@@ -54,14 +54,14 @@ Connectors:    1
 
 - <h3 id="name">name <span class="attribute-info">string, optional</span></h3>
 
-  The name of the listener resource.
+  An optional resource name.  If set, the status command reports
+  status for the named resource only.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
 - <h3 id="output">--output <span class="attribute-info">string</span></h3>
 
-  Print resources to the console instead of submitting
-  them to the Skupper controller.
+  Print status to the console in a structured output format.
 
   <table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
   </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
@@ -76,6 +76,12 @@ Connectors:    1
 - <h3 id="context">--context <span class="attribute-info">string</span></h3>
 
   Set the kubeconfig context.
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
+
+- <h3 id="kubeconfig">--kubeconfig <span class="attribute-info">string</span></h3>
+
+  Set the path to the kubeconfig file.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
 
