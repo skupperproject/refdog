@@ -61,7 +61,8 @@ You can now safely delete <file>.
   Raise an error if the operation does not complete in the given
   period of time.
 
-  <table class="fields"><tr><th>Default</th><td><code>60s</code></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
+  </td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="namespace">--namespace <span class="attribute-info">string</span></h3>
 

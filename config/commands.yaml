@@ -150,7 +150,7 @@ options:
   connector/selector:
     name: selector
     property: selector
-    default: app=<value-of-name>
+    default: app=[value-of-name]
   connector/workload:
     name: workload
     type: string

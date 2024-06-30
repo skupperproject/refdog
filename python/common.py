@@ -1,5 +1,6 @@
 from plano import *
 
+import html
 import mistune
 
 def indent(text, spaces):
@@ -54,10 +55,13 @@ def generate_attribute_fields(attr):
     if attr.default is not None and getattr(attr, "group", None) != "status":
         default = attr.default
 
-        if attr.default is True:
-            default = str(attr.default).lower()
-        elif isinstance(attr.default, str) and not attr.default.startswith("_"):
-            default = f"<code>{default}</code>"
+        if default is True:
+            default = str(default).lower()
+        elif isinstance(default, str):
+            if not default.startswith("_"):
+                default = f"`{default}`"
+
+            default = mistune.html(default)
 
         rows.append(f"<tr><th>Default</th><td>{default}</td>")
 

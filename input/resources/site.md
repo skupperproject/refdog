@@ -86,7 +86,8 @@ spec:
 
   Configure external access for links from remote sites.
 
-  <table class="fields"><tr><th>Default</th><td><code>none</code></td><tr><th>Choices</th><td><table class="choices"><tr><th><code>none</code></th><td><p>No linking to this site is permitted.</p>
+  <table class="fields"><tr><th>Default</th><td><p><code>none</code></p>
+  </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>none</code></th><td><p>No linking to this site is permitted.</p>
   </td></tr><tr><th><code>default</code></th><td><p>Use the default link access.  On OpenShift, the default is <code>route</code>.  For other Kubernetes flavors, the default is <code>loadbalancer</code>.</p>
   </td></tr><tr><th><code>route</code></th><td><p>Use an OpenShift route.  <em>OpenShift only.</em></p>
   </td></tr><tr><th><code>loadbalancer</code></th><td><p>Use a Kubernetes load balancer.  <em>Kubernetes only.</em></p>
@@ -97,7 +98,8 @@ spec:
   The Kubernetes service account under which to run the
   Skupper controller.
 
-  <table class="fields"><tr><th>Default</th><td><code>skupper:skupper-controller</code></td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/security/service-accounts/">Kubernetes service accounts</a></td></table>
+  <table class="fields"><tr><th>Default</th><td><p><code>skupper:skupper-controller</code></p>
+  </td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/security/service-accounts/">Kubernetes service accounts</a></td></table>
 
 - <h3 id="ha">ha <span class="attribute-info">boolean</span></h3>
 

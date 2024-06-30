@@ -77,7 +77,8 @@ skupper site create west --enable-link-access
   Raise an error if the operation does not complete in the given
   period of time.
 
-  <table class="fields"><tr><th>Default</th><td><code>60s</code></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
+  </td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="enable-link-access">--enable-link-access <span class="attribute-info">boolean</span></h3>
 
@@ -89,7 +90,8 @@ skupper site create west --enable-link-access
 
   Configure external access for links from remote sites.
 
-  <table class="fields"><tr><th>Default</th><td><code>default</code></td><tr><th>Choices</th><td><table class="choices"><tr><th><code>default</code></th><td><p>Use the default link access.  On OpenShift, the default is <code>route</code>.  For other Kubernetes flavors, the default is <code>loadbalancer</code>.</p>
+  <table class="fields"><tr><th>Default</th><td><p><code>default</code></p>
+  </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>default</code></th><td><p>Use the default link access.  On OpenShift, the default is <code>route</code>.  For other Kubernetes flavors, the default is <code>loadbalancer</code>.</p>
   </td></tr><tr><th><code>route</code></th><td><p>Use an OpenShift route.  <em>OpenShift only.</em></p>
   </td></tr><tr><th><code>loadbalancer</code></th><td><p>Use a Kubernetes load balancer.  <em>Kubernetes only.</em></p>
   </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/link-access.html">Link access concept</a>, <a href="https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer">Kubernetes load balancer services</a></td></table>
@@ -99,7 +101,8 @@ skupper site create west --enable-link-access
   The Kubernetes service account under which to run the
   Skupper controller.
 
-  <table class="fields"><tr><th>Default</th><td><code>skupper:skupper-controller</code></td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/security/service-accounts/">Kubernetes service accounts</a></td></table>
+  <table class="fields"><tr><th>Default</th><td><p><code>skupper:skupper-controller</code></p>
+  </td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/security/service-accounts/">Kubernetes service accounts</a></td></table>
 
 - <h3 id="namespace">--namespace <span class="attribute-info">string</span></h3>
 

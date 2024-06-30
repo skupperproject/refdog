@@ -114,7 +114,8 @@ spec:
 
   The listener type.
 
-  <table class="fields"><tr><th>Default</th><td><code>tcp</code></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Default</th><td><p><code>tcp</code></p>
+  </td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="options">options <span class="attribute-info">object</span></h3>
 

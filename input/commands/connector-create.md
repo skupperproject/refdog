@@ -87,7 +87,8 @@ skupper connector create backend 8080 --output yaml
   Raise an error if the operation does not complete in the given
   period of time.
 
-  <table class="fields"><tr><th>Default</th><td><code>60s</code></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
+  </td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="routing-key">--routing-key <span class="attribute-info">string</span></h3>
 
@@ -96,7 +97,8 @@ skupper connector create backend 8080 --output yaml
   site, the remote listener and the local connector must
   have matching routing keys.
 
-  <table class="fields"><tr><th>Default</th><td>_Value of name_</td><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/routing-key.html">Routing key concept</a></td></table>
+  <table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
+  </td><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/routing-key.html">Routing key concept</a></td></table>
 
 - <h3 id="host">--host <span class="attribute-info">string</span></h3>
 
@@ -104,13 +106,15 @@ skupper connector create backend 8080 --output yaml
   alternative to `selector` for specifying the target
   server.
 
-  <table class="fields"><tr><th>Default</th><td>_Value of name_</td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
+  </td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="type">--type <span class="attribute-info">string</span></h3>
 
   The connector type.
 
-  <table class="fields"><tr><th>Default</th><td><code>tcp</code></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Default</th><td><p><code>tcp</code></p>
+  </td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="selector">--selector <span class="attribute-info">string</span></h3>
 
@@ -120,7 +124,8 @@ skupper connector create backend 8080 --output yaml
   On Kubernetes, you usually want to use this.  As an
   alternative, you can use `host`.
 
-  <table class="fields"><tr><th>Default</th><td><code>app=<value-of-name></code></td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">Kubernetes label selectors</a>, <a href="https://kubernetes.io/docs/concepts/workloads/pods/">Kubernetes pods</a></td></table>
+  <table class="fields"><tr><th>Default</th><td><p><code>app=[value-of-name]</code></p>
+  </td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">Kubernetes label selectors</a>, <a href="https://kubernetes.io/docs/concepts/workloads/pods/">Kubernetes pods</a></td></table>
 
 - <h3 id="workload">--workload <span class="attribute-info">string (resource name)</span></h3>
 

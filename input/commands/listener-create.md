@@ -81,7 +81,8 @@ skupper listener create backend 8080 --output yaml
   Raise an error if the operation does not complete in the given
   period of time.
 
-  <table class="fields"><tr><th>Default</th><td><code>60s</code></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
+  </td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="port">port <span class="attribute-info">integer, required</span></h3>
 
@@ -98,7 +99,8 @@ skupper listener create backend 8080 --output yaml
   remote site, the local listener and the remote connector
   must have matching routing keys.
 
-  <table class="fields"><tr><th>Default</th><td>_Value of name_</td><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/routing-key.html">Routing key concept</a></td></table>
+  <table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
+  </td><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/routing-key.html">Routing key concept</a></td></table>
 
 - <h3 id="host">--host <span class="attribute-info">string</span></h3>
 
@@ -106,7 +108,8 @@ skupper listener create backend 8080 --output yaml
   at this site use the listener host and port to
   establish connections to the remote service.
 
-  <table class="fields"><tr><th>Default</th><td>_Value of name_</td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
+  </td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="tls-secret">--tls-secret <span class="attribute-info">string</span></h3>
 
@@ -126,7 +129,8 @@ skupper listener create backend 8080 --output yaml
 
   The listener type.
 
-  <table class="fields"><tr><th>Default</th><td><code>tcp</code></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Default</th><td><p><code>tcp</code></p>
+  </td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="namespace">--namespace <span class="attribute-info">string</span></h3>
 

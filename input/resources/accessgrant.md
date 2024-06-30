@@ -64,7 +64,8 @@ status:    # Status properties
   The period of time in which an access token for this
   grant can be redeemed.
 
-  <table class="fields"><tr><th>Default</th><td><code>15m</code></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Default</th><td><p><code>15m</code></p>
+  </td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="code">code <span class="attribute-info">string</span></h3>
 
@@ -144,7 +145,8 @@ status:    # Status properties
   The secret code used to authenticate access tokens
   submitted for redemption.
 
-  <table class="fields"><tr><th>Default</th><td>_Generated_</td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Default</th><td><p><em>Generated</em></p>
+  </td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="status">status <span class="attribute-info">string</span></h3>
 
