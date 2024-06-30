@@ -14,11 +14,11 @@ links:
 <tr><th><a href="site.html">Site commands</a></th><td>Overview of site commands</td></tr>
 <tr><th><a href="site-create.html">Site create</a></th><td><p>Create a site</p>
 </td></tr>
+<tr><th><a href="site-status.html">Site status</a></th><td><p>Display the current status of a site</p>
+</td></tr>
 <tr><th><a href="site-update.html">Site update</a></th><td><p>Change site settings</p>
 </td></tr>
 <tr><th><a href="site-delete.html">Site delete</a></th><td><p>Delete a site</p>
-</td></tr>
-<tr><th><a href="site-status.html">Site status</a></th><td><p>Display the current status of a site</p>
 </td></tr>
 </table>
 
@@ -37,11 +37,11 @@ links:
 <tr><th><a href="link.html">Link commands</a></th><td>Overview of link commands</td></tr>
 <tr><th><a href="link-create.html">Link create</a></th><td><p>Create a link</p>
 </td></tr>
+<tr><th><a href="link-status.html">Link status</a></th><td><p>Display the status of links in the current site</p>
+</td></tr>
 <tr><th><a href="link-update.html">Link update</a></th><td><p>Change link settings</p>
 </td></tr>
 <tr><th><a href="link-delete.html">Link delete</a></th><td><p>Delete a link</p>
-</td></tr>
-<tr><th><a href="link-status.html">Link status</a></th><td><p>Display the status of links in the current site</p>
 </td></tr>
 </table>
 
@@ -52,11 +52,11 @@ links:
 <tr><th><a href="connector.html">Connector commands</a></th><td>Overview of connector commands</td></tr>
 <tr><th><a href="connector-create.html">Connector create</a></th><td><p>Create a connector</p>
 </td></tr>
+<tr><th><a href="connector-status.html">Connector status</a></th><td><p>Display the status of connectors in the current site</p>
+</td></tr>
 <tr><th><a href="connector-update.html">Connector update</a></th><td><p>Update a connector</p>
 </td></tr>
 <tr><th><a href="connector-delete.html">Connector delete</a></th><td><p>Delete a connector</p>
-</td></tr>
-<tr><th><a href="connector-status.html">Connector status</a></th><td><p>Display the status of connectors in the current site</p>
 </td></tr>
 </table>
 
@@ -64,11 +64,11 @@ links:
 <tr><th><a href="listener.html">Listener commands</a></th><td>Overview of listener commands</td></tr>
 <tr><th><a href="listener-create.html">Listener create</a></th><td><p>Create a listener</p>
 </td></tr>
+<tr><th><a href="listener-status.html">Listener status</a></th><td><p>Display the status of listeners in the current site</p>
+</td></tr>
 <tr><th><a href="listener-update.html">Listener update</a></th><td><p>Update a listener</p>
 </td></tr>
 <tr><th><a href="listener-delete.html">Listener delete</a></th><td><p>Delete a listener</p>
-</td></tr>
-<tr><th><a href="listener-status.html">Listener status</a></th><td><p>Display the status of listeners in the current site</p>
 </td></tr>
 </table>
 

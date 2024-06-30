@@ -34,11 +34,11 @@ skupper listener [subcommand] [options]
 <table class="objects">
 <tr><th><a href="listener-create.html">listener create</a></th><td><p>Create a listener</p>
 </td></tr>
+<tr><th><a href="listener-status.html">listener status</a></th><td><p>Display the status of listeners in the current site</p>
+</td></tr>
 <tr><th><a href="listener-update.html">listener update</a></th><td><p>Update a listener</p>
 </td></tr>
 <tr><th><a href="listener-delete.html">listener delete</a></th><td><p>Delete a listener</p>
-</td></tr>
-<tr><th><a href="listener-status.html">listener status</a></th><td><p>Display the status of listeners in the current site</p>
 </td></tr>
 </table>
 

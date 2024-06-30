@@ -34,11 +34,11 @@ skupper link [subcommand] [options]
 <table class="objects">
 <tr><th><a href="link-create.html">link create</a></th><td><p>Create a link</p>
 </td></tr>
+<tr><th><a href="link-status.html">link status</a></th><td><p>Display the status of links in the current site</p>
+</td></tr>
 <tr><th><a href="link-update.html">link update</a></th><td><p>Change link settings</p>
 </td></tr>
 <tr><th><a href="link-delete.html">link delete</a></th><td><p>Delete a link</p>
-</td></tr>
-<tr><th><a href="link-status.html">link status</a></th><td><p>Display the status of links in the current site</p>
 </td></tr>
 </table>
 

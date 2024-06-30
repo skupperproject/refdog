@@ -34,11 +34,11 @@ skupper connector [subcommand] [options]
 <table class="objects">
 <tr><th><a href="connector-create.html">connector create</a></th><td><p>Create a connector</p>
 </td></tr>
+<tr><th><a href="connector-status.html">connector status</a></th><td><p>Display the status of connectors in the current site</p>
+</td></tr>
 <tr><th><a href="connector-update.html">connector update</a></th><td><p>Update a connector</p>
 </td></tr>
 <tr><th><a href="connector-delete.html">connector delete</a></th><td><p>Delete a connector</p>
-</td></tr>
-<tr><th><a href="connector-status.html">connector status</a></th><td><p>Display the status of connectors in the current site</p>
 </td></tr>
 </table>
 

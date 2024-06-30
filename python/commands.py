@@ -249,35 +249,30 @@ class CommandModel:
         debug(f"Loading {self}")
 
         self.data = read_yaml("config/commands.yaml")
-        self.groups = list()
+
+        self.commands = list()
         self.commands_by_name = dict()
+        self.groups = list()
+
+        for command_data in self.data["commands"]:
+            command = Command(self, command_data)
+
+            self.commands.append(command)
+            self.commands_by_name[command.name] = command
 
         for group_data in self.data["groups"]:
             self.groups.append(CommandGroup(self, group_data))
 
-        for group in self.groups:
-            for command in group.commands:
-                self.commands_by_name[command.name] = command
-
     def __repr__(self):
         return self.__class__.__name__
-
-class CommandGroup(ModelObjectGroup):
-    def __init__(self, model, data):
-        super().__init__(model, data)
-
-        self.commands = list()
-
-        for command_data in self.data.get("commands", []):
-            self.commands.append(Command(self.model, self, command_data))
 
 class Command(ModelObject):
     usage = object_property("usage")
     output = object_property("output")
     examples = object_property("examples")
 
-    def __init__(self, model, group, data):
-        super().__init__(model, group, data)
+    def __init__(self, model, data):
+        super().__init__(model, None, data) # XXX group
 
         self.options = list()
         self.options_by_name = dict()
@@ -353,6 +348,15 @@ class Command(ModelObject):
             description = description.replace("@resource_description@", self.resource.description.strip())
 
         return description
+
+class CommandGroup(ModelObjectGroup):
+    def __init__(self, model, data):
+        super().__init__(model, data)
+
+        self.commands = list()
+
+        for command_name in self.data.get("commands", []):
+            self.commands.append(self.model.commands_by_name[command_name])
 
 def option_property(name, default=None):
     def get(obj):
