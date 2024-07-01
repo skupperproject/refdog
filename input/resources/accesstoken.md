@@ -86,10 +86,4 @@ status:    # Status properties
 
   <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
-- <h3 id="status">status <span class="attribute-info">string</span></h3>
-
-  The current state of the resource.
-
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
-
 </section>

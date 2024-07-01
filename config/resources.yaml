@@ -1,5 +1,5 @@
 properties:
-  name:
+  metadata/name:
     name: name
     type: string
     required: true
@@ -8,7 +8,7 @@ properties:
     links:
       - name: Kubernetes object names
         url: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
-  namespace:
+  metadata/namespace:
     name: namespace
     type: string
     description: |
@@ -21,11 +21,11 @@ properties:
     type: object
     description: |
       Additional settings.
-  status:
+  status/status:
     name: status
     description: |
       The current state of the resource.
-  active:
+  status/active:
     name: active
     description: |
       This thing is working.
@@ -56,7 +56,7 @@ resources:
           spec:
             linkAccess: default
     metadata:
-      inherit_properties: [name, namespace]
+      inherit_properties: [metadata/*]
       properties:
         - name: name
     spec:
@@ -113,7 +113,7 @@ resources:
       Links are not usually created directly.  Instead, you
       typically use an access token to obtain a link.
     metadata:
-      inherit_properties: [name, namespace]
+      inherit_properties: [metadata/*]
     spec:
       inherit_properties: [options]
       properties:
@@ -141,7 +141,7 @@ resources:
         - name: noClientAuth
           hidden: true
     status:
-      inherit_properties: [status, active]
+      inherit_properties: [status/*]
       properties:
         - name: configured
   - name: AccessGrant
@@ -157,7 +157,7 @@ resources:
       The `code`, `url`, and `ca` properties of the resource
       status are used to generate access tokens from the grant.
     metadata:
-      inherit_properties: [name, namespace]
+      inherit_properties: [metadata/*]
     spec:
       inherit_properties: [options]
       properties:
@@ -182,7 +182,7 @@ resources:
           notes: |
             What is this?
     status:
-      inherit_properties: [status]
+      inherit_properties: [status/status]
       properties:
         - name: redeemed
           description: |
@@ -218,7 +218,7 @@ resources:
       site.  An access token contains the URL and secret code of a
       corresponding access grant.
     metadata:
-      inherit_properties: [name, namespace]
+      inherit_properties: [metadata/*]
     spec:
       inherit_properties: [options]
       properties:
@@ -261,7 +261,7 @@ resources:
             port: 8080
             selector: app=backend
     metadata:
-      inherit_properties: [name, namespace]
+      inherit_properties: [metadata/*]
     spec:
       inherit_properties: [options]
       properties:
@@ -322,7 +322,7 @@ resources:
           description: |
             The connector type.
     status:
-      inherit_properties: [status, active]
+      inherit_properties: [status/*]
   - name: Listener
     related_resources: [Connector]
     description: |
@@ -345,7 +345,7 @@ resources:
             port: 8080
             host: backend
     metadata:
-      inherit_properties: [name, namespace]
+      inherit_properties: [metadata/*]
     spec:
       inherit_properties: [options]
       properties:
@@ -388,7 +388,7 @@ resources:
           description: |
             The listener type.
     status:
-      inherit_properties: [status, active]
+      inherit_properties: [status/*]
 groups:
   - name: Site configuration
     resources:
