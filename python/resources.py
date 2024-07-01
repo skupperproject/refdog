@@ -1,5 +1,7 @@
 from common import *
 
+import fnmatch
+
 def generate(model):
     debug("Generating resources")
 
@@ -187,18 +189,19 @@ class ResourceModel:
 
         self.data = read_yaml("config/resources.yaml")
 
-        self.groups = list()
         self.resources = list()
         self.resources_by_name = dict()
+        self.groups = list()
         self.crds_by_name = dict()
+
+        for resource_data in self.data["resources"]:
+            resource = Resource(self, resource_data)
+
+            self.resources.append(resource)
+            self.resources_by_name[resource.name] = resource
 
         for group_data in self.data["groups"]:
             self.groups.append(ResourceGroup(self, group_data))
-
-        for group in self.groups:
-            for resource in group.resources:
-                self.resources.append(resource)
-                self.resources_by_name[resource.name] = resource
 
         with working_dir("crds"):
             for crd_file in list_dir():
@@ -267,21 +270,12 @@ class ResourceModel:
         except KeyError:
             return {}
 
-class ResourceGroup(ModelObjectGroup):
-    def __init__(self, model, data):
-        super().__init__(model, data)
-
-        self.resources = list()
-
-        for resource_data in self.data.get("resources", []):
-            self.resources.append(Resource(self.model, self, resource_data))
-
 class Resource(ModelObject):
     examples = object_property("examples", default=[])
     description = object_property("description")
 
-    def __init__(self, model, group, data):
-        super().__init__(model, group, data)
+    def __init__(self, model, data):
+        super().__init__(model, None, data)
 
         self.metadata_properties = list()
         self.metadata_properties_by_name = dict()
@@ -311,24 +305,40 @@ class Resource(ModelObject):
             self.status_properties_by_name[prop.name] = prop
 
     def merge_property_data(self, section):
+        inherited_prop_data = dict()
+
         # XXX Check that the props are well formed here
 
-        inherited_props = self.data[section].get("inherit_standard_properties", [])
-        standard_prop_data = {x["name"]: x for x in self.model.data.get("standard_properties", [])}
+        for pattern in self.data[section].get("inherit_properties", []):
+            for key, data in self.model.data["properties"].items():
+                if fnmatch.fnmatchcase(key, pattern):
+                    inherited_prop_data[data["name"]] = data
+            # for else? XXX
+
         specific_prop_data = {x["name"]: x for x in self.data[section].get("properties", [])}
 
-        for name in inherited_props:
-            if name not in standard_prop_data:
-                fail(f"Property '{name}' not in standard properties")
+        # for name in inherited_props:
+        #     if name not in standard_prop_data:
+        #         fail(f"Property '{name}' not in standard properties")
 
-        prop_names = list(specific_prop_data.keys()) + [x for x in inherited_props if x not in specific_prop_data]
+        inherited_prop_names = [x for x in inherited_prop_data if x not in specific_prop_data]
+        prop_names = list(specific_prop_data.keys()) + inherited_prop_names
         prop_data = dict()
 
         for name in prop_names:
-            prop_data[name] = dict(standard_prop_data.get(name, {}))
+            prop_data[name] = dict(inherited_prop_data.get(name, {}))
             prop_data[name].update(specific_prop_data.get(name, {}))
 
         return prop_data.values()
+
+class ResourceGroup(ModelObjectGroup):
+    def __init__(self, model, data):
+        super().__init__(model, data)
+
+        self.resources = list()
+
+        for resource_name in self.data.get("resources", []):
+            self.resources.append(self.model.resources_by_name[resource_name])
 
 def property_property(name):
     def get(obj):
