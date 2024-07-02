@@ -35,9 +35,9 @@ links:
 
 <table class="objects">
 <tr><th><a href="service.html">Service</a></th><td></td></tr>
-<tr><th><a href="listener.html">Listener</a></th><td><p>Binds a connection endpoint in the local site to target workloads in remote sites</p>
-</td></tr>
 <tr><th><a href="connector.html">Connector</a></th><td><p>Binds target workloads in the local site to listeners in remote sites</p>
+</td></tr>
+<tr><th><a href="listener.html">Listener</a></th><td><p>Binds a connection endpoint in the local site to target workloads in remote sites</p>
 </td></tr>
 <tr><th><a href="routing-key.html">Routing key</a></th><td></td></tr>
 </table>

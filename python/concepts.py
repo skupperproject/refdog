@@ -91,19 +91,25 @@ class ConceptModel:
         debug(f"Loading {self}")
 
         self.data = read_yaml("config/concepts.yaml")
-        self.concepts_by_name = dict()
 
+        self.concepts = list()
+        self.concepts_by_name = dict()
         self.groups = list()
+
+        for concept_data in self.data["concepts"]:
+            concept = Concept(self, None, concept_data)
+
+            self.concepts.append(concept)
+            self.concepts_by_name[concept.name] = concept
 
         for group_data in self.data["groups"]:
             self.groups.append(ConceptGroup(self, group_data))
 
-        for group in self.groups:
-            for concept in group.concepts:
-                self.concepts_by_name[concept.name] = concept
-
     def __repr__(self):
         return "concept model"
+
+class Concept(ModelObject):
+    pass
 
 class ConceptGroup(ModelObjectGroup):
     def __init__(self, model, data):
@@ -111,8 +117,5 @@ class ConceptGroup(ModelObjectGroup):
 
         self.concepts = list()
 
-        for concept_data in self.data.get("concepts", []):
-            self.concepts.append(Concept(self.model, self, concept_data))
-
-class Concept(ModelObject):
-    pass
+        for concept_name in self.data.get("concepts", []):
+            self.concepts.append(self.model.concepts_by_name[concept_name])
