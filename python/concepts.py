@@ -30,21 +30,20 @@ def generate(model):
         append("<table class=\"objects\">")
 
         for concept in group.concepts:
-            name = capitalize(concept.rename)
+            title = concept.title.removesuffix(" concept")
             description = nvl(concept.description, "").replace("\n", " ")
             description = description.split(".")[0]
             description = mistune.html(description)
 
-            append(f"<tr><th><a href=\"{concept.id}.html\">{name}</a></th><td>{description}</td></tr>")
+            append(f"<tr><th><a href=\"{concept.href}\">{title}</a></th><td>{description}</td></tr>")
 
         append("</table>")
         append()
 
     write("input/concepts/index.md", "\n".join(lines))
 
-    for group in model.groups:
-        for concept in group.concepts:
-            generate_concept(concept)
+    for concept in model.concepts:
+        generate_concept(concept)
 
 def generate_concept(concept):
     debug(f"Generating {concept}")
@@ -62,7 +61,7 @@ def generate_concept(concept):
     append(generate_object_links(concept))
     append("---")
     append()
-    append(f"# {capitalize(concept.rename)} concept")
+    append(f"# {concept.title}")
     append()
     append("<section>")
     append()

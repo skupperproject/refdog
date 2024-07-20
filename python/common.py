@@ -20,10 +20,10 @@ def generate_object_links(obj):
         if not other:
             return
 
-        type = other.__class__.__name__.lower()
+        href = other.href.removeprefix("{{site_prefix}}")
 
         lines.append(f"  - name: {other.title}")
-        lines.append(f"    url: {other.href}")
+        lines.append(f"    url: {href}")
 
     for other in obj.corresponding_objects:
         add_link(other)
@@ -170,7 +170,7 @@ class ModelObject:
     @property
     def href(self):
         type = self.__class__.__name__.lower()
-        return f"/{plural(type)}/{self.id}.html"
+        return f"{{{{site_prefix}}}}/{plural(type)}/{self.id}.html"
 
     @property
     def corresponding_objects(self):

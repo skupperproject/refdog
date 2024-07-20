@@ -32,20 +32,20 @@ def generate(model):
         append("<table class=\"objects\">")
 
         for resource in group.resources:
+            title = resource.title.removesuffix(" resource")
             description = nvl(resource.description, "").replace("\n", " ")
             description = description.split(".")[0]
             description = mistune.html(description)
 
-            append(f"<tr><th><a href=\"{resource.id}.html\">{resource.rename}</a></th><td>{description}</td></tr>")
+            append(f"<tr><th><a href=\"{resource.href}\">{title}</a></th><td>{description}</td></tr>")
 
         append("</table>")
         append()
 
     write("input/resources/index.md", "\n".join(lines))
 
-    for group in model.groups:
-        for resource in group.resources:
-            generate_resource(resource)
+    for resource in model.resources:
+        generate_resource(resource)
 
 def generate_resource(resource):
     debug(f"Generating {resource}")
