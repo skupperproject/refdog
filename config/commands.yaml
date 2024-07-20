@@ -615,36 +615,17 @@ groups:
   - name: Site configuration
     commands:
       - site
-      # - site create
-      # - site status
-      # - site update
-      # - site delete
   - name: Site linking
     commands:
       - token
-      # - token issue
-      # - token redeem
       - link
-      # - link create
-      # - link status
-      # - link update
-      # - link delete
   - name: Service exposure
     commands:
       - connector
-      # - connector create
-      # - connector status
-      # - connector update
-      # - connector delete
       - listener
-      # - listener create
-      # - listener status
-      # - listener update
-      # - listener delete
   - name: Debug operations
     commands:
       - debug
-      # - debug dump
   - name: Other operations
     commands:
       - version
