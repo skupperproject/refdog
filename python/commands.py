@@ -272,7 +272,7 @@ class Command(ModelObject):
     examples = object_property("examples")
 
     def __init__(self, model, data):
-        super().__init__(model, None, data) # XXX group
+        super().__init__(model, data)
 
         self.options = list()
         self.options_by_name = dict()

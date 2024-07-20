@@ -97,7 +97,7 @@ class ConceptModel:
         self.groups = list()
 
         for concept_data in self.data["concepts"]:
-            concept = Concept(self, None, concept_data)
+            concept = Concept(self, concept_data)
 
             self.concepts.append(concept)
             self.concepts_by_name[concept.name] = concept

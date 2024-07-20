@@ -275,7 +275,7 @@ class Resource(ModelObject):
     description = object_property("description")
 
     def __init__(self, model, data):
-        super().__init__(model, None, data)
+        super().__init__(model, data)
 
         self.metadata_properties = list()
         self.metadata_properties_by_name = dict()

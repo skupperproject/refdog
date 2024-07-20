@@ -145,9 +145,8 @@ class ModelObject:
     links = object_property("links", default=[])
     notes = object_property("notes")
 
-    def __init__(self, model, group, data):
+    def __init__(self, model, data):
         self.model = model
-        self.group = group
         self.data = data
 
         debug(f"Loading {self}")
