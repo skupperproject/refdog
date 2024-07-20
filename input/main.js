@@ -136,15 +136,15 @@ window.addEventListener("load", () => {
     window.addEventListener("hashchange", updateHeadingSelection);
 });
 
-window.addEventListener("load", () => {
-    const updateScrollState = () => {
-        if (window.scrollY > 20) {
-            $("body").classList.add("scrolled");
-        } else {
-            $("body").classList.remove("scrolled");
-        }
-    };
+// window.addEventListener("load", () => {
+//     const updateScrollState = () => {
+//         if (window.scrollY > 20) {
+//             $("body").classList.add("scrolled");
+//         } else {
+//             $("body").classList.remove("scrolled");
+//         }
+//     };
 
-    updateScrollState();
-    window.addEventListener("scroll", updateScrollState);
-});
+//     updateScrollState();
+//     window.addEventListener("scroll", updateScrollState);
+// });
