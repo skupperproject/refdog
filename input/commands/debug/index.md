@@ -2,7 +2,7 @@
 body_class: object command
 ---
 
-# Debug command
+# Debug commands
 
 <section>
 
@@ -25,7 +25,7 @@ skupper debug [subcommand] [options]
 ## Subcommands
 
 <table class="objects">
-<tr><th><a href="debug-dump.html">debug dump</a></th><td><p>Generate a debug dump file</p>
+<tr><th><a href="dump.html">dump</a></th><td><p>Generate a debug dump file</p>
 </td></tr>
 </table>
 

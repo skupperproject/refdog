@@ -1,21 +1,19 @@
 ---
 body_class: object command
 links:
-  - name: Access grant concept
-    url: /concepts/access-grant.html
-  - name: Access token concept
-    url: /concepts/access-token.html
-  - name: AccessGrant resource
-    url: /resources/accessgrant.html
-  - name: AccessToken resource
-    url: /resources/accesstoken.html
+  - name: Connector concept
+    url: /concepts/connector.html
+  - name: Connector resource
+    url: /resources/connector.html
+  - name: Listener command
+    url: /commands/listener.html
 ---
 
-# Token command
+# Connector commands
 
 <section>
 
-Display help for token commands and exit.
+Display help for connector commands and exit.
 
 </section>
 
@@ -24,7 +22,7 @@ Display help for token commands and exit.
 ## Usage
 
 ~~~ shell
-skupper token [subcommand] [options]
+skupper connector [subcommand] [options]
 ~~~
 
 </section>
@@ -34,9 +32,13 @@ skupper token [subcommand] [options]
 ## Subcommands
 
 <table class="objects">
-<tr><th><a href="token-issue.html">token issue</a></th><td><p>Issue a token file redeemable for a link to the current site</p>
+<tr><th><a href="create.html">create</a></th><td><p>Create a connector</p>
 </td></tr>
-<tr><th><a href="token-redeem.html">token redeem</a></th><td><p>Redeem a token file in order to create a link to a remote site</p>
+<tr><th><a href="status.html">status</a></th><td><p>Display the status of connectors in the current site</p>
+</td></tr>
+<tr><th><a href="update.html">update</a></th><td><p>Update a connector</p>
+</td></tr>
+<tr><th><a href="delete.html">delete</a></th><td><p>Delete a connector</p>
 </td></tr>
 </table>
 

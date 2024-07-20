@@ -210,6 +210,9 @@ class ModelObject:
     @property
     def related_commands(self):
         for name in self.data.get("related_commands", []):
+            # XXX
+            name = name.replace(" ", "/")
+
             try:
                 yield self.model.command_model.commands_by_name[name]
             except KeyError:

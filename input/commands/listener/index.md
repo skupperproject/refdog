@@ -9,7 +9,7 @@ links:
     url: /commands/connector.html
 ---
 
-# Listener command
+# Listener commands
 
 <section>
 
@@ -32,13 +32,13 @@ skupper listener [subcommand] [options]
 ## Subcommands
 
 <table class="objects">
-<tr><th><a href="listener-create.html">listener create</a></th><td><p>Create a listener</p>
+<tr><th><a href="create.html">create</a></th><td><p>Create a listener</p>
 </td></tr>
-<tr><th><a href="listener-status.html">listener status</a></th><td><p>Display the status of listeners in the current site</p>
+<tr><th><a href="status.html">status</a></th><td><p>Display the status of listeners in the current site</p>
 </td></tr>
-<tr><th><a href="listener-update.html">listener update</a></th><td><p>Update a listener</p>
+<tr><th><a href="update.html">update</a></th><td><p>Update a listener</p>
 </td></tr>
-<tr><th><a href="listener-delete.html">listener delete</a></th><td><p>Delete a listener</p>
+<tr><th><a href="delete.html">delete</a></th><td><p>Delete a listener</p>
 </td></tr>
 </table>
 

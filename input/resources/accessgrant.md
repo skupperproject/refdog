@@ -3,8 +3,8 @@ body_class: object resource
 links:
   - name: AccessToken resource
     url: /resources/accesstoken.html
-  - name: Token issue command
-    url: /commands/token-issue.html
+  - name: Issue command
+    url: /commands/token/issue.html
 ---
 
 # AccessGrant resource

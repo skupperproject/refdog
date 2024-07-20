@@ -3,8 +3,8 @@ body_class: object resource
 links:
   - name: AccessGrant resource
     url: /resources/accessgrant.html
-  - name: Token redeem command
-    url: /commands/token-redeem.html
+  - name: Redeem command
+    url: /commands/token/redeem.html
 ---
 
 # AccessToken resource

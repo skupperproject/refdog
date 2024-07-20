@@ -1,21 +1,26 @@
 ---
 body_class: object command
 links:
-  - name: Connector concept
-    url: /concepts/connector.html
-  - name: Connector resource
-    url: /resources/connector.html
-  - name: Connector command
-    url: /commands/connector.html
-  - name: Listener delete command
-    url: /commands/listener-delete.html
+  - name: Token command
+    url: /commands/token.html
+  - name: Access grant concept
+    url: /concepts/access-grant.html
+  - name: Access token concept
+    url: /concepts/access-token.html
+  - name: AccessGrant resource
+    url: /resources/accessgrant.html
+  - name: AccessToken resource
+    url: /resources/accesstoken.html
+  - name: Issue command
+    url: /commands/token/issue.html
 ---
 
-# Connector delete command
+# Token redeem command
 
 <section>
 
-Delete a connector.
+Redeem a token file in order to create a link to a remote
+site.
 
 </section>
 
@@ -24,7 +29,7 @@ Delete a connector.
 ## Usage
 
 ~~~ shell
-skupper connector delete <name> [options]
+skupper token redeem <file> [options]
 ~~~
 
 </section>
@@ -34,8 +39,9 @@ skupper connector delete <name> [options]
 ## Output
 
 ~~~ console
-Waiting for deletion to complete...
-Connector "<name>" is deleted.
+Waiting for status...
+Link "<name>" is active.
+You can now safely delete <file>.
 ~~~
 
 </section>
@@ -44,11 +50,11 @@ Connector "<name>" is deleted.
 
 ## Options
 
-- <h3 id="name">name <span class="attribute-info">string, required</span></h3>
+- <h3 id="file">file <span class="attribute-info">string, required</span></h3>
 
-  The name of the resource to be deleted.
+  The name of the token file to use.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="timeout">--timeout <span class="attribute-info">string (duration)</span></h3>
 

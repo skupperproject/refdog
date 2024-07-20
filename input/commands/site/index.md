@@ -7,7 +7,7 @@ links:
     url: /resources/site.html
 ---
 
-# Site command
+# Site commands
 
 <section>
 
@@ -30,13 +30,13 @@ skupper site [subcommand] [options]
 ## Subcommands
 
 <table class="objects">
-<tr><th><a href="site-create.html">site create</a></th><td><p>Create a site</p>
+<tr><th><a href="create.html">create</a></th><td><p>Create a site</p>
 </td></tr>
-<tr><th><a href="site-status.html">site status</a></th><td><p>Display the current status of a site</p>
+<tr><th><a href="status.html">status</a></th><td><p>Display the current status of a site</p>
 </td></tr>
-<tr><th><a href="site-update.html">site update</a></th><td><p>Change site settings</p>
+<tr><th><a href="update.html">update</a></th><td><p>Change site settings</p>
 </td></tr>
-<tr><th><a href="site-delete.html">site delete</a></th><td><p>Delete a site</p>
+<tr><th><a href="delete.html">delete</a></th><td><p>Delete a site</p>
 </td></tr>
 </table>
 

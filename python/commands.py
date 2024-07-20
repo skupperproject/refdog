@@ -36,14 +36,14 @@ def generate(model):
                 # append()
                 append("<table class=\"objects\">")
 
-                append(f"<tr><th><a href=\"{command.id}.html\">{capitalize(command.name)} commands</a></th><td>Overview of {command.name} commands</td></tr>")
+                append(f"<tr><th><a href=\"{command.id}/index.html\">{command.title} commands</a></th><td>Overview of {command.name} commands</td></tr>")
 
                 for subcommand in command.subcommands:
                     description = nvl(subcommand.description, "").replace("\n", " ")
                     description = description.split(".")[0]
                     description = mistune.html(description)
 
-                    append(f"<tr><th><a href=\"{subcommand.id}.html\">{capitalize(subcommand.name)}</a></th><td>{description}</td></tr>")
+                    append(f"<tr><th><a href=\"{subcommand.id}.html\">{subcommand.title}</a></th><td>{description}</td></tr>")
 
                 append("</table>")
                 append()
@@ -63,9 +63,11 @@ def generate(model):
 
     write("input/commands/index.md", "\n".join(lines))
 
-    for group in model.groups:
-        for command in group.commands:
-            generate_command(command)
+    for command in model.commands:
+        generate_command(command)
+
+        for subcommand in command.subcommands:
+            generate_command(subcommand)
 
 def generate_command(command):
     debug(f"Generating {command}")
@@ -83,8 +85,14 @@ def generate_command(command):
     append(generate_object_links(command))
     append("---")
     append()
-    append(f"# {capitalize(command.rename)} command")
-    append()
+
+    if command.subcommands:
+        append(f"# {command.title} commands")
+        append()
+    else:
+        append(f"# {command.title} command")
+        append()
+
     append("<section>")
     append()
 
@@ -117,7 +125,7 @@ def generate_command(command):
         append("</section>")
         append()
 
-    if any(command.subcommands):
+    if command.subcommands:
         append("<section>")
         append()
         append("## Subcommands")
@@ -129,7 +137,7 @@ def generate_command(command):
             description = description.split(".")[0]
             description = mistune.html(description)
 
-            append(f"<tr><th><a href=\"{subcommand.id}.html\">{subcommand.name}</a></th><td>{description}</td></tr>")
+            append(f"<tr><th><a href=\"{subcommand.name}.html\">{subcommand.name}</a></th><td>{description}</td></tr>")
 
         append("</table>")
         append()
@@ -182,12 +190,17 @@ def generate_command(command):
         append("</section>")
         append()
 
-    write(f"input/commands/{command.id}.md", "\n".join(lines))
+    if command.subcommands:
+        write(f"input/commands/{command.id}/index.md", "\n".join(lines))
+    else:
+        write(f"input/commands/{command.id}.md", "\n".join(lines))
 
 def generate_usage(command):
-    parts = ["skupper", command.name]
+    parts = ["skupper"]
+    parts.extend([x.name for x in reversed(list(command.ancestors))])
+    parts.append(command.name)
 
-    if any(command.subcommands):
+    if command.subcommands:
         parts.append("[subcommand]")
 
     for option in command.options:
@@ -205,8 +218,7 @@ def generate_option(option, append):
     debug(f"Generating {option}")
 
     prefix = "" if option.positional else "--"
-    name = nvl(option.rename, option.name)
-    id_ = get_fragment_id(name)
+    id_ = get_fragment_id(option.name)
     option_info = option.type
 
     if option.format:
@@ -218,7 +230,7 @@ def generate_option(option, append):
     if not option.required and option.positional:
         option_info += ", optional"
 
-    append(f"- <h3 id=\"{id_}\">{prefix}{name} <span class=\"attribute-info\">{option_info}</span></h3>")
+    append(f"- <h3 id=\"{id_}\">{prefix}{option.name} <span class=\"attribute-info\">{option_info}</span></h3>")
     append()
 
     if option.description:
@@ -256,9 +268,7 @@ class CommandModel:
 
         for command_data in self.data["commands"]:
             command = Command(self, command_data)
-
             self.commands.append(command)
-            self.commands_by_name[command.name] = command
 
         for group_data in self.data["groups"]:
             self.groups.append(CommandGroup(self, group_data))
@@ -271,8 +281,11 @@ class Command(ModelObject):
     output = object_property("output")
     examples = object_property("examples")
 
-    def __init__(self, model, data):
+    def __init__(self, model, data, parent=None):
         super().__init__(model, data)
+
+        self.parent = parent
+        self.subcommands = list()
 
         self.options = list()
         self.options_by_name = dict()
@@ -287,6 +300,12 @@ class Command(ModelObject):
 
         for error_data in self.data.get("errors", []):
             self.errors.append(Error(self, error_data))
+
+        for command_data in self.data.get("subcommands", []):
+            command = Command(model, command_data, self)
+            self.subcommands.append(command)
+
+        self.model.commands_by_name[self.id] = self # XXX
 
     def merge_option_data(self):
         inherited_option_data = dict()
@@ -314,21 +333,26 @@ class Command(ModelObject):
         return option_data.values()
 
     @property
-    def parent(self):
-        tokens = self.name.split(" ")
-        default = tokens[0] if len(tokens) > 1 else None
-        name = self.data.get("parent", default)
+    def ancestors(self):
+        command = self.parent
 
-        if name is None:
-            return
-
-        return self.model.commands_by_name[name]
+        while command is not None:
+            yield command
+            command = command.parent
 
     @property
-    def subcommands(self):
-        for command in self.model.commands_by_name.values():
-            if command.parent is self:
-                yield command
+    def id(self):
+        if self.parent:
+            return self.parent.id + "/" + super().id
+        else:
+            return super().id
+
+    @property
+    def title(self):
+        if self.parent:
+            return f"{capitalize(self.parent.name)} {self.name}"
+        else:
+            return capitalize(self.name)
 
     @property
     def resource(self):

@@ -9,7 +9,7 @@ links:
     url: /commands/token.html
 ---
 
-# Link command
+# Link commands
 
 <section>
 
@@ -32,13 +32,13 @@ skupper link [subcommand] [options]
 ## Subcommands
 
 <table class="objects">
-<tr><th><a href="link-create.html">link create</a></th><td><p>Create a link</p>
+<tr><th><a href="create.html">create</a></th><td><p>Create a link</p>
 </td></tr>
-<tr><th><a href="link-status.html">link status</a></th><td><p>Display the status of links in the current site</p>
+<tr><th><a href="status.html">status</a></th><td><p>Display the status of links in the current site</p>
 </td></tr>
-<tr><th><a href="link-update.html">link update</a></th><td><p>Change link settings</p>
+<tr><th><a href="update.html">update</a></th><td><p>Change link settings</p>
 </td></tr>
-<tr><th><a href="link-delete.html">link delete</a></th><td><p>Delete a link</p>
+<tr><th><a href="delete.html">delete</a></th><td><p>Delete a link</p>
 </td></tr>
 </table>
 

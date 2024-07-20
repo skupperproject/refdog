@@ -7,8 +7,8 @@ links:
     url: /resources/listener.html
   - name: Listener command
     url: /commands/listener.html
-  - name: Connector update command
-    url: /commands/connector-update.html
+  - name: Update command
+    url: /commands/connector/update.html
 ---
 
 # Listener update command

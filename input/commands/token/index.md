@@ -1,19 +1,21 @@
 ---
 body_class: object command
 links:
-  - name: Connector concept
-    url: /concepts/connector.html
-  - name: Connector resource
-    url: /resources/connector.html
-  - name: Listener command
-    url: /commands/listener.html
+  - name: Access grant concept
+    url: /concepts/access-grant.html
+  - name: Access token concept
+    url: /concepts/access-token.html
+  - name: AccessGrant resource
+    url: /resources/accessgrant.html
+  - name: AccessToken resource
+    url: /resources/accesstoken.html
 ---
 
-# Connector command
+# Token commands
 
 <section>
 
-Display help for connector commands and exit.
+Display help for token commands and exit.
 
 </section>
 
@@ -22,7 +24,7 @@ Display help for connector commands and exit.
 ## Usage
 
 ~~~ shell
-skupper connector [subcommand] [options]
+skupper token [subcommand] [options]
 ~~~
 
 </section>
@@ -32,13 +34,9 @@ skupper connector [subcommand] [options]
 ## Subcommands
 
 <table class="objects">
-<tr><th><a href="connector-create.html">connector create</a></th><td><p>Create a connector</p>
+<tr><th><a href="issue.html">issue</a></th><td><p>Issue a token file redeemable for a link to the current site</p>
 </td></tr>
-<tr><th><a href="connector-status.html">connector status</a></th><td><p>Display the status of connectors in the current site</p>
-</td></tr>
-<tr><th><a href="connector-update.html">connector update</a></th><td><p>Update a connector</p>
-</td></tr>
-<tr><th><a href="connector-delete.html">connector delete</a></th><td><p>Delete a connector</p>
+<tr><th><a href="redeem.html">redeem</a></th><td><p>Redeem a token file in order to create a link to a remote site</p>
 </td></tr>
 </table>
 
