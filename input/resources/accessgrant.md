@@ -3,7 +3,7 @@ body_class: object resource
 links:
   - name: AccessToken resource
     url: /resources/accesstoken.html
-  - name: Issue command
+  - name: Token issue command
     url: /commands/token/issue.html
 ---
 

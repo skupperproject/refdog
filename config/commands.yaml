@@ -325,7 +325,7 @@ commands:
         resource: AccessGrant
         related_concepts: ["access grant", "access token"]
         related_resources: [AccessGrant, AccessToken]
-        related_commands: ["token redeem"]
+        related_commands: [token/redeem]
         description: |
           Issue a token file redeemable for a link to the current site.
 
@@ -376,7 +376,7 @@ commands:
       - name: redeem
         related_concepts: ["access grant", "access token"]
         related_resources: [AccessGrant, AccessToken]
-        related_commands: ["token issue"]
+        related_commands: [token/issue]
         description: |
           Redeem a token file in order to create a link to a remote
           site.
@@ -455,7 +455,7 @@ commands:
     inherit_options: [global/*]
     subcommands:
       - name: create
-        related_commands: ["listener create"]
+        related_commands: [listener/create]
         description: |
           Create a connector.
         examples: |
@@ -498,7 +498,7 @@ commands:
             required: false
             positional: true
       - name: update
-        related_commands: ["listener update"]
+        related_commands: [listener/update]
         description: |
           Update a connector.
         examples: |
@@ -515,7 +515,7 @@ commands:
           Connector "<name>" is updated.
         inherit_options: [update/*, connector/*, context/*, global/*]
       - name: delete
-        related_commands: ["listener delete"]
+        related_commands: [listener/delete]
         description: |
           Delete a connector.
         output: |
@@ -529,7 +529,7 @@ commands:
     inherit_options: [global/*]
     subcommands:
       - name: create
-        related_commands: ["connector create"]
+        related_commands: [connector/create]
         description: |
           Create a listener.
         examples: |
@@ -563,7 +563,7 @@ commands:
           Connectors:   1
         inherit_options: [status/*, context/*, global/*]
       - name: update
-        related_commands: ["connector update"]
+        related_commands: [connector/update]
         description: |
           Update a listener.
         examples: |
@@ -585,7 +585,7 @@ commands:
             required: false
             positional: false
       - name: delete
-        related_commands: ["connector delete"]
+        related_commands: [connector/delete]
         description: |
           Delete a listener.
         output: |

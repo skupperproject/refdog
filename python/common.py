@@ -22,8 +22,8 @@ def generate_object_links(obj):
 
         type = other.__class__.__name__.lower()
 
-        lines.append(f"  - name: {capitalize(other.rename)} {type}")
-        lines.append(f"    url: /{plural(type)}/{other.id}.html")
+        lines.append(f"  - name: {other.title}")
+        lines.append(f"    url: {other.href}")
 
     for other in obj.corresponding_objects:
         add_link(other)
@@ -155,12 +155,22 @@ class ModelObject:
         return f"{self.__class__.__name__} '{self.name}'"
 
     @property
+    def id(self):
+        return get_fragment_id(self.name)
+
+    @property
     def rename(self):
         return self.data.get("rename", self.name)
 
     @property
-    def id(self):
-        return get_fragment_id(self.name)
+    def title(self):
+        type = self.__class__.__name__.lower()
+        return f"{capitalize(self.rename)} {type}"
+
+    @property
+    def href(self):
+        type = self.__class__.__name__.lower()
+        return f"/{plural(type)}/{self.id}.html"
 
     @property
     def corresponding_objects(self):
@@ -185,9 +195,9 @@ class ModelObject:
             except KeyError:
                 pass
 
-        if not isinstance(self, Command) or (isinstance(self, Command) and self.parent is not None):
+        if not isinstance(self, Command):
             try:
-                yield self.model.command_model.commands_by_name[name.lower()]
+                yield self.model.command_model.commands_by_id[name.lower()]
             except KeyError:
                 pass
 
@@ -210,11 +220,8 @@ class ModelObject:
     @property
     def related_commands(self):
         for name in self.data.get("related_commands", []):
-            # XXX
-            name = name.replace(" ", "/")
-
             try:
-                yield self.model.command_model.commands_by_name[name]
+                yield self.model.command_model.commands_by_id[name]
             except KeyError:
                 fail(f"Related command '{name}' on {self} not found")
 

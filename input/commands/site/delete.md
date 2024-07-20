@@ -5,8 +5,6 @@ links:
     url: /concepts/site.html
   - name: Site resource
     url: /resources/site.html
-  - name: Site command
-    url: /commands/site.html
 ---
 
 # Site delete command

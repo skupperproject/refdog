@@ -5,8 +5,8 @@ links:
     url: /concepts/link.html
   - name: Link resource
     url: /resources/link.html
-  - name: Token command
-    url: /commands/token.html
+  - name: Token commands
+    url: /commands/token/index.html
 ---
 
 # Link commands

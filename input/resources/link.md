@@ -3,8 +3,8 @@ body_class: object resource
 links:
   - name: Link concept
     url: /concepts/link.html
-  - name: Link command
-    url: /commands/link.html
+  - name: Link commands
+    url: /commands/link/index.html
   - name: AccessGrant resource
     url: /resources/accessgrant.html
   - name: AccessToken resource

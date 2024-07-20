@@ -5,8 +5,6 @@ links:
     url: /concepts/link.html
   - name: Link resource
     url: /resources/link.html
-  - name: Link command
-    url: /commands/link.html
 ---
 
 # Link status command

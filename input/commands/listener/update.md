@@ -5,9 +5,7 @@ links:
     url: /concepts/listener.html
   - name: Listener resource
     url: /resources/listener.html
-  - name: Listener command
-    url: /commands/listener.html
-  - name: Update command
+  - name: Connector update command
     url: /commands/connector/update.html
 ---
 

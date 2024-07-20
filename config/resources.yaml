@@ -146,7 +146,7 @@ resources:
         - name: configured
   - name: AccessGrant
     related_resources: [AccessToken]
-    related_commands: ["token issue"]
+    related_commands: [token/issue]
     description: |
       Permission to redeem access tokens for links to the local
       site.  A remote site can use a token containing the grant
@@ -212,7 +212,7 @@ resources:
           default: _Generated_
   - name: AccessToken
     related_resources: [AccessGrant]
-    related_commands: ["token redeem"]
+    related_commands: [token/redeem]
     description: |
       A transferrable token redeemable for a link to a remote
       site.  An access token contains the URL and secret code of a

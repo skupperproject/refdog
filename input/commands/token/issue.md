@@ -1,8 +1,6 @@
 ---
 body_class: object command
 links:
-  - name: Token command
-    url: /commands/token.html
   - name: Access grant concept
     url: /concepts/access-grant.html
   - name: Access token concept
@@ -11,7 +9,7 @@ links:
     url: /resources/accessgrant.html
   - name: AccessToken resource
     url: /resources/accesstoken.html
-  - name: Redeem command
+  - name: Token redeem command
     url: /commands/token/redeem.html
 ---
 

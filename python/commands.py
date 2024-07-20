@@ -32,34 +32,26 @@ def generate(model):
 
         for command in group.commands:
             if command.parent is None:
-                # append(f"[{capitalize(command.name)} commands]()")
-                # append()
-                append("<table class=\"objects\">")
+                title = command.title.removesuffix(" commands")
+                title = title.removesuffix(" command")
+                description = f"Overview of {command.name} commands"
 
-                append(f"<tr><th><a href=\"{command.id}/index.html\">{command.title} commands</a></th><td>Overview of {command.name} commands</td></tr>")
+                append("<table class=\"objects\">")
+                append(f"<tr><th><a href=\"{command.href}\">{title}</a></th><td>{description}</td></tr>")
 
                 for subcommand in command.subcommands:
+                    title = subcommand.title.removesuffix(" commands")
+                    title = title.removesuffix(" command")
                     description = nvl(subcommand.description, "").replace("\n", " ")
                     description = description.split(".")[0]
                     description = mistune.html(description)
 
-                    append(f"<tr><th><a href=\"{subcommand.id}.html\">{subcommand.title}</a></th><td>{description}</td></tr>")
+                    append(f"<tr><th><a href=\"{subcommand.href}\">{title}</a></th><td>{description}</td></tr>")
 
                 append("</table>")
                 append()
 
         append()
-        # append("<table class=\"objects\">")
-
-        # for command in group.commands:
-        #     description = nvl(command.description, "").replace("\n", " ")
-        #     description = description.split(".")[0]
-        #     description = mistune.html(description)
-
-        #     append(f"<tr><th><a href=\"{command.id}.html\">{command.name}</a></th><td>{description}</td></tr>")
-
-        # append("</table>")
-        # append()
 
     write("input/commands/index.md", "\n".join(lines))
 
@@ -85,14 +77,8 @@ def generate_command(command):
     append(generate_object_links(command))
     append("---")
     append()
-
-    if command.subcommands:
-        append(f"# {command.title} commands")
-        append()
-    else:
-        append(f"# {command.title} command")
-        append()
-
+    append(f"# {command.title}")
+    append()
     append("<section>")
     append()
 
@@ -263,7 +249,7 @@ class CommandModel:
         self.data = read_yaml("config/commands.yaml")
 
         self.commands = list()
-        self.commands_by_name = dict()
+        self.commands_by_id = dict()
         self.groups = list()
 
         for command_data in self.data["commands"]:
@@ -301,11 +287,11 @@ class Command(ModelObject):
         for error_data in self.data.get("errors", []):
             self.errors.append(Error(self, error_data))
 
+        self.model.commands_by_id[self.id] = self
+
         for command_data in self.data.get("subcommands", []):
             command = Command(model, command_data, self)
             self.subcommands.append(command)
-
-        self.model.commands_by_name[self.id] = self # XXX
 
     def merge_option_data(self):
         inherited_option_data = dict()
@@ -349,10 +335,22 @@ class Command(ModelObject):
 
     @property
     def title(self):
-        if self.parent:
-            return f"{capitalize(self.parent.name)} {self.name}"
+        if self.subcommands:
+            type = "commands"
         else:
-            return capitalize(self.name)
+            type = "command"
+
+        if self.parent:
+            return f"{capitalize(self.parent.name)} {self.name} {type}"
+        else:
+            return f"{capitalize(self.name)} {type}"
+
+    @property
+    def href(self):
+        if self.subcommands:
+            return f"/commands/{self.id}/index.html"
+        else:
+            return f"/commands/{self.id}.html"
 
     @property
     def resource(self):
@@ -379,8 +377,8 @@ class CommandGroup(ModelObjectGroup):
 
         self.commands = list()
 
-        for command_name in self.data.get("commands", []):
-            self.commands.append(self.model.commands_by_name[command_name])
+        for command_id in self.data.get("commands", []):
+            self.commands.append(self.model.commands_by_id[command_id])
 
 def option_property(name, default=None):
     def get(obj):
