@@ -15,8 +15,6 @@ links:
 
 <section>
 
-Display help for token commands and exit.
-
 </section>
 
 <section>
@@ -24,40 +22,20 @@ Display help for token commands and exit.
 ## Usage
 
 ~~~ shell
-skupper token [subcommand] [options]
+skupper token [command] [options]
 ~~~
 
 </section>
 
 <section>
 
-## Subcommands
+## Commands
 
 <table class="objects">
-<tr><th><a href="issue.html">issue</a></th><td><p>Issue a token file redeemable for a link to the current site</p>
+<tr><th><a href="issue.html">Token issue</a></th><td><p>Issue a token file redeemable for a link to the current site</p>
 </td></tr>
-<tr><th><a href="redeem.html">redeem</a></th><td><p>Redeem a token file in order to create a link to a remote site</p>
+<tr><th><a href="redeem.html">Token redeem</a></th><td><p>Redeem a token file in order to create a link to a remote site</p>
 </td></tr>
 </table>
-
-</section>
-
-<section>
-
-## Options
-
-- <h3 id="platform">--platform <span class="attribute-info">string</span></h3>
-
-  Set the Skupper platform.
-
-  <table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><th><code>kubernetes</code></th><td><p>Kubernetes</p>
-  </td></tr><tr><th><code>docker</code></th><td><p>Docker or Podman</p>
-  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
-
-- <h3 id="help">--help <span class="attribute-info"></span></h3>
-
-  Display help and exit.
-
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 </section>

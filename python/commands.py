@@ -80,7 +80,7 @@ def generate_command(command):
     append("<section>")
     append()
 
-    if command.description:
+    if command.description and not command.subcommands:
         append(command.description.strip())
         append()
 
@@ -112,57 +112,58 @@ def generate_command(command):
     if command.subcommands:
         append("<section>")
         append()
-        append("## Subcommands")
+        append("## Commands")
         append()
         append("<table class=\"objects\">")
 
         for subcommand in command.subcommands:
+            title = subcommand.title.removesuffix(" command")
             description = nvl(subcommand.description, "").replace("\n", " ")
             description = description.split(".")[0]
             description = mistune.html(description)
 
-            append(f"<tr><th><a href=\"{subcommand.name}.html\">{subcommand.name}</a></th><td>{description}</td></tr>")
+            append(f"<tr><th><a href=\"{subcommand.name}.html\">{title}</a></th><td>{description}</td></tr>")
 
         append("</table>")
         append()
         append("</section>")
         append()
+    else:
+        if command.examples:
+            append("<section>")
+            append()
+            append("## Examples")
+            append()
+            append("~~~")
+            append(command.examples.strip())
+            append("~~~")
+            append()
+            append("</section>")
+            append()
 
-    if command.examples:
-        append("<section>")
-        append()
-        append("## Examples")
-        append()
-        append("~~~")
-        append(command.examples.strip())
-        append("~~~")
-        append()
-        append("</section>")
-        append()
+        if command.options:
+            append("<section>")
+            append()
+            append("## Options")
+            append()
 
-    if command.options:
-        append("<section>")
-        append()
-        append("## Options")
-        append()
+            for option in command.options:
+                generate_option(option, append)
 
-        for option in command.options:
-            generate_option(option, append)
+            append("</section>")
+            append()
 
-        append("</section>")
-        append()
+        if command.errors:
+            append("<section>")
+            append()
+            append("## Errors")
+            append()
 
-    if command.errors:
-        append("<section>")
-        append()
-        append("## Errors")
-        append()
+            for error in command.errors:
+                generate_error(error, append)
 
-        for error in command.errors:
-            generate_error(error, append)
-
-        append("</section>")
-        append()
+            append("</section>")
+            append()
 
     if command.notes:
         append("<section class=\"notes\">")
@@ -185,7 +186,7 @@ def generate_usage(command):
     parts.append(command.name)
 
     if command.subcommands:
-        parts.append("[subcommand]")
+        parts.append("[command]")
 
     for option in command.options:
         if option.positional:
