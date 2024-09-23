@@ -104,8 +104,7 @@ skupper connector create backend 8080 --output yaml
   alternative to `selector` for specifying the target
   server.
 
-  <table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
-  </td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
 
 - <h3 id="type">--type <span class="attribute-info">string</span></h3>
 

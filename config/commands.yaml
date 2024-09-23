@@ -143,7 +143,6 @@ options:
   connector/host:
     name: host
     property: host
-    default: _Value of name_
   connector/type:
     name: type
     property: type
