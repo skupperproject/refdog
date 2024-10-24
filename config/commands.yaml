@@ -22,16 +22,16 @@ options:
   create/wait:
     name: wait
     type: string
+    default: ready
     description: |
-      Set the resource status that the command waits for before
-      exiting.
+      Wait for the given status before exiting.
     choices:
       - name: pending
-        description: XXX
+        description: Pending
       - name: configured
-        description: XXX
+        description: Configured
       - name: ready
-        description: XXX
+        description: Ready
   create/timeout:
     name: timeout
     type: string
@@ -60,6 +60,19 @@ options:
         description: Produce JSON output
       - name: yaml
         description: Produce YAML output
+  update/wait:
+    name: wait
+    type: string
+    default: ready
+    description: |
+      Wait for the given status before exiting.
+    choices:
+      - name: pending
+        description: Pending
+      - name: configured
+        description: Configured
+      - name: ready
+        description: Ready
   update/timeout:
     name: timeout
     type: string
@@ -119,6 +132,8 @@ options:
     type: boolean
     description: |
       Allow access for incoming links from remote sites.
+
+      <!-- XXX reference link access type -->
     links:
       - name: Link access concept
         url: /concepts/link-access.html
@@ -246,6 +261,7 @@ commands:
     inherit_options: [global/*]
     subcommands:
       - name: create
+        wait: Ready
         description: |
           Create a site.
         examples: |
@@ -280,6 +296,7 @@ commands:
           Status:  Ready
         inherit_options: [status/*, context/*, global/*]
       - name: update
+        wait: Ready
         description: |
           Change site settings.
         examples: |
@@ -290,7 +307,7 @@ commands:
           skupper site update --enable-link-access --service-account app1:alice
         output: |
           Waiting for update to complete...
-          Site "<name>" is updated.
+          Site "<name>" is ready.
         inherit_options: [update/*, site/*, context/*, global/*]
         options:
           - name: name
@@ -306,10 +323,11 @@ commands:
             description: |
               There is no existing Skupper site resource to update.
       - name: delete
+        wait: Deletion
         description: |
           Delete a site.
         output: |
-          Waiting for deletion to complete...
+          Waiting for deletion...
           Site "<name>" is deleted.
         inherit_options: [delete/*, context/*, global/*]
         options:
@@ -321,6 +339,12 @@ commands:
 
               If not specified, the name is that of the site
               associated with the current namespace.
+          - name: all
+            type: boolean
+            description: |
+              In addition the site resource, delete all of the Skupper
+              resources associated with the site in the current
+              namespace.
         errors:
           - message: No site resource exists
             description: |
@@ -343,6 +367,7 @@ commands:
     inherit_options: [global/*]
     subcommands:
       - name: issue
+        wait: Ready
         resource: AccessGrant
         related_concepts: ["access grant", "access token"]
         related_resources: [AccessGrant, AccessToken]
@@ -426,6 +451,7 @@ commands:
     inherit_options: [global/*]
     subcommands:
       - name: create
+        wait: Ready
         description: |
           Create a link.
         output: |
@@ -456,17 +482,19 @@ commands:
           Cost:    1
         inherit_options: [status/*, context/*, global/*]
       - name: update
+        wait: Ready
         description: |
           Change link settings.
         output: |
           Waiting for update to complete...
-          Link "<name>" is updated.
+          Link "<name>" is ready.
         inherit_options: [create/*, link/*, context/*, global/*]
       - name: delete
+        wait: Deletion
         description: |
           Delete a link.
         output: |
-          Waiting for deletion to complete...
+          Waiting for deletion...
           Link "<name>" is deleted.
         inherit_options: [delete/*, context/*, global/*]
   - name: connector
@@ -497,6 +525,8 @@ commands:
           - name: name
           - name: port
             required: true
+          - name: wait
+            default: configured
       - name: status
         description: |
           Display the status of connectors in the current site.
@@ -520,6 +550,7 @@ commands:
             required: false
             positional: true
       - name: update
+        wait: Configured
         related_commands: [listener/update]
         description: |
           Update a connector.
@@ -534,14 +565,15 @@ commands:
           skupper connector update backend --port 9090 --output yaml
         output: |
           Waiting for update to complete...
-          Connector "<name>" is updated.
+          Connector "<name>" is configured.
         inherit_options: [update/*, connector/*, context/*, global/*]
       - name: delete
+        wait: Deletion
         related_commands: [listener/delete]
         description: |
           Delete a connector.
         output: |
-          Waiting for deletion to complete...
+          Waiting for deletion...
           Connector "<name>" is deleted.
         inherit_options: [delete/*, context/*, global/*]
   - name: listener
@@ -568,6 +600,12 @@ commands:
           Waiting for status...
           Listener "<name>" is configured.
         inherit_options: [create/*, listener/*, context/*, global/*]
+        options:
+          - name: name
+          - name: port
+          - name: output
+          - name: wait
+            default: configured
       - name: status
         description: |
           Display the status of listeners in the current site.
@@ -586,6 +624,7 @@ commands:
           Connectors:   1
         inherit_options: [status/*, context/*, global/*]
       - name: update
+        wait: Configured
         related_commands: [connector/update]
         description: |
           Update a listener.
@@ -600,7 +639,7 @@ commands:
           skupper listener update backend --port 9090 --output yaml
         output: |
           Waiting for update to complete...
-          Listener "<name>" is updated.
+          Listener "<name>" is configured.
         inherit_options: [update/*, listener/*, context/*, global/*]
         options:
           - name: name
@@ -608,11 +647,12 @@ commands:
             required: false
             positional: false
       - name: delete
+        wait: Deletion
         related_commands: [connector/delete]
         description: |
           Delete a listener.
         output: |
-          Waiting for deletion to complete...
+          Waiting for deletion...
           Listener "<name>" is deleted.
         inherit_options: [delete/*, context/*, global/*]
   - name: debug

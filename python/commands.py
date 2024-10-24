@@ -206,7 +206,9 @@ def generate_command_fields(command):
     rows = list()
 
     rows.append(f"<tr><th>Platforms</th><td>{', '.join(command.platforms)}</td>")
-    rows.append(f"<tr><th>Waits for</th><td>{command.wait}</td>")
+
+    if command.wait:
+        rows.append(f"<tr><th>Waits for</th><td>{command.wait}</td>")
 
     return f"<table class=\"fields\">{''.join(rows)}</table>"
 
@@ -277,7 +279,7 @@ class Command(ModelObject):
     platforms = object_property("platforms", default=["Kubernetes", "Docker", "Podman", "Systemd"])
     output = object_property("output")
     examples = object_property("examples")
-    wait = object_property("wait", default="Ready")
+    wait = object_property("wait")
 
     def __init__(self, model, data, parent=None):
         super().__init__(model, data)

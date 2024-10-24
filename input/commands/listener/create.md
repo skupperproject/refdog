@@ -67,6 +67,14 @@ skupper listener create backend 8080 --output yaml
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
+- <h3 id="port">port <span class="attribute-info">integer, required</span></h3>
+
+  The port of the local listener.  Clients at this site use
+  the listener host and port to establish connections to
+  the remote service.
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+
 - <h3 id="output">--output <span class="attribute-info">string</span></h3>
 
   Print the resource to the console in a structured output format
@@ -78,12 +86,12 @@ skupper listener create backend 8080 --output yaml
 
 - <h3 id="wait">--wait <span class="attribute-info">string</span></h3>
 
-  Set the resource status that the command waits for before
-  exiting.
+  Wait for the given status before exiting.
 
-  <table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><th><code>pending</code></th><td><p>XXX</p>
-  </td></tr><tr><th><code>configured</code></th><td><p>XXX</p>
-  </td></tr><tr><th><code>ready</code></th><td><p>XXX</p>
+  <table class="fields"><tr><th>Default</th><td><p><code>configured</code></p>
+  </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>pending</code></th><td><p>Pending</p>
+  </td></tr><tr><th><code>configured</code></th><td><p>Configured</p>
+  </td></tr><tr><th><code>ready</code></th><td><p>Ready</p>
   </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="timeout">--timeout <span class="attribute-info">string (duration)</span></h3>
@@ -93,14 +101,6 @@ skupper listener create backend 8080 --output yaml
 
   <table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
   </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
-
-- <h3 id="port">port <span class="attribute-info">integer, required</span></h3>
-
-  The port of the local listener.  Clients at this site use
-  the listener host and port to establish connections to
-  the remote service.
-
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="routing-key">--routing-key <span class="attribute-info">string</span></h3>
 

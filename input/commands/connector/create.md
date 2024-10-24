@@ -73,6 +73,16 @@ skupper connector create backend 8080 --output yaml
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
+- <h3 id="wait">--wait <span class="attribute-info">string</span></h3>
+
+  Wait for the given status before exiting.
+
+  <table class="fields"><tr><th>Default</th><td><p><code>configured</code></p>
+  </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>pending</code></th><td><p>Pending</p>
+  </td></tr><tr><th><code>configured</code></th><td><p>Configured</p>
+  </td></tr><tr><th><code>ready</code></th><td><p>Ready</p>
+  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+
 - <h3 id="output">--output <span class="attribute-info">string</span></h3>
 
   Print the resource to the console in a structured output format
@@ -80,16 +90,6 @@ skupper connector create backend 8080 --output yaml
 
   <table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
   </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
-  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
-
-- <h3 id="wait">--wait <span class="attribute-info">string</span></h3>
-
-  Set the resource status that the command waits for before
-  exiting.
-
-  <table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><th><code>pending</code></th><td><p>XXX</p>
-  </td></tr><tr><th><code>configured</code></th><td><p>XXX</p>
-  </td></tr><tr><th><code>ready</code></th><td><p>XXX</p>
   </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="timeout">--timeout <span class="attribute-info">string (duration)</span></h3>

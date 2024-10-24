@@ -13,7 +13,7 @@ links:
 
 Delete a site.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>Waits for</th><td>Ready</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>Waits for</th><td>Deletion</td></table>
 
 </section>
 
@@ -32,7 +32,7 @@ skupper site delete [name] [options]
 ## Output
 
 ~~~ console
-Waiting for deletion to complete...
+Waiting for deletion...
 Site "<name>" is deleted.
 ~~~
 
@@ -50,6 +50,14 @@ Site "<name>" is deleted.
   associated with the current namespace.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+
+- <h3 id="all">--all <span class="attribute-info">boolean</span></h3>
+
+  In addition the site resource, delete all of the Skupper
+  resources associated with the site in the current
+  namespace.
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="timeout">--timeout <span class="attribute-info">string (duration)</span></h3>
 

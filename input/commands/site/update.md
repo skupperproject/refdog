@@ -33,7 +33,7 @@ skupper site update [name] [options]
 
 ~~~ console
 Waiting for update to complete...
-Site "<name>" is updated.
+Site "<name>" is ready.
 ~~~
 
 </section>
@@ -74,6 +74,16 @@ skupper site update --enable-link-access --service-account app1:alice
   </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
   </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
+- <h3 id="wait">--wait <span class="attribute-info">string</span></h3>
+
+  Wait for the given status before exiting.
+
+  <table class="fields"><tr><th>Default</th><td><p><code>ready</code></p>
+  </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>pending</code></th><td><p>Pending</p>
+  </td></tr><tr><th><code>configured</code></th><td><p>Configured</p>
+  </td></tr><tr><th><code>ready</code></th><td><p>Ready</p>
+  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+
 - <h3 id="timeout">--timeout <span class="attribute-info">string (duration)</span></h3>
 
   Raise an error if the operation does not complete in the given
@@ -85,6 +95,8 @@ skupper site update --enable-link-access --service-account app1:alice
 - <h3 id="enable-link-access">--enable-link-access <span class="attribute-info">boolean</span></h3>
 
   Allow access for incoming links from remote sites.
+  
+  <!-- XXX reference link access type -->
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/link-access.html">Link access concept</a></td></table>
 
