@@ -56,13 +56,13 @@ spec:
 
   The name of the resource.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
 - <h3 id="namespace">namespace <span class="attribute-info">string</span></h3>
 
   The namespace of the resource.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
 
 </section>
 
@@ -77,13 +77,13 @@ spec:
   site, the remote listener and the local connector must
   have matching routing keys.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/routing-key.html">Routing key concept</a></td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/routing-key.html">Routing key concept</a></td></table>
 
 - <h3 id="port">port <span class="attribute-info">integer, required</span></h3>
 
   The port on the target workload to forward traffic to.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="selector">selector <span class="attribute-info">string</span></h3>
 
@@ -101,7 +101,7 @@ spec:
   alternative to `selector` for specifying the target
   server.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="tlssecret">tlsSecret <span class="attribute-info">string</span></h3>
 
@@ -114,7 +114,7 @@ spec:
   This option is used when setting up client-to-router TLS
   encryption.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a></td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a></td></table>
 
 - <h3 id="includenotready">includeNotReady <span class="attribute-info">boolean</span></h3>
 
@@ -128,13 +128,13 @@ spec:
   The connector type.
 
   <table class="fields"><tr><th>Default</th><td><p><code>tcp</code></p>
-  </td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="options">options <span class="attribute-info">object</span></h3>
 
   Additional settings.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 </section>
 
@@ -146,12 +146,12 @@ spec:
 
   The current state of the resource.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="active">active <span class="attribute-info">boolean</span></h3>
 
   This thing is working.
 
-  <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 </section>

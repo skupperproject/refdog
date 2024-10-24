@@ -40,13 +40,13 @@ status:    # Status properties
 
   The name of the resource.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
 - <h3 id="namespace">namespace <span class="attribute-info">string</span></h3>
 
   The namespace of the resource.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
 
 </section>
 
@@ -63,24 +63,24 @@ status:    # Status properties
   It can optionally include a client certificate and key for
   mutual TLS.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="">Custom certificates</a></td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="">Custom certificates</a></td></table>
 
 - <h3 id="cost">cost <span class="attribute-info">integer</span></h3>
 
   The configured routing cost of sending traffic over
   the link.
 
-  <table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="">Load balancing</a></td></table>
+  <table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="">Load balancing</a></td></table>
 
 - <h3 id="endpoints">endpoints <span class="attribute-info">array, required</span></h3>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="options">options <span class="attribute-info">object</span></h3>
 
   Additional settings.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 </section>
 
@@ -90,18 +90,18 @@ status:    # Status properties
 
 - <h3 id="configured">configured <span class="attribute-info">boolean</span></h3>
 
-  <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="status">status <span class="attribute-info">string</span></h3>
 
   The current state of the resource.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="active">active <span class="attribute-info">boolean</span></h3>
 
   This thing is working.
 
-  <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 </section>

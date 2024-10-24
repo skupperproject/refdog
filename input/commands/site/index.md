@@ -11,6 +11,8 @@ links:
 
 <section>
 
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>Waits for</th><td>Ready</td></table>
+
 </section>
 
 <section>
@@ -35,6 +37,12 @@ skupper site [command] [options]
 <tr><th><a href="update.html">Site update</a></th><td><p>Change site settings</p>
 </td></tr>
 <tr><th><a href="delete.html">Site delete</a></th><td><p>Delete a site</p>
+</td></tr>
+<tr><th><a href="start.html">Site start</a></th><td><p>Start the Skupper router for the current site</p>
+</td></tr>
+<tr><th><a href="stop.html">Site stop</a></th><td><p>Stop the Skupper router for the current site</p>
+</td></tr>
+<tr><th><a href="reload.html">Site reload</a></th><td><p>Reload the site configuration</p>
 </td></tr>
 </table>
 

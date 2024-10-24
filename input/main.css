@@ -334,13 +334,14 @@ table.objects th {
 }
 
 table.fields td, table.fields th {
+    text-align: left;
     vertical-align: top;
     border-bottom: 2px solid var(--line-color);
     padding: 0.2em 0;
 }
 
 table.fields th {
-    width: 6em;
+    min-width: 6em;
     padding-right: 1em;
     font-weight: normal;
     font-style: italic;

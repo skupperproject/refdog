@@ -84,6 +84,9 @@ def generate_command(command):
         append(command.description.strip())
         append()
 
+    append(generate_command_fields(command))
+    append()
+
     append("</section>")
     append()
     append("<section>")
@@ -199,6 +202,14 @@ def generate_usage(command):
 
     return " ".join(parts)
 
+def generate_command_fields(command):
+    rows = list()
+
+    rows.append(f"<tr><th>Platforms</th><td>{', '.join(command.platforms)}</td>")
+    rows.append(f"<tr><th>Waits for</th><td>{command.wait}</td>")
+
+    return f"<table class=\"fields\">{''.join(rows)}</table>"
+
 def generate_option(option, append):
     debug(f"Generating {option}")
 
@@ -263,8 +274,10 @@ class CommandModel:
 
 class Command(ModelObject):
     usage = object_property("usage")
+    platforms = object_property("platforms", default=["Kubernetes", "Docker", "Podman", "Systemd"])
     output = object_property("output")
     examples = object_property("examples")
+    wait = object_property("wait", default="Ready")
 
     def __init__(self, model, data, parent=None):
         super().__init__(model, data)
@@ -412,8 +425,8 @@ class Option(ModelObjectAttribute):
     required = option_property("required", default=False)
     default = option_property("default")
     choices = option_property("choices")
-    platforms = option_property("platforms", default=["Kubernetes", "Docker"])
-    links = option_property("links", default=[])
+    # XXX Don't think I need this
+    # links = option_property("links", default=[])
 
     @property
     def property_(self):

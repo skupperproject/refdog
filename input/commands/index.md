@@ -20,6 +20,12 @@ links:
 </td></tr>
 <tr><th><a href="{{site_prefix}}/commands/site/delete.html">Site delete</a></th><td><p>Delete a site</p>
 </td></tr>
+<tr><th><a href="{{site_prefix}}/commands/site/start.html">Site start</a></th><td><p>Start the Skupper router for the current site</p>
+</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/site/stop.html">Site stop</a></th><td><p>Stop the Skupper router for the current site</p>
+</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/site/reload.html">Site reload</a></th><td><p>Reload the site configuration</p>
+</td></tr>
 </table>
 
 

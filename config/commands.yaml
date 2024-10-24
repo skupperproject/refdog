@@ -19,6 +19,19 @@ options:
         description: Produce JSON output
       - name: yaml
         description: Produce YAML output
+  create/wait:
+    name: wait
+    type: string
+    description: |
+      Set the resource status that the command waits for before
+      exiting.
+    choices:
+      - name: pending
+        description: XXX
+      - name: configured
+        description: XXX
+      - name: ready
+        description: XXX
   create/timeout:
     name: timeout
     type: string
@@ -312,6 +325,15 @@ commands:
           - message: No site resource exists
             description: |
               There is no existing Skupper site resource to delete.
+      - name: start
+        description: Start the Skupper router for the current site
+        platforms: [Docker, Podman, Systemd]
+      - name: stop
+        description: Stop the Skupper router for the current site
+        platforms: [Docker, Podman, Systemd]
+      - name: reload
+        description: Reload the site configuration
+        platforms: [Docker, Podman, Systemd]
   - name: token
     resource: Claim
     related_concepts: ["access grant", "access token"]
@@ -454,6 +476,7 @@ commands:
     inherit_options: [global/*]
     subcommands:
       - name: create
+        wait: Configured
         related_commands: [listener/create]
         description: |
           Create a connector.
@@ -468,7 +491,7 @@ commands:
           skupper connector create backend 8080 --output yaml
         output: |
           Waiting for status...
-          Connector "<name>" is ready.
+          Connector "<name>" is configured.
         inherit_options: [create/*, connector/*, context/*, global/*]
         options:
           - name: name
@@ -528,6 +551,7 @@ commands:
     inherit_options: [global/*]
     subcommands:
       - name: create
+        wait: Configured
         related_commands: [connector/create]
         description: |
           Create a listener.
@@ -542,7 +566,7 @@ commands:
           skupper listener create backend 8080 --output yaml
         output: |
           Waiting for status...
-          Listener "<name>" is ready.
+          Listener "<name>" is configured.
         inherit_options: [create/*, listener/*, context/*, global/*]
       - name: status
         description: |

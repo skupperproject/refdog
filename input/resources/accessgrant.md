@@ -38,13 +38,13 @@ status:    # Status properties
 
   The name of the resource.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
 - <h3 id="namespace">namespace <span class="attribute-info">string</span></h3>
 
   The namespace of the resource.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
 
 </section>
 
@@ -57,7 +57,7 @@ status:    # Status properties
   The number of times an access token for this grant can
   be redeemed.
 
-  <table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="expirationwindow">expirationWindow <span class="attribute-info">string (duration)</span></h3>
 
@@ -65,7 +65,7 @@ status:    # Status properties
   grant can be redeemed.
 
   <table class="fields"><tr><th>Default</th><td><p><code>15m</code></p>
-  </td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="code">code <span class="attribute-info">string</span></h3>
 
@@ -75,11 +75,11 @@ status:    # Status properties
   If not set, a value for the code field in the status is
   generated.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="issuer">issuer <span class="attribute-info">string</span></h3>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
   <section class="notes">
 
@@ -91,7 +91,7 @@ status:    # Status properties
 
   Additional settings.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 </section>
 
@@ -104,7 +104,7 @@ status:    # Status properties
   The number of times a token for this grant has been
   redeemed.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
   <section class="notes">
 
@@ -118,7 +118,7 @@ status:    # Status properties
 
   The point in time when the grant expires.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
   <section class="notes">
 
@@ -131,14 +131,14 @@ status:    # Status properties
 
   The URL of the token-redemption service for this grant.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="ca">ca <span class="attribute-info">string</span></h3>
 
   The trusted server certificate of the token-redemption
   service for this grant.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="code">code <span class="attribute-info">string</span></h3>
 
@@ -146,12 +146,12 @@ status:    # Status properties
   submitted for redemption.
 
   <table class="fields"><tr><th>Default</th><td><p><em>Generated</em></p>
-  </td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="status">status <span class="attribute-info">string</span></h3>
 
   The current state of the resource.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 </section>

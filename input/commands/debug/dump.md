@@ -8,6 +8,8 @@ body_class: object command
 
 Generate a debug dump file.
 
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>Waits for</th><td>Ready</td></table>
+
 </section>
 
 <section>
@@ -36,13 +38,13 @@ Debug dump file generated at <file>.
 
 - <h3 id="file">file <span class="attribute-info">string, required</span></h3>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="namespace">--namespace <span class="attribute-info">string</span></h3>
 
   Set the namespace.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
 
 - <h3 id="context">--context <span class="attribute-info">string</span></h3>
 
@@ -62,12 +64,12 @@ Debug dump file generated at <file>.
 
   <table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><th><code>kubernetes</code></th><td><p>Kubernetes</p>
   </td></tr><tr><th><code>docker</code></th><td><p>Docker or Podman</p>
-  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
+  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
 
 - <h3 id="help">--help <span class="attribute-info"></span></h3>
 
   Display help and exit.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 </section>

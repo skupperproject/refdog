@@ -13,6 +13,8 @@ links:
 
 Change site settings.
 
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>Waits for</th><td>Ready</td></table>
+
 </section>
 
 <section>
@@ -61,7 +63,7 @@ skupper site update --enable-link-access --service-account app1:alice
   If not specified, the name is that of the site
   associated with the current namespace.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
 - <h3 id="output">--output <span class="attribute-info">string</span></h3>
 
@@ -70,7 +72,7 @@ skupper site update --enable-link-access --service-account app1:alice
 
   <table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
   </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
-  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="timeout">--timeout <span class="attribute-info">string (duration)</span></h3>
 
@@ -78,13 +80,13 @@ skupper site update --enable-link-access --service-account app1:alice
   period of time.
 
   <table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
-  </td><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="enable-link-access">--enable-link-access <span class="attribute-info">boolean</span></h3>
 
   Allow access for incoming links from remote sites.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/link-access.html">Link access concept</a></td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/link-access.html">Link access concept</a></td></table>
 
 - <h3 id="link-access-type">--link-access-type <span class="attribute-info">string</span></h3>
 
@@ -94,7 +96,7 @@ skupper site update --enable-link-access --service-account app1:alice
   </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>default</code></th><td><p>Use the default link access.  On OpenShift, the default is <code>route</code>.  For other Kubernetes flavors, the default is <code>loadbalancer</code>.</p>
   </td></tr><tr><th><code>route</code></th><td><p>Use an OpenShift route.  <em>OpenShift only.</em></p>
   </td></tr><tr><th><code>loadbalancer</code></th><td><p>Use a Kubernetes load balancer.  <em>Kubernetes only.</em></p>
-  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/link-access.html">Link access concept</a>, <a href="https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer">Kubernetes load balancer services</a></td></table>
+  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="service-account">--service-account <span class="attribute-info">string</span></h3>
 
@@ -102,13 +104,13 @@ skupper site update --enable-link-access --service-account app1:alice
   Skupper controller.
 
   <table class="fields"><tr><th>Default</th><td><p><code>skupper:skupper-controller</code></p>
-  </td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/security/service-accounts/">Kubernetes service accounts</a></td></table>
+  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="namespace">--namespace <span class="attribute-info">string</span></h3>
 
   Set the namespace.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
 
 - <h3 id="context">--context <span class="attribute-info">string</span></h3>
 
@@ -128,13 +130,13 @@ skupper site update --enable-link-access --service-account app1:alice
 
   <table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><th><code>kubernetes</code></th><td><p>Kubernetes</p>
   </td></tr><tr><th><code>docker</code></th><td><p>Docker or Podman</p>
-  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
+  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
 
 - <h3 id="help">--help <span class="attribute-info"></span></h3>
 
   Display help and exit.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 </section>
 
