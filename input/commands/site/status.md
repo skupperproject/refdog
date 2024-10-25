@@ -11,7 +11,7 @@ links:
 
 <section>
 
-Display the current status of a site.
+Display the status of a site.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 

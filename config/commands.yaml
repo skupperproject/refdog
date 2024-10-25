@@ -344,7 +344,7 @@ commands:
       # site.status
       - name: status
         description: |
-          Display the current status of a site.
+          Display the status of a site.
         examples: |
           # Show the status of the current site
           $ skupper site status

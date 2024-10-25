@@ -36,7 +36,7 @@ skupper site [command] [options]
 </td></tr>
 <tr><th><a href="delete.html">Site delete</a></th><td><p>Delete a site</p>
 </td></tr>
-<tr><th><a href="status.html">Site status</a></th><td><p>Display the current status of a site</p>
+<tr><th><a href="status.html">Site status</a></th><td><p>Display the status of a site</p>
 </td></tr>
 <tr><th><a href="generate.html">Site generate</a></th><td><p>Generate a Site resource</p>
 </td></tr>
