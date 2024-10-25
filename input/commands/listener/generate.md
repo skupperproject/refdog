@@ -11,7 +11,7 @@ links:
 
 <section>
 
-Generate a listener resource and print it to the console.
+Generate a Listener resource.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
@@ -32,7 +32,7 @@ skupper listener generate <name> <port> [options]
 ## Examples
 
 ~~~
-# Print a listener resource to the console
+# Generate a Listener resource and print it to the console
 $ skupper listener generate backend 8080
 apiVersion: skupper.io/v2alpha1
 kind: Listener
@@ -43,7 +43,7 @@ spec:
   port: 8080
   host: backend
 
-# Direct the output to a file
+# Generate a Listener resource and direct the output to a file
 $ skupper listener generate backend 8080 > backend.yaml
 ~~~
 
@@ -95,7 +95,7 @@ $ skupper listener generate backend 8080 > backend.yaml
   <table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
   </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="tls-secret">--tls-secret <span class="attribute-info">string</span></h3>
+- <h3 id="tls-credentials">--tls-credentials <span class="attribute-info">string</span></h3>
 
   The name of a Kubernetes secret containing TLS
   credentials.  The secret contains the trusted server

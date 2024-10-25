@@ -38,7 +38,7 @@ skupper site [command] [options]
 </td></tr>
 <tr><th><a href="status.html">Site status</a></th><td><p>Display the current status of a site</p>
 </td></tr>
-<tr><th><a href="generate.html">Site generate</a></th><td><p>Generate a site resource and print it to the console</p>
+<tr><th><a href="generate.html">Site generate</a></th><td><p>Generate a Site resource</p>
 </td></tr>
 <tr><th><a href="start.html">Site start</a></th><td><p>Start the Skupper router for the current site</p>
 </td></tr>

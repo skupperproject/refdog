@@ -31,11 +31,13 @@ skupper connector delete <name> [options]
 
 <section>
 
-## Output
+## Examples
 
-~~~ console
+~~~
+# Delete a connector
+$ skupper connector delete database
 Waiting for deletion...
-Connector "<name>" is deleted.
+Connector "database" is deleted.
 ~~~
 
 </section>

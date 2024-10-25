@@ -29,11 +29,13 @@ skupper link update <name> [options]
 
 <section>
 
-## Output
+## Examples
 
-~~~ console
+~~~
+# Change the link cost
+$ skupper link update west-6bfn6 --cost 10
 Waiting for status...
-Link "<name>" is ready.
+Link "west-6bfn6" is ready.
 ~~~
 
 </section>

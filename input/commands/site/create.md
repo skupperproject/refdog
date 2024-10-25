@@ -29,25 +29,16 @@ skupper site create <name> [options]
 
 <section>
 
-## Output
-
-~~~ console
-Waiting for status...
-Site "<name>" is ready.
-~~~
-
-</section>
-
-<section>
-
 ## Examples
 
 ~~~
 # Create a site
-skupper site create west
+$ skupper site create west
+Waiting for status...
+Site "west" is ready.
 
 # Create a site that can accept links from remote sites
-skupper site create west --enable-link-access
+$ skupper site create west --enable-link-access
 ~~~
 
 </section>

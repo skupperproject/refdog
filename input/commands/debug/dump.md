@@ -24,10 +24,12 @@ skupper debug dump <file> [options]
 
 <section>
 
-## Output
+## Examples
 
-~~~ console
-Debug dump file generated at <file>.
+~~~
+# Generate a debug dump file
+$ skupper debug dump ~/dump.tar.gz
+Debug dump file generated at /home/fritz/dump.tar.gz.
 ~~~
 
 </section>

@@ -29,25 +29,16 @@ skupper site update [name] [options]
 
 <section>
 
-## Output
-
-~~~ console
-Waiting for status...
-Site "<name>" is ready.
-~~~
-
-</section>
-
-<section>
-
 ## Examples
 
 ~~~
-# Update the site to accept links
-skupper site update --enable-link-access
+# Update the current site to accept links
+$ skupper site update --enable-link-access
+Waiting for status...
+Site "west" is ready.
 
 # Update multiple settings
-skupper site update --enable-link-access --service-account app1:alice
+$ skupper site update --enable-link-access --service-account alice
 ~~~
 
 </section>

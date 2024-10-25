@@ -29,22 +29,24 @@ skupper connector status [name] [options]
 
 <section>
 
-## Output
+## Examples
 
-~~~ console
+~~~
+# Show the status of all connectors in the current site
 $ skupper connector status
 NAME       STATUS   ROUTING-KEY   SELECTOR         HOST     PORT   LISTENERS
 backend    Ready    backend       app=backend      <none>   8080   1
 database   Ready    database      app=postgresql   <none>   5432   1
 
+# Show the status of one connector
 $ skupper connector status backend
-Name:         backend
-Status:       Ready
-Routing key:  backend
-Selector:     app=backend
-Host:         <none>
-Port:         8080
-Listeners:    1
+Name:          backend
+Status:        Ready
+Routing key:   backend
+Selector:      app=backend
+Host:          <none>
+Port:          8080
+Listeners:     1
 ~~~
 
 </section>

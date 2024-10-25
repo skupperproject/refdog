@@ -31,28 +31,16 @@ skupper connector update <name> <port> [options]
 
 <section>
 
-## Output
-
-~~~ console
-Waiting for status...
-Connector "<name>" is configured.
-~~~
-
-</section>
-
-<section>
-
 ## Examples
 
 ~~~
 # Change the workload and port
-skupper connector update database --workload deployment/mysql --port 3306
+$ skupper connector update database --workload deployment/mysql --port 3306
+Waiting for status...
+Connector "database" is configured.
 
 # Change the routing key
-skupper connector update backend --routing-key be2
-
-# Produce YAML output
-skupper connector update backend --port 9090 --output yaml
+$ skupper connector update backend --routing-key be2
 ~~~
 
 </section>
@@ -115,6 +103,19 @@ skupper connector update backend --port 9090 --output yaml
 
   <table class="fields"><tr><th>Default</th><td><p><code>tcp</code></p>
   </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+
+- <h3 id="tls-credentials">--tls-credentials <span class="attribute-info">string</span></h3>
+
+  The name of a Kubernetes secret containing the trusted
+  server certificate (typically a CA).
+  
+  It can optionally include a client certificate and key for
+  mutual TLS.
+  
+  This option is used when setting up client-to-router TLS
+  encryption.
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="selector">--selector <span class="attribute-info">string</span></h3>
 

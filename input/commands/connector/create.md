@@ -31,28 +31,16 @@ skupper connector create <name> <port> [options]
 
 <section>
 
-## Output
-
-~~~ console
-Waiting for status...
-Connector "<name>" is configured.
-~~~
-
-</section>
-
-<section>
-
 ## Examples
 
 ~~~
 # Create a connector for a database
-skupper connector create database 5432
+$ skupper connector create database 5432
+Waiting for status...
+Connector "database" is configured.
 
 # Set the routing key and workload explicitly
-skupper connector create backend 8080 --routing-key be1 --workload deployment/backend
-
-# Produce YAML output
-skupper connector create backend 8080 --output yaml
+$ skupper connector create backend 8080 --routing-key be1 --workload deployment/backend
 ~~~
 
 </section>
@@ -115,6 +103,19 @@ skupper connector create backend 8080 --output yaml
 
   <table class="fields"><tr><th>Default</th><td><p><code>tcp</code></p>
   </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+
+- <h3 id="tls-credentials">--tls-credentials <span class="attribute-info">string</span></h3>
+
+  The name of a Kubernetes secret containing the trusted
+  server certificate (typically a CA).
+  
+  It can optionally include a client certificate and key for
+  mutual TLS.
+  
+  This option is used when setting up client-to-router TLS
+  encryption.
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="selector">--selector <span class="attribute-info">string</span></h3>
 

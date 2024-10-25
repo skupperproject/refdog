@@ -36,12 +36,14 @@ skupper token redeem <file> [options]
 
 <section>
 
-## Output
+## Examples
 
-~~~ console
+~~~
+# Redeem an access token
+$ skupper token redeem ~/token.yaml
 Waiting for status...
-Link "<name>" is active.
-You can now safely delete <file>.
+Link "west-6bfn6" is active.
+You can now safely delete /home/fritz/token.yaml.
 ~~~
 
 </section>

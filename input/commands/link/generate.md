@@ -11,7 +11,7 @@ links:
 
 <section>
 
-Generate a link resource for use in a remote site.
+Generate a Link resource for use in a remote site.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
@@ -23,17 +23,6 @@ Generate a link resource for use in a remote site.
 
 ~~~ shell
 skupper link generate <name> [options]
-~~~
-
-</section>
-
-<section>
-
-## Output
-
-~~~ console
-Waiting for status...
-Link "<name>" is ready.
 ~~~
 
 </section>

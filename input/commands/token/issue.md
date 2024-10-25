@@ -19,8 +19,8 @@ links:
 
 Issue a token file redeemable for a link to the current site.
 
-This command first creates a grant in order to issue the
-token.
+This command first creates an access grant in order to issue
+the token.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>Waits for</th><td>Ready</td></table>
 
@@ -38,34 +38,25 @@ skupper token issue <file> [options]
 
 <section>
 
-## Output
+## Examples
 
-~~~ console
+~~~
+# Issue an access token
+$ skupper token issue ~/token.yaml
 Waiting for status...
-Grant "<name>" is ready.
-Token file <file> created.
+Access grant "west-6bfn6" is ready.
+Token file /home/fritz/token.yaml created.
 
 Transfer this file to a remote site. At the remote site,
 create a link to this site using the 'skupper token
 redeem' command:
 
-   $ skupper token redeem <file>
+    $ skupper token redeem <file>
 
 The token expires after 1 use or after 15 minutes.
-~~~
-
-</section>
-
-<section>
-
-## Examples
-
-~~~
-# Issue an access token
-skupper token issue ~/token.yaml
 
 # Issue an access token with non-default limits
-skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed 3
+$ skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed 3
 ~~~
 
 </section>

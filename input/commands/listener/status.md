@@ -29,21 +29,23 @@ skupper listener status [name] [options]
 
 <section>
 
-## Output
+## Examples
 
-~~~ console
+~~~
+# Show the status of all listeners in the current site
 $ skupper listener status
 NAME       STATUS   ROUTING-KEY   HOST       PORT   CONNECTORS
 backend    Ready    backend       backend    8080   1
 database   Ready    database      database   5432   1
 
+# Show the status of one listener
 $ skupper listener status backend
-Name:         backend
-Status:       Ready
-Routing key:  backend
-Host:         backend
-Port:         8080
-Connectors:   1
+Name:          backend
+Status:        Ready
+Routing key:   backend
+Host:          backend
+Port:          8080
+Connectors:    1
 ~~~
 
 </section>

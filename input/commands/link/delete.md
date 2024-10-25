@@ -29,11 +29,13 @@ skupper link delete <name> [options]
 
 <section>
 
-## Output
+## Examples
 
-~~~ console
+~~~
+# Delete a link
+$ skupper link delete west-6bfn6
 Waiting for deletion...
-Link "<name>" is deleted.
+Link "west-6bfn6" is deleted.
 ~~~
 
 </section>

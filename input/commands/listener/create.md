@@ -31,28 +31,16 @@ skupper listener create <name> <port> [options]
 
 <section>
 
-## Output
-
-~~~ console
-Waiting for status...
-Listener "<name>" is configured.
-~~~
-
-</section>
-
-<section>
-
 ## Examples
 
 ~~~
 # Create a listener for a database
-skupper listener create database 5432
+$ skupper listener create database 5432
+Waiting for status...
+Listener "database" is configured.
 
 # Set the routing key and host explicitly
-skupper listener create backend 8080 --routing-key be1 --host apiserver
-
-# Produce YAML output
-skupper listener create backend 8080 --output yaml
+$ skupper listener create backend 8080 --routing-key be1 --host apiserver
 ~~~
 
 </section>
@@ -112,7 +100,7 @@ skupper listener create backend 8080 --output yaml
   <table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
   </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="tls-secret">--tls-secret <span class="attribute-info">string</span></h3>
+- <h3 id="tls-credentials">--tls-credentials <span class="attribute-info">string</span></h3>
 
   The name of a Kubernetes secret containing TLS
   credentials.  The secret contains the trusted server

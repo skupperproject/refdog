@@ -29,16 +29,14 @@ skupper site status [name] [options]
 
 <section>
 
-## Output
+## Examples
 
-~~~ console
+~~~
+# Show the status of the current site
 $ skupper site status
-NAME   STATUS
-west   Ready
-
-$ skupper site status west
-Name:    west
-Status:  Ready
+Name:      west
+Status:    Ready
+Message:   -
 ~~~
 
 </section>

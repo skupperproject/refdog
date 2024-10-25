@@ -31,11 +31,13 @@ skupper listener delete <name> [options]
 
 <section>
 
-## Output
+## Examples
 
-~~~ console
+~~~
+# Delete a listener
+$ skupper listener delete database
 Waiting for deletion...
-Listener "<name>" is deleted.
+Listener "database" is deleted.
 ~~~
 
 </section>

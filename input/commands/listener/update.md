@@ -31,28 +31,16 @@ skupper listener update <name> [options]
 
 <section>
 
-## Output
-
-~~~ console
-Waiting for status...
-Listener "<name>" is configured.
-~~~
-
-</section>
-
-<section>
-
 ## Examples
 
 ~~~
 # Change the host and port
-skupper listener update database --host mysql --port 3306
+$ skupper listener update database --host mysql --port 3306
+Waiting for status...
+Listener "database" is configured.
 
 # Change the routing key
-skupper listener update backend --routing-key be2
-
-# Produce YAML output
-skupper listener update backend --port 9090 --output yaml
+$ skupper listener update backend --routing-key be2
 ~~~
 
 </section>
@@ -112,7 +100,7 @@ skupper listener update backend --port 9090 --output yaml
   <table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
   </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="tls-secret">--tls-secret <span class="attribute-info">string</span></h3>
+- <h3 id="tls-credentials">--tls-credentials <span class="attribute-info">string</span></h3>
 
   The name of a Kubernetes secret containing TLS
   credentials.  The secret contains the trusted server

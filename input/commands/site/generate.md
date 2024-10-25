@@ -11,7 +11,7 @@ links:
 
 <section>
 
-Generate a site resource and print it to the console.
+Generate a Site resource.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
@@ -32,7 +32,7 @@ skupper site generate <name> [options]
 ## Examples
 
 ~~~
-# Print a site resource to the console
+# Generate a Site resource and print it to the console
 $ skupper site generate west --enable-link-access
 apiVersion: skupper.io/v2alpha1
 kind: Site
@@ -41,7 +41,7 @@ metadata:
 spec:
   linkAccess: default
 
-# Direct the output to a file
+# Generate a Site resource and direct the output to a file
 $ skupper site generate east > east.yaml
 ~~~
 

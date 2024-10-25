@@ -40,7 +40,7 @@ skupper connector [command] [options]
 </td></tr>
 <tr><th><a href="status.html">Connector status</a></th><td><p>Display the status of connectors in the current site</p>
 </td></tr>
-<tr><th><a href="generate.html">Connector generate</a></th><td><p>Generate a connector resource and print it to the console</p>
+<tr><th><a href="generate.html">Connector generate</a></th><td><p>Generate a Connector resource</p>
 </td></tr>
 </table>
 

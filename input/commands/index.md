@@ -20,7 +20,7 @@ links:
 </td></tr>
 <tr><th><a href="{{site_prefix}}/commands/site/status.html">Site status</a></th><td><p>Display the current status of a site</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/commands/site/generate.html">Site generate</a></th><td><p>Generate a site resource and print it to the console</p>
+<tr><th><a href="{{site_prefix}}/commands/site/generate.html">Site generate</a></th><td><p>Generate a Site resource</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/commands/site/start.html">Site start</a></th><td><p>Start the Skupper router for the current site</p>
 </td></tr>
@@ -49,7 +49,7 @@ links:
 </td></tr>
 <tr><th><a href="{{site_prefix}}/commands/link/status.html">Link status</a></th><td><p>Display the status of links in the current site</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/commands/link/generate.html">Link generate</a></th><td><p>Generate a link resource for use in a remote site</p>
+<tr><th><a href="{{site_prefix}}/commands/link/generate.html">Link generate</a></th><td><p>Generate a Link resource for use in a remote site</p>
 </td></tr>
 </table>
 
@@ -66,7 +66,7 @@ links:
 </td></tr>
 <tr><th><a href="{{site_prefix}}/commands/connector/status.html">Connector status</a></th><td><p>Display the status of connectors in the current site</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/commands/connector/generate.html">Connector generate</a></th><td><p>Generate a connector resource and print it to the console</p>
+<tr><th><a href="{{site_prefix}}/commands/connector/generate.html">Connector generate</a></th><td><p>Generate a Connector resource</p>
 </td></tr>
 </table>
 
@@ -80,7 +80,7 @@ links:
 </td></tr>
 <tr><th><a href="{{site_prefix}}/commands/listener/status.html">Listener status</a></th><td><p>Display the status of listeners in the current site</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/commands/listener/generate.html">Listener generate</a></th><td><p>Generate a listener resource and print it to the console</p>
+<tr><th><a href="{{site_prefix}}/commands/listener/generate.html">Listener generate</a></th><td><p>Generate a Listener resource</p>
 </td></tr>
 </table>
 

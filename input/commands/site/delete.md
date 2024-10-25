@@ -29,11 +29,16 @@ skupper site delete [name] [options]
 
 <section>
 
-## Output
+## Examples
 
-~~~ console
+~~~
+# Delete the current site
+$ skupper site delete
 Waiting for deletion...
-Site "<name>" is deleted.
+Site "west" is deleted.
+
+# Delete the current site and all of its associated Skupper resources
+$ skupper site delete --all
 ~~~
 
 </section>

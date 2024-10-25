@@ -29,22 +29,24 @@ skupper link status [name] [options]
 
 <section>
 
-## Output
+## Examples
 
-~~~ console
+~~~
+# Show the status of all links in the current site
 $ skupper link status
-NAME    STATUS   COST
-west    Ready    1
-south   Error    10
+NAME          STATUS   COST
+west-6bfn6    Ready    1
+south-ac619   Error    10
 
 Links from remote sites:
 
 <none>
 
-$ skupper link status west
-Name:    west
-Status:  Ready
-Cost:    1
+# Show the status of one link
+$ skupper link status west-6bfn6
+Name:     west-6bfn6
+Status:   Ready
+Cost:     1
 ~~~
 
 </section>

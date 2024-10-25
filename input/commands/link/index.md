@@ -38,7 +38,7 @@ skupper link [command] [options]
 </td></tr>
 <tr><th><a href="status.html">Link status</a></th><td><p>Display the status of links in the current site</p>
 </td></tr>
-<tr><th><a href="generate.html">Link generate</a></th><td><p>Generate a link resource for use in a remote site</p>
+<tr><th><a href="generate.html">Link generate</a></th><td><p>Generate a Link resource for use in a remote site</p>
 </td></tr>
 </table>
 
