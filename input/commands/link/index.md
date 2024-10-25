@@ -32,13 +32,13 @@ skupper link [command] [options]
 ## Commands
 
 <table class="objects">
-<tr><th><a href="create.html">Link create</a></th><td><p>Create a link</p>
-</td></tr>
-<tr><th><a href="status.html">Link status</a></th><td><p>Display the status of links in the current site</p>
-</td></tr>
 <tr><th><a href="update.html">Link update</a></th><td><p>Change link settings</p>
 </td></tr>
 <tr><th><a href="delete.html">Link delete</a></th><td><p>Delete a link</p>
+</td></tr>
+<tr><th><a href="status.html">Link status</a></th><td><p>Display the status of links in the current site</p>
+</td></tr>
+<tr><th><a href="generate.html">Link generate</a></th><td><p>Generate a link resource for use in a remote site</p>
 </td></tr>
 </table>
 

@@ -22,6 +22,9 @@ def generate():
     command_model.resource_model = resource_model
     command_model.command_model = command_model
 
+    resource_model.check()
+    command_model.check()
+
     concepts.generate(concept_model)
     resources.generate(resource_model)
     commands.generate(command_model)

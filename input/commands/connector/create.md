@@ -83,15 +83,6 @@ skupper connector create backend 8080 --output yaml
   </td></tr><tr><th><code>ready</code></th><td><p>Ready</p>
   </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="output">--output <span class="attribute-info">string</span></h3>
-
-  Print the resource to the console in a structured output format
-  instead of submitting it to the Skupper controller.
-
-  <table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
-  </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
-  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
-
 - <h3 id="timeout">--timeout <span class="attribute-info">string (duration)</span></h3>
 
   Raise an error if the operation does not complete in the given
@@ -179,7 +170,7 @@ skupper connector create backend 8080 --output yaml
   </td></tr><tr><th><code>docker</code></th><td><p>Docker or Podman</p>
   </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
 
-- <h3 id="help">--help <span class="attribute-info"></span></h3>
+- <h3 id="help">--help <span class="attribute-info">boolean</span></h3>
 
   Display help and exit.
 

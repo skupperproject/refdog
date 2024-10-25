@@ -29,8 +29,8 @@ links:
 #### Service exposure
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/resources/connector.html">Connector</a></th><td><p>Binds a connection endpoint in the local site to target workloads in remote sites</p>
+<tr><th><a href="{{site_prefix}}/resources/connector.html">Connector</a></th><td><p>Binds target workloads in the local site to listeners in remote sites</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/resources/listener.html">Listener</a></th><td><p>Binds target workloads in the local site to listeners in remote sites</p>
+<tr><th><a href="{{site_prefix}}/resources/listener.html">Listener</a></th><td><p>Binds a connection endpoint in the local site to target workloads in remote sites</p>
 </td></tr>
 </table>

@@ -13,8 +13,8 @@ links:
 
 <section>
 
-Binds a connection endpoint in the local site to target
-workloads in remote sites.
+Binds target workloads in the local site to listeners in
+remote sites.
 
 Each site can have multiple connector resources.
 
@@ -103,7 +103,7 @@ spec:
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="tlssecret">tlsSecret <span class="attribute-info">string</span></h3>
+- <h3 id="tlscredentials">tlsCredentials <span class="attribute-info">string</span></h3>
 
   The name of a Kubernetes secret containing the trusted
   server certificate (typically a CA).

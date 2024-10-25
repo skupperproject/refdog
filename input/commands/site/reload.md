@@ -11,7 +11,7 @@ links:
 
 <section>
 
-Reload the site configuration
+Reload the site configuration.
 
 <table class="fields"><tr><th>Platforms</th><td>Docker, Podman, Systemd</td></table>
 

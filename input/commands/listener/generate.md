@@ -5,17 +5,15 @@ links:
     url: /concepts/listener.html
   - name: Listener resource
     url: /resources/listener.html
-  - name: Connector create command
-    url: /commands/connector/create.html
 ---
 
-# Listener create command
+# Listener generate command
 
 <section>
 
-Create a listener.
+Generate a listener resource and print it to the console.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>Waits for</th><td>Configured</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 </section>
 
@@ -24,18 +22,7 @@ Create a listener.
 ## Usage
 
 ~~~ shell
-skupper listener create <name> <port> [options]
-~~~
-
-</section>
-
-<section>
-
-## Output
-
-~~~ console
-Waiting for status...
-Listener "<name>" is configured.
+skupper listener generate <name> <port> [options]
 ~~~
 
 </section>
@@ -45,14 +32,19 @@ Listener "<name>" is configured.
 ## Examples
 
 ~~~
-# Create a listener for a database
-skupper listener create database 5432
+# Print a listener resource to the console
+$ skupper listener generate backend 8080
+apiVersion: skupper.io/v2alpha1
+kind: Listener
+metadata:
+  name: backend
+spec:
+  routingKey: backend
+  port: 8080
+  host: backend
 
-# Set the routing key and host explicitly
-skupper listener create backend 8080 --routing-key be1 --host apiserver
-
-# Produce YAML output
-skupper listener create backend 8080 --output yaml
+# Direct the output to a file
+$ skupper listener generate backend 8080 > backend.yaml
 ~~~
 
 </section>
@@ -63,7 +55,7 @@ skupper listener create backend 8080 --output yaml
 
 - <h3 id="name">name <span class="attribute-info">string, required</span></h3>
 
-  The name of the resource to be created.
+  The name of the resource to be generated.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
@@ -75,23 +67,14 @@ skupper listener create backend 8080 --output yaml
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="wait">--wait <span class="attribute-info">string</span></h3>
+- <h3 id="output">--output <span class="attribute-info">string</span></h3>
 
-  Wait for the given status before exiting.
+  Select the output format.
 
-  <table class="fields"><tr><th>Default</th><td><p><code>configured</code></p>
-  </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>pending</code></th><td><p>Pending</p>
-  </td></tr><tr><th><code>configured</code></th><td><p>Configured</p>
-  </td></tr><tr><th><code>ready</code></th><td><p>Ready</p>
+  <table class="fields"><tr><th>Default</th><td><p><code>yaml</code></p>
+  </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
+  </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
   </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
-
-- <h3 id="timeout">--timeout <span class="attribute-info">string (duration)</span></h3>
-
-  Raise an error if the operation does not complete in the given
-  period of time.
-
-  <table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
-  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="routing-key">--routing-key <span class="attribute-info">string</span></h3>
 
@@ -132,24 +115,6 @@ skupper listener create backend 8080 --output yaml
 
   <table class="fields"><tr><th>Default</th><td><p><code>tcp</code></p>
   </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
-
-- <h3 id="namespace">--namespace <span class="attribute-info">string</span></h3>
-
-  Set the namespace.
-
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
-
-- <h3 id="context">--context <span class="attribute-info">string</span></h3>
-
-  Set the kubeconfig context.
-
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
-
-- <h3 id="kubeconfig">--kubeconfig <span class="attribute-info">string</span></h3>
-
-  Set the path to the kubeconfig file.
-
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
 
 - <h3 id="platform">--platform <span class="attribute-info">string</span></h3>
 

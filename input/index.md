@@ -11,7 +11,7 @@
 Site West:
 
 ~~~
-apiVersion: skupper.io/v1alpha1
+apiVersion: skupper.io/v2alpha1
 kind: Site
 metadata:
   name: west
@@ -19,7 +19,7 @@ metadata:
 spec:
   linkAccess: default
 ---
-apiVersion: skupper.io/v1alpha1
+apiVersion: skupper.io/v2alpha1
 kind: Listener
 metadata:
   name: backend
@@ -37,13 +37,13 @@ skupper token issue ~/west-token.yaml
 Site East:
 
 ~~~
-apiVersion: skupper.io/v1alpha1
+apiVersion: skupper.io/v2alpha1
 kind: Site
 metadata:
   name: east
   namespace: hello-world-east
 ---
-apiVersion: skupper.io/v1alpha1
+apiVersion: skupper.io/v2alpha1
 kind: Connector
 metadata:
   name: backend

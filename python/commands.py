@@ -274,6 +274,23 @@ class CommandModel:
     def __repr__(self):
         return self.__class__.__name__
 
+    def check(self):
+        for command in self.commands:
+            for option in command.options:
+                if not option.name:
+                    fail(f"{command}: {option} has no name")
+
+                if not option.type:
+                    fail(f"{command}: {option} has no type")
+
+            for subcommand in command.subcommands:
+                for option in subcommand.options:
+                    if not option.name:
+                        fail(f"{command}: {subcommand}: {option} has no name")
+
+                    if not option.type:
+                        fail(f"{command}: {subcommand}: {option} has no type")
+
 class Command(ModelObject):
     usage = object_property("usage")
     platforms = object_property("platforms", default=["Kubernetes", "Docker", "Podman", "Systemd"])

@@ -7,13 +7,13 @@ links:
     url: /resources/site.html
 ---
 
-# Site update command
+# Site generate command
 
 <section>
 
-Change site settings.
+Generate a site resource and print it to the console.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>Waits for</th><td>Ready</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 </section>
 
@@ -22,18 +22,7 @@ Change site settings.
 ## Usage
 
 ~~~ shell
-skupper site update [name] [options]
-~~~
-
-</section>
-
-<section>
-
-## Output
-
-~~~ console
-Waiting for status...
-Site "<name>" is ready.
+skupper site generate <name> [options]
 ~~~
 
 </section>
@@ -43,11 +32,17 @@ Site "<name>" is ready.
 ## Examples
 
 ~~~
-# Update the site to accept links
-skupper site update --enable-link-access
+# Print a site resource to the console
+$ skupper site generate west --enable-link-access
+apiVersion: skupper.io/v2alpha1
+kind: Site
+metadata:
+  name: west
+spec:
+  linkAccess: default
 
-# Update multiple settings
-skupper site update --enable-link-access --service-account app1:alice
+# Direct the output to a file
+$ skupper site generate east > east.yaml
 ~~~
 
 </section>
@@ -56,32 +51,20 @@ skupper site update --enable-link-access --service-account app1:alice
 
 ## Options
 
-- <h3 id="name">name <span class="attribute-info">string, optional</span></h3>
+- <h3 id="name">name <span class="attribute-info">string, required</span></h3>
 
-  The name of the site resource.
-  
-  If not specified, the name is that of the site
-  associated with the current namespace.
+  The name of the resource to be generated.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
-- <h3 id="wait">--wait <span class="attribute-info">string</span></h3>
+- <h3 id="output">--output <span class="attribute-info">string</span></h3>
 
-  Wait for the given status before exiting.
+  Select the output format.
 
-  <table class="fields"><tr><th>Default</th><td><p><code>ready</code></p>
-  </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>pending</code></th><td><p>Pending</p>
-  </td></tr><tr><th><code>configured</code></th><td><p>Configured</p>
-  </td></tr><tr><th><code>ready</code></th><td><p>Ready</p>
+  <table class="fields"><tr><th>Default</th><td><p><code>yaml</code></p>
+  </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
+  </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
   </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
-
-- <h3 id="timeout">--timeout <span class="attribute-info">string (duration)</span></h3>
-
-  Raise an error if the operation does not complete in the given
-  period of time.
-
-  <table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
-  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="enable-link-access">--enable-link-access <span class="attribute-info">boolean</span></h3>
 
@@ -109,24 +92,6 @@ skupper site update --enable-link-access --service-account app1:alice
   <table class="fields"><tr><th>Default</th><td><p><code>skupper-router</code></p>
   </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="namespace">--namespace <span class="attribute-info">string</span></h3>
-
-  Set the namespace.
-
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
-
-- <h3 id="context">--context <span class="attribute-info">string</span></h3>
-
-  Set the kubeconfig context.
-
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
-
-- <h3 id="kubeconfig">--kubeconfig <span class="attribute-info">string</span></h3>
-
-  Set the path to the kubeconfig file.
-
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
-
 - <h3 id="platform">--platform <span class="attribute-info">string</span></h3>
 
   Set the Skupper platform.
@@ -143,12 +108,13 @@ skupper site update --enable-link-access --service-account app1:alice
 
 </section>
 
-<section>
+<section class="notes">
 
-## Errors
+## Notes
 
-- **No site resource exists**
-
-  There is no existing Skupper site resource to update.
+Do not generate resources with namespaces.  That's already
+added in by the kubectl tooling when the resource is
+applied.  Not having the namespace means the resulting
+output can be used in more contexts.
 
 </section>

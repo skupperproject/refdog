@@ -217,12 +217,10 @@ class ResourceModel:
 
                 self.crds_by_name[kind] = crd_data
 
-        self.check_properties()
-
     def __repr__(self):
         return self.__class__.__name__
 
-    def check_properties(self):
+    def check(self):
         for crd_name, crd_data in self.crds_by_name.items():
             try:
                 resource = self.resources_by_name[crd_name]

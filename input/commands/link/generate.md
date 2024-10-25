@@ -7,13 +7,13 @@ links:
     url: /resources/link.html
 ---
 
-# Link delete command
+# Link generate command
 
 <section>
 
-Delete a link.
+Generate a link resource for use in a remote site.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>Waits for</th><td>Deletion</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 </section>
 
@@ -22,7 +22,7 @@ Delete a link.
 ## Usage
 
 ~~~ shell
-skupper link delete <name> [options]
+skupper link generate <name> [options]
 ~~~
 
 </section>
@@ -32,8 +32,8 @@ skupper link delete <name> [options]
 ## Output
 
 ~~~ console
-Waiting for deletion...
-Link "<name>" is deleted.
+Waiting for status...
+Link "<name>" is ready.
 ~~~
 
 </section>
@@ -44,17 +44,25 @@ Link "<name>" is deleted.
 
 - <h3 id="name">name <span class="attribute-info">string, required</span></h3>
 
-  The name of the resource to be deleted.
+  The name of the resource to be generated.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
-- <h3 id="timeout">--timeout <span class="attribute-info">string (duration)</span></h3>
+- <h3 id="output">--output <span class="attribute-info">string</span></h3>
 
-  Raise an error if the operation does not complete in the given
-  period of time.
+  Select the output format.
 
-  <table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
-  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+  <table class="fields"><tr><th>Default</th><td><p><code>yaml</code></p>
+  </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
+  </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
+  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+
+- <h3 id="cost">--cost <span class="attribute-info">integer</span></h3>
+
+  The configured routing cost of sending traffic over
+  the link.
+
+  <table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="namespace">--namespace <span class="attribute-info">string</span></h3>
 

@@ -8,17 +8,6 @@ options:
     links:
       - name: Kubernetes object names
         url: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
-  create/output:
-    name: output
-    type: string
-    description: |
-      Print the resource to the console in a structured output format
-      instead of submitting it to the Skupper controller.
-    choices:
-      - name: json
-        description: Produce JSON output
-      - name: yaml
-        description: Produce YAML output
   create/wait:
     name: wait
     type: string
@@ -49,17 +38,6 @@ options:
     links:
       - name: Kubernetes object names
         url: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
-  update/output:
-    name: output
-    type: string
-    description: |
-      Print the resource to the console in a structured output format
-      instead of submitting it to the Skupper controller.
-    choices:
-      - name: json
-        description: Produce JSON output
-      - name: yaml
-        description: Produce YAML output
   update/wait:
     name: wait
     type: string
@@ -127,6 +105,26 @@ options:
     description: |
       Raise an error if the operation does not complete in the given
       period of time.
+  generate/name:
+    name: name
+    type: string
+    required: true
+    description: |
+      The name of the resource to be generated.
+    links:
+      - name: Kubernetes object names
+        url: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
+  generate/output:
+    name: output
+    type: string
+    default: yaml
+    description: |
+      Select the output format.
+    choices:
+      - name: json
+        description: Produce JSON output
+      - name: yaml
+        description: Produce YAML output
   site/enable_link_access:
     name: enable-link-access
     type: boolean
@@ -154,9 +152,6 @@ options:
   site/service_account:
     name: service-account
     property: serviceAccount
-  link/tls_secret:
-    name: tls-secret
-    property: tlsCredentials
   link/cost:
     name: cost
     property: cost
@@ -251,7 +246,7 @@ options:
       Set the Skupper platform.
   global/help:
     name: help
-    type: ""
+    type: boolean
     description: |
       Display help and exit.
 commands:
@@ -260,6 +255,7 @@ commands:
       Display help for site commands and exit.
     inherit_options: [global/*]
     subcommands:
+      # site.create
       - name: create
         wait: Ready
         description: |
@@ -283,18 +279,7 @@ commands:
           - message: A site resource already exists
             description: |
               There is already a site resource defined for the namespace.
-      - name: status
-        description: |
-          Display the current status of a site.
-        output: |
-          $ skupper site status
-          NAME   STATUS
-          west   Ready
-
-          $ skupper site status west
-          Name:    west
-          Status:  Ready
-        inherit_options: [status/*, context/*, global/*]
+      # site.update
       - name: update
         wait: Ready
         description: |
@@ -306,7 +291,7 @@ commands:
           # Update multiple settings
           skupper site update --enable-link-access --service-account app1:alice
         output: |
-          Waiting for update to complete...
+          Waiting for status...
           Site "<name>" is ready.
         inherit_options: [update/*, site/*, context/*, global/*]
         options:
@@ -322,6 +307,7 @@ commands:
           - message: No site resource exists
             description: |
               There is no existing Skupper site resource to update.
+      # site.delete
       - name: delete
         wait: Deletion
         description: |
@@ -349,15 +335,56 @@ commands:
           - message: No site resource exists
             description: |
               There is no existing Skupper site resource to delete.
+      # site.status
+      - name: status
+        description: |
+          Display the current status of a site.
+        output: |
+          $ skupper site status
+          NAME   STATUS
+          west   Ready
+
+          $ skupper site status west
+          Name:    west
+          Status:  Ready
+        inherit_options: [status/*, context/*, global/*]
+      # site.generate
+      - name: generate
+        description: |
+          Generate a site resource and print it to the console.
+        examples: |
+          # Print a site resource to the console
+          $ skupper site generate west --enable-link-access
+          apiVersion: skupper.io/v2alpha1
+          kind: Site
+          metadata:
+            name: west
+          spec:
+            linkAccess: default
+
+          # Direct the output to a file
+          $ skupper site generate east > east.yaml
+        notes: |
+          Do not generate resources with namespaces.  That's already
+          added in by the kubectl tooling when the resource is
+          applied.  Not having the namespace means the resulting
+          output can be used in more contexts.
+        inherit_options: [generate/*, site/*, global/*]
+      # site.start
       - name: start
-        description: Start the Skupper router for the current site
         platforms: [Docker, Podman, Systemd]
+        description: |
+          Start the Skupper router for the current site.
+      # site.stop
       - name: stop
-        description: Stop the Skupper router for the current site
         platforms: [Docker, Podman, Systemd]
+        description: |
+          Stop the Skupper router for the current site.
+      # site.reload
       - name: reload
-        description: Reload the site configuration
         platforms: [Docker, Podman, Systemd]
+        description: |
+          Reload the site configuration.
   - name: token
     resource: Claim
     related_concepts: ["access grant", "access token"]
@@ -366,6 +393,7 @@ commands:
       Display help for token commands and exit.
     inherit_options: [global/*]
     subcommands:
+      # token.issue
       - name: issue
         wait: Ready
         resource: AccessGrant
@@ -419,6 +447,7 @@ commands:
               Link access at this site is not currently enabled.  You
               can use "skupper site update --enable-link-access" to
               enable it.
+      # token.redeem
       - name: redeem
         related_concepts: ["access grant", "access token"]
         related_resources: [AccessGrant, AccessToken]
@@ -450,19 +479,25 @@ commands:
       Display help for link commands and exit.
     inherit_options: [global/*]
     subcommands:
-      - name: create
+      # link.update
+      - name: update
         wait: Ready
         description: |
-          Create a link.
+          Change link settings.
         output: |
           Waiting for status...
           Link "<name>" is ready.
         inherit_options: [create/*, link/*, context/*, global/*]
-        options:
-          - name: name
-          - name: tls-secret
-            required: true
-            positional: true
+      # link.delete
+      - name: delete
+        wait: Deletion
+        description: |
+          Delete a link.
+        output: |
+          Waiting for deletion...
+          Link "<name>" is deleted.
+        inherit_options: [delete/*, context/*, global/*]
+      # link.status
       - name: status
         description: |
           Display the status of links in the current site.
@@ -481,28 +516,21 @@ commands:
           Status:  Ready
           Cost:    1
         inherit_options: [status/*, context/*, global/*]
-      - name: update
-        wait: Ready
+      # link.generate
+      - name: generate
         description: |
-          Change link settings.
+          Generate a link resource for use in a remote site.
         output: |
-          Waiting for update to complete...
+          Waiting for status...
           Link "<name>" is ready.
-        inherit_options: [create/*, link/*, context/*, global/*]
-      - name: delete
-        wait: Deletion
-        description: |
-          Delete a link.
-        output: |
-          Waiting for deletion...
-          Link "<name>" is deleted.
-        inherit_options: [delete/*, context/*, global/*]
+        inherit_options: [generate/*, link/*, context/*, global/*]
   - name: connector
     related_commands: [listener]
     description: |
       Display help for connector commands and exit.
     inherit_options: [global/*]
     subcommands:
+      # connector.create
       - name: create
         wait: Configured
         related_commands: [listener/create]
@@ -527,6 +555,36 @@ commands:
             required: true
           - name: wait
             default: configured
+      # connector.update
+      - name: update
+        wait: Configured
+        related_commands: [listener/update]
+        description: |
+          Update a connector.
+        examples: |
+          # Change the workload and port
+          skupper connector update database --workload deployment/mysql --port 3306
+
+          # Change the routing key
+          skupper connector update backend --routing-key be2
+
+          # Produce YAML output
+          skupper connector update backend --port 9090 --output yaml
+        output: |
+          Waiting for status...
+          Connector "<name>" is configured.
+        inherit_options: [update/*, connector/*, context/*, global/*]
+      # connector.delete
+      - name: delete
+        wait: Deletion
+        related_commands: [listener/delete]
+        description: |
+          Delete a connector.
+        output: |
+          Waiting for deletion...
+          Connector "<name>" is deleted.
+        inherit_options: [delete/*, context/*, global/*]
+      # connector.status
       - name: status
         description: |
           Display the status of connectors in the current site.
@@ -545,43 +603,35 @@ commands:
           Port:         8080
           Listeners:    1
         inherit_options: [status/*, context/*, global/*]
+      # connector.generate
+      - name: generate
+        description: |
+          Generate a connector resource and print it to the console.
+        examples: |
+          # Print a connector resource to the console
+          $ skupper connector generate backend 8080
+          apiVersion: skupper.io/v2alpha1
+          kind: Connector
+          metadata:
+            name: backend
+          spec:
+            routingKey: backend
+            port: 8080
+            selector: app=backend
+
+          # Direct the output to a file
+          $ skupper connector generate backend 8080 > backend.yaml
+        inherit_options: [generate/*, connector/*, global/*]
         options:
           - name: name
-            required: false
-            positional: true
-      - name: update
-        wait: Configured
-        related_commands: [listener/update]
-        description: |
-          Update a connector.
-        examples: |
-          # Change the workload and port
-          skupper connector update database --workload deployment/mysql --port 3306
-
-          # Change the routing key
-          skupper connector update backend --routing-key be2
-
-          # Produce YAML output
-          skupper connector update backend --port 9090 --output yaml
-        output: |
-          Waiting for update to complete...
-          Connector "<name>" is configured.
-        inherit_options: [update/*, connector/*, context/*, global/*]
-      - name: delete
-        wait: Deletion
-        related_commands: [listener/delete]
-        description: |
-          Delete a connector.
-        output: |
-          Waiting for deletion...
-          Connector "<name>" is deleted.
-        inherit_options: [delete/*, context/*, global/*]
+          - name: port
   - name: listener
     related_commands: [connector]
     description: |
       Display help for listener commands and exit.
     inherit_options: [global/*]
     subcommands:
+      # listener.create
       - name: create
         wait: Configured
         related_commands: [connector/create]
@@ -603,9 +653,43 @@ commands:
         options:
           - name: name
           - name: port
-          - name: output
           - name: wait
             default: configured
+      # listener.update
+      - name: update
+        wait: Configured
+        related_commands: [connector/update]
+        description: |
+          Update a listener.
+        examples: |
+          # Change the host and port
+          skupper listener update database --host mysql --port 3306
+
+          # Change the routing key
+          skupper listener update backend --routing-key be2
+
+          # Produce YAML output
+          skupper listener update backend --port 9090 --output yaml
+        output: |
+          Waiting for status...
+          Listener "<name>" is configured.
+        inherit_options: [update/*, listener/*, context/*, global/*]
+        options:
+          - name: name
+          - name: port
+            required: false
+            positional: false
+      # listener.delete
+      - name: delete
+        wait: Deletion
+        related_commands: [connector/delete]
+        description: |
+          Delete a listener.
+        output: |
+          Waiting for deletion...
+          Listener "<name>" is deleted.
+        inherit_options: [delete/*, context/*, global/*]
+      # listener.status
       - name: status
         description: |
           Display the status of listeners in the current site.
@@ -623,38 +707,28 @@ commands:
           Port:         8080
           Connectors:   1
         inherit_options: [status/*, context/*, global/*]
-      - name: update
-        wait: Configured
-        related_commands: [connector/update]
+      # listener.generate
+      - name: generate
         description: |
-          Update a listener.
+          Generate a listener resource and print it to the console.
         examples: |
-          # Change the host and port
-          skupper listener update database --host mysql --port 3306
+          # Print a listener resource to the console
+          $ skupper listener generate backend 8080
+          apiVersion: skupper.io/v2alpha1
+          kind: Listener
+          metadata:
+            name: backend
+          spec:
+            routingKey: backend
+            port: 8080
+            host: backend
 
-          # Change the routing key
-          skupper listener update backend --routing-key be2
-
-          # Produce YAML output
-          skupper listener update backend --port 9090 --output yaml
-        output: |
-          Waiting for update to complete...
-          Listener "<name>" is configured.
-        inherit_options: [update/*, listener/*, context/*, global/*]
+          # Direct the output to a file
+          $ skupper listener generate backend 8080 > backend.yaml
+        inherit_options: [generate/*, listener/*, global/*]
         options:
           - name: name
           - name: port
-            required: false
-            positional: false
-      - name: delete
-        wait: Deletion
-        related_commands: [connector/delete]
-        description: |
-          Delete a listener.
-        output: |
-          Waiting for deletion...
-          Listener "<name>" is deleted.
-        inherit_options: [delete/*, context/*, global/*]
   - name: debug
     description: |
       Display help for debug commands and exit.

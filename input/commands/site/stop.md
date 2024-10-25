@@ -11,7 +11,7 @@ links:
 
 <section>
 
-Stop the Skupper router for the current site
+Stop the Skupper router for the current site.
 
 <table class="fields"><tr><th>Platforms</th><td>Docker, Podman, Systemd</td></table>
 

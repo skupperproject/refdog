@@ -54,7 +54,7 @@ status:    # Status properties
 
 ## Spec properties
 
-- <h3 id="tlssecret">tlsSecret <span class="attribute-info">string</span></h3>
+- <h3 id="tlscredentials">tlsCredentials <span class="attribute-info">string</span></h3>
 
   The name of a Kubernetes secret containing TLS
   credentials. The secret contains the trusted server

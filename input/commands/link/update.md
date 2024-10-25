@@ -32,7 +32,7 @@ skupper link update <name> [options]
 ## Output
 
 ~~~ console
-Waiting for update to complete...
+Waiting for status...
 Link "<name>" is ready.
 ~~~
 
@@ -47,15 +47,6 @@ Link "<name>" is ready.
   The name of the resource to be created.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
-
-- <h3 id="output">--output <span class="attribute-info">string</span></h3>
-
-  Print the resource to the console in a structured output format
-  instead of submitting it to the Skupper controller.
-
-  <table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
-  </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
-  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="wait">--wait <span class="attribute-info">string</span></h3>
 
@@ -74,17 +65,6 @@ Link "<name>" is ready.
 
   <table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
   </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
-
-- <h3 id="tls-secret">--tls-secret <span class="attribute-info">string</span></h3>
-
-  The name of a Kubernetes secret containing TLS
-  credentials. The secret contains the trusted server
-  certificate (typically a CA).
-  
-  It can optionally include a client certificate and key for
-  mutual TLS.
-
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="cost">--cost <span class="attribute-info">integer</span></h3>
 
@@ -119,7 +99,7 @@ Link "<name>" is ready.
   </td></tr><tr><th><code>docker</code></th><td><p>Docker or Podman</p>
   </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
 
-- <h3 id="help">--help <span class="attribute-info"></span></h3>
+- <h3 id="help">--help <span class="attribute-info">boolean</span></h3>
 
   Display help and exit.
 

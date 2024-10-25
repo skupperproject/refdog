@@ -84,7 +84,7 @@ Connector "<name>" is deleted.
   </td></tr><tr><th><code>docker</code></th><td><p>Docker or Podman</p>
   </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
 
-- <h3 id="help">--help <span class="attribute-info"></span></h3>
+- <h3 id="help">--help <span class="attribute-info">boolean</span></h3>
 
   Display help and exit.
 
