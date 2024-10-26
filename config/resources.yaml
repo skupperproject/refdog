@@ -27,12 +27,8 @@ properties:
       The current state of the resource.
   status/message:
     name: message
-    description: |
-      XXX
   status/conditions:
     name: conditions
-    description: |
-      XXX
 resources:
   - name: Site
     related_concepts: [network, namespace]

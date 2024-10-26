@@ -81,13 +81,9 @@ status:    # Status properties
 
 - <h3 id="message">message <span class="attribute-info">None</span></h3>
 
-  XXX
-
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="conditions">conditions <span class="attribute-info">array</span></h3>
-
-  XXX
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 

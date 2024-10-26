@@ -314,6 +314,16 @@ body.object h2 {
 body.object h3 {
     font-family: var(--body-font-family);
     font-size: 1em;
+    position: relative;
+    left: -1em;
+    background-color: hsl(0, 0%, 97%);
+    display: inline;
+    padding: 0.2em 0.3em;
+}
+
+body.object li {
+    list-style-type: none;
+    margin-top: 1.3em;
 }
 
 body.object span.attribute-info {
