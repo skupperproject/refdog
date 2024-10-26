@@ -23,11 +23,8 @@ Links are not usually created directly.  Instead, you
 typically use an access token to obtain a link.
 
 ~~~ yaml
-apiVersion: skupper.io/v1alpha1
+apiVersion: skupper.io/v2alpha1
 kind: Link
-metadata:  # Metadata properties
-spec:      # Spec properties
-status:    # Status properties
 ~~~
 
 </section>
@@ -36,13 +33,13 @@ status:    # Status properties
 
 ## Metadata properties
 
-- <h3 id="name">name <span class="attribute-info">string, required</span></h3>
+- <div class="attribute"><h3 id="metadata-name">name</h3><div>string, required</div></div>
 
   The name of the resource.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
-- <h3 id="namespace">namespace <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="metadata-namespace">namespace</h3><div>string</div></div>
 
   The namespace of the resource.
 
@@ -54,7 +51,7 @@ status:    # Status properties
 
 ## Spec properties
 
-- <h3 id="tlscredentials">tlsCredentials <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="spec-tlscredentials">tlsCredentials</h3><div>string</div></div>
 
   The name of a Kubernetes secret containing TLS
   credentials. The secret contains the trusted server
@@ -65,18 +62,18 @@ status:    # Status properties
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="">Custom certificates</a></td></table>
 
-- <h3 id="cost">cost <span class="attribute-info">integer</span></h3>
+- <div class="attribute"><h3 id="spec-cost">cost</h3><div>integer</div></div>
 
   The configured routing cost of sending traffic over
   the link.
 
   <table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="">Load balancing</a></td></table>
 
-- <h3 id="endpoints">endpoints <span class="attribute-info">array, required</span></h3>
+- <div class="attribute"><h3 id="spec-endpoints">endpoints</h3><div>array, required</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="settings">settings <span class="attribute-info">object</span></h3>
+- <div class="attribute"><h3 id="spec-settings">settings</h3><div>object</div></div>
 
   Additional settings.
 
@@ -88,25 +85,25 @@ status:    # Status properties
 
 ## Status properties
 
-- <h3 id="remotesiteid">remoteSiteId <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="status-remotesiteid">remoteSiteId</h3><div>string</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="remotesitename">remoteSiteName <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="status-remotesitename">remoteSiteName</h3><div>string</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="status">status <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="status-status">status</h3><div>string</div></div>
 
   The current state of the resource.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="message">message <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="status-message">message</h3><div>string</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="conditions">conditions <span class="attribute-info">array</span></h3>
+- <div class="attribute"><h3 id="status-conditions">conditions</h3><div>array</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 

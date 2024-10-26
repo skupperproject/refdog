@@ -49,19 +49,19 @@ $ skupper connector create backend 8080 --routing-key be1 --workload deployment/
 
 ## Options
 
-- <h3 id="name">name <span class="attribute-info">string, required</span></h3>
+- <div class="attribute"><h3 id="option-name">name</h3><div>string, required</div></div>
 
   The name of the resource to be created.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
-- <h3 id="port">port <span class="attribute-info">integer, required</span></h3>
+- <div class="attribute"><h3 id="option-port">port</h3><div>integer, required</div></div>
 
   The port on the target workload to forward traffic to.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="wait">--wait <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="option-wait">--wait</h3><div>string</div></div>
 
   Wait for the given status before exiting.
 
@@ -71,7 +71,7 @@ $ skupper connector create backend 8080 --routing-key be1 --workload deployment/
   </td></tr><tr><th><code>ready</code></th><td><p>Ready</p>
   </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="timeout">--timeout <span class="attribute-info">string (duration)</span></h3>
+- <div class="attribute"><h3 id="option-timeout">--timeout</h3><div>string (duration)</div></div>
 
   Raise an error if the operation does not complete in the given
   period of time.
@@ -79,7 +79,7 @@ $ skupper connector create backend 8080 --routing-key be1 --workload deployment/
   <table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
   </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="routing-key">--routing-key <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="option-routing-key">--routing-key</h3><div>string</div></div>
 
   The identifier used to route traffic from listeners to
   connectors.  To expose a local workload to a remote
@@ -89,7 +89,7 @@ $ skupper connector create backend 8080 --routing-key be1 --workload deployment/
   <table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
   </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="host">--host <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="option-host">--host</h3><div>string</div></div>
 
   The hostname or IP address of the server.  This is an
   alternative to `selector` for specifying the target
@@ -97,14 +97,14 @@ $ skupper connector create backend 8080 --routing-key be1 --workload deployment/
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="type">--type <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="option-type">--type</h3><div>string</div></div>
 
   The connector type.
 
   <table class="fields"><tr><th>Default</th><td><p><code>tcp</code></p>
   </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="tls-credentials">--tls-credentials <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="option-tls-credentials">--tls-credentials</h3><div>string</div></div>
 
   The name of a Kubernetes secret containing the trusted
   server certificate (typically a CA).
@@ -117,7 +117,7 @@ $ skupper connector create backend 8080 --routing-key be1 --workload deployment/
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="selector">--selector <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="option-selector">--selector</h3><div>string</div></div>
 
   A Kubernetes label selector for specifying target server
   pods.
@@ -128,7 +128,7 @@ $ skupper connector create backend 8080 --routing-key be1 --workload deployment/
   <table class="fields"><tr><th>Default</th><td><p><code>app=[value-of-name]</code></p>
   </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="workload">--workload <span class="attribute-info">string (resource name)</span></h3>
+- <div class="attribute"><h3 id="option-workload">--workload</h3><div>string (resource name)</div></div>
 
   A Kubernetes resource name that identifies a workload.
   It resolves to an equivalent pod selector.
@@ -138,32 +138,32 @@ $ skupper connector create backend 8080 --routing-key be1 --workload deployment/
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/workloads/">Kubernetes workloads</a></td></table>
 
-- <h3 id="include-not-ready">--include-not-ready <span class="attribute-info">boolean</span></h3>
+- <div class="attribute"><h3 id="option-include-not-ready">--include-not-ready</h3><div>boolean</div></div>
 
   If set, include server pods that are not in the ready
   state.
 
   <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="namespace">--namespace <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="option-namespace">--namespace</h3><div>string</div></div>
 
   Set the namespace.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
 
-- <h3 id="context">--context <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="option-context">--context</h3><div>string</div></div>
 
   Set the kubeconfig context.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
 
-- <h3 id="kubeconfig">--kubeconfig <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="option-kubeconfig">--kubeconfig</h3><div>string</div></div>
 
   Set the path to the kubeconfig file.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
 
-- <h3 id="platform">--platform <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="option-platform">--platform</h3><div>string</div></div>
 
   Set the Skupper platform.
 
@@ -171,7 +171,7 @@ $ skupper connector create backend 8080 --routing-key be1 --workload deployment/
   </td></tr><tr><th><code>docker</code></th><td><p>Docker or Podman</p>
   </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
 
-- <h3 id="help">--help <span class="attribute-info">boolean</span></h3>
+- <div class="attribute"><h3 id="option-help">--help</h3><div>boolean</div></div>
 
   Display help and exit.
 

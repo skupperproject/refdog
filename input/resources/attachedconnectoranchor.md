@@ -10,11 +10,8 @@ links:
 <section>
 
 ~~~ yaml
-apiVersion: skupper.io/v1alpha1
+apiVersion: skupper.io/v2alpha1
 kind: AttachedConnectorAnchor
-metadata:  # Metadata properties
-spec:      # Spec properties
-status:    # Status properties
 ~~~
 
 </section>
@@ -29,15 +26,15 @@ status:    # Status properties
 
 ## Spec properties
 
-- <h3 id="connectornamespace">connectorNamespace <span class="attribute-info">string, required</span></h3>
+- <div class="attribute"><h3 id="spec-connectornamespace">connectorNamespace</h3><div>string, required</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="routingkey">routingKey <span class="attribute-info">string, required</span></h3>
+- <div class="attribute"><h3 id="spec-routingkey">routingKey</h3><div>string, required</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="settings">settings <span class="attribute-info">object</span></h3>
+- <div class="attribute"><h3 id="spec-settings">settings</h3><div>object</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
@@ -47,21 +44,21 @@ status:    # Status properties
 
 ## Status properties
 
-- <h3 id="matchinglistenercount">matchingListenerCount <span class="attribute-info">integer</span></h3>
+- <div class="attribute"><h3 id="status-matchinglistenercount">matchingListenerCount</h3><div>integer</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="status">status <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="status-status">status</h3><div>string</div></div>
 
   The current state of the resource.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="message">message <span class="attribute-info">None</span></h3>
+- <div class="attribute"><h3 id="status-message">message</h3><div>None</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="conditions">conditions <span class="attribute-info">array</span></h3>
+- <div class="attribute"><h3 id="status-conditions">conditions</h3><div>array</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 

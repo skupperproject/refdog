@@ -16,11 +16,8 @@ site.  An access token contains the URL and secret code of a
 corresponding access grant.
 
 ~~~ yaml
-apiVersion: skupper.io/v1alpha1
+apiVersion: skupper.io/v2alpha1
 kind: AccessToken
-metadata:  # Metadata properties
-spec:      # Spec properties
-status:    # Status properties
 ~~~
 
 </section>
@@ -29,13 +26,13 @@ status:    # Status properties
 
 ## Metadata properties
 
-- <h3 id="name">name <span class="attribute-info">string, required</span></h3>
+- <div class="attribute"><h3 id="metadata-name">name</h3><div>string, required</div></div>
 
   The name of the resource.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
-- <h3 id="namespace">namespace <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="metadata-namespace">namespace</h3><div>string</div></div>
 
   The namespace of the resource.
 
@@ -47,28 +44,28 @@ status:    # Status properties
 
 ## Spec properties
 
-- <h3 id="url">url <span class="attribute-info">string, required</span></h3>
+- <div class="attribute"><h3 id="spec-url">url</h3><div>string, required</div></div>
 
   The URL of the token redemption service at the remote
   site.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="ca">ca <span class="attribute-info">string, required</span></h3>
+- <div class="attribute"><h3 id="spec-ca">ca</h3><div>string, required</div></div>
 
   The trusted server certificate of the token redemption
   service at the remote site.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="code">code <span class="attribute-info">string, required</span></h3>
+- <div class="attribute"><h3 id="spec-code">code</h3><div>string, required</div></div>
 
   The secret code used to authenticate the token when
   submitted for redemption.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="settings">settings <span class="attribute-info">object</span></h3>
+- <div class="attribute"><h3 id="spec-settings">settings</h3><div>object</div></div>
 
   Additional settings.
 
@@ -80,23 +77,23 @@ status:    # Status properties
 
 ## Status properties
 
-- <h3 id="redeemed">redeemed <span class="attribute-info">boolean</span></h3>
+- <div class="attribute"><h3 id="status-redeemed">redeemed</h3><div>boolean</div></div>
 
   True if the token has been redeemed.
 
   <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="status">status <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="status-status">status</h3><div>string</div></div>
 
   The current state of the resource.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="message">message <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="status-message">message</h3><div>string</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="conditions">conditions <span class="attribute-info">array</span></h3>
+- <div class="attribute"><h3 id="status-conditions">conditions</h3><div>array</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 

@@ -77,11 +77,8 @@ def generate_resource(resource):
         append()
 
     append("~~~ yaml")
-    append("apiVersion: skupper.io/v1alpha1")
+    append("apiVersion: skupper.io/v2alpha1")
     append(f"kind: {resource.rename}")
-    append("metadata:  # Metadata properties")
-    append("spec:      # Spec properties")
-    append("status:    # Status properties")
     append("~~~")
 
     append()
@@ -156,7 +153,7 @@ def generate_property(prop, append):
         return
 
     name = nvl(prop.rename, prop.name)
-    id_ = get_fragment_id(name)
+    id_ = f"{prop.section}-{get_fragment_id(name)}"
     prop_info = prop.type
 
     if prop.format:
@@ -165,7 +162,7 @@ def generate_property(prop, append):
     if prop.required and prop.default is None:
         prop_info += ", required"
 
-    append(f"- <h3 id=\"{id_}\">{name} <span class=\"attribute-info\">{prop_info}</span></h3>")
+    append(f"- <div class=\"attribute\"><h3 id=\"{id_}\">{name}</h3><div>{prop_info}</div></div>")
     append()
 
     if prop.description:

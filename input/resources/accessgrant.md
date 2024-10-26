@@ -21,11 +21,8 @@ The `code`, `url`, and `ca` properties of the resource
 status are used to generate access tokens from the grant.
 
 ~~~ yaml
-apiVersion: skupper.io/v1alpha1
+apiVersion: skupper.io/v2alpha1
 kind: AccessGrant
-metadata:  # Metadata properties
-spec:      # Spec properties
-status:    # Status properties
 ~~~
 
 </section>
@@ -34,13 +31,13 @@ status:    # Status properties
 
 ## Metadata properties
 
-- <h3 id="name">name <span class="attribute-info">string, required</span></h3>
+- <div class="attribute"><h3 id="metadata-name">name</h3><div>string, required</div></div>
 
   The name of the resource.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
-- <h3 id="namespace">namespace <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="metadata-namespace">namespace</h3><div>string</div></div>
 
   The namespace of the resource.
 
@@ -52,14 +49,14 @@ status:    # Status properties
 
 ## Spec properties
 
-- <h3 id="redemptionsallowed">redemptionsAllowed <span class="attribute-info">integer</span></h3>
+- <div class="attribute"><h3 id="spec-redemptionsallowed">redemptionsAllowed</h3><div>integer</div></div>
 
   The number of times an access token for this grant can
   be redeemed.
 
   <table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="expirationwindow">expirationWindow <span class="attribute-info">string (duration)</span></h3>
+- <div class="attribute"><h3 id="spec-expirationwindow">expirationWindow</h3><div>string (duration)</div></div>
 
   The period of time in which an access token for this
   grant can be redeemed.
@@ -67,7 +64,7 @@ status:    # Status properties
   <table class="fields"><tr><th>Default</th><td><p><code>15m</code></p>
   </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="code">code <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="spec-code">code</h3><div>string</div></div>
 
   The secret code used to authenticate access tokens
   submitted for redemption.
@@ -77,7 +74,7 @@ status:    # Status properties
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="issuer">issuer <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="spec-issuer">issuer</h3><div>string</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
@@ -87,7 +84,7 @@ status:    # Status properties
 
   </section>
 
-- <h3 id="settings">settings <span class="attribute-info">object</span></h3>
+- <div class="attribute"><h3 id="spec-settings">settings</h3><div>object</div></div>
 
   Additional settings.
 
@@ -99,7 +96,7 @@ status:    # Status properties
 
 ## Status properties
 
-- <h3 id="redeemed">redeemed <span class="attribute-info">integer</span></h3>
+- <div class="attribute"><h3 id="status-redeemed">redeemed</h3><div>integer</div></div>
 
   The number of times a token for this grant has been
   redeemed.
@@ -114,7 +111,7 @@ status:    # Status properties
 
   </section>
 
-- <h3 id="expiration">expiration <span class="attribute-info">string (date-time)</span></h3>
+- <div class="attribute"><h3 id="status-expiration">expiration</h3><div>string (date-time)</div></div>
 
   The point in time when the grant expires.
 
@@ -127,20 +124,20 @@ status:    # Status properties
 
   </section>
 
-- <h3 id="url">url <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="status-url">url</h3><div>string</div></div>
 
   The URL of the token-redemption service for this grant.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="ca">ca <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="status-ca">ca</h3><div>string</div></div>
 
   The trusted server certificate of the token-redemption
   service for this grant.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="code">code <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="status-code">code</h3><div>string</div></div>
 
   The secret code used to authenticate access tokens
   submitted for redemption.
@@ -148,17 +145,17 @@ status:    # Status properties
   <table class="fields"><tr><th>Default</th><td><p><em>Generated</em></p>
   </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="status">status <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="status-status">status</h3><div>string</div></div>
 
   The current state of the resource.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="message">message <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="status-message">message</h3><div>string</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="conditions">conditions <span class="attribute-info">array</span></h3>
+- <div class="attribute"><h3 id="status-conditions">conditions</h3><div>array</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 

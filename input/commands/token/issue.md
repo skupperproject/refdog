@@ -65,13 +65,13 @@ $ skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed
 
 ## Options
 
-- <h3 id="file">file <span class="attribute-info">string, required</span></h3>
+- <div class="attribute"><h3 id="option-file">file</h3><div>string, required</div></div>
 
   The name of the token file to create.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="timeout">--timeout <span class="attribute-info">string (duration)</span></h3>
+- <div class="attribute"><h3 id="option-timeout">--timeout</h3><div>string (duration)</div></div>
 
   Raise an error if the operation does not complete in the given
   period of time.
@@ -79,7 +79,7 @@ $ skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed
   <table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
   </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="expiration-window">--expiration-window <span class="attribute-info">string (duration)</span></h3>
+- <div class="attribute"><h3 id="option-expiration-window">--expiration-window</h3><div>string (duration)</div></div>
 
   The period of time in which an access token for this
   grant can be redeemed.
@@ -87,32 +87,32 @@ $ skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed
   <table class="fields"><tr><th>Default</th><td><p><code>15m</code></p>
   </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="redemptions-allowed">--redemptions-allowed <span class="attribute-info">integer</span></h3>
+- <div class="attribute"><h3 id="option-redemptions-allowed">--redemptions-allowed</h3><div>integer</div></div>
 
   The number of times an access token for this grant can
   be redeemed.
 
   <table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="namespace">--namespace <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="option-namespace">--namespace</h3><div>string</div></div>
 
   Set the namespace.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
 
-- <h3 id="context">--context <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="option-context">--context</h3><div>string</div></div>
 
   Set the kubeconfig context.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
 
-- <h3 id="kubeconfig">--kubeconfig <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="option-kubeconfig">--kubeconfig</h3><div>string</div></div>
 
   Set the path to the kubeconfig file.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
 
-- <h3 id="platform">--platform <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="option-platform">--platform</h3><div>string</div></div>
 
   Set the Skupper platform.
 
@@ -120,7 +120,7 @@ $ skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed
   </td></tr><tr><th><code>docker</code></th><td><p>Docker or Podman</p>
   </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
 
-- <h3 id="help">--help <span class="attribute-info">boolean</span></h3>
+- <div class="attribute"><h3 id="option-help">--help</h3><div>boolean</div></div>
 
   Display help and exit.
 

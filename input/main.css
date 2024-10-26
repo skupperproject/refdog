@@ -164,6 +164,10 @@ aside nav {
     gap: 0.5em;
 }
 
+aside nav > nav {
+    padding-left: 1em;
+}
+
 footer {
     grid-area: footer;
     padding: 1em 0;
@@ -311,14 +315,21 @@ body.object h2 {
     font-size: 1.3em;
 }
 
-body.object h3 {
+body.object div.attribute {
+    display: inline;
+    margin: -1em;
+    padding: 0.2em 0.3em;
+    background-color: hsl(0, 0%, 97%);
+}
+
+body.object div.attribute > * {
+    display: inline;
     font-family: var(--body-font-family);
     font-size: 1em;
-    position: relative;
-    left: -1em;
-    background-color: hsl(0, 0%, 97%);
-    display: inline;
-    padding: 0.2em 0.3em;
+}
+
+body.object div.attribute > h3 {
+    margin-right: 0.3em;
 }
 
 body.object li {

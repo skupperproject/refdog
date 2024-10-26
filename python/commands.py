@@ -216,7 +216,7 @@ def generate_option(option, append):
     debug(f"Generating {option}")
 
     prefix = "" if option.positional else "--"
-    id_ = get_fragment_id(option.name)
+    id_ = f"option-{get_fragment_id(option.name)}"
     option_info = option.type
 
     if option.format:
@@ -228,7 +228,7 @@ def generate_option(option, append):
     if not option.required and option.positional:
         option_info += ", optional"
 
-    append(f"- <h3 id=\"{id_}\">{prefix}{option.name} <span class=\"attribute-info\">{option_info}</span></h3>")
+    append(f"- <div class=\"attribute\"><h3 id=\"{id_}\">{prefix}{option.name}</h3><div>{option_info}</div></div>")
     append()
 
     if option.description:

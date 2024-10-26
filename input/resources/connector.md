@@ -19,11 +19,8 @@ remote sites.
 Each site can have multiple connector resources.
 
 ~~~ yaml
-apiVersion: skupper.io/v1alpha1
+apiVersion: skupper.io/v2alpha1
 kind: Connector
-metadata:  # Metadata properties
-spec:      # Spec properties
-status:    # Status properties
 ~~~
 
 </section>
@@ -35,7 +32,7 @@ status:    # Status properties
 A connector in site East for the Hello World backend service:
 
 ~~~ yaml
-apiVersion: skupper.io/v1alpha1
+apiVersion: skupper.io/v2alpha1
 kind: Connector
 metadata:
   name: backend
@@ -52,13 +49,13 @@ spec:
 
 ## Metadata properties
 
-- <h3 id="name">name <span class="attribute-info">string, required</span></h3>
+- <div class="attribute"><h3 id="metadata-name">name</h3><div>string, required</div></div>
 
   The name of the resource.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
-- <h3 id="namespace">namespace <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="metadata-namespace">namespace</h3><div>string</div></div>
 
   The namespace of the resource.
 
@@ -70,7 +67,7 @@ spec:
 
 ## Spec properties
 
-- <h3 id="routingkey">routingKey <span class="attribute-info">string, required</span></h3>
+- <div class="attribute"><h3 id="spec-routingkey">routingKey</h3><div>string, required</div></div>
 
   The identifier used to route traffic from listeners to
   connectors.  To expose a local workload to a remote
@@ -79,13 +76,13 @@ spec:
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/routing-key.html">Routing key concept</a></td></table>
 
-- <h3 id="port">port <span class="attribute-info">integer, required</span></h3>
+- <div class="attribute"><h3 id="spec-port">port</h3><div>integer, required</div></div>
 
   The port on the target workload to forward traffic to.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="selector">selector <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="spec-selector">selector</h3><div>string</div></div>
 
   A Kubernetes label selector for specifying target server
   pods.
@@ -95,7 +92,7 @@ spec:
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">Kubernetes label selectors</a>, <a href="https://kubernetes.io/docs/concepts/workloads/pods/">Kubernetes pods</a></td></table>
 
-- <h3 id="host">host <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="spec-host">host</h3><div>string</div></div>
 
   The hostname or IP address of the server.  This is an
   alternative to `selector` for specifying the target
@@ -103,7 +100,7 @@ spec:
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="tlscredentials">tlsCredentials <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="spec-tlscredentials">tlsCredentials</h3><div>string</div></div>
 
   The name of a Kubernetes secret containing the trusted
   server certificate (typically a CA).
@@ -116,21 +113,21 @@ spec:
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a></td></table>
 
-- <h3 id="includenotready">includeNotReady <span class="attribute-info">boolean</span></h3>
+- <div class="attribute"><h3 id="spec-includenotready">includeNotReady</h3><div>boolean</div></div>
 
   If set, include server pods that are not in the ready
   state.
 
   <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/">Kubernetes pod lifecycle</a></td></table>
 
-- <h3 id="type">type <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="spec-type">type</h3><div>string</div></div>
 
   The connector type.
 
   <table class="fields"><tr><th>Default</th><td><p><code>tcp</code></p>
   </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="settings">settings <span class="attribute-info">object</span></h3>
+- <div class="attribute"><h3 id="spec-settings">settings</h3><div>object</div></div>
 
   Additional settings.
 
@@ -142,25 +139,25 @@ spec:
 
 ## Status properties
 
-- <h3 id="selectedpods">selectedPods <span class="attribute-info">array</span></h3>
+- <div class="attribute"><h3 id="status-selectedpods">selectedPods</h3><div>array</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="matchinglistenercount">matchingListenerCount <span class="attribute-info">integer</span></h3>
+- <div class="attribute"><h3 id="status-matchinglistenercount">matchingListenerCount</h3><div>integer</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="status">status <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="status-status">status</h3><div>string</div></div>
 
   The current state of the resource.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="message">message <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="status-message">message</h3><div>string</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="conditions">conditions <span class="attribute-info">array</span></h3>
+- <div class="attribute"><h3 id="status-conditions">conditions</h3><div>array</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 

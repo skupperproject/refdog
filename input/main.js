@@ -34,14 +34,14 @@ Element.prototype.$$ = function () {
 //         const sections = $$("section");
 //         const fragment = window.location.hash.substring(1);
 
-// 	for (const section of sections) {
-// 	    if (section.$("h3")) {
+//      for (const section of sections) {
+//          if (section.$("h3")) {
 //                 if (section.$("h3").id === fragment) {
 //                     section.classList.remove("hidden");
 //                 } else {
 //                     section.classList.add("hidden");
 //                 }
-// 	    }
+//          }
 //         }
 //     }
 
@@ -62,7 +62,7 @@ window.addEventListener("load", () => {
     const headings = $$("h2");
 
     if (headings.length == 0) {
-	oldToc.remove();
+        oldToc.remove();
         return;
     }
 
@@ -92,6 +92,28 @@ window.addEventListener("load", () => {
         link.appendChild(text);
 
         newTocLinks.appendChild(link);
+
+        const subheadings = heading.parentElement.$$("h3");
+
+	console.log(111, subheadings);
+
+        if (subheadings.length == 0) {
+            continue;
+        }
+
+        const sublinks = document.createElement("nav");
+
+        for (const subheading of subheadings) {
+            const sublink = document.createElement("a");
+            const subtext = document.createTextNode(subheading.textContent);
+
+            sublink.setAttribute("href", `#${subheading.id}`);
+            sublink.appendChild(subtext);
+
+            sublinks.appendChild(sublink);
+        }
+
+        newTocLinks.appendChild(sublinks);
     }
 
     newToc.appendChild(newTocLinks);
@@ -109,9 +131,9 @@ window.addEventListener("load", () => {
         const currHash = window.location.hash;
 
         if (!currHash) {
-	    const link = tocLinks.$("a");
+            const link = tocLinks.$("a");
 
-	    link.classList.add("selected");
+            link.classList.add("selected");
 
             for (const link of tocLinks.$$("a:not(:first-child)")) {
                 link.classList.remove("selected");

@@ -41,14 +41,14 @@ resources:
     examples:
       - description: A minimal site
         yaml: |
-          apiVersion: skupper.io/v1alpha1
+          apiVersion: skupper.io/v2alpha1
           kind: Site
           metadata:
             name: east
             namespace: hello-world-east
       - description: A site configured to accept links
         yaml: |
-          apiVersion: skupper.io/v1alpha1
+          apiVersion: skupper.io/v2alpha1
           kind: Site
           metadata:
             name: west
@@ -250,7 +250,7 @@ resources:
       - description: |
           A connector in site East for the Hello World backend service
         yaml: |
-          apiVersion: skupper.io/v1alpha1
+          apiVersion: skupper.io/v2alpha1
           kind: Connector
           metadata:
             name: backend
@@ -336,7 +336,7 @@ resources:
           A listener in site West for the Hello World backend service
           in site East
         yaml: |
-          apiVersion: skupper.io/v1alpha1
+          apiVersion: skupper.io/v2alpha1
           kind: Listener
           metadata:
             name: backend

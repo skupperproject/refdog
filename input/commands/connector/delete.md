@@ -46,13 +46,13 @@ Connector "database" is deleted.
 
 ## Options
 
-- <h3 id="name">name <span class="attribute-info">string, required</span></h3>
+- <div class="attribute"><h3 id="option-name">name</h3><div>string, required</div></div>
 
   The name of the resource to be deleted.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
-- <h3 id="timeout">--timeout <span class="attribute-info">string (duration)</span></h3>
+- <div class="attribute"><h3 id="option-timeout">--timeout</h3><div>string (duration)</div></div>
 
   Raise an error if the operation does not complete in the given
   period of time.
@@ -60,25 +60,25 @@ Connector "database" is deleted.
   <table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
   </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="namespace">--namespace <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="option-namespace">--namespace</h3><div>string</div></div>
 
   Set the namespace.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
 
-- <h3 id="context">--context <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="option-context">--context</h3><div>string</div></div>
 
   Set the kubeconfig context.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
 
-- <h3 id="kubeconfig">--kubeconfig <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="option-kubeconfig">--kubeconfig</h3><div>string</div></div>
 
   Set the path to the kubeconfig file.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
 
-- <h3 id="platform">--platform <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="option-platform">--platform</h3><div>string</div></div>
 
   Set the Skupper platform.
 
@@ -86,7 +86,7 @@ Connector "database" is deleted.
   </td></tr><tr><th><code>docker</code></th><td><p>Docker or Podman</p>
   </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
 
-- <h3 id="help">--help <span class="attribute-info">boolean</span></h3>
+- <div class="attribute"><h3 id="option-help">--help</h3><div>boolean</div></div>
 
   Display help and exit.
 

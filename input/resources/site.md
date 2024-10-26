@@ -23,11 +23,8 @@ Sites are linked to form application networks.
 There can be only one Site resource per namespace.
 
 ~~~ yaml
-apiVersion: skupper.io/v1alpha1
+apiVersion: skupper.io/v2alpha1
 kind: Site
-metadata:  # Metadata properties
-spec:      # Spec properties
-status:    # Status properties
 ~~~
 
 </section>
@@ -39,7 +36,7 @@ status:    # Status properties
 A minimal site:
 
 ~~~ yaml
-apiVersion: skupper.io/v1alpha1
+apiVersion: skupper.io/v2alpha1
 kind: Site
 metadata:
   name: east
@@ -49,7 +46,7 @@ metadata:
 A site configured to accept links:
 
 ~~~ yaml
-apiVersion: skupper.io/v1alpha1
+apiVersion: skupper.io/v2alpha1
 kind: Site
 metadata:
   name: west
@@ -64,13 +61,13 @@ spec:
 
 ## Metadata properties
 
-- <h3 id="name">name <span class="attribute-info">string, required</span></h3>
+- <div class="attribute"><h3 id="metadata-name">name</h3><div>string, required</div></div>
 
   The name of the resource.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
-- <h3 id="namespace">namespace <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="metadata-namespace">namespace</h3><div>string</div></div>
 
   The namespace of the resource.
 
@@ -82,7 +79,7 @@ spec:
 
 ## Spec properties
 
-- <h3 id="linkaccess">linkAccess <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="spec-linkaccess">linkAccess</h3><div>string</div></div>
 
   Configure external access for links from remote sites.
 
@@ -93,7 +90,7 @@ spec:
   </td></tr><tr><th><code>loadbalancer</code></th><td><p>Use a Kubernetes load balancer.  <em>Kubernetes only.</em></p>
   </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/link-access.html">Link access concept</a>, <a href="https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer">Kubernetes load balancer services</a></td></table>
 
-- <h3 id="serviceaccount">serviceAccount <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="spec-serviceaccount">serviceAccount</h3><div>string</div></div>
 
   The Kubernetes service account under which to run the
   Skupper controller.
@@ -101,19 +98,19 @@ spec:
   <table class="fields"><tr><th>Default</th><td><p><code>skupper-router</code></p>
   </td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/security/service-accounts/">Kubernetes service accounts</a></td></table>
 
-- <h3 id="ha">ha <span class="attribute-info">boolean</span></h3>
+- <div class="attribute"><h3 id="spec-ha">ha</h3><div>boolean</div></div>
 
   <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="routermode">routerMode <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="spec-routermode">routerMode</h3><div>string</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="defaultissuer">defaultIssuer <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="spec-defaultissuer">defaultIssuer</h3><div>string</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="settings">settings <span class="attribute-info">object</span></h3>
+- <div class="attribute"><h3 id="spec-settings">settings</h3><div>object</div></div>
 
   Additional settings.
 
@@ -125,33 +122,33 @@ spec:
 
 ## Status properties
 
-- <h3 id="endpoints">endpoints <span class="attribute-info">array</span></h3>
+- <div class="attribute"><h3 id="status-endpoints">endpoints</h3><div>array</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="sitesinnetwork">sitesInNetwork <span class="attribute-info">integer</span></h3>
+- <div class="attribute"><h3 id="status-sitesinnetwork">sitesInNetwork</h3><div>integer</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="network">network <span class="attribute-info">array</span></h3>
+- <div class="attribute"><h3 id="status-network">network</h3><div>array</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/network.html">Network concept</a></td></table>
 
-- <h3 id="defaultissuer">defaultIssuer <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="status-defaultissuer">defaultIssuer</h3><div>string</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="status">status <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="status-status">status</h3><div>string</div></div>
 
   The current state of the resource.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="message">message <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="status-message">message</h3><div>string</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="conditions">conditions <span class="attribute-info">array</span></h3>
+- <div class="attribute"><h3 id="status-conditions">conditions</h3><div>array</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 

@@ -19,11 +19,8 @@ workloads in remote sites.
 Each site can have multiple listener definitions.
 
 ~~~ yaml
-apiVersion: skupper.io/v1alpha1
+apiVersion: skupper.io/v2alpha1
 kind: Listener
-metadata:  # Metadata properties
-spec:      # Spec properties
-status:    # Status properties
 ~~~
 
 </section>
@@ -36,7 +33,7 @@ A listener in site West for the Hello World backend service
 in site East:
 
 ~~~ yaml
-apiVersion: skupper.io/v1alpha1
+apiVersion: skupper.io/v2alpha1
 kind: Listener
 metadata:
   name: backend
@@ -53,13 +50,13 @@ spec:
 
 ## Metadata properties
 
-- <h3 id="name">name <span class="attribute-info">string, required</span></h3>
+- <div class="attribute"><h3 id="metadata-name">name</h3><div>string, required</div></div>
 
   The name of the resource.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
-- <h3 id="namespace">namespace <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="metadata-namespace">namespace</h3><div>string</div></div>
 
   The namespace of the resource.
 
@@ -71,7 +68,7 @@ spec:
 
 ## Spec properties
 
-- <h3 id="routingkey">routingKey <span class="attribute-info">string, required</span></h3>
+- <div class="attribute"><h3 id="spec-routingkey">routingKey</h3><div>string, required</div></div>
 
   The identifier used to route traffic from listeners to
   connectors.  To enable connecting to a service at a
@@ -80,7 +77,7 @@ spec:
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/routing-key.html">Routing key concept</a></td></table>
 
-- <h3 id="host">host <span class="attribute-info">string, required</span></h3>
+- <div class="attribute"><h3 id="spec-host">host</h3><div>string, required</div></div>
 
   The hostname or IP address of the local listener.  Clients
   at this site use the listener host and port to
@@ -88,7 +85,7 @@ spec:
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="port">port <span class="attribute-info">integer, required</span></h3>
+- <div class="attribute"><h3 id="spec-port">port</h3><div>integer, required</div></div>
 
   The port of the local listener.  Clients at this site use
   the listener host and port to establish connections to
@@ -96,7 +93,7 @@ spec:
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="tlscredentials">tlsCredentials <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="spec-tlscredentials">tlsCredentials</h3><div>string</div></div>
 
   The name of a Kubernetes secret containing TLS
   credentials.  The secret contains the trusted server
@@ -110,14 +107,14 @@ spec:
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a></td></table>
 
-- <h3 id="type">type <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="spec-type">type</h3><div>string</div></div>
 
   The listener type.
 
   <table class="fields"><tr><th>Default</th><td><p><code>tcp</code></p>
   </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="settings">settings <span class="attribute-info">object</span></h3>
+- <div class="attribute"><h3 id="spec-settings">settings</h3><div>object</div></div>
 
   Additional settings.
 
@@ -129,7 +126,7 @@ spec:
 
 ## Status properties
 
-- <h3 id="matchingconnectorcount">matchingConnectorCount <span class="attribute-info">integer</span></h3>
+- <div class="attribute"><h3 id="status-matchingconnectorcount">matchingConnectorCount</h3><div>integer</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
@@ -139,17 +136,17 @@ spec:
 
   </section>
 
-- <h3 id="status">status <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="status-status">status</h3><div>string</div></div>
 
   The current state of the resource.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="message">message <span class="attribute-info">string</span></h3>
+- <div class="attribute"><h3 id="status-message">message</h3><div>string</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="conditions">conditions <span class="attribute-info">array</span></h3>
+- <div class="attribute"><h3 id="status-conditions">conditions</h3><div>array</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
