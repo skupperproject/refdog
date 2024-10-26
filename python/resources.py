@@ -278,29 +278,32 @@ class Resource(ModelObject):
         self.metadata_properties = list()
         self.metadata_properties_by_name = dict()
 
-        for data in self.merge_property_data("metadata"):
-            prop = Property(self.model, self, data, "metadata")
+        if "metadata" in self.data:
+            for data in self.merge_property_data("metadata"):
+                prop = Property(self.model, self, data, "metadata")
 
-            self.metadata_properties.append(prop)
-            self.metadata_properties_by_name[prop.name] = prop
+                self.metadata_properties.append(prop)
+                self.metadata_properties_by_name[prop.name] = prop
 
         self.spec_properties = list()
         self.spec_properties_by_name = dict()
 
-        for data in self.merge_property_data("spec"):
-            prop = Property(self.model, self, data, "spec")
+        if "spec" in self.data:
+            for data in self.merge_property_data("spec"):
+                prop = Property(self.model, self, data, "spec")
 
-            self.spec_properties.append(prop)
-            self.spec_properties_by_name[prop.name] = prop
+                self.spec_properties.append(prop)
+                self.spec_properties_by_name[prop.name] = prop
 
         self.status_properties = list()
         self.status_properties_by_name = dict()
 
-        for data in self.merge_property_data("status"):
-            prop = Property(self.model, self, data, "status")
+        if "status" in self.data:
+            for data in self.merge_property_data("status"):
+                prop = Property(self.model, self, data, "status")
 
-            self.status_properties.append(prop)
-            self.status_properties_by_name[prop.name] = prop
+                self.status_properties.append(prop)
+                self.status_properties_by_name[prop.name] = prop
 
     def merge_property_data(self, section):
         inherited_prop_data = dict()

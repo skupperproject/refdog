@@ -33,4 +33,6 @@ links:
 </td></tr>
 <tr><th><a href="{{site_prefix}}/resources/listener.html">Listener</a></th><td><p>Binds a connection endpoint in the local site to target workloads in remote sites</p>
 </td></tr>
+<tr><th><a href="{{site_prefix}}/resources/attachedconnector.html">AttachedConnector</a></th><td></td></tr>
+<tr><th><a href="{{site_prefix}}/resources/attachedconnectoranchor.html">AttachedConnectorAnchor</a></th><td></td></tr>
 </table>

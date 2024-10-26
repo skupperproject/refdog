@@ -396,6 +396,33 @@ resources:
       properties:
         - name: matchingConnectorCount
           notes: This one has "count" but other counter fields do not.
+  - name: AttachedConnector
+    related_resources: [AttachedConnectorAnchor, Connector]
+    spec:
+      properties:
+        - name: siteNamespace
+        - name: port
+        - name: selector
+        - name: tlsCredentials
+        - name: type
+        - name: includeNotReady
+        - name: settings
+    status:
+      inherit_properties: [status/*]
+      properties:
+        - name: selectedPods
+        - name: matchingListenerCount
+  - name: AttachedConnectorAnchor
+    related_resources: [AttachedConnector]
+    spec:
+      properties:
+        - name: connectorNamespace
+        - name: routingKey
+        - name: settings
+    status:
+      inherit_properties: [status/*]
+      properties:
+        - name: matchingListenerCount
 groups:
   - name: Site configuration
     resources:
@@ -409,3 +436,5 @@ groups:
     resources:
       - Connector
       - Listener
+      - AttachedConnector
+      - AttachedConnectorAnchor
