@@ -33,7 +33,7 @@ skupper listener update <name> [options]
 
 ## Examples
 
-~~~
+~~~ console
 # Change the host and port
 $ skupper listener update database --host mysql --port 3306
 Waiting for status...

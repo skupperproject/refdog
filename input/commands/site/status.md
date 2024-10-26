@@ -31,7 +31,7 @@ skupper site status [name] [options]
 
 ## Examples
 
-~~~
+~~~ console
 # Show the status of the current site
 $ skupper site status
 Name:      west

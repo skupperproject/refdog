@@ -31,7 +31,7 @@ skupper link update <name> [options]
 
 ## Examples
 
-~~~
+~~~ console
 # Change the link cost
 $ skupper link update west-6bfn6 --cost 10
 Waiting for status...

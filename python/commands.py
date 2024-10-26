@@ -137,7 +137,7 @@ def generate_command(command):
             append()
             append("## Examples")
             append()
-            append("~~~")
+            append("~~~ console")
             append(command.examples.strip())
             append("~~~")
             append()

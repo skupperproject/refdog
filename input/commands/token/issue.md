@@ -40,7 +40,7 @@ skupper token issue <file> [options]
 
 ## Examples
 
-~~~
+~~~ console
 # Issue an access token
 $ skupper token issue ~/token.yaml
 Waiting for status...

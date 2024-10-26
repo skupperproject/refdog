@@ -158,15 +158,19 @@ window.addEventListener("load", () => {
     window.addEventListener("hashchange", updateHeadingSelection);
 });
 
-// window.addEventListener("load", () => {
-//     const updateScrollState = () => {
-//         if (window.scrollY > 20) {
-//             $("body").classList.add("scrolled");
-//         } else {
-//             $("body").classList.remove("scrolled");
-//         }
-//     };
+window.addEventListener("load", () => {
+    for (const block of $$("pre > code.language-console")) {
+	const lines = block.innerHTML.split("\n");
 
-//     updateScrollState();
-//     window.addEventListener("scroll", updateScrollState);
-// });
+	block.innerHTML = lines.map(line => {
+	    switch (line.trim()?.[0]) {
+	    case "#":
+		return `<span class="shell-comment">${line}</span>`;
+	    case "$":
+		return `<span class="shell-command">${line}</span>`;
+	    default:
+		return `<span class="shell-output">${line}</span>`;
+	    }
+	}).join("\n");
+    }
+});

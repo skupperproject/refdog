@@ -391,3 +391,16 @@ table.choices td {
 .notes {
     color: brown;
 }
+
+/* -- */
+
+span.shell-comment {
+    color: brown;
+}
+
+span.shell-command {
+    font-weight: bold;
+}
+
+span.shell-output {
+}

@@ -38,7 +38,7 @@ skupper token redeem <file> [options]
 
 ## Examples
 
-~~~
+~~~ console
 # Redeem an access token
 $ skupper token redeem ~/token.yaml
 Waiting for status...

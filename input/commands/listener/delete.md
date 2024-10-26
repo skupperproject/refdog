@@ -33,7 +33,7 @@ skupper listener delete <name> [options]
 
 ## Examples
 
-~~~
+~~~ console
 # Delete a listener
 $ skupper listener delete database
 Waiting for deletion...

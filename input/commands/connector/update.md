@@ -33,7 +33,7 @@ skupper connector update <name> <port> [options]
 
 ## Examples
 
-~~~
+~~~ console
 # Change the workload and port
 $ skupper connector update database --workload deployment/mysql --port 3306
 Waiting for status...

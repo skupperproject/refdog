@@ -31,7 +31,7 @@ skupper connector status [name] [options]
 
 ## Examples
 
-~~~
+~~~ console
 # Show the status of all connectors in the current site
 $ skupper connector status
 NAME       STATUS   ROUTING-KEY   SELECTOR         HOST     PORT   LISTENERS

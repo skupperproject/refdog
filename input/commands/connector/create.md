@@ -33,7 +33,7 @@ skupper connector create <name> <port> [options]
 
 ## Examples
 
-~~~
+~~~ console
 # Create a connector for a database
 $ skupper connector create database 5432
 Waiting for status...

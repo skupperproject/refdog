@@ -31,7 +31,7 @@ skupper link delete <name> [options]
 
 ## Examples
 
-~~~
+~~~ console
 # Delete a link
 $ skupper link delete west-6bfn6
 Waiting for deletion...

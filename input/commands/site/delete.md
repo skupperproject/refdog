@@ -31,7 +31,7 @@ skupper site delete [name] [options]
 
 ## Examples
 
-~~~
+~~~ console
 # Delete the current site
 $ skupper site delete
 Waiting for deletion...

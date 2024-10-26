@@ -33,7 +33,7 @@ skupper connector delete <name> [options]
 
 ## Examples
 
-~~~
+~~~ console
 # Delete a connector
 $ skupper connector delete database
 Waiting for deletion...

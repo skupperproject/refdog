@@ -31,7 +31,7 @@ skupper site generate <name> [options]
 
 ## Examples
 
-~~~
+~~~ console
 # Generate a Site resource and print it to the console
 $ skupper site generate west --enable-link-access
 apiVersion: skupper.io/v2alpha1

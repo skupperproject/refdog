@@ -31,7 +31,7 @@ skupper listener generate <name> <port> [options]
 
 ## Examples
 
-~~~
+~~~ console
 # Generate a Listener resource and print it to the console
 $ skupper listener generate backend 8080
 apiVersion: skupper.io/v2alpha1

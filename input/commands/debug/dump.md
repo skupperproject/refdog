@@ -26,7 +26,7 @@ skupper debug dump <file> [options]
 
 ## Examples
 
-~~~
+~~~ console
 # Generate a debug dump file
 $ skupper debug dump ~/dump.tar.gz
 Debug dump file generated at /home/fritz/dump.tar.gz.

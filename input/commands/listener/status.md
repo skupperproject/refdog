@@ -31,7 +31,7 @@ skupper listener status [name] [options]
 
 ## Examples
 
-~~~
+~~~ console
 # Show the status of all listeners in the current site
 $ skupper listener status
 NAME       STATUS   ROUTING-KEY   HOST       PORT   CONNECTORS

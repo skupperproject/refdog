@@ -31,7 +31,7 @@ skupper site update [name] [options]
 
 ## Examples
 
-~~~
+~~~ console
 # Update the current site to accept links
 $ skupper site update --enable-link-access
 Waiting for status...

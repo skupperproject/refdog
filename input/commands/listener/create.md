@@ -33,7 +33,7 @@ skupper listener create <name> <port> [options]
 
 ## Examples
 
-~~~
+~~~ console
 # Create a listener for a database
 $ skupper listener create database 5432
 Waiting for status...

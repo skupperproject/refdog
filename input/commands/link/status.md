@@ -31,7 +31,7 @@ skupper link status [name] [options]
 
 ## Examples
 
-~~~
+~~~ console
 # Show the status of all links in the current site
 $ skupper link status
 NAME          STATUS   COST

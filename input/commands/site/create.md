@@ -31,7 +31,7 @@ skupper site create <name> [options]
 
 ## Examples
 
-~~~
+~~~ console
 # Create a site
 $ skupper site create west
 Waiting for status...
