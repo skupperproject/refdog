@@ -5,7 +5,7 @@ metadata:
 spec:
   group: skupper.io
   versions:
-    - name: v1alpha1
+    - name: v2alpha1
       served: true
       storage: true
       schema:
@@ -24,6 +24,10 @@ spec:
                   type: string
                 issuer:
                   type: string
+                settings:
+                  type: object
+                  additionalProperties:
+                    type: string
             status:
               type: object
               properties:
@@ -40,13 +44,51 @@ spec:
                   format: date-time
                 status:
                   type: string
+                message:
+                  type: string
+                conditions:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      lastTransitionTime:
+                        format: date-time
+                        type: string
+                      message:
+                        maxLength: 32768
+                        type: string
+                      observedGeneration:
+                        format: int64
+                        minimum: 0
+                        type: integer
+                      reason:
+                        maxLength: 1024
+                        minLength: 1
+                        pattern: ^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$
+                        type: string
+                      status:
+                        enum:
+                        - "True"
+                        - "False"
+                        - Unknown
+                        type: string
+                      type:
+                        maxLength: 316
+                        pattern: ^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][- A-Za-z0-9_.]*)?[A-Za-z0-9])$
+                        type: string
+                    required:
+                    - lastTransitionTime
+                    - message
+                    - reason
+                    - status
+                    - type
       subresources:
         status: {}
       additionalPrinterColumns:
       - name: Redemptions Allowed
         type: integer
         description: The number of claims the grant is valid for
-        jsonPath: .spec.claims
+        jsonPath: .spec.redemptionsAllowed
       - name: Redemptions Made
         type: integer
         description: The number of times an access token originating from this grant has been redeemed
@@ -59,6 +101,10 @@ spec:
         type: string
         description: The status of the grant
         jsonPath: .status.status
+      - name: Message
+        type: string
+        description: Any human readable message relevant to the grant
+        jsonPath: .status.message
   scope: Namespaced
   names:
     plural: accessgrants

@@ -112,7 +112,7 @@ $ skupper connector create backend 8080 --routing-key be1 --workload deployment/
   It can optionally include a client certificate and key for
   mutual TLS.
   
-  This option is used when setting up client-to-router TLS
+  This option is used when setting up router-to-server TLS
   encryption.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>

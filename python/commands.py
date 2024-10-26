@@ -321,7 +321,7 @@ class Command(ModelObject):
         self.model.commands_by_id[self.id] = self
 
         for command_data in self.data.get("subcommands", []):
-            command = Command(model, command_data, self)
+            command = Subcommand(model, command_data, self)
             self.subcommands.append(command)
 
     def merge_option_data(self):
@@ -401,6 +401,9 @@ class Command(ModelObject):
             description = description.replace("@resource_description@", self.resource.description.strip())
 
         return description
+
+class Subcommand(Command):
+    pass
 
 class CommandGroup(ModelObjectGroup):
     def __init__(self, model, data):

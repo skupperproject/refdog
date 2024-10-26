@@ -1,7 +1,7 @@
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
-  name: links.skupper.io
+  name: attachedconnectors.skupper.io
 spec:
   group: skupper.io
   versions:
@@ -15,41 +15,30 @@ spec:
             spec:
               type: object
               properties:
-                endpoints:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      host:
-                        type: string
-                      port:
-                        type: string
-                      group:
-                        type: string
+                siteNamespace:
+                  type: string
+                port:
+                  type: integer
+                selector:
+                  type: string
                 tlsCredentials:
                   type: string
-                cost:
-                  type: integer
-                noClientAuth:
+                type:
+                  type: string
+                includeNotReady:
                   type: boolean
                 settings:
                   type: object
                   additionalProperties:
                     type: string
               required:
-                - endpoints
+              - port
+              - selector
+              - siteNamespace
             status:
               type: object
               properties:
                 status:
-                  type: string
-                message:
-                  type: string
-                remoteSiteId:
-                  type: string
-                remoteSiteName:
                   type: string
                 conditions:
                   type: array
@@ -87,23 +76,38 @@ spec:
                     - reason
                     - status
                     - type
+                selectedPods:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      ip:
+                        type: string
+                matchingListenerCount:
+                  type: integer
       subresources:
         status: {}
       additionalPrinterColumns:
+      - name: Port
+        type: integer
+        description: The port to connect to.
+        jsonPath: .spec.port
+      - name: Selector
+        type: string
+        description: The selector that identifies the pods to connect to.
+        jsonPath: .spec.selector
+      - name: Site Namespace
+        type: string
+        description: The namespace in which the site this connector should be attached to is defined.
+        jsonPath: .spec.siteNamespace
       - name: Status
         type: string
-        description: The status of the link
+        description: The status of the connector.
         jsonPath: .status.status
-      - name: Remote Site
-        type: string
-        description: The name of the site linked to
-        jsonPath: .status.remoteSiteName
-      - name: Message
-        type: string
-        description: Any human readable message relevant to the link
-        jsonPath: .status.message
   scope: Namespaced
   names:
-    plural: links
-    singular: link
-    kind: Link
+    plural: attachedconnectors
+    singular: attachedconnector
+    kind: AttachedConnector

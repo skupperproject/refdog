@@ -16,8 +16,8 @@ properties:
     links:
       - name: Kubernetes namespaces
         url: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
-  options:
-    name: options
+  settings:
+    name: settings
     type: object
     description: |
       Additional settings.
@@ -25,10 +25,14 @@ properties:
     name: status
     description: |
       The current state of the resource.
-  status/active:
-    name: active
+  status/message:
+    name: message
     description: |
-      This thing is working.
+      XXX
+  status/conditions:
+    name: conditions
+    description: |
+      XXX
 resources:
   - name: Site
     related_concepts: [network, namespace]
@@ -37,7 +41,7 @@ resources:
       A place where components of your application are running.
       Sites are linked to form application networks.
 
-      There can be only one site resource per namespace.
+      There can be only one Site resource per namespace.
     examples:
       - description: A minimal site
         yaml: |
@@ -60,7 +64,7 @@ resources:
       properties:
         - name: name
     spec:
-      inherit_properties: [options]
+      inherit_properties: [settings]
       properties:
         - name: linkAccess
           default: none
@@ -96,11 +100,10 @@ resources:
         - name: routerMode
         - name: defaultIssuer
     status:
-      inherit_properties: [status, active]
+      inherit_properties: [status/*]
       properties:
         - name: endpoints
         - name: sitesInNetwork
-        - name: servicesInNetwork
         - name: network
         - name: defaultIssuer
   - name: Link
@@ -115,7 +118,7 @@ resources:
     metadata:
       inherit_properties: [metadata/*]
     spec:
-      inherit_properties: [options]
+      inherit_properties: [settings]
       properties:
         - name: tlsCredentials
           description: |
@@ -142,7 +145,8 @@ resources:
     status:
       inherit_properties: [status/*]
       properties:
-        - name: configured
+        - name: remoteSiteId
+        - name: remoteSiteName
   - name: AccessGrant
     related_resources: [AccessToken]
     related_commands: [token/issue]
@@ -158,7 +162,7 @@ resources:
     metadata:
       inherit_properties: [metadata/*]
     spec:
-      inherit_properties: [options]
+      inherit_properties: [settings]
       properties:
         - name: redemptionsAllowed
           description: |
@@ -181,7 +185,7 @@ resources:
           notes: |
             What is this?
     status:
-      inherit_properties: [status/status]
+      inherit_properties: [status/*]
       properties:
         - name: redeemed
           description: |
@@ -219,7 +223,7 @@ resources:
     metadata:
       inherit_properties: [metadata/*]
     spec:
-      inherit_properties: [options]
+      inherit_properties: [settings]
       properties:
         - name: url
           description: |
@@ -234,7 +238,7 @@ resources:
             The secret code used to authenticate the token when
             submitted for redemption.
     status:
-      inherit_properties: [status]
+      inherit_properties: [status/*]
       properties:
         - name: redeemed
           description: |
@@ -262,7 +266,7 @@ resources:
     metadata:
       inherit_properties: [metadata/*]
     spec:
-      inherit_properties: [options]
+      inherit_properties: [settings]
       properties:
         - name: routingKey
           description: |
@@ -302,7 +306,7 @@ resources:
             It can optionally include a client certificate and key for
             mutual TLS.
 
-            This option is used when setting up client-to-router TLS
+            This option is used when setting up router-to-server TLS
             encryption.
           links:
             - name: Site-scoped TLS
@@ -321,6 +325,9 @@ resources:
             The connector type.
     status:
       inherit_properties: [status/*]
+      properties:
+        - name: selectedPods
+        - name: matchingListenerCount
   - name: Listener
     related_resources: [Connector]
     description: |
@@ -345,7 +352,7 @@ resources:
     metadata:
       inherit_properties: [metadata/*]
     spec:
-      inherit_properties: [options]
+      inherit_properties: [settings]
       properties:
         - name: routingKey
           description: |
@@ -375,7 +382,7 @@ resources:
             It can optionally include a client certificate and key for
             mutual TLS.
 
-            This option is used when setting up router-to-server TLS
+            This option is used when setting up client-to-router TLS
             encryption.
           links:
             - name: Site-scoped TLS
@@ -386,6 +393,9 @@ resources:
             The listener type.
     status:
       inherit_properties: [status/*]
+      properties:
+        - name: matchingConnectorCount
+          notes: This one has "count" but other counter fields do not.
 groups:
   - name: Site configuration
     resources:

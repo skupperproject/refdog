@@ -76,7 +76,7 @@ status:    # Status properties
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="options">options <span class="attribute-info">object</span></h3>
+- <h3 id="settings">settings <span class="attribute-info">object</span></h3>
 
   Additional settings.
 
@@ -88,9 +88,13 @@ status:    # Status properties
 
 ## Status properties
 
-- <h3 id="configured">configured <span class="attribute-info">boolean</span></h3>
+- <h3 id="remotesiteid">remoteSiteId <span class="attribute-info">string</span></h3>
 
-  <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+
+- <h3 id="remotesitename">remoteSiteName <span class="attribute-info">string</span></h3>
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <h3 id="status">status <span class="attribute-info">string</span></h3>
 
@@ -98,10 +102,16 @@ status:    # Status properties
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="active">active <span class="attribute-info">boolean</span></h3>
+- <h3 id="message">message <span class="attribute-info">string</span></h3>
 
-  This thing is working.
+  XXX
 
-  <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+
+- <h3 id="conditions">conditions <span class="attribute-info">array</span></h3>
+
+  XXX
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 </section>

@@ -5,7 +5,7 @@ metadata:
 spec:
   group: skupper.io
   versions:
-    - name: v1alpha1
+    - name: v2alpha1
       served: true
       storage: true
       schema:
@@ -29,6 +29,10 @@ spec:
                   type: boolean
                 signing:
                   type: boolean
+                settings:
+                  type: object
+                  additionalProperties:
+                    type: string
               required:
               - ca
               - subject
@@ -37,6 +41,44 @@ spec:
               properties:
                 status:
                   type: string
+                message:
+                  type: string
+                conditions:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      lastTransitionTime:
+                        format: date-time
+                        type: string
+                      message:
+                        maxLength: 32768
+                        type: string
+                      observedGeneration:
+                        format: int64
+                        minimum: 0
+                        type: integer
+                      reason:
+                        maxLength: 1024
+                        minLength: 1
+                        pattern: ^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$
+                        type: string
+                      status:
+                        enum:
+                        - "True"
+                        - "False"
+                        - Unknown
+                        type: string
+                      type:
+                        maxLength: 316
+                        pattern: ^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][- A-Za-z0-9_.]*)?[A-Za-z0-9])$
+                        type: string
+                    required:
+                    - lastTransitionTime
+                    - message
+                    - reason
+                    - status
+                    - type
                 expiration:
                   type: string
                   format: date-time
@@ -67,6 +109,10 @@ spec:
         type: string
         description: The expiration of the certificate if relevant
         jsonPath: .status.expiration
+      - name: Message
+        type: string
+        description: Any relevant human readable message
+        jsonPath: .status.message
   scope: Namespaced
   names:
     plural: certificates

@@ -105,7 +105,7 @@ spec:
   It can optionally include a client certificate and key for
   mutual TLS.
   
-  This option is used when setting up router-to-server TLS
+  This option is used when setting up client-to-router TLS
   encryption.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a></td></table>
@@ -117,7 +117,7 @@ spec:
   <table class="fields"><tr><th>Default</th><td><p><code>tcp</code></p>
   </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="options">options <span class="attribute-info">object</span></h3>
+- <h3 id="settings">settings <span class="attribute-info">object</span></h3>
 
   Additional settings.
 
@@ -129,16 +129,32 @@ spec:
 
 ## Status properties
 
+- <h3 id="matchingconnectorcount">matchingConnectorCount <span class="attribute-info">integer</span></h3>
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+
+  <section class="notes">
+
+  This one has "count" but other counter fields do not.
+
+  </section>
+
 - <h3 id="status">status <span class="attribute-info">string</span></h3>
 
   The current state of the resource.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <h3 id="active">active <span class="attribute-info">boolean</span></h3>
+- <h3 id="message">message <span class="attribute-info">string</span></h3>
 
-  This thing is working.
+  XXX
 
-  <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+
+- <h3 id="conditions">conditions <span class="attribute-info">array</span></h3>
+
+  XXX
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 </section>
