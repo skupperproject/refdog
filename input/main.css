@@ -399,7 +399,7 @@ span.shell-comment {
 }
 
 span.shell-command {
-    font-weight: bold;
+    font-weight: 600;
 }
 
 span.shell-output {
