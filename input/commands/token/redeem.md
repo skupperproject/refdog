@@ -52,7 +52,7 @@ You can now safely delete /home/fritz/token.yaml.
 
 ## Options
 
-- <div class="attribute"><h3 id="option-file">file</h3><div>string, required</div></div>
+- <div class="attribute"><h3 id="option-file">&lt;file&gt;</h3><div>string, required</div></div>
 
   The name of the token file to use.
 

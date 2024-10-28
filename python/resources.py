@@ -305,20 +305,12 @@ class Resource(ModelObject):
     def merge_property_data(self, section):
         included_prop_data = dict()
 
-        # XXX Check that the props are well formed here
-
         for pattern in self.data[section].get("include_properties", []):
             for key, data in self.model.data["properties"].items():
                 if fnmatch.fnmatchcase(key, pattern):
                     included_prop_data[data["name"]] = data
-            # for else? XXX
 
         specific_prop_data = {x["name"]: x for x in self.data[section].get("properties", [])}
-
-        # for name in included_props:
-        #     if name not in standard_prop_data:
-        #         fail(f"Property '{name}' not in standard properties")
-
         included_prop_names = [x for x in included_prop_data if x not in specific_prop_data]
         prop_names = list(specific_prop_data.keys()) + included_prop_names
         prop_data = dict()

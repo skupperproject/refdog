@@ -49,7 +49,7 @@ $ skupper listener update backend --routing-key be2
 
 ## Options
 
-- <div class="attribute"><h3 id="option-name">name</h3><div>string, required</div></div>
+- <div class="attribute"><h3 id="option-name">&lt;name&gt;</h3><div>string, required</div></div>
 
   The name of the resource to be updated.
 

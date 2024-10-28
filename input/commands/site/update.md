@@ -47,7 +47,7 @@ $ skupper site update --enable-link-access --service-account alice
 
 ## Options
 
-- <div class="attribute"><h3 id="option-name">name</h3><div>string, optional</div></div>
+- <div class="attribute"><h3 id="option-name">&lt;name&gt;</h3><div>string, optional</div></div>
 
   The name of the site resource.
   

@@ -26,32 +26,6 @@ Element.prototype.$$ = function () {
     return this.querySelectorAll.apply(this, arguments);
 };
 
-// window.$ = $;
-// window.$$ = $$;
-
-// document.addEventListener("DOMContentLoaded", function() {
-//     function showSectionFromFragment() {
-//         const sections = $$("section");
-//         const fragment = window.location.hash.substring(1);
-
-//      for (const section of sections) {
-//          if (section.$("h3")) {
-//                 if (section.$("h3").id === fragment) {
-//                     section.classList.remove("hidden");
-//                 } else {
-//                     section.classList.add("hidden");
-//                 }
-//          }
-//         }
-//     }
-
-//     // Show the section on initial load
-//     showSectionFromFragment();
-
-//     // Show the section whenever the hash changes
-//     window.addEventListener("hashchange", showSectionFromFragment);
-// });
-
 window.addEventListener("load", () => {
     const oldToc = $("#-toc");
 

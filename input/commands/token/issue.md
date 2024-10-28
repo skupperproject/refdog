@@ -68,7 +68,7 @@ $ skupper token issue ~/token.yaml --grant west-1
 
 ## Options
 
-- <div class="attribute"><h3 id="option-file">file</h3><div>string, required</div></div>
+- <div class="attribute"><h3 id="option-file">&lt;file&gt;</h3><div>string, required</div></div>
 
   The name of the token file to create.
 

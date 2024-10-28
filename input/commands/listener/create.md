@@ -49,13 +49,13 @@ $ skupper listener create backend 8080 --routing-key be1 --host apiserver
 
 ## Options
 
-- <div class="attribute"><h3 id="option-name">name</h3><div>string, required</div></div>
+- <div class="attribute"><h3 id="option-name">&lt;name&gt;</h3><div>string, required</div></div>
 
   The name of the resource to be created.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
-- <div class="attribute"><h3 id="option-port">port</h3><div>integer, required</div></div>
+- <div class="attribute"><h3 id="option-port">&lt;port&gt;</h3><div>integer, required</div></div>
 
   The port of the local listener.  Clients at this site use
   the listener host and port to establish connections to

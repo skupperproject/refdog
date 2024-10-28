@@ -47,7 +47,7 @@ $ skupper site create west --enable-link-access
 
 ## Options
 
-- <div class="attribute"><h3 id="option-name">name</h3><div>string, required</div></div>
+- <div class="attribute"><h3 id="option-name">&lt;name&gt;</h3><div>string, required</div></div>
 
   A name of your choice for the Skupper site.  This name is
   displayed in the console and CLI output.

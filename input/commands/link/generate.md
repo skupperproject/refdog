@@ -31,7 +31,7 @@ skupper link generate <name> [options]
 
 ## Options
 
-- <div class="attribute"><h3 id="option-name">name</h3><div>string, required</div></div>
+- <div class="attribute"><h3 id="option-name">&lt;name&gt;</h3><div>string, required</div></div>
 
   The name of the resource to be generated.
 

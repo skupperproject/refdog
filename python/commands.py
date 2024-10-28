@@ -220,7 +220,9 @@ def generate_option(option, append):
     option_key = option.name
     option_info = option.type
 
-    if not option.positional:
+    if option.positional:
+        option_key = f"&lt;{option_key}&gt;"
+    else:
         option_key = f"--{option_key}"
 
         if option.short_option:
@@ -341,14 +343,8 @@ class Command(ModelObject):
             for key, data in self.model.data["options"].items():
                 if fnmatch.fnmatchcase(key, pattern):
                     included_option_data[data["name"]] = data
-            # for else? XXX
 
         specific_option_data = {x["name"]: x for x in self.data.get("options", [])}
-
-        # for name in included_options:
-        #     if name not in standard_option_data:
-        #         fail(f"Option '{name}' not in standard options")
-
         included_option_names = [x for x in included_option_data if x not in specific_option_data]
         option_names = list(specific_option_data.keys()) + included_option_names
         option_data = dict()
@@ -458,8 +454,6 @@ class Option(ModelObjectAttribute):
     short_option = option_property("short_option")
     default = option_property("default")
     choices = option_property("choices")
-    # XXX Don't think I need this
-    # links = option_property("links", default=[])
 
     @property
     def property_(self):

@@ -38,7 +38,7 @@ Debug dump file generated at /home/fritz/dump.tar.gz.
 
 ## Options
 
-- <div class="attribute"><h3 id="option-file">file</h3><div>string, required</div></div>
+- <div class="attribute"><h3 id="option-file">&lt;file&gt;</h3><div>string, required</div></div>
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
