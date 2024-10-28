@@ -303,28 +303,28 @@ class Resource(ModelObject):
                 self.status_properties_by_name[prop.name] = prop
 
     def merge_property_data(self, section):
-        inherited_prop_data = dict()
+        included_prop_data = dict()
 
         # XXX Check that the props are well formed here
 
-        for pattern in self.data[section].get("inherit_properties", []):
+        for pattern in self.data[section].get("include_properties", []):
             for key, data in self.model.data["properties"].items():
                 if fnmatch.fnmatchcase(key, pattern):
-                    inherited_prop_data[data["name"]] = data
+                    included_prop_data[data["name"]] = data
             # for else? XXX
 
         specific_prop_data = {x["name"]: x for x in self.data[section].get("properties", [])}
 
-        # for name in inherited_props:
+        # for name in included_props:
         #     if name not in standard_prop_data:
         #         fail(f"Property '{name}' not in standard properties")
 
-        inherited_prop_names = [x for x in inherited_prop_data if x not in specific_prop_data]
-        prop_names = list(specific_prop_data.keys()) + inherited_prop_names
+        included_prop_names = [x for x in included_prop_data if x not in specific_prop_data]
+        prop_names = list(specific_prop_data.keys()) + included_prop_names
         prop_data = dict()
 
         for name in prop_names:
-            prop_data[name] = dict(inherited_prop_data.get(name, {}))
+            prop_data[name] = dict(included_prop_data.get(name, {}))
             prop_data[name].update(specific_prop_data.get(name, {}))
 
         return prop_data.values()

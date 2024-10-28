@@ -56,11 +56,11 @@ resources:
           spec:
             linkAccess: default
     metadata:
-      inherit_properties: [metadata/*]
+      include_properties: [metadata/*]
       properties:
         - name: name
     spec:
-      inherit_properties: [settings]
+      include_properties: [settings]
       properties:
         - name: linkAccess
           default: none
@@ -96,7 +96,7 @@ resources:
         - name: routerMode
         - name: defaultIssuer
     status:
-      inherit_properties: [status/*]
+      include_properties: [status/*]
       properties:
         - name: endpoints
         - name: sitesInNetwork
@@ -112,9 +112,9 @@ resources:
       Links are not usually created directly.  Instead, you
       typically use an access token to obtain a link.
     metadata:
-      inherit_properties: [metadata/*]
+      include_properties: [metadata/*]
     spec:
-      inherit_properties: [settings]
+      include_properties: [settings]
       properties:
         - name: tlsCredentials
           description: |
@@ -139,7 +139,7 @@ resources:
         - name: noClientAuth
           hidden: true
     status:
-      inherit_properties: [status/*]
+      include_properties: [status/*]
       properties:
         - name: remoteSiteId
         - name: remoteSiteName
@@ -156,9 +156,9 @@ resources:
       The `code`, `url`, and `ca` properties of the resource
       status are used to generate access tokens from the grant.
     metadata:
-      inherit_properties: [metadata/*]
+      include_properties: [metadata/*]
     spec:
-      inherit_properties: [settings]
+      include_properties: [settings]
       properties:
         - name: redemptionsAllowed
           description: |
@@ -181,7 +181,7 @@ resources:
           notes: |
             What is this?
     status:
-      inherit_properties: [status/*]
+      include_properties: [status/*]
       properties:
         - name: redeemed
           description: |
@@ -217,9 +217,9 @@ resources:
       site.  An access token contains the URL and secret code of a
       corresponding access grant.
     metadata:
-      inherit_properties: [metadata/*]
+      include_properties: [metadata/*]
     spec:
-      inherit_properties: [settings]
+      include_properties: [settings]
       properties:
         - name: url
           description: |
@@ -234,7 +234,7 @@ resources:
             The secret code used to authenticate the token when
             submitted for redemption.
     status:
-      inherit_properties: [status/*]
+      include_properties: [status/*]
       properties:
         - name: redeemed
           description: |
@@ -261,9 +261,9 @@ resources:
             port: 8080
             host: backend
     metadata:
-      inherit_properties: [metadata/*]
+      include_properties: [metadata/*]
     spec:
-      inherit_properties: [settings]
+      include_properties: [settings]
       properties:
         - name: routingKey
           description: |
@@ -303,7 +303,7 @@ resources:
           description: |
             The listener type.
     status:
-      inherit_properties: [status/*]
+      include_properties: [status/*]
       properties:
         - name: matchingConnectorCount
           notes: This one has "count" but other counter fields do not.
@@ -327,9 +327,9 @@ resources:
             port: 8080
             selector: app=backend
     metadata:
-      inherit_properties: [metadata/*]
+      include_properties: [metadata/*]
     spec:
-      inherit_properties: [settings]
+      include_properties: [settings]
       properties:
         - name: routingKey
           description: |
@@ -387,7 +387,7 @@ resources:
           description: |
             The connector type.
     status:
-      inherit_properties: [status/*]
+      include_properties: [status/*]
       properties:
         - name: selectedPods
         - name: matchingListenerCount
@@ -403,7 +403,7 @@ resources:
         - name: includeNotReady
         - name: settings
     status:
-      inherit_properties: [status/*]
+      include_properties: [status/*]
       properties:
         - name: selectedPods
         - name: matchingListenerCount
@@ -415,7 +415,7 @@ resources:
         - name: routingKey
         - name: settings
     status:
-      inherit_properties: [status/*]
+      include_properties: [status/*]
       properties:
         - name: matchingListenerCount
 groups:

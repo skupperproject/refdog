@@ -325,26 +325,26 @@ class Command(ModelObject):
             self.subcommands.append(command)
 
     def merge_option_data(self):
-        inherited_option_data = dict()
+        included_option_data = dict()
 
-        for pattern in self.data.get("inherit_options", []):
+        for pattern in self.data.get("include_options", []):
             for key, data in self.model.data["options"].items():
                 if fnmatch.fnmatchcase(key, pattern):
-                    inherited_option_data[data["name"]] = data
+                    included_option_data[data["name"]] = data
             # for else? XXX
 
         specific_option_data = {x["name"]: x for x in self.data.get("options", [])}
 
-        # for name in inherited_options:
+        # for name in included_options:
         #     if name not in standard_option_data:
         #         fail(f"Option '{name}' not in standard options")
 
-        inherited_option_names = [x for x in inherited_option_data if x not in specific_option_data]
-        option_names = list(specific_option_data.keys()) + inherited_option_names
+        included_option_names = [x for x in included_option_data if x not in specific_option_data]
+        option_names = list(specific_option_data.keys()) + included_option_names
         option_data = dict()
 
         for name in option_names:
-            option_data[name] = dict(inherited_option_data.get(name, {}))
+            option_data[name] = dict(included_option_data.get(name, {}))
             option_data[name].update(specific_option_data.get(name, {}))
 
         return option_data.values()
