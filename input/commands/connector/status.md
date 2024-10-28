@@ -55,7 +55,7 @@ Listeners:     1
 
 ## Options
 
-- <div class="attribute"><h3 id="option-name">&lt;name&gt;</h3><div>string, optional</div></div>
+- <div class="attribute"><h3 id="option-name">[name]</h3><div>string, optional</div></div>
 
   An optional resource name.  If set, the status command reports
   status for the named resource only.

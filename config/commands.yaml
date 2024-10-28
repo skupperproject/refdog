@@ -29,6 +29,9 @@ options:
     description: |
       Raise an error if the operation does not complete in the given
       period of time.
+    links:
+      - name: Duration format
+        url: https://pkg.go.dev/time#ParseDuration
   update/name:
     name: name
     type: string
@@ -385,12 +388,12 @@ commands:
       - name: start
         platforms: [Docker, Podman, Systemd]
         description: |
-          Start the Skupper router for the current site.
+          Start running the Skupper components for the current site.
       # site.stop
       - name: stop
         platforms: [Docker, Podman, Systemd]
         description: |
-          Stop the Skupper router for the current site.
+          Shut down the Skupper components for the current site.
       # site.reload
       - name: reload
         platforms: [Docker, Podman, Systemd]

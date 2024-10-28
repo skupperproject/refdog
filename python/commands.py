@@ -221,7 +221,10 @@ def generate_option(option, append):
     option_info = option.type
 
     if option.positional:
-        option_key = f"&lt;{option_key}&gt;"
+        if option.required:
+            option_key = f"&lt;{option_key}&gt;"
+        else:
+            option_key = f"[{option_key}]"
     else:
         option_key = f"--{option_key}"
 

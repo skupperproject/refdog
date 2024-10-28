@@ -66,7 +66,7 @@ Link "west-6bfn6" is ready.
   period of time.
 
   <table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
-  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="https://pkg.go.dev/time#ParseDuration">Duration format</a></td></table>
 
 - <div class="attribute"><h3 id="option-cost">--cost</h3><div>&lt;integer&gt;</div></div>
 
