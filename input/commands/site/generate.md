@@ -57,7 +57,7 @@ $ skupper site generate east > east.yaml
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
-- <div class="attribute"><h3 id="option-output">--output</h3><div>&lt;string&gt;</div></div>
+- <div class="attribute"><h3 id="option-output">--output</h3><div>(-o) &lt;string&gt;</div></div>
 
   Select the output format.
 

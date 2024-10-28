@@ -93,6 +93,7 @@ options:
   status/output:
     name: output
     type: string
+    short_option: o
     description: |
       Print status to the console in a structured output format.
     choices:
@@ -121,6 +122,7 @@ options:
     name: output
     type: string
     default: yaml
+    short_option: o
     description: |
       Select the output format.
     choices:

@@ -168,6 +168,8 @@ aside nav {
 
 aside nav > nav {
     padding-left: 1em;
+    gap: 0.3em;
+    font-size: 0.95em;
 }
 
 footer {

@@ -67,7 +67,7 @@ $ skupper listener generate backend 8080 > backend.yaml
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <div class="attribute"><h3 id="option-output">--output</h3><div>&lt;string&gt;</div></div>
+- <div class="attribute"><h3 id="option-output">--output</h3><div>(-o) &lt;string&gt;</div></div>
 
   Select the output format.
 
