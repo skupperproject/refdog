@@ -217,10 +217,14 @@ def generate_option(option, append):
 
     prefix = ""
     id_ = f"option-{get_fragment_id(option.name)}"
+    option_key = option.name
     option_info = option.type
 
     if not option.positional:
-        prefix = "--"
+        option_key = f"--{option_key}"
+
+        if option.short_option:
+            option_key = f"{option_key} (-{option.short_option})"
 
         if option.type != "boolean":
             option_info = f"&lt;{option.type}&gt;"
@@ -234,7 +238,7 @@ def generate_option(option, append):
     if not option.required and option.positional:
         option_info += ", optional"
 
-    append(f"- <div class=\"attribute\"><h3 id=\"{id_}\">{prefix}{option.name}</h3><div>{option_info}</div></div>")
+    append(f"- <div class=\"attribute\"><h3 id=\"{id_}\">{option_key}</h3><div>{option_info}</div></div>")
     append()
 
     if option.description:
@@ -422,7 +426,7 @@ class CommandGroup(ModelObjectGroup):
 
 def option_property(name, default=None):
     def get(obj):
-        default_ = getattr(obj.property_, name) if obj.property_ else default
+        default_ = getattr(obj.property_, name, None) if obj.property_ else default
         return obj.data.get(name, default_)
 
     return property(get)
@@ -451,6 +455,7 @@ class Option(ModelObjectAttribute):
     type = option_property("type")
     format = option_property("format")
     required = option_property("required", default=False)
+    short_option = option_property("short_option")
     default = option_property("default")
     choices = option_property("choices")
     # XXX Don't think I need this

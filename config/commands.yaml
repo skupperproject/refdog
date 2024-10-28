@@ -214,6 +214,7 @@ options:
   context/namespace:
     name: namespace
     type: string
+    short_option: n
     description: |
       Set the namespace.
     links:
@@ -255,6 +256,7 @@ options:
   global/help:
     name: help
     type: boolean
+    short_option: h
     description: |
       Display help and exit.
 commands:

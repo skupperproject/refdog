@@ -103,7 +103,7 @@ $ skupper site generate east > east.yaml
   </td></tr><tr><th><code>systemd</code></th><td><p>Systemd</p>
   </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
 
-- <div class="attribute"><h3 id="option-help">--help</h3><div>boolean</div></div>
+- <div class="attribute"><h3 id="option-help">--help (-h)</h3><div>boolean</div></div>
 
   Display help and exit.
 
