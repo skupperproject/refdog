@@ -426,6 +426,9 @@ commands:
 
           # Issue an access token with non-default limits
           $ skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed 3
+
+          # Issue a token using an existing access grant
+          $ skupper token issue ~/token.yaml --grant west-1
         inherit_options: [context/*, global/*]
         options:
           - name: file
@@ -444,6 +447,11 @@ commands:
             property: expirationWindow
           - name: redemptions-allowed
             property: redemptionsAllowed
+          - name: grant
+            type: string
+            description: |
+              Use the named access grant instead of creating a new
+              one.
         errors:
           - message: Link access is not enabled
             description: |
@@ -748,7 +756,13 @@ commands:
             required: true
   - name: version
     description: |
-      Display versions of Skupper components
+      Display versions of Skupper components.
+    examples: |
+      $ skupper version
+      COMPONENT    VERSION   IMAGE                                   // ID?
+      cli          2.0.0     -
+      controller   2.0.0     quay.io/skupper/controller:2.0.0
+      router       3.0.0     quay.io/skupper/router:3.0.0            // Was skupper-router
     inherit_options: [context/*, global/*]
 groups:
   - name: Site configuration

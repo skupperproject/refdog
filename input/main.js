@@ -163,7 +163,7 @@ window.addEventListener("load", () => {
 	const lines = block.innerHTML.split("\n");
 
 	block.innerHTML = lines.map(line => {
-	    switch (line.trim()?.[0]) {
+	    switch (line[0]) {
 	    case "#":
 		return `<span class="shell-comment">${line}</span>`;
 	    case "$":

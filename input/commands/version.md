@@ -6,7 +6,7 @@ body_class: object command
 
 <section>
 
-Display versions of Skupper components
+Display versions of Skupper components.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
@@ -18,6 +18,20 @@ Display versions of Skupper components
 
 ~~~ shell
 skupper version [options]
+~~~
+
+</section>
+
+<section>
+
+## Examples
+
+~~~ console
+$ skupper version
+COMPONENT    VERSION   IMAGE                                   // ID?
+cli          2.0.0     -
+controller   2.0.0     quay.io/skupper/controller:2.0.0
+router       3.0.0     quay.io/skupper/router:3.0.0            // Was skupper-router
 ~~~
 
 </section>

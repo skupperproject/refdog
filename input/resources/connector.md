@@ -13,8 +13,7 @@ links:
 
 <section>
 
-Binds target workloads in the local site to listeners in
-remote sites.
+Binds local workloads to listeners in remote sites.
 
 Each site can have multiple connector resources.
 

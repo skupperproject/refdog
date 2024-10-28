@@ -57,6 +57,9 @@ The token expires after 1 use or after 15 minutes.
 
 # Issue an access token with non-default limits
 $ skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed 3
+
+# Issue a token using an existing access grant
+$ skupper token issue ~/token.yaml --grant west-1
 ~~~
 
 </section>
@@ -93,6 +96,13 @@ $ skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed
   be redeemed.
 
   <table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+
+- <div class="attribute"><h3 id="option-grant">--grant</h3><div>string</div></div>
+
+  Use the named access grant instead of creating a new
+  one.
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <div class="attribute"><h3 id="option-namespace">--namespace</h3><div>string</div></div>
 

@@ -13,8 +13,8 @@ links:
 
 <section>
 
-Binds a connection endpoint in the local site to target
-workloads in remote sites.
+A connection endpoint for communicating with workloads in remote
+sites.
 
 Each site can have multiple listener definitions.
 

@@ -239,11 +239,78 @@ resources:
         - name: redeemed
           description: |
             True if the token has been redeemed.
+  - name: Listener
+    related_resources: [Connector]
+    description: |
+      A connection endpoint for communicating with workloads in remote
+      sites.
+
+      Each site can have multiple listener definitions.
+    examples:
+      - description: |
+          A listener in site West for the Hello World backend service
+          in site East
+        yaml: |
+          apiVersion: skupper.io/v2alpha1
+          kind: Listener
+          metadata:
+            name: backend
+            namespace: hello-world-west
+          spec:
+            routingKey: backend
+            port: 8080
+            host: backend
+    metadata:
+      inherit_properties: [metadata/*]
+    spec:
+      inherit_properties: [settings]
+      properties:
+        - name: routingKey
+          description: |
+            The identifier used to route traffic from listeners to
+            connectors.  To enable connecting to a service at a
+            remote site, the local listener and the remote connector
+            must have matching routing keys.
+          links:
+            - name: Routing key concept
+              url: /concepts/routing-key.html
+        - name: host
+          description: |
+            The hostname or IP address of the local listener.  Clients
+            at this site use the listener host and port to
+            establish connections to the remote service.
+        - name: port
+          description: |
+            The port of the local listener.  Clients at this site use
+            the listener host and port to establish connections to
+            the remote service.
+        - name: tlsCredentials
+          description: |
+            The name of a Kubernetes secret containing TLS
+            credentials.  The secret contains the trusted server
+            certificate (typically a CA).
+
+            It can optionally include a client certificate and key for
+            mutual TLS.
+
+            This option is used when setting up client-to-router TLS
+            encryption.
+          links:
+            - name: Site-scoped TLS
+              url: "" # XXX
+        - name: type
+          default: tcp
+          description: |
+            The listener type.
+    status:
+      inherit_properties: [status/*]
+      properties:
+        - name: matchingConnectorCount
+          notes: This one has "count" but other counter fields do not.
   - name: Connector
     related_resources: [Listener]
     description: |
-      Binds target workloads in the local site to listeners in
-      remote sites.
+      Binds local workloads to listeners in remote sites.
 
       Each site can have multiple connector resources.
     examples:
@@ -324,74 +391,6 @@ resources:
       properties:
         - name: selectedPods
         - name: matchingListenerCount
-  - name: Listener
-    related_resources: [Connector]
-    description: |
-      Binds a connection endpoint in the local site to target
-      workloads in remote sites.
-
-      Each site can have multiple listener definitions.
-    examples:
-      - description: |
-          A listener in site West for the Hello World backend service
-          in site East
-        yaml: |
-          apiVersion: skupper.io/v2alpha1
-          kind: Listener
-          metadata:
-            name: backend
-            namespace: hello-world-west
-          spec:
-            routingKey: backend
-            port: 8080
-            host: backend
-    metadata:
-      inherit_properties: [metadata/*]
-    spec:
-      inherit_properties: [settings]
-      properties:
-        - name: routingKey
-          description: |
-            The identifier used to route traffic from listeners to
-            connectors.  To enable connecting to a service at a
-            remote site, the local listener and the remote connector
-            must have matching routing keys.
-          links:
-            - name: Routing key concept
-              url: /concepts/routing-key.html
-        - name: host
-          description: |
-            The hostname or IP address of the local listener.  Clients
-            at this site use the listener host and port to
-            establish connections to the remote service.
-        - name: port
-          description: |
-            The port of the local listener.  Clients at this site use
-            the listener host and port to establish connections to
-            the remote service.
-        - name: tlsCredentials
-          description: |
-            The name of a Kubernetes secret containing TLS
-            credentials.  The secret contains the trusted server
-            certificate (typically a CA).
-
-            It can optionally include a client certificate and key for
-            mutual TLS.
-
-            This option is used when setting up client-to-router TLS
-            encryption.
-          links:
-            - name: Site-scoped TLS
-              url: "" # XXX
-        - name: type
-          default: tcp
-          description: |
-            The listener type.
-    status:
-      inherit_properties: [status/*]
-      properties:
-        - name: matchingConnectorCount
-          notes: This one has "count" but other counter fields do not.
   - name: AttachedConnector
     related_resources: [AttachedConnectorAnchor, Connector]
     spec:
@@ -430,7 +429,7 @@ groups:
       - AccessToken
   - name: Service exposure
     resources:
-      - Connector
       - Listener
+      - Connector
       - AttachedConnector
       - AttachedConnectorAnchor
