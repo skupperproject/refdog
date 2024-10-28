@@ -95,8 +95,6 @@ window.addEventListener("load", () => {
 
         const subheadings = heading.parentElement.$$("h3");
 
-	console.log(111, subheadings);
-
         if (subheadings.length == 0) {
             continue;
         }
@@ -130,26 +128,25 @@ window.addEventListener("load", () => {
     const updateHeadingSelection = () => {
         const currHash = window.location.hash;
 
-        if (!currHash) {
+	for (const element of $$(".selected")) {
+	    element.classList.remove("selected");
+	}
+
+        if (currHash) {
+            for (const link of tocLinks.$$("a")) {
+                const linkHash = new URL(link.href).hash;
+
+                if (linkHash === currHash) {
+                    link.classList.add("selected");
+		    break;
+                }
+            }
+
+	    $(currHash).parentElement.classList.add("selected");
+	} else {
             const link = tocLinks.$("a");
 
             link.classList.add("selected");
-
-            for (const link of tocLinks.$$("a:not(:first-child)")) {
-                link.classList.remove("selected");
-            }
-
-            return;
-        }
-
-        for (const link of tocLinks.$$("a")) {
-            const linkHash = new URL(link.href).hash;
-
-            if (linkHash === currHash) {
-                link.classList.add("selected");
-            } else {
-                link.classList.remove("selected");
-            }
         }
     }
 

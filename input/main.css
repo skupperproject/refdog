@@ -30,6 +30,8 @@
     --text-color: hsl(0, 0%, 20%);
     --line-color: hsl(0, 0%, 95%);
     --link-color: rgb(40, 100, 180);
+    --accent-color-1: hsl(6, 80%, 70%);
+    --selected-item-background-color: hsla(6, 80%, 70%, 0.3);
     /* Fonts */
     --body-font-family: sans-serif;
     --body-line-height: 1.5em;
@@ -309,6 +311,10 @@ aside h4 {
 
 /* Skupper-specific styles for prose elements */
 
+pre {
+    border-radius: 0.25em;
+}
+
 /* Refdog-specific styles for prose elements */
 
 body.object h2 {
@@ -319,7 +325,12 @@ body.object div.attribute {
     display: inline;
     margin: -1em;
     padding: 0.2em 0.3em;
-    background-color: hsl(0, 0%, 97%);
+    background-color: var(--code-background-color);
+    border-radius: 0.25em;
+}
+
+body.object div.attribute.selected {
+    background-color: var(--selected-item-background-color);
 }
 
 body.object div.attribute > * {
