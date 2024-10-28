@@ -215,9 +215,15 @@ def generate_command_fields(command):
 def generate_option(option, append):
     debug(f"Generating {option}")
 
-    prefix = "" if option.positional else "--"
+    prefix = ""
     id_ = f"option-{get_fragment_id(option.name)}"
     option_info = option.type
+
+    if not option.positional:
+        prefix = "--"
+
+        if option.type != "boolean":
+            option_info = f"&lt;{option.type}&gt;"
 
     if option.format:
         option_info += f" ({option.format})"

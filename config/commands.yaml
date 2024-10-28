@@ -240,11 +240,16 @@ options:
   global/platform:
     name: platform
     type: string
+    default: kubernetes
     choices:
       - name: kubernetes
         description: Kubernetes
       - name: docker
-        description: Docker or Podman
+        description: Docker
+      - name: podman
+        description: Podman
+      - name: systemd
+        description: Systemd
     description: |
       Set the Skupper platform.
   global/help:
