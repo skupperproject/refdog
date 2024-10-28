@@ -42,7 +42,7 @@ Debug dump file generated at /home/fritz/dump.tar.gz.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <div class="attribute"><h3 id="option-namespace">--namespace (-n)</h3><div>&lt;string&gt;</div></div>
+- <div class="attribute"><h3 id="option-namespace">--namespace</h3><div>(-n) &lt;string&gt;</div></div>
 
   Set the namespace.
 
@@ -71,7 +71,7 @@ Debug dump file generated at /home/fritz/dump.tar.gz.
   </td></tr><tr><th><code>systemd</code></th><td><p>Systemd</p>
   </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
 
-- <div class="attribute"><h3 id="option-help">--help (-h)</h3><div>boolean</div></div>
+- <div class="attribute"><h3 id="option-help">--help</h3><div>(-h) boolean</div></div>
 
   Display help and exit.
 

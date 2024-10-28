@@ -145,7 +145,7 @@ $ skupper connector update backend --routing-key be2
 
   <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
-- <div class="attribute"><h3 id="option-namespace">--namespace (-n)</h3><div>&lt;string&gt;</div></div>
+- <div class="attribute"><h3 id="option-namespace">--namespace</h3><div>(-n) &lt;string&gt;</div></div>
 
   Set the namespace.
 
@@ -174,7 +174,7 @@ $ skupper connector update backend --routing-key be2
   </td></tr><tr><th><code>systemd</code></th><td><p>Systemd</p>
   </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
 
-- <div class="attribute"><h3 id="option-help">--help (-h)</h3><div>boolean</div></div>
+- <div class="attribute"><h3 id="option-help">--help</h3><div>(-h) boolean</div></div>
 
   Display help and exit.
 

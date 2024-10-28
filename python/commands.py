@@ -228,11 +228,11 @@ def generate_option(option, append):
     else:
         option_key = f"--{option_key}"
 
-        if option.short_option:
-            option_key = f"{option_key} (-{option.short_option})"
-
         if option.type != "boolean":
             option_info = f"&lt;{option.type}&gt;"
+
+        if option.short_option:
+            option_info = f"(-{option.short_option}) {option_info}"
 
     if option.format:
         option_info += f" ({option.format})"
