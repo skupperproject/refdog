@@ -40,12 +40,6 @@ skupper site [command] [options]
 </td></tr>
 <tr><th><a href="generate.html">Site generate</a></th><td><p>Generate a Site resource</p>
 </td></tr>
-<tr><th><a href="start.html">Site start</a></th><td><p>Start running the Skupper components for the current site</p>
-</td></tr>
-<tr><th><a href="stop.html">Site stop</a></th><td><p>Shut down the Skupper components for the current site</p>
-</td></tr>
-<tr><th><a href="reload.html">Site reload</a></th><td><p>Reload the site configuration</p>
-</td></tr>
 </table>
 
 </section>

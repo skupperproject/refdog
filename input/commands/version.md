@@ -28,10 +28,28 @@ skupper version [options]
 
 ~~~ console
 $ skupper version
-COMPONENT    VERSION   IMAGE                                   // ID?
-cli          2.0.0     -
-controller   2.0.0     quay.io/skupper/controller:2.0.0
-router       3.0.0     quay.io/skupper/router:3.0.0            // Was skupper-router
+COMPONENT          VERSION
+cli                2.0.0
+controller         2.0.0
+router             3.0.0
+network-observer   1.0.0
+
+$ skupper version --output yaml
+components:
+  cli:
+    version: 2.0.0
+  controller:
+    version: 2.0.0
+    images:
+      - name: quay.io/skupper/controller:2.0.0  // Consider fqin
+  router:
+    version: 3.0.0
+    images:
+      - name: quay.io/skupper/router:3.0.0
+      - name: quay.io/skupper/kube-adaptor:2.0.0
+  network-observer:
+    version: 1.0.0
+      - name: quay.io/skupper/network-observer:1.0.0
 ~~~
 
 </section>
@@ -39,6 +57,10 @@ router       3.0.0     quay.io/skupper/router:3.0.0            // Was skupper-ro
 <section>
 
 ## Options
+
+- <div class="attribute"><h3 id="option-verbose">--verbose</h3><div>boolean</div></div>
+
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
 
 - <div class="attribute"><h3 id="option-namespace">--namespace</h3><div>(-n) &lt;string&gt;</div></div>
 

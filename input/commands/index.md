@@ -22,11 +22,22 @@ links:
 </td></tr>
 <tr><th><a href="{{site_prefix}}/commands/site/generate.html">Site generate</a></th><td><p>Generate a Site resource</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/commands/site/start.html">Site start</a></th><td><p>Start running the Skupper components for the current site</p>
+</table>
+
+
+#### Site operation
+
+<table class="objects">
+<tr><th><a href="{{site_prefix}}/commands/system/index.html">System commands</a></th><td>Overview of system commands</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/system/setup.html">System setup</a></th><td><p>Install and configure the Skupper components for the current namespace</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/commands/site/stop.html">Site stop</a></th><td><p>Shut down the Skupper components for the current site</p>
+<tr><th><a href="{{site_prefix}}/commands/system/teardown.html">System teardown</a></th><td><p>Remove the Skupper components from the current namespace</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/commands/site/reload.html">Site reload</a></th><td><p>Reload the site configuration</p>
+<tr><th><a href="{{site_prefix}}/commands/system/start.html">System start</a></th><td><p>Start running the Skupper components for the current site</p>
+</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/system/stop.html">System stop</a></th><td><p>Shut down the Skupper components for the current site</p>
+</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/system/reload.html">System reload</a></th><td><p>Reload the site configuration</p>
 </td></tr>
 </table>
 
