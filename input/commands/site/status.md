@@ -47,8 +47,10 @@ Message:   -
 
 - <div class="attribute"><h3 id="option-name">[name]</h3><div>string, optional</div></div>
 
-  An optional resource name.  If set, the status command reports
-  status for the named resource only.
+  The name of the site resource.
+  
+  If not specified, the name is that of the site
+  associated with the current namespace.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 

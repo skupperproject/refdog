@@ -42,6 +42,7 @@ database   Ready    database      database   5432   1
 $ skupper listener status backend
 Name:          backend
 Status:        Ready
+Message:       [none]
 Routing key:   backend
 Host:          backend
 Port:          8080

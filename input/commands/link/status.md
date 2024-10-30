@@ -40,12 +40,13 @@ south-ac619   Error    10
 
 Links from remote sites:
 
-<none>
+[none]
 
 # Show the status of one link
 $ skupper link status west-6bfn6
 Name:     west-6bfn6
 Status:   Ready
+Message:  [none]
 Cost:     1
 ~~~
 
