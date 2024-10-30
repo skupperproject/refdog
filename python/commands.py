@@ -31,20 +31,28 @@ def generate(model):
         append()
 
         for command in group.commands:
-            title = command.title.removesuffix(" command")
-            description = f"Overview of {command.name} commands"
-
             append("<table class=\"objects\">")
-            append(f"<tr><th><a href=\"{command.href}\">{title}</a></th><td>{description}</td></tr>")
 
-            for subcommand in command.subcommands:
-                title = subcommand.title.removesuffix(" commands")
-                title = title.removesuffix(" command")
-                description = nvl(subcommand.description, "").replace("\n", " ")
+            if command.subcommands:
+                title = command.title.removesuffix(" command")
+                description = f"Overview of {command.name} commands"
+
+                append(f"<tr><th><a href=\"{command.href}\">{title}</a></th><td>{description}</td></tr>")
+
+                for subcommand in command.subcommands:
+                    title = subcommand.title.removesuffix(" command")
+                    description = nvl(subcommand.description, "").replace("\n", " ")
+                    description = description.split(".")[0]
+                    description = mistune.html(description)
+
+                    append(f"<tr><th><a href=\"{subcommand.href}\">{title}</a></th><td>{description}</td></tr>")
+            else:
+                title = command.title.removesuffix(" command")
+                description = nvl(command.description, "").replace("\n", " ")
                 description = description.split(".")[0]
                 description = mistune.html(description)
 
-                append(f"<tr><th><a href=\"{subcommand.href}\">{title}</a></th><td>{description}</td></tr>")
+                append(f"<tr><th><a href=\"{command.href}\">{title}</a></th><td>{description}</td></tr>")
 
             append("</table>")
             append()

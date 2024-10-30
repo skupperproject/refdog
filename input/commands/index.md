@@ -108,6 +108,7 @@ links:
 #### Other operations
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/commands/version.html">Version</a></th><td>Overview of version commands</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/version.html">Version</a></th><td><p>Display versions of Skupper components</p>
+</td></tr>
 </table>
 
