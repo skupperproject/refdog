@@ -308,7 +308,7 @@ class CommandModel:
 
 class Command(ModelObject):
     usage = object_property("usage")
-    platforms = object_property("platforms", default=["Kubernetes", "Docker", "Podman", "Systemd"])
+    platforms = object_property("platforms", default=["Kubernetes", "Docker", "Podman", "Linux"])
     output = object_property("output")
     examples = object_property("examples")
     wait = object_property("wait")

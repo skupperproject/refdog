@@ -13,7 +13,7 @@ links:
 
 Generate a Connector resource.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </section>
 
@@ -57,13 +57,13 @@ $ skupper connector generate backend 8080 > backend.yaml
 
   The name of the resource to be generated.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
 - <div class="attribute"><h3 id="option-port">&lt;port&gt;</h3><div>integer, required</div></div>
 
   The port on the target workload to forward traffic to.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 - <div class="attribute"><h3 id="option-output">--output</h3><div>(-o) &lt;string&gt;</div></div>
 
@@ -72,7 +72,7 @@ $ skupper connector generate backend 8080 > backend.yaml
   <table class="fields"><tr><th>Default</th><td><p><code>yaml</code></p>
   </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
   </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
-  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 - <div class="attribute"><h3 id="option-routing-key">--routing-key</h3><div>&lt;string&gt;</div></div>
 
@@ -82,7 +82,7 @@ $ skupper connector generate backend 8080 > backend.yaml
   have matching routing keys.
 
   <table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
-  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 - <div class="attribute"><h3 id="option-host">--host</h3><div>&lt;string&gt;</div></div>
 
@@ -90,14 +90,14 @@ $ skupper connector generate backend 8080 > backend.yaml
   alternative to `selector` for specifying the target
   server.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 - <div class="attribute"><h3 id="option-type">--type</h3><div>&lt;string&gt;</div></div>
 
   The connector type.
 
   <table class="fields"><tr><th>Default</th><td><p><code>tcp</code></p>
-  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 - <div class="attribute"><h3 id="option-tls-credentials">--tls-credentials</h3><div>&lt;string&gt;</div></div>
 
@@ -110,7 +110,7 @@ $ skupper connector generate backend 8080 > backend.yaml
   This option is used when setting up router-to-server TLS
   encryption.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 - <div class="attribute"><h3 id="option-selector">--selector</h3><div>&lt;string&gt;</div></div>
 
@@ -121,7 +121,7 @@ $ skupper connector generate backend 8080 > backend.yaml
   alternative, you can use `host`.
 
   <table class="fields"><tr><th>Default</th><td><p><code>app=[value-of-name]</code></p>
-  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 - <div class="attribute"><h3 id="option-workload">--workload</h3><div>&lt;string&gt; (resource name)</div></div>
 
@@ -138,7 +138,7 @@ $ skupper connector generate backend 8080 > backend.yaml
   If set, include server pods that are not in the ready
   state.
 
-  <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+  <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 - <div class="attribute"><h3 id="option-platform">--platform</h3><div>&lt;string&gt;</div></div>
 
@@ -148,13 +148,13 @@ $ skupper connector generate backend 8080 > backend.yaml
   </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>kubernetes</code></th><td><p>Kubernetes</p>
   </td></tr><tr><th><code>docker</code></th><td><p>Docker</p>
   </td></tr><tr><th><code>podman</code></th><td><p>Podman</p>
-  </td></tr><tr><th><code>systemd</code></th><td><p>Systemd</p>
-  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
+  </td></tr><tr><th><code>linux</code></th><td><p>Linux</p>
+  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
 
 - <div class="attribute"><h3 id="option-help">--help</h3><div>(-h) boolean</div></div>
 
   Display help and exit.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </section>

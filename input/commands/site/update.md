@@ -13,7 +13,7 @@ links:
 
 Change site settings.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>Waits for</th><td>Ready</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Ready</td></table>
 
 </section>
 
@@ -54,7 +54,7 @@ $ skupper site update --enable-link-access --service-account alice
   If not specified, the name is that of the site
   associated with the current namespace.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
 - <div class="attribute"><h3 id="option-wait">--wait</h3><div>&lt;string&gt;</div></div>
 
@@ -64,7 +64,7 @@ $ skupper site update --enable-link-access --service-account alice
   </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>pending</code></th><td><p>Pending</p>
   </td></tr><tr><th><code>configured</code></th><td><p>Configured</p>
   </td></tr><tr><th><code>ready</code></th><td><p>Ready</p>
-  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 - <div class="attribute"><h3 id="option-timeout">--timeout</h3><div>&lt;string&gt; (duration)</div></div>
 
@@ -72,7 +72,7 @@ $ skupper site update --enable-link-access --service-account alice
   period of time.
 
   <table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
-  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 - <div class="attribute"><h3 id="option-enable-link-access">--enable-link-access</h3><div>boolean</div></div>
 
@@ -80,7 +80,7 @@ $ skupper site update --enable-link-access --service-account alice
   
   <!-- XXX reference link access type -->
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/link-access.html">Link access concept</a></td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/link-access.html">Link access concept</a></td></table>
 
 - <div class="attribute"><h3 id="option-link-access-type">--link-access-type</h3><div>&lt;string&gt;</div></div>
 
@@ -90,7 +90,7 @@ $ skupper site update --enable-link-access --service-account alice
   </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>default</code></th><td><p>Use the default link access.  On OpenShift, the default is <code>route</code>.  For other Kubernetes flavors, the default is <code>loadbalancer</code>.</p>
   </td></tr><tr><th><code>route</code></th><td><p>Use an OpenShift route.  <em>OpenShift only.</em></p>
   </td></tr><tr><th><code>loadbalancer</code></th><td><p>Use a Kubernetes load balancer.  <em>Kubernetes only.</em></p>
-  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 - <div class="attribute"><h3 id="option-service-account">--service-account</h3><div>&lt;string&gt;</div></div>
 
@@ -98,13 +98,13 @@ $ skupper site update --enable-link-access --service-account alice
   Skupper controller.
 
   <table class="fields"><tr><th>Default</th><td><p><code>skupper-router</code></p>
-  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 - <div class="attribute"><h3 id="option-namespace">--namespace</h3><div>(-n) &lt;string&gt;</div></div>
 
   Set the namespace.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
 
 - <div class="attribute"><h3 id="option-context">--context</h3><div>&lt;string&gt;</div></div>
 
@@ -126,14 +126,14 @@ $ skupper site update --enable-link-access --service-account alice
   </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>kubernetes</code></th><td><p>Kubernetes</p>
   </td></tr><tr><th><code>docker</code></th><td><p>Docker</p>
   </td></tr><tr><th><code>podman</code></th><td><p>Podman</p>
-  </td></tr><tr><th><code>systemd</code></th><td><p>Systemd</p>
-  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
+  </td></tr><tr><th><code>linux</code></th><td><p>Linux</p>
+  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
 
 - <div class="attribute"><h3 id="option-help">--help</h3><div>(-h) boolean</div></div>
 
   Display help and exit.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Systemd</td></table>
+  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </section>
 

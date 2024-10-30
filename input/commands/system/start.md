@@ -8,7 +8,7 @@ body_class: object command
 
 Start running the Skupper components for the current site.
 
-<table class="fields"><tr><th>Platforms</th><td>Docker, Podman, Systemd</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Docker, Podman, Linux</td></table>
 
 </section>
 

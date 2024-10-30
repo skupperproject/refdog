@@ -229,7 +229,7 @@ class ModelObjectAttribute:
     hidden = object_property("hidden", default=False)
     name = object_property("name", required=True)
     description = object_property("description")
-    platforms = object_property("platforms", default=["Kubernetes", "Docker", "Podman", "Systemd"])
+    platforms = object_property("platforms", default=["Kubernetes", "Docker", "Podman", "Linux"])
     links = object_property("links", default=[])
     notes = object_property("notes")
 
