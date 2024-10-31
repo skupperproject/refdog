@@ -60,7 +60,7 @@ components:
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Options
 

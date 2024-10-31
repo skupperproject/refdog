@@ -42,7 +42,7 @@ Listener "database" is deleted.
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Options
 

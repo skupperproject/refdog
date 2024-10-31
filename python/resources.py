@@ -102,7 +102,7 @@ def generate_resource(resource):
         append("</section>")
         append()
 
-    append("<section>")
+    append("<section class=\"attributes\">")
     append()
     append("## Metadata properties")
     append()
@@ -112,7 +112,7 @@ def generate_resource(resource):
 
     append("</section>")
     append()
-    append("<section>")
+    append("<section class=\"attributes\">")
     append()
     append("## Spec properties")
     append()
@@ -122,7 +122,7 @@ def generate_resource(resource):
 
     append("</section>")
     append()
-    append("<section>")
+    append("<section class=\"attributes\">")
     append()
     append("## Status properties")
     append()

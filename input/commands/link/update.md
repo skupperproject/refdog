@@ -40,7 +40,7 @@ Link "west-6bfn6" is ready.
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Options
 

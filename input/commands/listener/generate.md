@@ -49,7 +49,7 @@ $ skupper listener generate backend 8080 > backend.yaml
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Options
 

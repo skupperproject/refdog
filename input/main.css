@@ -323,7 +323,7 @@ body.object h2 {
     font-size: 1.3em;
 }
 
-body.object div.attribute {
+section.attributes div.attribute {
     display: inline;
     margin: -1em;
     padding: 0.2em 0.3em;
@@ -331,26 +331,26 @@ body.object div.attribute {
     border-radius: 0.25em;
 }
 
-body.object div.attribute.selected {
+section.attributes div.attribute.selected {
     background-color: var(--selected-item-background-color);
 }
 
-body.object div.attribute > * {
+section.attributes div.attribute > * {
     display: inline;
     font-family: var(--body-font-family);
     font-size: 1em;
 }
 
-body.object div.attribute > h3 {
+section.attributes div.attribute > h3 {
     margin-right: 0.3em;
 }
 
-body.object li {
+section.attributes li {
     list-style-type: none;
     margin-top: 1.3em;
 }
 
-body.object span.attribute-info {
+section.attributes span.attribute-info {
     font-weight: 400;
     font-style: italic;
 }

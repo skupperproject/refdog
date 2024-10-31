@@ -29,7 +29,7 @@ kind: Link
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Metadata properties
 
@@ -47,7 +47,7 @@ kind: Link
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Spec properties
 
@@ -81,7 +81,7 @@ kind: Link
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Status properties
 

@@ -153,7 +153,7 @@ def generate_command(command):
             append()
 
         if command.options:
-            append("<section>")
+            append("<section class=\"attributes\">")
             append()
             append("## Options")
             append()

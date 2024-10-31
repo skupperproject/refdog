@@ -22,18 +22,55 @@ Generate a Link resource for use in a remote site.
 ## Usage
 
 ~~~ shell
-skupper link generate <name> [options]
+skupper link generate [name] [options]
 ~~~
 
 </section>
 
 <section>
 
+## Examples
+
+~~~ console
+$ skupper link generate
+apiVersion: skupper.io/v2alpha1
+kind: Link
+metadata:
+  name: south-ac619
+spec:
+  cost: 1
+  linkAccessEndpoints:
+  - group: skupper-router-1
+    host: 10.97.161.185
+    name: inter-router
+    port: "55671"
+  - group: skupper-router-1
+    host: 10.97.161.185
+    name: edge
+    port: "45671"
+  tlsCredentials: south-ac619
+---
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/tls
+metadata:
+  name: south-ac619
+data:
+  ca.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURKekNDQWcrZ0F3SUJB [...]
+  tls.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURORENDQWh5Z0F3SUJ [...]
+  tls.key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb3dJQkFBS0N [...]
+~~~
+
+</section>
+
+<section class="attributes">
+
 ## Options
 
-- <div class="attribute"><h3 id="option-name">&lt;name&gt;</h3><div>string, required</div></div>
+- <div class="attribute"><h3 id="option-name">[name]</h3><div>string, optional</div></div>
 
-  The name of the resource to be generated.
+  The name of the resource to be generated.  A name is
+  generated if none is provided.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 

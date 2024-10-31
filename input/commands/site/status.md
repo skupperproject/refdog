@@ -41,7 +41,7 @@ Message:   -
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Options
 

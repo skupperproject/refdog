@@ -45,7 +45,7 @@ $ skupper listener create backend 8080 --routing-key be1 --host apiserver
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Options
 

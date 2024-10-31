@@ -546,7 +546,46 @@ commands:
       - name: generate
         description: |
           Generate a Link resource for use in a remote site.
+
+        # - Using this skips the grant and token procedure
+        # - The generated output includes a Skupper Link and an associated secret
+        # - You can apply the link at a remote site to create a link to this site
+        examples: |
+          $ skupper link generate
+          apiVersion: skupper.io/v2alpha1
+          kind: Link
+          metadata:
+            name: south-ac619
+          spec:
+            cost: 1
+            linkAccessEndpoints:
+            - group: skupper-router-1
+              host: 10.97.161.185
+              name: inter-router
+              port: "55671"
+            - group: skupper-router-1
+              host: 10.97.161.185
+              name: edge
+              port: "45671"
+            tlsCredentials: south-ac619
+          ---
+          apiVersion: v1
+          kind: Secret
+          type: kubernetes.io/tls
+          metadata:
+            name: south-ac619
+          data:
+            ca.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURKekNDQWcrZ0F3SUJB [...]
+            tls.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURORENDQWh5Z0F3SUJ [...]
+            tls.key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb3dJQkFBS0N [...]
         include_options: [generate/*, link/*, context/*, global/*]
+        options:
+          - name: name
+            positional: true
+            required: false
+            description: |
+              The name of the resource to be generated.  A name is
+              generated if none is provided.
   - name: connector
     related_commands: [listener]
     description: |

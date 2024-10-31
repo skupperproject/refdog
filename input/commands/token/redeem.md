@@ -48,7 +48,7 @@ You can now safely delete /home/fritz/token.yaml.
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Options
 

@@ -64,7 +64,7 @@ $ skupper token issue ~/token.yaml --grant west-1
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Options
 

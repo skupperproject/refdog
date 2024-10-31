@@ -46,7 +46,7 @@ spec:
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Metadata properties
 
@@ -64,7 +64,7 @@ spec:
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Spec properties
 
@@ -122,7 +122,7 @@ spec:
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Status properties
 

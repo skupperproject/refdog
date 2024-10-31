@@ -40,7 +40,7 @@ Link "west-6bfn6" is deleted.
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Options
 

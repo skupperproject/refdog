@@ -43,7 +43,7 @@ $ skupper site create west --enable-link-access
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Options
 

@@ -34,7 +34,7 @@ Debug dump file generated at /home/fritz/dump.tar.gz.
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Options
 

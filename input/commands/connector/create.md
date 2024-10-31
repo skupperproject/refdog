@@ -45,7 +45,7 @@ $ skupper connector create backend 8080 --routing-key be1 --workload deployment/
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Options
 

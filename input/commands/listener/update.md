@@ -45,7 +45,7 @@ $ skupper listener update backend --routing-key be2
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Options
 

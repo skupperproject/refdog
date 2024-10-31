@@ -22,7 +22,7 @@ kind: AccessToken
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Metadata properties
 
@@ -40,7 +40,7 @@ kind: AccessToken
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Spec properties
 
@@ -73,7 +73,7 @@ kind: AccessToken
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Status properties
 

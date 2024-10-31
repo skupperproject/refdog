@@ -43,7 +43,7 @@ $ skupper site delete --all
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Options
 

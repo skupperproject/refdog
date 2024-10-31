@@ -52,7 +52,7 @@ Cost:     1
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Options
 

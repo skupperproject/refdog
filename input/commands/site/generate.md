@@ -47,7 +47,7 @@ $ skupper site generate east > east.yaml
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Options
 

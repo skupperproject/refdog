@@ -43,7 +43,7 @@ $ skupper site update --enable-link-access --service-account alice
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Options
 

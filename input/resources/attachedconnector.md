@@ -18,13 +18,13 @@ kind: AttachedConnector
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Metadata properties
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Spec properties
 
@@ -58,7 +58,7 @@ kind: AttachedConnector
 
 </section>
 
-<section>
+<section class="attributes">
 
 ## Status properties
 
