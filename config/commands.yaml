@@ -143,6 +143,7 @@ options:
   site/link_access_type:
     name: link-access-type
     property: linkAccess
+    platforms: [Kubernetes]
     default: default
     choices:
       - name: default
