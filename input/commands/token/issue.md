@@ -22,6 +22,10 @@ Issue a token file redeemable for a link to the current site.
 This command first creates an access grant in order to issue
 the token.
 
+Issuing a token requires a site with link access enabled.
+The command waits for the site to enter the ready state
+before producing the token.
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Ready</td></table>
 
 </section>

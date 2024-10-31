@@ -13,6 +13,10 @@ links:
 
 Generate a Link resource for use in a remote site.
 
+Generating a link requires a site with link access enabled.
+The command waits for the site to enter the ready state
+before producing the link.
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </section>
@@ -32,6 +36,7 @@ skupper link generate [name] [options]
 ## Examples
 
 ~~~ console
+# Generate a Link resource and print it to the console
 $ skupper link generate
 apiVersion: skupper.io/v2alpha1
 kind: Link
@@ -40,14 +45,14 @@ metadata:
 spec:
   cost: 1
   linkAccessEndpoints:
-  - group: skupper-router-1
-    host: 10.97.161.185
-    name: inter-router
-    port: "55671"
-  - group: skupper-router-1
-    host: 10.97.161.185
-    name: edge
-    port: "45671"
+    - group: skupper-router-1
+      host: 10.97.161.185
+      name: inter-router
+      port: "55671"
+    - group: skupper-router-1
+      host: 10.97.161.185
+      name: edge
+      port: "45671"
   tlsCredentials: south-ac619
 ---
 apiVersion: v1
@@ -59,6 +64,9 @@ data:
   ca.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURKekNDQWcrZ0F3SUJB [...]
   tls.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURORENDQWh5Z0F3SUJ [...]
   tls.key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb3dJQkFBS0N [...]
+
+# Generate a Link resource and direct the output to a file
+$ skupper link generate > link.yaml
 ~~~
 
 </section>

@@ -46,7 +46,7 @@ Link "west-6bfn6" is ready.
 
 - <div class="attribute"><h3 id="option-name">&lt;name&gt;</h3><div>string, required</div></div>
 
-  The name of the resource to be created.
+  The name of the resource to be updated.
 
   <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
@@ -66,7 +66,7 @@ Link "west-6bfn6" is ready.
   period of time.
 
   <table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
-  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://pkg.go.dev/time#ParseDuration">Duration format</a></td></table>
+  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 - <div class="attribute"><h3 id="option-cost">--cost</h3><div>&lt;integer&gt;</div></div>
 
