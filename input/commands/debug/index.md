@@ -2,7 +2,7 @@
 body_class: object command
 ---
 
-# Debug commands
+# Debug command
 
 <section>
 

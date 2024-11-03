@@ -11,7 +11,7 @@ links:
     url: /resources/accesstoken.html
 ---
 
-# Token commands
+# Token command
 
 <section>
 

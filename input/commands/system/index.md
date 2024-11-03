@@ -2,11 +2,11 @@
 body_class: object command
 ---
 
-# System commands
+# System command
 
 <section>
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Docker, Podman, Linux</td></table>
 
 </section>
 

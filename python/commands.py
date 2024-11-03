@@ -25,6 +25,9 @@ def generate(model):
     append()
     append("# Skupper commands")
     append()
+    append("<a href=\"overview.html\">Overview</a>")
+    append()
+
 
     for group in model.groups:
         append(f"#### {group.name}")
@@ -383,15 +386,10 @@ class Command(ModelObject):
 
     @property
     def title(self):
-        if self.subcommands:
-            type = "commands"
-        else:
-            type = "command"
-
         if self.parent:
-            return f"{capitalize(self.parent.name)} {self.name} {type}"
+            return f"{capitalize(self.parent.name)} {self.name} command"
         else:
-            return f"{capitalize(self.name)} {type}"
+            return f"{capitalize(self.name)} command"
 
     @property
     def href(self):

@@ -5,11 +5,11 @@ links:
     url: /concepts/listener.html
   - name: Listener resource
     url: /resources/listener.html
-  - name: Connector commands
+  - name: Connector command
     url: /commands/connector/index.html
 ---
 
-# Listener commands
+# Listener command
 
 <section>
 

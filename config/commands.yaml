@@ -799,9 +799,11 @@ commands:
           - name: name
           - name: port
   - name: system
+    platforms: [Docker, Podman, Linux]
     subcommands:
       # system.setup
       - name: setup
+        platforms: [Docker, Podman, Linux]
         description: |
           Install and configure the Skupper components for the current
           namespace.

@@ -8,10 +8,12 @@ links:
 
 # Skupper commands
 
+<a href="overview.html">Overview</a>
+
 #### Site configuration
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/commands/site/index.html">Site commands</a></th><td>Overview of site commands</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/site/index.html">Site</a></th><td>Overview of site commands</td></tr>
 <tr><th><a href="{{site_prefix}}/commands/site/create.html">Site create</a></th><td><p>Create a site</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/commands/site/update.html">Site update</a></th><td><p>Change site settings</p>
@@ -28,7 +30,7 @@ links:
 #### Site linking
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/commands/token/index.html">Token commands</a></th><td>Overview of token commands</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/token/index.html">Token</a></th><td>Overview of token commands</td></tr>
 <tr><th><a href="{{site_prefix}}/commands/token/issue.html">Token issue</a></th><td><p>Issue a token file redeemable for a link to the current site</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/commands/token/redeem.html">Token redeem</a></th><td><p>Redeem a token file in order to create a link to a remote site</p>
@@ -36,7 +38,7 @@ links:
 </table>
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/commands/link/index.html">Link commands</a></th><td>Overview of link commands</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/link/index.html">Link</a></th><td>Overview of link commands</td></tr>
 <tr><th><a href="{{site_prefix}}/commands/link/update.html">Link update</a></th><td><p>Change link settings</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/commands/link/delete.html">Link delete</a></th><td><p>Delete a link</p>
@@ -51,7 +53,7 @@ links:
 #### Service exposure
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/commands/connector/index.html">Connector commands</a></th><td>Overview of connector commands</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/connector/index.html">Connector</a></th><td>Overview of connector commands</td></tr>
 <tr><th><a href="{{site_prefix}}/commands/connector/create.html">Connector create</a></th><td><p>Create a connector</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/commands/connector/update.html">Connector update</a></th><td><p>Update a connector</p>
@@ -65,7 +67,7 @@ links:
 </table>
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/commands/listener/index.html">Listener commands</a></th><td>Overview of listener commands</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/listener/index.html">Listener</a></th><td>Overview of listener commands</td></tr>
 <tr><th><a href="{{site_prefix}}/commands/listener/create.html">Listener create</a></th><td><p>Create a listener</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/commands/listener/update.html">Listener update</a></th><td><p>Update a listener</p>
@@ -82,7 +84,7 @@ links:
 #### Site operation
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/commands/system/index.html">System commands</a></th><td>Overview of system commands</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/system/index.html">System</a></th><td>Overview of system commands</td></tr>
 <tr><th><a href="{{site_prefix}}/commands/system/setup.html">System setup</a></th><td><p>Install and configure the Skupper components for the current namespace</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/commands/system/teardown.html">System teardown</a></th><td><p>Remove the Skupper components from the current namespace</p>
@@ -99,7 +101,7 @@ links:
 #### Debug operations
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/commands/debug/index.html">Debug commands</a></th><td>Overview of debug commands</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/debug/index.html">Debug</a></th><td>Overview of debug commands</td></tr>
 <tr><th><a href="{{site_prefix}}/commands/debug/dump.html">Debug dump</a></th><td><p>Generate a debug dump file</p>
 </td></tr>
 </table>

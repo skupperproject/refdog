@@ -7,7 +7,7 @@ links:
     url: /resources/site.html
 ---
 
-# Site commands
+# Site command
 
 <section>
 
