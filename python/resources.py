@@ -162,23 +162,28 @@ def generate_property(prop, append):
     if prop.required and prop.default is None:
         prop_info += ", required"
 
-    append(f"- <div class=\"attribute\"><h3 id=\"{id_}\">{name}</h3><div>{prop_info}</div></div>")
+    append("<div class=\"attribute\">")
+    append()
+    append(f"<div class=\"attribute-heading\"><h3 id=\"{id_}\">{name}</h3><div>{prop_info}</div></div>")
     append()
 
     if prop.description:
-        append(indent(prop.description.strip(), 2))
+        append(prop.description.strip())
         append()
 
-    append(indent(generate_attribute_fields(prop), 2))
+    append(generate_attribute_fields(prop))
     append()
 
     if prop.notes:
-        append("  <section class=\"notes\">")
+        append("<section class=\"notes\">")
         append()
-        append(indent(prop.notes.strip(), 2))
+        append(prop.notes.strip())
         append()
-        append("  </section>")
+        append("</section>")
         append()
+
+    append("</div>")
+    append()
 
 class ResourceModel:
     def __init__(self):

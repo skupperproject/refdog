@@ -26,17 +26,29 @@ kind: AttachedConnectorAnchor
 
 ## Spec properties
 
-- <div class="attribute"><h3 id="spec-connectornamespace">connectorNamespace</h3><div>string, required</div></div>
+<div class="attribute">
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<div class="attribute-heading"><h3 id="spec-connectornamespace">connectorNamespace</h3><div>string, required</div></div>
 
-- <div class="attribute"><h3 id="spec-routingkey">routingKey</h3><div>string, required</div></div>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+</div>
 
-- <div class="attribute"><h3 id="spec-settings">settings</h3><div>object</div></div>
+<div class="attribute">
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<div class="attribute-heading"><h3 id="spec-routingkey">routingKey</h3><div>string, required</div></div>
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="spec-settings">settings</h3><div>object</div></div>
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
 
 </section>
 
@@ -44,22 +56,43 @@ kind: AttachedConnectorAnchor
 
 ## Status properties
 
-- <div class="attribute"><h3 id="status-matchinglistenercount">matchingListenerCount</h3><div>integer</div></div>
+<div class="attribute">
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<div class="attribute-heading"><h3 id="status-matchinglistenercount">matchingListenerCount</h3><div>integer</div></div>
 
-- <div class="attribute"><h3 id="status-status">status</h3><div>string</div></div>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
-  The current state of the resource.
+</div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<div class="attribute">
 
-- <div class="attribute"><h3 id="status-message">message</h3><div>None</div></div>
+<div class="attribute-heading"><h3 id="status-status">status</h3><div>string</div></div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+The current state of the resource.
 
-- <div class="attribute"><h3 id="status-conditions">conditions</h3><div>array</div></div>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+</div>
+
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="status-message">message</h3><div>None</div></div>
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="status-conditions">conditions</h3><div>array</div></div>
+
+- Configured
+- Running
+- Resolved
+- Ready
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
 
 </section>

@@ -52,53 +52,81 @@ You can now safely delete /home/fritz/token.yaml.
 
 ## Options
 
-- <div class="attribute"><h3 id="option-file">&lt;file&gt;</h3><div>string, required</div></div>
+<div class="attribute">
 
-  The name of the token file to use.
+<div class="attribute-heading"><h3 id="option-file">&lt;file&gt;</h3><div>string, required</div></div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+The name of the token file to use.
 
-- <div class="attribute"><h3 id="option-timeout">--timeout</h3><div>&lt;string&gt; (duration)</div></div>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
-  Raise an error if the operation does not complete in the given
-  period of time.
+</div>
 
-  <table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
-  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<div class="attribute">
 
-- <div class="attribute"><h3 id="option-namespace">--namespace</h3><div>(-n) &lt;string&gt;</div></div>
+<div class="attribute-heading"><h3 id="option-timeout">--timeout</h3><div>&lt;string&gt; (duration)</div></div>
 
-  Set the namespace.
+Raise an error if the operation does not complete in the given
+period of time.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
+<table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
-- <div class="attribute"><h3 id="option-context">--context</h3><div>&lt;string&gt;</div></div>
+</div>
 
-  Set the kubeconfig context.
+<div class="attribute">
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
+<div class="attribute-heading"><h3 id="option-namespace">--namespace</h3><div>(-n) &lt;string&gt;</div></div>
 
-- <div class="attribute"><h3 id="option-kubeconfig">--kubeconfig</h3><div>&lt;string&gt;</div></div>
+Set the namespace.
 
-  Set the path to the kubeconfig file.
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
+</div>
 
-- <div class="attribute"><h3 id="option-platform">--platform</h3><div>&lt;string&gt;</div></div>
+<div class="attribute">
 
-  Set the Skupper platform.
+<div class="attribute-heading"><h3 id="option-context">--context</h3><div>&lt;string&gt;</div></div>
 
-  <table class="fields"><tr><th>Default</th><td><p><code>kubernetes</code></p>
-  </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>kubernetes</code></th><td><p>Kubernetes</p>
-  </td></tr><tr><th><code>docker</code></th><td><p>Docker</p>
-  </td></tr><tr><th><code>podman</code></th><td><p>Podman</p>
-  </td></tr><tr><th><code>linux</code></th><td><p>Linux</p>
-  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
+Set the kubeconfig context.
 
-- <div class="attribute"><h3 id="option-help">--help</h3><div>(-h) boolean</div></div>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
 
-  Display help and exit.
+</div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="option-kubeconfig">--kubeconfig</h3><div>&lt;string&gt;</div></div>
+
+Set the path to the kubeconfig file.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
+
+</div>
+
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="option-platform">--platform</h3><div>&lt;string&gt;</div></div>
+
+Set the Skupper platform.
+
+<table class="fields"><tr><th>Default</th><td><p><code>kubernetes</code></p>
+</td><tr><th>Choices</th><td><table class="choices"><tr><th><code>kubernetes</code></th><td><p>Kubernetes</p>
+</td></tr><tr><th><code>docker</code></th><td><p>Docker</p>
+</td></tr><tr><th><code>podman</code></th><td><p>Podman</p>
+</td></tr><tr><th><code>linux</code></th><td><p>Linux</p>
+</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
+
+</div>
+
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="option-help">--help</h3><div>(-h) boolean</div></div>
+
+Display help and exit.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
 
 </section>

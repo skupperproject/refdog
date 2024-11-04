@@ -29,6 +29,11 @@ properties:
     name: message
   status/conditions:
     name: conditions
+    description: |
+      - Configured
+      - Running
+      - Resolved
+      - Ready
 resources:
   - name: Site
     related_concepts: [network, namespace]

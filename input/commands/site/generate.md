@@ -51,63 +51,91 @@ $ skupper site generate east > east.yaml
 
 ## Options
 
-- <div class="attribute"><h3 id="option-name">&lt;name&gt;</h3><div>string, required</div></div>
+<div class="attribute">
 
-  The name of the resource to be generated.
+<div class="attribute-heading"><h3 id="option-name">&lt;name&gt;</h3><div>string, required</div></div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+The name of the resource to be generated.
 
-- <div class="attribute"><h3 id="option-output">--output</h3><div>(-o) &lt;string&gt;</div></div>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
-  Select the output format.
+</div>
 
-  <table class="fields"><tr><th>Default</th><td><p><code>yaml</code></p>
-  </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
-  </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
-  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<div class="attribute">
 
-- <div class="attribute"><h3 id="option-enable-link-access">--enable-link-access</h3><div>boolean</div></div>
+<div class="attribute-heading"><h3 id="option-output">--output</h3><div>(-o) &lt;string&gt;</div></div>
 
-  Allow access for incoming links from remote sites.
-  
-  <!-- XXX reference link access type -->
+Select the output format.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/link-access.html">Link access concept</a></td></table>
+<table class="fields"><tr><th>Default</th><td><p><code>yaml</code></p>
+</td><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
+</td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
+</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
-- <div class="attribute"><h3 id="option-link-access-type">--link-access-type</h3><div>&lt;string&gt;</div></div>
+</div>
 
-  Configure external access for links from remote sites.
+<div class="attribute">
 
-  <table class="fields"><tr><th>Default</th><td><p><code>default</code></p>
-  </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>default</code></th><td><p>Use the default link access.  On OpenShift, the default is <code>route</code>.  For other Kubernetes flavors, the default is <code>loadbalancer</code>.</p>
-  </td></tr><tr><th><code>route</code></th><td><p>Use an OpenShift route.  <em>OpenShift only.</em></p>
-  </td></tr><tr><th><code>loadbalancer</code></th><td><p>Use a Kubernetes load balancer.  <em>Kubernetes only.</em></p>
-  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes</td></table>
+<div class="attribute-heading"><h3 id="option-enable-link-access">--enable-link-access</h3><div>boolean</div></div>
 
-- <div class="attribute"><h3 id="option-service-account">--service-account</h3><div>&lt;string&gt;</div></div>
+Allow access for incoming links from remote sites.
 
-  The Kubernetes service account under which to run the
-  Skupper controller.
+<!-- XXX reference link access type -->
 
-  <table class="fields"><tr><th>Default</th><td><p><code>skupper-router</code></p>
-  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/link-access.html">Link access concept</a></td></table>
 
-- <div class="attribute"><h3 id="option-platform">--platform</h3><div>&lt;string&gt;</div></div>
+</div>
 
-  Set the Skupper platform.
+<div class="attribute">
 
-  <table class="fields"><tr><th>Default</th><td><p><code>kubernetes</code></p>
-  </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>kubernetes</code></th><td><p>Kubernetes</p>
-  </td></tr><tr><th><code>docker</code></th><td><p>Docker</p>
-  </td></tr><tr><th><code>podman</code></th><td><p>Podman</p>
-  </td></tr><tr><th><code>linux</code></th><td><p>Linux</p>
-  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
+<div class="attribute-heading"><h3 id="option-link-access-type">--link-access-type</h3><div>&lt;string&gt;</div></div>
 
-- <div class="attribute"><h3 id="option-help">--help</h3><div>(-h) boolean</div></div>
+Configure external access for links from remote sites.
 
-  Display help and exit.
+<table class="fields"><tr><th>Default</th><td><p><code>default</code></p>
+</td><tr><th>Choices</th><td><table class="choices"><tr><th><code>default</code></th><td><p>Use the default link access.  On OpenShift, the default is <code>route</code>.  For other Kubernetes flavors, the default is <code>loadbalancer</code>.</p>
+</td></tr><tr><th><code>route</code></th><td><p>Use an OpenShift route.  <em>OpenShift only.</em></p>
+</td></tr><tr><th><code>loadbalancer</code></th><td><p>Use a Kubernetes load balancer.  <em>Kubernetes only.</em></p>
+</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes</td></table>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+</div>
+
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="option-service-account">--service-account</h3><div>&lt;string&gt;</div></div>
+
+The Kubernetes service account under which to run the
+Skupper controller.
+
+<table class="fields"><tr><th>Default</th><td><p><code>skupper-router</code></p>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="option-platform">--platform</h3><div>&lt;string&gt;</div></div>
+
+Set the Skupper platform.
+
+<table class="fields"><tr><th>Default</th><td><p><code>kubernetes</code></p>
+</td><tr><th>Choices</th><td><table class="choices"><tr><th><code>kubernetes</code></th><td><p>Kubernetes</p>
+</td></tr><tr><th><code>docker</code></th><td><p>Docker</p>
+</td></tr><tr><th><code>podman</code></th><td><p>Podman</p>
+</td></tr><tr><th><code>linux</code></th><td><p>Linux</p>
+</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
+
+</div>
+
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="option-help">--help</h3><div>(-h) boolean</div></div>
+
+Display help and exit.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
 
 </section>
 

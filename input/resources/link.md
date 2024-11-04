@@ -33,17 +33,25 @@ kind: Link
 
 ## Metadata properties
 
-- <div class="attribute"><h3 id="metadata-name">name</h3><div>string, required</div></div>
+<div class="attribute">
 
-  The name of the resource.
+<div class="attribute-heading"><h3 id="metadata-name">name</h3><div>string, required</div></div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+The name of the resource.
 
-- <div class="attribute"><h3 id="metadata-namespace">namespace</h3><div>string</div></div>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
-  The namespace of the resource.
+</div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="metadata-namespace">namespace</h3><div>string</div></div>
+
+The namespace of the resource.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
+
+</div>
 
 </section>
 
@@ -51,33 +59,49 @@ kind: Link
 
 ## Spec properties
 
-- <div class="attribute"><h3 id="spec-tlscredentials">tlsCredentials</h3><div>string</div></div>
+<div class="attribute">
 
-  The name of a Kubernetes secret containing TLS
-  credentials. The secret contains the trusted server
-  certificate (typically a CA).
-  
-  It can optionally include a client certificate and key for
-  mutual TLS.
+<div class="attribute-heading"><h3 id="spec-tlscredentials">tlsCredentials</h3><div>string</div></div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Custom certificates</a></td></table>
+The name of a Kubernetes secret containing TLS
+credentials. The secret contains the trusted server
+certificate (typically a CA).
 
-- <div class="attribute"><h3 id="spec-cost">cost</h3><div>integer</div></div>
+It can optionally include a client certificate and key for
+mutual TLS.
 
-  The configured routing cost of sending traffic over
-  the link.
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Custom certificates</a></td></table>
 
-  <table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Load balancing</a></td></table>
+</div>
 
-- <div class="attribute"><h3 id="spec-endpoints">endpoints</h3><div>array, required</div></div>
+<div class="attribute">
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<div class="attribute-heading"><h3 id="spec-cost">cost</h3><div>integer</div></div>
 
-- <div class="attribute"><h3 id="spec-settings">settings</h3><div>object</div></div>
+The configured routing cost of sending traffic over
+the link.
 
-  Additional settings.
+<table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Load balancing</a></td></table>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+</div>
+
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="spec-endpoints">endpoints</h3><div>array, required</div></div>
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="spec-settings">settings</h3><div>object</div></div>
+
+Additional settings.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
 
 </section>
 
@@ -85,26 +109,51 @@ kind: Link
 
 ## Status properties
 
-- <div class="attribute"><h3 id="status-remotesiteid">remoteSiteId</h3><div>string</div></div>
+<div class="attribute">
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<div class="attribute-heading"><h3 id="status-remotesiteid">remoteSiteId</h3><div>string</div></div>
 
-- <div class="attribute"><h3 id="status-remotesitename">remoteSiteName</h3><div>string</div></div>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+</div>
 
-- <div class="attribute"><h3 id="status-status">status</h3><div>string</div></div>
+<div class="attribute">
 
-  The current state of the resource.
+<div class="attribute-heading"><h3 id="status-remotesitename">remoteSiteName</h3><div>string</div></div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
-- <div class="attribute"><h3 id="status-message">message</h3><div>string</div></div>
+</div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<div class="attribute">
 
-- <div class="attribute"><h3 id="status-conditions">conditions</h3><div>array</div></div>
+<div class="attribute-heading"><h3 id="status-status">status</h3><div>string</div></div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+The current state of the resource.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="status-message">message</h3><div>string</div></div>
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="status-conditions">conditions</h3><div>array</div></div>
+
+- Configured
+- Running
+- Resolved
+- Ready
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
 
 </section>

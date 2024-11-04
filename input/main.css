@@ -323,38 +323,6 @@ body.object h2 {
     font-size: 1.3em;
 }
 
-section.attributes div.attribute {
-    display: inline;
-    margin: -1em;
-    padding: 0.2em 0.3em;
-    background-color: var(--code-background-color);
-    border-radius: 0.25em;
-}
-
-section.attributes div.attribute.selected {
-    background-color: var(--selected-item-background-color);
-}
-
-section.attributes div.attribute > * {
-    display: inline;
-    font-family: var(--body-font-family);
-    font-size: 1em;
-}
-
-section.attributes div.attribute > h3 {
-    margin-right: 0.3em;
-}
-
-section.attributes li {
-    list-style-type: none;
-    margin-top: 1.3em;
-}
-
-section.attributes span.attribute-info {
-    font-weight: 400;
-    font-style: italic;
-}
-
 body.object main::after {
     content: "";
     display: block;
@@ -366,6 +334,42 @@ table.objects th {
     text-align: left;
     font-weight: normal;
 }
+
+section.attributes > div.attribute {
+    margin: 1em;
+}
+
+div.attribute > div.attribute-heading {
+    display: inline;
+    margin-left: -1em;
+    padding: 0.2em 0.3em;
+    background-color: var(--code-background-color);
+    border-radius: 0.25em;
+}
+
+div.attribute > div.attribute-heading.selected {
+    background-color: var(--selected-item-background-color);
+}
+
+div.attribute > div.attribute-heading > * {
+    display: inline;
+    font-family: var(--body-font-family);
+    font-size: 1em;
+}
+
+div.attribute > div.attribute-heading > h3 {
+    margin-right: 0.3em;
+}
+
+/* section.attributes > ul > li { */
+/*     list-style-type: none; */
+/*     margin-top: 1.3em; */
+/* } */
+
+/* section.attributes span.attribute-info { */
+/*     font-weight: 400; */
+/*     font-style: italic; */
+/* } */
 
 table.fields td, table.fields th {
     text-align: left;

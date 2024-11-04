@@ -48,17 +48,25 @@ spec:
 
 ## Metadata properties
 
-- <div class="attribute"><h3 id="metadata-name">name</h3><div>string, required</div></div>
+<div class="attribute">
 
-  The name of the resource.
+<div class="attribute-heading"><h3 id="metadata-name">name</h3><div>string, required</div></div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+The name of the resource.
 
-- <div class="attribute"><h3 id="metadata-namespace">namespace</h3><div>string</div></div>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
-  The namespace of the resource.
+</div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="metadata-namespace">namespace</h3><div>string</div></div>
+
+The namespace of the resource.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
+
+</div>
 
 </section>
 
@@ -66,71 +74,103 @@ spec:
 
 ## Spec properties
 
-- <div class="attribute"><h3 id="spec-routingkey">routingKey</h3><div>string, required</div></div>
+<div class="attribute">
 
-  The identifier used to route traffic from listeners to
-  connectors.  To expose a local workload to a remote
-  site, the remote listener and the local connector must
-  have matching routing keys.
+<div class="attribute-heading"><h3 id="spec-routingkey">routingKey</h3><div>string, required</div></div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/routing-key.html">Routing key concept</a></td></table>
+The identifier used to route traffic from listeners to
+connectors.  To expose a local workload to a remote
+site, the remote listener and the local connector must
+have matching routing keys.
 
-- <div class="attribute"><h3 id="spec-port">port</h3><div>integer, required</div></div>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/routing-key.html">Routing key concept</a></td></table>
 
-  The port on the target workload to forward traffic to.
+</div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<div class="attribute">
 
-- <div class="attribute"><h3 id="spec-selector">selector</h3><div>string</div></div>
+<div class="attribute-heading"><h3 id="spec-port">port</h3><div>integer, required</div></div>
 
-  A Kubernetes label selector for specifying target server
-  pods.
-  
-  On Kubernetes, you usually want to use this.  As an
-  alternative, you can use `host`.
+The port on the target workload to forward traffic to.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">Kubernetes label selectors</a>, <a href="https://kubernetes.io/docs/concepts/workloads/pods/">Kubernetes pods</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
-- <div class="attribute"><h3 id="spec-host">host</h3><div>string</div></div>
+</div>
 
-  The hostname or IP address of the server.  This is an
-  alternative to `selector` for specifying the target
-  server.
+<div class="attribute">
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<div class="attribute-heading"><h3 id="spec-selector">selector</h3><div>string</div></div>
 
-- <div class="attribute"><h3 id="spec-tlscredentials">tlsCredentials</h3><div>string</div></div>
+A Kubernetes label selector for specifying target server
+pods.
 
-  The name of a Kubernetes secret containing the trusted
-  server certificate (typically a CA).
-  
-  It can optionally include a client certificate and key for
-  mutual TLS.
-  
-  This option is used when setting up router-to-server TLS
-  encryption.
+On Kubernetes, you usually want to use this.  As an
+alternative, you can use `host`.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">Kubernetes label selectors</a>, <a href="https://kubernetes.io/docs/concepts/workloads/pods/">Kubernetes pods</a></td></table>
 
-- <div class="attribute"><h3 id="spec-includenotready">includeNotReady</h3><div>boolean</div></div>
+</div>
 
-  If set, include server pods that are not in the ready
-  state.
+<div class="attribute">
 
-  <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/">Kubernetes pod lifecycle</a></td></table>
+<div class="attribute-heading"><h3 id="spec-host">host</h3><div>string</div></div>
 
-- <div class="attribute"><h3 id="spec-type">type</h3><div>string</div></div>
+The hostname or IP address of the server.  This is an
+alternative to `selector` for specifying the target
+server.
 
-  The connector type.
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
-  <table class="fields"><tr><th>Default</th><td><p><code>tcp</code></p>
-  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+</div>
 
-- <div class="attribute"><h3 id="spec-settings">settings</h3><div>object</div></div>
+<div class="attribute">
 
-  Additional settings.
+<div class="attribute-heading"><h3 id="spec-tlscredentials">tlsCredentials</h3><div>string</div></div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+The name of a Kubernetes secret containing the trusted
+server certificate (typically a CA).
+
+It can optionally include a client certificate and key for
+mutual TLS.
+
+This option is used when setting up router-to-server TLS
+encryption.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a></td></table>
+
+</div>
+
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="spec-includenotready">includeNotReady</h3><div>boolean</div></div>
+
+If set, include server pods that are not in the ready
+state.
+
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/">Kubernetes pod lifecycle</a></td></table>
+
+</div>
+
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="spec-type">type</h3><div>string</div></div>
+
+The connector type.
+
+<table class="fields"><tr><th>Default</th><td><p><code>tcp</code></p>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="spec-settings">settings</h3><div>object</div></div>
+
+Additional settings.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
 
 </section>
 
@@ -138,26 +178,51 @@ spec:
 
 ## Status properties
 
-- <div class="attribute"><h3 id="status-selectedpods">selectedPods</h3><div>array</div></div>
+<div class="attribute">
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<div class="attribute-heading"><h3 id="status-selectedpods">selectedPods</h3><div>array</div></div>
 
-- <div class="attribute"><h3 id="status-matchinglistenercount">matchingListenerCount</h3><div>integer</div></div>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+</div>
 
-- <div class="attribute"><h3 id="status-status">status</h3><div>string</div></div>
+<div class="attribute">
 
-  The current state of the resource.
+<div class="attribute-heading"><h3 id="status-matchinglistenercount">matchingListenerCount</h3><div>integer</div></div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
-- <div class="attribute"><h3 id="status-message">message</h3><div>string</div></div>
+</div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<div class="attribute">
 
-- <div class="attribute"><h3 id="status-conditions">conditions</h3><div>array</div></div>
+<div class="attribute-heading"><h3 id="status-status">status</h3><div>string</div></div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+The current state of the resource.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="status-message">message</h3><div>string</div></div>
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="status-conditions">conditions</h3><div>array</div></div>
+
+- Configured
+- Running
+- Resolved
+- Ready
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
 
 </section>

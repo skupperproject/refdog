@@ -254,23 +254,29 @@ def generate_option(option, append):
     if not option.required and option.positional:
         option_info += ", optional"
 
-    append(f"- <div class=\"attribute\"><h3 id=\"{id_}\">{option_key}</h3><div>{option_info}</div></div>")
+
+    append("<div class=\"attribute\">")
+    append()
+    append(f"<div class=\"attribute-heading\"><h3 id=\"{id_}\">{option_key}</h3><div>{option_info}</div></div>")
     append()
 
     if option.description:
-        append(indent(option.description.strip(), 2))
+        append(option.description.strip())
         append()
 
-    append(indent(generate_attribute_fields(option), 2))
+    append(generate_attribute_fields(option))
     append()
 
     if option.notes:
-        append("  <section class=\"notes\">")
+        append("<section class=\"notes\">")
         append()
-        append(indent(option.notes.strip(), 2))
+        append(option.notes.strip())
         append()
-        append("  </section>")
+        append("</section>")
         append()
+
+    append("</div>")
+    append()
 
 def generate_error(error, append):
     append(f"- **{error.message}**")

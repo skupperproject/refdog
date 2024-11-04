@@ -26,17 +26,25 @@ kind: AccessToken
 
 ## Metadata properties
 
-- <div class="attribute"><h3 id="metadata-name">name</h3><div>string, required</div></div>
+<div class="attribute">
 
-  The name of the resource.
+<div class="attribute-heading"><h3 id="metadata-name">name</h3><div>string, required</div></div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+The name of the resource.
 
-- <div class="attribute"><h3 id="metadata-namespace">namespace</h3><div>string</div></div>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
-  The namespace of the resource.
+</div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="metadata-namespace">namespace</h3><div>string</div></div>
+
+The namespace of the resource.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
+
+</div>
 
 </section>
 
@@ -44,32 +52,48 @@ kind: AccessToken
 
 ## Spec properties
 
-- <div class="attribute"><h3 id="spec-url">url</h3><div>string, required</div></div>
+<div class="attribute">
 
-  The URL of the token redemption service at the remote
-  site.
+<div class="attribute-heading"><h3 id="spec-url">url</h3><div>string, required</div></div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+The URL of the token redemption service at the remote
+site.
 
-- <div class="attribute"><h3 id="spec-ca">ca</h3><div>string, required</div></div>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
-  The trusted server certificate of the token redemption
-  service at the remote site.
+</div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<div class="attribute">
 
-- <div class="attribute"><h3 id="spec-code">code</h3><div>string, required</div></div>
+<div class="attribute-heading"><h3 id="spec-ca">ca</h3><div>string, required</div></div>
 
-  The secret code used to authenticate the token when
-  submitted for redemption.
+The trusted server certificate of the token redemption
+service at the remote site.
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
-- <div class="attribute"><h3 id="spec-settings">settings</h3><div>object</div></div>
+</div>
 
-  Additional settings.
+<div class="attribute">
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<div class="attribute-heading"><h3 id="spec-code">code</h3><div>string, required</div></div>
+
+The secret code used to authenticate the token when
+submitted for redemption.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="spec-settings">settings</h3><div>object</div></div>
+
+Additional settings.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
 
 </section>
 
@@ -77,24 +101,45 @@ kind: AccessToken
 
 ## Status properties
 
-- <div class="attribute"><h3 id="status-redeemed">redeemed</h3><div>boolean</div></div>
+<div class="attribute">
 
-  True if the token has been redeemed.
+<div class="attribute-heading"><h3 id="status-redeemed">redeemed</h3><div>boolean</div></div>
 
-  <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+True if the token has been redeemed.
 
-- <div class="attribute"><h3 id="status-status">status</h3><div>string</div></div>
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
-  The current state of the resource.
+</div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<div class="attribute">
 
-- <div class="attribute"><h3 id="status-message">message</h3><div>string</div></div>
+<div class="attribute-heading"><h3 id="status-status">status</h3><div>string</div></div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+The current state of the resource.
 
-- <div class="attribute"><h3 id="status-conditions">conditions</h3><div>array</div></div>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+</div>
+
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="status-message">message</h3><div>string</div></div>
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="status-conditions">conditions</h3><div>array</div></div>
+
+- Configured
+- Running
+- Resolved
+- Ready
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
 
 </section>

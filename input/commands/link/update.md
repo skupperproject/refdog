@@ -44,70 +44,106 @@ Link "west-6bfn6" is ready.
 
 ## Options
 
-- <div class="attribute"><h3 id="option-name">&lt;name&gt;</h3><div>string, required</div></div>
+<div class="attribute">
 
-  The name of the resource to be updated.
+<div class="attribute-heading"><h3 id="option-name">&lt;name&gt;</h3><div>string, required</div></div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+The name of the resource to be updated.
 
-- <div class="attribute"><h3 id="option-wait">--wait</h3><div>&lt;string&gt;</div></div>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
-  Wait for the given status before exiting.
+</div>
 
-  <table class="fields"><tr><th>Default</th><td><p><code>ready</code></p>
-  </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>pending</code></th><td><p>Pending</p>
-  </td></tr><tr><th><code>configured</code></th><td><p>Configured</p>
-  </td></tr><tr><th><code>ready</code></th><td><p>Ready</p>
-  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<div class="attribute">
 
-- <div class="attribute"><h3 id="option-timeout">--timeout</h3><div>&lt;string&gt; (duration)</div></div>
+<div class="attribute-heading"><h3 id="option-wait">--wait</h3><div>&lt;string&gt;</div></div>
 
-  Raise an error if the operation does not complete in the given
-  period of time.
+Wait for the given status before exiting.
 
-  <table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
-  </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Default</th><td><p><code>ready</code></p>
+</td><tr><th>Choices</th><td><table class="choices"><tr><th><code>pending</code></th><td><p>Pending</p>
+</td></tr><tr><th><code>configured</code></th><td><p>Configured</p>
+</td></tr><tr><th><code>ready</code></th><td><p>Ready</p>
+</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
-- <div class="attribute"><h3 id="option-cost">--cost</h3><div>&lt;integer&gt;</div></div>
+</div>
 
-  The configured routing cost of sending traffic over
-  the link.
+<div class="attribute">
 
-  <table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<div class="attribute-heading"><h3 id="option-timeout">--timeout</h3><div>&lt;string&gt; (duration)</div></div>
 
-- <div class="attribute"><h3 id="option-namespace">--namespace</h3><div>(-n) &lt;string&gt;</div></div>
+Raise an error if the operation does not complete in the given
+period of time.
 
-  Set the namespace.
+<table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
+</div>
 
-- <div class="attribute"><h3 id="option-context">--context</h3><div>&lt;string&gt;</div></div>
+<div class="attribute">
 
-  Set the kubeconfig context.
+<div class="attribute-heading"><h3 id="option-cost">--cost</h3><div>&lt;integer&gt;</div></div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
+The configured routing cost of sending traffic over
+the link.
 
-- <div class="attribute"><h3 id="option-kubeconfig">--kubeconfig</h3><div>&lt;string&gt;</div></div>
+<table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
-  Set the path to the kubeconfig file.
+</div>
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
+<div class="attribute">
 
-- <div class="attribute"><h3 id="option-platform">--platform</h3><div>&lt;string&gt;</div></div>
+<div class="attribute-heading"><h3 id="option-namespace">--namespace</h3><div>(-n) &lt;string&gt;</div></div>
 
-  Set the Skupper platform.
+Set the namespace.
 
-  <table class="fields"><tr><th>Default</th><td><p><code>kubernetes</code></p>
-  </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>kubernetes</code></th><td><p>Kubernetes</p>
-  </td></tr><tr><th><code>docker</code></th><td><p>Docker</p>
-  </td></tr><tr><th><code>podman</code></th><td><p>Podman</p>
-  </td></tr><tr><th><code>linux</code></th><td><p>Linux</p>
-  </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
 
-- <div class="attribute"><h3 id="option-help">--help</h3><div>(-h) boolean</div></div>
+</div>
 
-  Display help and exit.
+<div class="attribute">
 
-  <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<div class="attribute-heading"><h3 id="option-context">--context</h3><div>&lt;string&gt;</div></div>
+
+Set the kubeconfig context.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
+
+</div>
+
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="option-kubeconfig">--kubeconfig</h3><div>&lt;string&gt;</div></div>
+
+Set the path to the kubeconfig file.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
+
+</div>
+
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="option-platform">--platform</h3><div>&lt;string&gt;</div></div>
+
+Set the Skupper platform.
+
+<table class="fields"><tr><th>Default</th><td><p><code>kubernetes</code></p>
+</td><tr><th>Choices</th><td><table class="choices"><tr><th><code>kubernetes</code></th><td><p>Kubernetes</p>
+</td></tr><tr><th><code>docker</code></th><td><p>Docker</p>
+</td></tr><tr><th><code>podman</code></th><td><p>Podman</p>
+</td></tr><tr><th><code>linux</code></th><td><p>Linux</p>
+</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
+
+</div>
+
+<div class="attribute">
+
+<div class="attribute-heading"><h3 id="option-help">--help</h3><div>(-h) boolean</div></div>
+
+Display help and exit.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
 
 </section>
