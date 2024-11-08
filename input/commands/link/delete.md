@@ -56,6 +56,16 @@ The name of the resource to be deleted.
 
 <div class="attribute">
 
+<div class="attribute-heading"><h3 id="option-wait">--wait</h3><div>boolean</div></div>
+
+Wait for deletion to complete before exiting.
+
+<table class="fields"><tr><th>Default</th><td>true</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+
+<div class="attribute">
+
 <div class="attribute-heading"><h3 id="option-timeout">--timeout</h3><div>&lt;string&gt; (duration)</div></div>
 
 Raise an error if the operation does not complete in the given

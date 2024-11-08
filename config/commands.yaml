@@ -71,6 +71,12 @@ options:
     links:
       - name: Kubernetes object names
         url: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
+  delete/wait:
+    name: wait
+    type: boolean
+    default: true
+    description: |
+      Wait for deletion to complete before exiting.
   delete/timeout:
     name: timeout
     type: string
