@@ -20,10 +20,9 @@
 
 ## Resource output generation commands
 
-- These commands generate YAML or JSON output.
+- These commands generate structured output, YAML or JSON.
 
-- They generate the structured output that represents Skupper
-  resources.
+- They generate output that represents Skupper resources.
 
 - You might want to direct the output to a file, cut and paste it, or
   pipe it to kubectl.
@@ -31,7 +30,10 @@
 - These are good for learning about the resources.
 
 - Link generate is a little different from the other generate
-  commands.
+  commands.  In general, the generate commands are helping you produce
+  resources for your current site.  By contrast, link generates a link
+  resource (and a secret to go with it) for use in a *remote* site,
+  *to* the current site.
 
 - The token commands are for creating links!
 
