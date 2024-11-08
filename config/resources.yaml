@@ -30,8 +30,9 @@ properties:
   status/conditions:
     name: conditions
     platforms: [Kubernetes]
-    description: |
-      YOYO
+    links:
+      - name: Kubernetes conditions
+        url: https://maelvls.dev/kubernetes-conditions/
 resources:
   - name: Site
     related_concepts: [network, namespace]

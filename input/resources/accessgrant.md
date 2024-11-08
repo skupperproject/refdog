@@ -215,9 +215,7 @@ The current state of the resource.
 
 <div class="attribute-heading"><h3 id="status-conditions">conditions</h3><div>array</div></div>
 
-YOYO
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
 
 </div>
 
