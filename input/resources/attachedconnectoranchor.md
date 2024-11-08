@@ -86,12 +86,9 @@ The current state of the resource.
 
 <div class="attribute-heading"><h3 id="status-conditions">conditions</h3><div>array</div></div>
 
-- Configured
-- Running
-- Resolved
-- Ready
+YOYO
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td></table>
 
 </div>
 

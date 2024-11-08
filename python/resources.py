@@ -308,23 +308,42 @@ class Resource(ModelObject):
                 self.status_properties_by_name[prop.name] = prop
 
     def merge_property_data(self, section):
-        included_prop_data = dict()
+        model_props = self.model.data.get("properties", {})
+        included_keys = set()
 
         for pattern in self.data[section].get("include_properties", []):
-            for key, data in self.model.data["properties"].items():
+            for key in model_props:
                 if fnmatch.fnmatchcase(key, pattern):
-                    included_prop_data[data["name"]] = data
+                    included_keys.add(key)
 
-        specific_prop_data = {x["name"]: x for x in self.data[section].get("properties", [])}
-        included_prop_names = [x for x in included_prop_data if x not in specific_prop_data]
-        prop_names = list(specific_prop_data.keys()) + included_prop_names
-        prop_data = dict()
+        for pattern in self.data[section].get("exclude_properties", []):
+            for key in model_props:
+                if fnmatch.fnmatchcase(key, pattern):
+                    included_keys.discard(key)
 
-        for name in prop_names:
-            prop_data[name] = dict(included_prop_data.get(name, {}))
-            prop_data[name].update(specific_prop_data.get(name, {}))
+        included_props = {v["name"]: v for k, v in model_props.items() if k in included_keys}
+        specific_props = {x["name"]: x for x in self.data[section].get("properties", [])}
 
-        return prop_data.values()
+        included_names = [x for x in included_props if x not in specific_props]
+        merged_names = list(specific_props.keys()) + included_names
+        merged_props = list()
+
+        for name in merged_names:
+            included_data = included_props.get(name, {})
+            specific_data = specific_props.get(name, {})
+
+            merged_data = dict(included_data)
+            merged_data.update(specific_data)
+
+            if "description" in included_data and "description" in specific_data:
+                included_description = included_data["description"]
+                specific_description = specific_data["description"]
+
+                merged_data["description"] = specific_description.replace("@description@", included_description)
+
+            merged_props.append(merged_data)
+
+        return merged_props
 
 class ResourceGroup(ModelObjectGroup):
     def __init__(self, model, data):

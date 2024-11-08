@@ -29,11 +29,9 @@ properties:
     name: message
   status/conditions:
     name: conditions
+    platforms: [Kubernetes]
     description: |
-      - Configured
-      - Running
-      - Resolved
-      - Ready
+      YOYO
 resources:
   - name: Site
     related_concepts: [network, namespace]
@@ -103,6 +101,16 @@ resources:
     status:
       include_properties: [status/*]
       properties:
+        - name: status
+        - name: message
+        - name: conditions
+          description: |
+            @description@
+
+            - Configured
+            - Running
+            - Resolved
+            - Ready
         - name: endpoints
         - name: sitesInNetwork
         - name: network
