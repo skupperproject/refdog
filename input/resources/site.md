@@ -110,7 +110,7 @@ The Kubernetes service account under which to run the
 Skupper controller.
 
 <table class="fields"><tr><th>Default</th><td><p><code>skupper-router</code></p>
-</td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/security/service-accounts/">Kubernetes service accounts</a></td></table>
+</td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>Updatable</th><td>True</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/security/service-accounts/">Kubernetes service accounts</a></td></table>
 
 </div>
 
@@ -118,7 +118,7 @@ Skupper controller.
 
 <div class="attribute-heading"><h3 id="spec-ha">ha</h3><div>boolean</div></div>
 
-<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td></table>
 
 </div>
 
@@ -126,7 +126,7 @@ Skupper controller.
 
 <div class="attribute-heading"><h3 id="spec-routermode">routerMode</h3><div>string</div></div>
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td></table>
 
 </div>
 
@@ -134,7 +134,7 @@ Skupper controller.
 
 <div class="attribute-heading"><h3 id="spec-defaultissuer">defaultIssuer</h3><div>string</div></div>
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td></table>
 
 </div>
 

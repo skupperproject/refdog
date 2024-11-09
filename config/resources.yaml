@@ -93,6 +93,7 @@ resources:
               url: https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer
         - name: serviceAccount
           default: skupper-router
+          updatable: true
           platforms: [Kubernetes]
           description: |
             The Kubernetes service account under which to run the
@@ -101,8 +102,11 @@ resources:
             - name: Kubernetes service accounts
               url: https://kubernetes.io/docs/concepts/security/service-accounts/
         - name: ha
+          updatable: true
         - name: routerMode
+          updatable: true
         - name: defaultIssuer
+          updatable: true
     status:
       include_properties: [status/*]
       properties:
