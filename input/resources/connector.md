@@ -216,6 +216,9 @@ The current state of the resource.
 
 <div class="attribute-heading"><h3 id="status-conditions">conditions</h3><div>array</div></div>
 
+A set of named conditions describing the current state of the
+resource.
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
 
 </div>

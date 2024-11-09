@@ -30,6 +30,9 @@ properties:
   status/conditions:
     name: conditions
     platforms: [Kubernetes]
+    description: |
+      A set of named conditions describing the current state of the
+      resource.
     links:
       - name: Kubernetes conditions
         url: https://maelvls.dev/kubernetes-conditions/
@@ -68,6 +71,7 @@ resources:
       properties:
         - name: linkAccess
           default: none
+          updatable: true
           description: |
             Configure external access for links from remote sites.
           choices:
