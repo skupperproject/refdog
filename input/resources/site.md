@@ -61,9 +61,9 @@ spec:
 
 ## Metadata properties
 
-<div class="attribute">
+<div class="attribute frequently-used">
 
-<div class="attribute-heading"><h3 id="metadata-name">name</h3><div>string, required</div></div>
+<div class="attribute-heading"><h3 id="metadata-name">name</h3><div>string, required, frequently used</div></div>
 
 The name of the resource.
 
@@ -71,9 +71,9 @@ The name of the resource.
 
 </div>
 
-<div class="attribute">
+<div class="attribute frequently-used">
 
-<div class="attribute-heading"><h3 id="metadata-namespace">namespace</h3><div>string</div></div>
+<div class="attribute-heading"><h3 id="metadata-namespace">namespace</h3><div>string, frequently used</div></div>
 
 The namespace of the resource.
 
@@ -87,30 +87,37 @@ The namespace of the resource.
 
 ## Spec properties
 
-<div class="attribute">
+<div class="attribute frequently-used">
 
-<div class="attribute-heading"><h3 id="spec-linkaccess">linkAccess</h3><div>string</div></div>
+<div class="attribute-heading"><h3 id="spec-linkaccess">linkAccess</h3><div>string, frequently used</div></div>
 
 Configure external access for links from remote sites.
+
+Sites and links are the basis for creating application
+networks.  In a simple two-site network, at least one of
+the sites must have link access enabled.
 
 <table class="fields"><tr><th>Default</th><td><p><code>none</code></p>
 </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>none</code></th><td><p>No linking to this site is permitted.</p>
 </td></tr><tr><th><code>default</code></th><td><p>Use the default link access for the current platform. On OpenShift, the default is <code>route</code>.  For other Kubernetes flavors, the default is <code>loadbalancer</code>.</p>
 </td></tr><tr><th><code>route</code></th><td><p>Use an OpenShift route.  <em>OpenShift only.</em></p>
 </td></tr><tr><th><code>loadbalancer</code></th><td><p>Use a Kubernetes load balancer.  <em>Kubernetes only.</em></p>
-</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td><tr><th>See also</th><td><a href="/concepts/link-access.html">Link access concept</a>, <a href="https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer">Kubernetes load balancer services</a></td></table>
+</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Site linking</a>, <a href="/concepts/link-access.html">Link access concept</a>, <a href="https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer">Kubernetes load balancer services</a></td></table>
 
 </div>
 
 <div class="attribute">
 
-<div class="attribute-heading"><h3 id="spec-serviceaccount">serviceAccount</h3><div>string</div></div>
+<div class="attribute-heading"><h3 id="spec-edge">edge</h3><div>boolean</div></div>
 
-The Kubernetes service account under which to run the
-Skupper controller.
+Configure the site to operate in edge mode.  Edge sites
+cannot accept links from remote sites.
 
-<table class="fields"><tr><th>Default</th><td><p><code>skupper-router</code></p>
-</td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>Updatable</th><td>True</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/security/service-accounts/">Kubernetes service accounts</a></td></table>
+Edge mode can help you scale your network to large numbers
+of sites.  However, for networks with 16 or fewer sites,
+there is little benefit.
+
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Advanced deployment options</a></td></table>
 
 </div>
 
@@ -118,15 +125,27 @@ Skupper controller.
 
 <div class="attribute-heading"><h3 id="spec-ha">ha</h3><div>boolean</div></div>
 
-<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td></table>
+Configure the site for high availability (HA).  HA sites
+have two active routers.
+
+Note that Skupper routers are stateless, and they restart
+after failure.  This already provides a high level of
+availability.  Enabling HA goes further and serves to
+reduce the window of downtime caused by restarts.
+
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td><tr><th>See also</th><td><a href="">Advanced deployment options</a></td></table>
 
 </div>
 
 <div class="attribute">
 
-<div class="attribute-heading"><h3 id="spec-routermode">routerMode</h3><div>string</div></div>
+<div class="attribute-heading"><h3 id="spec-serviceaccount">serviceAccount</h3><div>string</div></div>
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td></table>
+The name of the Kubernetes service account under which to
+run the Skupper controller.
+
+<table class="fields"><tr><th>Default</th><td><p><code>skupper-router</code></p>
+</td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="">Advanced deployment options</a>, <a href="https://kubernetes.io/docs/concepts/security/service-accounts/">Kubernetes service accounts</a></td></table>
 
 </div>
 
@@ -134,7 +153,12 @@ Skupper controller.
 
 <div class="attribute-heading"><h3 id="spec-defaultissuer">defaultIssuer</h3><div>string</div></div>
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td></table>
+The name of the Kubernetes secret containing the signing
+certificate used to generate a certificate from a token.
+A secret is generated if none is supplied.
+
+<table class="fields"><tr><th>Default</th><td><p><code>skupper-site-ca</code></p>
+</td><tr><th>Platforms</th><td>Kubernetes</td></table>
 
 </div>
 
@@ -154,9 +178,9 @@ Additional settings.
 
 ## Status properties
 
-<div class="attribute">
+<div class="attribute frequently-used">
 
-<div class="attribute-heading"><h3 id="status-status">status</h3><div>string</div></div>
+<div class="attribute-heading"><h3 id="status-status">status</h3><div>string, frequently used</div></div>
 
 The current state of the resource.
 
@@ -164,17 +188,17 @@ The current state of the resource.
 
 </div>
 
-<div class="attribute">
+<div class="attribute frequently-used">
 
-<div class="attribute-heading"><h3 id="status-message">message</h3><div>string</div></div>
+<div class="attribute-heading"><h3 id="status-message">message</h3><div>string, frequently used</div></div>
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 
-<div class="attribute">
+<div class="attribute frequently-used">
 
-<div class="attribute-heading"><h3 id="status-conditions">conditions</h3><div>array</div></div>
+<div class="attribute-heading"><h3 id="status-conditions">conditions</h3><div>array, frequently used</div></div>
 
 A set of named conditions describing the current state of the
 resource.

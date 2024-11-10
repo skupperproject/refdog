@@ -26,9 +26,9 @@ kind: AccessToken
 
 ## Metadata properties
 
-<div class="attribute">
+<div class="attribute frequently-used">
 
-<div class="attribute-heading"><h3 id="metadata-name">name</h3><div>string, required</div></div>
+<div class="attribute-heading"><h3 id="metadata-name">name</h3><div>string, required, frequently used</div></div>
 
 The name of the resource.
 
@@ -36,9 +36,9 @@ The name of the resource.
 
 </div>
 
-<div class="attribute">
+<div class="attribute frequently-used">
 
-<div class="attribute-heading"><h3 id="metadata-namespace">namespace</h3><div>string</div></div>
+<div class="attribute-heading"><h3 id="metadata-namespace">namespace</h3><div>string, frequently used</div></div>
 
 The namespace of the resource.
 
@@ -111,9 +111,9 @@ True if the token has been redeemed.
 
 </div>
 
-<div class="attribute">
+<div class="attribute frequently-used">
 
-<div class="attribute-heading"><h3 id="status-status">status</h3><div>string</div></div>
+<div class="attribute-heading"><h3 id="status-status">status</h3><div>string, frequently used</div></div>
 
 The current state of the resource.
 
@@ -121,17 +121,17 @@ The current state of the resource.
 
 </div>
 
-<div class="attribute">
+<div class="attribute frequently-used">
 
-<div class="attribute-heading"><h3 id="status-message">message</h3><div>string</div></div>
+<div class="attribute-heading"><h3 id="status-message">message</h3><div>string, frequently used</div></div>
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 
-<div class="attribute">
+<div class="attribute frequently-used">
 
-<div class="attribute-heading"><h3 id="status-conditions">conditions</h3><div>array</div></div>
+<div class="attribute-heading"><h3 id="status-conditions">conditions</h3><div>array, frequently used</div></div>
 
 A set of named conditions describing the current state of the
 resource.

@@ -1,7 +1,9 @@
 properties:
   metadata/name:
     name: name
+    frequently_used: true
     type: string
+    updatable: false
     required: true
     description: |
       The name of the resource.
@@ -10,7 +12,9 @@ properties:
         url: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
   metadata/namespace:
     name: namespace
+    frequently_used: true
     type: string
+    updatable: false
     description: |
       The namespace of the resource.
     links:
@@ -23,12 +27,15 @@ properties:
       Additional settings.
   status/status:
     name: status
+    frequently_used: true
     description: |
       The current state of the resource.
   status/message:
     name: message
+    frequently_used: true
   status/conditions:
     name: conditions
+    frequently_used: true
     platforms: [Kubernetes]
     description: |
       A set of named conditions describing the current state of the
@@ -70,10 +77,14 @@ resources:
       include_properties: [settings]
       properties:
         - name: linkAccess
+          frequently_used: true
           default: none
-          updatable: true
           description: |
             Configure external access for links from remote sites.
+
+            Sites and links are the basis for creating application
+            networks.  In a simple two-site network, at least one of
+            the sites must have link access enabled.
           choices:
             - name: none
               description: No linking to this site is permitted.
@@ -87,26 +98,55 @@ resources:
             - name: loadbalancer
               description: Use a Kubernetes load balancer.  _Kubernetes only._
           links:
+            - name: Site linking
+              url: ""
             - name: Link access concept
               url: /concepts/link-access.html
             - name: Kubernetes load balancer services
               url: https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer
-        - name: serviceAccount
-          default: skupper-router
-          updatable: true
-          platforms: [Kubernetes]
+        - name: edge
+          type: boolean
           description: |
-            The Kubernetes service account under which to run the
-            Skupper controller.
+            Configure the site to operate in edge mode.  Edge sites
+            cannot accept links from remote sites.
+
+            Edge mode can help you scale your network to large numbers
+            of sites.  However, for networks with 16 or fewer sites,
+            there is little benefit.
           links:
-            - name: Kubernetes service accounts
-              url: https://kubernetes.io/docs/concepts/security/service-accounts/
+            - name: Advanced deployment options
+              url: ""
         - name: ha
           updatable: true
-        - name: routerMode
-          updatable: true
+          description: |
+            Configure the site for high availability (HA).  HA sites
+            have two active routers.
+
+            Note that Skupper routers are stateless, and they restart
+            after failure.  This already provides a high level of
+            availability.  Enabling HA goes further and serves to
+            reduce the window of downtime caused by restarts.
+          links:
+            - name: Advanced deployment options
+              url: ""
+        - name: serviceAccount
+          default: skupper-router
+          platforms: [Kubernetes]
+          description: |
+            The name of the Kubernetes service account under which to
+            run the Skupper controller.
+          links:
+            - name: Advanced deployment options
+              url: ""
+            - name: Kubernetes service accounts
+              url: https://kubernetes.io/docs/concepts/security/service-accounts/
         - name: defaultIssuer
-          updatable: true
+          default: skupper-site-ca
+          platforms: [Kubernetes]
+          description: |
+            The name of the Kubernetes secret containing the signing
+            certificate used to generate a certificate from a token.
+            A secret is generated if none is supplied.
     status:
       include_properties: [status/*]
       properties:

@@ -338,8 +338,16 @@ table.objects th {
 }
 
 section.attributes > div.attribute {
-    margin: 1em;
+    margin: 1em 1em 1.4em 1em;
 }
+
+/* div.attribute { */
+/*     display: none; */
+/* } */
+
+/* div.attribute.frequently-used { */
+/*     display: inherit; */
+/* } */
 
 div.attribute > div.attribute-heading {
     display: inline;

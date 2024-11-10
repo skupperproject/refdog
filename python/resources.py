@@ -152,6 +152,7 @@ def generate_property(prop, append):
         debug(f"{prop} is hidden")
         return
 
+    classes = ["attribute"]
     name = nvl(prop.rename, prop.name)
     id_ = f"{prop.section}-{get_fragment_id(name)}"
     prop_info = prop.type
@@ -162,7 +163,14 @@ def generate_property(prop, append):
     if prop.required and prop.default is None:
         prop_info += ", required"
 
-    append("<div class=\"attribute\">")
+    if prop.frequently_used:
+        classes.append("frequently-used")
+        if prop_info:
+            prop_info += ", frequently used"
+        else:
+            prop_info = "frequently used"
+
+    append(f"<div class=\"{' '.join(classes)}\">")
     append()
     append(f"<div class=\"attribute-heading\"><h3 id=\"{id_}\">{name}</h3><div>{prop_info}</div></div>")
     append()

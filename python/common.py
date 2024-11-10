@@ -230,10 +230,11 @@ class ModelObject:
 
 class ModelObjectAttribute:
     hidden = object_property("hidden", default=False)
+    frequently_used = object_property("frequently_used", default=False)
     name = object_property("name", required=True)
     description = object_property("description")
     platforms = object_property("platforms", default=["Kubernetes", "Docker", "Podman", "Linux"])
-    updatable = object_property("updatable")
+    updatable = object_property("updatable", default=False)
     links = object_property("links", default=[])
     notes = object_property("notes")
 
