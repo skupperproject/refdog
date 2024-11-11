@@ -86,7 +86,7 @@ Allow access for incoming links from remote sites.
 <div class="attribute folded">
 <div class="attribute-heading">
 <h3 id="option-output">--output</h3>
-<div class="attribute-type-info">(-o) &lt;string&gt;</div>
+<div class="attribute-type-info">(-o) &lt;format&gt;</div>
 </div>
 <div class="attribute-body">
 
@@ -103,7 +103,7 @@ Select the output format.
 <div class="attribute folded">
 <div class="attribute-heading">
 <h3 id="option-link-access-type">--link-access-type</h3>
-<div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-type-info">&lt;type&gt;</div>
 </div>
 <div class="attribute-body">
 
@@ -125,7 +125,7 @@ the sites must have link access enabled.
 <div class="attribute folded">
 <div class="attribute-heading">
 <h3 id="option-service-account">--service-account</h3>
-<div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-type-info">&lt;name&gt;</div>
 <div class="attribute-flags">advanced</div>
 </div>
 <div class="attribute-body">
@@ -142,7 +142,7 @@ run the Skupper controller.
 <div class="attribute folded">
 <div class="attribute-heading">
 <h3 id="option-platform">--platform</h3>
-<div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-type-info">&lt;platform&gt;</div>
 <div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">

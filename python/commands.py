@@ -244,13 +244,16 @@ def generate_option(option, append):
         option_key = f"--{option_key}"
 
         if option.type != "boolean":
-            type_info = f"&lt;{option.type}&gt;"
+            if option.placeholder:
+                type_info = f"&lt;{option.placeholder}&gt;"
+            else:
+                type_info = f"&lt;{option.type}&gt;"
 
         if option.short_option:
             type_info = f"(-{option.short_option}) {type_info}"
 
-    if option.format:
-        type_info += f" ({option.format})"
+    # if option.format:
+    #     type_info += f" ({option.format})"
 
     if option.group:
         if option.group == "positional":
@@ -500,8 +503,8 @@ def option_name(property_name):
 
 class Option(ModelObjectAttribute):
     type = option_property("type")
-    format = option_property("format")
     required = option_property("required", default=False)
+    placeholder = option_property("placeholder")
     short_option = option_property("short_option")
     default = option_property("default")
     choices = option_property("choices")

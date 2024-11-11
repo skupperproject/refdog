@@ -11,6 +11,7 @@ options:
   create/wait:
     name: wait
     type: string
+    placeholder: status
     default: ready
     description: |
       Wait for the given status before exiting.
@@ -24,7 +25,7 @@ options:
   create/timeout:
     name: timeout
     type: string
-    format: duration
+    placeholder: duration
     default: 60s
     description: |
       Raise an error if the operation does not complete in the given
@@ -44,6 +45,7 @@ options:
   update/wait:
     name: wait
     type: string
+    placeholder: status
     default: ready
     description: |
       Wait for the given status before exiting.
@@ -57,7 +59,7 @@ options:
   update/timeout:
     name: timeout
     type: string
-    format: duration
+    placeholder: duration
     default: 60s
     description: |
       Raise an error if the operation does not complete in the given
@@ -80,7 +82,7 @@ options:
   delete/timeout:
     name: timeout
     type: string
-    format: duration
+    placeholder: duration
     default: 60s
     description: |
       Raise an error if the operation does not complete in the given
@@ -110,7 +112,7 @@ options:
   status/timeout:
     name: timeout
     type: string
-    format: duration
+    placeholder: duration
     default: 60s
     description: |
       Raise an error if the operation does not complete in the given
@@ -127,6 +129,7 @@ options:
   generate/output:
     name: output
     type: string
+    placeholder: format
     default: yaml
     short_option: o
     description: |
@@ -150,6 +153,7 @@ options:
   site/link_access_type:
     name: link-access-type
     property: linkAccess
+    placeholder: type
     group: null
     platforms: [Kubernetes]
     default: default
@@ -166,6 +170,7 @@ options:
   site/service_account:
     name: service-account
     property: serviceAccount
+    placeholder: name
   link/cost:
     name: cost
     property: cost
@@ -193,7 +198,7 @@ options:
   connector/workload:
     name: workload
     type: string
-    format: resource name
+    placeholder: resource name
     description: |
       A Kubernetes resource name that identifies a workload.
       It resolves to an equivalent pod selector.
@@ -229,6 +234,7 @@ options:
     name: namespace
     group: global
     type: string
+    placeholder: name
     short_option: n
     description: |
       Set the namespace.
@@ -239,6 +245,7 @@ options:
     name: context
     group: global
     type: string
+    placeholder: name
     description: |
       Set the kubeconfig context.
     platforms: [Kubernetes]
@@ -249,6 +256,7 @@ options:
     name: kubeconfig
     group: global
     type: string
+    placeholder: file
     description: |
       Set the path to the kubeconfig file.
     platforms: [Kubernetes]
@@ -259,6 +267,7 @@ options:
     name: platform
     group: global
     type: string
+    placeholder: platform
     default: kubernetes
     choices:
       - name: kubernetes
@@ -462,17 +471,19 @@ commands:
               The name of the token file to create.
           - name: timeout
             type: string
-            format: duration
+            placeholder: duration
             default: 60s
             description: |
               Raise an error if the operation does not complete in the given
               period of time.
           - name: expiration-window
             property: expirationWindow
+            placeholder: duration
           - name: redemptions-allowed
             property: redemptionsAllowed
           - name: grant
             type: string
+            placeholder: name
             description: |
               Use the named access grant instead of creating a new
               one.
@@ -505,7 +516,7 @@ commands:
               The name of the token file to use.
           - name: timeout
             type: string
-            format: duration
+            placeholder: duration
             default: 60s
             description: |
               Raise an error if the operation does not complete in the given
@@ -604,7 +615,7 @@ commands:
 
           # Generate a Link resource and direct the output to a file
           $ skupper link generate > link.yaml
-        include_options: [generate/*, link/*, context/*, global/*]
+        include_options: [link/*, generate/*, context/*, global/*]
         options:
           - name: name
             positional: true
@@ -632,7 +643,7 @@ commands:
 
           # Set the routing key and workload explicitly
           $ skupper connector create backend 8080 --routing-key be1 --workload deployment/backend
-        include_options: [create/*, connector/*, context/*, global/*]
+        include_options: [connector/*, create/*, context/*, global/*]
         options:
           - name: name
           - name: port
@@ -653,7 +664,7 @@ commands:
 
           # Change the routing key
           $ skupper connector update backend --routing-key be2
-        include_options: [update/*, connector/*, context/*, global/*]
+        include_options: [connector/*, update/*, context/*, global/*]
       # connector.delete
       - name: delete
         wait: Deletion
@@ -706,7 +717,7 @@ commands:
 
           # Generate a Connector resource and direct the output to a file
           $ skupper connector generate backend 8080 > backend.yaml
-        include_options: [generate/*, connector/*, global/*]
+        include_options: [connector/*, generate/*, global/*]
         options:
           - name: name
           - name: port
@@ -730,7 +741,7 @@ commands:
 
           # Set the routing key and host explicitly
           $ skupper listener create backend 8080 --routing-key be1 --host apiserver
-        include_options: [create/*, listener/*, context/*, global/*]
+        include_options: [listener/*, create/*, context/*, global/*]
         options:
           - name: name
           - name: port
@@ -808,7 +819,7 @@ commands:
 
           # Generate a Listener resource and direct the output to a file
           $ skupper listener generate backend 8080 > backend.yaml
-        include_options: [generate/*, listener/*, global/*]
+        include_options: [listener/*, generate/*, global/*]
         options:
           - name: name
           - name: port

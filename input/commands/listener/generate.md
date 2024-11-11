@@ -124,23 +124,6 @@ establish connections to the remote service.
 
 <div class="attribute folded">
 <div class="attribute-heading">
-<h3 id="option-output">--output</h3>
-<div class="attribute-type-info">(-o) &lt;string&gt;</div>
-</div>
-<div class="attribute-body">
-
-Select the output format.
-
-<table class="fields"><tr><th>Default</th><td><p><code>yaml</code></p>
-</td><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
-</td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
-</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-<div class="attribute folded">
-<div class="attribute-heading">
 <h3 id="option-tls-credentials">--tls-credentials</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
 </div>
@@ -157,6 +140,23 @@ This option is used when setting up client-to-router TLS
 encryption.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-output">--output</h3>
+<div class="attribute-type-info">(-o) &lt;format&gt;</div>
+</div>
+<div class="attribute-body">
+
+Select the output format.
+
+<table class="fields"><tr><th>Default</th><td><p><code>yaml</code></p>
+</td><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
+</td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
+</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -180,7 +180,7 @@ The listener type.
 <div class="attribute folded">
 <div class="attribute-heading">
 <h3 id="option-platform">--platform</h3>
-<div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-type-info">&lt;platform&gt;</div>
 <div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">

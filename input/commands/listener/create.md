@@ -121,7 +121,7 @@ establish connections to the remote service.
 <div class="attribute folded">
 <div class="attribute-heading">
 <h3 id="option-wait">--wait</h3>
-<div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-type-info">&lt;status&gt;</div>
 </div>
 <div class="attribute-body">
 
@@ -132,22 +132,6 @@ Wait for the given status before exiting.
 </td></tr><tr><th><code>configured</code></th><td><p>Configured</p>
 </td></tr><tr><th><code>ready</code></th><td><p>Ready</p>
 </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-<div class="attribute folded">
-<div class="attribute-heading">
-<h3 id="option-timeout">--timeout</h3>
-<div class="attribute-type-info">&lt;string&gt; (duration)</div>
-</div>
-<div class="attribute-body">
-
-Raise an error if the operation does not complete in the given
-period of time.
-
-<table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://pkg.go.dev/time#ParseDuration">Duration format</a></td></table>
 
 </div>
 </div>
@@ -176,6 +160,22 @@ encryption.
 
 <div class="attribute folded">
 <div class="attribute-heading">
+<h3 id="option-timeout">--timeout</h3>
+<div class="attribute-type-info">&lt;duration&gt;</div>
+</div>
+<div class="attribute-body">
+
+Raise an error if the operation does not complete in the given
+period of time.
+
+<table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://pkg.go.dev/time#ParseDuration">Duration format</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
 <h3 id="option-type">--type</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
 <div class="attribute-flags">advanced</div>
@@ -193,7 +193,7 @@ The listener type.
 <div class="attribute folded">
 <div class="attribute-heading">
 <h3 id="option-namespace">--namespace</h3>
-<div class="attribute-type-info">(-n) &lt;string&gt;</div>
+<div class="attribute-type-info">(-n) &lt;name&gt;</div>
 <div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
@@ -208,7 +208,7 @@ Set the namespace.
 <div class="attribute folded">
 <div class="attribute-heading">
 <h3 id="option-context">--context</h3>
-<div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-type-info">&lt;name&gt;</div>
 <div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
@@ -223,7 +223,7 @@ Set the kubeconfig context.
 <div class="attribute folded">
 <div class="attribute-heading">
 <h3 id="option-kubeconfig">--kubeconfig</h3>
-<div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-type-info">&lt;file&gt;</div>
 <div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
@@ -238,7 +238,7 @@ Set the path to the kubeconfig file.
 <div class="attribute folded">
 <div class="attribute-heading">
 <h3 id="option-platform">--platform</h3>
-<div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-type-info">&lt;platform&gt;</div>
 <div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">

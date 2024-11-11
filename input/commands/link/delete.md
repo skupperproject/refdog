@@ -76,7 +76,7 @@ Wait for deletion to complete before exiting.
 <div class="attribute folded">
 <div class="attribute-heading">
 <h3 id="option-timeout">--timeout</h3>
-<div class="attribute-type-info">&lt;string&gt; (duration)</div>
+<div class="attribute-type-info">&lt;duration&gt;</div>
 </div>
 <div class="attribute-body">
 
@@ -92,7 +92,7 @@ period of time.
 <div class="attribute folded">
 <div class="attribute-heading">
 <h3 id="option-namespace">--namespace</h3>
-<div class="attribute-type-info">(-n) &lt;string&gt;</div>
+<div class="attribute-type-info">(-n) &lt;name&gt;</div>
 <div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
@@ -107,7 +107,7 @@ Set the namespace.
 <div class="attribute folded">
 <div class="attribute-heading">
 <h3 id="option-context">--context</h3>
-<div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-type-info">&lt;name&gt;</div>
 <div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
@@ -122,7 +122,7 @@ Set the kubeconfig context.
 <div class="attribute folded">
 <div class="attribute-heading">
 <h3 id="option-kubeconfig">--kubeconfig</h3>
-<div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-type-info">&lt;file&gt;</div>
 <div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
@@ -137,7 +137,7 @@ Set the path to the kubeconfig file.
 <div class="attribute folded">
 <div class="attribute-heading">
 <h3 id="option-platform">--platform</h3>
-<div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-type-info">&lt;platform&gt;</div>
 <div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
