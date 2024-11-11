@@ -83,6 +83,21 @@ The namespace of the resource.
 
 <div class="attribute folded">
 <div class="attribute-heading">
+<h3 id="spec-cost">cost</h3>
+<div class="attribute-type-info">integer</div>
+</div>
+<div class="attribute-body">
+
+The configured routing cost of sending traffic over
+the link.
+
+<table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Load balancing</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
 <h3 id="spec-tlscredentials">tlsCredentials</h3>
 <div class="attribute-type-info">string</div>
 </div>
@@ -102,15 +117,12 @@ mutual TLS.
 
 <div class="attribute folded">
 <div class="attribute-heading">
-<h3 id="spec-cost">cost</h3>
-<div class="attribute-type-info">integer</div>
+<h3 id="spec-useclientcert">useClientCert</h3>
+<div class="attribute-type-info">boolean</div>
 </div>
 <div class="attribute-body">
 
-The configured routing cost of sending traffic over
-the link.
-
-<table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Load balancing</a></td></table>
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -145,6 +157,9 @@ Additional settings.
 <div class="attribute-body">
 
 The current state of the resource.
+
+- Pending
+- Ready
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
@@ -192,6 +207,7 @@ The current state of the resource.
 <div class="attribute-heading">
 <h3 id="status-conditions">conditions</h3>
 <div class="attribute-type-info">array</div>
+<div class="attribute-flags">advanced</div>
 </div>
 <div class="attribute-body">
 

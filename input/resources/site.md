@@ -142,6 +142,24 @@ reduce the window of downtime caused by restarts.
 
 <div class="attribute folded">
 <div class="attribute-heading">
+<h3 id="spec-defaultissuer">defaultIssuer</h3>
+<div class="attribute-type-info">string</div>
+<div class="attribute-flags">advanced</div>
+</div>
+<div class="attribute-body">
+
+The name of the Kubernetes secret containing the signing
+certificate used to generate a certificate from a token.
+A secret is generated if none is supplied.
+
+<table class="fields"><tr><th>Default</th><td><p><code>skupper-site-ca</code></p>
+</td><tr><th>Platforms</th><td>Kubernetes</td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
 <h3 id="spec-edge">edge</h3>
 <div class="attribute-type-info">boolean</div>
 <div class="attribute-flags">advanced</div>
@@ -179,24 +197,6 @@ run the Skupper controller.
 
 <div class="attribute folded">
 <div class="attribute-heading">
-<h3 id="spec-defaultissuer">defaultIssuer</h3>
-<div class="attribute-type-info">string</div>
-<div class="attribute-flags">advanced</div>
-</div>
-<div class="attribute-body">
-
-The name of the Kubernetes secret containing the signing
-certificate used to generate a certificate from a token.
-A secret is generated if none is supplied.
-
-<table class="fields"><tr><th>Default</th><td><p><code>skupper-site-ca</code></p>
-</td><tr><th>Platforms</th><td>Kubernetes</td></table>
-
-</div>
-</div>
-
-<div class="attribute folded">
-<div class="attribute-heading">
 <h3 id="spec-settings">settings</h3>
 <div class="attribute-type-info">object</div>
 <div class="attribute-flags">advanced</div>
@@ -226,6 +226,9 @@ Additional settings.
 
 The current state of the resource.
 
+- Pending
+- Ready
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
@@ -248,6 +251,7 @@ The current state of the resource.
 <div class="attribute-heading">
 <h3 id="status-conditions">conditions</h3>
 <div class="attribute-type-info">array</div>
+<div class="attribute-flags">advanced</div>
 </div>
 <div class="attribute-body">
 
@@ -267,20 +271,22 @@ resource.
 
 <div class="attribute folded">
 <div class="attribute-heading">
-<h3 id="status-endpoints">endpoints</h3>
-<div class="attribute-type-info">array</div>
+<h3 id="status-defaultissuer">defaultIssuer</h3>
+<div class="attribute-type-info">string</div>
+<div class="attribute-flags">advanced</div>
 </div>
 <div class="attribute-body">
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td></table>
 
 </div>
 </div>
 
 <div class="attribute folded">
 <div class="attribute-heading">
-<h3 id="status-sitesinnetwork">sitesInNetwork</h3>
-<div class="attribute-type-info">integer</div>
+<h3 id="status-endpoints">endpoints</h3>
+<div class="attribute-type-info">array</div>
+<div class="attribute-flags">advanced</div>
 </div>
 <div class="attribute-body">
 
@@ -293,6 +299,7 @@ resource.
 <div class="attribute-heading">
 <h3 id="status-network">network</h3>
 <div class="attribute-type-info">array</div>
+<div class="attribute-flags">advanced</div>
 </div>
 <div class="attribute-body">
 
@@ -303,8 +310,9 @@ resource.
 
 <div class="attribute folded">
 <div class="attribute-heading">
-<h3 id="status-defaultissuer">defaultIssuer</h3>
-<div class="attribute-type-info">string</div>
+<h3 id="status-sitesinnetwork">sitesInNetwork</h3>
+<div class="attribute-type-info">integer</div>
+<div class="attribute-flags">advanced</div>
 </div>
 <div class="attribute-body">
 

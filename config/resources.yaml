@@ -29,11 +29,15 @@ properties:
     group: frequently-used
     description: |
       The current state of the resource.
+
+      - Pending
+      - Ready
   status/message:
     name: message
     group: frequently-used
   status/conditions:
     name: conditions
+    group: advanced
     platforms: [Kubernetes]
     description: |
       A set of named conditions describing the current state of the
@@ -102,19 +106,6 @@ resources:
               url: /concepts/link-access.html
             - name: Kubernetes load balancer services
               url: https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer
-        - name: edge
-          group: advanced
-          type: boolean
-          description: |
-            Configure the site to operate in edge mode.  Edge sites
-            cannot accept links from remote sites.
-
-            Edge mode can help you scale your network to large numbers
-            of sites.  However, for networks with 16 or fewer sites,
-            there is little benefit.
-          links:
-            - name: Advanced deployment options
-              url: ""
         - name: ha
           updatable: true
           description: |
@@ -125,6 +116,27 @@ resources:
             after failure.  This already provides a high level of
             availability.  Enabling HA goes further and serves to
             reduce the window of downtime caused by restarts.
+          links:
+            - name: Advanced deployment options
+              url: ""
+        - name: defaultIssuer
+          group: advanced
+          default: skupper-site-ca
+          platforms: [Kubernetes]
+          description: |
+            The name of the Kubernetes secret containing the signing
+            certificate used to generate a certificate from a token.
+            A secret is generated if none is supplied.
+        - name: edge
+          group: advanced
+          type: boolean
+          description: |
+            Configure the site to operate in edge mode.  Edge sites
+            cannot accept links from remote sites.
+
+            Edge mode can help you scale your network to large numbers
+            of sites.  However, for networks with 16 or fewer sites,
+            there is little benefit.
           links:
             - name: Advanced deployment options
               url: ""
@@ -140,20 +152,13 @@ resources:
               url: ""
             - name: Kubernetes service accounts
               url: https://kubernetes.io/docs/concepts/security/service-accounts/
-        - name: defaultIssuer
-          group: advanced
-          default: skupper-site-ca
-          platforms: [Kubernetes]
-          description: |
-            The name of the Kubernetes secret containing the signing
-            certificate used to generate a certificate from a token.
-            A secret is generated if none is supplied.
     status:
       include_properties: [status/*]
       properties:
         - name: status
         - name: message
         - name: conditions
+          group: advanced
           description: |
             @description@
 
@@ -161,10 +166,15 @@ resources:
             - Running
             - Resolved
             - Ready
-        - name: endpoints
-        - name: sitesInNetwork
-        - name: network
         - name: defaultIssuer
+          group: advanced
+          platforms: [Kubernetes]
+        - name: endpoints
+          group: advanced
+        - name: network
+          group: advanced
+        - name: sitesInNetwork
+          group: advanced
   - name: Link
     related_resources: [AccessGrant, AccessToken]
     description: |
@@ -179,6 +189,15 @@ resources:
     spec:
       include_properties: [settings]
       properties:
+        - name: cost
+          default: 1
+          description: |
+            The configured routing cost of sending traffic over
+            the link.
+          links:
+            - name: Load balancing
+              url: ""
+        - name: endpoints
         - name: tlsCredentials
           description: |
             The name of a Kubernetes secret containing TLS
@@ -190,17 +209,8 @@ resources:
           links:
             - name: Custom certificates
               url: ""
-        - name: cost
-          default: 1
-          description: |
-            The configured routing cost of sending traffic over
-            the link.
-          links:
-            - name: Load balancing
-              url: ""
-        - name: endpoints
         - name: noClientAuth
-          hidden: true
+          rename: useClientCert
     status:
       include_properties: [status/*]
       properties:

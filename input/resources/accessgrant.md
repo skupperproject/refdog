@@ -164,6 +164,9 @@ Additional settings.
 
 The current state of the resource.
 
+- Pending
+- Ready
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
@@ -275,6 +278,7 @@ submitted for redemption.
 <div class="attribute-heading">
 <h3 id="status-conditions">conditions</h3>
 <div class="attribute-type-info">array</div>
+<div class="attribute-flags">advanced</div>
 </div>
 <div class="attribute-body">
 
