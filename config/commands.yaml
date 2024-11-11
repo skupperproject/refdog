@@ -320,7 +320,7 @@ commands:
 
           # Update multiple settings
           $ skupper site update --enable-link-access --service-account alice
-        include_options: [update/*, site/*, context/*, global/*]
+        include_options: [site/*, update/*, context/*, global/*]
         options:
           - name: name
             required: false
