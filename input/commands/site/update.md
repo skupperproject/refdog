@@ -84,6 +84,28 @@ Allow access for incoming links from remote sites.
 
 <div class="attribute folded">
 <div class="attribute-heading">
+<h3 id="option-link-access-type">--link-access-type</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+</div>
+<div class="attribute-body">
+
+Configure external access for links from remote sites.
+
+Sites and links are the basis for creating application
+networks.  In a simple two-site network, at least one of
+the sites must have link access enabled.
+
+<table class="fields"><tr><th>Default</th><td><p><code>default</code></p>
+</td><tr><th>Choices</th><td><table class="choices"><tr><th><code>default</code></th><td><p>Use the default link access.  On OpenShift, the default is <code>route</code>.  For other Kubernetes flavors, the default is <code>loadbalancer</code>.</p>
+</td></tr><tr><th><code>route</code></th><td><p>Use an OpenShift route.  <em>OpenShift only.</em></p>
+</td></tr><tr><th><code>loadbalancer</code></th><td><p>Use a Kubernetes load balancer.  <em>Kubernetes only.</em></p>
+</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes</td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
 <h3 id="option-wait">--wait</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
 </div>
@@ -112,28 +134,6 @@ period of time.
 
 <table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
 </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-<div class="attribute folded">
-<div class="attribute-heading">
-<h3 id="option-link-access-type">--link-access-type</h3>
-<div class="attribute-type-info">&lt;string&gt;</div>
-</div>
-<div class="attribute-body">
-
-Configure external access for links from remote sites.
-
-Sites and links are the basis for creating application
-networks.  In a simple two-site network, at least one of
-the sites must have link access enabled.
-
-<table class="fields"><tr><th>Default</th><td><p><code>default</code></p>
-</td><tr><th>Choices</th><td><table class="choices"><tr><th><code>default</code></th><td><p>Use the default link access.  On OpenShift, the default is <code>route</code>.  For other Kubernetes flavors, the default is <code>loadbalancer</code>.</p>
-</td></tr><tr><th><code>route</code></th><td><p>Use an OpenShift route.  <em>OpenShift only.</em></p>
-</td></tr><tr><th><code>loadbalancer</code></th><td><p>Use a Kubernetes load balancer.  <em>Kubernetes only.</em></p>
-</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes</td></table>
 
 </div>
 </div>
