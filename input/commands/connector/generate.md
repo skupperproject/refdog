@@ -54,28 +54,41 @@ $ skupper connector generate backend 8080 > backend.yaml
 ## Options
 
 <div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-name">&lt;name&gt;</h3><div>string, required</div></div>
+<div class="attribute-heading">
+<h3 id="option-name">&lt;name&gt;</h3>
+<div class="attribute-type-info">string</div>
+<div class="attribute-flags">required</div>
+</div>
+<div class="attribute-body">
 
 The name of the resource to be generated.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
 </div>
+</div>
 
 <div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-port">&lt;port&gt;</h3><div>integer, required</div></div>
+<div class="attribute-heading">
+<h3 id="option-port">&lt;port&gt;</h3>
+<div class="attribute-type-info">integer</div>
+<div class="attribute-flags">required</div>
+</div>
+<div class="attribute-body">
 
 The port on the target workload to forward traffic to.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-output">--output</h3><div>(-o) &lt;string&gt;</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-output">--output</h3>
+<div class="attribute-type-info">(-o) &lt;string&gt;</div>
+</div>
+<div class="attribute-body">
 
 Select the output format.
 
@@ -85,10 +98,14 @@ Select the output format.
 </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-routing-key">--routing-key</h3><div>&lt;string&gt;</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-routing-key">--routing-key</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+</div>
+<div class="attribute-body">
 
 The identifier used to route traffic from listeners to
 connectors.  To expose a local workload to a remote
@@ -99,10 +116,14 @@ have matching routing keys.
 </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-host">--host</h3><div>&lt;string&gt;</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-host">--host</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+</div>
+<div class="attribute-body">
 
 The hostname or IP address of the server.  This is an
 alternative to `selector` for specifying the target
@@ -111,10 +132,14 @@ server.
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-type">--type</h3><div>&lt;string&gt;</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-type">--type</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+</div>
+<div class="attribute-body">
 
 The connector type.
 
@@ -122,10 +147,14 @@ The connector type.
 </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-tls-credentials">--tls-credentials</h3><div>&lt;string&gt;</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-tls-credentials">--tls-credentials</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+</div>
+<div class="attribute-body">
 
 The name of a Kubernetes secret containing the trusted
 server certificate (typically a CA).
@@ -139,10 +168,14 @@ encryption.
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-selector">--selector</h3><div>&lt;string&gt;</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-selector">--selector</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+</div>
+<div class="attribute-body">
 
 A Kubernetes label selector for specifying target server
 pods.
@@ -154,10 +187,14 @@ alternative, you can use `host`.
 </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-workload">--workload</h3><div>&lt;string&gt; (resource name)</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-workload">--workload</h3>
+<div class="attribute-type-info">&lt;string&gt; (resource name)</div>
+</div>
+<div class="attribute-body">
 
 A Kubernetes resource name that identifies a workload.
 It resolves to an equivalent pod selector.
@@ -168,10 +205,14 @@ This is an alternative to setting the `--selector` or
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/workloads/">Kubernetes workloads</a></td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-include-not-ready">--include-not-ready</h3><div>boolean</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-include-not-ready">--include-not-ready</h3>
+<div class="attribute-type-info">boolean</div>
+</div>
+<div class="attribute-body">
 
 If set, include server pods that are not in the ready
 state.
@@ -179,10 +220,14 @@ state.
 <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-platform">--platform</h3><div>&lt;string&gt;</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-platform">--platform</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+</div>
+<div class="attribute-body">
 
 Set the Skupper platform.
 
@@ -194,15 +239,20 @@ Set the Skupper platform.
 </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-help">--help</h3><div>(-h) boolean</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-help">--help</h3>
+<div class="attribute-type-info">(-h) boolean</div>
+</div>
+<div class="attribute-body">
 
 Display help and exit.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
+</div>
 </div>
 
 </section>

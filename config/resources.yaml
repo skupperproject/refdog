@@ -1,7 +1,6 @@
 properties:
   metadata/name:
     name: name
-    frequently_used: true
     type: string
     updatable: false
     required: true
@@ -12,7 +11,6 @@ properties:
         url: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
   metadata/namespace:
     name: namespace
-    frequently_used: true
     type: string
     updatable: false
     description: |
@@ -22,6 +20,7 @@ properties:
         url: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
   settings:
     name: settings
+    advanced: true
     type: object
     description: |
       Additional settings.
@@ -35,7 +34,6 @@ properties:
     frequently_used: true
   status/conditions:
     name: conditions
-    frequently_used: true
     platforms: [Kubernetes]
     description: |
       A set of named conditions describing the current state of the
@@ -105,6 +103,7 @@ resources:
             - name: Kubernetes load balancer services
               url: https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer
         - name: edge
+          advanced: true
           type: boolean
           description: |
             Configure the site to operate in edge mode.  Edge sites
@@ -130,6 +129,7 @@ resources:
             - name: Advanced deployment options
               url: ""
         - name: serviceAccount
+          advanced: true
           default: skupper-router
           platforms: [Kubernetes]
           description: |
@@ -141,6 +141,7 @@ resources:
             - name: Kubernetes service accounts
               url: https://kubernetes.io/docs/concepts/security/service-accounts/
         - name: defaultIssuer
+          advanced: true
           default: skupper-site-ca
           platforms: [Kubernetes]
           description: |
@@ -361,6 +362,7 @@ resources:
             - name: Site-scoped TLS
               url: "" # XXX
         - name: type
+          advanced: true
           default: tcp
           description: |
             The listener type.
@@ -406,6 +408,7 @@ resources:
           description: |
             The port on the target workload to forward traffic to.
         - name: selector
+          frequently_used: true
           description: |
             A Kubernetes label selector for specifying target server
             pods.

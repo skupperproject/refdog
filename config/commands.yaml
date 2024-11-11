@@ -208,14 +208,17 @@ options:
   listener/port:
     name: port
     property: port
+    frequently_used: true
     positional: true
   listener/routing_key:
     name: routing-key
     property: routingKey
+    frequently_used: true
     default: _Value of name_
   listener/host:
     name: host
     property: host
+    frequently_used: true
     default: _Value of name_
   listener/tls_credentials:
     name: tls-credentials
@@ -223,6 +226,7 @@ options:
   listener/type:
     name: type
     property: type
+    advanced: true
   context/namespace:
     name: namespace
     type: string
@@ -290,7 +294,7 @@ commands:
 
           # Create a site that can accept links from remote sites
           $ skupper site create west --enable-link-access
-        include_options: [create/*, site/*, context/*, global/*]
+        include_options: [site/*, create/*, context/*, global/*]
         options:
           - name: name
             description: |
@@ -519,7 +523,7 @@ commands:
           $ skupper link update west-6bfn6 --cost 10
           Waiting for status...
           Link "west-6bfn6" is ready.
-        include_options: [update/*, link/*, context/*, global/*]
+        include_options: [link/*, update/*, context/*, global/*]
       # link.delete
       - name: delete
         wait: Deletion
@@ -743,9 +747,10 @@ commands:
 
           # Change the routing key
           $ skupper listener update backend --routing-key be2
-        include_options: [update/*, listener/*, context/*, global/*]
+        include_options: [listener/*, update/*, context/*, global/*]
         options:
           - name: name
+          - name: host
           - name: port
             required: false
             positional: false

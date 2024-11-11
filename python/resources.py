@@ -153,26 +153,37 @@ def generate_property(prop, append):
         return
 
     classes = ["attribute"]
+    flags = list()
     name = nvl(prop.rename, prop.name)
     id_ = f"{prop.section}-{get_fragment_id(name)}"
-    prop_info = prop.type
 
     if prop.format:
-        prop_info += f" ({prop.format})"
+        type_info = f"{prop.type} ({prop.format})"
+    else:
+        type_info = prop.type
 
     if prop.required and prop.default is None:
-        prop_info += ", required"
+        flags.append("required")
 
     if prop.frequently_used:
-        classes.append("frequently-used")
-        if prop_info:
-            prop_info += ", frequently used"
-        else:
-            prop_info = "frequently used"
+        flags.append("frequently used")
+
+    if prop.advanced:
+        classes.append("folded")
+        flags.append("advanced")
+    elif not flags:
+        classes.append("folded")
 
     append(f"<div class=\"{' '.join(classes)}\">")
-    append()
-    append(f"<div class=\"attribute-heading\"><h3 id=\"{id_}\">{name}</h3><div>{prop_info}</div></div>")
+    append(f"<div class=\"attribute-heading\">")
+    append(f"<h3 id=\"{id_}\">{name}</h3>")
+    append(f"<div class=\"attribute-type-info\">{type_info}</div>")
+
+    if flags:
+        append(f"<div class=\"attribute-flags\">{', '.join(flags)}</div>")
+
+    append("</div>")
+    append("<div class=\"attribute-body\">")
     append()
 
     if prop.description:
@@ -190,6 +201,7 @@ def generate_property(prop, append):
         append("</section>")
         append()
 
+    append("</div>")
     append("</div>")
     append()
 
@@ -317,19 +329,19 @@ class Resource(ModelObject):
 
     def merge_property_data(self, section):
         model_props = self.model.data.get("properties", {})
-        included_keys = set()
+        included_keys = list()
 
         for pattern in self.data[section].get("include_properties", []):
             for key in model_props:
                 if fnmatch.fnmatchcase(key, pattern):
-                    included_keys.add(key)
+                    included_keys.append(key)
 
         for pattern in self.data[section].get("exclude_properties", []):
-            for key in model_props:
+            for key in included_keys:
                 if fnmatch.fnmatchcase(key, pattern):
-                    included_keys.discard(key)
+                    included_keys.remove(key)
 
-        included_props = {v["name"]: v for k, v in model_props.items() if k in included_keys}
+        included_props = {model_props[x]["name"]: model_props[x] for x in included_keys}
         specific_props = {x["name"]: x for x in self.data[section].get("properties", [])}
 
         included_names = [x for x in included_props if x not in specific_props]

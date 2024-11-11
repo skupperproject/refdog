@@ -54,18 +54,27 @@ $ skupper listener generate backend 8080 > backend.yaml
 ## Options
 
 <div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-name">&lt;name&gt;</h3><div>string, required</div></div>
+<div class="attribute-heading">
+<h3 id="option-name">&lt;name&gt;</h3>
+<div class="attribute-type-info">string</div>
+<div class="attribute-flags">required</div>
+</div>
+<div class="attribute-body">
 
 The name of the resource to be generated.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
 </div>
+</div>
 
 <div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-port">&lt;port&gt;</h3><div>integer, required</div></div>
+<div class="attribute-heading">
+<h3 id="option-port">&lt;port&gt;</h3>
+<div class="attribute-type-info">integer</div>
+<div class="attribute-flags">required, frequently used</div>
+</div>
+<div class="attribute-body">
 
 The port of the local listener.  Clients at this site use
 the listener host and port to establish connections to
@@ -74,10 +83,14 @@ the remote service.
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-output">--output</h3><div>(-o) &lt;string&gt;</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-output">--output</h3>
+<div class="attribute-type-info">(-o) &lt;string&gt;</div>
+</div>
+<div class="attribute-body">
 
 Select the output format.
 
@@ -87,10 +100,15 @@ Select the output format.
 </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
+</div>
 
 <div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-routing-key">--routing-key</h3><div>&lt;string&gt;</div></div>
+<div class="attribute-heading">
+<h3 id="option-routing-key">--routing-key</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">frequently used</div>
+</div>
+<div class="attribute-body">
 
 The identifier used to route traffic from listeners to
 connectors.  To enable connecting to a service at a
@@ -101,10 +119,15 @@ must have matching routing keys.
 </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
+</div>
 
 <div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-host">--host</h3><div>&lt;string&gt;</div></div>
+<div class="attribute-heading">
+<h3 id="option-host">--host</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">frequently used</div>
+</div>
+<div class="attribute-body">
 
 The hostname or IP address of the local listener.  Clients
 at this site use the listener host and port to
@@ -114,10 +137,14 @@ establish connections to the remote service.
 </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-tls-credentials">--tls-credentials</h3><div>&lt;string&gt;</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-tls-credentials">--tls-credentials</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+</div>
+<div class="attribute-body">
 
 The name of a Kubernetes secret containing TLS
 credentials.  The secret contains the trusted server
@@ -132,10 +159,15 @@ encryption.
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-type">--type</h3><div>&lt;string&gt;</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-type">--type</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">advanced</div>
+</div>
+<div class="attribute-body">
 
 The listener type.
 
@@ -143,10 +175,14 @@ The listener type.
 </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-platform">--platform</h3><div>&lt;string&gt;</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-platform">--platform</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+</div>
+<div class="attribute-body">
 
 Set the Skupper platform.
 
@@ -158,15 +194,20 @@ Set the Skupper platform.
 </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-help">--help</h3><div>(-h) boolean</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-help">--help</h3>
+<div class="attribute-type-info">(-h) boolean</div>
+</div>
+<div class="attribute-body">
 
 Display help and exit.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
+</div>
 </div>
 
 </section>

@@ -226,10 +226,12 @@ def generate_command_fields(command):
 def generate_option(option, append):
     debug(f"Generating {option}")
 
+    classes = ["attribute"]
+    flags = list()
     prefix = ""
     id_ = f"option-{get_fragment_id(option.name)}"
     option_key = option.name
-    option_info = option.type
+    type_info = option.type
 
     if option.positional:
         if option.required:
@@ -240,24 +242,36 @@ def generate_option(option, append):
         option_key = f"--{option_key}"
 
         if option.type != "boolean":
-            option_info = f"&lt;{option.type}&gt;"
+            type_info = f"&lt;{option.type}&gt;"
 
         if option.short_option:
-            option_info = f"(-{option.short_option}) {option_info}"
+            type_info = f"(-{option.short_option}) {type_info}"
 
     if option.format:
-        option_info += f" ({option.format})"
+        type_info += f" ({option.format})"
 
     if option.required and option.default is None:
-        option_info += ", required"
+        flags.append("required")
 
-    if not option.required and option.positional:
-        option_info += ", optional"
+    if option.frequently_used:
+        flags.append("frequently used")
 
+    if option.advanced:
+        classes.append("folded")
+        flags.append("advanced")
+    elif not flags:
+        classes.append("folded")
 
-    append("<div class=\"attribute\">")
-    append()
-    append(f"<div class=\"attribute-heading\"><h3 id=\"{id_}\">{option_key}</h3><div>{option_info}</div></div>")
+    append(f"<div class=\"{' '.join(classes)}\">")
+    append(f"<div class=\"attribute-heading\">")
+    append(f"<h3 id=\"{id_}\">{option_key}</h3>")
+    append(f"<div class=\"attribute-type-info\">{type_info}</div>")
+
+    if flags:
+        append(f"<div class=\"attribute-flags\">{', '.join(flags)}</div>")
+
+    append("</div>")
+    append("<div class=\"attribute-body\">")
     append()
 
     if option.description:
@@ -275,6 +289,7 @@ def generate_option(option, append):
         append("</section>")
         append()
 
+    append("</div>")
     append("</div>")
     append()
 
@@ -358,19 +373,19 @@ class Command(ModelObject):
 
     def merge_option_data(self):
         model_options = self.model.data.get("options", {})
-        included_keys = set()
+        included_keys = list()
 
         for pattern in self.data.get("include_options", []):
             for key in model_options:
                 if fnmatch.fnmatchcase(key, pattern):
-                    included_keys.add(key)
+                    included_keys.append(key)
 
         for pattern in self.data.get("exclude_options", []):
-            for key in model_options:
+            for key in included_keys:
                 if fnmatch.fnmatchcase(key, pattern):
-                    included_keys.discard(key)
+                    included_keys.remove(key)
 
-        included_options = {v["name"]: v for k, v in model_options.items() if k in included_keys}
+        included_options = {model_options[x]["name"]: model_options[x] for x in included_keys}
         specific_options = {x["name"]: x for x in self.data.get("options", [])}
 
         included_names = [x for x in included_options if x not in specific_options]

@@ -45,9 +45,12 @@ Message:   -
 
 ## Options
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-name">[name]</h3><div>string, optional</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-name">[name]</h3>
+<div class="attribute-type-info">string</div>
+</div>
+<div class="attribute-body">
 
 The name of the site resource.
 
@@ -57,10 +60,14 @@ associated with the current namespace.
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-output">--output</h3><div>(-o) &lt;string&gt;</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-output">--output</h3>
+<div class="attribute-type-info">(-o) &lt;string&gt;</div>
+</div>
+<div class="attribute-body">
 
 Print status to the console in a structured output format.
 
@@ -69,10 +76,14 @@ Print status to the console in a structured output format.
 </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-timeout">--timeout</h3><div>&lt;string&gt; (duration)</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-timeout">--timeout</h3>
+<div class="attribute-type-info">&lt;string&gt; (duration)</div>
+</div>
+<div class="attribute-body">
 
 Raise an error if the operation does not complete in the given
 period of time.
@@ -81,40 +92,56 @@ period of time.
 </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-namespace">--namespace</h3><div>(-n) &lt;string&gt;</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-namespace">--namespace</h3>
+<div class="attribute-type-info">(-n) &lt;string&gt;</div>
+</div>
+<div class="attribute-body">
 
 Set the namespace.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-context">--context</h3><div>&lt;string&gt;</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-context">--context</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+</div>
+<div class="attribute-body">
 
 Set the kubeconfig context.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-kubeconfig">--kubeconfig</h3><div>&lt;string&gt;</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-kubeconfig">--kubeconfig</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+</div>
+<div class="attribute-body">
 
 Set the path to the kubeconfig file.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-platform">--platform</h3><div>&lt;string&gt;</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-platform">--platform</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+</div>
+<div class="attribute-body">
 
 Set the Skupper platform.
 
@@ -126,15 +153,20 @@ Set the Skupper platform.
 </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-help">--help</h3><div>(-h) boolean</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-help">--help</h3>
+<div class="attribute-type-info">(-h) boolean</div>
+</div>
+<div class="attribute-body">
 
 Display help and exit.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
+</div>
 </div>
 
 </section>

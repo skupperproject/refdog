@@ -61,24 +61,33 @@ spec:
 
 ## Metadata properties
 
-<div class="attribute frequently-used">
-
-<div class="attribute-heading"><h3 id="metadata-name">name</h3><div>string, required, frequently used</div></div>
+<div class="attribute">
+<div class="attribute-heading">
+<h3 id="metadata-name">name</h3>
+<div class="attribute-type-info">string</div>
+<div class="attribute-flags">required</div>
+</div>
+<div class="attribute-body">
 
 The name of the resource.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
 </div>
+</div>
 
-<div class="attribute frequently-used">
-
-<div class="attribute-heading"><h3 id="metadata-namespace">namespace</h3><div>string, frequently used</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="metadata-namespace">namespace</h3>
+<div class="attribute-type-info">string</div>
+</div>
+<div class="attribute-body">
 
 The namespace of the resource.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
 
+</div>
 </div>
 
 </section>
@@ -87,9 +96,13 @@ The namespace of the resource.
 
 ## Spec properties
 
-<div class="attribute frequently-used">
-
-<div class="attribute-heading"><h3 id="spec-linkaccess">linkAccess</h3><div>string, frequently used</div></div>
+<div class="attribute">
+<div class="attribute-heading">
+<h3 id="spec-linkaccess">linkAccess</h3>
+<div class="attribute-type-info">string</div>
+<div class="attribute-flags">frequently used</div>
+</div>
+<div class="attribute-body">
 
 Configure external access for links from remote sites.
 
@@ -105,10 +118,15 @@ the sites must have link access enabled.
 </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Site linking</a>, <a href="/concepts/link-access.html">Link access concept</a>, <a href="https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer">Kubernetes load balancer services</a></td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="spec-edge">edge</h3><div>boolean</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="spec-edge">edge</h3>
+<div class="attribute-type-info">boolean</div>
+<div class="attribute-flags">advanced</div>
+</div>
+<div class="attribute-body">
 
 Configure the site to operate in edge mode.  Edge sites
 cannot accept links from remote sites.
@@ -120,10 +138,14 @@ there is little benefit.
 <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Advanced deployment options</a></td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="spec-ha">ha</h3><div>boolean</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="spec-ha">ha</h3>
+<div class="attribute-type-info">boolean</div>
+</div>
+<div class="attribute-body">
 
 Configure the site for high availability (HA).  HA sites
 have two active routers.
@@ -136,10 +158,15 @@ reduce the window of downtime caused by restarts.
 <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td><tr><th>See also</th><td><a href="">Advanced deployment options</a></td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="spec-serviceaccount">serviceAccount</h3><div>string</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="spec-serviceaccount">serviceAccount</h3>
+<div class="attribute-type-info">string</div>
+<div class="attribute-flags">advanced</div>
+</div>
+<div class="attribute-body">
 
 The name of the Kubernetes service account under which to
 run the Skupper controller.
@@ -148,10 +175,15 @@ run the Skupper controller.
 </td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="">Advanced deployment options</a>, <a href="https://kubernetes.io/docs/concepts/security/service-accounts/">Kubernetes service accounts</a></td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="spec-defaultissuer">defaultIssuer</h3><div>string</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="spec-defaultissuer">defaultIssuer</h3>
+<div class="attribute-type-info">string</div>
+<div class="attribute-flags">advanced</div>
+</div>
+<div class="attribute-body">
 
 The name of the Kubernetes secret containing the signing
 certificate used to generate a certificate from a token.
@@ -161,15 +193,21 @@ A secret is generated if none is supplied.
 </td><tr><th>Platforms</th><td>Kubernetes</td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="spec-settings">settings</h3><div>object</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="spec-settings">settings</h3>
+<div class="attribute-type-info">object</div>
+<div class="attribute-flags">advanced</div>
+</div>
+<div class="attribute-body">
 
 Additional settings.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
+</div>
 </div>
 
 </section>
@@ -178,27 +216,40 @@ Additional settings.
 
 ## Status properties
 
-<div class="attribute frequently-used">
-
-<div class="attribute-heading"><h3 id="status-status">status</h3><div>string, frequently used</div></div>
+<div class="attribute">
+<div class="attribute-heading">
+<h3 id="status-status">status</h3>
+<div class="attribute-type-info">string</div>
+<div class="attribute-flags">frequently used</div>
+</div>
+<div class="attribute-body">
 
 The current state of the resource.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
+</div>
 
-<div class="attribute frequently-used">
-
-<div class="attribute-heading"><h3 id="status-message">message</h3><div>string, frequently used</div></div>
+<div class="attribute">
+<div class="attribute-heading">
+<h3 id="status-message">message</h3>
+<div class="attribute-type-info">string</div>
+<div class="attribute-flags">frequently used</div>
+</div>
+<div class="attribute-body">
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
+</div>
 
-<div class="attribute frequently-used">
-
-<div class="attribute-heading"><h3 id="status-conditions">conditions</h3><div>array, frequently used</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="status-conditions">conditions</h3>
+<div class="attribute-type-info">array</div>
+</div>
+<div class="attribute-body">
 
 A set of named conditions describing the current state of the
 resource.
@@ -212,37 +263,54 @@ resource.
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="status-endpoints">endpoints</h3><div>array</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="status-endpoints">endpoints</h3>
+<div class="attribute-type-info">array</div>
+</div>
+<div class="attribute-body">
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="status-sitesinnetwork">sitesInNetwork</h3><div>integer</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="status-sitesinnetwork">sitesInNetwork</h3>
+<div class="attribute-type-info">integer</div>
+</div>
+<div class="attribute-body">
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="status-network">network</h3><div>array</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="status-network">network</h3>
+<div class="attribute-type-info">array</div>
+</div>
+<div class="attribute-body">
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/network.html">Network concept</a></td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="status-defaultissuer">defaultIssuer</h3><div>string</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="status-defaultissuer">defaultIssuer</h3>
+<div class="attribute-type-info">string</div>
+</div>
+<div class="attribute-body">
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
+</div>
 </div>
 
 </section>

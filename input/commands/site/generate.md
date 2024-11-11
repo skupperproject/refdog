@@ -52,18 +52,26 @@ $ skupper site generate east > east.yaml
 ## Options
 
 <div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-name">&lt;name&gt;</h3><div>string, required</div></div>
+<div class="attribute-heading">
+<h3 id="option-name">&lt;name&gt;</h3>
+<div class="attribute-type-info">string</div>
+<div class="attribute-flags">required</div>
+</div>
+<div class="attribute-body">
 
 The name of the resource to be generated.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-output">--output</h3><div>(-o) &lt;string&gt;</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-output">--output</h3>
+<div class="attribute-type-info">(-o) &lt;string&gt;</div>
+</div>
+<div class="attribute-body">
 
 Select the output format.
 
@@ -73,10 +81,14 @@ Select the output format.
 </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-enable-link-access">--enable-link-access</h3><div>boolean</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-enable-link-access">--enable-link-access</h3>
+<div class="attribute-type-info">boolean</div>
+</div>
+<div class="attribute-body">
 
 Allow access for incoming links from remote sites.
 
@@ -85,10 +97,14 @@ Allow access for incoming links from remote sites.
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/link-access.html">Link access concept</a></td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-link-access-type">--link-access-type</h3><div>&lt;string&gt;</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-link-access-type">--link-access-type</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+</div>
+<div class="attribute-body">
 
 Configure external access for links from remote sites.
 
@@ -103,10 +119,14 @@ the sites must have link access enabled.
 </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes</td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-service-account">--service-account</h3><div>&lt;string&gt;</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-service-account">--service-account</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+</div>
+<div class="attribute-body">
 
 The name of the Kubernetes service account under which to
 run the Skupper controller.
@@ -115,10 +135,14 @@ run the Skupper controller.
 </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-platform">--platform</h3><div>&lt;string&gt;</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-platform">--platform</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+</div>
+<div class="attribute-body">
 
 Set the Skupper platform.
 
@@ -130,15 +154,20 @@ Set the Skupper platform.
 </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/platform.html">Platform concept</a></td></table>
 
 </div>
+</div>
 
-<div class="attribute">
-
-<div class="attribute-heading"><h3 id="option-help">--help</h3><div>(-h) boolean</div></div>
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-help">--help</h3>
+<div class="attribute-type-info">(-h) boolean</div>
+</div>
+<div class="attribute-body">
 
 Display help and exit.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
+</div>
 </div>
 
 </section>

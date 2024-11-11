@@ -231,6 +231,7 @@ class ModelObject:
 class ModelObjectAttribute:
     hidden = object_property("hidden", default=False)
     frequently_used = object_property("frequently_used", default=False)
+    advanced = object_property("advanced", default=False)
     name = object_property("name", required=True)
     description = object_property("description")
     platforms = object_property("platforms", default=["Kubernetes", "Docker", "Podman", "Linux"])

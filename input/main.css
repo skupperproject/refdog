@@ -321,6 +321,8 @@ pre {
 
 /* Refdog-specific styles for prose elements */
 
+/** Objects (resources and commands) **/
+
 body.object h2 {
     font-size: 1.3em;
 }
@@ -337,28 +339,22 @@ table.objects th {
     font-weight: normal;
 }
 
+/** Attributes (resource properties and command options) **/
+
 section.attributes > div.attribute {
     margin: 1em 1em 1.4em 1em;
 }
 
-/* div.attribute { */
-/*     display: none; */
-/* } */
-
-/* div.attribute.frequently-used { */
-/*     display: inherit; */
-/* } */
-
 div.attribute > div.attribute-heading {
     display: inline;
     margin-left: -1em;
-    padding: 0.2em 0.3em;
+    padding: 0.2em 0.5em;
     background-color: var(--code-background-color);
     border-radius: 0.25em;
 }
 
-div.attribute > div.attribute-heading.selected {
-    background-color: var(--selected-item-background-color);
+div.attribute > div.attribute-heading:hover {
+    cursor: pointer;
 }
 
 div.attribute > div.attribute-heading > * {
@@ -368,18 +364,42 @@ div.attribute > div.attribute-heading > * {
 }
 
 div.attribute > div.attribute-heading > h3 {
-    margin-right: 0.3em;
+    margin-right: 0.2em;
 }
 
-/* section.attributes > ul > li { */
-/*     list-style-type: none; */
-/*     margin-top: 1.3em; */
-/* } */
+div.attribute > div.attribute-heading > h3::before {
+    content: "\25be";
+    margin-right: 0.5em;
+    font-size: 0.8em;
+    color: #999;
+    vertical-align: top;
+}
 
-/* section.attributes span.attribute-info { */
-/*     font-weight: 400; */
-/*     font-style: italic; */
-/* } */
+div.attribute > div.attribute-heading > div.attribute-type-info {
+}
+
+div.attribute > div.attribute-heading > div.attribute-flags {
+    margin-left: 0.3em;
+    font-style: italic;
+}
+
+div.attribute > div.attribute-heading.selected {
+    background-color: var(--selected-item-background-color);
+}
+
+div.attribute > div.attribute-body {
+    margin-top: 1em;
+}
+
+div.attribute.folded > div.attribute-heading > h3::before {
+    content: "\25b8";
+}
+
+div.attribute.folded > div.attribute-body {
+    display: none;
+}
+
+/** Tables **/
 
 table.fields td, table.fields th {
     text-align: left;

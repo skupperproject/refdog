@@ -145,3 +145,11 @@ window.addEventListener("load", () => {
 	}).join("\n");
     }
 });
+
+window.addEventListener("load", () => {
+    for (const element of $$("div.attribute > div.attribute-heading")) {
+	element.addEventListener("click", () => {
+	    element.parentElement.classList.toggle("folded");
+	});
+    }
+});
