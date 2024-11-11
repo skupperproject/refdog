@@ -113,7 +113,7 @@ remote site, the local listener and the remote connector
 must have matching routing keys.
 
 <table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/routing-key.html">Routing key concept</a></td></table>
 
 </div>
 </div>
@@ -135,7 +135,7 @@ mutual TLS.
 This option is used when setting up client-to-router TLS
 encryption.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a></td></table>
 
 </div>
 </div>

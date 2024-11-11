@@ -24,7 +24,7 @@ Update a connector.
 ## Usage
 
 ~~~ shell
-skupper connector update <port> <name> [options]
+skupper connector update <name> <port> [options]
 ~~~
 
 </section>
@@ -51,21 +51,6 @@ $ skupper connector update backend --routing-key be2
 
 <div class="attribute">
 <div class="attribute-heading">
-<h3 id="option-port">&lt;port&gt;</h3>
-<div class="attribute-type-info">integer</div>
-<div class="attribute-flags">required</div>
-</div>
-<div class="attribute-body">
-
-The port on the target workload to forward traffic to.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-<div class="attribute">
-<div class="attribute-heading">
 <h3 id="option-name">&lt;name&gt;</h3>
 <div class="attribute-type-info">string</div>
 <div class="attribute-flags">required</div>
@@ -81,9 +66,24 @@ The name of the resource to be updated.
 
 <div class="attribute">
 <div class="attribute-heading">
+<h3 id="option-port">&lt;port&gt;</h3>
+<div class="attribute-type-info">integer</div>
+<div class="attribute-flags">required</div>
+</div>
+<div class="attribute-body">
+
+The port on the target workload to forward traffic to.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
+<div class="attribute">
+<div class="attribute-heading">
 <h3 id="option-routing-key">--routing-key</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
-<div class="attribute-flags">required</div>
+<div class="attribute-flags">frequently used</div>
 </div>
 <div class="attribute-body">
 
@@ -93,7 +93,7 @@ site, the remote listener and the local connector must
 have matching routing keys.
 
 <table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/routing-key.html">Routing key concept</a></td></table>
 
 </div>
 </div>
@@ -113,7 +113,26 @@ On Kubernetes, you usually want to use this.  As an
 alternative, you can use `host`.
 
 <table class="fields"><tr><th>Default</th><td><p><code>app=[value-of-name]</code></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">Kubernetes label selectors</a>, <a href="https://kubernetes.io/docs/concepts/workloads/pods/">Kubernetes pods</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute">
+<div class="attribute-heading">
+<h3 id="option-workload">--workload</h3>
+<div class="attribute-type-info">&lt;resource&gt;</div>
+<div class="attribute-flags">frequently used</div>
+</div>
+<div class="attribute-body">
+
+A Kubernetes resource name that identifies a workload.
+It resolves to an equivalent pod selector.
+
+This is an alternative to setting the `--selector` or
+`--host` options.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/workloads/">Kubernetes workloads</a></td></table>
 
 </div>
 </div>
@@ -150,25 +169,7 @@ mutual TLS.
 This option is used when setting up router-to-server TLS
 encryption.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-<div class="attribute folded">
-<div class="attribute-heading">
-<h3 id="option-workload">--workload</h3>
-<div class="attribute-type-info">&lt;resource name&gt;</div>
-</div>
-<div class="attribute-body">
-
-A Kubernetes resource name that identifies a workload.
-It resolves to an equivalent pod selector.
-
-This is an alternative to setting the `--selector` or
-`--host` options.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/workloads/">Kubernetes workloads</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a></td></table>
 
 </div>
 </div>
@@ -183,7 +184,7 @@ This is an alternative to setting the `--selector` or
 If set, include server pods that are not in the ready
 state.
 
-<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/">Kubernetes pod lifecycle</a></td></table>
 
 </div>
 </div>

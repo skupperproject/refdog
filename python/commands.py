@@ -390,7 +390,8 @@ class Command(ModelObject):
                 if fnmatch.fnmatchcase(key, pattern):
                     included_keys.remove(key)
 
-        included_options = {model_options[x]["name"]: model_options[x] for x in included_keys}
+        included_options = {model_options[x]["name"]: model_options[x] for x in included_keys
+                            if x not in model_options}
         specific_options = {x["name"]: x for x in self.data.get("options", [])}
 
         included_names = [x for x in included_options if x not in specific_options]
@@ -545,6 +546,11 @@ class Option(ModelObjectAttribute):
             value = value.replace("@property_description@", self.property_.description)
 
         return value
+
+    @property
+    def links(self):
+        default = self.property_.links if self.property_ else []
+        return self.data.get("links", default)
 
 class Error:
     message = object_property("message", required=True)

@@ -101,7 +101,7 @@ generated if none is provided.
 The configured routing cost of sending traffic over
 the link.
 
-<table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Load balancing</a></td></table>
 
 </div>
 </div>
