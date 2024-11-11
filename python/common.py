@@ -229,15 +229,14 @@ class ModelObject:
                 fail(f"Related command '{name}' on {self} not found")
 
 class ModelObjectAttribute:
-    hidden = object_property("hidden", default=False)
-    frequently_used = object_property("frequently_used", default=False)
-    advanced = object_property("advanced", default=False)
     name = object_property("name", required=True)
+    group = object_property("group")
     description = object_property("description")
     platforms = object_property("platforms", default=["Kubernetes", "Docker", "Podman", "Linux"])
     updatable = object_property("updatable", default=False)
     links = object_property("links", default=[])
     notes = object_property("notes")
+    hidden = object_property("hidden", default=False)
 
     def __init__(self, model, object, data):
         self.model = model
@@ -252,6 +251,13 @@ class ModelObjectAttribute:
     @property
     def rename(self):
         return self.data.get("rename", self.name)
+
+    @property
+    def group(self):
+        if self.required:
+            return "required"
+
+        return self.data.get("group")
 
     @property
     def related_concepts(self):

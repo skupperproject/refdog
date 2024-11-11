@@ -154,6 +154,34 @@ Additional settings.
 
 ## Status properties
 
+<div class="attribute">
+<div class="attribute-heading">
+<h3 id="status-status">status</h3>
+<div class="attribute-type-info">string</div>
+<div class="attribute-flags">frequently used</div>
+</div>
+<div class="attribute-body">
+
+The current state of the resource.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
+<div class="attribute">
+<div class="attribute-heading">
+<h3 id="status-message">message</h3>
+<div class="attribute-type-info">string</div>
+<div class="attribute-flags">frequently used</div>
+</div>
+<div class="attribute-body">
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
 <div class="attribute folded">
 <div class="attribute-heading">
 <h3 id="status-redeemed">redeemed</h3>
@@ -239,34 +267,6 @@ submitted for redemption.
 
 <table class="fields"><tr><th>Default</th><td><p><em>Generated</em></p>
 </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-<div class="attribute">
-<div class="attribute-heading">
-<h3 id="status-status">status</h3>
-<div class="attribute-type-info">string</div>
-<div class="attribute-flags">frequently used</div>
-</div>
-<div class="attribute-body">
-
-The current state of the resource.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-<div class="attribute">
-<div class="attribute-heading">
-<h3 id="status-message">message</h3>
-<div class="attribute-type-info">string</div>
-<div class="attribute-flags">frequently used</div>
-</div>
-<div class="attribute-body">
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>

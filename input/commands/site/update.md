@@ -47,10 +47,11 @@ $ skupper site update --enable-link-access --service-account alice
 
 ## Options
 
-<div class="attribute folded">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="option-name">[name]</h3>
 <div class="attribute-type-info">string</div>
+<div class="attribute-flags">optional</div>
 </div>
 <div class="attribute-body">
 
@@ -60,6 +61,23 @@ If not specified, the name is that of the site
 associated with the current namespace.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute">
+<div class="attribute-heading">
+<h3 id="option-enable-link-access">--enable-link-access</h3>
+<div class="attribute-type-info">boolean</div>
+<div class="attribute-flags">frequently used</div>
+</div>
+<div class="attribute-body">
+
+Allow access for incoming links from remote sites.
+
+<!-- XXX reference link access type -->
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/link-access.html">Link access concept</a></td></table>
 
 </div>
 </div>
@@ -100,22 +118,6 @@ period of time.
 
 <div class="attribute folded">
 <div class="attribute-heading">
-<h3 id="option-enable-link-access">--enable-link-access</h3>
-<div class="attribute-type-info">boolean</div>
-</div>
-<div class="attribute-body">
-
-Allow access for incoming links from remote sites.
-
-<!-- XXX reference link access type -->
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/link-access.html">Link access concept</a></td></table>
-
-</div>
-</div>
-
-<div class="attribute folded">
-<div class="attribute-heading">
 <h3 id="option-link-access-type">--link-access-type</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
 </div>
@@ -140,6 +142,7 @@ the sites must have link access enabled.
 <div class="attribute-heading">
 <h3 id="option-service-account">--service-account</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">advanced</div>
 </div>
 <div class="attribute-body">
 
@@ -156,6 +159,7 @@ run the Skupper controller.
 <div class="attribute-heading">
 <h3 id="option-namespace">--namespace</h3>
 <div class="attribute-type-info">(-n) &lt;string&gt;</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 
@@ -170,6 +174,7 @@ Set the namespace.
 <div class="attribute-heading">
 <h3 id="option-context">--context</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 
@@ -184,6 +189,7 @@ Set the kubeconfig context.
 <div class="attribute-heading">
 <h3 id="option-kubeconfig">--kubeconfig</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 
@@ -198,6 +204,7 @@ Set the path to the kubeconfig file.
 <div class="attribute-heading">
 <h3 id="option-platform">--platform</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 
@@ -217,6 +224,7 @@ Set the Skupper platform.
 <div class="attribute-heading">
 <h3 id="option-help">--help</h3>
 <div class="attribute-type-info">(-h) boolean</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 

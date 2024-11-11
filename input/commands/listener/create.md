@@ -68,7 +68,7 @@ The name of the resource to be created.
 <div class="attribute-heading">
 <h3 id="option-port">&lt;port&gt;</h3>
 <div class="attribute-type-info">integer</div>
-<div class="attribute-flags">required, frequently used</div>
+<div class="attribute-flags">required</div>
 </div>
 <div class="attribute-body">
 
@@ -77,6 +77,43 @@ the listener host and port to establish connections to
 the remote service.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
+<div class="attribute">
+<div class="attribute-heading">
+<h3 id="option-routing-key">--routing-key</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">required</div>
+</div>
+<div class="attribute-body">
+
+The identifier used to route traffic from listeners to
+connectors.  To enable connecting to a service at a
+remote site, the local listener and the remote connector
+must have matching routing keys.
+
+<table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
+<div class="attribute">
+<div class="attribute-heading">
+<h3 id="option-host">--host</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">required</div>
+</div>
+<div class="attribute-body">
+
+The hostname or IP address of the local listener.  Clients
+at this site use the listener host and port to
+establish connections to the remote service.
+
+<table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -111,43 +148,6 @@ period of time.
 
 <table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
 </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://pkg.go.dev/time#ParseDuration">Duration format</a></td></table>
-
-</div>
-</div>
-
-<div class="attribute">
-<div class="attribute-heading">
-<h3 id="option-routing-key">--routing-key</h3>
-<div class="attribute-type-info">&lt;string&gt;</div>
-<div class="attribute-flags">frequently used</div>
-</div>
-<div class="attribute-body">
-
-The identifier used to route traffic from listeners to
-connectors.  To enable connecting to a service at a
-remote site, the local listener and the remote connector
-must have matching routing keys.
-
-<table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-<div class="attribute">
-<div class="attribute-heading">
-<h3 id="option-host">--host</h3>
-<div class="attribute-type-info">&lt;string&gt;</div>
-<div class="attribute-flags">frequently used</div>
-</div>
-<div class="attribute-body">
-
-The hostname or IP address of the local listener.  Clients
-at this site use the listener host and port to
-establish connections to the remote service.
-
-<table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -194,6 +194,7 @@ The listener type.
 <div class="attribute-heading">
 <h3 id="option-namespace">--namespace</h3>
 <div class="attribute-type-info">(-n) &lt;string&gt;</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 
@@ -208,6 +209,7 @@ Set the namespace.
 <div class="attribute-heading">
 <h3 id="option-context">--context</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 
@@ -222,6 +224,7 @@ Set the kubeconfig context.
 <div class="attribute-heading">
 <h3 id="option-kubeconfig">--kubeconfig</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 
@@ -236,6 +239,7 @@ Set the path to the kubeconfig file.
 <div class="attribute-heading">
 <h3 id="option-platform">--platform</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 
@@ -255,6 +259,7 @@ Set the Skupper platform.
 <div class="attribute-heading">
 <h3 id="option-help">--help</h3>
 <div class="attribute-type-info">(-h) boolean</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 

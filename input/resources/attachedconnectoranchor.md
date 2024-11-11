@@ -70,18 +70,6 @@ kind: AttachedConnectorAnchor
 
 ## Status properties
 
-<div class="attribute folded">
-<div class="attribute-heading">
-<h3 id="status-matchinglistenercount">matchingListenerCount</h3>
-<div class="attribute-type-info">integer</div>
-</div>
-<div class="attribute-body">
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
 <div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-status">status</h3>
@@ -102,6 +90,18 @@ The current state of the resource.
 <h3 id="status-message">message</h3>
 <div class="attribute-type-info">None</div>
 <div class="attribute-flags">frequently used</div>
+</div>
+<div class="attribute-body">
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="status-matchinglistenercount">matchingListenerCount</h3>
+<div class="attribute-type-info">integer</div>
 </div>
 <div class="attribute-body">
 

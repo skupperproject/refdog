@@ -117,8 +117,10 @@ def generate_resource(resource):
     append("## Spec properties")
     append()
 
-    for prop in resource.spec_properties:
-        generate_property(prop, append)
+    for group in ("required", "frequently-used", None, "advanced", "global"):
+        for prop in resource.spec_properties:
+            if prop.group == group:
+                generate_property(prop, append)
 
     append("</section>")
     append()
@@ -127,8 +129,10 @@ def generate_resource(resource):
     append("## Status properties")
     append()
 
-    for prop in resource.status_properties:
-        generate_property(prop, append)
+    for group in ("required", "frequently-used", None, "advanced", "global"):
+        for prop in resource.status_properties:
+            if prop.group == group:
+                generate_property(prop, append)
 
     append("</section>")
     append()
@@ -162,16 +166,10 @@ def generate_property(prop, append):
     else:
         type_info = prop.type
 
-    if prop.required and prop.default is None:
-        flags.append("required")
+    if prop.group:
+        flags.append(prop.group.replace("-", " "))
 
-    if prop.frequently_used:
-        flags.append("frequently used")
-
-    if prop.advanced:
-        classes.append("folded")
-        flags.append("advanced")
-    elif not flags:
+    if prop.group not in ("required", "frequently-used"):
         classes.append("folded")
 
     append(f"<div class=\"{' '.join(classes)}\">")

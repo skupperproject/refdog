@@ -55,6 +55,7 @@ Debug dump file generated at /home/fritz/dump.tar.gz.
 <div class="attribute-heading">
 <h3 id="option-namespace">--namespace</h3>
 <div class="attribute-type-info">(-n) &lt;string&gt;</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 
@@ -69,6 +70,7 @@ Set the namespace.
 <div class="attribute-heading">
 <h3 id="option-context">--context</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 
@@ -83,6 +85,7 @@ Set the kubeconfig context.
 <div class="attribute-heading">
 <h3 id="option-kubeconfig">--kubeconfig</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 
@@ -97,6 +100,7 @@ Set the path to the kubeconfig file.
 <div class="attribute-heading">
 <h3 id="option-platform">--platform</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 
@@ -116,6 +120,7 @@ Set the Skupper platform.
 <div class="attribute-heading">
 <h3 id="option-help">--help</h3>
 <div class="attribute-type-info">(-h) boolean</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 

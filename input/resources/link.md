@@ -68,6 +68,19 @@ The namespace of the resource.
 
 ## Spec properties
 
+<div class="attribute">
+<div class="attribute-heading">
+<h3 id="spec-endpoints">endpoints</h3>
+<div class="attribute-type-info">array</div>
+<div class="attribute-flags">required</div>
+</div>
+<div class="attribute-body">
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
 <div class="attribute folded">
 <div class="attribute-heading">
 <h3 id="spec-tlscredentials">tlsCredentials</h3>
@@ -102,19 +115,6 @@ the link.
 </div>
 </div>
 
-<div class="attribute">
-<div class="attribute-heading">
-<h3 id="spec-endpoints">endpoints</h3>
-<div class="attribute-type-info">array</div>
-<div class="attribute-flags">required</div>
-</div>
-<div class="attribute-body">
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
 <div class="attribute folded">
 <div class="attribute-heading">
 <h3 id="spec-settings">settings</h3>
@@ -136,30 +136,6 @@ Additional settings.
 
 ## Status properties
 
-<div class="attribute folded">
-<div class="attribute-heading">
-<h3 id="status-remotesiteid">remoteSiteId</h3>
-<div class="attribute-type-info">string</div>
-</div>
-<div class="attribute-body">
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-<div class="attribute folded">
-<div class="attribute-heading">
-<h3 id="status-remotesitename">remoteSiteName</h3>
-<div class="attribute-type-info">string</div>
-</div>
-<div class="attribute-body">
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
 <div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-status">status</h3>
@@ -180,6 +156,30 @@ The current state of the resource.
 <h3 id="status-message">message</h3>
 <div class="attribute-type-info">string</div>
 <div class="attribute-flags">frequently used</div>
+</div>
+<div class="attribute-body">
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="status-remotesiteid">remoteSiteId</h3>
+<div class="attribute-type-info">string</div>
+</div>
+<div class="attribute-body">
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="status-remotesitename">remoteSiteName</h3>
+<div class="attribute-type-info">string</div>
 </div>
 <div class="attribute-body">
 

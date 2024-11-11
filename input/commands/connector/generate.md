@@ -83,6 +83,45 @@ The port on the target workload to forward traffic to.
 </div>
 </div>
 
+<div class="attribute">
+<div class="attribute-heading">
+<h3 id="option-routing-key">--routing-key</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">required</div>
+</div>
+<div class="attribute-body">
+
+The identifier used to route traffic from listeners to
+connectors.  To expose a local workload to a remote
+site, the remote listener and the local connector must
+have matching routing keys.
+
+<table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
+<div class="attribute">
+<div class="attribute-heading">
+<h3 id="option-selector">--selector</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">frequently used</div>
+</div>
+<div class="attribute-body">
+
+A Kubernetes label selector for specifying target server
+pods.
+
+On Kubernetes, you usually want to use this.  As an
+alternative, you can use `host`.
+
+<table class="fields"><tr><th>Default</th><td><p><code>app=[value-of-name]</code></p>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
 <div class="attribute folded">
 <div class="attribute-heading">
 <h3 id="option-output">--output</h3>
@@ -96,24 +135,6 @@ Select the output format.
 </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
 </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
 </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-<div class="attribute folded">
-<div class="attribute-heading">
-<h3 id="option-routing-key">--routing-key</h3>
-<div class="attribute-type-info">&lt;string&gt;</div>
-</div>
-<div class="attribute-body">
-
-The identifier used to route traffic from listeners to
-connectors.  To expose a local workload to a remote
-site, the remote listener and the local connector must
-have matching routing keys.
-
-<table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -136,21 +157,6 @@ server.
 
 <div class="attribute folded">
 <div class="attribute-heading">
-<h3 id="option-type">--type</h3>
-<div class="attribute-type-info">&lt;string&gt;</div>
-</div>
-<div class="attribute-body">
-
-The connector type.
-
-<table class="fields"><tr><th>Default</th><td><p><code>tcp</code></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-<div class="attribute folded">
-<div class="attribute-heading">
 <h3 id="option-tls-credentials">--tls-credentials</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
 </div>
@@ -166,25 +172,6 @@ This option is used when setting up router-to-server TLS
 encryption.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-<div class="attribute folded">
-<div class="attribute-heading">
-<h3 id="option-selector">--selector</h3>
-<div class="attribute-type-info">&lt;string&gt;</div>
-</div>
-<div class="attribute-body">
-
-A Kubernetes label selector for specifying target server
-pods.
-
-On Kubernetes, you usually want to use this.  As an
-alternative, you can use `host`.
-
-<table class="fields"><tr><th>Default</th><td><p><code>app=[value-of-name]</code></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -224,8 +211,25 @@ state.
 
 <div class="attribute folded">
 <div class="attribute-heading">
+<h3 id="option-type">--type</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">advanced</div>
+</div>
+<div class="attribute-body">
+
+The connector type.
+
+<table class="fields"><tr><th>Default</th><td><p><code>tcp</code></p>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
 <h3 id="option-platform">--platform</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 
@@ -245,6 +249,7 @@ Set the Skupper platform.
 <div class="attribute-heading">
 <h3 id="option-help">--help</h3>
 <div class="attribute-type-info">(-h) boolean</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 

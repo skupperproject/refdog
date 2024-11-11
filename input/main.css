@@ -383,12 +383,12 @@ div.attribute > div.attribute-heading > div.attribute-flags {
     font-style: italic;
 }
 
-div.attribute > div.attribute-heading.selected {
-    background-color: var(--selected-item-background-color);
-}
-
 div.attribute > div.attribute-body {
     margin-top: 1em;
+}
+
+div.attribute.selected > div.attribute-heading {
+    background-color: var(--selected-item-background-color);
 }
 
 div.attribute.folded > div.attribute-heading > h3::before {

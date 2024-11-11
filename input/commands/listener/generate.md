@@ -72,7 +72,7 @@ The name of the resource to be generated.
 <div class="attribute-heading">
 <h3 id="option-port">&lt;port&gt;</h3>
 <div class="attribute-type-info">integer</div>
-<div class="attribute-flags">required, frequently used</div>
+<div class="attribute-flags">required</div>
 </div>
 <div class="attribute-body">
 
@@ -85,28 +85,11 @@ the remote service.
 </div>
 </div>
 
-<div class="attribute folded">
-<div class="attribute-heading">
-<h3 id="option-output">--output</h3>
-<div class="attribute-type-info">(-o) &lt;string&gt;</div>
-</div>
-<div class="attribute-body">
-
-Select the output format.
-
-<table class="fields"><tr><th>Default</th><td><p><code>yaml</code></p>
-</td><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
-</td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
-</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
 <div class="attribute">
 <div class="attribute-heading">
 <h3 id="option-routing-key">--routing-key</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
-<div class="attribute-flags">frequently used</div>
+<div class="attribute-flags">required</div>
 </div>
 <div class="attribute-body">
 
@@ -125,7 +108,7 @@ must have matching routing keys.
 <div class="attribute-heading">
 <h3 id="option-host">--host</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
-<div class="attribute-flags">frequently used</div>
+<div class="attribute-flags">required</div>
 </div>
 <div class="attribute-body">
 
@@ -135,6 +118,23 @@ establish connections to the remote service.
 
 <table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
 </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-output">--output</h3>
+<div class="attribute-type-info">(-o) &lt;string&gt;</div>
+</div>
+<div class="attribute-body">
+
+Select the output format.
+
+<table class="fields"><tr><th>Default</th><td><p><code>yaml</code></p>
+</td><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
+</td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
+</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -181,6 +181,7 @@ The listener type.
 <div class="attribute-heading">
 <h3 id="option-platform">--platform</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 
@@ -200,6 +201,7 @@ Set the Skupper platform.
 <div class="attribute-heading">
 <h3 id="option-help">--help</h3>
 <div class="attribute-type-info">(-h) boolean</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 

@@ -122,26 +122,6 @@ the sites must have link access enabled.
 
 <div class="attribute folded">
 <div class="attribute-heading">
-<h3 id="spec-edge">edge</h3>
-<div class="attribute-type-info">boolean</div>
-<div class="attribute-flags">advanced</div>
-</div>
-<div class="attribute-body">
-
-Configure the site to operate in edge mode.  Edge sites
-cannot accept links from remote sites.
-
-Edge mode can help you scale your network to large numbers
-of sites.  However, for networks with 16 or fewer sites,
-there is little benefit.
-
-<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Advanced deployment options</a></td></table>
-
-</div>
-</div>
-
-<div class="attribute folded">
-<div class="attribute-heading">
 <h3 id="spec-ha">ha</h3>
 <div class="attribute-type-info">boolean</div>
 </div>
@@ -156,6 +136,26 @@ availability.  Enabling HA goes further and serves to
 reduce the window of downtime caused by restarts.
 
 <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td><tr><th>See also</th><td><a href="">Advanced deployment options</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="spec-edge">edge</h3>
+<div class="attribute-type-info">boolean</div>
+<div class="attribute-flags">advanced</div>
+</div>
+<div class="attribute-body">
+
+Configure the site to operate in edge mode.  Edge sites
+cannot accept links from remote sites.
+
+Edge mode can help you scale your network to large numbers
+of sites.  However, for networks with 16 or fewer sites,
+there is little benefit.
+
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Advanced deployment options</a></td></table>
 
 </div>
 </div>

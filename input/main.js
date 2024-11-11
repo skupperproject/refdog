@@ -116,7 +116,8 @@ window.addEventListener("load", () => {
                 }
             }
 
-	    $(currHash).parentElement.classList.add("selected");
+	    $(currHash).parentElement.parentElement.classList.add("selected");
+	    $(currHash).parentElement.parentElement.classList.remove("folded");
 	} else {
             const link = tocLinks.$("a");
 

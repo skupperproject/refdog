@@ -63,10 +63,11 @@ displayed in the console and CLI output.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="option-enable-link-access">--enable-link-access</h3>
 <div class="attribute-type-info">boolean</div>
+<div class="attribute-flags">frequently used</div>
 </div>
 <div class="attribute-body">
 
@@ -97,22 +98,6 @@ the sites must have link access enabled.
 </td></tr><tr><th><code>route</code></th><td><p>Use an OpenShift route.  <em>OpenShift only.</em></p>
 </td></tr><tr><th><code>loadbalancer</code></th><td><p>Use a Kubernetes load balancer.  <em>Kubernetes only.</em></p>
 </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes</td></table>
-
-</div>
-</div>
-
-<div class="attribute folded">
-<div class="attribute-heading">
-<h3 id="option-service-account">--service-account</h3>
-<div class="attribute-type-info">&lt;string&gt;</div>
-</div>
-<div class="attribute-body">
-
-The name of the Kubernetes service account under which to
-run the Skupper controller.
-
-<table class="fields"><tr><th>Default</th><td><p><code>skupper-router</code></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -153,8 +138,26 @@ period of time.
 
 <div class="attribute folded">
 <div class="attribute-heading">
+<h3 id="option-service-account">--service-account</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">advanced</div>
+</div>
+<div class="attribute-body">
+
+The name of the Kubernetes service account under which to
+run the Skupper controller.
+
+<table class="fields"><tr><th>Default</th><td><p><code>skupper-router</code></p>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
 <h3 id="option-namespace">--namespace</h3>
 <div class="attribute-type-info">(-n) &lt;string&gt;</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 
@@ -169,6 +172,7 @@ Set the namespace.
 <div class="attribute-heading">
 <h3 id="option-context">--context</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 
@@ -183,6 +187,7 @@ Set the kubeconfig context.
 <div class="attribute-heading">
 <h3 id="option-kubeconfig">--kubeconfig</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 
@@ -197,6 +202,7 @@ Set the path to the kubeconfig file.
 <div class="attribute-heading">
 <h3 id="option-platform">--platform</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 
@@ -216,6 +222,7 @@ Set the Skupper platform.
 <div class="attribute-heading">
 <h3 id="option-help">--help</h3>
 <div class="attribute-type-info">(-h) boolean</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 

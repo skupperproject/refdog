@@ -138,6 +138,7 @@ options:
         description: Produce YAML output
   site/enable_link_access:
     name: enable-link-access
+    group: frequently-used
     type: boolean
     description: |
       Allow access for incoming links from remote sites.
@@ -149,6 +150,7 @@ options:
   site/link_access_type:
     name: link-access-type
     property: linkAccess
+    group: null
     platforms: [Kubernetes]
     default: default
     choices:
@@ -208,17 +210,14 @@ options:
   listener/port:
     name: port
     property: port
-    frequently_used: true
     positional: true
   listener/routing_key:
     name: routing-key
     property: routingKey
-    frequently_used: true
     default: _Value of name_
   listener/host:
     name: host
     property: host
-    frequently_used: true
     default: _Value of name_
   listener/tls_credentials:
     name: tls-credentials
@@ -226,9 +225,9 @@ options:
   listener/type:
     name: type
     property: type
-    advanced: true
   context/namespace:
     name: namespace
+    group: global
     type: string
     short_option: n
     description: |
@@ -238,6 +237,7 @@ options:
         url: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
   context/context:
     name: context
+    group: global
     type: string
     description: |
       Set the kubeconfig context.
@@ -247,6 +247,7 @@ options:
         url: https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/
   context/kubeconfig:
     name: kubeconfig
+    group: global
     type: string
     description: |
       Set the path to the kubeconfig file.
@@ -256,6 +257,7 @@ options:
         url: https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/
   global/platform:
     name: platform
+    group: global
     type: string
     default: kubernetes
     choices:
@@ -271,6 +273,7 @@ options:
       Set the Skupper platform.
   global/help:
     name: help
+    group: global
     type: boolean
     short_option: h
     description: |

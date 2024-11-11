@@ -44,21 +44,6 @@ Link "west-6bfn6" is ready.
 
 ## Options
 
-<div class="attribute folded">
-<div class="attribute-heading">
-<h3 id="option-cost">--cost</h3>
-<div class="attribute-type-info">&lt;integer&gt;</div>
-</div>
-<div class="attribute-body">
-
-The configured routing cost of sending traffic over
-the link.
-
-<table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
 <div class="attribute">
 <div class="attribute-heading">
 <h3 id="option-name">&lt;name&gt;</h3>
@@ -70,6 +55,21 @@ the link.
 The name of the resource to be updated.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="option-cost">--cost</h3>
+<div class="attribute-type-info">&lt;integer&gt;</div>
+</div>
+<div class="attribute-body">
+
+The configured routing cost of sending traffic over
+the link.
+
+<table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -112,6 +112,7 @@ period of time.
 <div class="attribute-heading">
 <h3 id="option-namespace">--namespace</h3>
 <div class="attribute-type-info">(-n) &lt;string&gt;</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 
@@ -126,6 +127,7 @@ Set the namespace.
 <div class="attribute-heading">
 <h3 id="option-context">--context</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 
@@ -140,6 +142,7 @@ Set the kubeconfig context.
 <div class="attribute-heading">
 <h3 id="option-kubeconfig">--kubeconfig</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 
@@ -154,6 +157,7 @@ Set the path to the kubeconfig file.
 <div class="attribute-heading">
 <h3 id="option-platform">--platform</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 
@@ -173,6 +177,7 @@ Set the Skupper platform.
 <div class="attribute-heading">
 <h3 id="option-help">--help</h3>
 <div class="attribute-type-info">(-h) boolean</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 

@@ -196,24 +196,6 @@ Additional settings.
 
 ## Status properties
 
-<div class="attribute folded">
-<div class="attribute-heading">
-<h3 id="status-matchingconnectorcount">matchingConnectorCount</h3>
-<div class="attribute-type-info">integer</div>
-</div>
-<div class="attribute-body">
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-<section class="notes">
-
-This one has "count" but other counter fields do not.
-
-</section>
-
-</div>
-</div>
-
 <div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-status">status</h3>
@@ -238,6 +220,24 @@ The current state of the resource.
 <div class="attribute-body">
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="status-matchingconnectorcount">matchingConnectorCount</h3>
+<div class="attribute-type-info">integer</div>
+</div>
+<div class="attribute-body">
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+<section class="notes">
+
+This one has "count" but other counter fields do not.
+
+</section>
 
 </div>
 </div>

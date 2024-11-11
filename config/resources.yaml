@@ -20,18 +20,18 @@ properties:
         url: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
   settings:
     name: settings
-    advanced: true
+    group: advanced
     type: object
     description: |
       Additional settings.
   status/status:
     name: status
-    frequently_used: true
+    group: frequently-used
     description: |
       The current state of the resource.
   status/message:
     name: message
-    frequently_used: true
+    group: frequently-used
   status/conditions:
     name: conditions
     platforms: [Kubernetes]
@@ -75,7 +75,7 @@ resources:
       include_properties: [settings]
       properties:
         - name: linkAccess
-          frequently_used: true
+          group: frequently-used
           default: none
           description: |
             Configure external access for links from remote sites.
@@ -103,7 +103,7 @@ resources:
             - name: Kubernetes load balancer services
               url: https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer
         - name: edge
-          advanced: true
+          group: advanced
           type: boolean
           description: |
             Configure the site to operate in edge mode.  Edge sites
@@ -129,7 +129,7 @@ resources:
             - name: Advanced deployment options
               url: ""
         - name: serviceAccount
-          advanced: true
+          group: advanced
           default: skupper-router
           platforms: [Kubernetes]
           description: |
@@ -141,7 +141,7 @@ resources:
             - name: Kubernetes service accounts
               url: https://kubernetes.io/docs/concepts/security/service-accounts/
         - name: defaultIssuer
-          advanced: true
+          group: advanced
           default: skupper-site-ca
           platforms: [Kubernetes]
           description: |
@@ -362,7 +362,7 @@ resources:
             - name: Site-scoped TLS
               url: "" # XXX
         - name: type
-          advanced: true
+          group: advanced
           default: tcp
           description: |
             The listener type.
@@ -408,7 +408,7 @@ resources:
           description: |
             The port on the target workload to forward traffic to.
         - name: selector
-          frequently_used: true
+          group: frequently-used
           description: |
             A Kubernetes label selector for specifying target server
             pods.
@@ -448,6 +448,7 @@ resources:
             - name: Kubernetes pod lifecycle
               url: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
         - name: type
+          group: advanced
           default: tcp
           description: |
             The connector type.

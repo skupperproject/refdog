@@ -161,8 +161,10 @@ def generate_command(command):
             append("## Options")
             append()
 
-            for option in command.options:
-                generate_option(option, append)
+            for group in ("positional", "required", "frequently-used", None, "advanced", "global"):
+                for option in command.options:
+                    if option.group == group:
+                        generate_option(option, append)
 
             append("</section>")
             append()
@@ -250,16 +252,16 @@ def generate_option(option, append):
     if option.format:
         type_info += f" ({option.format})"
 
-    if option.required and option.default is None:
-        flags.append("required")
+    if option.group:
+        if option.group == "positional":
+            if option.required:
+                flags.append("required")
+            else:
+                flags.append("optional")
+        else:
+            flags.append(option.group.replace("-", " "))
 
-    if option.frequently_used:
-        flags.append("frequently used")
-
-    if option.advanced:
-        classes.append("folded")
-        flags.append("advanced")
-    elif not flags:
+    if option.group not in ("positional", "required", "frequently-used"):
         classes.append("folded")
 
     append(f"<div class=\"{' '.join(classes)}\">")
@@ -519,6 +521,17 @@ class Option(ModelObjectAttribute):
     def positional(self):
         default = self.required and self.default is None
         return self.data.get("positional", default)
+
+    @property
+    def group(self):
+        if self.positional:
+            return "positional"
+
+        if self.required:
+            return "required"
+
+        default = self.property_.group if self.property_ else None
+        return self.data.get("group", default)
 
     @property
     def description(self):

@@ -66,6 +66,23 @@ The name of the resource to be generated.
 </div>
 </div>
 
+<div class="attribute">
+<div class="attribute-heading">
+<h3 id="option-enable-link-access">--enable-link-access</h3>
+<div class="attribute-type-info">boolean</div>
+<div class="attribute-flags">frequently used</div>
+</div>
+<div class="attribute-body">
+
+Allow access for incoming links from remote sites.
+
+<!-- XXX reference link access type -->
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/link-access.html">Link access concept</a></td></table>
+
+</div>
+</div>
+
 <div class="attribute folded">
 <div class="attribute-heading">
 <h3 id="option-output">--output</h3>
@@ -79,22 +96,6 @@ Select the output format.
 </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
 </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
 </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-<div class="attribute folded">
-<div class="attribute-heading">
-<h3 id="option-enable-link-access">--enable-link-access</h3>
-<div class="attribute-type-info">boolean</div>
-</div>
-<div class="attribute-body">
-
-Allow access for incoming links from remote sites.
-
-<!-- XXX reference link access type -->
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/link-access.html">Link access concept</a></td></table>
 
 </div>
 </div>
@@ -125,6 +126,7 @@ the sites must have link access enabled.
 <div class="attribute-heading">
 <h3 id="option-service-account">--service-account</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">advanced</div>
 </div>
 <div class="attribute-body">
 
@@ -141,6 +143,7 @@ run the Skupper controller.
 <div class="attribute-heading">
 <h3 id="option-platform">--platform</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 
@@ -160,6 +163,7 @@ Set the Skupper platform.
 <div class="attribute-heading">
 <h3 id="option-help">--help</h3>
 <div class="attribute-type-info">(-h) boolean</div>
+<div class="attribute-flags">global</div>
 </div>
 <div class="attribute-body">
 
