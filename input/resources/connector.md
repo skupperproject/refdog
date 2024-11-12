@@ -140,6 +140,30 @@ you can use `host`.
 
 <div class="attribute folded">
 <div class="attribute-heading">
+<h3 id="spec-tlscredentials">tlsCredentials</h3>
+<div class="attribute-type-info">string</div>
+</div>
+<div class="attribute-body">
+
+A named bundle of TLS certificates and keys used for secure
+application-to-router communication.  The bundle contains the
+trusted server certificate.  It optionally includes a client
+certificate and key for mutual TLS.
+
+On Kubernetes, the value is the name of a Secret in the current
+namespace.
+
+
+This option is used when setting up router-to-server TLS
+authentication and encryption.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
 <h3 id="spec-host">host</h3>
 <div class="attribute-type-info">string</div>
 </div>
@@ -170,35 +194,6 @@ state.
 
 <div class="attribute folded">
 <div class="attribute-heading">
-<h3 id="spec-tlscredentials">tlsCredentials</h3>
-<div class="attribute-type-info">string</div>
-</div>
-<div class="attribute-body">
-
-A named bundle of TLS certificates and keys used for secure
-application-to-router communication.  The bundle contains the
-trusted server certificate.  It optionally includes a client
-certificate and key for mutual TLS.
-
-On Kubernetes, the value is the name of a Secret in the current
-namespace.
-
-This option is used when setting up client-to-router and
-router-to-server TLS authentication and encryption.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a></td></table>
-
-<section class="notes">
-
-Is this deliberately optional?
-
-</section>
-
-</div>
-</div>
-
-<div class="attribute folded">
-<div class="attribute-heading">
 <h3 id="spec-useclientcert">useClientCert</h3>
 <div class="attribute-type-info">boolean</div>
 </div>
@@ -222,13 +217,7 @@ mutual TLS.
 If true, require that the hostname of the server connected to
 matches the hostname in the server's certificate.
 
-<table class="fields"><tr><th>Default</th><td>true</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-<section class="notes">
-
-Is this enabled by default?
-
-</section>
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>

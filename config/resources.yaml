@@ -110,16 +110,11 @@ properties:
 
       On Kubernetes, the value is the name of a Secret in the current
       namespace.
-
-      This option is used when setting up client-to-router and
-      router-to-server TLS authentication and encryption.
     links:
       - name: Site-scoped TLS
         url: "" # XXX
       - name: Kubernetes TLS secrets
         url: https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
-    notes: |
-      Is this deliberately optional?
   tls/useClientCert:
     name: useClientCert
     type: boolean
@@ -132,12 +127,9 @@ properties:
   tls/verifyHostname:
     name: verifyHostname
     type: boolean
-    default: true
     description: |
       If true, require that the hostname of the server connected to
       matches the hostname in the server's certificate.
-    notes: |
-      Is this enabled by default?
   endpoints:
     name: endpoints
     group: advanced
@@ -227,8 +219,9 @@ resources:
             The name of a Kubernetes secret containing the signing CA
             used to generate a certificate from a token.  A secret is
             generated if none is supplied.
-          notes: |
-            What is the word "default" indicating here?
+
+            This issuer is used by AccessGrant and RouterAccess if a
+            specific issuer is set.
         - name: edge
           group: advanced
           type: boolean
@@ -300,10 +293,6 @@ resources:
       include_properties: [settings]
       properties:
         - name: roles
-          notes: |
-            It seems like "ports" would be a more straightforward name
-            for this.  Each item has fields that subset the fields of
-            the items on securedaccess.spec.ports.
         - name: tlsCredentials
           description: |
             A named bundle of TLS certificates and keys used for
@@ -318,26 +307,15 @@ resources:
               url: ""
             - name: Kubernetes TLS secrets
               url: https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
-          notes: null
         - name: generateTlsCredentials
         - name: issuer
         - name: accessType
-          notes: |
-            Why does this one have the "access" qualifier, while
-            listener and connector "type" do not?
         - name: bindHost
         - name: subjectAlternativeNames
     status:
       include_properties: [status/*, endpoints]
       properties:
         - name: endpoints
-    notes: |
-      This is specifically router scoped.  It's a little more than
-      just link access (as discussed before).  It could, for example,
-      include access to the router management port.
-
-      But it doesn't cover anything like network-observer access (say,
-      to its Prometheous endpoints).  Is the scope right?
   - name: AccessGrant
     related_resources: [AccessToken]
     related_commands: [token/issue]
@@ -377,8 +355,8 @@ resources:
           description: |
             The name of a Kubernetes secret used to generate a
             certificate when redeeming a token for this grant.
-          notes: |
-            Does this fall back to site.defaultIssuer?
+
+            If not set, the defaultIssuer on Site is used.
     status:
       include_properties: [status/*]
       properties:
@@ -420,20 +398,10 @@ resources:
             The URL of the token redemption service at the remote
             site.
         - name: ca
+          required: false
           description: |
             The trusted server certificate of the token redemption
             service at the remote site.
-          notes: |
-            Why is this required?  Does it mean we don't allow trust
-            based on public CAs?  Note that tlsCredentials is optional
-            on link.
-
-            <!--
-            (Protest: "ca" annoys me because it's wrong.  You can also
-            trust an "end-entity" (leaf) certificate which does not
-            have the CA bit set.  The essential thing here is
-            trustedness, not CA-ness.)
-            -->
         - name: code
           description: |
             The secret code used to authenticate the token when
@@ -446,8 +414,6 @@ resources:
             - name: Load balancing
               url: ""
             # XXX ref link.cost
-          notes: |
-            I changed this from cost to linkCost.
     status:
       include_properties: [status/*]
       properties:
@@ -464,13 +430,10 @@ resources:
 
       Links are not usually created directly.  Instead, you
       typically use an access token to obtain a link.
-    notes: |
-      I have useClientCert and verifyHostname here, like the other TLS
-      cases.  Is that sensible?
     metadata:
       include_properties: [metadata/*]
     spec:
-      include_properties: [endpoints, tls/*, settings]
+      include_properties: [endpoints, settings]
       properties:
         - name: cost
           default: 1
@@ -530,6 +493,7 @@ resources:
       include_properties: [metadata/*]
     spec:
       include_properties: [tls/*, settings]
+      exclude_properties: [tls/useClientCert, tls/verifyHostname]
       properties:
         - name: routingKey
           description: |
@@ -550,6 +514,12 @@ resources:
             The port of the local listener.  Clients at this site use
             the listener host and port to establish connections to
             the remote service.
+        - name: tlsCredentials
+          description: |
+            @description@
+
+            This option is used when setting up client-to-router TLS
+            authentication and encryption.
         - name: type
           hidden: true
           group: advanced
@@ -591,6 +561,13 @@ resources:
       include_properties: [metadata/*]
     spec:
       include_properties: [connector/spec/*, tls/*, settings]
+      properties:
+        - name: tlsCredentials
+          description: |
+            @description@
+
+            This option is used when setting up router-to-server TLS
+            authentication and encryption.
     status:
       include_properties: [status/*, connector/status/*]
       properties:
@@ -617,6 +594,14 @@ resources:
           description: |
             The name of the namespace in which the site this connector
             should be attached to is defined.
+        - name: host
+        - name: includeNotReady
+        - name: tlsCredentials
+          description: |
+            @description@
+
+            This option is used when setting up router-to-server TLS
+            authentication and encryption.
     status:
       include_properties: [status/*, connector/status/*]
   - name: AttachedConnectorAnchor

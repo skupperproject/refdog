@@ -51,3 +51,21 @@
 ## Other stuff
 
 - The version command!
+
+## Hello World using the CLI
+
+Site West:
+
+~~~
+skupper site create west --enable-link-access
+skupper listener create backend 8080
+skupper token issue ~/west-token.yaml
+~~~
+
+Site East:
+
+~~~
+skupper site create east
+skupper connector create backend 8080
+skupper token redeem ~/west-token.yaml
+~~~

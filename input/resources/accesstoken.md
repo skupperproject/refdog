@@ -79,37 +79,6 @@ site.
 
 <div class="attribute">
 <div class="attribute-heading">
-<h3 id="spec-ca">ca</h3>
-<div class="attribute-type-info">string</div>
-<div class="attribute-flags">required</div>
-</div>
-<div class="attribute-body">
-
-The trusted server certificate of the token redemption
-service at the remote site.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-<section class="notes">
-
-Why is this required?  Does it mean we don't allow trust
-based on public CAs?  Note that tlsCredentials is optional
-on link.
-
-<!--
-(Protest: "ca" annoys me because it's wrong.  You can also
-trust an "end-entity" (leaf) certificate which does not
-have the CA bit set.  The essential thing here is
-trustedness, not CA-ness.)
--->
-
-</section>
-
-</div>
-</div>
-
-<div class="attribute">
-<div class="attribute-heading">
 <h3 id="spec-code">code</h3>
 <div class="attribute-type-info">string</div>
 <div class="attribute-flags">required</div>
@@ -126,6 +95,21 @@ submitted for redemption.
 
 <div class="attribute folded">
 <div class="attribute-heading">
+<h3 id="spec-ca">ca</h3>
+<div class="attribute-type-info">string</div>
+</div>
+<div class="attribute-body">
+
+The trusted server certificate of the token redemption
+service at the remote site.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
 <h3 id="spec-linkcost">linkCost</h3>
 <div class="attribute-type-info">None</div>
 </div>
@@ -134,12 +118,6 @@ submitted for redemption.
 The link cost to use when creating the link.
 
 <table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Load balancing</a></td></table>
-
-<section class="notes">
-
-I changed this from cost to linkCost.
-
-</section>
 
 </div>
 </div>

@@ -36,14 +36,6 @@ kind: RouterAccess
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
-<section class="notes">
-
-It seems like "ports" would be a more straightforward name
-for this.  Each item has fields that subset the fields of
-the items on securedaccess.spec.ports.
-
-</section>
-
 </div>
 </div>
 
@@ -100,13 +92,6 @@ current namespace.
 <div class="attribute-body">
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-<section class="notes">
-
-Why does this one have the "access" qualifier, while
-listener and connector "type" do not?
-
-</section>
 
 </div>
 </div>
@@ -221,18 +206,5 @@ resource.
 
 </div>
 </div>
-
-</section>
-
-<section class="notes">
-
-## Notes
-
-This is specifically router scoped.  It's a little more than
-just link access (as discussed before).  It could, for example,
-include access to the router management port.
-
-But it doesn't cover anything like network-observer access (say,
-to its Prometheous endpoints).  Is the scope right?
 
 </section>

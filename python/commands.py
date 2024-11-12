@@ -25,9 +25,8 @@ def generate(model):
     append()
     append("# Skupper commands")
     append()
-    append("<a href=\"overview.html\">Overview</a>")
+    append("[Overview](overview.html)")
     append()
-
 
     for group in model.groups:
         append(f"#### {group.name}")

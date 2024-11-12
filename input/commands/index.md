@@ -8,7 +8,7 @@ links:
 
 # Skupper commands
 
-<a href="overview.html">Overview</a>
+[Overview](overview.html)
 
 #### Site configuration
 

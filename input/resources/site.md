@@ -152,14 +152,11 @@ The name of a Kubernetes secret containing the signing CA
 used to generate a certificate from a token.  A secret is
 generated if none is supplied.
 
+This issuer is used by AccessGrant and RouterAccess if a
+specific issuer is set.
+
 <table class="fields"><tr><th>Default</th><td><p><code>skupper-site-ca</code></p>
 </td><tr><th>Platforms</th><td>Kubernetes</td></table>
-
-<section class="notes">
-
-What is the word "default" indicating here?
-
-</section>
 
 </div>
 </div>

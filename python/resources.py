@@ -25,12 +25,7 @@ def generate(model):
     append()
     append("# Skupper resources")
     append()
-
-    append("## Key resources")
-    append()
-    append("")
-    append()
-    append("## All resources")
+    append("[Overview](overview.html)")
     append()
 
     for group in model.groups:

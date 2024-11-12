@@ -126,13 +126,9 @@ generated.
 The name of a Kubernetes secret used to generate a
 certificate when redeeming a token for this grant.
 
+If not set, the defaultIssuer on Site is used.
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-<section class="notes">
-
-Does this fall back to site.defaultIssuer?
-
-</section>
 
 </div>
 </div>

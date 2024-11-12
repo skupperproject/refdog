@@ -116,48 +116,6 @@ current namespace.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Custom certificates</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a></td></table>
 
-<section class="notes">
-
-Is this deliberately optional?
-
-</section>
-
-</div>
-</div>
-
-<div class="attribute folded">
-<div class="attribute-heading">
-<h3 id="spec-useclientcert">useClientCert</h3>
-<div class="attribute-type-info">boolean</div>
-</div>
-<div class="attribute-body">
-
-Send the client certificate when connecting in order to enable
-mutual TLS.
-
-<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a></td></table>
-
-</div>
-</div>
-
-<div class="attribute folded">
-<div class="attribute-heading">
-<h3 id="spec-verifyhostname">verifyHostname</h3>
-<div class="attribute-type-info">boolean</div>
-</div>
-<div class="attribute-body">
-
-If true, require that the hostname of the server connected to
-matches the hostname in the server's certificate.
-
-<table class="fields"><tr><th>Default</th><td>true</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-<section class="notes">
-
-Is this enabled by default?
-
-</section>
-
 </div>
 </div>
 
@@ -259,14 +217,5 @@ resource.
 
 </div>
 </div>
-
-</section>
-
-<section class="notes">
-
-## Notes
-
-I have useClientCert and verifyHostname here, like the other TLS
-cases.  Is that sensible?
 
 </section>
