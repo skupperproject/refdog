@@ -1,7 +1,7 @@
 ---
 body_class: object resource
 links:
-  - name: AttachedConnectorAnchor resource
+  - name: AttachedConnectorBinding resource
     url: /resources/attachedconnectoranchor.html
   - name: Connector resource
     url: /resources/connector.html
@@ -23,6 +23,39 @@ kind: AttachedConnector
 <section class="attributes">
 
 ## Metadata properties
+
+<div class="attribute">
+<div class="attribute-heading">
+<h3 id="metadata-name">name</h3>
+<div class="attribute-type-info">string</div>
+<div class="attribute-flags">required</div>
+</div>
+<div class="attribute-body">
+
+The name of the resource.
+
+
+The name must be the same as that of the associated
+AttachedConnectorBinding resource in the site namespace.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="metadata-namespace">namespace</h3>
+<div class="attribute-type-info">string</div>
+</div>
+<div class="attribute-body">
+
+The namespace of the resource.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
+
+</div>
+</div>
 
 </section>
 

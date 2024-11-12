@@ -600,6 +600,15 @@ resources:
     related_resources: [AttachedConnectorAnchor, Connector]
     description: |
       A connector in a peer namespace.
+    metadata:
+      include_properties: [metadata/*]
+      properties:
+        - name: name
+          description: |
+            @description@
+
+            The name must be the same as that of the associated
+            AttachedConnectorBinding resource in the site namespace.
     spec:
       include_properties: [connector/spec/*, tls/*, settings]
       exclude_properties: [connector/spec/routingKey]
@@ -611,10 +620,20 @@ resources:
     status:
       include_properties: [status/*, connector/status/*]
   - name: AttachedConnectorAnchor
+    rename: AttachedConnectorBinding
     platforms: [Kubernetes]
     related_resources: [AttachedConnector]
     description: |
       A binding to an attached connector in a peer namespace.
+    metadata:
+      include_properties: [metadata/*]
+      properties:
+        - name: name
+          description: |
+            @description@
+
+            The name must be the same as that of the associated
+            AttachedConnector resource in the connector namespace.
     spec:
       include_properties: [connector/spec/routingKey, settings]
       properties:

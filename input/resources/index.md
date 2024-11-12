@@ -37,6 +37,6 @@ links:
 </td></tr>
 <tr><th><a href="{{site_prefix}}/resources/attachedconnector.html">AttachedConnector</a></th><td><p>A connector in a peer namespace</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/resources/attachedconnectoranchor.html">AttachedConnectorAnchor</a></th><td><p>A binding to an attached connector in a peer namespace</p>
+<tr><th><a href="{{site_prefix}}/resources/attachedconnectoranchor.html">AttachedConnectorBinding</a></th><td><p>A binding to an attached connector in a peer namespace</p>
 </td></tr>
 </table>

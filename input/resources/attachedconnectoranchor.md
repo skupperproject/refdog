@@ -5,7 +5,7 @@ links:
     url: /resources/attachedconnector.html
 ---
 
-# AttachedConnectorAnchor resource
+# AttachedConnectorBinding resource
 
 <section>
 
@@ -13,7 +13,7 @@ A binding to an attached connector in a peer namespace.
 
 ~~~ yaml
 apiVersion: skupper.io/v2alpha1
-kind: AttachedConnectorAnchor
+kind: AttachedConnectorBinding
 ~~~
 
 </section>
@@ -21,6 +21,39 @@ kind: AttachedConnectorAnchor
 <section class="attributes">
 
 ## Metadata properties
+
+<div class="attribute">
+<div class="attribute-heading">
+<h3 id="metadata-name">name</h3>
+<div class="attribute-type-info">string</div>
+<div class="attribute-flags">required</div>
+</div>
+<div class="attribute-body">
+
+The name of the resource.
+
+
+The name must be the same as that of the associated
+AttachedConnector resource in the connector namespace.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="metadata-namespace">namespace</h3>
+<div class="attribute-type-info">string</div>
+</div>
+<div class="attribute-body">
+
+The namespace of the resource.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
+
+</div>
+</div>
 
 </section>
 
