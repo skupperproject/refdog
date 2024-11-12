@@ -148,12 +148,18 @@ reduce the window of downtime caused by restarts.
 </div>
 <div class="attribute-body">
 
-The name of the Kubernetes secret containing the signing
-certificate used to generate a certificate from a token.
-A secret is generated if none is supplied.
+The name of a Kubernetes secret containing the signing CA
+used to generate a certificate from a token.  A secret is
+generated if none is supplied.
 
 <table class="fields"><tr><th>Default</th><td><p><code>skupper-site-ca</code></p>
 </td><tr><th>Platforms</th><td>Kubernetes</td></table>
+
+<section class="notes">
+
+What is the word "default" indicating here?
+
+</section>
 
 </div>
 </div>
@@ -172,6 +178,8 @@ cannot accept links from remote sites.
 Edge mode can help you scale your network to large numbers
 of sites.  However, for networks with 16 or fewer sites,
 there is little benefit.
+
+Currently, edge sites cannot also have HA enabled.
 
 <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Advanced deployment options</a></td></table>
 
@@ -206,7 +214,11 @@ run the Skupper controller.
 Additional settings.
 
 
-- `routerDataConnections` - XXX.
+- `routerDataConnections` - Set the number of data
+  connections the router uses when linking to other
+  routers.<br/>
+  Default: *Computed based on the number of router worker
+  threads.  Minimum 2.*
 - `routerLogging` - Set the router logging level.<br/>
   Default: `info`.  Choices: `debug`, `info`, `warning`, `error`.
 
@@ -247,6 +259,8 @@ The current state of the resource.
 </div>
 <div class="attribute-body">
 
+A human-readable status message.
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
@@ -281,6 +295,9 @@ resource.
 <div class="attribute-flags">advanced</div>
 </div>
 <div class="attribute-body">
+
+The name of the Kubernetes secret containing the active
+default signing CA.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td></table>
 

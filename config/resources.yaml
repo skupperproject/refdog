@@ -35,6 +35,8 @@ properties:
   status/message:
     name: message
     group: frequently-used
+    description: |
+      A human-readable status message.
   status/conditions:
     name: conditions
     group: advanced
@@ -202,9 +204,11 @@ resources:
           default: skupper-site-ca
           platforms: [Kubernetes]
           description: |
-            The name of the Kubernetes secret containing the signing
-            certificate used to generate a certificate from a token.
-            A secret is generated if none is supplied.
+            The name of a Kubernetes secret containing the signing CA
+            used to generate a certificate from a token.  A secret is
+            generated if none is supplied.
+          notes: |
+            What is the word "default" indicating here?
         - name: edge
           group: advanced
           type: boolean
@@ -215,6 +219,8 @@ resources:
             Edge mode can help you scale your network to large numbers
             of sites.  However, for networks with 16 or fewer sites,
             there is little benefit.
+
+            Currently, edge sites cannot also have HA enabled.
           links:
             - name: Advanced deployment options
               url: ""
@@ -234,7 +240,11 @@ resources:
           description: |
             @description@
 
-            - `routerDataConnections` - XXX.
+            - `routerDataConnections` - Set the number of data
+              connections the router uses when linking to other
+              routers.<br/>
+              Default: *Computed based on the number of router worker
+              threads.  Minimum 2.*
             - `routerLogging` - Set the router logging level.<br/>
               Default: `info`.  Choices: `debug`, `info`, `warning`, `error`.
     status:
@@ -254,6 +264,9 @@ resources:
         - name: defaultIssuer
           group: advanced
           platforms: [Kubernetes]
+          description: |
+            The name of the Kubernetes secret containing the active
+            default signing CA.
         - name: endpoints
           group: advanced
         - name: network
@@ -272,7 +285,7 @@ resources:
     metadata:
       include_properties: [metadata/*]
     spec:
-      include_properties: [settings]
+      include_properties: [tls/*, settings]
       properties:
         - name: cost
           default: 1
@@ -298,7 +311,11 @@ resources:
       include_properties: [status/*]
       properties:
         - name: remoteSiteId
+          description: |
+            The unique ID of the site linked to.
         - name: remoteSiteName
+          description: |
+            The name of the site linked to.
   - name: AccessGrant
     related_resources: [AccessToken]
     related_commands: [token/issue]
@@ -334,25 +351,21 @@ resources:
             If not set, a value for the code field in the status is
             generated.
         - name: issuer
-          notes: |
-            What is this?
+          description: |
+            The name of a Kubernetes secret used to generate a
+            certificate when redeeming a token for this grant.
     status:
       include_properties: [status/*]
       properties:
         - name: redeemed
+          rename: redemptions
           description: |
             The number of times a token for this grant has been
             redeemed.
-          notes: |
-            Suggest "redemptions" instead, to match
-            "redemptionsAllowed" and avoid the impression that
-            it's a boolean.
         - name: expiration
+          rename: expirationTime
           description: |
             The point in time when the grant expires.
-          notes: |
-            Suggest "expirationTime" instead.  It seems to be the
-            most conventional name.
         - name: url
           description: |
             The URL of the token-redemption service for this grant.
@@ -389,12 +402,21 @@ resources:
           description: |
             The secret code used to authenticate the token when
             submitted for redemption.
+        - name: cost
+          default: 1
+          description: |
+            The link cost to use when creating the link.
+          links:
+            - name: Load balancing
+              url: ""
+            # XXX ref link.cost
     status:
       include_properties: [status/*]
       properties:
         - name: redeemed
           description: |
-            True if the token has been redeemed.
+            True if the token has been redeemed.  Once a token is
+            redeemed, it cannot be used again.
   - name: Listener
     related_resources: [Connector]
     description: |

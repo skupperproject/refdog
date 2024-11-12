@@ -111,6 +111,20 @@ submitted for redemption.
 
 <div class="attribute folded">
 <div class="attribute-heading">
+<h3 id="spec-cost">cost</h3>
+<div class="attribute-type-info">None</div>
+</div>
+<div class="attribute-body">
+
+The link cost to use when creating the link.
+
+<table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Load balancing</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
 <h3 id="spec-settings">settings</h3>
 <div class="attribute-type-info">object</div>
 <div class="attribute-flags">advanced</div>
@@ -156,6 +170,8 @@ The current state of the resource.
 </div>
 <div class="attribute-body">
 
+A human-readable status message.
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
@@ -168,7 +184,8 @@ The current state of the resource.
 </div>
 <div class="attribute-body">
 
-True if the token has been redeemed.
+True if the token has been redeemed.  Once a token is
+redeemed, it cannot be used again.
 
 <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 

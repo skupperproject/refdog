@@ -117,6 +117,33 @@ mutual TLS.
 
 <div class="attribute folded">
 <div class="attribute-heading">
+<h3 id="spec-useclientcert">useClientCert</h3>
+<div class="attribute-type-info">boolean</div>
+</div>
+<div class="attribute-body">
+
+Send the client certificate when connecting in order to enable
+mutual TLS.
+
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="spec-verifyhostname">verifyHostname</h3>
+<div class="attribute-type-info">boolean</div>
+</div>
+<div class="attribute-body">
+
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
 <h3 id="spec-settings">settings</h3>
 <div class="attribute-type-info">object</div>
 <div class="attribute-flags">advanced</div>
@@ -162,6 +189,8 @@ The current state of the resource.
 </div>
 <div class="attribute-body">
 
+A human-readable status message.
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
@@ -174,6 +203,8 @@ The current state of the resource.
 </div>
 <div class="attribute-body">
 
+The unique ID of the site linked to.
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
@@ -185,6 +216,8 @@ The current state of the resource.
 <div class="attribute-type-info">string</div>
 </div>
 <div class="attribute-body">
+
+The name of the site linked to.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 

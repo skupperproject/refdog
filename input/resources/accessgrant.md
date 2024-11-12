@@ -122,13 +122,10 @@ generated.
 </div>
 <div class="attribute-body">
 
+The name of a Kubernetes secret used to generate a
+certificate when redeeming a token for this grant.
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-<section class="notes">
-
-What is this?
-
-</section>
 
 </div>
 </div>
@@ -180,6 +177,8 @@ The current state of the resource.
 </div>
 <div class="attribute-body">
 
+A human-readable status message.
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
@@ -187,7 +186,7 @@ The current state of the resource.
 
 <div class="attribute folded">
 <div class="attribute-heading">
-<h3 id="status-redeemed">redeemed</h3>
+<h3 id="status-redemptions">redemptions</h3>
 <div class="attribute-type-info">integer</div>
 </div>
 <div class="attribute-body">
@@ -197,20 +196,12 @@ redeemed.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
-<section class="notes">
-
-Suggest "redemptions" instead, to match
-"redemptionsAllowed" and avoid the impression that
-it's a boolean.
-
-</section>
-
 </div>
 </div>
 
 <div class="attribute folded">
 <div class="attribute-heading">
-<h3 id="status-expiration">expiration</h3>
+<h3 id="status-expirationtime">expirationTime</h3>
 <div class="attribute-type-info">string (date-time)</div>
 </div>
 <div class="attribute-body">
@@ -218,13 +209,6 @@ it's a boolean.
 The point in time when the grant expires.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-<section class="notes">
-
-Suggest "expirationTime" instead.  It seems to be the
-most conventional name.
-
-</section>
 
 </div>
 </div>

@@ -263,6 +263,8 @@ The current state of the resource.
 </div>
 <div class="attribute-body">
 
+A human-readable status message.
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
