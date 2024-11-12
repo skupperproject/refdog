@@ -166,14 +166,14 @@ alternative to `selector` for specifying the target server.
 </div>
 <div class="attribute-body">
 
-The name of a Kubernetes secret containing the trusted server
-certificate (typically a CA).
+The name of a Kubernetes secret containing TLS credentials.  The
+secret contains the trusted server certificate (typically a CA).
 
 It can optionally include a client certificate and key for
 mutual TLS.
 
-This option is used when setting up router-to-server TLS
-encryption.
+This option is used when setting up client-to-router and
+router-to-server TLS encryption.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a></td></table>
 

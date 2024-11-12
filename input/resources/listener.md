@@ -144,15 +144,14 @@ the remote service.
 </div>
 <div class="attribute-body">
 
-The name of a Kubernetes secret containing TLS
-credentials.  The secret contains the trusted server
-certificate (typically a CA).
+The name of a Kubernetes secret containing TLS credentials.  The
+secret contains the trusted server certificate (typically a CA).
 
 It can optionally include a client certificate and key for
 mutual TLS.
 
-This option is used when setting up client-to-router TLS
-encryption.
+This option is used when setting up client-to-router and
+router-to-server TLS encryption.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a></td></table>
 
@@ -161,16 +160,27 @@ encryption.
 
 <div class="attribute folded">
 <div class="attribute-heading">
-<h3 id="spec-type">type</h3>
-<div class="attribute-type-info">string</div>
-<div class="attribute-flags">advanced</div>
+<h3 id="spec-useclientcert">useClientCert</h3>
+<div class="attribute-type-info">boolean</div>
 </div>
 <div class="attribute-body">
 
-The listener type.
+Send the client certificate when connecting in order to enable
+mutual TLS.
 
-<table class="fields"><tr><th>Default</th><td><p><code>tcp</code></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="spec-verifyhostname">verifyHostname</h3>
+<div class="attribute-type-info">boolean</div>
+</div>
+<div class="attribute-body">
+
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>

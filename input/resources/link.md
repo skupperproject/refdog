@@ -117,18 +117,6 @@ mutual TLS.
 
 <div class="attribute folded">
 <div class="attribute-heading">
-<h3 id="spec-useclientcert">useClientCert</h3>
-<div class="attribute-type-info">boolean</div>
-</div>
-<div class="attribute-body">
-
-<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-<div class="attribute folded">
-<div class="attribute-heading">
 <h3 id="spec-settings">settings</h3>
 <div class="attribute-type-info">object</div>
 <div class="attribute-flags">advanced</div>

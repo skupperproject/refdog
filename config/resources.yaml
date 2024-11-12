@@ -83,22 +83,9 @@ properties:
       If set, include server pods that are not in the ready
       state.
     platforms: [Kubernetes]
-  connector/spec/tlsCredentials:
-    name: tlsCredentials
-    description: |
-      The name of a Kubernetes secret containing the trusted server
-      certificate (typically a CA).
-
-      It can optionally include a client certificate and key for
-      mutual TLS.
-
-      This option is used when setting up router-to-server TLS
-      encryption.
-    links:
-      - name: Site-scoped TLS
-        url: "" # XXX
   connector/spec/type:
     name: type
+    hidden: true
     group: advanced
     default: tcp
     description: |
@@ -110,6 +97,32 @@ properties:
     name: selectedPods
     group: advanced
     type: array
+  tls/tlsCredentials:
+    name: tlsCredentials
+    description: |
+      The name of a Kubernetes secret containing TLS credentials.  The
+      secret contains the trusted server certificate (typically a CA).
+
+      It can optionally include a client certificate and key for
+      mutual TLS.
+
+      This option is used when setting up client-to-router and
+      router-to-server TLS encryption.
+    links:
+      - name: Site-scoped TLS
+        url: "" # XXX
+  tls/useClientCert:
+    name: useClientCert
+    type: boolean
+    description: |
+      Send the client certificate when connecting in order to enable
+      mutual TLS.
+    links:
+      - name: Site-scoped TLS
+        url: "" # XXX
+  tls/verifyHostname:
+    name: verifyHostname
+    type: boolean
 resources:
   - name: Site
     related_concepts: [network, namespace]
@@ -281,8 +294,6 @@ resources:
           links:
             - name: Custom certificates
               url: ""
-        - name: noClientAuth
-          rename: useClientCert
     status:
       include_properties: [status/*]
       properties:
@@ -408,7 +419,7 @@ resources:
     metadata:
       include_properties: [metadata/*]
     spec:
-      include_properties: [settings]
+      include_properties: [tls/*, settings]
       properties:
         - name: routingKey
           description: |
@@ -429,21 +440,8 @@ resources:
             The port of the local listener.  Clients at this site use
             the listener host and port to establish connections to
             the remote service.
-        - name: tlsCredentials
-          description: |
-            The name of a Kubernetes secret containing TLS
-            credentials.  The secret contains the trusted server
-            certificate (typically a CA).
-
-            It can optionally include a client certificate and key for
-            mutual TLS.
-
-            This option is used when setting up client-to-router TLS
-            encryption.
-          links:
-            - name: Site-scoped TLS
-              url: "" # XXX
         - name: type
+          hidden: true
           group: advanced
           default: tcp
           description: |
@@ -482,7 +480,7 @@ resources:
     metadata:
       include_properties: [metadata/*]
     spec:
-      include_properties: [connector/spec/*, settings]
+      include_properties: [connector/spec/*, tls/*, settings]
     status:
       include_properties: [status/*, connector/status/*]
       properties:
@@ -491,7 +489,7 @@ resources:
     platforms: [Kubernetes]
     related_resources: [AttachedConnectorAnchor, Connector]
     spec:
-      include_properties: [connector/spec/*, settings]
+      include_properties: [connector/spec/*, tls/*, settings]
       exclude_properties: [connector/spec/routingKey]
       properties:
         - name: siteNamespace
