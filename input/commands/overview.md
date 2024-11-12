@@ -37,7 +37,13 @@
 
 - The token commands are for creating links!
 
-## System commands
+## Site configuration commands
+
+## Site linking commands
+
+## Service exposure commands
+
+## Site operation commands
 
 - These commands are for non-Kube sites.
 

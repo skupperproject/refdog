@@ -1,5 +1,11 @@
 # Skupper resource overview
 
+## Site configuration resources
+
+## Site linking resources
+
+## Service exposure resources
+
 ## Hello World using YAML
 
 Site West:

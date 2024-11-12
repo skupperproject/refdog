@@ -4,14 +4,8 @@
 <!-- - [Resources](resources/index.html) -->
 <!-- - [Commands](commands/index.html) -->
 
-## Concepts
+[Skupper concepts](concepts/index.html)
 
-[All concepts](concepts/index.html)
+[Skupper resources](resources/index.html)
 
-## Resources
-
-[All resources](resources/index.html)
-
-## Commands
-
-[All commands](commands/index.html)
+[Skupper commands](commands/index.html)
