@@ -92,9 +92,9 @@ The namespace of the resource.
 <div class="attribute-body">
 
 The identifier used to route traffic from listeners to
-connectors.  To expose a local workload to a remote
-site, the remote listener and the local connector must
-have matching routing keys.
+connectors.  To expose a local workload to a remote site, the
+remote listener and the local connector must have matching
+routing keys.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/routing-key.html">Routing key concept</a></td></table>
 
@@ -111,6 +111,8 @@ have matching routing keys.
 
 The port on the target workload to forward traffic to.
 
+<!-- The port to connect to. -->
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
@@ -124,13 +126,14 @@ The port on the target workload to forward traffic to.
 </div>
 <div class="attribute-body">
 
-A Kubernetes label selector for specifying target server
-pods.
+A Kubernetes label selector for specifying target server pods.
 
-On Kubernetes, you usually want to use this.  As an
-alternative, you can use `host`.
+<!-- The selector that identifies the pods to connect to. -->
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">Kubernetes label selectors</a>, <a href="https://kubernetes.io/docs/concepts/workloads/pods/">Kubernetes pods</a></td></table>
+On Kubernetes, you usually want to use this.  As an alternative,
+you can use `host`.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td></table>
 
 </div>
 </div>
@@ -143,31 +146,9 @@ alternative, you can use `host`.
 <div class="attribute-body">
 
 The hostname or IP address of the server.  This is an
-alternative to `selector` for specifying the target
-server.
+alternative to `selector` for specifying the target server.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-<div class="attribute folded">
-<div class="attribute-heading">
-<h3 id="spec-tlscredentials">tlsCredentials</h3>
-<div class="attribute-type-info">string</div>
-</div>
-<div class="attribute-body">
-
-The name of a Kubernetes secret containing the trusted
-server certificate (typically a CA).
-
-It can optionally include a client certificate and key for
-mutual TLS.
-
-This option is used when setting up router-to-server TLS
-encryption.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a></td></table>
 
 </div>
 </div>
@@ -182,7 +163,28 @@ encryption.
 If set, include server pods that are not in the ready
 state.
 
-<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/">Kubernetes pod lifecycle</a></td></table>
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes</td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="spec-tlscredentials">tlsCredentials</h3>
+<div class="attribute-type-info">string</div>
+</div>
+<div class="attribute-body">
+
+The name of a Kubernetes secret containing the trusted server
+certificate (typically a CA).
+
+It can optionally include a client certificate and key for
+mutual TLS.
+
+This option is used when setting up router-to-server TLS
+encryption.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a></td></table>
 
 </div>
 </div>
@@ -257,20 +259,21 @@ The current state of the resource.
 
 <div class="attribute folded">
 <div class="attribute-heading">
-<h3 id="status-selectedpods">selectedPods</h3>
-<div class="attribute-type-info">array</div>
+<h3 id="status-hasmatchinglisteners">hasMatchingListeners</h3>
+<div class="attribute-type-info">boolean</div>
 </div>
 <div class="attribute-body">
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
 
 <div class="attribute folded">
 <div class="attribute-heading">
-<h3 id="status-matchinglistenercount">matchingListenerCount</h3>
-<div class="attribute-type-info">integer</div>
+<h3 id="status-selectedpods">selectedPods</h3>
+<div class="attribute-type-info">array</div>
+<div class="attribute-flags">advanced</div>
 </div>
 <div class="attribute-body">
 

@@ -185,6 +185,11 @@ The listener type.
 
 Additional settings.
 
+
+- `observer` - Set the protocol observer used to generate
+  traffic metrics.<br/>
+  Default: `auto`.  Choices: `auto`, `none`, `http1`, `http2`.
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
@@ -229,18 +234,12 @@ The current state of the resource.
 
 <div class="attribute folded">
 <div class="attribute-heading">
-<h3 id="status-matchingconnectorcount">matchingConnectorCount</h3>
-<div class="attribute-type-info">integer</div>
+<h3 id="status-hasmatchingconnectors">hasMatchingConnectors</h3>
+<div class="attribute-type-info">boolean</div>
 </div>
 <div class="attribute-body">
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-<section class="notes">
-
-This one has "count" but other counter fields do not.
-
-</section>
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>

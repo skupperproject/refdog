@@ -34,6 +34,9 @@ kind: AttachedConnectorAnchor
 </div>
 <div class="attribute-body">
 
+The name of the namespace where the associated
+AttachedConnector is located.
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
@@ -47,7 +50,12 @@ kind: AttachedConnectorAnchor
 </div>
 <div class="attribute-body">
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+The identifier used to route traffic from listeners to
+connectors.  To expose a local workload to a remote site, the
+remote listener and the local connector must have matching
+routing keys.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/routing-key.html">Routing key concept</a></td></table>
 
 </div>
 </div>
@@ -56,8 +64,11 @@ kind: AttachedConnectorAnchor
 <div class="attribute-heading">
 <h3 id="spec-settings">settings</h3>
 <div class="attribute-type-info">object</div>
+<div class="attribute-flags">advanced</div>
 </div>
 <div class="attribute-body">
+
+Additional settings.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
@@ -103,12 +114,12 @@ The current state of the resource.
 
 <div class="attribute folded">
 <div class="attribute-heading">
-<h3 id="status-matchinglistenercount">matchingListenerCount</h3>
-<div class="attribute-type-info">integer</div>
+<h3 id="status-hasmatchinglisteners">hasMatchingListeners</h3>
+<div class="attribute-type-info">boolean</div>
 </div>
 <div class="attribute-body">
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -125,6 +136,19 @@ A set of named conditions describing the current state of the
 resource.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="status-selectedpods">selectedPods</h3>
+<div class="attribute-type-info">array</div>
+<div class="attribute-flags">advanced</div>
+</div>
+<div class="attribute-body">
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>

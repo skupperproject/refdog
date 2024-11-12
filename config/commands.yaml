@@ -604,8 +604,7 @@ commands:
           metadata:
             name: south-ac619
           spec:
-            cost: 1
-            linkAccessEndpoints:
+            endpoints:
               - group: skupper-router-1
                 host: 10.97.161.185
                 name: inter-router
@@ -636,6 +635,8 @@ commands:
             description: |
               The name of the resource to be generated.  A name is
               generated if none is provided.
+        notes: |
+          Should the default generated link have useClientCert: true?
   - name: connector
     related_commands: [listener]
     description: |

@@ -205,6 +205,11 @@ run the Skupper controller.
 
 Additional settings.
 
+
+- `routerDataConnections` - XXX.
+- `routerLogging` - Set the router logging level.<br/>
+  Default: `info`.  Choices: `debug`, `info`, `warning`, `error`.
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>

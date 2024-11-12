@@ -43,8 +43,7 @@ kind: Link
 metadata:
   name: south-ac619
 spec:
-  cost: 1
-  linkAccessEndpoints:
+  endpoints:
     - group: skupper-router-1
       host: 10.97.161.185
       name: inter-router
@@ -202,5 +201,13 @@ Display help and exit.
 
 </div>
 </div>
+
+</section>
+
+<section class="notes">
+
+## Notes
+
+Should the default generated link have useClientCert: true?
 
 </section>

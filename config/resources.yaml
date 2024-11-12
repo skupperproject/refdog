@@ -45,6 +45,71 @@ properties:
     links:
       - name: Kubernetes conditions
         url: https://maelvls.dev/kubernetes-conditions/
+  connector/spec/routingKey:
+    name: routingKey
+    description: |
+      The identifier used to route traffic from listeners to
+      connectors.  To expose a local workload to a remote site, the
+      remote listener and the local connector must have matching
+      routing keys.
+    links:
+      - name: Routing key concept
+        url: /concepts/routing-key.html
+  connector/spec/port:
+    name: port
+    description: |
+      The port on the target workload to forward traffic to.
+
+      <!-- The port to connect to. -->
+  connector/spec/selector:
+    name: selector
+    group: frequently-used
+    platforms: [Kubernetes]
+    description: |
+      A Kubernetes label selector for specifying target server pods.
+
+      <!-- The selector that identifies the pods to connect to. -->
+
+      On Kubernetes, you usually want to use this.  As an alternative,
+      you can use `host`.
+  connector/spec/host:
+    name: host
+    description: |
+      The hostname or IP address of the server.  This is an
+      alternative to `selector` for specifying the target server.
+  connector/spec/includeNotReady:
+    name: includeNotReady
+    description: |
+      If set, include server pods that are not in the ready
+      state.
+    platforms: [Kubernetes]
+  connector/spec/tlsCredentials:
+    name: tlsCredentials
+    description: |
+      The name of a Kubernetes secret containing the trusted server
+      certificate (typically a CA).
+
+      It can optionally include a client certificate and key for
+      mutual TLS.
+
+      This option is used when setting up router-to-server TLS
+      encryption.
+    links:
+      - name: Site-scoped TLS
+        url: "" # XXX
+  connector/spec/type:
+    name: type
+    group: advanced
+    default: tcp
+    description: |
+      The connector type.
+  connector/status/hasMatchingListeners:
+    name: hasMatchingListeners
+    type: boolean
+  connector/status/selectedPods:
+    name: selectedPods
+    group: advanced
+    type: array
 resources:
   - name: Site
     related_concepts: [network, namespace]
@@ -152,6 +217,13 @@ resources:
               url: ""
             - name: Kubernetes service accounts
               url: https://kubernetes.io/docs/concepts/security/service-accounts/
+        - name: settings
+          description: |
+            @description@
+
+            - `routerDataConnections` - XXX.
+            - `routerLogging` - Set the router logging level.<br/>
+              Default: `info`.  Choices: `debug`, `info`, `warning`, `error`.
     status:
       include_properties: [status/*]
       properties:
@@ -376,11 +448,18 @@ resources:
           default: tcp
           description: |
             The listener type.
+        - name: settings
+          description: |
+            @description@
+
+            - `observer` - Set the protocol observer used to generate
+              traffic metrics.<br/>
+              Default: `auto`.  Choices: `auto`, `none`, `http1`, `http2`.
     status:
       include_properties: [status/*]
       properties:
-        - name: matchingConnectorCount
-          notes: This one has "count" but other counter fields do not.
+        - name: hasMatchingConnectors
+          type: boolean
   - name: Connector
     related_resources: [Listener]
     description: |
@@ -403,97 +482,36 @@ resources:
     metadata:
       include_properties: [metadata/*]
     spec:
-      include_properties: [settings]
-      properties:
-        - name: routingKey
-          description: |
-            The identifier used to route traffic from listeners to
-            connectors.  To expose a local workload to a remote
-            site, the remote listener and the local connector must
-            have matching routing keys.
-          links:
-            - name: Routing key concept
-              url: /concepts/routing-key.html
-        - name: port
-          description: |
-            The port on the target workload to forward traffic to.
-        - name: selector
-          group: frequently-used
-          description: |
-            A Kubernetes label selector for specifying target server
-            pods.
-
-            On Kubernetes, you usually want to use this.  As an
-            alternative, you can use `host`.
-          platforms: [Kubernetes]
-          links:
-            - name: Kubernetes label selectors
-              url: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
-            - name: Kubernetes pods
-              url: https://kubernetes.io/docs/concepts/workloads/pods/
-        - name: host
-          description: |
-            The hostname or IP address of the server.  This is an
-            alternative to `selector` for specifying the target
-            server.
-        - name: tlsCredentials
-          description: |
-            The name of a Kubernetes secret containing the trusted
-            server certificate (typically a CA).
-
-            It can optionally include a client certificate and key for
-            mutual TLS.
-
-            This option is used when setting up router-to-server TLS
-            encryption.
-          links:
-            - name: Site-scoped TLS
-              url: "" # XXX
-        - name: includeNotReady
-          description: |
-            If set, include server pods that are not in the ready
-            state.
-          platforms: [Kubernetes]
-          links:
-            - name: Kubernetes pod lifecycle
-              url: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
-        - name: type
-          group: advanced
-          default: tcp
-          description: |
-            The connector type.
+      include_properties: [connector/spec/*, settings]
     status:
-      include_properties: [status/*]
+      include_properties: [status/*, connector/status/*]
       properties:
         - name: selectedPods
-        - name: matchingListenerCount
   - name: AttachedConnector
+    platforms: [Kubernetes]
     related_resources: [AttachedConnectorAnchor, Connector]
     spec:
+      include_properties: [connector/spec/*, settings]
+      exclude_properties: [connector/spec/routingKey]
       properties:
         - name: siteNamespace
-        - name: port
-        - name: selector
-        - name: tlsCredentials
-        - name: type
-        - name: includeNotReady
-        - name: settings
+          description: |
+            The name of the namespace in which the site this connector
+            should be attached to is defined.
     status:
-      include_properties: [status/*]
-      properties:
-        - name: selectedPods
-        - name: matchingListenerCount
+      include_properties: [status/*, connector/status/*]
   - name: AttachedConnectorAnchor
+    platforms: [Kubernetes]
     related_resources: [AttachedConnector]
     spec:
+      include_properties: [connector/spec/routingKey, settings]
       properties:
         - name: connectorNamespace
-        - name: routingKey
-        - name: settings
+          description: |
+            The name of the namespace where the associated
+            AttachedConnector is located.
     status:
-      include_properties: [status/*]
-      properties:
-        - name: matchingListenerCount
+      include_properties: [status/*, connector/status/*]
 groups:
   - name: Site configuration
     resources:
