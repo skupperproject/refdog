@@ -26,6 +26,13 @@ def generate(model):
     append("# Skupper resources")
     append()
 
+    append("## Key resources")
+    append()
+    append("")
+    append()
+    append("## All resources")
+    append()
+
     for group in model.groups:
         append(f"#### {group.name}")
         append()
