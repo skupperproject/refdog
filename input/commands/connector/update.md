@@ -162,16 +162,18 @@ alternative to `selector` for specifying the target server.
 </div>
 <div class="attribute-body">
 
-The name of a Kubernetes secret containing TLS credentials.  The
-secret contains the trusted server certificate (typically a CA).
+A named bundle of TLS certificates and keys used for secure
+application-to-router communication.  The bundle contains the
+trusted server certificate.  It optionally includes a client
+certificate and key for mutual TLS.
 
-It can optionally include a client certificate and key for
-mutual TLS.
+On Kubernetes, the value is the name of a Secret in the current
+namespace.
 
 This option is used when setting up client-to-router and
-router-to-server TLS encryption.
+router-to-server TLS authentication and encryption.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a></td></table>
 
 </div>
 </div>

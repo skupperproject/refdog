@@ -1,23 +1,17 @@
 ---
 body_class: object resource
-links:
-  - name: AccessGrant resource
-    url: /resources/accessgrant.html
-  - name: Token redeem command
-    url: /commands/token/redeem.html
 ---
 
-# AccessToken resource
+# RouterAccess resource
 
 <section>
 
-A transferrable token redeemable for a link to a remote
-site.  An access token contains the URL and secret code of a
-corresponding access grant.
+Configuration for secure access to the site router.  The
+configuration includes TLS credentials and router ports.
 
 ~~~ yaml
 apiVersion: skupper.io/v2alpha1
-kind: AccessToken
+kind: RouterAccess
 ~~~
 
 </section>
@@ -25,35 +19,6 @@ kind: AccessToken
 <section class="attributes">
 
 ## Metadata properties
-
-<div class="attribute">
-<div class="attribute-heading">
-<h3 id="metadata-name">name</h3>
-<div class="attribute-type-info">string</div>
-<div class="attribute-flags">required</div>
-</div>
-<div class="attribute-body">
-
-The name of the resource.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
-
-</div>
-</div>
-
-<div class="attribute folded">
-<div class="attribute-heading">
-<h3 id="metadata-namespace">namespace</h3>
-<div class="attribute-type-info">string</div>
-</div>
-<div class="attribute-body">
-
-The namespace of the resource.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
-
-</div>
-</div>
 
 </section>
 
@@ -63,45 +28,19 @@ The namespace of the resource.
 
 <div class="attribute">
 <div class="attribute-heading">
-<h3 id="spec-url">url</h3>
-<div class="attribute-type-info">string</div>
+<h3 id="spec-roles">roles</h3>
+<div class="attribute-type-info">array</div>
 <div class="attribute-flags">required</div>
 </div>
 <div class="attribute-body">
-
-The URL of the token redemption service at the remote
-site.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-<div class="attribute">
-<div class="attribute-heading">
-<h3 id="spec-ca">ca</h3>
-<div class="attribute-type-info">string</div>
-<div class="attribute-flags">required</div>
-</div>
-<div class="attribute-body">
-
-The trusted server certificate of the token redemption
-service at the remote site.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 <section class="notes">
 
-Why is this required?  Does it mean we don't allow trust
-based on public CAs?  Note that tlsCredentials is optional
-on link.
-
-<!--
-(Protest: "ca" annoys me because it's wrong.  You can also
-trust an "end-entity" (leaf) certificate which does not
-have the CA bit set.  The essential thing here is
-trustedness, not CA-ness.)
--->
+It seems like "ports" would be a more straightforward name
+for this.  Each item has fields that subset the fields of
+the items on securedaccess.spec.ports.
 
 </section>
 
@@ -110,14 +49,43 @@ trustedness, not CA-ness.)
 
 <div class="attribute">
 <div class="attribute-heading">
-<h3 id="spec-code">code</h3>
+<h3 id="spec-tlscredentials">tlsCredentials</h3>
 <div class="attribute-type-info">string</div>
 <div class="attribute-flags">required</div>
 </div>
 <div class="attribute-body">
 
-The secret code used to authenticate the token when
-submitted for redemption.
+A named bundle of TLS certificates and keys used for
+secure router-to-router communication.  The bundle
+contains the trusted server certificate.  It optionally
+includes a client certificate and key for mutual TLS.
+
+On Kubernetes, the value is the name of a Secret in the
+current namespace.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Custom certificates</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="spec-generatetlscredentials">generateTlsCredentials</h3>
+<div class="attribute-type-info">boolean</div>
+</div>
+<div class="attribute-body">
+
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="spec-issuer">issuer</h3>
+<div class="attribute-type-info">string</div>
+</div>
+<div class="attribute-body">
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
@@ -126,20 +94,43 @@ submitted for redemption.
 
 <div class="attribute folded">
 <div class="attribute-heading">
-<h3 id="spec-linkcost">linkCost</h3>
-<div class="attribute-type-info">None</div>
+<h3 id="spec-accesstype">accessType</h3>
+<div class="attribute-type-info">string</div>
 </div>
 <div class="attribute-body">
 
-The link cost to use when creating the link.
-
-<table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Load balancing</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 <section class="notes">
 
-I changed this from cost to linkCost.
+Why does this one have the "access" qualifier, while
+listener and connector "type" do not?
 
 </section>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="spec-bindhost">bindHost</h3>
+<div class="attribute-type-info">string</div>
+</div>
+<div class="attribute-body">
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
+<div class="attribute folded">
+<div class="attribute-heading">
+<h3 id="spec-subjectalternativenames">subjectAlternativeNames</h3>
+<div class="attribute-type-info">array</div>
+</div>
+<div class="attribute-body">
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -201,15 +192,16 @@ A human-readable status message.
 
 <div class="attribute folded">
 <div class="attribute-heading">
-<h3 id="status-redeemed">redeemed</h3>
-<div class="attribute-type-info">boolean</div>
+<h3 id="status-endpoints">endpoints</h3>
+<div class="attribute-type-info">array</div>
+<div class="attribute-flags">advanced</div>
 </div>
 <div class="attribute-body">
 
-True if the token has been redeemed.  Once a token is
-redeemed, it cannot be used again.
+An array of connection endpoints.  Each item has a name, host,
+port, and group.
 
-<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -229,5 +221,18 @@ resource.
 
 </div>
 </div>
+
+</section>
+
+<section class="notes">
+
+## Notes
+
+This is specifically router scoped.  It's a little more than
+just link access (as discussed before).  It could, for example,
+include access to the router management port.
+
+But it doesn't cover anything like network-observer access (say,
+to its Prometheous endpoints).  Is the scope right?
 
 </section>

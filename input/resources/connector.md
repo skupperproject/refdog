@@ -175,16 +175,24 @@ state.
 </div>
 <div class="attribute-body">
 
-The name of a Kubernetes secret containing TLS credentials.  The
-secret contains the trusted server certificate (typically a CA).
+A named bundle of TLS certificates and keys used for secure
+application-to-router communication.  The bundle contains the
+trusted server certificate.  It optionally includes a client
+certificate and key for mutual TLS.
 
-It can optionally include a client certificate and key for
-mutual TLS.
+On Kubernetes, the value is the name of a Secret in the current
+namespace.
 
 This option is used when setting up client-to-router and
-router-to-server TLS encryption.
+router-to-server TLS authentication and encryption.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a></td></table>
+
+<section class="notes">
+
+Is this deliberately optional?
+
+</section>
 
 </div>
 </div>
@@ -211,7 +219,16 @@ mutual TLS.
 </div>
 <div class="attribute-body">
 
-<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+If true, require that the hostname of the server connected to
+matches the hostname in the server's certificate.
+
+<table class="fields"><tr><th>Default</th><td>true</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+<section class="notes">
+
+Is this enabled by default?
+
+</section>
 
 </div>
 </div>
@@ -224,7 +241,8 @@ mutual TLS.
 </div>
 <div class="attribute-body">
 
-Additional settings.
+A map containing additional settings.  Each map entry is a
+string name and a string value.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 

@@ -110,7 +110,8 @@ submitted for redemption.
 If not set, a value for the code field in the status is
 generated.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Default</th><td><p><em>Generated</em></p>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -127,6 +128,12 @@ certificate when redeeming a token for this grant.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
+<section class="notes">
+
+Does this fall back to site.defaultIssuer?
+
+</section>
+
 </div>
 </div>
 
@@ -138,7 +145,8 @@ certificate when redeeming a token for this grant.
 </div>
 <div class="attribute-body">
 
-Additional settings.
+A map containing additional settings.  Each map entry is a
+string name and a string value.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 

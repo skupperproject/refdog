@@ -135,7 +135,7 @@ after failure.  This already provides a high level of
 availability.  Enabling HA goes further and serves to
 reduce the window of downtime caused by restarts.
 
-<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td><tr><th>See also</th><td><a href="">Advanced deployment options</a></td></table>
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>Updatable</th><td>True</td><tr><th>See also</th><td><a href="">Advanced deployment options</a></td></table>
 
 </div>
 </div>
@@ -211,7 +211,8 @@ run the Skupper controller.
 </div>
 <div class="attribute-body">
 
-Additional settings.
+A map containing additional settings.  Each map entry is a
+string name and a string value.
 
 
 - `routerDataConnections` - Set the number of data
@@ -311,6 +312,9 @@ default signing CA.
 <div class="attribute-flags">advanced</div>
 </div>
 <div class="attribute-body">
+
+An array of connection endpoints.  Each item has a name, host,
+port, and group.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 

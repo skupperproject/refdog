@@ -23,7 +23,8 @@ properties:
     group: advanced
     type: object
     description: |
-      Additional settings.
+      A map containing additional settings.  Each map entry is a
+      string name and a string value.
   status/status:
     name: status
     group: frequently-used
@@ -102,17 +103,23 @@ properties:
   tls/tlsCredentials:
     name: tlsCredentials
     description: |
-      The name of a Kubernetes secret containing TLS credentials.  The
-      secret contains the trusted server certificate (typically a CA).
+      A named bundle of TLS certificates and keys used for secure
+      application-to-router communication.  The bundle contains the
+      trusted server certificate.  It optionally includes a client
+      certificate and key for mutual TLS.
 
-      It can optionally include a client certificate and key for
-      mutual TLS.
+      On Kubernetes, the value is the name of a Secret in the current
+      namespace.
 
       This option is used when setting up client-to-router and
-      router-to-server TLS encryption.
+      router-to-server TLS authentication and encryption.
     links:
       - name: Site-scoped TLS
         url: "" # XXX
+      - name: Kubernetes TLS secrets
+        url: https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
+    notes: |
+      Is this deliberately optional?
   tls/useClientCert:
     name: useClientCert
     type: boolean
@@ -125,6 +132,18 @@ properties:
   tls/verifyHostname:
     name: verifyHostname
     type: boolean
+    default: true
+    description: |
+      If true, require that the hostname of the server connected to
+      matches the hostname in the server's certificate.
+    notes: |
+      Is this enabled by default?
+  endpoints:
+    name: endpoints
+    group: advanced
+    description: |
+      An array of connection endpoints.  Each item has a name, host,
+      port, and group.
 resources:
   - name: Site
     related_concepts: [network, namespace]
@@ -188,6 +207,7 @@ resources:
               url: https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer
         - name: ha
           updatable: true
+          platforms: [Kubernetes]
           description: |
             Configure the site for high availability (HA).  HA sites
             have two active routers.
@@ -248,7 +268,7 @@ resources:
             - `routerLogging` - Set the router logging level.<br/>
               Default: `info`.  Choices: `debug`, `info`, `warning`, `error`.
     status:
-      include_properties: [status/*]
+      include_properties: [status/*, endpoints]
       properties:
         - name: status
         - name: message
@@ -268,54 +288,56 @@ resources:
             The name of the Kubernetes secret containing the active
             default signing CA.
         - name: endpoints
-          group: advanced
         - name: network
           group: advanced
         - name: sitesInNetwork
           group: advanced
-  - name: Link
-    related_resources: [AccessGrant, AccessToken]
+  - name: RouterAccess
     description: |
-      A site-to-site communication channel. Links serve as a
-      transport for application connections and requests.  A set
-      of linked sites constitute a network.
-
-      Links are not usually created directly.  Instead, you
-      typically use an access token to obtain a link.
-    metadata:
-      include_properties: [metadata/*]
+      Configuration for secure access to the site router.  The
+      configuration includes TLS credentials and router ports.
     spec:
-      include_properties: [tls/*, settings]
+      include_properties: [settings]
       properties:
-        - name: cost
-          default: 1
-          description: |
-            The configured routing cost of sending traffic over
-            the link.
-          links:
-            - name: Load balancing
-              url: ""
-        - name: endpoints
+        - name: roles
+          notes: |
+            It seems like "ports" would be a more straightforward name
+            for this.  Each item has fields that subset the fields of
+            the items on securedaccess.spec.ports.
         - name: tlsCredentials
           description: |
-            The name of a Kubernetes secret containing TLS
-            credentials. The secret contains the trusted server
-            certificate (typically a CA).
+            A named bundle of TLS certificates and keys used for
+            secure router-to-router communication.  The bundle
+            contains the trusted server certificate.  It optionally
+            includes a client certificate and key for mutual TLS.
 
-            It can optionally include a client certificate and key for
-            mutual TLS.
+            On Kubernetes, the value is the name of a Secret in the
+            current namespace.
           links:
             - name: Custom certificates
               url: ""
+            - name: Kubernetes TLS secrets
+              url: https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
+          notes: null
+        - name: generateTlsCredentials
+        - name: issuer
+        - name: accessType
+          notes: |
+            Why does this one have the "access" qualifier, while
+            listener and connector "type" do not?
+        - name: bindHost
+        - name: subjectAlternativeNames
     status:
-      include_properties: [status/*]
+      include_properties: [status/*, endpoints]
       properties:
-        - name: remoteSiteId
-          description: |
-            The unique ID of the site linked to.
-        - name: remoteSiteName
-          description: |
-            The name of the site linked to.
+        - name: endpoints
+    notes: |
+      This is specifically router scoped.  It's a little more than
+      just link access (as discussed before).  It could, for example,
+      include access to the router management port.
+
+      But it doesn't cover anything like network-observer access (say,
+      to its Prometheous endpoints).  Is the scope right?
   - name: AccessGrant
     related_resources: [AccessToken]
     related_commands: [token/issue]
@@ -344,6 +366,7 @@ resources:
             grant can be redeemed.
           default: 15m
         - name: code
+          default: _Generated_
           description: |
             The secret code used to authenticate access tokens
             submitted for redemption.
@@ -354,6 +377,8 @@ resources:
           description: |
             The name of a Kubernetes secret used to generate a
             certificate when redeeming a token for this grant.
+          notes: |
+            Does this fall back to site.defaultIssuer?
     status:
       include_properties: [status/*]
       properties:
@@ -398,11 +423,22 @@ resources:
           description: |
             The trusted server certificate of the token redemption
             service at the remote site.
+          notes: |
+            Why is this required?  Does it mean we don't allow trust
+            based on public CAs?  Note that tlsCredentials is optional
+            on link.
+
+            <!--
+            (Protest: "ca" annoys me because it's wrong.  You can also
+            trust an "end-entity" (leaf) certificate which does not
+            have the CA bit set.  The essential thing here is
+            trustedness, not CA-ness.)
+            -->
         - name: code
           description: |
             The secret code used to authenticate the token when
             submitted for redemption.
-        - name: cost
+        - name: linkCost
           default: 1
           description: |
             The link cost to use when creating the link.
@@ -410,6 +446,8 @@ resources:
             - name: Load balancing
               url: ""
             # XXX ref link.cost
+          notes: |
+            I changed this from cost to linkCost.
     status:
       include_properties: [status/*]
       properties:
@@ -417,6 +455,56 @@ resources:
           description: |
             True if the token has been redeemed.  Once a token is
             redeemed, it cannot be used again.
+  - name: Link
+    related_resources: [AccessGrant, AccessToken]
+    description: |
+      A site-to-site communication channel. Links serve as a
+      transport for application connections and requests.  A set
+      of linked sites constitute a network.
+
+      Links are not usually created directly.  Instead, you
+      typically use an access token to obtain a link.
+    notes: |
+      I have useClientCert and verifyHostname here, like the other TLS
+      cases.  Is that sensible?
+    metadata:
+      include_properties: [metadata/*]
+    spec:
+      include_properties: [endpoints, tls/*, settings]
+      properties:
+        - name: cost
+          default: 1
+          description: |
+            The configured routing cost of sending traffic over
+            the link.
+          links:
+            - name: Load balancing
+              url: ""
+        - name: endpoints
+          group: null
+        - name: tlsCredentials
+          description: |
+            A named bundle of TLS certificates and keys used for
+            secure router-to-router communication.  The bundle
+            contains the trusted server certificate.  It optionally
+            includes a client certificate and key for mutual TLS.
+
+            On Kubernetes, the value is the name of a Secret in the
+            current namespace.
+          links:
+            - name: Custom certificates
+              url: ""
+            - name: Kubernetes TLS secrets
+              url: https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
+    status:
+      include_properties: [status/*]
+      properties:
+        - name: remoteSiteId
+          description: |
+            The unique ID of the site linked to.
+        - name: remoteSiteName
+          description: |
+            The name of the site linked to.
   - name: Listener
     related_resources: [Connector]
     description: |
@@ -510,6 +598,8 @@ resources:
   - name: AttachedConnector
     platforms: [Kubernetes]
     related_resources: [AttachedConnectorAnchor, Connector]
+    description: |
+      A connector in a peer namespace.
     spec:
       include_properties: [connector/spec/*, tls/*, settings]
       exclude_properties: [connector/spec/routingKey]
@@ -523,6 +613,8 @@ resources:
   - name: AttachedConnectorAnchor
     platforms: [Kubernetes]
     related_resources: [AttachedConnector]
+    description: |
+      A binding to an attached connector in a peer namespace.
     spec:
       include_properties: [connector/spec/routingKey, settings]
       properties:
@@ -536,11 +628,12 @@ groups:
   - name: Site configuration
     resources:
       - Site
+      - RouterAccess
   - name: Site linking
     resources:
-      - Link
       - AccessGrant
       - AccessToken
+      - Link
   - name: Service exposure
     resources:
       - Listener

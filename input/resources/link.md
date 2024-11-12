@@ -76,6 +76,9 @@ The namespace of the resource.
 </div>
 <div class="attribute-body">
 
+An array of connection endpoints.  Each item has a name, host,
+port, and group.
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
@@ -103,14 +106,21 @@ the link.
 </div>
 <div class="attribute-body">
 
-The name of a Kubernetes secret containing TLS
-credentials. The secret contains the trusted server
-certificate (typically a CA).
+A named bundle of TLS certificates and keys used for
+secure router-to-router communication.  The bundle
+contains the trusted server certificate.  It optionally
+includes a client certificate and key for mutual TLS.
 
-It can optionally include a client certificate and key for
-mutual TLS.
+On Kubernetes, the value is the name of a Secret in the
+current namespace.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Custom certificates</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Custom certificates</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a></td></table>
+
+<section class="notes">
+
+Is this deliberately optional?
+
+</section>
 
 </div>
 </div>
@@ -137,7 +147,16 @@ mutual TLS.
 </div>
 <div class="attribute-body">
 
-<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+If true, require that the hostname of the server connected to
+matches the hostname in the server's certificate.
+
+<table class="fields"><tr><th>Default</th><td>true</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+<section class="notes">
+
+Is this enabled by default?
+
+</section>
 
 </div>
 </div>
@@ -150,7 +169,8 @@ mutual TLS.
 </div>
 <div class="attribute-body">
 
-Additional settings.
+A map containing additional settings.  Each map entry is a
+string name and a string value.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
@@ -239,5 +259,14 @@ resource.
 
 </div>
 </div>
+
+</section>
+
+<section class="notes">
+
+## Notes
+
+I have useClientCert and verifyHostname here, like the other TLS
+cases.  Is that sensible?
 
 </section>

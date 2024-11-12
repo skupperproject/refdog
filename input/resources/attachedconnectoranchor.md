@@ -9,6 +9,8 @@ links:
 
 <section>
 
+A binding to an attached connector in a peer namespace.
+
 ~~~ yaml
 apiVersion: skupper.io/v2alpha1
 kind: AttachedConnectorAnchor
@@ -68,7 +70,8 @@ routing keys.
 </div>
 <div class="attribute-body">
 
-Additional settings.
+A map containing additional settings.  Each map entry is a
+string name and a string value.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
