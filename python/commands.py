@@ -231,7 +231,6 @@ def generate_option(option, append):
     classes = ["attribute"]
     flags = list()
     prefix = ""
-    id_ = f"option-{get_fragment_id(option.name)}"
     option_key = option.name
     type_info = option.type
 
@@ -269,7 +268,7 @@ def generate_option(option, append):
 
     append(f"<div class=\"{' '.join(classes)}\">")
     append(f"<div class=\"attribute-heading\">")
-    append(f"<h3 id=\"{id_}\">{option_key}</h3>")
+    append(f"<h3 id=\"{option.id}\">{option_key}</h3>")
     append(f"<div class=\"attribute-type-info\">{type_info}</div>")
 
     if flags:
@@ -508,6 +507,10 @@ class Option(ModelObjectAttribute):
     short_option = option_property("short_option")
     default = option_property("default")
     choices = option_property("choices")
+
+    @property
+    def id(self):
+        return f"option-{get_fragment_id(self.rename)}"
 
     @property
     def property_(self):

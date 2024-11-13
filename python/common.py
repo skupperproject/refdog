@@ -48,6 +48,20 @@ def generate_object_links(obj):
 
     return "\n".join(lines)
 
+def generate_object_attributes(obj):
+    lines = list()
+
+    for attr in obj.attributes:
+        lines.append(f"  - name: {attr.name}")
+        lines.append(f"    id: {attr.name}")
+
+    if not lines:
+        return
+
+    lines.insert(0, "attributes:")
+
+    return "\n".join(lines)
+
 def generate_attribute_fields(attr):
     rows = list()
 

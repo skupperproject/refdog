@@ -162,7 +162,6 @@ def generate_property(prop, append):
     classes = ["attribute"]
     flags = list()
     name = nvl(prop.rename, prop.name)
-    id_ = f"{prop.section}-{get_fragment_id(name)}"
 
     if prop.format:
         type_info = f"{prop.type} ({prop.format})"
@@ -177,7 +176,7 @@ def generate_property(prop, append):
 
     append(f"<div class=\"{' '.join(classes)}\">")
     append(f"<div class=\"attribute-heading\">")
-    append(f"<h3 id=\"{id_}\">{name}</h3>")
+    append(f"<h3 id=\"{prop.id}\">{name}</h3>")
     append(f"<div class=\"attribute-type-info\">{type_info}</div>")
 
     if flags:
@@ -393,6 +392,10 @@ class Property(ModelObjectAttribute):
 
         self.resource = resource
         self.section = section
+
+    @property
+    def id(self):
+        return f"{self.section}-{get_fragment_id(self.rename)}"
 
     @property
     def required(self):
