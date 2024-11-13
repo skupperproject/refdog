@@ -5,6 +5,7 @@ links:
     url: /concepts/connector.html
   - name: Connector resource
     url: /resources/connector.html
+attributes: true
 ---
 
 # Connector generate command
@@ -144,7 +145,7 @@ This is an alternative to setting the `--selector` or
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-host">--host</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
@@ -159,7 +160,7 @@ alternative to `selector` for specifying the target server.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-tls-credentials">--tls-credentials</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
@@ -183,7 +184,7 @@ authentication and encryption.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-include-not-ready">--include-not-ready</h3>
 <div class="attribute-type-info">boolean</div>
@@ -198,7 +199,7 @@ state.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-output">--output</h3>
 <div class="attribute-type-info">(-o) &lt;format&gt;</div>
@@ -215,7 +216,7 @@ Select the output format.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-type">--type</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
@@ -231,7 +232,7 @@ The connector type.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-platform">--platform</h3>
 <div class="attribute-type-info">&lt;platform&gt;</div>
@@ -251,7 +252,7 @@ Set the Skupper platform.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-help">--help</h3>
 <div class="attribute-type-info">(-h) boolean</div>

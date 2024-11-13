@@ -13,7 +13,6 @@ links:
 
 <section>
 
-Binds target workloads in the local site to listeners in
-remote sites.
+A binding from a local workload to listeners in remote sites.
 
 </section>

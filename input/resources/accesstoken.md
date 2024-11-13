@@ -5,6 +5,7 @@ links:
     url: /resources/accessgrant.html
   - name: Token redeem command
     url: /commands/token/redeem.html
+attributes: true
 ---
 
 # AccessToken resource
@@ -41,7 +42,7 @@ The name of the resource.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="metadata-namespace">namespace</h3>
 <div class="attribute-type-info">string</div>
@@ -93,7 +94,7 @@ submitted for redemption.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-ca">ca</h3>
 <div class="attribute-type-info">string</div>
@@ -108,7 +109,7 @@ service at the remote site.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-linkcost">linkCost</h3>
 <div class="attribute-type-info">None</div>
@@ -122,7 +123,7 @@ The link cost to use when creating the link.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-settings">settings</h3>
 <div class="attribute-type-info">object</div>
@@ -177,7 +178,7 @@ A human-readable status message.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-redeemed">redeemed</h3>
 <div class="attribute-type-info">boolean</div>
@@ -192,7 +193,7 @@ redeemed, it cannot be used again.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-conditions">conditions</h3>
 <div class="attribute-type-info">array</div>

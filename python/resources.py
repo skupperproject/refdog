@@ -67,6 +67,7 @@ def generate_resource(resource):
     append("---")
     append("body_class: object resource")
     append(generate_object_links(resource))
+    append("attributes: true")
     append("---")
     append()
     append(f"# {capitalize(resource.rename)} resource")
@@ -172,7 +173,7 @@ def generate_property(prop, append):
         flags.append(prop.group.replace("-", " "))
 
     if prop.group not in ("required", "frequently-used"):
-        classes.append("folded")
+        classes.append("collapsed")
 
     append(f"<div class=\"{' '.join(classes)}\">")
     append(f"<div class=\"attribute-heading\">")

@@ -6,4 +6,6 @@ body_class: concept
 
 <section>
 
+A named area for a related set of resources and components.
+
 </section>

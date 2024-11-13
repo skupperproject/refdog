@@ -117,7 +117,6 @@ window.addEventListener("load", () => {
             }
 
 	    $(currHash).parentElement.parentElement.classList.add("selected");
-	    $(currHash).parentElement.parentElement.classList.remove("folded");
 	} else {
             const link = tocLinks.$("a");
 
@@ -150,7 +149,25 @@ window.addEventListener("load", () => {
 window.addEventListener("load", () => {
     for (const element of $$("div.attribute > div.attribute-heading")) {
 	element.addEventListener("click", () => {
-	    element.parentElement.classList.toggle("folded");
+	    element.parentElement.classList.toggle("collapsed");
+	});
+    }
+});
+
+window.addEventListener("load", () => {
+    if ($("a#expand-all")) {
+	$("a#expand-all").addEventListener("click", () => {
+	    for (const element of $$("div.attribute.collapsed")) {
+		element.classList.remove("collapsed");
+	    }
+	});
+    }
+
+    if ($("a#collapse-all")) {
+	$("a#collapse-all").addEventListener("click", () => {
+	    for (const element of $$("div.attribute")) {
+		element.classList.add("collapsed");
+	    }
 	});
     }
 });

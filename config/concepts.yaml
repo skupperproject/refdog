@@ -5,8 +5,10 @@ concepts:
         url: /concepts/site.html
       - name: Link concept
         url: /concepts/link.html
+    description: |
+      A set of linked sites that host a distributed application.
     overview: |
-      - XXX One network corresponds to one distributed application.
+      - One network corresponds to one distributed application.
   - name: site
     links:
       - name: Network concept
@@ -26,6 +28,8 @@ concepts:
     overview: |
       - XXX enumerate them
   - name: namespace
+    description: |
+      A named area for a related set of resources and components.
     overview: |
       - XXX what do they look like on each platform?
   - name: link
@@ -73,15 +77,14 @@ concepts:
       - name: Connector concept
         url: /concepts/connector.html
     description: |
-      Binds a connection endpoint in the local site to target
-      workloads in remote sites.
+      A binding from a local connection endpoint to connectors in
+      remote sites.
   - name: connector
     links:
       - name: Listener concept
         url: /concepts/listener.html
     description: |
-      Binds target workloads in the local site to listeners in
-      remote sites.
+      A binding from a local workload to listeners in remote sites.
     overview: |
       - A connector targets a workload in the local site (or
         reachable on the local network).
@@ -109,6 +112,6 @@ groups:
   - name: Service exposure
     concepts:
       - service
-      - connector
       - listener
+      - connector
       - routing key

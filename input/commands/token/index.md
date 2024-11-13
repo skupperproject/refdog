@@ -9,6 +9,7 @@ links:
     url: /resources/accessgrant.html
   - name: AccessToken resource
     url: /resources/accesstoken.html
+attributes: true
 ---
 
 # Token command

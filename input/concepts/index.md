@@ -13,12 +13,14 @@ links:
 #### Networks and sites
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/concepts/network.html">Network</a></th><td></td></tr>
+<tr><th><a href="{{site_prefix}}/concepts/network.html">Network</a></th><td><p>A set of linked sites that host a distributed application</p>
+</td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/site.html">Site</a></th><td><p>A place where components of your application are running</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/platform.html">Platform</a></th><td><p>A system for running workloads</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/namespace.html">Namespace</a></th><td></td></tr>
+<tr><th><a href="{{site_prefix}}/concepts/namespace.html">Namespace</a></th><td><p>A named area for a related set of resources and components</p>
+</td></tr>
 </table>
 
 #### Site linking
@@ -37,9 +39,9 @@ links:
 
 <table class="objects">
 <tr><th><a href="{{site_prefix}}/concepts/service.html">Service</a></th><td></td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/connector.html">Connector</a></th><td><p>Binds target workloads in the local site to listeners in remote sites</p>
+<tr><th><a href="{{site_prefix}}/concepts/listener.html">Listener</a></th><td><p>A binding from a local connection endpoint to connectors in remote sites</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/listener.html">Listener</a></th><td><p>Binds a connection endpoint in the local site to target workloads in remote sites</p>
+<tr><th><a href="{{site_prefix}}/concepts/connector.html">Connector</a></th><td><p>A binding from a local workload to listeners in remote sites</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/routing-key.html">Routing key</a></th><td></td></tr>
 </table>

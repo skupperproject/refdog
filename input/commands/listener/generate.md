@@ -5,6 +5,7 @@ links:
     url: /concepts/listener.html
   - name: Listener resource
     url: /resources/listener.html
+attributes: true
 ---
 
 # Listener generate command
@@ -122,7 +123,7 @@ establish connections to the remote service.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-tls-credentials">--tls-credentials</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
@@ -146,7 +147,7 @@ authentication and encryption.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-output">--output</h3>
 <div class="attribute-type-info">(-o) &lt;format&gt;</div>
@@ -163,7 +164,7 @@ Select the output format.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-type">--type</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
@@ -179,7 +180,7 @@ The listener type.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-platform">--platform</h3>
 <div class="attribute-type-info">&lt;platform&gt;</div>
@@ -199,7 +200,7 @@ Set the Skupper platform.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-help">--help</h3>
 <div class="attribute-type-info">(-h) boolean</div>

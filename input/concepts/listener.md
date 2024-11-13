@@ -13,7 +13,7 @@ links:
 
 <section>
 
-Binds a connection endpoint in the local site to target
-workloads in remote sites.
+A binding from a local connection endpoint to connectors in
+remote sites.
 
 </section>

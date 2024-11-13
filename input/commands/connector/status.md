@@ -5,6 +5,7 @@ links:
     url: /concepts/connector.html
   - name: Connector resource
     url: /resources/connector.html
+attributes: true
 ---
 
 # Connector status command
@@ -72,7 +73,7 @@ status for the named resource only.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-output">--output</h3>
 <div class="attribute-type-info">(-o) &lt;string&gt;</div>
@@ -88,7 +89,7 @@ Print status to the console in a structured output format.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-timeout">--timeout</h3>
 <div class="attribute-type-info">&lt;duration&gt;</div>
@@ -104,7 +105,7 @@ period of time.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-namespace">--namespace</h3>
 <div class="attribute-type-info">(-n) &lt;name&gt;</div>
@@ -119,7 +120,7 @@ Set the namespace.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-context">--context</h3>
 <div class="attribute-type-info">&lt;name&gt;</div>
@@ -134,7 +135,7 @@ Set the kubeconfig context.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-kubeconfig">--kubeconfig</h3>
 <div class="attribute-type-info">&lt;file&gt;</div>
@@ -149,7 +150,7 @@ Set the path to the kubeconfig file.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-platform">--platform</h3>
 <div class="attribute-type-info">&lt;platform&gt;</div>
@@ -169,7 +170,7 @@ Set the Skupper platform.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-help">--help</h3>
 <div class="attribute-type-info">(-h) boolean</div>

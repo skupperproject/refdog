@@ -5,6 +5,7 @@ links:
     url: /concepts/site.html
   - name: Site resource
     url: /resources/site.html
+attributes: true
 ---
 
 # Site generate command
@@ -83,7 +84,7 @@ Allow access for incoming links from remote sites.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-output">--output</h3>
 <div class="attribute-type-info">(-o) &lt;format&gt;</div>
@@ -100,7 +101,7 @@ Select the output format.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-link-access-type">--link-access-type</h3>
 <div class="attribute-type-info">&lt;type&gt;</div>
@@ -122,7 +123,7 @@ the sites must have link access enabled.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-service-account">--service-account</h3>
 <div class="attribute-type-info">&lt;name&gt;</div>
@@ -139,7 +140,7 @@ run the Skupper controller.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-platform">--platform</h3>
 <div class="attribute-type-info">&lt;platform&gt;</div>
@@ -159,7 +160,7 @@ Set the Skupper platform.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-help">--help</h3>
 <div class="attribute-type-info">(-h) boolean</div>

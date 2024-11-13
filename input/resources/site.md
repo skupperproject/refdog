@@ -11,6 +11,7 @@ links:
     url: /concepts/namespace.html
   - name: Link resource
     url: /resources/link.html
+attributes: true
 ---
 
 # Site resource
@@ -76,7 +77,7 @@ The name of the resource.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="metadata-namespace">namespace</h3>
 <div class="attribute-type-info">string</div>
@@ -120,7 +121,7 @@ the sites must have link access enabled.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-ha">ha</h3>
 <div class="attribute-type-info">boolean</div>
@@ -140,7 +141,7 @@ reduce the window of downtime caused by restarts.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-defaultissuer">defaultIssuer</h3>
 <div class="attribute-type-info">string</div>
@@ -161,7 +162,7 @@ specific issuer is set.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-edge">edge</h3>
 <div class="attribute-type-info">boolean</div>
@@ -183,7 +184,7 @@ Currently, edge sites cannot also have HA enabled.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-serviceaccount">serviceAccount</h3>
 <div class="attribute-type-info">string</div>
@@ -200,7 +201,7 @@ run the Skupper controller.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-settings">settings</h3>
 <div class="attribute-type-info">object</div>
@@ -264,7 +265,7 @@ A human-readable status message.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-conditions">conditions</h3>
 <div class="attribute-type-info">array</div>
@@ -286,7 +287,7 @@ resource.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-defaultissuer">defaultIssuer</h3>
 <div class="attribute-type-info">string</div>
@@ -302,7 +303,7 @@ default signing CA.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-endpoints">endpoints</h3>
 <div class="attribute-type-info">array</div>
@@ -318,7 +319,7 @@ port, and group.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-network">network</h3>
 <div class="attribute-type-info">array</div>
@@ -331,7 +332,7 @@ port, and group.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-sitesinnetwork">sitesInNetwork</h3>
 <div class="attribute-type-info">integer</div>

@@ -11,4 +11,6 @@ links:
 
 <section>
 
+A set of linked sites that host a distributed application.
+
 </section>

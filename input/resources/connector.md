@@ -7,6 +7,7 @@ links:
     url: /commands/connector/index.html
   - name: Listener resource
     url: /resources/listener.html
+attributes: true
 ---
 
 # Connector resource
@@ -63,7 +64,7 @@ The name of the resource.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="metadata-namespace">namespace</h3>
 <div class="attribute-type-info">string</div>
@@ -138,7 +139,7 @@ you can use `host`.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-tlscredentials">tlsCredentials</h3>
 <div class="attribute-type-info">string</div>
@@ -162,7 +163,7 @@ authentication and encryption.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-host">host</h3>
 <div class="attribute-type-info">string</div>
@@ -177,7 +178,7 @@ alternative to `selector` for specifying the target server.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-includenotready">includeNotReady</h3>
 <div class="attribute-type-info">boolean</div>
@@ -192,7 +193,7 @@ state.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-useclientcert">useClientCert</h3>
 <div class="attribute-type-info">boolean</div>
@@ -207,7 +208,7 @@ mutual TLS.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-verifyhostname">verifyHostname</h3>
 <div class="attribute-type-info">boolean</div>
@@ -222,7 +223,7 @@ matches the hostname in the server's certificate.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-settings">settings</h3>
 <div class="attribute-type-info">object</div>
@@ -277,7 +278,7 @@ A human-readable status message.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-hasmatchinglisteners">hasMatchingListeners</h3>
 <div class="attribute-type-info">boolean</div>
@@ -289,7 +290,7 @@ A human-readable status message.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-selectedpods">selectedPods</h3>
 <div class="attribute-type-info">array</div>
@@ -302,7 +303,7 @@ A human-readable status message.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-conditions">conditions</h3>
 <div class="attribute-type-info">array</div>

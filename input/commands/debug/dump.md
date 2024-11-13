@@ -1,5 +1,6 @@
 ---
 body_class: object command
+attributes: true
 ---
 
 # Debug dump command
@@ -51,7 +52,7 @@ Debug dump file generated at /home/fritz/dump.tar.gz.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-namespace">--namespace</h3>
 <div class="attribute-type-info">(-n) &lt;name&gt;</div>
@@ -66,7 +67,7 @@ Set the namespace.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-context">--context</h3>
 <div class="attribute-type-info">&lt;name&gt;</div>
@@ -81,7 +82,7 @@ Set the kubeconfig context.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-kubeconfig">--kubeconfig</h3>
 <div class="attribute-type-info">&lt;file&gt;</div>
@@ -96,7 +97,7 @@ Set the path to the kubeconfig file.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-platform">--platform</h3>
 <div class="attribute-type-info">&lt;platform&gt;</div>
@@ -116,7 +117,7 @@ Set the Skupper platform.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-help">--help</h3>
 <div class="attribute-type-info">(-h) boolean</div>

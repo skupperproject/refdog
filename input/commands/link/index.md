@@ -7,6 +7,7 @@ links:
     url: /resources/link.html
   - name: Token command
     url: /commands/token/index.html
+attributes: true
 ---
 
 # Link command

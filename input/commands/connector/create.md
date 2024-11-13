@@ -7,6 +7,7 @@ links:
     url: /resources/connector.html
   - name: Listener create command
     url: /commands/listener/create.html
+attributes: true
 ---
 
 # Connector create command
@@ -143,7 +144,7 @@ This is an alternative to setting the `--selector` or
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-wait">--wait</h3>
 <div class="attribute-type-info">&lt;status&gt;</div>
@@ -161,7 +162,7 @@ Wait for the given status before exiting.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-host">--host</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
@@ -176,7 +177,7 @@ alternative to `selector` for specifying the target server.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-tls-credentials">--tls-credentials</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
@@ -200,7 +201,7 @@ authentication and encryption.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-include-not-ready">--include-not-ready</h3>
 <div class="attribute-type-info">boolean</div>
@@ -215,7 +216,7 @@ state.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-timeout">--timeout</h3>
 <div class="attribute-type-info">&lt;duration&gt;</div>
@@ -231,7 +232,7 @@ period of time.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-type">--type</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
@@ -247,7 +248,7 @@ The connector type.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-namespace">--namespace</h3>
 <div class="attribute-type-info">(-n) &lt;name&gt;</div>
@@ -262,7 +263,7 @@ Set the namespace.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-context">--context</h3>
 <div class="attribute-type-info">&lt;name&gt;</div>
@@ -277,7 +278,7 @@ Set the kubeconfig context.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-kubeconfig">--kubeconfig</h3>
 <div class="attribute-type-info">&lt;file&gt;</div>
@@ -292,7 +293,7 @@ Set the path to the kubeconfig file.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-platform">--platform</h3>
 <div class="attribute-type-info">&lt;platform&gt;</div>
@@ -312,7 +313,7 @@ Set the Skupper platform.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-help">--help</h3>
 <div class="attribute-type-info">(-h) boolean</div>

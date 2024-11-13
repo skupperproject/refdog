@@ -83,6 +83,7 @@ def generate_command(command):
     append("---")
     append("body_class: object command")
     append(generate_object_links(command))
+    append("attributes: true")
     append("---")
     append()
     append(f"# {command.title}")
@@ -264,7 +265,7 @@ def generate_option(option, append):
             flags.append(option.group.replace("-", " "))
 
     if option.group not in ("positional", "required", "frequently-used"):
-        classes.append("folded")
+        classes.append("collapsed")
 
     append(f"<div class=\"{' '.join(classes)}\">")
     append(f"<div class=\"attribute-heading\">")

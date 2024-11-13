@@ -5,6 +5,7 @@ links:
     url: /concepts/site.html
   - name: Site resource
     url: /resources/site.html
+attributes: true
 ---
 
 # Site command

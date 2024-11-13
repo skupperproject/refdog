@@ -7,6 +7,7 @@ links:
     url: /commands/listener/index.html
   - name: Connector resource
     url: /resources/connector.html
+attributes: true
 ---
 
 # Listener resource
@@ -65,7 +66,7 @@ The name of the resource.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="metadata-namespace">namespace</h3>
 <div class="attribute-type-info">string</div>
@@ -137,7 +138,7 @@ the remote service.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-tlscredentials">tlsCredentials</h3>
 <div class="attribute-type-info">string</div>
@@ -161,7 +162,7 @@ authentication and encryption.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-settings">settings</h3>
 <div class="attribute-type-info">object</div>
@@ -221,7 +222,7 @@ A human-readable status message.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-hasmatchingconnectors">hasMatchingConnectors</h3>
 <div class="attribute-type-info">boolean</div>
@@ -233,7 +234,7 @@ A human-readable status message.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-conditions">conditions</h3>
 <div class="attribute-type-info">array</div>

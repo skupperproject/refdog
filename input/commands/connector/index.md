@@ -7,6 +7,7 @@ links:
     url: /resources/connector.html
   - name: Listener command
     url: /commands/listener/index.html
+attributes: true
 ---
 
 # Connector command

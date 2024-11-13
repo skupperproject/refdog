@@ -25,3 +25,19 @@ def refdog_object_links(page):
     lines.append("</section>")
 
     return "\n".join(lines)
+
+def refdog_object_operations(page):
+    if "attributes" not in page.metadata:
+        return ""
+
+    lines = list()
+
+    lines.append("<section>")
+    lines.append("<h4>Page</h4>")
+    lines.append("<nav>")
+    lines.append("<a id=\"expand-all\">Expand all</a>")
+    lines.append("<a id=\"collapse-all\">Collapse all</a>")
+    lines.append("</nav>")
+    lines.append("</section>")
+
+    return "\n".join(lines)

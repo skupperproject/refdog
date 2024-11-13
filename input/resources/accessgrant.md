@@ -5,6 +5,7 @@ links:
     url: /resources/accesstoken.html
   - name: Token issue command
     url: /commands/token/issue.html
+attributes: true
 ---
 
 # AccessGrant resource
@@ -46,7 +47,7 @@ The name of the resource.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="metadata-namespace">namespace</h3>
 <div class="attribute-type-info">string</div>
@@ -66,7 +67,7 @@ The namespace of the resource.
 
 ## Spec properties
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-redemptionsallowed">redemptionsAllowed</h3>
 <div class="attribute-type-info">integer</div>
@@ -81,7 +82,7 @@ be redeemed.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-expirationwindow">expirationWindow</h3>
 <div class="attribute-type-info">string (duration)</div>
@@ -97,7 +98,7 @@ grant can be redeemed.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-code">code</h3>
 <div class="attribute-type-info">string</div>
@@ -116,7 +117,7 @@ generated.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-issuer">issuer</h3>
 <div class="attribute-type-info">string</div>
@@ -133,7 +134,7 @@ If not set, the defaultIssuer on Site is used.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-settings">settings</h3>
 <div class="attribute-type-info">object</div>
@@ -188,7 +189,7 @@ A human-readable status message.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-redemptions">redemptions</h3>
 <div class="attribute-type-info">integer</div>
@@ -203,7 +204,7 @@ redeemed.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-expirationtime">expirationTime</h3>
 <div class="attribute-type-info">string (date-time)</div>
@@ -217,7 +218,7 @@ The point in time when the grant expires.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-url">url</h3>
 <div class="attribute-type-info">string</div>
@@ -231,7 +232,7 @@ The URL of the token-redemption service for this grant.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-ca">ca</h3>
 <div class="attribute-type-info">string</div>
@@ -246,7 +247,7 @@ service for this grant.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-code">code</h3>
 <div class="attribute-type-info">string</div>
@@ -262,7 +263,7 @@ submitted for redemption.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-conditions">conditions</h3>
 <div class="attribute-type-info">array</div>

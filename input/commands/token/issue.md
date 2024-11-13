@@ -11,6 +11,7 @@ links:
     url: /resources/accesstoken.html
   - name: Token redeem command
     url: /commands/token/redeem.html
+attributes: true
 ---
 
 # Token issue command
@@ -87,7 +88,7 @@ The name of the token file to create.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-timeout">--timeout</h3>
 <div class="attribute-type-info">&lt;duration&gt;</div>
@@ -103,7 +104,7 @@ period of time.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-expiration-window">--expiration-window</h3>
 <div class="attribute-type-info">&lt;duration&gt;</div>
@@ -119,7 +120,7 @@ grant can be redeemed.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-redemptions-allowed">--redemptions-allowed</h3>
 <div class="attribute-type-info">&lt;integer&gt;</div>
@@ -134,7 +135,7 @@ be redeemed.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-grant">--grant</h3>
 <div class="attribute-type-info">&lt;name&gt;</div>
@@ -149,7 +150,7 @@ one.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-namespace">--namespace</h3>
 <div class="attribute-type-info">(-n) &lt;name&gt;</div>
@@ -164,7 +165,7 @@ Set the namespace.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-context">--context</h3>
 <div class="attribute-type-info">&lt;name&gt;</div>
@@ -179,7 +180,7 @@ Set the kubeconfig context.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-kubeconfig">--kubeconfig</h3>
 <div class="attribute-type-info">&lt;file&gt;</div>
@@ -194,7 +195,7 @@ Set the path to the kubeconfig file.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-platform">--platform</h3>
 <div class="attribute-type-info">&lt;platform&gt;</div>
@@ -214,7 +215,7 @@ Set the Skupper platform.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-help">--help</h3>
 <div class="attribute-type-info">(-h) boolean</div>

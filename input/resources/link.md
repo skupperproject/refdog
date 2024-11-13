@@ -9,6 +9,7 @@ links:
     url: /resources/accessgrant.html
   - name: AccessToken resource
     url: /resources/accesstoken.html
+attributes: true
 ---
 
 # Link resource
@@ -48,7 +49,7 @@ The name of the resource.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="metadata-namespace">namespace</h3>
 <div class="attribute-type-info">string</div>
@@ -84,7 +85,7 @@ port, and group.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-cost">cost</h3>
 <div class="attribute-type-info">integer</div>
@@ -99,7 +100,7 @@ the link.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-tlscredentials">tlsCredentials</h3>
 <div class="attribute-type-info">string</div>
@@ -119,7 +120,7 @@ current namespace.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-settings">settings</h3>
 <div class="attribute-type-info">object</div>
@@ -174,7 +175,7 @@ A human-readable status message.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-remotesiteid">remoteSiteId</h3>
 <div class="attribute-type-info">string</div>
@@ -188,7 +189,7 @@ The unique ID of the site linked to.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-remotesitename">remoteSiteName</h3>
 <div class="attribute-type-info">string</div>
@@ -202,7 +203,7 @@ The name of the site linked to.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-conditions">conditions</h3>
 <div class="attribute-type-info">array</div>

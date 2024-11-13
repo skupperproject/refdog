@@ -214,6 +214,7 @@ h4 {
 a {
     text-decoration: none;
     color: var(--link-color);
+    cursor: pointer;
 }
 
 a.selected {
@@ -391,11 +392,11 @@ div.attribute.selected > div.attribute-heading {
     background-color: var(--selected-item-background-color);
 }
 
-div.attribute.folded > div.attribute-heading > h3::before {
+div.attribute.collapsed:not(.selected) > div.attribute-heading > h3::before {
     content: "\25b8";
 }
 
-div.attribute.folded > div.attribute-body {
+div.attribute.collapsed:not(.selected) > div.attribute-body {
     display: none;
 }
 

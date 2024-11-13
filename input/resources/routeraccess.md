@@ -1,5 +1,6 @@
 ---
 body_class: object resource
+attributes: true
 ---
 
 # RouterAccess resource
@@ -60,7 +61,7 @@ current namespace.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-generatetlscredentials">generateTlsCredentials</h3>
 <div class="attribute-type-info">boolean</div>
@@ -72,7 +73,7 @@ current namespace.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-issuer">issuer</h3>
 <div class="attribute-type-info">string</div>
@@ -84,7 +85,7 @@ current namespace.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-accesstype">accessType</h3>
 <div class="attribute-type-info">string</div>
@@ -96,7 +97,7 @@ current namespace.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-bindhost">bindHost</h3>
 <div class="attribute-type-info">string</div>
@@ -108,7 +109,7 @@ current namespace.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-subjectalternativenames">subjectAlternativeNames</h3>
 <div class="attribute-type-info">array</div>
@@ -120,7 +121,7 @@ current namespace.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-settings">settings</h3>
 <div class="attribute-type-info">object</div>
@@ -175,7 +176,7 @@ A human-readable status message.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-endpoints">endpoints</h3>
 <div class="attribute-type-info">array</div>
@@ -191,7 +192,7 @@ port, and group.
 </div>
 </div>
 
-<div class="attribute folded">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-conditions">conditions</h3>
 <div class="attribute-type-info">array</div>

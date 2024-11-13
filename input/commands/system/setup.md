@@ -1,5 +1,6 @@
 ---
 body_class: object command
+attributes: true
 ---
 
 # System setup command
