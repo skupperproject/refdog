@@ -13,7 +13,7 @@ links:
 #### Networks and sites
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/concepts/network.html">Network</a></th><td><p>A <em>network</em> is a set of linked sites that host a distributed application</p>
+<tr><th><a href="{{site_prefix}}/concepts/network.html">Network</a></th><td><p>A <em>network</em> is a set of linked sites that hosts a distributed application</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/site.html">Site</a></th><td><p>A place where components of your application are running</p>
 </td></tr>

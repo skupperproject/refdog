@@ -11,7 +11,7 @@ refdog_object_links:
 
 <section>
 
-A _network_ is a set of linked sites that host a distributed
+A _network_ is a set of linked sites that hosts a distributed
 application.  A Skupper network is also known as an _application
 network_ or _virtual application network_ (VAN).
 
