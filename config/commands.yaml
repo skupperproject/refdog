@@ -168,6 +168,16 @@ options:
         description: Use an OpenShift route.  _OpenShift only._
       - name: loadbalancer
         description: Use a Kubernetes load balancer.  _Kubernetes only._
+  site/enable_ha:
+    name: enable-ha
+    property: ha
+  site/default_issuer:
+    name: default-issuer
+    property: defaultIssuer
+    placeholder: name
+  site/enable_edge:
+    name: enable-edge
+    property: edge
   site/service_account:
     name: service-account
     property: serviceAccount

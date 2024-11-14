@@ -7,6 +7,6 @@ refdog_object_links: []
 
 <section>
 
-A _link access_ is an external access point for receiving links.
+A _link access_ is an external access point for accepting links.
 
 </section>

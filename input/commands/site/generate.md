@@ -22,6 +22,12 @@ refdog_object_toc:
     title: --enable-link-access
   - id: option-link-access-type
     title: --link-access-type
+  - id: option-enable-ha
+    title: --enable-ha
+  - id: option-default-issuer
+    title: --default-issuer
+  - id: option-enable-edge
+    title: --enable-edge
   - id: option-service-account
     title: --service-account
   - id: option-platform
@@ -143,6 +149,69 @@ the sites must have link access enabled.
 </td></tr><tr><th><code>route</code></th><td><p>Use an OpenShift route.  <em>OpenShift only.</em></p>
 </td></tr><tr><th><code>loadbalancer</code></th><td><p>Use a Kubernetes load balancer.  <em>Kubernetes only.</em></p>
 </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="">Site linking</a>, <a href="/concepts/link-access.html">Link access concept</a>, <a href="https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer">Kubernetes load balancer services</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="option-enable-ha">--enable-ha</h3>
+<div class="attribute-type-info">boolean</div>
+</div>
+<div class="attribute-body">
+
+Configure the site for high availability (HA).  HA sites
+have two active routers.
+
+Note that Skupper routers are stateless, and they restart
+after failure.  This already provides a high level of
+availability.  Enabling HA goes further and serves to
+reduce the window of downtime caused by restarts.
+
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Advanced deployment options</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="option-default-issuer">--default-issuer</h3>
+<div class="attribute-type-info">&lt;name&gt;</div>
+<div class="attribute-flags">advanced</div>
+</div>
+<div class="attribute-body">
+
+The name of a Kubernetes secret containing the signing CA
+used to generate a certificate from a token.  A secret is
+generated if none is supplied.
+
+This issuer is used by AccessGrant and RouterAccess if a
+specific issuer is set.
+
+<table class="fields"><tr><th>Default</th><td><p><code>skupper-site-ca</code></p>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="option-enable-edge">--enable-edge</h3>
+<div class="attribute-type-info">boolean</div>
+<div class="attribute-flags">advanced</div>
+</div>
+<div class="attribute-body">
+
+Configure the site to operate in edge mode.  Edge sites
+cannot accept links from remote sites.
+
+Edge mode can help you scale your network to large numbers
+of sites.  However, for networks with 16 or fewer sites,
+there is little benefit.
+
+Currently, edge sites cannot also have HA enabled.
+
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Advanced deployment options</a></td></table>
 
 </div>
 </div>

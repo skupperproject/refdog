@@ -60,7 +60,7 @@ concepts:
       - XXX only one direction needed
   - name: link access
     description: |
-      A _link access_ is an external access point for receiving links.
+      A _link access_ is an external access point for accepting links.
     overview: |
       - RouterAccess provides link access
   - name: access grant

@@ -28,7 +28,7 @@ links:
 <table class="objects">
 <tr><th><a href="{{site_prefix}}/concepts/link.html">Link</a></th><td><p>A <em>link</em> is a site-to-site communication channel</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/link-access.html">Link access</a></th><td><p>A <em>link access</em> is an external access point for receiving links</p>
+<tr><th><a href="{{site_prefix}}/concepts/link-access.html">Link access</a></th><td><p>A <em>link access</em> is an external access point for accepting links</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/access-grant.html">Access grant</a></th><td><p>An <em>access grant</em> enables redemption of access tokens</p>
 </td></tr>
