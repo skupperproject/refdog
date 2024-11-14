@@ -30,6 +30,13 @@ def generate():
     commands.generate(command_model)
 
 @command
+def generate_diagrams():
+    for input_file in find("input/concepts/images", "*.d2"):
+        output_file = input_file.removesuffix(".d2") + ".svg"
+
+        run(f"d2 --layout elk --theme 105 --pad 0 {input_file} {output_file}")
+
+@command
 def update_crds():
     url = "https://github.com/skupperproject/skupper/archive/refs/heads/v2.tar.gz"
     crd_dir = get_absolute_path("crds")

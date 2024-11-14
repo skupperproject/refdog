@@ -1,5 +1,12 @@
 ---
-body_class: concept
+body_class: object concept
+refdog_object_links:
+- title: Connector resource
+  url: /resources/connector.html
+- title: Connector command
+  url: /commands/connector/index.html
+- title: Listener concept
+  url: /concepts/listener.html
 ---
 
 # Connector concept

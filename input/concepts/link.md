@@ -1,5 +1,12 @@
 ---
-body_class: concept
+body_class: object concept
+refdog_object_links:
+- title: Link resource
+  url: /resources/link.html
+- title: Link command
+  url: /commands/link/index.html
+- title: Network concept
+  url: /concepts/network.html
 ---
 
 # Link concept

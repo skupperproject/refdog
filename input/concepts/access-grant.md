@@ -1,5 +1,10 @@
 ---
-body_class: concept
+body_class: object concept
+refdog_object_links:
+- title: Access token concept
+  url: /concepts/claim.html
+- title: Token issue command
+  url: /commands/token-issue.html
 ---
 
 # Access grant concept

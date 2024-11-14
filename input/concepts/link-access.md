@@ -1,5 +1,6 @@
 ---
-body_class: concept
+body_class: object concept
+refdog_object_links: []
 ---
 
 # Link access concept

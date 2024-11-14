@@ -1,19 +1,27 @@
 concepts:
   - name: network
     links:
-      - name: Site concept
+      - title: Site concept
         url: /concepts/site.html
-      - name: Link concept
+      - title: Link concept
         url: /concepts/link.html
     description: |
-      A set of linked sites that host a distributed application.
-    overview: |
-      - One network corresponds to one distributed application.
+      A _network_ is a set of linked sites that host a distributed
+      application.  A Skupper network is also known as an _application
+      network_ or _virtual application network_ (VAN).
+
+      Each network is meant for one distributed application.  This
+      provides a high level of isolation from other applications and
+      networks.
+
+      <img src="images/network-1.svg" width="480"/>
+      <img src="images/network-2.svg" width="480"/>
+      <img src="images/network-3.svg" width="480"/>
   - name: site
     links:
-      - name: Network concept
+      - title: Network concept
         url: /concepts/network.html
-      - name: Link concept
+      - title: Link concept
         url: /concepts/link.html
     description: |
       A place where components of your application are running.
@@ -22,6 +30,7 @@ concepts:
       - XXX usually a namespace
       - XXX on different platforms
       - XXX sites can be added and removed dynamically
+      - Also called Virtual Application Network (VAN), also application network
   - name: platform
     description: |
       A system for running workloads.
@@ -37,7 +46,7 @@ concepts:
       - Each site corresponds to one namespace
   - name: link
     links:
-      - name: Network concept
+      - title: Network concept
         url: /concepts/network.html
     description: |
       A site-to-site communication channel. Links serve as a
@@ -55,9 +64,9 @@ concepts:
       - RouterAccess provides link access
   - name: access grant
     links:
-      - name: Access token concept
+      - title: Access token concept
         url: /concepts/claim.html
-      - name: Token issue command
+      - title: Token issue command
         url: /commands/token-issue.html
     description: |
       Permission to redeem access tokens for links to the local
@@ -67,9 +76,9 @@ concepts:
       expiration window and for a limited number of redemptions.
   - name: access token
     links:
-      - name: Access grant concept
+      - title: Access grant concept
         url: /concepts/grant.html
-      - name: Token redeem command
+      - title: Token redeem command
         url: /commands/token-redeem.html
     description: |
       A transferrable token redeemable for a link to a remote
@@ -83,14 +92,14 @@ concepts:
       - XXX a listener and a connector bound together by a routing key
   - name: listener
     links:
-      - name: Connector concept
+      - title: Connector concept
         url: /concepts/connector.html
     description: |
       A binding from a local connection endpoint to connectors in
       remote sites.
   - name: connector
     links:
-      - name: Listener concept
+      - title: Listener concept
         url: /concepts/listener.html
     description: |
       A binding from a local workload to listeners in remote sites.
@@ -103,9 +112,9 @@ concepts:
     description: |
       An identifier for matching listeners to connectors
     links:
-      - name: Listener concept
+      - title: Listener concept
         url: /concepts/listener.html
-      - name: Connector concept
+      - title: Connector concept
         url: /concepts/connector.html
 groups:
   - name: Networks and sites

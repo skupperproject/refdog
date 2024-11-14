@@ -452,3 +452,10 @@ span.shell-command {
 
 span.shell-output {
 }
+
+/* -- */
+
+body.object.concept img {
+    margin: 2em;
+    max-width: 60%;
+}
