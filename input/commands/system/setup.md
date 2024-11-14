@@ -1,6 +1,15 @@
 ---
 body_class: object command
-attributes: true
+refdog_object_has_attributes: true
+refdog_object_links: []
+refdog_object_toc:
+- id: ''
+  title: Overview
+- id: usage
+  title: Usage
+- children: []
+  id: options
+  title: Options
 ---
 
 # System setup command

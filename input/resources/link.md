@@ -1,15 +1,47 @@
 ---
 body_class: object resource
-links:
-  - name: Link concept
-    url: /concepts/link.html
-  - name: Link command
-    url: /commands/link/index.html
-  - name: AccessGrant resource
-    url: /resources/accessgrant.html
-  - name: AccessToken resource
-    url: /resources/accesstoken.html
-attributes: true
+refdog_object_has_attributes: true
+refdog_object_links:
+- title: Link concept
+  url: /concepts/link.html
+- title: Link command
+  url: /commands/link/index.html
+- title: RouterAccess resource
+  url: /resources/routeraccess.html
+refdog_object_toc:
+- id: ''
+  title: Overview
+- children:
+  - id: metadata-name
+    title: name
+  - id: metadata-namespace
+    title: namespace
+  id: metadata
+  title: Metadata
+- children:
+  - id: spec-cost
+    title: cost
+  - id: spec-endpoints
+    title: endpoints
+  - id: spec-tlscredentials
+    title: tlsCredentials
+  - id: spec-settings
+    title: settings
+  id: spec
+  title: Spec
+- children:
+  - id: status-remotesiteid
+    title: remoteSiteId
+  - id: status-remotesitename
+    title: remoteSiteName
+  - id: status-status
+    title: status
+  - id: status-message
+    title: message
+  - id: status-conditions
+    title: conditions
+  id: status
+  title: Status
 ---
 
 # Link resource
@@ -32,7 +64,7 @@ kind: Link
 
 <section class="attributes">
 
-## Metadata properties
+## Metadata
 
 <div class="attribute">
 <div class="attribute-heading">
@@ -67,7 +99,7 @@ The namespace of the resource.
 
 <section class="attributes">
 
-## Spec properties
+## Spec
 
 <div class="attribute">
 <div class="attribute-heading">
@@ -140,40 +172,7 @@ string name and a string value.
 
 <section class="attributes">
 
-## Status properties
-
-<div class="attribute">
-<div class="attribute-heading">
-<h3 id="status-status">status</h3>
-<div class="attribute-type-info">string</div>
-<div class="attribute-flags">frequently used</div>
-</div>
-<div class="attribute-body">
-
-The current state of the resource.
-
-- Pending
-- Ready
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-<div class="attribute">
-<div class="attribute-heading">
-<h3 id="status-message">message</h3>
-<div class="attribute-type-info">string</div>
-<div class="attribute-flags">frequently used</div>
-</div>
-<div class="attribute-body">
-
-A human-readable status message.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
+## Status
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
@@ -197,6 +196,37 @@ The unique ID of the site linked to.
 <div class="attribute-body">
 
 The name of the site linked to.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="status-status">status</h3>
+<div class="attribute-type-info">string</div>
+</div>
+<div class="attribute-body">
+
+The current state of the resource.
+
+- Pending
+- Ready
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="status-message">message</h3>
+<div class="attribute-type-info">string</div>
+</div>
+<div class="attribute-body">
+
+A human-readable status message.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 

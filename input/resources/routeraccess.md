@@ -1,6 +1,45 @@
 ---
 body_class: object resource
-attributes: true
+refdog_object_has_attributes: true
+refdog_object_links:
+- title: Link resource
+  url: /resources/link.html
+refdog_object_toc:
+- id: ''
+  title: Overview
+- children: []
+  id: metadata
+  title: Metadata
+- children:
+  - id: spec-roles
+    title: roles
+  - id: spec-tlscredentials
+    title: tlsCredentials
+  - id: spec-generatetlscredentials
+    title: generateTlsCredentials
+  - id: spec-issuer
+    title: issuer
+  - id: spec-accesstype
+    title: accessType
+  - id: spec-bindhost
+    title: bindHost
+  - id: spec-subjectalternativenames
+    title: subjectAlternativeNames
+  - id: spec-settings
+    title: settings
+  id: spec
+  title: Spec
+- children:
+  - id: status-endpoints
+    title: endpoints
+  - id: status-status
+    title: status
+  - id: status-message
+    title: message
+  - id: status-conditions
+    title: conditions
+  id: status
+  title: Status
 ---
 
 # RouterAccess resource
@@ -19,13 +58,13 @@ kind: RouterAccess
 
 <section class="attributes">
 
-## Metadata properties
+## Metadata
 
 </section>
 
 <section class="attributes">
 
-## Spec properties
+## Spec
 
 <div class="attribute">
 <div class="attribute-heading">
@@ -141,13 +180,12 @@ string name and a string value.
 
 <section class="attributes">
 
-## Status properties
+## Status
 
-<div class="attribute">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-status">status</h3>
 <div class="attribute-type-info">string</div>
-<div class="attribute-flags">frequently used</div>
 </div>
 <div class="attribute-body">
 
@@ -161,11 +199,10 @@ The current state of the resource.
 </div>
 </div>
 
-<div class="attribute">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-message">message</h3>
 <div class="attribute-type-info">string</div>
-<div class="attribute-flags">frequently used</div>
 </div>
 <div class="attribute-body">
 

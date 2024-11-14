@@ -26,71 +26,71 @@ Element.prototype.$$ = function () {
     return this.querySelectorAll.apply(this, arguments);
 };
 
-window.addEventListener("load", () => {
-    const oldToc = $("#-toc");
+// window.addEventListener("load", () => {
+//     const oldToc = $("#-toc");
 
-    if (!oldToc) {
-        return;
-    }
+//     if (!oldToc) {
+//         return;
+//     }
 
-    const headings = $$("h2");
+//     const headings = $$("h2");
 
-    if (headings.length == 0) {
-        oldToc.remove();
-        return;
-    }
+//     if (headings.length == 0) {
+//         oldToc.remove();
+//         return;
+//     }
 
-    const newToc = document.createElement("section");
-    const newTocHeading = document.createElement("h4");
-    const newTocHeadingText = document.createTextNode("Contents");
+//     const newToc = document.createElement("section");
+//     const newTocHeading = document.createElement("h4");
+//     const newTocHeadingText = document.createTextNode("Contents");
 
-    newTocHeading.appendChild(newTocHeadingText);
-    newToc.appendChild(newTocHeading);
-    newToc.setAttribute("id", "-toc");
+//     newTocHeading.appendChild(newTocHeadingText);
+//     newToc.appendChild(newTocHeading);
+//     newToc.setAttribute("id", "-toc");
 
-    const newTocLinks = document.createElement("nav");
+//     const newTocLinks = document.createElement("nav");
 
-    const topLink = document.createElement("a");
-    const topText = document.createTextNode("Top");
+//     const topLink = document.createElement("a");
+//     const topText = document.createTextNode("Top");
 
-    topLink.setAttribute("href", "#");
-    topLink.appendChild(topText);
+//     topLink.setAttribute("href", "#");
+//     topLink.appendChild(topText);
 
-    newTocLinks.appendChild(topLink);
+//     newTocLinks.appendChild(topLink);
 
-    for (const heading of headings) {
-        const link = document.createElement("a");
-        const text = document.createTextNode(heading.textContent);
+//     for (const heading of headings) {
+//         const link = document.createElement("a");
+//         const text = document.createTextNode(heading.textContent);
 
-        link.setAttribute("href", `#${heading.id}`);
-        link.appendChild(text);
+//         link.setAttribute("href", `#${heading.id}`);
+//         link.appendChild(text);
 
-        newTocLinks.appendChild(link);
+//         newTocLinks.appendChild(link);
 
-        const subheadings = heading.parentElement.$$("h3");
+//         const subheadings = heading.parentElement.$$("h3");
 
-        if (subheadings.length == 0) {
-            continue;
-        }
+//         if (subheadings.length == 0) {
+//             continue;
+//         }
 
-        const sublinks = document.createElement("nav");
+//         const sublinks = document.createElement("nav");
 
-        for (const subheading of subheadings) {
-            const sublink = document.createElement("a");
-            const subtext = document.createTextNode(subheading.textContent);
+//         for (const subheading of subheadings) {
+//             const sublink = document.createElement("a");
+//             const subtext = document.createTextNode(subheading.textContent);
 
-            sublink.setAttribute("href", `#${subheading.id}`);
-            sublink.appendChild(subtext);
+//             sublink.setAttribute("href", `#${subheading.id}`);
+//             sublink.appendChild(subtext);
 
-            sublinks.appendChild(sublink);
-        }
+//             sublinks.appendChild(sublink);
+//         }
 
-        newTocLinks.appendChild(sublinks);
-    }
+//         newTocLinks.appendChild(sublinks);
+//     }
 
-    newToc.appendChild(newTocLinks);
-    oldToc.replaceWith(newToc);
-});
+//     newToc.appendChild(newTocLinks);
+//     oldToc.replaceWith(newToc);
+// });
 
 window.addEventListener("load", () => {
     const tocLinks = $("#-toc nav");

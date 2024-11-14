@@ -1,11 +1,37 @@
 ---
 body_class: object command
-links:
-  - name: Site concept
-    url: /concepts/site.html
-  - name: Site resource
-    url: /resources/site.html
-attributes: true
+refdog_object_has_attributes: true
+refdog_object_links:
+- title: Site concept
+  url: /concepts/site.html
+- title: Site resource
+  url: /resources/site.html
+refdog_object_toc:
+- id: ''
+  title: Overview
+- id: usage
+  title: Usage
+- id: examples
+  title: Examples
+- children:
+  - id: option-name
+    title: '[name]'
+  - id: option-output
+    title: --output
+  - id: option-timeout
+    title: --timeout
+  - id: option-namespace
+    title: --namespace
+  - id: option-context
+    title: --context
+  - id: option-kubeconfig
+    title: --kubeconfig
+  - id: option-platform
+    title: --platform
+  - id: option-help
+    title: --help
+  id: options
+  title: Options
 ---
 
 # Site status command
@@ -67,7 +93,7 @@ associated with the current namespace.
 <div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-output">--output</h3>
-<div class="attribute-type-info">(-o) &lt;string&gt;</div>
+<div class="attribute-type-info">(-o) &lt;format&gt;</div>
 </div>
 <div class="attribute-body">
 

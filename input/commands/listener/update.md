@@ -1,13 +1,47 @@
 ---
 body_class: object command
-links:
-  - name: Listener concept
-    url: /concepts/listener.html
-  - name: Listener resource
-    url: /resources/listener.html
-  - name: Connector update command
-    url: /commands/connector/update.html
-attributes: true
+refdog_object_has_attributes: true
+refdog_object_links:
+- title: Listener concept
+  url: /concepts/listener.html
+- title: Listener resource
+  url: /resources/listener.html
+- title: Connector update command
+  url: /commands/connector/update.html
+refdog_object_toc:
+- id: ''
+  title: Overview
+- id: usage
+  title: Usage
+- id: examples
+  title: Examples
+- children:
+  - id: option-name
+    title: '&lt;name&gt;'
+  - id: option-host
+    title: --host
+  - id: option-port
+    title: --port
+  - id: option-routing-key
+    title: --routing-key
+  - id: option-tls-credentials
+    title: --tls-credentials
+  - id: option-wait
+    title: --wait
+  - id: option-timeout
+    title: --timeout
+  - id: option-namespace
+    title: --namespace
+  - id: option-context
+    title: --context
+  - id: option-kubeconfig
+    title: --kubeconfig
+  - id: option-platform
+    title: --platform
+  - id: option-help
+    title: --help
+  id: options
+  title: Options
 ---
 
 # Listener update command
@@ -69,7 +103,7 @@ The name of the resource to be updated.
 <div class="attribute-heading">
 <h3 id="option-host">--host</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
-<div class="attribute-flags">required</div>
+<div class="attribute-flags">frequently used</div>
 </div>
 <div class="attribute-body">
 
@@ -87,7 +121,7 @@ establish connections to the remote service.
 <div class="attribute-heading">
 <h3 id="option-port">--port</h3>
 <div class="attribute-type-info">&lt;integer&gt;</div>
-<div class="attribute-flags">required</div>
+<div class="attribute-flags">frequently used</div>
 </div>
 <div class="attribute-body">
 
@@ -104,7 +138,7 @@ the remote service.
 <div class="attribute-heading">
 <h3 id="option-routing-key">--routing-key</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
-<div class="attribute-flags">required</div>
+<div class="attribute-flags">frequently used</div>
 </div>
 <div class="attribute-body">
 
@@ -172,22 +206,6 @@ Raise an error if the operation does not complete in the given
 period of time.
 
 <table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="option-type">--type</h3>
-<div class="attribute-type-info">&lt;string&gt;</div>
-<div class="attribute-flags">advanced</div>
-</div>
-<div class="attribute-body">
-
-The listener type.
-
-<table class="fields"><tr><th>Default</th><td><p><code>tcp</code></p>
 </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>

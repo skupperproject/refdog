@@ -1,13 +1,59 @@
 ---
 body_class: object resource
-links:
-  - name: Connector concept
-    url: /concepts/connector.html
-  - name: Connector command
-    url: /commands/connector/index.html
-  - name: Listener resource
-    url: /resources/listener.html
-attributes: true
+refdog_object_has_attributes: true
+refdog_object_links:
+- title: Connector concept
+  url: /concepts/connector.html
+- title: Connector command
+  url: /commands/connector/index.html
+- title: Listener resource
+  url: /resources/listener.html
+refdog_object_toc:
+- id: ''
+  title: Overview
+- id: examples
+  title: Examples
+- children:
+  - id: metadata-name
+    title: name
+  - id: metadata-namespace
+    title: namespace
+  id: metadata
+  title: Metadata
+- children:
+  - id: spec-tlscredentials
+    title: tlsCredentials
+  - id: spec-routingkey
+    title: routingKey
+  - id: spec-port
+    title: port
+  - id: spec-selector
+    title: selector
+  - id: spec-host
+    title: host
+  - id: spec-includenotready
+    title: includeNotReady
+  - id: spec-useclientcert
+    title: useClientCert
+  - id: spec-verifyhostname
+    title: verifyHostname
+  - id: spec-settings
+    title: settings
+  id: spec
+  title: Spec
+- children:
+  - id: status-selectedpods
+    title: selectedPods
+  - id: status-status
+    title: status
+  - id: status-message
+    title: message
+  - id: status-conditions
+    title: conditions
+  - id: status-hasmatchinglisteners
+    title: hasMatchingListeners
+  id: status
+  title: Status
 ---
 
 # Connector resource
@@ -47,7 +93,7 @@ spec:
 
 <section class="attributes">
 
-## Metadata properties
+## Metadata
 
 <div class="attribute">
 <div class="attribute-heading">
@@ -82,7 +128,7 @@ The namespace of the resource.
 
 <section class="attributes">
 
-## Spec properties
+## Spec
 
 <div class="attribute">
 <div class="attribute-heading">
@@ -243,13 +289,12 @@ string name and a string value.
 
 <section class="attributes">
 
-## Status properties
+## Status
 
-<div class="attribute">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-status">status</h3>
 <div class="attribute-type-info">string</div>
-<div class="attribute-flags">frequently used</div>
 </div>
 <div class="attribute-body">
 
@@ -263,11 +308,10 @@ The current state of the resource.
 </div>
 </div>
 
-<div class="attribute">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-message">message</h3>
 <div class="attribute-type-info">string</div>
-<div class="attribute-flags">frequently used</div>
 </div>
 <div class="attribute-body">
 

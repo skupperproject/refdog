@@ -1,11 +1,37 @@
 ---
 body_class: object command
-links:
-  - name: Listener concept
-    url: /concepts/listener.html
-  - name: Listener resource
-    url: /resources/listener.html
-attributes: true
+refdog_object_has_attributes: true
+refdog_object_links:
+- title: Listener concept
+  url: /concepts/listener.html
+- title: Listener resource
+  url: /resources/listener.html
+refdog_object_toc:
+- id: ''
+  title: Overview
+- id: usage
+  title: Usage
+- id: examples
+  title: Examples
+- children:
+  - id: option-name
+    title: '&lt;name&gt;'
+  - id: option-port
+    title: '&lt;port&gt;'
+  - id: option-routing-key
+    title: --routing-key
+  - id: option-host
+    title: --host
+  - id: option-tls-credentials
+    title: --tls-credentials
+  - id: option-output
+    title: --output
+  - id: option-platform
+    title: --platform
+  - id: option-help
+    title: --help
+  id: options
+  title: Options
 ---
 
 # Listener generate command
@@ -90,7 +116,7 @@ the remote service.
 <div class="attribute-heading">
 <h3 id="option-routing-key">--routing-key</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
-<div class="attribute-flags">required</div>
+<div class="attribute-flags">frequently used</div>
 </div>
 <div class="attribute-body">
 
@@ -109,7 +135,7 @@ must have matching routing keys.
 <div class="attribute-heading">
 <h3 id="option-host">--host</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
-<div class="attribute-flags">required</div>
+<div class="attribute-flags">frequently used</div>
 </div>
 <div class="attribute-body">
 
@@ -160,22 +186,6 @@ Select the output format.
 </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
 </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
 </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="option-type">--type</h3>
-<div class="attribute-type-info">&lt;string&gt;</div>
-<div class="attribute-flags">advanced</div>
-</div>
-<div class="attribute-body">
-
-The listener type.
-
-<table class="fields"><tr><th>Default</th><td><p><code>tcp</code></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>

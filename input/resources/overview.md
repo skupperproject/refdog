@@ -1,8 +1,14 @@
 # Skupper resource overview
 
+- These are Kubernetes custom resources
+- They are used for non-Kube platforms as well
+
 ## Site configuration resources
 
 ## Site linking resources
+
+- You may want to use the CLI (or some other automation) to do the
+  linking part
 
 ## Service exposure resources
 

@@ -9,21 +9,18 @@ def indent(text, spaces):
 def get_fragment_id(name):
     return name.lower().replace(" ", "-")
 
-def generate_object_links(obj):
+def get_object_links(obj):
     from concepts import Concept
     from resources import Resource
     from commands import Command
 
-    lines = list()
+    data = list()
 
     def add_link(other):
-        if not other:
-            return
-
-        href = other.href.removeprefix("{{site_prefix}}")
-
-        lines.append(f"  - name: {other.title}")
-        lines.append(f"    url: {href}")
+        data.append({
+            "title": other.title,
+            "url": other.href.removeprefix("{{site_prefix}}"),
+        })
 
     for other in obj.corresponding_objects:
         add_link(other)
@@ -38,29 +35,9 @@ def generate_object_links(obj):
         add_link(command)
 
     for link_data in obj.links:
-        lines.append(f"  - name: {link_data['name']}")
-        lines.append(f"    url: {link_data['url']}")
+        data.append(link_data)
 
-    if not lines:
-        return
-
-    lines.insert(0, "links:")
-
-    return "\n".join(lines)
-
-def generate_object_attributes(obj):
-    lines = list()
-
-    for attr in obj.attributes:
-        lines.append(f"  - name: {attr.name}")
-        lines.append(f"    id: {attr.name}")
-
-    if not lines:
-        return
-
-    lines.insert(0, "attributes:")
-
-    return "\n".join(lines)
+    return data
 
 def generate_attribute_fields(attr):
     rows = list()
@@ -120,7 +97,7 @@ def generate_attribute_links(attr):
         links.append(f"<a href=\"{url}\">{name}</a>")
 
     for link_data in attr.links:
-        name = link_data["name"]
+        name = link_data["title"]
         url = link_data["url"]
 
         links.append(f"<a href=\"{url}\">{name}</a>")

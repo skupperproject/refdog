@@ -1,17 +1,41 @@
 ---
 body_class: object command
-links:
-  - name: Access grant concept
-    url: /concepts/access-grant.html
-  - name: Access token concept
-    url: /concepts/access-token.html
-  - name: AccessGrant resource
-    url: /resources/accessgrant.html
-  - name: AccessToken resource
-    url: /resources/accesstoken.html
-  - name: Token issue command
-    url: /commands/token/issue.html
-attributes: true
+refdog_object_has_attributes: true
+refdog_object_links:
+- title: Access grant concept
+  url: /concepts/access-grant.html
+- title: Access token concept
+  url: /concepts/access-token.html
+- title: AccessGrant resource
+  url: /resources/accessgrant.html
+- title: AccessToken resource
+  url: /resources/accesstoken.html
+- title: Token issue command
+  url: /commands/token/issue.html
+refdog_object_toc:
+- id: ''
+  title: Overview
+- id: usage
+  title: Usage
+- id: examples
+  title: Examples
+- children:
+  - id: option-file
+    title: '&lt;file&gt;'
+  - id: option-timeout
+    title: --timeout
+  - id: option-namespace
+    title: --namespace
+  - id: option-context
+    title: --context
+  - id: option-kubeconfig
+    title: --kubeconfig
+  - id: option-platform
+    title: --platform
+  - id: option-help
+    title: --help
+  id: options
+  title: Options
 ---
 
 # Token redeem command

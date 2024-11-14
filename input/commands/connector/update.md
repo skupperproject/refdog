@@ -1,13 +1,53 @@
 ---
 body_class: object command
-links:
-  - name: Connector concept
-    url: /concepts/connector.html
-  - name: Connector resource
-    url: /resources/connector.html
-  - name: Listener update command
-    url: /commands/listener/update.html
-attributes: true
+refdog_object_has_attributes: true
+refdog_object_links:
+- title: Connector concept
+  url: /concepts/connector.html
+- title: Connector resource
+  url: /resources/connector.html
+- title: Listener update command
+  url: /commands/listener/update.html
+refdog_object_toc:
+- id: ''
+  title: Overview
+- id: usage
+  title: Usage
+- id: examples
+  title: Examples
+- children:
+  - id: option-name
+    title: '&lt;name&gt;'
+  - id: option-port
+    title: '&lt;port&gt;'
+  - id: option-routing-key
+    title: --routing-key
+  - id: option-selector
+    title: --selector
+  - id: option-workload
+    title: --workload
+  - id: option-host
+    title: --host
+  - id: option-tls-credentials
+    title: --tls-credentials
+  - id: option-include-not-ready
+    title: --include-not-ready
+  - id: option-wait
+    title: --wait
+  - id: option-timeout
+    title: --timeout
+  - id: option-namespace
+    title: --namespace
+  - id: option-context
+    title: --context
+  - id: option-kubeconfig
+    title: --kubeconfig
+  - id: option-platform
+    title: --platform
+  - id: option-help
+    title: --help
+  id: options
+  title: Options
 ---
 
 # Connector update command
@@ -151,7 +191,8 @@ This is an alternative to setting the `--selector` or
 The hostname or IP address of the server.  This is an
 alternative to `selector` for specifying the target server.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -224,22 +265,6 @@ Raise an error if the operation does not complete in the given
 period of time.
 
 <table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="option-type">--type</h3>
-<div class="attribute-type-info">&lt;string&gt;</div>
-<div class="attribute-flags">advanced</div>
-</div>
-<div class="attribute-body">
-
-The connector type.
-
-<table class="fields"><tr><th>Default</th><td><p><code>tcp</code></p>
 </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>

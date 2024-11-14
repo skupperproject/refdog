@@ -1,11 +1,39 @@
 ---
 body_class: object command
-links:
-  - name: Site concept
-    url: /concepts/site.html
-  - name: Site resource
-    url: /resources/site.html
-attributes: true
+refdog_object_has_attributes: true
+refdog_object_links:
+- title: Site concept
+  url: /concepts/site.html
+- title: Site resource
+  url: /resources/site.html
+refdog_object_toc:
+- id: ''
+  title: Overview
+- id: usage
+  title: Usage
+- id: examples
+  title: Examples
+- children:
+  - id: option-name
+    title: '[name]'
+  - id: option-all
+    title: --all
+  - id: option-wait
+    title: --wait
+  - id: option-timeout
+    title: --timeout
+  - id: option-namespace
+    title: --namespace
+  - id: option-context
+    title: --context
+  - id: option-kubeconfig
+    title: --kubeconfig
+  - id: option-platform
+    title: --platform
+  - id: option-help
+    title: --help
+  id: options
+  title: Options
 ---
 
 # Site delete command
@@ -66,10 +94,11 @@ associated with the current namespace.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="option-all">--all</h3>
 <div class="attribute-type-info">boolean</div>
+<div class="attribute-flags">frequently used</div>
 </div>
 <div class="attribute-body">
 

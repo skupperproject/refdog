@@ -1,9 +1,41 @@
 ---
 body_class: object resource
-links:
-  - name: AttachedConnector resource
-    url: /resources/attachedconnector.html
-attributes: true
+refdog_object_has_attributes: true
+refdog_object_links:
+- title: AttachedConnector resource
+  url: /resources/attachedconnector.html
+refdog_object_toc:
+- id: ''
+  title: Overview
+- children:
+  - id: metadata-name
+    title: name
+  - id: metadata-namespace
+    title: namespace
+  id: metadata
+  title: Metadata
+- children:
+  - id: spec-connectornamespace
+    title: connectorNamespace
+  - id: spec-routingkey
+    title: routingKey
+  - id: spec-settings
+    title: settings
+  id: spec
+  title: Spec
+- children:
+  - id: status-status
+    title: status
+  - id: status-message
+    title: message
+  - id: status-conditions
+    title: conditions
+  - id: status-hasmatchinglisteners
+    title: hasMatchingListeners
+  - id: status-selectedpods
+    title: selectedPods
+  id: status
+  title: Status
 ---
 
 # AttachedConnectorBinding resource
@@ -21,7 +53,7 @@ kind: AttachedConnectorBinding
 
 <section class="attributes">
 
-## Metadata properties
+## Metadata
 
 <div class="attribute">
 <div class="attribute-heading">
@@ -60,7 +92,7 @@ The namespace of the resource.
 
 <section class="attributes">
 
-## Spec properties
+## Spec
 
 <div class="attribute">
 <div class="attribute-heading">
@@ -116,13 +148,12 @@ string name and a string value.
 
 <section class="attributes">
 
-## Status properties
+## Status
 
-<div class="attribute">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-status">status</h3>
 <div class="attribute-type-info">string</div>
-<div class="attribute-flags">frequently used</div>
 </div>
 <div class="attribute-body">
 
@@ -136,11 +167,10 @@ The current state of the resource.
 </div>
 </div>
 
-<div class="attribute">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-message">message</h3>
 <div class="attribute-type-info">None</div>
-<div class="attribute-flags">frequently used</div>
 </div>
 <div class="attribute-body">
 

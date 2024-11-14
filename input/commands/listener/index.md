@@ -1,13 +1,27 @@
 ---
 body_class: object command
-links:
-  - name: Listener concept
-    url: /concepts/listener.html
-  - name: Listener resource
-    url: /resources/listener.html
-  - name: Connector command
-    url: /commands/connector/index.html
-attributes: true
+refdog_object_has_attributes: true
+refdog_object_links:
+- title: Listener concept
+  url: /concepts/listener.html
+- title: Listener resource
+  url: /resources/listener.html
+- title: Connector command
+  url: /commands/connector/index.html
+refdog_object_toc:
+- id: ''
+  title: Overview
+- id: usage
+  title: Usage
+- id: subcommands
+  title: Subcommands
+- children:
+  - id: option-platform
+    title: --platform
+  - id: option-help
+    title: --help
+  id: options
+  title: Options
 ---
 
 # Listener command
@@ -30,7 +44,7 @@ skupper listener [command] [options]
 
 <section>
 
-## Commands
+## Subcommands
 
 <table class="objects">
 <tr><th><a href="create.html">Listener create</a></th><td><p>Create a listener</p>

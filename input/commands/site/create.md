@@ -1,11 +1,43 @@
 ---
 body_class: object command
-links:
-  - name: Site concept
-    url: /concepts/site.html
-  - name: Site resource
-    url: /resources/site.html
-attributes: true
+refdog_object_has_attributes: true
+refdog_object_links:
+- title: Site concept
+  url: /concepts/site.html
+- title: Site resource
+  url: /resources/site.html
+refdog_object_toc:
+- id: ''
+  title: Overview
+- id: usage
+  title: Usage
+- id: examples
+  title: Examples
+- children:
+  - id: option-name
+    title: '&lt;name&gt;'
+  - id: option-enable-link-access
+    title: --enable-link-access
+  - id: option-link-access-type
+    title: --link-access-type
+  - id: option-service-account
+    title: --service-account
+  - id: option-wait
+    title: --wait
+  - id: option-timeout
+    title: --timeout
+  - id: option-namespace
+    title: --namespace
+  - id: option-context
+    title: --context
+  - id: option-kubeconfig
+    title: --kubeconfig
+  - id: option-platform
+    title: --platform
+  - id: option-help
+    title: --help
+  id: options
+  title: Options
 ---
 
 # Site create command

@@ -1,6 +1,21 @@
 ---
 body_class: object command
-attributes: true
+refdog_object_has_attributes: true
+refdog_object_links: []
+refdog_object_toc:
+- id: ''
+  title: Overview
+- id: usage
+  title: Usage
+- id: subcommands
+  title: Subcommands
+- children:
+  - id: option-platform
+    title: --platform
+  - id: option-help
+    title: --help
+  id: options
+  title: Options
 ---
 
 # Debug command
@@ -23,7 +38,7 @@ skupper debug [command] [options]
 
 <section>
 
-## Commands
+## Subcommands
 
 <table class="objects">
 <tr><th><a href="dump.html">Debug dump</a></th><td><p>Generate a debug dump file</p>

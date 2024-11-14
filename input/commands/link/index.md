@@ -1,13 +1,27 @@
 ---
 body_class: object command
-links:
-  - name: Link concept
-    url: /concepts/link.html
-  - name: Link resource
-    url: /resources/link.html
-  - name: Token command
-    url: /commands/token/index.html
-attributes: true
+refdog_object_has_attributes: true
+refdog_object_links:
+- title: Link concept
+  url: /concepts/link.html
+- title: Link resource
+  url: /resources/link.html
+- title: Token command
+  url: /commands/token/index.html
+refdog_object_toc:
+- id: ''
+  title: Overview
+- id: usage
+  title: Usage
+- id: subcommands
+  title: Subcommands
+- children:
+  - id: option-platform
+    title: --platform
+  - id: option-help
+    title: --help
+  id: options
+  title: Options
 ---
 
 # Link command
@@ -30,7 +44,7 @@ skupper link [command] [options]
 
 <section>
 
-## Commands
+## Subcommands
 
 <table class="objects">
 <tr><th><a href="update.html">Link update</a></th><td><p>Change link settings</p>

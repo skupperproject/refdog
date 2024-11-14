@@ -1,13 +1,39 @@
 ---
 body_class: object command
-links:
-  - name: Listener concept
-    url: /concepts/listener.html
-  - name: Listener resource
-    url: /resources/listener.html
-  - name: Connector delete command
-    url: /commands/connector/delete.html
-attributes: true
+refdog_object_has_attributes: true
+refdog_object_links:
+- title: Listener concept
+  url: /concepts/listener.html
+- title: Listener resource
+  url: /resources/listener.html
+- title: Connector delete command
+  url: /commands/connector/delete.html
+refdog_object_toc:
+- id: ''
+  title: Overview
+- id: usage
+  title: Usage
+- id: examples
+  title: Examples
+- children:
+  - id: option-name
+    title: '&lt;name&gt;'
+  - id: option-wait
+    title: --wait
+  - id: option-timeout
+    title: --timeout
+  - id: option-namespace
+    title: --namespace
+  - id: option-context
+    title: --context
+  - id: option-kubeconfig
+    title: --kubeconfig
+  - id: option-platform
+    title: --platform
+  - id: option-help
+    title: --help
+  id: options
+  title: Options
 ---
 
 # Listener delete command

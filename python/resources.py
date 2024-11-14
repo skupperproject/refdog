@@ -17,10 +17,10 @@ def generate(model):
 
     append("---")
     append("links:")
-    append("  - name: Skupper concepts")
-    append("    url: /concepts/index.html")
-    append("  - name: Skupper commands")
-    append("    url: /commands/index.html")
+    append("- title: Skupper concepts")
+    append("  url: /concepts/index.html")
+    append("- title: Skupper commands")
+    append("  url: /commands/index.html")
     append("---")
     append()
     append("# Skupper resources")
@@ -65,9 +65,7 @@ def generate_resource(resource):
         lines.append(line)
 
     append("---")
-    append("body_class: object resource")
-    append(generate_object_links(resource))
-    append("attributes: true")
+    append(generate_resource_metadata(resource))
     append("---")
     append()
     append(f"# {capitalize(resource.rename)} resource")
@@ -107,7 +105,7 @@ def generate_resource(resource):
 
     append("<section class=\"attributes\">")
     append()
-    append("## Metadata properties")
+    append("## Metadata")
     append()
 
     for prop in resource.metadata_properties:
@@ -117,7 +115,7 @@ def generate_resource(resource):
     append()
     append("<section class=\"attributes\">")
     append()
-    append("## Spec properties")
+    append("## Spec")
     append()
 
     for group in ("required", "frequently-used", None, "advanced", "global"):
@@ -129,7 +127,7 @@ def generate_resource(resource):
     append()
     append("<section class=\"attributes\">")
     append()
-    append("## Status properties")
+    append("## Status")
     append()
 
     for group in ("required", "frequently-used", None, "advanced", "global"):
@@ -151,6 +149,46 @@ def generate_resource(resource):
         append()
 
     write(f"input/resources/{resource.id}.md", "\n".join(lines))
+
+def generate_resource_metadata(resource):
+    data = dict()
+
+    data["body_class"] = "object resource"
+    data["refdog_object_has_attributes"] = True
+    data["refdog_object_links"] = get_object_links(resource)
+
+    data["refdog_object_toc"] = [
+        {
+            "title": "Overview",
+            "id": "",
+        }
+    ]
+
+    if resource.examples:
+        data["refdog_object_toc"].append({
+            "title": "Examples",
+            "id": "examples",
+        })
+
+    data["refdog_object_toc"].extend([
+        {
+            "title": "Metadata",
+            "id": "metadata",
+            "children": [{"title": x.name, "id": x.id} for x in resource.metadata_properties if not x.hidden],
+        },
+        {
+            "title": "Spec",
+            "id": "spec",
+            "children": [{"title": x.name, "id": x.id} for x in resource.spec_properties if not x.hidden],
+        },
+        {
+            "title": "Status",
+            "id": "status",
+            "children": [{"title": x.name, "id": x.id} for x in resource.status_properties if not x.hidden],
+        },
+    ])
+
+    return emit_yaml(data).strip()
 
 def generate_property(prop, append):
     debug(f"Generating {prop}")

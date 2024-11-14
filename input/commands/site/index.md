@@ -1,11 +1,25 @@
 ---
 body_class: object command
-links:
-  - name: Site concept
-    url: /concepts/site.html
-  - name: Site resource
-    url: /resources/site.html
-attributes: true
+refdog_object_has_attributes: true
+refdog_object_links:
+- title: Site concept
+  url: /concepts/site.html
+- title: Site resource
+  url: /resources/site.html
+refdog_object_toc:
+- id: ''
+  title: Overview
+- id: usage
+  title: Usage
+- id: subcommands
+  title: Subcommands
+- children:
+  - id: option-platform
+    title: --platform
+  - id: option-help
+    title: --help
+  id: options
+  title: Options
 ---
 
 # Site command
@@ -28,7 +42,7 @@ skupper site [command] [options]
 
 <section>
 
-## Commands
+## Subcommands
 
 <table class="objects">
 <tr><th><a href="create.html">Site create</a></th><td><p>Create a site</p>

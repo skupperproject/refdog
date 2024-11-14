@@ -1,17 +1,61 @@
 ---
 body_class: object resource
-links:
-  - name: Site concept
-    url: /concepts/site.html
-  - name: Site command
-    url: /commands/site/index.html
-  - name: Network concept
-    url: /concepts/network.html
-  - name: Namespace concept
-    url: /concepts/namespace.html
-  - name: Link resource
-    url: /resources/link.html
-attributes: true
+refdog_object_has_attributes: true
+refdog_object_links:
+- title: Site concept
+  url: /concepts/site.html
+- title: Site command
+  url: /commands/site/index.html
+- title: Network concept
+  url: /concepts/network.html
+- title: Namespace concept
+  url: /concepts/namespace.html
+- title: Link resource
+  url: /resources/link.html
+refdog_object_toc:
+- id: ''
+  title: Overview
+- id: examples
+  title: Examples
+- children:
+  - id: metadata-name
+    title: name
+  - id: metadata-namespace
+    title: namespace
+  id: metadata
+  title: Metadata
+- children:
+  - id: spec-linkaccess
+    title: linkAccess
+  - id: spec-ha
+    title: ha
+  - id: spec-defaultissuer
+    title: defaultIssuer
+  - id: spec-edge
+    title: edge
+  - id: spec-serviceaccount
+    title: serviceAccount
+  - id: spec-settings
+    title: settings
+  id: spec
+  title: Spec
+- children:
+  - id: status-status
+    title: status
+  - id: status-message
+    title: message
+  - id: status-conditions
+    title: conditions
+  - id: status-defaultissuer
+    title: defaultIssuer
+  - id: status-endpoints
+    title: endpoints
+  - id: status-network
+    title: network
+  - id: status-sitesinnetwork
+    title: sitesInNetwork
+  id: status
+  title: Status
 ---
 
 # Site resource
@@ -60,7 +104,7 @@ spec:
 
 <section class="attributes">
 
-## Metadata properties
+## Metadata
 
 <div class="attribute">
 <div class="attribute-heading">
@@ -95,7 +139,7 @@ The namespace of the resource.
 
 <section class="attributes">
 
-## Spec properties
+## Spec
 
 <div class="attribute">
 <div class="attribute-heading">
@@ -230,13 +274,12 @@ string name and a string value.
 
 <section class="attributes">
 
-## Status properties
+## Status
 
-<div class="attribute">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-status">status</h3>
 <div class="attribute-type-info">string</div>
-<div class="attribute-flags">frequently used</div>
 </div>
 <div class="attribute-body">
 
@@ -250,11 +293,10 @@ The current state of the resource.
 </div>
 </div>
 
-<div class="attribute">
+<div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="status-message">message</h3>
 <div class="attribute-type-info">string</div>
-<div class="attribute-flags">frequently used</div>
 </div>
 <div class="attribute-body">
 

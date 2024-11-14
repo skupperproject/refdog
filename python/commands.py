@@ -17,10 +17,10 @@ def generate(model):
 
     append("---")
     append("links:")
-    append("  - name: Skupper concepts")
-    append("    url: /concepts/index.html")
-    append("  - name: Skupper resources")
-    append("    url: /resources/index.html")
+    append("- title: Skupper concepts")
+    append("  url: /concepts/index.html")
+    append("- title: Skupper resources")
+    append("  url: /resources/index.html")
     append("---")
     append()
     append("# Skupper commands")
@@ -81,9 +81,7 @@ def generate_command(command):
         lines.append(line)
 
     append("---")
-    append("body_class: object command")
-    append(generate_object_links(command))
-    append("attributes: true")
+    append(generate_command_metadata(command))
     append("---")
     append()
     append(f"# {command.title}")
@@ -126,7 +124,7 @@ def generate_command(command):
     if command.subcommands:
         append("<section>")
         append()
-        append("## Commands")
+        append("## Subcommands")
         append()
         append("<table class=\"objects\">")
 
@@ -196,6 +194,45 @@ def generate_command(command):
     else:
         write(f"input/commands/{command.id}.md", "\n".join(lines))
 
+def generate_command_metadata(command):
+    data = dict()
+
+    data["body_class"] = "object command"
+    data["refdog_object_has_attributes"] = True
+    data["refdog_object_links"] = get_object_links(command)
+
+    data["refdog_object_toc"] = [
+        {
+            "title": "Overview",
+            "id": "",
+        },
+        {
+            "title": "Usage",
+            "id": "usage",
+        },
+    ]
+
+    sections = "Usage", "Output", "Subcommands", "Examples"
+
+    for section in sections:
+        items = getattr(command, section.lower())
+
+        if items:
+            data["refdog_object_toc"].append({
+                "title": section,
+                "id": get_fragment_id(section),
+            })
+
+    data["refdog_object_toc"].extend([
+        {
+            "title": "Options",
+            "id": "options",
+            "children": [{"title": x.syntax_name, "id": x.id} for x in command.options if not x.hidden],
+        },
+    ])
+
+    return emit_yaml(data).strip()
+
 def generate_usage(command):
     parts = ["skupper"]
     parts.extend([x.name for x in reversed(list(command.ancestors))])
@@ -231,28 +268,17 @@ def generate_option(option, append):
     classes = ["attribute"]
     flags = list()
     prefix = ""
-    option_key = option.name
+    option_key = option.syntax_name
     type_info = option.type
 
-    if option.positional:
-        if option.required:
-            option_key = f"&lt;{option_key}&gt;"
+    if not option.positional and option.type != "boolean":
+        if option.placeholder:
+            type_info = f"&lt;{option.placeholder}&gt;"
         else:
-            option_key = f"[{option_key}]"
-    else:
-        option_key = f"--{option_key}"
+            type_info = f"&lt;{option.type}&gt;"
 
-        if option.type != "boolean":
-            if option.placeholder:
-                type_info = f"&lt;{option.placeholder}&gt;"
-            else:
-                type_info = f"&lt;{option.type}&gt;"
-
-        if option.short_option:
-            type_info = f"(-{option.short_option}) {type_info}"
-
-    # if option.format:
-    #     type_info += f" ({option.format})"
+    if option.short_option:
+        type_info = f"(-{option.short_option}) {type_info}"
 
     if option.group:
         if option.group == "positional":
@@ -511,6 +537,16 @@ class Option(ModelObjectAttribute):
     @property
     def id(self):
         return f"option-{get_fragment_id(self.rename)}"
+
+    @property
+    def syntax_name(self):
+        if self.positional:
+            if self.required:
+                return f"&lt;{self.name}&gt;"
+            else:
+                return f"[{self.name}]"
+        else:
+            return f"--{self.name}"
 
     @property
     def property_(self):

@@ -9,7 +9,7 @@ def path_nav(page):
     return f"<nav class=\"path-nav\">{''.join(links)}</nav>"
 
 def refdog_object_links(page):
-    if "links" not in page.metadata:
+    if not page.metadata.get("refdog_object_links"):
         return ""
 
     lines = list()
@@ -18,8 +18,36 @@ def refdog_object_links(page):
     lines.append("<h4>See also</h4>")
     lines.append("<nav>")
 
-    for link in page.metadata["links"]:
-        lines.append(f"<a href=\"{site_prefix}{link['url']}\">{link['name']}</a>")
+    for link in page.metadata["refdog_object_links"]:
+        lines.append(f"<a href=\"{site_prefix}{link['url']}\">{link['title']}</a>")
+
+    lines.append("</nav>")
+    lines.append("</section>")
+
+    return "\n".join(lines)
+
+def refdog_object_toc(page):
+    if not page.metadata.get("refdog_object_toc"):
+        return ""
+
+    lines = list()
+
+    lines.append("<section id=\"-toc\">")
+    lines.append("  <h4>Contents</h4>")
+    lines.append("  <nav>")
+
+    for section in page.metadata["refdog_object_toc"]:
+        lines.append(f"<a href=\"#{section['id']}\">{section['title']}</a>")
+
+        children = section.get("children", [])
+
+        if children:
+            lines.append("<nav>")
+
+            for child in children:
+                lines.append(f"<a href=\"#{child['id']}\">{child['title']}</a>")
+
+            lines.append("</nav>")
 
     lines.append("</nav>")
     lines.append("</section>")
@@ -27,7 +55,7 @@ def refdog_object_links(page):
     return "\n".join(lines)
 
 def refdog_object_operations(page):
-    if "attributes" not in page.metadata:
+    if not page.metadata.get("refdog_object_has_attributes"):
         return ""
 
     lines = list()

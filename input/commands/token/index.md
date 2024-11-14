@@ -1,15 +1,29 @@
 ---
 body_class: object command
-links:
-  - name: Access grant concept
-    url: /concepts/access-grant.html
-  - name: Access token concept
-    url: /concepts/access-token.html
-  - name: AccessGrant resource
-    url: /resources/accessgrant.html
-  - name: AccessToken resource
-    url: /resources/accesstoken.html
-attributes: true
+refdog_object_has_attributes: true
+refdog_object_links:
+- title: Access grant concept
+  url: /concepts/access-grant.html
+- title: Access token concept
+  url: /concepts/access-token.html
+- title: AccessGrant resource
+  url: /resources/accessgrant.html
+- title: AccessToken resource
+  url: /resources/accesstoken.html
+refdog_object_toc:
+- id: ''
+  title: Overview
+- id: usage
+  title: Usage
+- id: subcommands
+  title: Subcommands
+- children:
+  - id: option-platform
+    title: --platform
+  - id: option-help
+    title: --help
+  id: options
+  title: Options
 ---
 
 # Token command
@@ -32,7 +46,7 @@ skupper token [command] [options]
 
 <section>
 
-## Commands
+## Subcommands
 
 <table class="objects">
 <tr><th><a href="issue.html">Token issue</a></th><td><p>Issue a token file redeemable for a link to the current site</p>

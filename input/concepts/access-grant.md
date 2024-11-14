@@ -1,10 +1,5 @@
 ---
 body_class: concept
-links:
-  - name: Access token concept
-    url: /concepts/claim.html
-  - name: Token issue command
-    url: /commands/token-issue.html
 ---
 
 # Access grant concept

@@ -7,7 +7,7 @@ properties:
     description: |
       The name of the resource.
     links:
-      - name: Kubernetes object names
+      - title: Kubernetes object names
         url: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
   metadata/namespace:
     name: namespace
@@ -16,7 +16,7 @@ properties:
     description: |
       The namespace of the resource.
     links:
-      - name: Kubernetes namespaces
+      - title: Kubernetes namespaces
         url: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
   settings:
     name: settings
@@ -27,7 +27,6 @@ properties:
       string name and a string value.
   status/status:
     name: status
-    group: frequently-used
     description: |
       The current state of the resource.
 
@@ -35,7 +34,6 @@ properties:
       - Ready
   status/message:
     name: message
-    group: frequently-used
     description: |
       A human-readable status message.
   status/conditions:
@@ -46,7 +44,7 @@ properties:
       A set of named conditions describing the current state of the
       resource.
     links:
-      - name: Kubernetes conditions
+      - title: Kubernetes conditions
         url: https://maelvls.dev/kubernetes-conditions/
   connector/spec/routingKey:
     name: routingKey
@@ -56,7 +54,7 @@ properties:
       remote listener and the local connector must have matching
       routing keys.
     links:
-      - name: Routing key concept
+      - title: Routing key concept
         url: /concepts/routing-key.html
   connector/spec/port:
     name: port
@@ -111,9 +109,9 @@ properties:
       On Kubernetes, the value is the name of a Secret in the current
       namespace.
     links:
-      - name: Site-scoped TLS
+      - title: Site-scoped TLS
         url: "" # XXX
-      - name: Kubernetes TLS secrets
+      - title: Kubernetes TLS secrets
         url: https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
   tls/useClientCert:
     name: useClientCert
@@ -122,7 +120,7 @@ properties:
       Send the client certificate when connecting in order to enable
       mutual TLS.
     links:
-      - name: Site-scoped TLS
+      - title: Site-scoped TLS
         url: "" # XXX
   tls/verifyHostname:
     name: verifyHostname
@@ -191,11 +189,11 @@ resources:
             - name: loadbalancer
               description: Use a Kubernetes load balancer.  _Kubernetes only._
           links:
-            - name: Site linking
+            - title: Site linking
               url: ""
-            - name: Link access concept
+            - title: Link access concept
               url: /concepts/link-access.html
-            - name: Kubernetes load balancer services
+            - title: Kubernetes load balancer services
               url: https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer
         - name: ha
           updatable: true
@@ -209,7 +207,7 @@ resources:
             availability.  Enabling HA goes further and serves to
             reduce the window of downtime caused by restarts.
           links:
-            - name: Advanced deployment options
+            - title: Advanced deployment options
               url: ""
         - name: defaultIssuer
           group: advanced
@@ -235,7 +233,7 @@ resources:
 
             Currently, edge sites cannot also have HA enabled.
           links:
-            - name: Advanced deployment options
+            - title: Advanced deployment options
               url: ""
         - name: serviceAccount
           group: advanced
@@ -245,9 +243,9 @@ resources:
             The name of the Kubernetes service account under which to
             run the Skupper controller.
           links:
-            - name: Advanced deployment options
+            - title: Advanced deployment options
               url: ""
-            - name: Kubernetes service accounts
+            - title: Kubernetes service accounts
               url: https://kubernetes.io/docs/concepts/security/service-accounts/
         - name: settings
           description: |
@@ -286,6 +284,7 @@ resources:
         - name: sitesInNetwork
           group: advanced
   - name: RouterAccess
+    related_resources: [Link]
     description: |
       Configuration for secure access to the site router.  The
       configuration includes TLS credentials and router ports.
@@ -303,9 +302,9 @@ resources:
             On Kubernetes, the value is the name of a Secret in the
             current namespace.
           links:
-            - name: Custom certificates
+            - title: Custom certificates
               url: ""
-            - name: Kubernetes TLS secrets
+            - title: Kubernetes TLS secrets
               url: https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
         - name: generateTlsCredentials
         - name: issuer
@@ -317,6 +316,7 @@ resources:
       properties:
         - name: endpoints
   - name: AccessGrant
+    related_concepts: [access grant]
     related_resources: [AccessToken]
     related_commands: [token/issue]
     description: |
@@ -382,6 +382,7 @@ resources:
             submitted for redemption.
           default: _Generated_
   - name: AccessToken
+    related_concepts: [access token]
     related_resources: [AccessGrant]
     related_commands: [token/redeem]
     description: |
@@ -411,7 +412,7 @@ resources:
           description: |
             The link cost to use when creating the link.
           links:
-            - name: Load balancing
+            - title: Load balancing
               url: ""
             # XXX ref link.cost
     status:
@@ -422,7 +423,7 @@ resources:
             True if the token has been redeemed.  Once a token is
             redeemed, it cannot be used again.
   - name: Link
-    related_resources: [AccessGrant, AccessToken]
+    related_resources: [RouterAccess]
     description: |
       A site-to-site communication channel. Links serve as a
       transport for application connections and requests.  A set
@@ -441,7 +442,7 @@ resources:
             The configured routing cost of sending traffic over
             the link.
           links:
-            - name: Load balancing
+            - title: Load balancing
               url: ""
         - name: endpoints
           group: null
@@ -455,9 +456,9 @@ resources:
             On Kubernetes, the value is the name of a Secret in the
             current namespace.
           links:
-            - name: Custom certificates
+            - title: Custom certificates
               url: ""
-            - name: Kubernetes TLS secrets
+            - title: Kubernetes TLS secrets
               url: https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
     status:
       include_properties: [status/*]
@@ -502,7 +503,7 @@ resources:
             remote site, the local listener and the remote connector
             must have matching routing keys.
           links:
-            - name: Routing key concept
+            - title: Routing key concept
               url: /concepts/routing-key.html
         - name: host
           description: |
@@ -536,6 +537,8 @@ resources:
     status:
       include_properties: [status/*]
       properties:
+        - name: status
+        - name: message
         - name: hasMatchingConnectors
           type: boolean
   - name: Connector
@@ -588,13 +591,12 @@ resources:
             AttachedConnectorBinding resource in the site namespace.
     spec:
       include_properties: [connector/spec/*, tls/*, settings]
-      exclude_properties: [connector/spec/routingKey]
+      exclude_properties: [connector/spec/routingKey, connector/spec/host]
       properties:
         - name: siteNamespace
           description: |
             The name of the namespace in which the site this connector
             should be attached to is defined.
-        - name: host
         - name: includeNotReady
         - name: tlsCredentials
           description: |

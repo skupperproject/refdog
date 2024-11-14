@@ -6,7 +6,7 @@ options:
     description: |
       The name of the resource to be created.
     links:
-      - name: Kubernetes object names
+      - title: Kubernetes object names
         url: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
   create/wait:
     name: wait
@@ -31,7 +31,7 @@ options:
       Raise an error if the operation does not complete in the given
       period of time.
     links:
-      - name: Duration format
+      - title: Duration format
         url: https://pkg.go.dev/time#ParseDuration
   update/name:
     name: name
@@ -40,7 +40,7 @@ options:
     description: |
       The name of the resource to be updated.
     links:
-      - name: Kubernetes object names
+      - title: Kubernetes object names
         url: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
   update/wait:
     name: wait
@@ -71,7 +71,7 @@ options:
     description: |
       The name of the resource to be deleted.
     links:
-      - name: Kubernetes object names
+      - title: Kubernetes object names
         url: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
   delete/wait:
     name: wait
@@ -96,11 +96,12 @@ options:
       An optional resource name.  If set, the status command reports
       status for the named resource only.
     links:
-      - name: Kubernetes object names
+      - title: Kubernetes object names
         url: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
   status/output:
     name: output
     type: string
+    placeholder: format
     short_option: o
     description: |
       Print status to the console in a structured output format.
@@ -124,7 +125,7 @@ options:
     description: |
       The name of the resource to be generated.
     links:
-      - name: Kubernetes object names
+      - title: Kubernetes object names
         url: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
   generate/output:
     name: output
@@ -148,7 +149,7 @@ options:
 
       <!-- XXX reference link access type -->
     links:
-      - name: Link access concept
+      - title: Link access concept
         url: /concepts/link-access.html
   site/link_access_type:
     name: link-access-type
@@ -181,16 +182,16 @@ options:
     description: |
       The name of the Connector resource.
     links:
-      - name: Kubernetes object names
+      - title: Kubernetes object names
         url: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
   connector/port:
     name: port
     property: port
     positional: true
-  connector/routing-key:
+  connector/routing_key:
     name: routing-key
-    required: false
     group: frequently-used
+    required: false
     property: routingKey
     default: _Value of name_
   connector/selector:
@@ -210,14 +211,13 @@ options:
       `--host` options.
     platforms: [Kubernetes]
     links:
-      - name: Kubernetes workloads
+      - title: Kubernetes workloads
         url: https://kubernetes.io/docs/concepts/workloads/
   connector/host:
     name: host
+    required: false
     property: host
-  connector/type:
-    name: type
-    property: type
+    default: _Value of name_
   connector/tls_credentials:
     name: tls-credentials
     property: tlsCredentials
@@ -231,18 +231,19 @@ options:
     positional: true
   listener/routing_key:
     name: routing-key
+    group: frequently-used
+    required: false
     property: routingKey
     default: _Value of name_
   listener/host:
     name: host
+    group: frequently-used
+    required: false
     property: host
     default: _Value of name_
   listener/tls_credentials:
     name: tls-credentials
     property: tlsCredentials
-  listener/type:
-    name: type
-    property: type
   context/namespace:
     name: namespace
     group: global
@@ -252,7 +253,7 @@ options:
     description: |
       Set the namespace.
     links:
-      - name: Kubernetes namespaces
+      - title: Kubernetes namespaces
         url: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
   context/context:
     name: context
@@ -263,7 +264,7 @@ options:
       Set the kubeconfig context.
     platforms: [Kubernetes]
     links:
-      - name: Kubernetes kubeconfigs
+      - title: Kubernetes kubeconfigs
         url: https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/
   context/kubeconfig:
     name: kubeconfig
@@ -274,7 +275,7 @@ options:
       Set the path to the kubeconfig file.
     platforms: [Kubernetes]
     links:
-      - name: Kubernetes kubeconfigs
+      - title: Kubernetes kubeconfigs
         url: https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/
   global/platform:
     name: platform
@@ -380,6 +381,7 @@ commands:
               If not specified, the name is that of the site
               associated with the current namespace.
           - name: all
+            group: frequently-used
             type: boolean
             description: |
               In addition the site resource, delete all of the Skupper
@@ -425,11 +427,6 @@ commands:
 
           # Generate a Site resource and direct the output to a file
           $ skupper site generate east > east.yaml
-        notes: |
-          Do not generate resources with namespaces.  That's already
-          added in by the kubectl tooling when the resource is
-          applied.  Not having the namespace means the resulting
-          output can be used in more contexts.
         include_options: [generate/*, site/*, global/*]
   - name: token
     resource: Claim
@@ -665,8 +662,13 @@ commands:
           - name: name
           - name: port
             required: true
+          - name: routing-key
+          - name: selector
+          - name: workload
+          - name: host
           - name: wait
             default: configured
+          - name: timeout
       # connector.update
       - name: update
         wait: Configured
@@ -702,19 +704,19 @@ commands:
           # Show the status of all connectors in the current site
           $ skupper connector status
           NAME       STATUS   ROUTING-KEY   SELECTOR         HOST     PORT   LISTENERS
-          backend    Ready    backend       app=backend      [none]   8080   1
-          database   Ready    database      app=postgresql   [none]   5432   1
+          backend    Ready    backend       app=backend      [none]   8080   true
+          database   Ready    database      app=postgresql   [none]   5432   true
 
           # Show the status of one connector
           $ skupper connector status backend
-          Name:          backend
-          Status:        Ready
-          Message:       [none]
-          Routing key:   backend
-          Selector:      app=backend
-          Host:          [none]
-          Port:          8080
-          Listeners:     1
+          Name:                     backend
+          Status:                   Ready
+          Message:                  [none]
+          Routing key:              backend
+          Selector:                 app=backend
+          Host:                     [none]
+          Port:                     8080
+          Has matching listeners:   1
         include_options: [status/*, context/*, global/*]
       # connector.generate
       - name: generate
@@ -764,6 +766,7 @@ commands:
           - name: port
           - name: wait
             default: configured
+          - name: timeout
       # listener.update
       - name: update
         wait: Configured
@@ -783,6 +786,7 @@ commands:
           - name: name
           - name: host
           - name: port
+            group: frequently-used
             required: false
             positional: false
       # listener.delete
@@ -805,18 +809,18 @@ commands:
           # Show the status of all listeners in the current site
           $ skupper listener status
           NAME       STATUS   ROUTING-KEY   HOST       PORT   CONNECTORS
-          backend    Ready    backend       backend    8080   1
-          database   Ready    database      database   5432   1
+          backend    Ready    backend       backend    8080   true
+          database   Ready    database      database   5432   true
 
           # Show the status of one listener
           $ skupper listener status backend
-          Name:          backend
-          Status:        Ready
-          Message:       [none]
-          Routing key:   backend
-          Host:          backend
-          Port:          8080
-          Connectors:    1
+          Name:                      backend
+          Status:                    Ready
+          Message:                   [none]
+          Routing key:               backend
+          Host:                      backend
+          Port:                      8080
+          Has matching connectors:   true
         include_options: [status/*, context/*, global/*]
       # listener.generate
       - name: generate

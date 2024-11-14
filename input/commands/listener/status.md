@@ -1,11 +1,37 @@
 ---
 body_class: object command
-links:
-  - name: Listener concept
-    url: /concepts/listener.html
-  - name: Listener resource
-    url: /resources/listener.html
-attributes: true
+refdog_object_has_attributes: true
+refdog_object_links:
+- title: Listener concept
+  url: /concepts/listener.html
+- title: Listener resource
+  url: /resources/listener.html
+refdog_object_toc:
+- id: ''
+  title: Overview
+- id: usage
+  title: Usage
+- id: examples
+  title: Examples
+- children:
+  - id: option-name
+    title: '[name]'
+  - id: option-output
+    title: --output
+  - id: option-timeout
+    title: --timeout
+  - id: option-namespace
+    title: --namespace
+  - id: option-context
+    title: --context
+  - id: option-kubeconfig
+    title: --kubeconfig
+  - id: option-platform
+    title: --platform
+  - id: option-help
+    title: --help
+  id: options
+  title: Options
 ---
 
 # Listener status command
@@ -36,18 +62,18 @@ skupper listener status [name] [options]
 # Show the status of all listeners in the current site
 $ skupper listener status
 NAME       STATUS   ROUTING-KEY   HOST       PORT   CONNECTORS
-backend    Ready    backend       backend    8080   1
-database   Ready    database      database   5432   1
+backend    Ready    backend       backend    8080   true
+database   Ready    database      database   5432   true
 
 # Show the status of one listener
 $ skupper listener status backend
-Name:          backend
-Status:        Ready
-Message:       [none]
-Routing key:   backend
-Host:          backend
-Port:          8080
-Connectors:    1
+Name:                      backend
+Status:                    Ready
+Message:                   [none]
+Routing key:               backend
+Host:                      backend
+Port:                      8080
+Has matching connectors:   true
 ~~~
 
 </section>
@@ -75,7 +101,7 @@ status for the named resource only.
 <div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-output">--output</h3>
-<div class="attribute-type-info">(-o) &lt;string&gt;</div>
+<div class="attribute-type-info">(-o) &lt;format&gt;</div>
 </div>
 <div class="attribute-body">
 

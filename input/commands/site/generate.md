@@ -1,11 +1,35 @@
 ---
 body_class: object command
-links:
-  - name: Site concept
-    url: /concepts/site.html
-  - name: Site resource
-    url: /resources/site.html
-attributes: true
+refdog_object_has_attributes: true
+refdog_object_links:
+- title: Site concept
+  url: /concepts/site.html
+- title: Site resource
+  url: /resources/site.html
+refdog_object_toc:
+- id: ''
+  title: Overview
+- id: usage
+  title: Usage
+- id: examples
+  title: Examples
+- children:
+  - id: option-name
+    title: '&lt;name&gt;'
+  - id: option-output
+    title: --output
+  - id: option-enable-link-access
+    title: --enable-link-access
+  - id: option-link-access-type
+    title: --link-access-type
+  - id: option-service-account
+    title: --service-account
+  - id: option-platform
+    title: --platform
+  - id: option-help
+    title: --help
+  id: options
+  title: Options
 ---
 
 # Site generate command
@@ -174,16 +198,5 @@ Display help and exit.
 
 </div>
 </div>
-
-</section>
-
-<section class="notes">
-
-## Notes
-
-Do not generate resources with namespaces.  That's already
-added in by the kubectl tooling when the resource is
-applied.  Not having the namespace means the resulting
-output can be used in more contexts.
 
 </section>

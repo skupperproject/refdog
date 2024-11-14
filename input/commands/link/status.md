@@ -1,11 +1,37 @@
 ---
 body_class: object command
-links:
-  - name: Link concept
-    url: /concepts/link.html
-  - name: Link resource
-    url: /resources/link.html
-attributes: true
+refdog_object_has_attributes: true
+refdog_object_links:
+- title: Link concept
+  url: /concepts/link.html
+- title: Link resource
+  url: /resources/link.html
+refdog_object_toc:
+- id: ''
+  title: Overview
+- id: usage
+  title: Usage
+- id: examples
+  title: Examples
+- children:
+  - id: option-name
+    title: '[name]'
+  - id: option-output
+    title: --output
+  - id: option-timeout
+    title: --timeout
+  - id: option-namespace
+    title: --namespace
+  - id: option-context
+    title: --context
+  - id: option-kubeconfig
+    title: --kubeconfig
+  - id: option-platform
+    title: --platform
+  - id: option-help
+    title: --help
+  id: options
+  title: Options
 ---
 
 # Link status command
@@ -76,7 +102,7 @@ status for the named resource only.
 <div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-output">--output</h3>
-<div class="attribute-type-info">(-o) &lt;string&gt;</div>
+<div class="attribute-type-info">(-o) &lt;format&gt;</div>
 </div>
 <div class="attribute-body">
 

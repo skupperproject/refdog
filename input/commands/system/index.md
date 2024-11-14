@@ -1,6 +1,17 @@
 ---
 body_class: object command
-attributes: true
+refdog_object_has_attributes: true
+refdog_object_links: []
+refdog_object_toc:
+- id: ''
+  title: Overview
+- id: usage
+  title: Usage
+- id: subcommands
+  title: Subcommands
+- children: []
+  id: options
+  title: Options
 ---
 
 # System command
@@ -23,7 +34,7 @@ skupper system [command] [options]
 
 <section>
 
-## Commands
+## Subcommands
 
 <table class="objects">
 <tr><th><a href="setup.html">System setup</a></th><td><p>Install and configure the Skupper components for the current namespace</p>

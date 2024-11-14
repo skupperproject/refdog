@@ -1,11 +1,55 @@
 ---
 body_class: object resource
-links:
-  - name: AccessToken resource
-    url: /resources/accesstoken.html
-  - name: Token issue command
-    url: /commands/token/issue.html
-attributes: true
+refdog_object_has_attributes: true
+refdog_object_links:
+- title: Access grant concept
+  url: /concepts/access-grant.html
+- title: AccessToken resource
+  url: /resources/accesstoken.html
+- title: Token issue command
+  url: /commands/token/issue.html
+refdog_object_toc:
+- id: ''
+  title: Overview
+- children:
+  - id: metadata-name
+    title: name
+  - id: metadata-namespace
+    title: namespace
+  id: metadata
+  title: Metadata
+- children:
+  - id: spec-redemptionsallowed
+    title: redemptionsAllowed
+  - id: spec-expirationwindow
+    title: expirationWindow
+  - id: spec-code
+    title: code
+  - id: spec-issuer
+    title: issuer
+  - id: spec-settings
+    title: settings
+  id: spec
+  title: Spec
+- children:
+  - id: status-redemptions
+    title: redeemed
+  - id: status-expirationtime
+    title: expiration
+  - id: status-url
+    title: url
+  - id: status-ca
+    title: ca
+  - id: status-code
+    title: code
+  - id: status-status
+    title: status
+  - id: status-message
+    title: message
+  - id: status-conditions
+    title: conditions
+  id: status
+  title: Status
 ---
 
 # AccessGrant resource
@@ -30,7 +74,7 @@ kind: AccessGrant
 
 <section class="attributes">
 
-## Metadata properties
+## Metadata
 
 <div class="attribute">
 <div class="attribute-heading">
@@ -65,7 +109,7 @@ The namespace of the resource.
 
 <section class="attributes">
 
-## Spec properties
+## Spec
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
@@ -154,40 +198,7 @@ string name and a string value.
 
 <section class="attributes">
 
-## Status properties
-
-<div class="attribute">
-<div class="attribute-heading">
-<h3 id="status-status">status</h3>
-<div class="attribute-type-info">string</div>
-<div class="attribute-flags">frequently used</div>
-</div>
-<div class="attribute-body">
-
-The current state of the resource.
-
-- Pending
-- Ready
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-<div class="attribute">
-<div class="attribute-heading">
-<h3 id="status-message">message</h3>
-<div class="attribute-type-info">string</div>
-<div class="attribute-flags">frequently used</div>
-</div>
-<div class="attribute-body">
-
-A human-readable status message.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
+## Status
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
@@ -259,6 +270,37 @@ submitted for redemption.
 
 <table class="fields"><tr><th>Default</th><td><p><em>Generated</em></p>
 </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="status-status">status</h3>
+<div class="attribute-type-info">string</div>
+</div>
+<div class="attribute-body">
+
+The current state of the resource.
+
+- Pending
+- Ready
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="status-message">message</h3>
+<div class="attribute-type-info">string</div>
+</div>
+<div class="attribute-body">
+
+A human-readable status message.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>

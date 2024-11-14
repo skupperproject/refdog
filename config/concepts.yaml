@@ -27,6 +27,8 @@ concepts:
       A system for running workloads.
     overview: |
       - XXX enumerate them
+      - Platforms have namespaces (usually)
+      - Platforms can host sites
   - name: namespace
     description: |
       A named area for a related set of resources and components.

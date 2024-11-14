@@ -60,7 +60,8 @@ def generate_concept(concept):
 
     append("---")
     append("body_class: concept")
-    append(generate_object_links(concept))
+    # XXX
+    # append(generate_object_links(concept))
     append("---")
     append()
     append(f"# {concept.title}")
@@ -86,6 +87,14 @@ def generate_concept(concept):
         append()
 
     write(f"input/concepts/{concept.id}.md", "\n".join(lines))
+
+def generate_concept_metadata(concept):
+    data = dict()
+
+    data["body_class"] = "object concept"
+    data["refdog_object_links"] = get_object_links(resource)
+
+    return emit_yaml(data).strip()
 
 class ConceptModel:
     def __init__(self):
