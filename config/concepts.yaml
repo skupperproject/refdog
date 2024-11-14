@@ -6,13 +6,12 @@ concepts:
       - title: Link concept
         url: /concepts/link.html
     description: |
-      A _network_ is a set of linked sites that hosts a distributed
-      application.  A Skupper network is also known as an _application
-      network_ or _virtual application network_ (VAN).
+      A _network_ is a set of linked sites. A Skupper network is also
+      known as an _application network_ or _virtual application
+      network_ (VAN).
 
       Each network is meant for one distributed application.  This
-      provides a high level of isolation from other applications and
-      networks.
+      provides isolation from other applications and networks.
 
       <img src="images/network-1.svg" width="480"/>
       <img src="images/network-2.svg" width="480"/>
@@ -24,8 +23,8 @@ concepts:
       - title: Link concept
         url: /concepts/link.html
     description: |
-      A _site_ is a place where components of your application are
-      running.  Sites are linked to form application networks.
+      A _site_ is a place in the network where workloads are running.
+      Sites are linked to form application networks.
     overview: |
       - XXX usually a namespace
       - XXX on different platforms
@@ -33,15 +32,14 @@ concepts:
       - Also called Virtual Application Network (VAN), also application network
   - name: platform
     description: |
-      A _platform_ is a system for running application components.
+      A _platform_ is a system for running application workloads.
     overview: |
       - XXX enumerate them
       - Platforms have namespaces (usually)
       - Platforms can host sites
   - name: namespace
     description: |
-      A _namespace_ is a named area for a related set application
-      components.
+      A _namespace_ is a named area for a related set of resources.
     overview: |
       - XXX what do they look like on each platform?
       - Each site corresponds to one namespace
@@ -50,9 +48,9 @@ concepts:
       - title: Network concept
         url: /concepts/network.html
     description: |
-      A _link_ is a site-to-site communication channel. Links serve as
-      a transport for application connections and requests.  A set of
-      linked sites constitute a network.
+      A _link_ is a channel for communication between sites.  Links
+      serve as a transport for application connections and requests.
+      A set of linked sites constitute a network.
     overview: |
       - XXX A vessel for bidirectional application traffic
       - XXX link topology

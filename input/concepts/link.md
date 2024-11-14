@@ -13,8 +13,8 @@ refdog_object_links:
 
 <section>
 
-A _link_ is a site-to-site communication channel. Links serve as
-a transport for application connections and requests.  A set of
-linked sites constitute a network.
+A _link_ is a channel for communication between sites.  Links
+serve as a transport for application connections and requests.
+A set of linked sites constitute a network.
 
 </section>

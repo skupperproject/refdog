@@ -13,20 +13,20 @@ links:
 #### Networks and sites
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/concepts/network.html">Network</a></th><td><p>A <em>network</em> is a set of linked sites that hosts a distributed application</p>
+<tr><th><a href="{{site_prefix}}/concepts/network.html">Network</a></th><td><p>A <em>network</em> is a set of linked sites</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/site.html">Site</a></th><td><p>A <em>site</em> is a place where components of your application are running</p>
+<tr><th><a href="{{site_prefix}}/concepts/site.html">Site</a></th><td><p>A <em>site</em> is a place in the network where workloads are running</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/platform.html">Platform</a></th><td><p>A <em>platform</em> is a system for running application components</p>
+<tr><th><a href="{{site_prefix}}/concepts/platform.html">Platform</a></th><td><p>A <em>platform</em> is a system for running application workloads</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/namespace.html">Namespace</a></th><td><p>A <em>namespace</em> is a named area for a related set application components</p>
+<tr><th><a href="{{site_prefix}}/concepts/namespace.html">Namespace</a></th><td><p>A <em>namespace</em> is a named area for a related set of resources</p>
 </td></tr>
 </table>
 
 #### Site linking
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/concepts/link.html">Link</a></th><td><p>A <em>link</em> is a site-to-site communication channel</p>
+<tr><th><a href="{{site_prefix}}/concepts/link.html">Link</a></th><td><p>A <em>link</em> is a channel for communication between sites</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/link-access.html">Link access</a></th><td><p>A <em>link access</em> is an external access point for accepting links</p>
 </td></tr>

@@ -15,7 +15,7 @@ refdog_object_links:
 
 <section>
 
-A _site_ is a place where components of your application are
-running.  Sites are linked to form application networks.
+A _site_ is a place in the network where workloads are running.
+Sites are linked to form application networks.
 
 </section>
