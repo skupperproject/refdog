@@ -7,6 +7,7 @@ refdog_object_links: []
 
 <section>
 
-A named area for a related set of resources and components.
+A _namespace_ is a named area for a related set application
+components.
 
 </section>

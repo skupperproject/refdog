@@ -11,8 +11,8 @@ refdog_object_links:
 
 <section>
 
-A transferrable token redeemable for a link to a remote
-site.  An access token contains the URL and secret code of a
-corresponding access grant.
+An _access token_ is redeemable for a link to a remote site.  An
+access token contains the URL and secret code of a corresponding
+access grant.
 
 </section>

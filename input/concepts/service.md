@@ -7,6 +7,6 @@ refdog_object_links: []
 
 <section>
 
-An application component exposed on the network
+A _service_ is an application component exposed on the network.
 
 </section>

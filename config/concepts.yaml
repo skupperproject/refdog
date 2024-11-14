@@ -24,8 +24,8 @@ concepts:
       - title: Link concept
         url: /concepts/link.html
     description: |
-      A place where components of your application are running.
-      Sites are linked to form application networks.
+      A _site_ is a place where components of your application are
+      running.  Sites are linked to form application networks.
     overview: |
       - XXX usually a namespace
       - XXX on different platforms
@@ -33,14 +33,15 @@ concepts:
       - Also called Virtual Application Network (VAN), also application network
   - name: platform
     description: |
-      A system for running workloads.
+      A _platform_ is a system for running application components.
     overview: |
       - XXX enumerate them
       - Platforms have namespaces (usually)
       - Platforms can host sites
   - name: namespace
     description: |
-      A named area for a related set of resources and components.
+      A _namespace_ is a named area for a related set application
+      components.
     overview: |
       - XXX what do they look like on each platform?
       - Each site corresponds to one namespace
@@ -49,9 +50,9 @@ concepts:
       - title: Network concept
         url: /concepts/network.html
     description: |
-      A site-to-site communication channel. Links serve as a
-      transport for application connections and requests.  A set
-      of linked sites constitute a network.
+      A _link_ is a site-to-site communication channel. Links serve as
+      a transport for application connections and requests.  A set of
+      linked sites constitute a network.
     overview: |
       - XXX A vessel for bidirectional application traffic
       - XXX link topology
@@ -59,7 +60,7 @@ concepts:
       - XXX only one direction needed
   - name: link access
     description: |
-      An external access point for receiving links
+      A _link access_ is an external access point for receiving links.
     overview: |
       - RouterAccess provides link access
   - name: access grant
@@ -69,11 +70,11 @@ concepts:
       - title: Token issue command
         url: /commands/token-issue.html
     description: |
-      Permission to redeem access tokens for links to the local
-      site.  A remote site can use a token containing the grant
-      URL and secret code to obtain a certificate signed by the
-      grant's certificate authority (CA), within a certain
-      expiration window and for a limited number of redemptions.
+      An _access grant_ enables redemption of access tokens.  A remote
+      site can use a token containing the grant URL and secret code to
+      obtain a certificate signed by the grant's certificate authority
+      (CA), within a certain expiration window and for a limited
+      number of redemptions.
   - name: access token
     links:
       - title: Access grant concept
@@ -81,12 +82,12 @@ concepts:
       - title: Token redeem command
         url: /commands/token-redeem.html
     description: |
-      A transferrable token redeemable for a link to a remote
-      site.  An access token contains the URL and secret code of a
-      corresponding access grant.
+      An _access token_ is redeemable for a link to a remote site.  An
+      access token contains the URL and secret code of a corresponding
+      access grant.
   - name: service
     description: |
-      An application component exposed on the network
+      A _service_ is an application component exposed on the network.
     overview: |
       - XXX at the network level
       - XXX a listener and a connector bound together by a routing key
@@ -95,14 +96,15 @@ concepts:
       - title: Connector concept
         url: /concepts/connector.html
     description: |
-      A binding from a local connection endpoint to connectors in
+      A _listener_ binds a local connection endpoint to connectors in
       remote sites.
   - name: connector
     links:
       - title: Listener concept
         url: /concepts/listener.html
     description: |
-      A binding from a local workload to listeners in remote sites.
+      A _connector_ binds a local workload to listeners in remote
+      sites.
     overview: |
       - A connector targets a workload in the local site (or
         reachable on the local network).
@@ -110,7 +112,8 @@ concepts:
         at remote sites to the workload in the local site.
   - name: routing key
     description: |
-      An identifier for matching listeners to connectors
+      A _routing key_ is an identifier for matching listeners to
+      connectors.
     links:
       - title: Listener concept
         url: /concepts/listener.html

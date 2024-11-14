@@ -13,7 +13,7 @@ refdog_object_links:
 
 <section>
 
-A binding from a local connection endpoint to connectors in
+A _listener_ binds a local connection endpoint to connectors in
 remote sites.
 
 </section>

@@ -7,6 +7,6 @@ refdog_object_links: []
 
 <section>
 
-A system for running workloads.
+A _platform_ is a system for running application components.
 
 </section>

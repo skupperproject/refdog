@@ -13,6 +13,7 @@ refdog_object_links:
 
 <section>
 
-A binding from a local workload to listeners in remote sites.
+A _connector_ binds a local workload to listeners in remote
+sites.
 
 </section>
