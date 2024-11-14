@@ -6,4 +6,6 @@ body_class: concept
 
 <section>
 
+An external access point for receiving links
+
 </section>

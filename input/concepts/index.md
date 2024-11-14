@@ -28,7 +28,8 @@ links:
 <table class="objects">
 <tr><th><a href="{{site_prefix}}/concepts/link.html">Link</a></th><td><p>A site-to-site communication channel</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/link-access.html">Link access</a></th><td></td></tr>
+<tr><th><a href="{{site_prefix}}/concepts/link-access.html">Link access</a></th><td><p>An external access point for receiving links</p>
+</td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/access-grant.html">Access grant</a></th><td><p>Permission to redeem access tokens for links to the local site</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/access-token.html">Access token</a></th><td><p>A transferrable token redeemable for a link to a remote site</p>
@@ -38,10 +39,12 @@ links:
 #### Service exposure
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/concepts/service.html">Service</a></th><td></td></tr>
+<tr><th><a href="{{site_prefix}}/concepts/service.html">Service</a></th><td><p>An application component exposed on the network</p>
+</td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/listener.html">Listener</a></th><td><p>A binding from a local connection endpoint to connectors in remote sites</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/connector.html">Connector</a></th><td><p>A binding from a local workload to listeners in remote sites</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/routing-key.html">Routing key</a></th><td></td></tr>
+<tr><th><a href="{{site_prefix}}/concepts/routing-key.html">Routing key</a></th><td><p>An identifier for matching listeners to connectors</p>
+</td></tr>
 </table>

@@ -6,4 +6,6 @@ body_class: concept
 
 <section>
 
+An application component exposed on the network
+
 </section>

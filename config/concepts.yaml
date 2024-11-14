@@ -34,6 +34,7 @@ concepts:
       A named area for a related set of resources and components.
     overview: |
       - XXX what do they look like on each platform?
+      - Each site corresponds to one namespace
   - name: link
     links:
       - name: Network concept
@@ -48,6 +49,10 @@ concepts:
       - XXX link cost
       - XXX only one direction needed
   - name: link access
+    description: |
+      An external access point for receiving links
+    overview: |
+      - RouterAccess provides link access
   - name: access grant
     links:
       - name: Access token concept
@@ -71,6 +76,8 @@ concepts:
       site.  An access token contains the URL and secret code of a
       corresponding access grant.
   - name: service
+    description: |
+      An application component exposed on the network
     overview: |
       - XXX at the network level
       - XXX a listener and a connector bound together by a routing key
@@ -93,6 +100,8 @@ concepts:
       - A connector forwards connections from matching listeners
         at remote sites to the workload in the local site.
   - name: routing key
+    description: |
+      An identifier for matching listeners to connectors
     links:
       - name: Listener concept
         url: /concepts/listener.html
