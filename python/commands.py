@@ -156,13 +156,35 @@ def generate_command(command):
         if command.options:
             append("<section class=\"attributes\">")
             append()
-            append("## Options")
+            append("## Primary options")
             append()
 
-            for group in ("positional", "required", "frequently-used", None, "advanced", "global"):
+            for group in ("positional", "required", "frequently-used", None):
                 for option in command.options:
                     if option.group == group:
                         generate_option(option, append)
+
+            append("</section>")
+            append()
+            append("<section class=\"attributes\">")
+            append()
+            append("## Advanced options")
+            append()
+
+            for option in command.options:
+                if option.group == "advanced":
+                    generate_option(option, append)
+
+            append("</section>")
+            append()
+            append("<section class=\"attributes\">")
+            append()
+            append("## Global options")
+            append()
+
+            for option in command.options:
+                if option.group == "global":
+                    generate_option(option, append)
 
             append("</section>")
             append()
@@ -225,9 +247,28 @@ def generate_command_metadata(command):
 
     data["refdog_object_toc"].extend([
         {
-            "title": "Options",
+            "title": "Primary options",
             "id": "options",
-            "children": [{"title": x.syntax_name, "id": x.id} for x in command.options if not x.hidden],
+            "children": [{"title": x.syntax_name, "id": x.id} for x in command.options
+                         if not x.hidden and x.group in ("positional", "required", "frequently-used", None)],
+        },
+    ])
+
+    data["refdog_object_toc"].extend([
+        {
+            "title": "Advanced options",
+            "id": "options",
+            "children": [{"title": x.syntax_name, "id": x.id} for x in command.options
+                         if not x.hidden and x.group == "advanced"],
+        },
+    ])
+
+    data["refdog_object_toc"].extend([
+        {
+            "title": "Global options",
+            "id": "options",
+            "children": [{"title": x.syntax_name, "id": x.id} for x in command.options
+                         if not x.hidden and x.group == "global"],
         },
     ])
 

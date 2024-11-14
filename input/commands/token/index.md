@@ -17,13 +17,19 @@ refdog_object_toc:
   title: Usage
 - id: subcommands
   title: Subcommands
+- children: []
+  id: options
+  title: Primary options
+- children: []
+  id: options
+  title: Advanced options
 - children:
   - id: option-platform
     title: --platform
   - id: option-help
     title: --help
   id: options
-  title: Options
+  title: Global options
 ---
 
 # Token command

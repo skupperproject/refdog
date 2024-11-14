@@ -24,18 +24,24 @@ refdog_object_toc:
     title: --link-access-type
   - id: option-enable-ha
     title: --enable-ha
+  id: options
+  title: Primary options
+- children:
   - id: option-default-issuer
     title: --default-issuer
   - id: option-enable-edge
     title: --enable-edge
   - id: option-service-account
     title: --service-account
+  id: options
+  title: Advanced options
+- children:
   - id: option-platform
     title: --platform
   - id: option-help
     title: --help
   id: options
-  title: Options
+  title: Global options
 ---
 
 # Site generate command
@@ -80,7 +86,7 @@ $ skupper site generate east > east.yaml
 
 <section class="attributes">
 
-## Options
+## Primary options
 
 <div class="attribute">
 <div class="attribute-heading">
@@ -165,13 +171,19 @@ have two active routers.
 
 Note that Skupper routers are stateless, and they restart
 after failure.  This already provides a high level of
-availability.  Enabling HA goes further and serves to
-reduce the window of downtime caused by restarts.
+availability.  Enabling HA goes further and reduces the
+window of downtime caused by restarts.
 
 <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Advanced deployment options</a></td></table>
 
 </div>
 </div>
+
+</section>
+
+<section class="attributes">
+
+## Advanced options
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
@@ -232,6 +244,12 @@ run the Skupper controller.
 
 </div>
 </div>
+
+</section>
+
+<section class="attributes">
+
+## Global options
 
 <div class="attribute collapsed">
 <div class="attribute-heading">

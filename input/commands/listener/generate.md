@@ -26,12 +26,18 @@ refdog_object_toc:
     title: --tls-credentials
   - id: option-output
     title: --output
+  id: options
+  title: Primary options
+- children: []
+  id: options
+  title: Advanced options
+- children:
   - id: option-platform
     title: --platform
   - id: option-help
     title: --help
   id: options
-  title: Options
+  title: Global options
 ---
 
 # Listener generate command
@@ -78,7 +84,7 @@ $ skupper listener generate backend 8080 > backend.yaml
 
 <section class="attributes">
 
-## Options
+## Primary options
 
 <div class="attribute">
 <div class="attribute-heading">
@@ -189,6 +195,18 @@ Select the output format.
 
 </div>
 </div>
+
+</section>
+
+<section class="attributes">
+
+## Advanced options
+
+</section>
+
+<section class="attributes">
+
+## Global options
 
 <div class="attribute collapsed">
 <div class="attribute-heading">

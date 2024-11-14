@@ -30,6 +30,12 @@ refdog_object_toc:
     title: --redemptions-allowed
   - id: option-grant
     title: --grant
+  id: options
+  title: Primary options
+- children: []
+  id: options
+  title: Advanced options
+- children:
   - id: option-namespace
     title: --namespace
   - id: option-context
@@ -41,7 +47,7 @@ refdog_object_toc:
   - id: option-help
     title: --help
   id: options
-  title: Options
+  title: Global options
 ---
 
 # Token issue command
@@ -101,7 +107,7 @@ $ skupper token issue ~/token.yaml --grant west-1
 
 <section class="attributes">
 
-## Options
+## Primary options
 
 <div class="attribute">
 <div class="attribute-heading">
@@ -179,6 +185,18 @@ one.
 
 </div>
 </div>
+
+</section>
+
+<section class="attributes">
+
+## Advanced options
+
+</section>
+
+<section class="attributes">
+
+## Global options
 
 <div class="attribute collapsed">
 <div class="attribute-heading">

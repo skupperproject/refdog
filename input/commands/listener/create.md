@@ -30,6 +30,12 @@ refdog_object_toc:
     title: --host
   - id: option-tls-credentials
     title: --tls-credentials
+  id: options
+  title: Primary options
+- children: []
+  id: options
+  title: Advanced options
+- children:
   - id: option-namespace
     title: --namespace
   - id: option-context
@@ -41,7 +47,7 @@ refdog_object_toc:
   - id: option-help
     title: --help
   id: options
-  title: Options
+  title: Global options
 ---
 
 # Listener create command
@@ -82,7 +88,7 @@ $ skupper listener create backend 8080 --routing-key be1 --host apiserver
 
 <section class="attributes">
 
-## Options
+## Primary options
 
 <div class="attribute">
 <div class="attribute-heading">
@@ -210,6 +216,18 @@ authentication and encryption.
 
 </div>
 </div>
+
+</section>
+
+<section class="attributes">
+
+## Advanced options
+
+</section>
+
+<section class="attributes">
+
+## Global options
 
 <div class="attribute collapsed">
 <div class="attribute-heading">

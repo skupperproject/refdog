@@ -204,8 +204,8 @@ resources:
 
             Note that Skupper routers are stateless, and they restart
             after failure.  This already provides a high level of
-            availability.  Enabling HA goes further and serves to
-            reduce the window of downtime caused by restarts.
+            availability.  Enabling HA goes further and reduces the
+            window of downtime caused by restarts.
           links:
             - title: Advanced deployment options
               url: ""

@@ -9,7 +9,13 @@ refdog_object_toc:
   title: Usage
 - children: []
   id: options
-  title: Options
+  title: Primary options
+- children: []
+  id: options
+  title: Advanced options
+- children: []
+  id: options
+  title: Global options
 ---
 
 # System teardown command

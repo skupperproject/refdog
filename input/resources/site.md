@@ -177,8 +177,8 @@ have two active routers.
 
 Note that Skupper routers are stateless, and they restart
 after failure.  This already provides a high level of
-availability.  Enabling HA goes further and serves to
-reduce the window of downtime caused by restarts.
+availability.  Enabling HA goes further and reduces the
+window of downtime caused by restarts.
 
 <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>Updatable</th><td>True</td><tr><th>See also</th><td><a href="">Advanced deployment options</a></td></table>
 
