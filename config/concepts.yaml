@@ -57,9 +57,6 @@ concepts:
         url: /concepts/site.html
     description: |
       A _namespace_ is a named area for a related set of resources.
-
-      <img src="images/namespace-1.svg"/>
-      <img src="images/namespace-2.svg"/>
     overview: |
       - XXX what do they look like on each platform?
       - Each site corresponds to one namespace
