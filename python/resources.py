@@ -174,17 +174,17 @@ def generate_resource_metadata(resource):
         {
             "title": "Metadata",
             "id": "metadata",
-            "children": [{"title": x.name, "id": x.id} for x in resource.metadata_properties if not x.hidden],
+            # "children": [{"title": x.name, "id": x.id} for x in resource.metadata_properties if not x.hidden],
         },
         {
             "title": "Spec",
             "id": "spec",
-            "children": [{"title": x.name, "id": x.id} for x in resource.spec_properties if not x.hidden],
+            # "children": [{"title": x.name, "id": x.id} for x in resource.spec_properties if not x.hidden],
         },
         {
             "title": "Status",
             "id": "status",
-            "children": [{"title": x.name, "id": x.id} for x in resource.status_properties if not x.hidden],
+            # "children": [{"title": x.name, "id": x.id} for x in resource.status_properties if not x.hidden],
         },
     ])
 

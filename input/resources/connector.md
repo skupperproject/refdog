@@ -13,46 +13,11 @@ refdog_object_toc:
   title: Overview
 - id: examples
   title: Examples
-- children:
-  - id: metadata-name
-    title: name
-  - id: metadata-namespace
-    title: namespace
-  id: metadata
+- id: metadata
   title: Metadata
-- children:
-  - id: spec-tlscredentials
-    title: tlsCredentials
-  - id: spec-routingkey
-    title: routingKey
-  - id: spec-port
-    title: port
-  - id: spec-selector
-    title: selector
-  - id: spec-host
-    title: host
-  - id: spec-includenotready
-    title: includeNotReady
-  - id: spec-useclientcert
-    title: useClientCert
-  - id: spec-verifyhostname
-    title: verifyHostname
-  - id: spec-settings
-    title: settings
-  id: spec
+- id: spec
   title: Spec
-- children:
-  - id: status-selectedpods
-    title: selectedPods
-  - id: status-status
-    title: status
-  - id: status-message
-    title: message
-  - id: status-conditions
-    title: conditions
-  - id: status-hasmatchinglisteners
-    title: hasMatchingListeners
-  id: status
+- id: status
   title: Status
 ---
 

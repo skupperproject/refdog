@@ -9,11 +9,9 @@ refdog_object_toc:
   title: Usage
 - id: subcommands
   title: Subcommands
-- children: []
-  id: options
+- id: primary-options
   title: Primary options
-- children: []
-  id: options
+- id: global-options
   title: Global options
 ---
 

@@ -11,44 +11,11 @@ refdog_object_links:
 refdog_object_toc:
 - id: ''
   title: Overview
-- children:
-  - id: metadata-name
-    title: name
-  - id: metadata-namespace
-    title: namespace
-  id: metadata
+- id: metadata
   title: Metadata
-- children:
-  - id: spec-redemptionsallowed
-    title: redemptionsAllowed
-  - id: spec-expirationwindow
-    title: expirationWindow
-  - id: spec-code
-    title: code
-  - id: spec-issuer
-    title: issuer
-  - id: spec-settings
-    title: settings
-  id: spec
+- id: spec
   title: Spec
-- children:
-  - id: status-redemptions
-    title: redeemed
-  - id: status-expirationtime
-    title: expiration
-  - id: status-url
-    title: url
-  - id: status-ca
-    title: ca
-  - id: status-code
-    title: code
-  - id: status-status
-    title: status
-  - id: status-message
-    title: message
-  - id: status-conditions
-    title: conditions
-  id: status
+- id: status
   title: Status
 ---
 

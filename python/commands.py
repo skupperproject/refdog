@@ -159,28 +159,13 @@ def generate_command(command):
             append("## Primary options")
             append()
 
-            for group in ("positional", "required", "frequently-used", None):
+            for group in ("positional", "required", "frequently-used", None, "advanced"):
                 for option in command.options:
                     if option.group == group:
                         generate_option(option, append)
 
             append("</section>")
             append()
-
-            advanced_options = [x for x in command.options if x.group == "advanced"]
-
-            if advanced_options:
-                append("<section class=\"attributes\">")
-                append()
-                append("## Advanced options")
-                append()
-
-                for option in advanced_options:
-                    generate_option(option, append)
-
-                append("</section>")
-                append()
-
             append("<section class=\"attributes\">")
             append()
             append("## Global options")
@@ -249,33 +234,28 @@ def generate_command_metadata(command):
                 "id": get_fragment_id(section),
             })
 
+    children = list()
+
+    for group in ("positional", "required", "frequently-used", None, "advanced"):
+        children.extend([{"title": x.syntax_name, "id": x.id} for x in command.options
+                         if not x.hidden and x.group == group])
+
     data["refdog_object_toc"].extend([
         {
             "title": "Primary options",
-            "id": "options",
-            "children": [{"title": x.syntax_name, "id": x.id} for x in command.options
-                         if not x.hidden and x.group in ("positional", "required", "frequently-used", None)],
+            "id": "primary-options",
+            # "children": children, XXX
         },
     ])
 
-    advanced_options = [{"title": x.syntax_name, "id": x.id} for x in command.options
-                         if not x.hidden and x.group == "advanced"]
-
-    if advanced_options:
-        data["refdog_object_toc"].extend([
-            {
-                "title": "Advanced options",
-                "id": "options",
-                "children": advanced_options,
-            },
-        ])
+    children = [{"title": x.syntax_name, "id": x.id} for x in command.options
+                if not x.hidden and x.group == "global"]
 
     data["refdog_object_toc"].extend([
         {
             "title": "Global options",
-            "id": "options",
-            "children": [{"title": x.syntax_name, "id": x.id} for x in command.options
-                         if not x.hidden and x.group == "global"],
+            "id": "global-options",
+            # "children": children, XXX
         },
     ])
 

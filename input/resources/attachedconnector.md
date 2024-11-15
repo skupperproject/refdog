@@ -9,44 +9,11 @@ refdog_object_links:
 refdog_object_toc:
 - id: ''
   title: Overview
-- children:
-  - id: metadata-name
-    title: name
-  - id: metadata-namespace
-    title: namespace
-  id: metadata
+- id: metadata
   title: Metadata
-- children:
-  - id: spec-sitenamespace
-    title: siteNamespace
-  - id: spec-includenotready
-    title: includeNotReady
-  - id: spec-tlscredentials
-    title: tlsCredentials
-  - id: spec-port
-    title: port
-  - id: spec-selector
-    title: selector
-  - id: spec-useclientcert
-    title: useClientCert
-  - id: spec-verifyhostname
-    title: verifyHostname
-  - id: spec-settings
-    title: settings
-  id: spec
+- id: spec
   title: Spec
-- children:
-  - id: status-status
-    title: status
-  - id: status-message
-    title: message
-  - id: status-conditions
-    title: conditions
-  - id: status-hasmatchinglisteners
-    title: hasMatchingListeners
-  - id: status-selectedpods
-    title: selectedPods
-  id: status
+- id: status
   title: Status
 ---
 

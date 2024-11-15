@@ -7,11 +7,9 @@ refdog_object_toc:
   title: Overview
 - id: usage
   title: Usage
-- children: []
-  id: options
+- id: primary-options
   title: Primary options
-- children: []
-  id: options
+- id: global-options
   title: Global options
 ---
 

@@ -15,38 +15,9 @@ refdog_object_toc:
   title: Usage
 - id: examples
   title: Examples
-- children:
-  - id: option-name
-    title: '&lt;name&gt;'
-  - id: option-host
-    title: --host
-  - id: option-port
-    title: --port
-  - id: option-routing-key
-    title: --routing-key
-  - id: option-wait
-    title: --wait
-  - id: option-timeout
-    title: --timeout
-  id: options
+- id: primary-options
   title: Primary options
-- children:
-  - id: option-tls-credentials
-    title: --tls-credentials
-  id: options
-  title: Advanced options
-- children:
-  - id: option-context
-    title: --context
-  - id: option-kubeconfig
-    title: --kubeconfig
-  - id: option-namespace
-    title: --namespace
-  - id: option-platform
-    title: --platform
-  - id: option-help
-    title: --help
-  id: options
+- id: global-options
   title: Global options
 ---
 
@@ -192,12 +163,6 @@ period of time.
 
 </div>
 </div>
-
-</section>
-
-<section class="attributes">
-
-## Advanced options
 
 <div class="attribute collapsed">
 <div class="attribute-heading">

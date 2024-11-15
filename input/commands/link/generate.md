@@ -13,27 +13,9 @@ refdog_object_toc:
   title: Usage
 - id: examples
   title: Examples
-- children:
-  - id: option-name
-    title: '[name]'
-  - id: option-cost
-    title: --cost
-  - id: option-output
-    title: --output
-  id: options
+- id: primary-options
   title: Primary options
-- children:
-  - id: option-context
-    title: --context
-  - id: option-kubeconfig
-    title: --kubeconfig
-  - id: option-namespace
-    title: --namespace
-  - id: option-platform
-    title: --platform
-  - id: option-help
-    title: --help
-  id: options
+- id: global-options
   title: Global options
 ---
 

@@ -19,34 +19,9 @@ refdog_object_toc:
   title: Usage
 - id: examples
   title: Examples
-- children:
-  - id: option-file
-    title: '&lt;file&gt;'
-  - id: option-timeout
-    title: --timeout
-  - id: option-expiration-window
-    title: --expiration-window
-  - id: option-redemptions-allowed
-    title: --redemptions-allowed
-  id: options
+- id: primary-options
   title: Primary options
-- children:
-  - id: option-grant
-    title: --grant
-  id: options
-  title: Advanced options
-- children:
-  - id: option-context
-    title: --context
-  - id: option-kubeconfig
-    title: --kubeconfig
-  - id: option-namespace
-    title: --namespace
-  - id: option-platform
-    title: --platform
-  - id: option-help
-    title: --help
-  id: options
+- id: global-options
   title: Global options
 ---
 
@@ -170,12 +145,6 @@ be redeemed.
 
 </div>
 </div>
-
-</section>
-
-<section class="attributes">
-
-## Advanced options
 
 <div class="attribute collapsed">
 <div class="attribute-heading">

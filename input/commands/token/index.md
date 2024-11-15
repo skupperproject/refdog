@@ -17,15 +17,9 @@ refdog_object_toc:
   title: Usage
 - id: subcommands
   title: Subcommands
-- children: []
-  id: options
+- id: primary-options
   title: Primary options
-- children:
-  - id: option-platform
-    title: --platform
-  - id: option-help
-    title: --help
-  id: options
+- id: global-options
   title: Global options
 ---
 

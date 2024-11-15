@@ -13,42 +13,9 @@ refdog_object_toc:
   title: Usage
 - id: examples
   title: Examples
-- children:
-  - id: option-name
-    title: '[name]'
-  - id: option-enable-link-access
-    title: --enable-link-access
-  - id: option-link-access-type
-    title: --link-access-type
-  - id: option-enable-ha
-    title: --enable-ha
-  - id: option-timeout
-    title: --timeout
-  - id: option-wait
-    title: --wait
-  id: options
+- id: primary-options
   title: Primary options
-- children:
-  - id: option-default-issuer
-    title: --default-issuer
-  - id: option-enable-edge
-    title: --enable-edge
-  - id: option-service-account
-    title: --service-account
-  id: options
-  title: Advanced options
-- children:
-  - id: option-context
-    title: --context
-  - id: option-kubeconfig
-    title: --kubeconfig
-  - id: option-namespace
-    title: --namespace
-  - id: option-platform
-    title: --platform
-  - id: option-help
-    title: --help
-  id: options
+- id: global-options
   title: Global options
 ---
 
@@ -202,12 +169,6 @@ Wait for the given status before exiting.
 
 </div>
 </div>
-
-</section>
-
-<section class="attributes">
-
-## Advanced options
 
 <div class="attribute collapsed">
 <div class="attribute-heading">

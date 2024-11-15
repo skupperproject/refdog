@@ -17,44 +17,11 @@ refdog_object_toc:
   title: Overview
 - id: examples
   title: Examples
-- children:
-  - id: metadata-name
-    title: name
-  - id: metadata-namespace
-    title: namespace
-  id: metadata
+- id: metadata
   title: Metadata
-- children:
-  - id: spec-linkaccess
-    title: linkAccess
-  - id: spec-ha
-    title: ha
-  - id: spec-defaultissuer
-    title: defaultIssuer
-  - id: spec-edge
-    title: edge
-  - id: spec-serviceaccount
-    title: serviceAccount
-  - id: spec-settings
-    title: settings
-  id: spec
+- id: spec
   title: Spec
-- children:
-  - id: status-status
-    title: status
-  - id: status-message
-    title: message
-  - id: status-conditions
-    title: conditions
-  - id: status-defaultissuer
-    title: defaultIssuer
-  - id: status-endpoints
-    title: endpoints
-  - id: status-network
-    title: network
-  - id: status-sitesinnetwork
-    title: sitesInNetwork
-  id: status
+- id: status
   title: Status
 ---
 

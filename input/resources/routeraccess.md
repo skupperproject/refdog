@@ -7,38 +7,11 @@ refdog_object_links:
 refdog_object_toc:
 - id: ''
   title: Overview
-- children: []
-  id: metadata
+- id: metadata
   title: Metadata
-- children:
-  - id: spec-roles
-    title: roles
-  - id: spec-tlscredentials
-    title: tlsCredentials
-  - id: spec-generatetlscredentials
-    title: generateTlsCredentials
-  - id: spec-issuer
-    title: issuer
-  - id: spec-accesstype
-    title: accessType
-  - id: spec-bindhost
-    title: bindHost
-  - id: spec-subjectalternativenames
-    title: subjectAlternativeNames
-  - id: spec-settings
-    title: settings
-  id: spec
+- id: spec
   title: Spec
-- children:
-  - id: status-endpoints
-    title: endpoints
-  - id: status-status
-    title: status
-  - id: status-message
-    title: message
-  - id: status-conditions
-    title: conditions
-  id: status
+- id: status
   title: Status
 ---
 
