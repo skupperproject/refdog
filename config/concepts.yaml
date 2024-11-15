@@ -175,22 +175,24 @@ concepts:
         url: /concepts/listener.html
       - title: Connector concept
         url: /concepts/connector.html
+  - name: attached connector
+    description: |
+      An _attached connector_ is a connector in a peer namespace.
+
+      <img src="images/attached-connector-1.svg"/>
 groups:
   - name: Networks and sites
     concepts:
       - network
       - site
       - platform
-      - namespace
   - name: Site linking
     concepts:
       - link
-      - link access
-      - access grant
       - access token
   - name: Service exposure
     concepts:
       - service
       - listener
       - connector
-      - routing key
+      - attached connector

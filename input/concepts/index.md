@@ -19,18 +19,12 @@ links:
 </td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/platform.html">Platform</a></th><td><p>A <em>platform</em> is a system for running application workloads</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/namespace.html">Namespace</a></th><td><p>A <em>namespace</em> is a named area for a related set of resources</p>
-</td></tr>
 </table>
 
 #### Site linking
 
 <table class="objects">
 <tr><th><a href="{{site_prefix}}/concepts/link.html">Link</a></th><td><p>A <em>link</em> is a channel for communication between sites</p>
-</td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/link-access.html">Link access</a></th><td><p>A <em>link access</em> is an external access point for accepting links</p>
-</td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/access-grant.html">Access grant</a></th><td><p>An <em>access grant</em> enables redemption of access tokens</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/access-token.html">Access token</a></th><td><p>An <em>access token</em> is redeemable for a link to a remote site</p>
 </td></tr>
@@ -45,6 +39,6 @@ links:
 </td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/connector.html">Connector</a></th><td><p>A <em>connector</em> binds a local workload to listeners in remote sites</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/routing-key.html">Routing key</a></th><td><p>A <em>routing key</em> is an identifier for matching listeners to connectors</p>
+<tr><th><a href="{{site_prefix}}/concepts/attached-connector.html">Attached connector</a></th><td><p>An <em>attached connector</em> is a connector in a peer namespace</p>
 </td></tr>
 </table>
