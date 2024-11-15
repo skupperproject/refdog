@@ -32,22 +32,22 @@ refdog_object_toc:
     title: --wait
   - id: option-timeout
     title: --timeout
-  - id: option-tls-credentials
-    title: --tls-credentials
-  - id: option-include-not-ready
-    title: --include-not-ready
   id: options
   title: Primary options
-- children: []
+- children:
+  - id: option-include-not-ready
+    title: --include-not-ready
+  - id: option-tls-credentials
+    title: --tls-credentials
   id: options
   title: Advanced options
 - children:
-  - id: option-namespace
-    title: --namespace
   - id: option-context
     title: --context
   - id: option-kubeconfig
     title: --kubeconfig
+  - id: option-namespace
+    title: --namespace
   - id: option-platform
     title: --platform
   - id: option-help
@@ -109,7 +109,7 @@ $ skupper connector create backend 8080 --workload deployment/backend
 
 The name of the resource to be created.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -215,7 +215,7 @@ alternative to `selector` for specifying the target server.
 
 Wait for the given status before exiting.
 
-<table class="fields"><tr><th>Default</th><td><p><code>configured</code></p>
+<table class="fields"><tr><th>Default</th><td><p><code>ready</code></p>
 </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>pending</code></th><td><p>Pending</p>
 </td></tr><tr><th><code>configured</code></th><td><p>Configured</p>
 </td></tr><tr><th><code>ready</code></th><td><p>Ready</p>
@@ -240,10 +240,33 @@ period of time.
 </div>
 </div>
 
+</section>
+
+<section class="attributes">
+
+## Advanced options
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="option-include-not-ready">--include-not-ready</h3>
+<div class="attribute-type-info">boolean</div>
+<div class="attribute-flags">advanced</div>
+</div>
+<div class="attribute-body">
+
+If set, include server pods that are not in the ready
+state.
+
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
 <div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="option-tls-credentials">--tls-credentials</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">advanced</div>
 </div>
 <div class="attribute-body">
 
@@ -264,47 +287,11 @@ authentication and encryption.
 </div>
 </div>
 
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="option-include-not-ready">--include-not-ready</h3>
-<div class="attribute-type-info">boolean</div>
-</div>
-<div class="attribute-body">
-
-If set, include server pods that are not in the ready
-state.
-
-<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-</section>
-
-<section class="attributes">
-
-## Advanced options
-
 </section>
 
 <section class="attributes">
 
 ## Global options
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="option-namespace">--namespace</h3>
-<div class="attribute-type-info">(-n) &lt;name&gt;</div>
-<div class="attribute-flags">global</div>
-</div>
-<div class="attribute-body">
-
-Set the namespace.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
-
-</div>
-</div>
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
@@ -332,6 +319,21 @@ Set the kubeconfig context.
 Set the path to the kubeconfig file.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="option-namespace">--namespace</h3>
+<div class="attribute-type-info">(-n) &lt;name&gt;</div>
+<div class="attribute-flags">global</div>
+</div>
+<div class="attribute-body">
+
+Set the namespace.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
 
 </div>
 </div>

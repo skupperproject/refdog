@@ -14,16 +14,13 @@ refdog_object_toc:
     title: '&lt;file&gt;'
   id: options
   title: Primary options
-- children: []
-  id: options
-  title: Advanced options
 - children:
-  - id: option-namespace
-    title: --namespace
   - id: option-context
     title: --context
   - id: option-kubeconfig
     title: --kubeconfig
+  - id: option-namespace
+    title: --namespace
   - id: option-platform
     title: --platform
   - id: option-help
@@ -85,28 +82,7 @@ Debug dump file generated at /home/fritz/dump.tar.gz.
 
 <section class="attributes">
 
-## Advanced options
-
-</section>
-
-<section class="attributes">
-
 ## Global options
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="option-namespace">--namespace</h3>
-<div class="attribute-type-info">(-n) &lt;name&gt;</div>
-<div class="attribute-flags">global</div>
-</div>
-<div class="attribute-body">
-
-Set the namespace.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
-
-</div>
-</div>
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
@@ -134,6 +110,21 @@ Set the kubeconfig context.
 Set the path to the kubeconfig file.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="option-namespace">--namespace</h3>
+<div class="attribute-type-info">(-n) &lt;name&gt;</div>
+<div class="attribute-flags">global</div>
+</div>
+<div class="attribute-body">
+
+Set the namespace.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
 
 </div>
 </div>

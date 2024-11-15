@@ -18,22 +18,19 @@ refdog_object_toc:
     title: --cost
   - id: option-name
     title: '&lt;name&gt;'
-  - id: option-wait
-    title: --wait
   - id: option-timeout
     title: --timeout
+  - id: option-wait
+    title: --wait
   id: options
   title: Primary options
-- children: []
-  id: options
-  title: Advanced options
 - children:
-  - id: option-namespace
-    title: --namespace
   - id: option-context
     title: --context
   - id: option-kubeconfig
     title: --kubeconfig
+  - id: option-namespace
+    title: --namespace
   - id: option-platform
     title: --platform
   - id: option-help
@@ -89,7 +86,7 @@ Link "west-6bfn6" is ready.
 
 The name of the resource to be updated.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -105,6 +102,22 @@ The configured routing cost of sending traffic over
 the link.
 
 <table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Load balancing</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="option-timeout">--timeout</h3>
+<div class="attribute-type-info">&lt;duration&gt;</div>
+</div>
+<div class="attribute-body">
+
+Raise an error if the operation does not complete in the given
+period of time.
+
+<table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -127,48 +140,11 @@ Wait for the given status before exiting.
 </div>
 </div>
 
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="option-timeout">--timeout</h3>
-<div class="attribute-type-info">&lt;duration&gt;</div>
-</div>
-<div class="attribute-body">
-
-Raise an error if the operation does not complete in the given
-period of time.
-
-<table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-</section>
-
-<section class="attributes">
-
-## Advanced options
-
 </section>
 
 <section class="attributes">
 
 ## Global options
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="option-namespace">--namespace</h3>
-<div class="attribute-type-info">(-n) &lt;name&gt;</div>
-<div class="attribute-flags">global</div>
-</div>
-<div class="attribute-body">
-
-Set the namespace.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
-
-</div>
-</div>
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
@@ -196,6 +172,21 @@ Set the kubeconfig context.
 Set the path to the kubeconfig file.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="option-namespace">--namespace</h3>
+<div class="attribute-type-info">(-n) &lt;name&gt;</div>
+<div class="attribute-flags">global</div>
+</div>
+<div class="attribute-body">
+
+Set the namespace.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
 
 </div>
 </div>

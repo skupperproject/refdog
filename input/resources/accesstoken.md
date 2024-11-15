@@ -73,7 +73,7 @@ kind: AccessToken
 
 The name of the resource.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -148,7 +148,7 @@ service at the remote site.
 <div class="attribute collapsed">
 <div class="attribute-heading">
 <h3 id="spec-linkcost">linkCost</h3>
-<div class="attribute-type-info">None</div>
+<div class="attribute-type-info">integer</div>
 </div>
 <div class="attribute-body">
 

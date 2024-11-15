@@ -26,15 +26,17 @@ refdog_object_toc:
     title: --workload
   - id: option-host
     title: --host
-  - id: option-tls-credentials
-    title: --tls-credentials
-  - id: option-include-not-ready
-    title: --include-not-ready
+  - id: option-wait
+    title: --wait
   - id: option-output
     title: --output
   id: options
   title: Primary options
-- children: []
+- children:
+  - id: option-include-not-ready
+    title: --include-not-ready
+  - id: option-tls-credentials
+    title: --tls-credentials
   id: options
   title: Advanced options
 - children:
@@ -201,39 +203,18 @@ alternative to `selector` for specifying the target server.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="option-tls-credentials">--tls-credentials</h3>
-<div class="attribute-type-info">&lt;string&gt;</div>
+<h3 id="option-wait">--wait</h3>
+<div class="attribute-type-info">&lt;status&gt;</div>
 </div>
 <div class="attribute-body">
 
-A named bundle of TLS certificates and keys used for secure
-application-to-router communication.  The bundle contains the
-trusted server certificate.  It optionally includes a client
-certificate and key for mutual TLS.
+Wait for the given status before exiting.
 
-On Kubernetes, the value is the name of a Secret in the current
-namespace.
-
-
-This option is used when setting up router-to-server TLS
-authentication and encryption.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a></td></table>
-
-</div>
-</div>
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="option-include-not-ready">--include-not-ready</h3>
-<div class="attribute-type-info">boolean</div>
-</div>
-<div class="attribute-body">
-
-If set, include server pods that are not in the ready
-state.
-
-<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Default</th><td><p><code>configured</code></p>
+</td><tr><th>Choices</th><td><table class="choices"><tr><th><code>pending</code></th><td><p>Pending</p>
+</td></tr><tr><th><code>configured</code></th><td><p>Configured</p>
+</td></tr><tr><th><code>ready</code></th><td><p>Ready</p>
+</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -260,6 +241,47 @@ Select the output format.
 <section class="attributes">
 
 ## Advanced options
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="option-include-not-ready">--include-not-ready</h3>
+<div class="attribute-type-info">boolean</div>
+<div class="attribute-flags">advanced</div>
+</div>
+<div class="attribute-body">
+
+If set, include server pods that are not in the ready
+state.
+
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="option-tls-credentials">--tls-credentials</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">advanced</div>
+</div>
+<div class="attribute-body">
+
+A named bundle of TLS certificates and keys used for secure
+application-to-router communication.  The bundle contains the
+trusted server certificate.  It optionally includes a client
+certificate and key for mutual TLS.
+
+On Kubernetes, the value is the name of a Secret in the current
+namespace.
+
+
+This option is used when setting up router-to-server TLS
+authentication and encryption.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a></td></table>
+
+</div>
+</div>
 
 </section>
 

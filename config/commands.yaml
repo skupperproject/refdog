@@ -5,9 +5,17 @@ options:
     required: true
     description: |
       The name of the resource to be created.
+  create/timeout:
+    name: timeout
+    type: string
+    placeholder: duration
+    default: 60s
+    description: |
+      Raise an error if the operation does not complete in the given
+      period of time.
     links:
-      - title: Kubernetes object names
-        url: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
+      - title: Duration format
+        url: https://pkg.go.dev/time#ParseDuration
   create/wait:
     name: wait
     type: string
@@ -22,7 +30,13 @@ options:
         description: Configured
       - name: ready
         description: Ready
-  create/timeout:
+  update/name:
+    name: name
+    type: string
+    required: true
+    description: |
+      The name of the resource to be updated.
+  update/timeout:
     name: timeout
     type: string
     placeholder: duration
@@ -30,18 +44,6 @@ options:
     description: |
       Raise an error if the operation does not complete in the given
       period of time.
-    links:
-      - title: Duration format
-        url: https://pkg.go.dev/time#ParseDuration
-  update/name:
-    name: name
-    type: string
-    required: true
-    description: |
-      The name of the resource to be updated.
-    links:
-      - title: Kubernetes object names
-        url: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
   update/wait:
     name: wait
     type: string
@@ -56,29 +58,12 @@ options:
         description: Configured
       - name: ready
         description: Ready
-  update/timeout:
-    name: timeout
-    type: string
-    placeholder: duration
-    default: 60s
-    description: |
-      Raise an error if the operation does not complete in the given
-      period of time.
   delete/name:
     name: name
     type: string
     required: true
     description: |
       The name of the resource to be deleted.
-    links:
-      - title: Kubernetes object names
-        url: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
-  delete/wait:
-    name: wait
-    type: boolean
-    default: true
-    description: |
-      Wait for deletion to complete before exiting.
   delete/timeout:
     name: timeout
     type: string
@@ -87,6 +72,12 @@ options:
     description: |
       Raise an error if the operation does not complete in the given
       period of time.
+  delete/wait:
+    name: wait
+    type: boolean
+    default: true
+    description: |
+      Wait for deletion to complete before exiting.
   status/name:
     name: name
     type: string
@@ -95,9 +86,14 @@ options:
     description: |
       An optional resource name.  If set, the status command reports
       status for the named resource only.
-    links:
-      - title: Kubernetes object names
-        url: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
+  status/timeout:
+    name: timeout
+    type: string
+    placeholder: duration
+    default: 60s
+    description: |
+      Raise an error if the operation does not complete in the given
+      period of time.
   status/output:
     name: output
     type: string
@@ -110,14 +106,6 @@ options:
         description: Produce JSON output
       - name: yaml
         description: Produce YAML output
-  status/timeout:
-    name: timeout
-    type: string
-    placeholder: duration
-    default: 60s
-    description: |
-      Raise an error if the operation does not complete in the given
-      period of time.
   generate/name:
     name: name
     type: string
@@ -191,9 +179,6 @@ options:
     required: true
     description: |
       The name of the Connector resource.
-    links:
-      - title: Kubernetes object names
-        url: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
   connector/port:
     name: port
     property: port
@@ -228,13 +213,29 @@ options:
     required: false
     property: host
     default: _Value of name_
-  connector/tls_credentials:
-    name: tls-credentials
-    property: tlsCredentials
-    # XXX Not inheriting links!
   connector/include_not_ready:
     name: include-not-ready
+    group: advanced
     property: includeNotReady
+  connector/tls_credentials:
+    name: tls-credentials
+    group: advanced
+    property: tlsCredentials
+    # XXX Not inheriting links!
+  connector/wait:
+    name: wait
+    type: string
+    placeholder: status
+    default: configured
+    description: |
+      Wait for the given status before exiting.
+    choices:
+      - name: pending
+        description: Pending
+      - name: configured
+        description: Configured
+      - name: ready
+        description: Ready
   listener/port:
     name: port
     property: port
@@ -253,18 +254,22 @@ options:
     default: _Value of name_
   listener/tls_credentials:
     name: tls-credentials
+    group: advanced
     property: tlsCredentials
-  context/namespace:
-    name: namespace
-    group: global
+  listener/wait:
+    name: wait
     type: string
-    placeholder: name
-    short_option: n
+    placeholder: status
+    default: configured
     description: |
-      Set the namespace.
-    links:
-      - title: Kubernetes namespaces
-        url: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+      Wait for the given status before exiting.
+    choices:
+      - name: pending
+        description: Pending
+      - name: configured
+        description: Configured
+      - name: ready
+        description: Ready
   context/context:
     name: context
     group: global
@@ -287,6 +292,17 @@ options:
     links:
       - title: Kubernetes kubeconfigs
         url: https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/
+  context/namespace:
+    name: namespace
+    group: global
+    type: string
+    placeholder: name
+    short_option: n
+    description: |
+      Set the namespace.
+    links:
+      - title: Kubernetes namespaces
+        url: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
   global/platform:
     name: platform
     group: global
@@ -439,7 +455,6 @@ commands:
           $ skupper site generate east > east.yaml
         include_options: [generate/*, site/*, global/*]
   - name: token
-    resource: Claim
     related_concepts: ["access grant", "access token"]
     related_resources: [AccessGrant, AccessToken]
     description: |
@@ -502,6 +517,7 @@ commands:
           - name: redemptions-allowed
             property: redemptionsAllowed
           - name: grant
+            group: advanced
             type: string
             placeholder: name
             description: |
@@ -515,6 +531,7 @@ commands:
               enable it.
       # token.redeem
       - name: redeem
+        resource: AccessToken
         related_concepts: ["access grant", "access token"]
         related_resources: [AccessGrant, AccessToken]
         related_commands: [token/issue]
@@ -541,6 +558,8 @@ commands:
             description: |
               Raise an error if the operation does not complete in the given
               period of time.
+          - name: link-cost
+            property: linkCost
   - name: link
     related_commands: [token]
     description: |
@@ -672,13 +691,6 @@ commands:
           - name: name
           - name: port
             required: true
-          - name: routing-key
-          - name: selector
-          - name: workload
-          - name: host
-          - name: wait
-            default: configured
-          - name: timeout
       # connector.update
       - name: update
         wait: Configured
@@ -774,9 +786,6 @@ commands:
         options:
           - name: name
           - name: port
-          - name: wait
-            default: configured
-          - name: timeout
       # listener.update
       - name: update
         wait: Configured
@@ -926,7 +935,7 @@ commands:
           images:
             - name: quay.io/skupper/router:3.0.0
               digest: sha256:dc5e27385a1e110dd2db1903ba7ec3e0d50b57f742aa02d7dd0a7b1b68c34394
-            - name: quay.io/skupper/kube-adaptor:2.0.0
+            - name: quay.io/skupper/router-agent:2.0.0
               digest: sha256:4dc24bb3d605ed3fcec2f8ef7d45ca883d9d87b278bfedd5fcca74281d617a5e
         network-observer:
           version: 1.0.0
@@ -936,6 +945,7 @@ commands:
     options:
       - name: output
         type: string
+        placeholder: format
         short_option: o
         description: |
           Produce verbose structured output.

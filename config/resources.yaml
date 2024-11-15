@@ -6,9 +6,6 @@ properties:
     required: true
     description: |
       The name of the resource.
-    links:
-      - title: Kubernetes object names
-        url: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
   metadata/namespace:
     name: namespace
     type: string
@@ -408,6 +405,7 @@ resources:
             The secret code used to authenticate the token when
             submitted for redemption.
         - name: linkCost
+          type: integer # XXX This should come from the CRD
           default: 1
           description: |
             The link cost to use when creating the link.

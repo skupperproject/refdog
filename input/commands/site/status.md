@@ -16,22 +16,19 @@ refdog_object_toc:
 - children:
   - id: option-name
     title: '[name]'
-  - id: option-output
-    title: --output
   - id: option-timeout
     title: --timeout
+  - id: option-output
+    title: --output
   id: options
   title: Primary options
-- children: []
-  id: options
-  title: Advanced options
 - children:
-  - id: option-namespace
-    title: --namespace
   - id: option-context
     title: --context
   - id: option-kubeconfig
     title: --kubeconfig
+  - id: option-namespace
+    title: --namespace
   - id: option-platform
     title: --platform
   - id: option-help
@@ -91,23 +88,7 @@ The name of the site resource.
 If not specified, the name is that of the site
 associated with the current namespace.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
-
-</div>
-</div>
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="option-output">--output</h3>
-<div class="attribute-type-info">(-o) &lt;format&gt;</div>
-</div>
-<div class="attribute-body">
-
-Print status to the console in a structured output format.
-
-<table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
-</td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
-</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -128,32 +109,27 @@ period of time.
 </div>
 </div>
 
-</section>
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="option-output">--output</h3>
+<div class="attribute-type-info">(-o) &lt;format&gt;</div>
+</div>
+<div class="attribute-body">
 
-<section class="attributes">
+Print status to the console in a structured output format.
 
-## Advanced options
+<table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
+</td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
+</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
 
 </section>
 
 <section class="attributes">
 
 ## Global options
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="option-namespace">--namespace</h3>
-<div class="attribute-type-info">(-n) &lt;name&gt;</div>
-<div class="attribute-flags">global</div>
-</div>
-<div class="attribute-body">
-
-Set the namespace.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
-
-</div>
-</div>
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
@@ -181,6 +157,21 @@ Set the kubeconfig context.
 Set the path to the kubeconfig file.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="option-namespace">--namespace</h3>
+<div class="attribute-type-info">(-n) &lt;name&gt;</div>
+<div class="attribute-flags">global</div>
+</div>
+<div class="attribute-body">
+
+Set the namespace.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
 
 </div>
 </div>

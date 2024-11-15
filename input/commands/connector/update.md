@@ -28,26 +28,26 @@ refdog_object_toc:
     title: --workload
   - id: option-host
     title: --host
-  - id: option-tls-credentials
-    title: --tls-credentials
-  - id: option-include-not-ready
-    title: --include-not-ready
   - id: option-wait
     title: --wait
   - id: option-timeout
     title: --timeout
   id: options
   title: Primary options
-- children: []
+- children:
+  - id: option-include-not-ready
+    title: --include-not-ready
+  - id: option-tls-credentials
+    title: --tls-credentials
   id: options
   title: Advanced options
 - children:
-  - id: option-namespace
-    title: --namespace
   - id: option-context
     title: --context
   - id: option-kubeconfig
     title: --kubeconfig
+  - id: option-namespace
+    title: --namespace
   - id: option-platform
     title: --platform
   - id: option-help
@@ -106,7 +106,7 @@ $ skupper connector update backend --routing-key be2
 
 The name of the resource to be updated.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -205,45 +205,6 @@ alternative to `selector` for specifying the target server.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="option-tls-credentials">--tls-credentials</h3>
-<div class="attribute-type-info">&lt;string&gt;</div>
-</div>
-<div class="attribute-body">
-
-A named bundle of TLS certificates and keys used for secure
-application-to-router communication.  The bundle contains the
-trusted server certificate.  It optionally includes a client
-certificate and key for mutual TLS.
-
-On Kubernetes, the value is the name of a Secret in the current
-namespace.
-
-
-This option is used when setting up router-to-server TLS
-authentication and encryption.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a></td></table>
-
-</div>
-</div>
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="option-include-not-ready">--include-not-ready</h3>
-<div class="attribute-type-info">boolean</div>
-</div>
-<div class="attribute-body">
-
-If set, include server pods that are not in the ready
-state.
-
-<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
 <h3 id="option-wait">--wait</h3>
 <div class="attribute-type-info">&lt;status&gt;</div>
 </div>
@@ -282,26 +243,52 @@ period of time.
 
 ## Advanced options
 
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="option-include-not-ready">--include-not-ready</h3>
+<div class="attribute-type-info">boolean</div>
+<div class="attribute-flags">advanced</div>
+</div>
+<div class="attribute-body">
+
+If set, include server pods that are not in the ready
+state.
+
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="option-tls-credentials">--tls-credentials</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">advanced</div>
+</div>
+<div class="attribute-body">
+
+A named bundle of TLS certificates and keys used for secure
+application-to-router communication.  The bundle contains the
+trusted server certificate.  It optionally includes a client
+certificate and key for mutual TLS.
+
+On Kubernetes, the value is the name of a Secret in the current
+namespace.
+
+
+This option is used when setting up router-to-server TLS
+authentication and encryption.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a></td></table>
+
+</div>
+</div>
+
 </section>
 
 <section class="attributes">
 
 ## Global options
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="option-namespace">--namespace</h3>
-<div class="attribute-type-info">(-n) &lt;name&gt;</div>
-<div class="attribute-flags">global</div>
-</div>
-<div class="attribute-body">
-
-Set the namespace.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
-
-</div>
-</div>
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
@@ -329,6 +316,21 @@ Set the kubeconfig context.
 Set the path to the kubeconfig file.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/">Kubernetes kubeconfigs</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="option-namespace">--namespace</h3>
+<div class="attribute-type-info">(-n) &lt;name&gt;</div>
+<div class="attribute-flags">global</div>
+</div>
+<div class="attribute-body">
+
+Set the namespace.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
 
 </div>
 </div>

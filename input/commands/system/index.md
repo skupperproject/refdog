@@ -14,9 +14,6 @@ refdog_object_toc:
   title: Primary options
 - children: []
   id: options
-  title: Advanced options
-- children: []
-  id: options
   title: Global options
 ---
 

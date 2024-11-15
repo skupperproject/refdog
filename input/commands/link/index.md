@@ -18,9 +18,6 @@ refdog_object_toc:
 - children: []
   id: options
   title: Primary options
-- children: []
-  id: options
-  title: Advanced options
 - children:
   - id: option-platform
     title: --platform

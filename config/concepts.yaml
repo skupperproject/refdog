@@ -43,6 +43,7 @@ concepts:
     overview: |
       - XXX what do they look like on each platform?
       - Each site corresponds to one namespace
+      - It's a subdivision of a platform.
   - name: link
     links:
       - title: Network concept
