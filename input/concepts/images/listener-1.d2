@@ -1,0 +1,17 @@
+...@common
+
+direction: right
+
+Site: {
+  Client 1 -> Listener
+  Client 2 -> Listener
+  Client 3 -> Listener
+
+  Client*.style.fill: white
+}
+
+Site.Listener -- Routing key -- Connectors
+
+Connectors.class: notion
+Routing key.class: notion
+Site*.class: neutral

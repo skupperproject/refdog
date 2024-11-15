@@ -17,5 +17,6 @@ A _service_ is an application component exposed on the network.
 
 <img src="images/service-1.svg"/>
 <img src="images/service-2.svg"/>
+<img src="images/service-3.svg"/>
 
 </section>

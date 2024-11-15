@@ -15,7 +15,6 @@ concepts:
 
       <img src="images/network-1.svg"/>
       <img src="images/network-2.svg"/>
-      <img src="images/network-3.svg"/>
   - name: site
     links:
       - title: Network concept
@@ -61,7 +60,6 @@ concepts:
 
       <img src="images/namespace-1.svg"/>
       <img src="images/namespace-2.svg"/>
-      <img src="images/namespace-3.svg"/>
     overview: |
       - XXX what do they look like on each platform?
       - Each site corresponds to one namespace
@@ -104,6 +102,8 @@ concepts:
       obtain a certificate signed by the grant's certificate authority
       (CA), within a certain expiration window and for a limited
       number of redemptions.
+    overview: |
+      - Tokens have limited lifetimes and limited uses
   - name: access token
     links:
       - title: Access grant concept
@@ -134,23 +134,36 @@ concepts:
 
       <img src="images/service-1.svg"/>
       <img src="images/service-2.svg"/>
+      <img src="images/service-3.svg"/>
     overview: |
       - XXX at the network level
       - XXX a listener and a connector bound together by a routing key
   - name: listener
     links:
+      - title: Service concept
+        url: /concepts/service.html
       - title: Connector concept
         url: /concepts/connector.html
+      - title: Routing key concept
+        url: /concepts/routing-key.html
     description: |
       A _listener_ binds a local connection endpoint to connectors in
       remote sites.
+
+      <img src="images/listener-1.svg"/>
   - name: connector
     links:
+      - title: Service concept
+        url: /concepts/service.html
       - title: Listener concept
         url: /concepts/listener.html
+      - title: Routing key concept
+        url: /concepts/routing-key.html
     description: |
       A _connector_ binds a local workload to listeners in remote
       sites.
+
+      <img src="images/connector-1.svg"/>
     overview: |
       - A connector targets a workload in the local site (or
         reachable on the local network).

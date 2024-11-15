@@ -1,0 +1,15 @@
+...@common
+
+Site: {
+  Connector -> Server 1
+  Connector -> Server 2
+  Connector -> Server 3
+
+  Server*.style.fill: white
+}
+
+Listeners -- Routing key -- Site.Connector
+
+Listeners.class: notion
+Routing key.class: notion
+Site*.class: neutral

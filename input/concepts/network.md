@@ -20,6 +20,5 @@ provides isolation from other applications and networks.
 
 <img src="images/network-1.svg"/>
 <img src="images/network-2.svg"/>
-<img src="images/network-3.svg"/>
 
 </section>
