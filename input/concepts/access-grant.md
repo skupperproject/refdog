@@ -2,7 +2,9 @@
 body_class: object concept
 refdog_object_links:
 - title: Access token concept
-  url: /concepts/claim.html
+  url: /concepts/access-token.html
+- title: Link concept
+  url: /concepts/link.html
 - title: Token issue command
   url: /commands/token-issue.html
 ---

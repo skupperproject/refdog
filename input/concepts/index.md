@@ -15,7 +15,7 @@ links:
 <table class="objects">
 <tr><th><a href="{{site_prefix}}/concepts/network.html">Network</a></th><td><p>A <em>network</em> is a set of linked sites</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/site.html">Site</a></th><td><p>A <em>site</em> is a place in the network where workloads are running</p>
+<tr><th><a href="{{site_prefix}}/concepts/site.html">Site</a></th><td><p>A <em>site</em> is a place on the network where workloads are running</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/platform.html">Platform</a></th><td><p>A <em>platform</em> is a system for running application workloads</p>
 </td></tr>

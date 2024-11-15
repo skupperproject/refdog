@@ -458,4 +458,5 @@ span.shell-output {
 body.object.concept img {
     margin: 2em;
     max-width: 60%;
+    max-height: 20em;
 }

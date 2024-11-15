@@ -13,33 +13,55 @@ concepts:
       Each network is meant for one distributed application.  This
       provides isolation from other applications and networks.
 
-      <img src="images/network-1.svg" width="480"/>
-      <img src="images/network-2.svg" width="480"/>
-      <img src="images/network-3.svg" width="480"/>
+      <img src="images/network-1.svg"/>
+      <img src="images/network-2.svg"/>
+      <img src="images/network-3.svg"/>
   - name: site
     links:
       - title: Network concept
         url: /concepts/network.html
       - title: Link concept
         url: /concepts/link.html
+      - title: Platform concept
+        url: /concepts/platform.html
+      - title: Namespace concept
+        url: /concepts/namespace.html
     description: |
-      A _site_ is a place in the network where workloads are running.
+      A _site_ is a place on the network where workloads are running.
       Sites are linked to form application networks.
+
+      <img src="images/site-1.svg"/>
+      <img src="images/site-2.svg"/>
+      <img src="images/site-3.svg"/>
     overview: |
       - XXX usually a namespace
       - XXX on different platforms
       - XXX sites can be added and removed dynamically
       - Also called Virtual Application Network (VAN), also application network
+      - Sites run on platforms
   - name: platform
     description: |
-      A _platform_ is a system for running application workloads.
+      A _platform_ is a system for running application workloads.  A
+      platform hosts sites.
+
+      <img src="images/platform-1.svg"/>
+      <img src="images/platform-2.svg"/>
     overview: |
       - XXX enumerate them
       - Platforms have namespaces (usually)
       - Platforms can host sites
   - name: namespace
+    links:
+      - title: Platform concept
+        url: /concepts/platform.html
+      - title: Site concept
+        url: /concepts/site.html
     description: |
       A _namespace_ is a named area for a related set of resources.
+
+      <img src="images/namespace-1.svg"/>
+      <img src="images/namespace-2.svg"/>
+      <img src="images/namespace-3.svg"/>
     overview: |
       - XXX what do they look like on each platform?
       - Each site corresponds to one namespace
@@ -48,10 +70,16 @@ concepts:
     links:
       - title: Network concept
         url: /concepts/network.html
+      - title: Link access concept
+        url: /concepts/link-access.html
     description: |
       A _link_ is a channel for communication between sites.  Links
       serve as a transport for application connections and requests.
-      A set of linked sites constitute a network.
+      A set of linked sites constitutes a network.
+
+      <img src="images/link-1.svg"/>
+      <img src="images/link-2.svg"/>
+      <img src="images/link-3.svg"/>
     overview: |
       - XXX A vessel for bidirectional application traffic
       - XXX link topology
@@ -65,7 +93,9 @@ concepts:
   - name: access grant
     links:
       - title: Access token concept
-        url: /concepts/claim.html
+        url: /concepts/access-token.html
+      - title: Link concept
+        url: /concepts/link.html
       - title: Token issue command
         url: /commands/token-issue.html
     description: |
@@ -77,16 +107,33 @@ concepts:
   - name: access token
     links:
       - title: Access grant concept
-        url: /concepts/grant.html
+        url: /concepts/access-grant.html
+      - title: Link concept
+        url: /concepts/link.html
       - title: Token redeem command
         url: /commands/token-redeem.html
     description: |
       An _access token_ is redeemable for a link to a remote site.  An
       access token contains the URL and secret code of a corresponding
       access grant.
+
+      <img src="images/access-token-1.svg"/>
+      <img src="images/access-token-2.svg"/>
+    overview: |
+      - Generated from an access grant
   - name: service
+    links:
+      - title: Listener concept
+        url: /concepts/listener.html
+      - title: Connector concept
+        url: /concepts/connector.html
+      - title: Routing key concept
+        url: /concepts/routing-key.html
     description: |
       A _service_ is an application component exposed on the network.
+
+      <img src="images/service-1.svg"/>
+      <img src="images/service-2.svg"/>
     overview: |
       - XXX at the network level
       - XXX a listener and a connector bound together by a routing key

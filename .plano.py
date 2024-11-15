@@ -34,7 +34,9 @@ def generate_diagrams():
     for input_file in find("input/concepts/images", "*.d2"):
         output_file = input_file.removesuffix(".d2") + ".svg"
 
-        run(f"d2 --layout elk --theme 105 --pad 0 {input_file} {output_file}")
+        with temp_file() as tmp:
+            run(f"d2 --layout elk --theme 105 --pad 0 {input_file} {tmp}")
+            move(tmp, output_file)
 
 @command
 def update_crds():
