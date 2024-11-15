@@ -216,7 +216,7 @@ resources:
             generated if none is supplied.
 
             This issuer is used by AccessGrant and RouterAccess if a
-            specific issuer is set.
+            specific issuer is not set.
         - name: edge
           group: advanced
           type: boolean

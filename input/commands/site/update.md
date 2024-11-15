@@ -183,7 +183,7 @@ used to generate a certificate from a token.  A secret is
 generated if none is supplied.
 
 This issuer is used by AccessGrant and RouterAccess if a
-specific issuer is set.
+specific issuer is not set.
 
 <table class="fields"><tr><th>Default</th><td><p><code>skupper-site-ca</code></p>
 </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
