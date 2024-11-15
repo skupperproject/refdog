@@ -11,12 +11,12 @@ refdog_object_links:
 refdog_object_toc:
 - id: ''
   title: Overview
-- id: metadata
-  title: Metadata
-- id: spec
-  title: Spec
-- id: status
-  title: Status
+- id: metadata-properties
+  title: Metadata properties
+- id: spec-properties
+  title: Spec properties
+- id: status-properties
+  title: Status properties
 ---
 
 # Link resource
@@ -39,7 +39,7 @@ kind: Link
 
 <section class="attributes">
 
-## Metadata
+## Metadata properties
 
 <div class="attribute">
 <div class="attribute-heading">
@@ -74,7 +74,7 @@ The namespace of the resource.
 
 <section class="attributes">
 
-## Spec
+## Spec properties
 
 <div class="attribute">
 <div class="attribute-heading">
@@ -147,7 +147,7 @@ string name and a string value.
 
 <section class="attributes">
 
-## Status
+## Status properties
 
 <div class="attribute collapsed">
 <div class="attribute-heading">

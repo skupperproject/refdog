@@ -105,7 +105,7 @@ def generate_resource(resource):
 
     append("<section class=\"attributes\">")
     append()
-    append("## Metadata")
+    append("## Metadata properties")
     append()
 
     for prop in resource.metadata_properties:
@@ -115,10 +115,10 @@ def generate_resource(resource):
     append()
     append("<section class=\"attributes\">")
     append()
-    append("## Spec")
+    append("## Spec properties")
     append()
 
-    for group in ("required", "frequently-used", None, "advanced", "global"):
+    for group in ("required", "frequently-used", None, "advanced"):
         for prop in resource.spec_properties:
             if prop.group == group:
                 generate_property(prop, append)
@@ -127,10 +127,10 @@ def generate_resource(resource):
     append()
     append("<section class=\"attributes\">")
     append()
-    append("## Status")
+    append("## Status properties")
     append()
 
-    for group in ("required", "frequently-used", None, "advanced", "global"):
+    for group in ("required", "frequently-used", None, "advanced"):
         for prop in resource.status_properties:
             if prop.group == group:
                 generate_property(prop, append)
@@ -172,18 +172,18 @@ def generate_resource_metadata(resource):
 
     data["refdog_object_toc"].extend([
         {
-            "title": "Metadata",
-            "id": "metadata",
+            "title": "Metadata properties",
+            "id": "metadata-properties",
             # "children": [{"title": x.name, "id": x.id} for x in resource.metadata_properties if not x.hidden],
         },
         {
-            "title": "Spec",
-            "id": "spec",
+            "title": "Spec properties",
+            "id": "spec-properties",
             # "children": [{"title": x.name, "id": x.id} for x in resource.spec_properties if not x.hidden],
         },
         {
-            "title": "Status",
-            "id": "status",
+            "title": "Status properties",
+            "id": "status-properties",
             # "children": [{"title": x.name, "id": x.id} for x in resource.status_properties if not x.hidden],
         },
     ])

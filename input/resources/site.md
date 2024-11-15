@@ -17,12 +17,12 @@ refdog_object_toc:
   title: Overview
 - id: examples
   title: Examples
-- id: metadata
-  title: Metadata
-- id: spec
-  title: Spec
-- id: status
-  title: Status
+- id: metadata-properties
+  title: Metadata properties
+- id: spec-properties
+  title: Spec properties
+- id: status-properties
+  title: Status properties
 ---
 
 # Site resource
@@ -71,7 +71,7 @@ spec:
 
 <section class="attributes">
 
-## Metadata
+## Metadata properties
 
 <div class="attribute">
 <div class="attribute-heading">
@@ -106,7 +106,7 @@ The namespace of the resource.
 
 <section class="attributes">
 
-## Spec
+## Spec properties
 
 <div class="attribute">
 <div class="attribute-heading">
@@ -241,7 +241,7 @@ string name and a string value.
 
 <section class="attributes">
 
-## Status
+## Status properties
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
