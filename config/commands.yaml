@@ -455,7 +455,7 @@ commands:
           $ skupper site generate east > east.yaml
         include_options: [generate/*, site/*, global/*]
   - name: token
-    related_concepts: ["access grant", "access token"]
+    related_concepts: ["access token"]
     related_resources: [AccessGrant, AccessToken]
     description: |
       Display help for token commands and exit.
@@ -465,7 +465,7 @@ commands:
       - name: issue
         wait: Ready
         resource: AccessGrant
-        related_concepts: ["access grant", "access token"]
+        related_concepts: ["access token"]
         related_resources: [AccessGrant, AccessToken]
         related_commands: [token/redeem]
         description: |
@@ -532,7 +532,7 @@ commands:
       # token.redeem
       - name: redeem
         resource: AccessToken
-        related_concepts: ["access grant", "access token"]
+        related_concepts: ["access token"]
         related_resources: [AccessGrant, AccessToken]
         related_commands: [token/issue]
         description: |

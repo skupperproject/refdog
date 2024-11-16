@@ -2,8 +2,8 @@
 body_class: object resource
 refdog_object_has_attributes: true
 refdog_object_links:
-- title: Access grant concept
-  url: /concepts/access-grant.html
+- title: Access token concept
+  url: /concepts/access-token.html
 - title: AccessToken resource
   url: /resources/accesstoken.html
 - title: Token issue command
@@ -67,7 +67,7 @@ The name of the resource.
 
 The namespace of the resource.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/namespace.html">Namespace concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a></td></table>
 
 </div>
 </div>

@@ -11,8 +11,6 @@ refdog_object_links:
   url: /concepts/link.html
 - title: Platform concept
   url: /concepts/platform.html
-- title: Namespace concept
-  url: /concepts/namespace.html
 ---
 
 # Site concept
@@ -22,8 +20,27 @@ refdog_object_links:
 A _site_ is a place on the network where workloads are running.
 Sites are linked to form application networks.
 
-<img src="images/site-1.svg"/>
-<img src="images/site-2.svg"/>
-<img src="images/site-3.svg"/>
+Sites operate on multiple platforms.  One site corresponds to
+one namespace in a platform instance.  Sites can be added to a
+network and removed from a network dynamically.
+
+Each site has a Skupper router which is responsible for
+communicating with the local workloads and forwarding traffic to
+routers in remote sites.
+
+<figure>
+  <img src="images/site-1.svg"/>
+  <figcaption>A site with three workloads</figcaption>
+</figure>
+
+<figure>
+  <img src="images/site-2.svg"/>
+  <figcaption>Two sites linked to form a network</figcaption>
+</figure>
+
+<figure>
+  <img src="images/site-3.svg"/>
+  <figcaption>A network with sites on different platforms</figcaption>
+</figure>
 
 </section>

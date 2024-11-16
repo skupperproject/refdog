@@ -18,7 +18,14 @@ network_ (VAN).
 Each network is meant for one distributed application.  This
 provides isolation from other applications and networks.
 
-<img src="images/network-1.svg"/>
-<img src="images/network-2.svg"/>
+<figure>
+  <img src="images/network-1.svg"/>
+  <figcaption>A simple two-site network</figcaption>
+</figure>
+
+<figure>
+  <img src="images/network-2.svg"/>
+  <figcaption>A larger network</figcaption>
+</figure>
 
 </section>

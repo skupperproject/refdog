@@ -2,8 +2,6 @@
 body_class: object command
 refdog_object_has_attributes: true
 refdog_object_links:
-- title: Access grant concept
-  url: /concepts/access-grant.html
 - title: Access token concept
   url: /concepts/access-token.html
 - title: AccessGrant resource

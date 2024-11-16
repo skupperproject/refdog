@@ -1,6 +1,10 @@
 ---
 body_class: object concept
 refdog_object_links:
+- title: AccessGrant resource
+  url: /resources/accessgrant.html
+- title: AccessToken resource
+  url: /resources/accesstoken.html
 - title: Listener concept
   url: /concepts/listener.html
 - title: Connector concept

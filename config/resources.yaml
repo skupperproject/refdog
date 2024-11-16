@@ -133,7 +133,7 @@ properties:
       port, and group.
 resources:
   - name: Site
-    related_concepts: [network, namespace]
+    related_concepts: [network, platform]
     related_resources: [Link]
     description: |
       A place where components of your application are running.
@@ -313,7 +313,7 @@ resources:
       properties:
         - name: endpoints
   - name: AccessGrant
-    related_concepts: [access grant]
+    related_concepts: ["access token"]
     related_resources: [AccessToken]
     related_commands: [token/issue]
     description: |
