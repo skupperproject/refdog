@@ -1,6 +1,12 @@
 ---
 body_class: object concept
-refdog_object_links: []
+refdog_object_links:
+- title: Connector concept
+  url: /concepts/connector.html
+- title: AttachedConnector resource
+  url: /resources/attachedconnector.html
+- title: AttachedConnectorBinding resource
+  url: /resources/attachedconnectoranchor.html
 ---
 
 # Attached connector concept
@@ -9,6 +15,9 @@ refdog_object_links: []
 
 An _attached connector_ is a connector in a peer namespace.
 
-<img src="images/attached-connector-1.svg"/>
+<figure>
+  <img src="images/attached-connector-1.svg"/>
+  <figcaption>XXX</figcaption>
+</figure>
 
 </section>

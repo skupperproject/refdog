@@ -40,7 +40,8 @@ routers in remote sites.
 
 <figure>
   <img src="images/site-3.svg"/>
-  <figcaption>A network with sites on different platforms</figcaption>
+  <figcaption>A network with sites on three different
+  platforms</figcaption>
 </figure>
 
 </section>

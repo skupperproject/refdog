@@ -1,35 +1,6 @@
 concepts:
-  - name: network
-    links:
-      - title: Site concept
-        url: /concepts/site.html
-      - title: Link concept
-        url: /concepts/link.html
-    description: |
-      A _network_ is a set of linked sites. A Skupper network is also
-      known as an _application network_ or _virtual application
-      network_ (VAN).
-
-      Each network is meant for one distributed application.  This
-      provides isolation from other applications and networks.
-
-      <figure>
-        <img src="images/network-1.svg"/>
-        <figcaption>A simple two-site network</figcaption>
-      </figure>
-
-      <figure>
-        <img src="images/network-2.svg"/>
-        <figcaption>A larger network</figcaption>
-      </figure>
   - name: site
-    links:
-      - title: Network concept
-        url: /concepts/network.html
-      - title: Link concept
-        url: /concepts/link.html
-      - title: Platform concept
-        url: /concepts/platform.html
+    related_concepts: [network, link, platform]
     description: |
       A _site_ is a place on the network where workloads are running.
       Sites are linked to form application networks.
@@ -54,12 +25,30 @@ concepts:
 
       <figure>
         <img src="images/site-3.svg"/>
-        <figcaption>A network with sites on different platforms</figcaption>
+        <figcaption>A network with sites on three different
+        platforms</figcaption>
+      </figure>
+  - name: network
+    related_concepts: [site, link]
+    description: |
+      A _network_ is a set of linked sites. A Skupper network is also
+      known as an _application network_ or _virtual application
+      network_ (VAN).
+
+      Each network is meant for one distributed application.  This
+      provides isolation from other applications and networks.
+
+      <figure>
+        <img src="images/network-1.svg"/>
+        <figcaption>A simple two-site network</figcaption>
+      </figure>
+
+      <figure>
+        <img src="images/network-2.svg"/>
+        <figcaption>A larger network</figcaption>
       </figure>
   - name: platform
-    links:
-      - title: Site concept
-        url: /concepts/site.html
+    related_concepts: [site]
     description: |
       A _platform_ is a system for running workloads.  A platform
       hosts sites.  Skupper supports Kubernetes, Docker, Podman, and
@@ -71,21 +60,17 @@ concepts:
 
       <figure>
         <img src="images/platform-1.svg"/>
-        <figcaption>A platform hosting a site with three workloads</figcaption>
+        <figcaption>A simple network with sites on two different
+        platforms</figcaption>
       </figure>
 
       <figure>
         <img src="images/platform-2.svg"/>
-        <figcaption>Three networks spanning three different platforms</figcaption>
+        <figcaption>A platform with three namespaces, two of which
+        host Skupper sites</figcaption>
       </figure>
   - name: link
-    links:
-      - title: Network concept
-        url: /concepts/network.html
-      - title: Site concept
-        url: /concepts/site.html
-      - title: Access token concept
-        url: /concepts/access-token.html
+    related_concepts: [network, site, "access token"]
     description: |
       A _link_ is a channel for communication between sites.  Links
       serve as a transport for application connections and requests.
@@ -116,48 +101,28 @@ concepts:
         <img src="images/link-3.svg"/>
         <figcaption>A larger network with links to a central hub site</figcaption>
       </figure>
-  # - name: access grant
-  #   links:
-  #     - title: Access token concept
-  #       url: /concepts/access-token.html
-  #     - title: Link concept
-  #       url: /concepts/link.html
-  #     - title: Token issue command
-  #       url: /commands/token-issue.html
-  #   description: |
-  #     An _access grant_ enables redemption of access tokens.  A remote
-  #     site can use a token containing the grant URL and secret code to
-  #     obtain a certificate signed by the grant's certificate authority
-  #     (CA), within a certain expiration window and for a limited
-  #     number of redemptions.
-  #   overview: |
-  #     - Tokens have limited lifetimes and limited uses
   - name: access token
-    links:
-      - title: Token issue command
-        url: /commands/token-issue.html
-      - title: Token redeem command
-        url: /commands/token-redeem.html
-      - title: Link concept
-        url: /concepts/link.html
+    related_concepts: [link]
+    related_resources: [AccessGrant, AccessToken]
+    related_commands: [token]
     description: |
       An _access token_ is a short-lived credential used to create a
       link.  An access token contains the URL and secret code of a
       corresponding access grant.
 
-      A site wishing to accept a link (the origin site) creates an
+      A site wishing to accept a link (the accepting site) creates an
       access grant.  It uses the access grant to create a
-      corresponding access token (it _issues_ a token) and transfers
-      it to a remote site.  The remote site submits the access token
-      to the origin site (it _redeems_ the token).  If the token is
-      valid, the origin site sends the remote site the TLS credentials
-      and connection endpoints required to create a link to the origin
-      site.
+      corresponding access token and transfers it to a remote site (it
+      _issues_ a token).  The remote site submits the access token to
+      the accepting site (it _redeems_ the token).  If the token is
+      valid, the accepting site sends the remote site the TLS
+      credentials and connection endpoints required to create a link
+      to the accepting site.
 
-      Access tokens are limited to a maximum number of uses, and they
-      expire shortly after they are issued.  By default, they are
-      restricted to a single use, and they expire after 15 minutes.
-      You can configure the limits on the access grant.
+      Access tokens have limited redemptions and limited lifespans.
+      By default, they can be redeemed only once, and they expire 15
+      minutes after being issued.  You can set custom limits by
+      configuring the access grant.
 
       <figure>
         <img src="images/access-token-1.svg"/>
@@ -169,73 +134,92 @@ concepts:
         <figcaption>The sequence for issuing and redeeming access tokens</figcaption>
       </figure>
   - name: service
-    related_resources: [AccessGrant, AccessToken]
-    links:
-      - title: Listener concept
-        url: /concepts/listener.html
-      - title: Connector concept
-        url: /concepts/connector.html
-      - title: Routing key concept
-        url: /concepts/routing-key.html
+    related_concepts: [listener, connector]
     description: |
       A _service_ is an application component exposed on the network.
 
-      <img src="images/service-1.svg"/>
-      <img src="images/service-2.svg"/>
-      <img src="images/service-3.svg"/>
+      <figure>
+        <img src="images/service-1.svg"/>
+        <figcaption>A client and server communicating across sites
+        using a matched listener and connector</figcaption>
+      </figure>
+
+      <figure>
+        <img src="images/service-2.svg"/>
+        <figcaption>A service exposed on two sites</figcaption>
+      </figure>
+
+      <figure>
+        <img src="images/service-3.svg"/>
+        <figcaption>A service bound to workloads on two
+        sites</figcaption>
+      </figure>
     overview: |
       - XXX at the network level
       - XXX a listener and a connector bound together by a routing key
   - name: listener
-    links:
-      - title: Service concept
-        url: /concepts/service.html
-      - title: Connector concept
-        url: /concepts/connector.html
-      - title: Routing key concept
-        url: /concepts/routing-key.html
+    related_concepts: [connector, "routing key"]
     description: |
       A _listener_ binds a local connection endpoint to connectors in
       remote sites.
 
-      <img src="images/listener-1.svg"/>
+      <figure>
+        <img src="images/listener-1.svg"/>
+        <figcaption>A listener with multiple clients connecting
+        through it</figcaption>
+      </figure>
+    overview: |
+      - Local workloads can connect to the listener
   - name: connector
-    links:
-      - title: Service concept
-        url: /concepts/service.html
-      - title: Listener concept
-        url: /concepts/listener.html
-      - title: Routing key concept
-        url: /concepts/routing-key.html
+    related_concepts: [listener, "routing key"]
     description: |
       A _connector_ binds a local workload to listeners in remote
       sites.
 
-      <img src="images/connector-1.svg"/>
+      <figure>
+        <img src="images/connector-1.svg"/>
+        <figcaption>A connector bound to a set of servers</figcaption>
+      </figure>
     overview: |
       - A connector targets a workload in the local site (or
         reachable on the local network).
       - A connector forwards connections from matching listeners
         at remote sites to the workload in the local site.
   - name: routing key
+    related_concepts: [listener, connector]
     description: |
-      A _routing key_ is an identifier for matching listeners to
+      A _routing key_ is an identifier for matching listeners and
       connectors.
-    links:
-      - title: Listener concept
-        url: /concepts/listener.html
-      - title: Connector concept
-        url: /concepts/connector.html
+
+      <figure>
+        <img src="images/routing-key-model.svg"/>
+        <figcaption>Each routing key has zero or more listeners and
+        zero or more connectors</figcaption>
+      </figure>
+
+      <figure>
+        <img src="images/routing-key-1.svg"/>
+        <figcaption>A routing key with two listeners and two
+        connectors</figcaption>
+      </figure>
+    overview: |
+      - A service is truly exposed when there is at least one listener
+        and one connector, matched by routing key.
   - name: attached connector
+    related_concepts: [connector]
+    related_resources: [AttachedConnector, AttachedConnectorAnchor]
     description: |
       An _attached connector_ is a connector in a peer namespace.
 
-      <img src="images/attached-connector-1.svg"/>
+      <figure>
+        <img src="images/attached-connector-1.svg"/>
+        <figcaption>XXX</figcaption>
+      </figure>
 groups:
-  - name: Networks and sites
+  - name: Sites and networks
     concepts:
-      - network
       - site
+      - network
       - platform
   - name: Site linking
     concepts:
@@ -243,7 +227,7 @@ groups:
       - access token
   - name: Service exposure
     concepts:
-      - service
       - listener
       - connector
+      - routing key
       - attached connector

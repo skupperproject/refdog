@@ -1,0 +1,19 @@
+...@common
+
+Network: {
+  class: neutral
+
+  Site 1: {
+    Client.style.fill: white
+
+    Client -> Listener
+  }
+
+  Site 2: {
+    Connector -> Server
+
+    Server.style.fill: white
+  }
+
+  Site 1.Listener -- Routing key -- Site 2.Connector
+}

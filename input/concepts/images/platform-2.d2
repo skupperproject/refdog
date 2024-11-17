@@ -1,5 +1,31 @@
-direction: right
+...@common
 
-Kubernetes cluster.Site 1 -- Docker instance.Site 1 -- Linux host.Site 1
-Kubernetes cluster.Site 2 -- Docker instance.Site 2 -- Linux host.Site 2
-Kubernetes cluster.Site 3 -- Docker instance.Site 3 -- Linux host.Site 3
+direction: down
+
+Canvas: {
+  Platform: {
+    Namespace 1: {
+      Site: {
+        W1
+        W2
+      }
+    }
+
+    Namespace 2: {
+      Site: {
+        W1
+        W2
+      }
+    }
+
+    Namespace 3: {
+      Site: {
+        style.opacity: 0
+        W1
+        W2
+      }
+    }
+  }
+}
+
+Canvas.class: canvas

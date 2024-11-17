@@ -19,12 +19,14 @@ sites on one instance of a platform.
 
 <figure>
   <img src="images/platform-1.svg"/>
-  <figcaption>A platform hosting a site with three workloads</figcaption>
+  <figcaption>A simple network with sites on two different
+  platforms</figcaption>
 </figure>
 
 <figure>
   <img src="images/platform-2.svg"/>
-  <figcaption>Three networks spanning three different platforms</figcaption>
+  <figcaption>A platform with three namespaces, two of which
+  host Skupper sites</figcaption>
 </figure>
 
 </section>

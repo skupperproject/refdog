@@ -1,0 +1,64 @@
+...@common
+
+direction: down
+
+Platform: {
+  class: notion
+  # tooltip: A platform is a system for running workloads
+}
+
+Network: {
+  class: notion
+  # tooltip: A network is a set of linked sites
+}
+
+Site: {
+  # tooltip: A site is a place on the network where workloads are running
+}
+
+Workload: {
+  class: notion
+  # tooltip: A workload is a running instance of an application component
+}
+
+"Link ": {
+  # tooltip: A link is a channel for communication between sites
+}
+
+Listener: {
+  # tooltip: A listener binds a local connection endpoint to connectors in remote sites
+}
+
+Connector: {
+  # tooltip: A connector binds a local workload to listeners in remote sites
+}
+
+Network -- Site: {
+  source-arrowhead: 1
+  target-arrowhead: n
+}
+
+Platform -- Site: {
+  source-arrowhead: 1
+  target-arrowhead: n
+}
+
+Site -- Workload: {
+  source-arrowhead: 1
+  target-arrowhead: n
+}
+
+Site -- "Link ": {
+  source-arrowhead: 1
+  target-arrowhead: n
+}
+
+Site -- Listener: {
+  source-arrowhead: 1
+  target-arrowhead: n
+}
+
+Site -- Connector: {
+  source-arrowhead: 1
+  target-arrowhead: n
+}

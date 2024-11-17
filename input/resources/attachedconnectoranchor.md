@@ -2,6 +2,8 @@
 body_class: object resource
 refdog_object_has_attributes: true
 refdog_object_links:
+- title: Attached connector concept
+  url: /concepts/attached-connector.html
 - title: AttachedConnector resource
   url: /resources/attachedconnector.html
 refdog_object_toc:

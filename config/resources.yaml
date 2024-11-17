@@ -575,7 +575,8 @@ resources:
         - name: selectedPods
   - name: AttachedConnector
     platforms: [Kubernetes]
-    related_resources: [AttachedConnectorAnchor, Connector]
+    related_concepts: ["attached connector"]
+    related_resources: [AttachedConnectorAnchor]
     description: |
       A connector in a peer namespace.
     metadata:
@@ -607,6 +608,7 @@ resources:
   - name: AttachedConnectorAnchor
     rename: AttachedConnectorBinding
     platforms: [Kubernetes]
+    related_concepts: ["attached connector"]
     related_resources: [AttachedConnector]
     description: |
       A binding to an attached connector in a peer namespace.

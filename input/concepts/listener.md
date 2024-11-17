@@ -5,8 +5,6 @@ refdog_object_links:
   url: /resources/listener.html
 - title: Listener command
   url: /commands/listener/index.html
-- title: Service concept
-  url: /concepts/service.html
 - title: Connector concept
   url: /concepts/connector.html
 - title: Routing key concept
@@ -20,6 +18,10 @@ refdog_object_links:
 A _listener_ binds a local connection endpoint to connectors in
 remote sites.
 
-<img src="images/listener-1.svg"/>
+<figure>
+  <img src="images/listener-1.svg"/>
+  <figcaption>A listener with multiple clients connecting
+  through it</figcaption>
+</figure>
 
 </section>

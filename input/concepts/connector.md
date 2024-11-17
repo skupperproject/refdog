@@ -5,8 +5,6 @@ refdog_object_links:
   url: /resources/connector.html
 - title: Connector command
   url: /commands/connector/index.html
-- title: Service concept
-  url: /concepts/service.html
 - title: Listener concept
   url: /concepts/listener.html
 - title: Routing key concept
@@ -20,6 +18,9 @@ refdog_object_links:
 A _connector_ binds a local workload to listeners in remote
 sites.
 
-<img src="images/connector-1.svg"/>
+<figure>
+  <img src="images/connector-1.svg"/>
+  <figcaption>A connector bound to a set of servers</figcaption>
+</figure>
 
 </section>

@@ -1,9 +1,19 @@
-direction: right
+...@common
 
-Platform: {
-  Site: {
-    Workload 1
-    Workload 2
-    Workload 3
+Canvas: {
+  Platform 1: {
+    Namespace: {
+      Site
+    }
   }
+
+  Platform 2: {
+    Namespace: {
+      Site
+    }
+  }
+
+  Platform 1.Namespace.Site -- Platform 2.Namespace.Site
 }
+
+Canvas.class: canvas

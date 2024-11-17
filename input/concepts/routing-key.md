@@ -11,7 +11,19 @@ refdog_object_links:
 
 <section>
 
-A _routing key_ is an identifier for matching listeners to
+A _routing key_ is an identifier for matching listeners and
 connectors.
+
+<figure>
+  <img src="images/routing-key-model.svg"/>
+  <figcaption>Each routing key has zero or more listeners and
+  zero or more connectors</figcaption>
+</figure>
+
+<figure>
+  <img src="images/routing-key-1.svg"/>
+  <figcaption>A routing key with two listeners and two
+  connectors</figcaption>
+</figure>
 
 </section>
