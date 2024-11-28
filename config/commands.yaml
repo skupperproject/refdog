@@ -238,8 +238,8 @@ options:
     description: |
       Wait for the given status before exiting.
     choices:
-      - name: pending
-        description: Pending
+      - name: none
+        description: _Do not wait_
       - name: configured
         description: Configured
       - name: ready
@@ -272,8 +272,8 @@ options:
     description: |
       Wait for the given status before exiting.
     choices:
-      - name: pending
-        description: Pending
+      - name: none
+        description: _Do not wait_
       - name: configured
         description: Configured
       - name: ready

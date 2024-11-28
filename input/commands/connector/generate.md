@@ -182,7 +182,7 @@ alternative to `selector` for specifying the target server.
 Wait for the given status before exiting.
 
 <table class="fields"><tr><th>Default</th><td><p><code>configured</code></p>
-</td><tr><th>Choices</th><td><table class="choices"><tr><th><code>pending</code></th><td><p>Pending</p>
+</td><tr><th>Choices</th><td><table class="choices"><tr><th><code>none</code></th><td><p><em>Do not wait</em></p>
 </td></tr><tr><th><code>configured</code></th><td><p>Configured</p>
 </td></tr><tr><th><code>ready</code></th><td><p>Ready</p>
 </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
