@@ -154,66 +154,6 @@ window of downtime caused by restarts.
 </div>
 </div>
 
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="option-default-issuer">--default-issuer</h3>
-<div class="attribute-type-info">&lt;name&gt;</div>
-<div class="attribute-flags">advanced</div>
-</div>
-<div class="attribute-body">
-
-The name of a Kubernetes secret containing the signing CA
-used to generate a certificate from a token.  A secret is
-generated if none is supplied.
-
-This issuer is used by AccessGrant and RouterAccess if a
-specific issuer is not set.
-
-<table class="fields"><tr><th>Default</th><td><p><code>skupper-site-ca</code></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="option-enable-edge">--enable-edge</h3>
-<div class="attribute-type-info">boolean</div>
-<div class="attribute-flags">advanced</div>
-</div>
-<div class="attribute-body">
-
-Configure the site to operate in edge mode.  Edge sites
-cannot accept links from remote sites.
-
-Edge mode can help you scale your network to large numbers
-of sites.  However, for networks with 16 or fewer sites,
-there is little benefit.
-
-Currently, edge sites cannot also have HA enabled.
-
-<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Advanced deployment options</a></td></table>
-
-</div>
-</div>
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="option-service-account">--service-account</h3>
-<div class="attribute-type-info">&lt;name&gt;</div>
-<div class="attribute-flags">advanced</div>
-</div>
-<div class="attribute-body">
-
-The name of the Kubernetes service account under which to
-run the Skupper controller.
-
-<table class="fields"><tr><th>Default</th><td><p><code>skupper-router</code></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Advanced deployment options</a>, <a href="https://kubernetes.io/docs/concepts/security/service-accounts/">Kubernetes service accounts</a></td></table>
-
-</div>
-</div>
-
 </section>
 
 <section class="attributes">

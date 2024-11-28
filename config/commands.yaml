@@ -159,17 +159,17 @@ options:
   site/enable_ha:
     name: enable-ha
     property: ha
-  site/default_issuer:
-    name: default-issuer
-    property: defaultIssuer
-    placeholder: name
-  site/enable_edge:
-    name: enable-edge
-    property: edge
-  site/service_account:
-    name: service-account
-    property: serviceAccount
-    placeholder: name
+  # site/default_issuer:
+  #   name: default-issuer
+  #   property: defaultIssuer
+  #   placeholder: name
+  # site/enable_edge:
+  #   name: enable-edge
+  #   property: edge
+  # site/service_account:
+  #   name: service-account
+  #   property: serviceAccount
+  #   placeholder: name
   link/cost:
     name: cost
     property: cost
@@ -213,23 +213,23 @@ options:
     required: false
     property: host
     default: _Value of name_
-  connector/include_not_ready_pods:
-    name: include-not-ready-pods
-    group: advanced
-    property: includeNotReady
-  connector/tls_credentials:
-    name: tls-credentials
-    group: advanced
-    property: tlsCredentials
-    # XXX Not inheriting links!
-  connector/use_client_cert:
-    name: use-client-cert
-    group: advanced
-    property: useClientCert
-  connector/verify_hostname:
-    name: verify-hostname
-    group: advanced
-    property: verifyHostname
+  # connector/include_not_ready_pods:
+  #   name: include-not-ready-pods
+  #   group: advanced
+  #   property: includeNotReady
+  # connector/tls_credentials:
+  #   name: tls-credentials
+  #   group: advanced
+  #   property: tlsCredentials
+  #   # XXX Not inheriting links!
+  # connector/use_client_cert:
+  #   name: use-client-cert
+  #   group: advanced
+  #   property: useClientCert
+  # connector/verify_hostname:
+  #   name: verify-hostname
+  #   group: advanced
+  #   property: verifyHostname
   connector/wait:
     name: wait
     type: string
@@ -260,10 +260,10 @@ options:
     required: false
     property: host
     default: _Value of name_
-  listener/tls_credentials:
-    name: tls-credentials
-    group: advanced
-    property: tlsCredentials
+  # listener/tls_credentials:
+  #   name: tls-credentials
+  #   group: advanced
+  #   property: tlsCredentials
   listener/wait:
     name: wait
     type: string

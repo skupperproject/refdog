@@ -167,34 +167,6 @@ alternative to `selector` for specifying the target server.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="spec-tlscredentials">tlsCredentials</h3>
-<div class="attribute-type-info">string</div>
-<div class="attribute-flags">advanced</div>
-</div>
-<div class="attribute-body">
-
-The name of a bundle of TLS certificates and keys used for
-secure application-to-router communication.  The bundle contains
-the trusted server certificate.  It optionally includes a client
-certificate and key for mutual TLS.
-
-On Kubernetes, the value is the name of a Secret in the current
-namespace.
-
-On Docker, Podman, and Linux, the value is the name of a
-directory under `input/certs/` in the current namespace.
-
-
-This option is used when setting up router-to-server TLS
-authentication and encryption.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a></td></table>
-
-</div>
-</div>
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
 <h3 id="spec-includenotreadypods">includeNotReadyPods</h3>
 <div class="attribute-type-info">boolean</div>
 <div class="attribute-flags">advanced</div>
@@ -219,6 +191,30 @@ If true, include server pods in the `NotReady` state.
 If true, expose each pod as an individual service.
 
 <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes</td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="spec-tlscredentials">tlsCredentials</h3>
+<div class="attribute-type-info">string</div>
+<div class="attribute-flags">advanced</div>
+</div>
+<div class="attribute-body">
+
+The name of a bundle of TLS certificates and keys used for
+secure router-to-server communication.  The bundle contains the
+trusted server certificate.  It optionally includes a client
+certificate and key for mutual TLS.
+
+On Kubernetes, the value is the name of a Secret in the current
+namespace.
+
+On Docker, Podman, and Linux, the value is the name of a
+directory under `input/certs/` in the current namespace.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="">Site-scoped TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a></td></table>
 
 </div>
 </div>
