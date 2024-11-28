@@ -202,10 +202,8 @@ resources:
           links:
             - title: Site linking
               url: ""
-            - title: Link access concept
-              url: /concepts/link-access.html
-            - title: Kubernetes load balancer services
-              url: https://kubernetes.io/docs/concepts/services-networking/service/#loadbalancer
+            - title: Link concept
+              url: /concepts/link.html
         - name: ha
           updatable: true
           platforms: [Kubernetes]
