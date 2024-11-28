@@ -81,19 +81,23 @@ links:
 </table>
 
 
-#### Site operation
+#### System operation
 
 <table class="objects">
 <tr><th><a href="{{site_prefix}}/commands/system/index.html">System</a></th><td>Overview of system commands</td></tr>
-<tr><th><a href="{{site_prefix}}/commands/system/setup.html">System setup</a></th><td><p>Install and configure the Skupper components for the current namespace</p>
+<tr><th><a href="{{site_prefix}}/commands/system/install.html">System install</a></th><td><p>Install the Skupper components</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/commands/system/teardown.html">System teardown</a></th><td><p>Remove the Skupper components from the current namespace</p>
+<tr><th><a href="{{site_prefix}}/commands/system/uninstall.html">System uninstall</a></th><td><p>Remove the Skupper components</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/commands/system/start.html">System start</a></th><td><p>Start running the Skupper components for the current site</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/commands/system/stop.html">System stop</a></th><td><p>Shut down the Skupper components for the current site</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/commands/system/reload.html">System reload</a></th><td><p>Reload the site configuration</p>
+</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/system/apply.html">System apply</a></th><td><p>Apply resource configuration from files or standard input</p>
+</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/system/status.html">System status</a></th><td><p>Display the status of the system</p>
 </td></tr>
 </table>
 

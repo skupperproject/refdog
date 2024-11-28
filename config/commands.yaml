@@ -874,16 +874,15 @@ commands:
   - name: system
     platforms: [Docker, Podman, Linux]
     subcommands:
-      # system.setup
-      - name: setup
+      # system.install
+      - name: install
         platforms: [Docker, Podman, Linux]
         description: |
-          Install and configure the Skupper components for the current
-          namespace.
-      # system.teardown
-      - name: teardown
+          Install the Skupper components.
+      # system.uninstall
+      - name: uninstall
         description: |
-          Remove the Skupper components from the current namespace.
+          Remove the Skupper components.
       # system.start
       - name: start
         platforms: [Docker, Podman, Linux]
@@ -899,6 +898,16 @@ commands:
         platforms: [Docker, Podman, Linux]
         description: |
           Reload the site configuration.
+      # system.apply
+      - name: apply
+        platforms: [Docker, Podman, Linux]
+        description: |
+          Apply resource configuration from files or standard input.
+      # system.status
+      - name: status
+        platforms: [Docker, Podman, Linux]
+        description: |
+          Display the status of the system.
   - name: debug
     description: |
       Display help for debug commands and exit.
@@ -974,7 +983,7 @@ groups:
     commands:
       - connector
       - listener
-  - name: Site operation
+  - name: System operation
     commands:
       - system
   - name: Debug operations
