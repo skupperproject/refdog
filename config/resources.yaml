@@ -77,10 +77,18 @@ properties:
       alternative to `selector` for specifying the target server.
   connector/spec/includeNotReady:
     name: includeNotReady
+    rename: includeNotReadyPods
+    group: advanced
     description: |
-      If set, include server pods that are not in the ready
-      state.
+      If true, include server pods in the `NotReady` state.
     platforms: [Kubernetes]
+  connector/spec/exposePodsByName:
+    name: exposePodsByName
+    group: advanced
+    type: boolean
+    platforms: [Kubernetes]
+    description: |
+      If true, expose each pod as an individual service.
   connector/spec/type:
     name: type
     hidden: true
@@ -97,14 +105,18 @@ properties:
     type: array
   tls/tlsCredentials:
     name: tlsCredentials
+    group: advanced
     description: |
-      A named bundle of TLS certificates and keys used for secure
-      application-to-router communication.  The bundle contains the
-      trusted server certificate.  It optionally includes a client
+      The name of a bundle of TLS certificates and keys used for
+      secure application-to-router communication.  The bundle contains
+      the trusted server certificate.  It optionally includes a client
       certificate and key for mutual TLS.
 
       On Kubernetes, the value is the name of a Secret in the current
       namespace.
+
+      On Docker, Podman, and Linux, the value is the name of a
+      directory under `input/certs/` in the current namespace.
     links:
       - title: Site-scoped TLS
         url: "" # XXX
@@ -112,6 +124,7 @@ properties:
         url: https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
   tls/useClientCert:
     name: useClientCert
+    group: advanced
     type: boolean
     description: |
       Send the client certificate when connecting in order to enable
@@ -121,6 +134,7 @@ properties:
         url: "" # XXX
   tls/verifyHostname:
     name: verifyHostname
+    group: advanced
     type: boolean
     description: |
       If true, require that the hostname of the server connected to
@@ -291,13 +305,16 @@ resources:
         - name: roles
         - name: tlsCredentials
           description: |
-            A named bundle of TLS certificates and keys used for
+            The name of a bundle of TLS certificates and keys used for
             secure router-to-router communication.  The bundle
             contains the trusted server certificate.  It optionally
             includes a client certificate and key for mutual TLS.
 
             On Kubernetes, the value is the name of a Secret in the
             current namespace.
+
+            On Docker, Podman, and Linux, the value is the name of a
+            directory under `input/certs/` in the current namespace.
           links:
             - title: Custom certificates
               url: ""
@@ -513,7 +530,14 @@ resources:
             The port of the local listener.  Clients at this site use
             the listener host and port to establish connections to
             the remote service.
+        - name: exposePodsByName
+          type: boolean
+          group: advanced
+          platforms: [Kubernetes]
+          description: |
+            If true, expose each pod as an individual service.
         - name: tlsCredentials
+          group: advanced
           description: |
             @description@
 

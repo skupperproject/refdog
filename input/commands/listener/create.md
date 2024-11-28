@@ -172,13 +172,16 @@ period of time.
 </div>
 <div class="attribute-body">
 
-A named bundle of TLS certificates and keys used for secure
-application-to-router communication.  The bundle contains the
-trusted server certificate.  It optionally includes a client
+The name of a bundle of TLS certificates and keys used for
+secure application-to-router communication.  The bundle contains
+the trusted server certificate.  It optionally includes a client
 certificate and key for mutual TLS.
 
 On Kubernetes, the value is the name of a Secret in the current
 namespace.
+
+On Docker, Podman, and Linux, the value is the name of a
+directory under `input/certs/` in the current namespace.
 
 
 This option is used when setting up client-to-router TLS

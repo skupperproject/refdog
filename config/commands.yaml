@@ -213,8 +213,8 @@ options:
     required: false
     property: host
     default: _Value of name_
-  connector/include_not_ready:
-    name: include-not-ready
+  connector/include_not_ready_pods:
+    name: include-not-ready-pods
     group: advanced
     property: includeNotReady
   connector/tls_credentials:
@@ -222,6 +222,14 @@ options:
     group: advanced
     property: tlsCredentials
     # XXX Not inheriting links!
+  connector/use_client_cert:
+    name: use-client-cert
+    group: advanced
+    property: useClientCert
+  connector/verify_hostname:
+    name: verify-hostname
+    group: advanced
+    property: verifyHostname
   connector/wait:
     name: wait
     type: string
