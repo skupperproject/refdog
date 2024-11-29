@@ -110,7 +110,7 @@ remote listener and the local connector must have matching
 routing keys.
 
 <table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/concepts/routing-key.html">Routing key concept</a></td></table>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -126,12 +126,14 @@ routing keys.
 A Kubernetes label selector for specifying target server pods.
 
 <!-- The selector that identifies the pods to connect to. -->
+<!-- This uses the compact format with '=' expressions -->
+<!-- Either this or host must be specified -->
 
 On Kubernetes, you usually want to use this.  As an alternative,
 you can use `host`.
 
 <table class="fields"><tr><th>Default</th><td><p><code>app=[value-of-name]</code></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">Kubernetes label selectors</a></td></table>
 
 </div>
 </div>

@@ -1,0 +1,51 @@
+kubernetes/conditions:
+  title: Kubernetes conditions
+  url: https://maelvls.dev/kubernetes-conditions/
+kubernetes/label_selectors:
+  title: Kubernetes label selectors
+  url: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors
+kubernetes/namespaces:
+  title: Kubernetes namespaces
+  url: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+kubernetes/service_accounts:
+  title: Kubernetes service accounts
+  url: https://kubernetes.io/docs/concepts/security/service-accounts/
+kubernetes/tls_secrets:
+  title: Kubernetes TLS secrets
+  url: https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
+skupper/application_tls:
+  title: Application TLS
+  url: https://example.net/
+skupper/high_availability:
+  title: High availability
+  url: https://example.net/
+skupper/individual_pod_services:
+  title: Individual pod services
+  url: https://example.net/
+skupper/load_balancing:
+  title: Load balancing
+  url: https://example.net/
+skupper/router_tls:
+  title: Router TLS
+  url: https://example.net/
+skupper/large_networks:
+  title: Large networks
+  url: https://example.net/
+skupper/service_exposure:
+  title: Service exposure
+  url: https://example.net/
+skupper/site_linking:
+  title: Site linking
+  url: https://example.net/
+skupper/system_namespaces:
+  title: System namespaces
+  url: https://example.net/
+skupper/system_tls_credentials:
+  title: System TLS credentials
+  url: https://example.net/
+skupper/resource_settings:
+  title: Resource settings
+  url: https://example.net/
+skupper/resource_status:
+  title: Resource status
+  url: https://example.net/

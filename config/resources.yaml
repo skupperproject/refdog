@@ -10,18 +10,21 @@ properties:
     name: namespace
     type: string
     updatable: false
+    related_concepts: [platform]
     description: |
       The namespace of the resource.
     links:
-      - title: Kubernetes namespaces
-        url: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+      - name: kubernetes/namespaces
+      - name: skupper/system_namespaces
   settings:
     name: settings
     group: advanced
     type: object
     description: |
-      A map containing additional settings.  Each map entry is a
+      A map containing additional settings.  Each map entry has a
       string name and a string value.
+    links:
+      - name: skupper/resource_settings
   status/status:
     name: status
     description: |
@@ -29,10 +32,14 @@ properties:
 
       - Pending
       - Ready
+    links:
+      - name: skupper/resource_status
   status/message:
     name: message
     description: |
       A human-readable status message.
+    links:
+      - name: skupper/resource_status
   status/conditions:
     name: conditions
     group: advanced
@@ -41,18 +48,16 @@ properties:
       A set of named conditions describing the current state of the
       resource.
     links:
-      - title: Kubernetes conditions
-        url: https://maelvls.dev/kubernetes-conditions/
+      - name: skupper/resource_status
+      - name: kubernetes/conditions
   connector/spec/routingKey:
     name: routingKey
+    related_concepts: ["routing key"]
     description: |
       The identifier used to route traffic from listeners to
       connectors.  To expose a local workload to a remote site, the
       remote listener and the local connector must have matching
       routing keys.
-    links:
-      - title: Routing key concept
-        url: /concepts/routing-key.html
   connector/spec/port:
     name: port
     description: |
@@ -67,9 +72,13 @@ properties:
       A Kubernetes label selector for specifying target server pods.
 
       <!-- The selector that identifies the pods to connect to. -->
+      <!-- This uses the compact format with '=' expressions -->
+      <!-- Either this or host must be specified -->
 
       On Kubernetes, you usually want to use this.  As an alternative,
       you can use `host`.
+    links:
+      - name: kubernetes/label_selectors
   connector/spec/host:
     name: host
     description: |
@@ -89,6 +98,8 @@ properties:
     platforms: [Kubernetes]
     description: |
       If true, expose each pod as an individual service.
+    links:
+      - name: skupper/individual_pod_services
   connector/spec/tlsCredentials:
     name: tlsCredentials
     group: advanced
@@ -104,10 +115,9 @@ properties:
       On Docker, Podman, and Linux, the value is the name of a
       directory under `input/certs/` in the current namespace.
     links:
-      - title: Site-scoped TLS
-        url: "" # XXX
-      - title: Kubernetes TLS secrets
-        url: https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
+      - name: skupper/application_tls
+      - name: kubernetes/tls_secrets
+      - name: skupper/system_tls_credentials
   connector/spec/useClientCert:
     name: useClientCert
     group: advanced
@@ -116,8 +126,7 @@ properties:
       Send the client certificate when connecting in order to enable
       mutual TLS.
     links:
-      - title: Site-scoped TLS
-        url: "" # XXX
+      - name: skupper/application_tls
   connector/spec/verifyHostname:
     name: verifyHostname
     group: advanced
@@ -125,12 +134,8 @@ properties:
     description: |
       If true, require that the hostname of the server connected to
       matches the hostname in the server's certificate.
-  endpoints:
-    name: endpoints
-    group: advanced
-    description: |
-      An array of connection endpoints.  Each item has a name, host,
-      port, and group.
+    links:
+      - name: skupper/application_tls
   connector/spec/type:
     name: type
     hidden: true
@@ -141,6 +146,7 @@ properties:
   connector/status/hasMatchingListeners:
     name: hasMatchingListeners
     type: boolean
+    related_concepts: ["routing key"]
   connector/status/selectedPods:
     name: selectedPods
     group: advanced
@@ -181,6 +187,7 @@ resources:
         - name: linkAccess
           group: frequently-used
           default: none
+          related_concepts: ["link"]
           description: |
             Configure external access for links from remote sites.
 
@@ -200,10 +207,7 @@ resources:
             - name: loadbalancer
               description: Use a Kubernetes load balancer.  _Kubernetes only._
           links:
-            - title: Site linking
-              url: ""
-            - title: Link concept
-              url: /concepts/link.html
+            - name: skupper/site_linking
         - name: ha
           updatable: true
           platforms: [Kubernetes]
@@ -216,8 +220,7 @@ resources:
             availability.  Enabling HA goes further and reduces the
             window of downtime caused by restarts.
           links:
-            - title: Advanced deployment options
-              url: ""
+            - name: skupper/high_availability
         - name: defaultIssuer
           group: advanced
           default: skupper-site-ca
@@ -229,6 +232,9 @@ resources:
 
             This issuer is used by AccessGrant and RouterAccess if a
             specific issuer is not set.
+          links:
+            - name: skupper/router_tls
+            - name: kubernetes/tls_secrets
         - name: edge
           group: advanced
           type: boolean
@@ -242,8 +248,7 @@ resources:
 
             Currently, edge sites cannot also have HA enabled.
           links:
-            - title: Advanced deployment options
-              url: ""
+            - name: skupper/large_networks
         - name: serviceAccount
           group: advanced
           default: skupper-router
@@ -252,10 +257,7 @@ resources:
             The name of the Kubernetes service account under which to
             run the Skupper controller.
           links:
-            - title: Advanced deployment options
-              url: ""
-            - title: Kubernetes service accounts
-              url: https://kubernetes.io/docs/concepts/security/service-accounts/
+            - name: kubernetes/service_accounts
         - name: settings
           description: |
             @description@
@@ -268,7 +270,7 @@ resources:
             - `routerLogging` - Set the router logging level.<br/>
               Default: `info`.  Choices: `debug`, `info`, `warning`, `error`.
     status:
-      include_properties: [status/*, endpoints]
+      include_properties: [status/*]
       properties:
         - name: status
         - name: message
@@ -287,11 +289,24 @@ resources:
           description: |
             The name of the Kubernetes secret containing the active
             default signing CA.
+          links:
+            - name: skupper/router_tls
+            - name: kubernetes/tls_secrets
         - name: endpoints
+          group: advanced
+          related_concepts: [link]
+          description: |
+            An array of connection endpoints.  Each item has a name, host,
+            port, and group.
+
+            <!-- To what purpose? -->
+          links:
+            - name: skupper/site_linking
         - name: network
           group: advanced
         - name: sitesInNetwork
           group: advanced
+          related_concepts: [network]
   - name: RouterAccess
     related_resources: [Link]
     description: |
@@ -314,19 +329,24 @@ resources:
             On Docker, Podman, and Linux, the value is the name of a
             directory under `input/certs/` in the current namespace.
           links:
-            - title: Custom certificates
-              url: ""
-            - title: Kubernetes TLS secrets
-              url: https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
+            - name: skupper/router_tls
+            - name: kubernetes/tls_secrets
+            - name: skupper/system_tls_credentials
         - name: generateTlsCredentials
         - name: issuer
         - name: accessType
         - name: bindHost
         - name: subjectAlternativeNames
     status:
-      include_properties: [status/*, endpoints]
+      include_properties: [status/*]
       properties:
         - name: endpoints
+          group: advanced
+          description: |
+            An array of connection endpoints.  Each item has a name, host,
+            port, and group.
+
+            <!-- To what purpose? -->
   - name: AccessGrant
     related_concepts: ["access token"]
     related_resources: [AccessToken]
@@ -364,11 +384,15 @@ resources:
             If not set, a value for the code field in the status is
             generated.
         - name: issuer
+          platforms: [Kubernetes]
           description: |
             The name of a Kubernetes secret used to generate a
             certificate when redeeming a token for this grant.
 
             If not set, the defaultIssuer on Site is used.
+          links:
+            - name: skupper/router_tls
+            - name: kubernetes/tls_secrets
     status:
       include_properties: [status/*]
       properties:
@@ -425,8 +449,7 @@ resources:
           description: |
             The link cost to use when creating the link.
           links:
-            - title: Load balancing
-              url: ""
+            - name: skupper/load_balancing
             # XXX ref link.cost
     status:
       include_properties: [status/*]
@@ -455,8 +478,7 @@ resources:
             The configured routing cost of sending traffic over
             the link.
           links:
-            - title: Load balancing
-              url: ""
+            - name: skupper/load_balancing
         - name: endpoints
           group: null
         - name: tlsCredentials
@@ -472,10 +494,9 @@ resources:
             On Docker, Podman, and Linux, the value is the name of a
             directory under `input/certs/` in the current namespace.
           links:
-            - title: Custom certificates
-              url: ""
-            - title: Kubernetes TLS secrets
-              url: https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
+            - name: skupper/router_tls
+            - name: kubernetes/tls_secrets
+            - name: skupper/system_tls_credentials
     status:
       include_properties: [status/*]
       properties:
@@ -512,14 +533,12 @@ resources:
       include_properties: [settings]
       properties:
         - name: routingKey
+          related_concepts: ["routing key"]
           description: |
             The identifier used to route traffic from listeners to
             connectors.  To enable connecting to a service at a
             remote site, the local listener and the remote connector
             must have matching routing keys.
-          links:
-            - title: Routing key concept
-              url: /concepts/routing-key.html
         - name: host
           description: |
             The hostname or IP address of the local listener.  Clients
@@ -536,6 +555,8 @@ resources:
           platforms: [Kubernetes]
           description: |
             If true, expose each pod as an individual service.
+          links:
+            - name: skupper/individual_pod_services
         - name: tlsCredentials
           group: advanced
           description: |
@@ -549,10 +570,9 @@ resources:
             On Docker, Podman, and Linux, the value is the name of a
             directory under `input/certs/` in the current namespace.
           links:
-            - title: Site-scoped TLS
-              url: "" # XXX
-            - title: Kubernetes TLS secrets
-              url: https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets
+            - name: skupper/application_tls
+            - name: kubernetes/tls_secrets
+            - name: skupper/system_tls_credentials
         - name: type
           hidden: true
           group: advanced

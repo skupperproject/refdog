@@ -88,19 +88,26 @@ def generate_attribute_choices(attr):
     return "<table class=\"choices\">{}</table>".format("".join(rows))
 
 def generate_attribute_links(attr):
+    named_links = read_yaml("config/links.yaml")
     links = list()
 
     for concept in attr.related_concepts:
-        name = f"{capitalize(concept.name)} concept"
+        title = f"{capitalize(concept.name)} concept"
         url = f"/concepts/{concept.id}.html"
 
-        links.append(f"<a href=\"{url}\">{name}</a>")
+        links.append(f"<a href=\"{url}\">{title}</a>")
+
+    # XXX Other related things here?
 
     for link_data in attr.links:
-        name = link_data["title"]
-        url = link_data["url"]
+        if "name" in link_data:
+            title = named_links[link_data["name"]]["title"]
+            url = named_links[link_data["name"]]["url"]
+        else:
+            title = link_data["title"]
+            url = link_data["url"]
 
-        links.append(f"<a href=\"{url}\">{name}</a>")
+        links.append(f"<a href=\"{url}\">{title}</a>")
 
     return ", ".join(links)
 
