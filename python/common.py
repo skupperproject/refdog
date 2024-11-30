@@ -264,13 +264,9 @@ class ModelObjectAttribute:
 
         # XXX Other related things here?
 
-        for link_data in self.links:
-            if "name" in link_data:
-                title = named_links[link_data["name"]]["title"]
-                url = named_links[link_data["name"]]["url"]
-            else:
-                title = link_data["title"]
-                url = link_data["url"]
+        for name in self.links:
+            title = named_links[name]["title"]
+            url = named_links[name]["url"]
 
             links.append((title, url))
 

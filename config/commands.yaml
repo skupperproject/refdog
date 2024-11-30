@@ -3,25 +3,24 @@ options:
     name: name
     type: string
     required: true
+    links: [kubernetes/object_names]
     description: |
       The name of the resource to be created.
-    links:
-      - name: kubernetes/object_names
   create/timeout:
     name: timeout
     type: string
     placeholder: duration
     default: 60s
+    links: [kubernetes/duration_format]
     description: |
       Raise an error if the operation does not complete in the given
       period of time.
-    links:
-      - name: kubernetes/duration_format
   create/wait:
     name: wait
     type: string
     placeholder: status
     default: ready
+    links: [skupper/resource_status]
     description: |
       Wait for the given status before exiting.
     choices:
@@ -31,16 +30,13 @@ options:
         description: Configured
       - name: ready
         description: Ready
-    links:
-      - name: skupper/resource_status
   update/name:
     name: name
     type: string
     required: true
+    links: [kubernetes/object_names]
     description: |
       The name of the resource to be updated.
-    links:
-      - name: kubernetes/object_names
   update/timeout:
     name: timeout
     type: string
@@ -54,6 +50,7 @@ options:
     type: string
     placeholder: status
     default: ready
+    links: [skupper/resource_status]
     description: |
       Wait for the given status before exiting.
     choices:
@@ -63,16 +60,13 @@ options:
         description: Configured
       - name: ready
         description: Ready
-    links:
-      - name: skupper/resource_status
   delete/name:
     name: name
     type: string
     required: true
+    links: [kubernetes/object_names]
     description: |
       The name of the resource to be deleted.
-    links:
-      - name: kubernetes/object_names
   delete/timeout:
     name: timeout
     type: string
@@ -92,21 +86,19 @@ options:
     type: string
     required: false
     positional: true
+    links: [kubernetes/object_names]
     description: |
       An optional resource name.  If set, the status command reports
       status for the named resource only.
-    links:
-      - name: kubernetes/object_names
   status/timeout:
     name: timeout
     type: string
     placeholder: duration
     default: 60s
+    links: [kubernetes/duration_format]
     description: |
       Raise an error if the operation does not complete in the given
       period of time.
-    links:
-      - name: kubernetes/duration_format
   status/output:
     name: output
     type: string
@@ -123,10 +115,9 @@ options:
     name: name
     type: string
     required: true
+    links: [kubernetes/object_names]
     description: |
       The name of the resource to be generated.
-    links:
-      - name: kubernetes/object_names
   generate/output:
     name: output
     type: string
@@ -145,14 +136,13 @@ options:
     group: frequently-used
     type: boolean
     related_concepts: [link]
+    links: [skupper/site_linking]
     description: |
       Allow external access for links from remote sites.
 
       Sites and links are the basis for creating application
       networks. In a simple two-site network, at least one of the
       sites must have link access enabled.
-    links:
-      - name: skupper/site_linking
   site/link_access_type:
     name: link-access-type
     property: linkAccess
@@ -202,15 +192,14 @@ options:
     group: frequently-used
     type: string
     placeholder: resource
+    platforms: [Kubernetes]
+    links: [kubernetes/workloads]
     description: |
       A Kubernetes resource name that identifies a workload.
       It resolves to an equivalent pod selector.
 
       This is an alternative to setting the `--selector` or
       `--host` options.
-    platforms: [Kubernetes]
-    links:
-      - name: kubernetes/workloads
   connector/host:
     name: host
     required: false
@@ -265,32 +254,28 @@ options:
     group: global
     type: string
     placeholder: name
+    platforms: [Kubernetes]
+    links: [kubernetes/kubeconfigs]
     description: |
       Set the kubeconfig context.
-    platforms: [Kubernetes]
-    links:
-      - name: kubernetes/kubeconfigs
   context/kubeconfig:
     name: kubeconfig
     group: global
     type: string
     placeholder: file
+    platforms: [Kubernetes]
+    links: [kubernetes/kubeconfigs]
     description: |
       Set the path to the kubeconfig file.
-    platforms: [Kubernetes]
-    links:
-      - name: kubernetes/kubeconfigs
   context/namespace:
     name: namespace
     group: global
     type: string
     placeholder: name
     short_option: n
+    links: [kubernetes/namespaces, skupper/system_namespaces]
     description: |
       Set the current namespace.
-    links:
-      - name: kubernetes/namespaces
-      - name: skupper/system_namespaces
   global/platform:
     name: platform
     group: global

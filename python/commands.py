@@ -623,10 +623,7 @@ class Option(ModelObjectAttribute):
 
         if self.property_:
             for concept in self.property_.related_concepts:
-                title = f"{capitalize(concept.name)} concept"
-                url = f"/concepts/{concept.id}.html"
-
-                links.append((title, url))
+                links.append((concept.title, concept.href))
 
         links.extend(super().gather_links())
 
