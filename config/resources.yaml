@@ -6,6 +6,8 @@ properties:
     required: true
     description: |
       The name of the resource.
+    links:
+      - name: kubernetes/object_names
   metadata/namespace:
     name: namespace
     type: string

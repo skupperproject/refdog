@@ -618,6 +618,20 @@ class Option(ModelObjectAttribute):
         default = self.property_.links if self.property_ else []
         return self.data.get("links", default)
 
+    def gather_links(self):
+        links = list()
+
+        if self.property_:
+            for concept in self.property_.related_concepts:
+                title = f"{capitalize(concept.name)} concept"
+                url = f"/concepts/{concept.id}.html"
+
+                links.append((title, url))
+
+        links.extend(super().gather_links())
+
+        return links
+
 class Error:
     message = object_property("message", required=True)
     description = object_property("description")

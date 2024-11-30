@@ -3,6 +3,8 @@ from plano import *
 import html
 import mistune
 
+named_links = read_yaml("config/links.yaml")
+
 def indent(text, spaces):
     return "\n".join(f"{' ' * spaces}{line}" for line in text.split("\n"))
 
@@ -88,28 +90,12 @@ def generate_attribute_choices(attr):
     return "<table class=\"choices\">{}</table>".format("".join(rows))
 
 def generate_attribute_links(attr):
-    named_links = read_yaml("config/links.yaml")
-    links = list()
+    out = list()
 
-    for concept in attr.related_concepts:
-        title = f"{capitalize(concept.name)} concept"
-        url = f"/concepts/{concept.id}.html"
+    for link in attr.gather_links():
+        out.append(f"<a href=\"{link[1]}\">{link[0]}</a>")
 
-        links.append(f"<a href=\"{url}\">{title}</a>")
-
-    # XXX Other related things here?
-
-    for link_data in attr.links:
-        if "name" in link_data:
-            title = named_links[link_data["name"]]["title"]
-            url = named_links[link_data["name"]]["url"]
-        else:
-            title = link_data["title"]
-            url = link_data["url"]
-
-        links.append(f"<a href=\"{url}\">{title}</a>")
-
-    return ", ".join(links)
+    return ", ".join(out)
 
 def object_property(name, default=None, required=False):
     def get(obj):
@@ -269,3 +255,23 @@ class ModelObjectAttribute:
                 yield self.model.concept_model.concepts_by_name[name]
             except KeyError:
                 fail(f"Related concept '{name}' on {self} not found")
+
+    def gather_links(self):
+        links = list()
+
+        for concept in self.related_concepts:
+            links.append((concept.title, concept.href))
+
+        # XXX Other related things here?
+
+        for link_data in self.links:
+            if "name" in link_data:
+                title = named_links[link_data["name"]]["title"]
+                url = named_links[link_data["name"]]["url"]
+            else:
+                title = link_data["title"]
+                url = link_data["url"]
+
+            links.append((title, url))
+
+        return links

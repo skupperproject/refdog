@@ -5,6 +5,8 @@ options:
     required: true
     description: |
       The name of the resource to be created.
+    links:
+      - name: kubernetes/object_names
   create/timeout:
     name: timeout
     type: string
@@ -14,8 +16,7 @@ options:
       Raise an error if the operation does not complete in the given
       period of time.
     links:
-      - title: Duration format
-        url: https://pkg.go.dev/time#ParseDuration
+      - name: kubernetes/duration_format
   create/wait:
     name: wait
     type: string
@@ -30,12 +31,16 @@ options:
         description: Configured
       - name: ready
         description: Ready
+    links:
+      - name: skupper/resource_status
   update/name:
     name: name
     type: string
     required: true
     description: |
       The name of the resource to be updated.
+    links:
+      - name: kubernetes/object_names
   update/timeout:
     name: timeout
     type: string
@@ -58,12 +63,16 @@ options:
         description: Configured
       - name: ready
         description: Ready
+    links:
+      - name: skupper/resource_status
   delete/name:
     name: name
     type: string
     required: true
     description: |
       The name of the resource to be deleted.
+    links:
+      - name: kubernetes/object_names
   delete/timeout:
     name: timeout
     type: string
@@ -86,6 +95,8 @@ options:
     description: |
       An optional resource name.  If set, the status command reports
       status for the named resource only.
+    links:
+      - name: kubernetes/object_names
   status/timeout:
     name: timeout
     type: string
@@ -94,6 +105,8 @@ options:
     description: |
       Raise an error if the operation does not complete in the given
       period of time.
+    links:
+      - name: kubernetes/duration_format
   status/output:
     name: output
     type: string
@@ -113,8 +126,7 @@ options:
     description: |
       The name of the resource to be generated.
     links:
-      - title: Kubernetes object names
-        url: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/
+      - name: kubernetes/object_names
   generate/output:
     name: output
     type: string
@@ -132,13 +144,15 @@ options:
     name: enable-link-access
     group: frequently-used
     type: boolean
+    related_concepts: [link]
     description: |
-      Allow access for incoming links from remote sites.
+      Allow external access for links from remote sites.
 
-      <!-- XXX reference link access type -->
+      Sites and links are the basis for creating application
+      networks. In a simple two-site network, at least one of the
+      sites must have link access enabled.
     links:
-      - title: Link access concept
-        url: /concepts/link-access.html
+      - name: skupper/site_linking
   site/link_access_type:
     name: link-access-type
     property: linkAccess
@@ -146,6 +160,7 @@ options:
     group: null
     platforms: [Kubernetes]
     default: default
+    related_concepts: [link]
     choices:
       - name: default
         description: |
@@ -206,8 +221,7 @@ options:
       `--host` options.
     platforms: [Kubernetes]
     links:
-      - title: Kubernetes workloads
-        url: https://kubernetes.io/docs/concepts/workloads/
+      - name: kubernetes/workloads
   connector/host:
     name: host
     required: false
@@ -287,8 +301,7 @@ options:
       Set the kubeconfig context.
     platforms: [Kubernetes]
     links:
-      - title: Kubernetes kubeconfigs
-        url: https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/
+      - name: kubernetes/kubeconfigs
   context/kubeconfig:
     name: kubeconfig
     group: global
@@ -298,8 +311,7 @@ options:
       Set the path to the kubeconfig file.
     platforms: [Kubernetes]
     links:
-      - title: Kubernetes kubeconfigs
-        url: https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/
+      - name: kubernetes/kubeconfigs
   context/namespace:
     name: namespace
     group: global
@@ -307,10 +319,10 @@ options:
     placeholder: name
     short_option: n
     description: |
-      Set the namespace.
+      Set the current namespace.
     links:
-      - title: Kubernetes namespaces
-        url: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+      - name: kubernetes/namespaces
+      - name: skupper/system_namespaces
   global/platform:
     name: platform
     group: global
@@ -473,6 +485,7 @@ commands:
       - name: issue
         wait: Ready
         resource: AccessGrant
+        platforms: [Kubernetes]
         related_concepts: ["access token"]
         related_resources: [AccessGrant, AccessToken]
         related_commands: [token/redeem]
