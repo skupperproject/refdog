@@ -150,7 +150,6 @@ options:
     group: null
     platforms: [Kubernetes]
     default: default
-    related_concepts: [link]
     choices:
       - name: default
         description: |
