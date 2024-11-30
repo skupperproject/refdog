@@ -646,7 +646,6 @@ groups:
   - name: Site configuration
     resources:
       - Site
-      - RouterAccess
   - name: Site linking
     resources:
       - AccessGrant

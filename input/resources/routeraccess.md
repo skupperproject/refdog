@@ -3,9 +3,9 @@ body_class: object resource
 refdog_object_has_attributes: true
 refdog_object_links:
 - title: Site configuration
-  url: https://example.net/
+  url: /concepts/overview.html#site-configuration
 - title: Site linking
-  url: https://example.net/
+  url: /concepts/overview.html#site-linking
 - title: Link resource
   url: /resources/link.html
 refdog_object_toc:

@@ -3,7 +3,7 @@ body_class: object resource
 refdog_object_has_attributes: true
 refdog_object_links:
 - title: Site linking
-  url: https://example.net/
+  url: /concepts/overview.html#site-linking
 - title: Access token concept
   url: /concepts/access-token.html
 - title: AccessToken resource

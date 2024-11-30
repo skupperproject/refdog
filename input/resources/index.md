@@ -15,8 +15,6 @@ links:
 <table class="objects">
 <tr><th><a href="{{site_prefix}}/resources/site.html">Site</a></th><td><p>A place where components of your application are running</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/resources/routeraccess.html">RouterAccess</a></th><td><p>Configuration for secure access to the site router</p>
-</td></tr>
 </table>
 
 #### Site linking

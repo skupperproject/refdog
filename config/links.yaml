@@ -48,13 +48,13 @@ skupper/router_tls:
   url: https://example.net/
 skupper/service_exposure:
   title: Service exposure
-  url: https://example.net/
+  url: "/concepts/overview.html#service-exposure"
 skupper/site_configuration:
   title: Site configuration
-  url: https://example.net/
+  url: "/concepts/overview.html#site-configuration"
 skupper/site_linking:
   title: Site linking
-  url: https://example.net/
+  url: "/concepts/overview.html#site-linking"
 skupper/system_namespaces:
   title: System namespaces
   url: https://example.net/
