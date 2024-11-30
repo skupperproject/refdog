@@ -2,6 +2,8 @@
 body_class: object resource
 refdog_object_has_attributes: true
 refdog_object_links:
+- title: Site configuration
+  url: https://example.net/
 - title: Site concept
   url: /concepts/site.html
 - title: Site command

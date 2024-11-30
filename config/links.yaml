@@ -28,6 +28,9 @@ kubernetes/workloads:
 skupper/application_tls:
   title: Application TLS
   url: https://example.net/
+skupper/attached_connectors:
+  title: Attached connectors
+  url: https://example.net/
 skupper/high_availability:
   title: High availability
   url: https://example.net/
@@ -37,14 +40,17 @@ skupper/individual_pod_services:
 skupper/load_balancing:
   title: Load balancing
   url: https://example.net/
-skupper/router_tls:
-  title: Router TLS
-  url: https://example.net/
 skupper/large_networks:
   title: Large networks
   url: https://example.net/
+skupper/router_tls:
+  title: Router TLS
+  url: https://example.net/
 skupper/service_exposure:
   title: Service exposure
+  url: https://example.net/
+skupper/site_configuration:
+  title: Site configuration
   url: https://example.net/
 skupper/site_linking:
   title: Site linking

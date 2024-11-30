@@ -2,6 +2,8 @@
 body_class: object resource
 refdog_object_has_attributes: true
 refdog_object_links:
+- title: Attached connectors
+  url: https://example.net/
 - title: Attached connector concept
   url: /concepts/attached-connector.html
 - title: AttachedConnectorBinding resource

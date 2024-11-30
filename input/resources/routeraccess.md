@@ -2,6 +2,10 @@
 body_class: object resource
 refdog_object_has_attributes: true
 refdog_object_links:
+- title: Site configuration
+  url: https://example.net/
+- title: Site linking
+  url: https://example.net/
 - title: Link resource
   url: /resources/link.html
 refdog_object_toc:

@@ -142,6 +142,7 @@ resources:
   - name: Site
     related_concepts: [network, platform]
     related_resources: [Link]
+    links: [skupper/site_configuration]
     description: |
       A place where components of your application are running.
       Sites are linked to form application networks.
@@ -287,6 +288,7 @@ resources:
           related_concepts: [network]
   - name: RouterAccess
     related_resources: [Link]
+    links: [skupper/site_configuration, skupper/site_linking]
     description: |
       Configuration for secure access to the site router.  The
       configuration includes TLS credentials and router ports.
@@ -326,6 +328,7 @@ resources:
     related_concepts: ["access token"]
     related_resources: [AccessToken]
     related_commands: [token/issue]
+    links: [skupper/site_linking]
     description: |
       Permission to redeem access tokens for links to the local
       site.  A remote site can use a token containing the grant
@@ -394,6 +397,7 @@ resources:
     related_concepts: [access token]
     related_resources: [AccessGrant]
     related_commands: [token/redeem]
+    links: [skupper/site_linking]
     description: |
       A transferrable token redeemable for a link to a remote
       site.  An access token contains the URL and secret code of a
@@ -431,6 +435,7 @@ resources:
             redeemed, it cannot be used again.
   - name: Link
     related_resources: [RouterAccess]
+    links: [skupper/site_linking]
     description: |
       A site-to-site communication channel. Links serve as a
       transport for application connections and requests.  A set
@@ -475,6 +480,7 @@ resources:
             The name of the site linked to.
   - name: Listener
     related_resources: [Connector]
+    links: [skupper/service_exposure]
     description: |
       A connection endpoint for communicating with workloads in remote
       sites.
@@ -558,6 +564,7 @@ resources:
           type: boolean
   - name: Connector
     related_resources: [Listener]
+    links: [skupper/service_exposure]
     description: |
       Binds local workloads to listeners in remote sites.
 
@@ -587,6 +594,7 @@ resources:
     platforms: [Kubernetes]
     related_concepts: ["attached connector"]
     related_resources: [AttachedConnectorAnchor]
+    links: [skupper/attached_connectors]
     description: |
       A connector in a peer namespace.
     metadata:
@@ -613,6 +621,7 @@ resources:
     platforms: [Kubernetes]
     related_concepts: ["attached connector"]
     related_resources: [AttachedConnector]
+    links: [skupper/attached_connectors]
     description: |
       A binding to an attached connector in a peer namespace.
     metadata:

@@ -2,6 +2,8 @@
 body_class: object resource
 refdog_object_has_attributes: true
 refdog_object_links:
+- title: Service exposure
+  url: https://example.net/
 - title: Listener concept
   url: /concepts/listener.html
 - title: Listener command

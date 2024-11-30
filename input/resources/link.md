@@ -2,6 +2,8 @@
 body_class: object resource
 refdog_object_has_attributes: true
 refdog_object_links:
+- title: Site linking
+  url: https://example.net/
 - title: Link concept
   url: /concepts/link.html
 - title: Link command

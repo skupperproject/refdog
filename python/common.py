@@ -24,6 +24,12 @@ def get_object_links(obj):
             "url": other.href.removeprefix("{{site_prefix}}"),
         })
 
+    for name in obj.links:
+        data.append({
+            "title": named_links[name]["title"],
+            "url": named_links[name]["url"],
+        })
+
     for other in obj.corresponding_objects:
         add_link(other)
 
@@ -35,9 +41,6 @@ def get_object_links(obj):
 
     for command in obj.related_commands:
         add_link(command)
-
-    for link_data in obj.links:
-        data.append(link_data)
 
     return data
 
