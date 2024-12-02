@@ -26,7 +26,7 @@ def get_object_links(obj):
 
     for name in obj.links:
         if name not in named_links:
-            fail(f"{obj}: Link '{name}' is unknown")
+            fail(f"{obj}: Link '{name}' not found")
 
         data.append({
             "title": named_links[name]["title"],
@@ -205,7 +205,7 @@ class ModelObject:
             try:
                 yield self.model.concept_model.concepts_by_name[name]
             except KeyError:
-                fail(f"Related concept '{name}' on {self} not found")
+                fail(f"{self}: Related concept '{name}' not found")
 
     @property
     def related_resources(self):
@@ -213,7 +213,7 @@ class ModelObject:
             try:
                 yield self.model.resource_model.resources_by_name[name]
             except KeyError:
-                fail(f"Related resource '{name}' on {self} not found")
+                fail(f"{self}: Related resource '{name}' not found")
 
     @property
     def related_commands(self):
@@ -221,7 +221,7 @@ class ModelObject:
             try:
                 yield self.model.command_model.commands_by_id[name]
             except KeyError:
-                fail(f"Related command '{name}' on {self} not found")
+                fail(f"{self}: Related command '{name}' not found")
 
 class ModelObjectAttribute:
     name = object_property("name", required=True)

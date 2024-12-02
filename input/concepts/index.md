@@ -39,6 +39,4 @@ links:
 </td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/routing-key.html">Routing key</a></th><td><p>A <em>routing key</em> is an identifier for matching listeners and connectors</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/attached-connector.html">Attached connector</a></th><td><p>An <em>attached connector</em> is a connector in a peer namespace</p>
-</td></tr>
 </table>

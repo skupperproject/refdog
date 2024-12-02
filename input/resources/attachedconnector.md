@@ -4,8 +4,6 @@ refdog_object_has_attributes: true
 refdog_object_links:
 - title: Attached connectors
   url: /topics/attached-connectors.html
-- title: Attached connector concept
-  url: /concepts/attached-connector.html
 - title: AttachedConnectorBinding resource
   url: /resources/attachedconnectoranchor.html
 refdog_object_toc:

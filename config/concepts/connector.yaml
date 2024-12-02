@@ -1,0 +1,15 @@
+name: connector
+related_concepts: [listener, routing key]
+description: |
+  A _connector_ binds a local workload to listeners in remote
+  sites.
+
+  <figure>
+    <img src="images/connector-1.svg"/>
+    <figcaption>A connector bound to a set of servers</figcaption>
+  </figure>
+overview: |
+  - A connector targets a workload in the local site (or
+    reachable on the local network).
+  - A connector forwards connections from matching listeners
+    at remote sites to the workload in the local site.

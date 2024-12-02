@@ -98,19 +98,23 @@ class ConceptModel:
     def __init__(self):
         debug(f"Loading {self}")
 
-        self.data = read_yaml("config/concepts.yaml")
-
         self.concepts = list()
         self.concepts_by_name = dict()
         self.groups = list()
 
-        for concept_data in self.data["concepts"]:
+        for yaml_file in list_dir("config/concepts"):
+            if yaml_file == "index.yaml":
+                continue
+
+            concept_data = read_yaml(join("config/concepts", yaml_file))
             concept = Concept(self, concept_data)
 
             self.concepts.append(concept)
             self.concepts_by_name[concept.name] = concept
 
-        for group_data in self.data["groups"]:
+        index_data = read_yaml("config/concepts/index.yaml")
+
+        for group_data in index_data["groups"]:
             self.groups.append(ConceptGroup(self, group_data))
 
     def __repr__(self):
@@ -126,4 +130,7 @@ class ConceptGroup(ModelObjectGroup):
         self.concepts = list()
 
         for concept_name in self.data.get("concepts", []):
-            self.concepts.append(self.model.concepts_by_name[concept_name])
+            try:
+                self.concepts.append(self.model.concepts_by_name[concept_name])
+            except KeyError:
+                fail(f"{self}: Concept '{concept_name}' not found")

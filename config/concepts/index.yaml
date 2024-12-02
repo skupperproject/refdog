@@ -1,0 +1,15 @@
+groups:
+  - name: Sites
+    concepts:
+      - site
+      - platform
+  - name: Site linking
+    concepts:
+      - link
+      - network
+      - access token
+  - name: Service exposure
+    concepts:
+      - listener
+      - connector
+      - routing key

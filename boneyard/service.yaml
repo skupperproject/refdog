@@ -1,0 +1,24 @@
+name: service
+related_concepts: [listener, connector]
+description: |
+  A _service_ is an application component exposed on the network.
+
+  <figure>
+    <img src="images/service-1.svg"/>
+    <figcaption>A client and server communicating across sites
+    using a matched listener and connector</figcaption>
+  </figure>
+
+  <figure>
+    <img src="images/service-2.svg"/>
+    <figcaption>A service exposed on two sites</figcaption>
+  </figure>
+
+  <figure>
+    <img src="images/service-3.svg"/>
+    <figcaption>A service bound to workloads on two
+    sites</figcaption>
+  </figure>
+overview: |
+  - XXX at the network level
+  - XXX a listener and a connector bound together by a routing key

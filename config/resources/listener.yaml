@@ -1,0 +1,84 @@
+name: Listener
+related_resources: [Connector]
+links: [skupper/service_exposure]
+description: |
+  A connection endpoint for communicating with workloads in remote
+  sites.
+
+  Each site can have multiple listener definitions.
+examples:
+  - description: |
+      A listener in site West for the Hello World backend service
+      in site East
+    yaml: |
+      apiVersion: skupper.io/v2alpha1
+      kind: Listener
+      metadata:
+        name: backend
+        namespace: hello-world-west
+      spec:
+        routingKey: backend
+        port: 8080
+        host: backend
+metadata:
+  include_properties: [metadata/*]
+spec:
+  include_properties: [settings]
+  properties:
+    - name: routingKey
+      related_concepts: [routing key]
+      description: |
+        The identifier used to route traffic from listeners to
+        connectors.  To enable connecting to a service at a
+        remote site, the local listener and the remote connector
+        must have matching routing keys.
+    - name: host
+      description: |
+        The hostname or IP address of the local listener.  Clients
+        at this site use the listener host and port to
+        establish connections to the remote service.
+    - name: port
+      description: |
+        The port of the local listener.  Clients at this site use
+        the listener host and port to establish connections to
+        the remote service.
+    - name: exposePodsByName
+      type: boolean
+      group: advanced
+      platforms: [Kubernetes]
+      links: [skupper/individual_pod_services]
+      description: |
+        If true, expose each pod as an individual service.
+    - name: tlsCredentials
+      group: advanced
+      links: [skupper/application_tls, kubernetes/tls_secrets, skupper/system_tls_credentials]
+      description: |
+        The name of a bundle of TLS certificates and keys used for
+        secure client-to-router communication.  The bundle contains
+        the trusted server certificate.
+
+        On Kubernetes, the value is the name of a Secret in the current
+        namespace.
+
+        On Docker, Podman, and Linux, the value is the name of a
+        directory under `input/certs/` in the current namespace.
+    - name: type
+      hidden: true
+      group: advanced
+      default: tcp
+      description: |
+        The listener type.
+    - name: settings
+      description: |
+        @description@
+
+        - `observer` - Set the protocol observer used to generate
+          traffic metrics.<br/>
+          Default: `auto`.  Choices: `auto`, `none`, `http1`, `http2`.
+status:
+  include_properties: [status/*]
+  properties:
+    - name: status
+    - name: message
+    - name: hasMatchingConnectors
+      type: boolean

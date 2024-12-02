@@ -1,0 +1,15 @@
+groups:
+  - name: Sites
+    resources:
+      - Site
+  - name: Site linking
+    resources:
+      - AccessGrant
+      - AccessToken
+      - Link
+  - name: Service exposure
+    resources:
+      - Listener
+      - Connector
+      - AttachedConnector
+      - AttachedConnectorAnchor

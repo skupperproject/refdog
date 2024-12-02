@@ -1,0 +1,45 @@
+name: Link
+related_resources: [RouterAccess]
+links: [skupper/site_linking]
+description: |
+  A site-to-site communication channel. Links serve as a
+  transport for application connections and requests.  A set
+  of linked sites constitute a network.
+
+  Links are not usually created directly.  Instead, you
+  typically use an access token to obtain a link.
+metadata:
+  include_properties: [metadata/*]
+spec:
+  include_properties: [endpoints, settings]
+  properties:
+    - name: cost
+      default: 1
+      links: [skupper/load_balancing]
+      description: |
+        The configured routing cost of sending traffic over
+        the link.
+    - name: endpoints
+      group: null
+    - name: tlsCredentials
+      links: [skupper/router_tls, kubernetes/tls_secrets, skupper/system_tls_credentials]
+      description: |
+        The name of a bundle of TLS certificates and keys used for
+        secure router-to-router communication.  The bundle
+        contains the trusted server certificate.  It optionally
+        includes a client certificate and key for mutual TLS.
+
+        On Kubernetes, the value is the name of a Secret in the
+        current namespace.
+
+        On Docker, Podman, and Linux, the value is the name of a
+        directory under `input/certs/` in the current namespace.
+status:
+  include_properties: [status/*]
+  properties:
+    - name: remoteSiteId
+      description: |
+        The unique ID of the site linked to.
+    - name: remoteSiteName
+      description: |
+        The name of the site linked to.

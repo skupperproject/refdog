@@ -1,0 +1,40 @@
+name: AccessToken
+related_concepts: [access token]
+related_resources: [AccessGrant]
+related_commands: [token/redeem]
+links: [skupper/site_linking]
+description: |
+  A transferrable token redeemable for a link to a remote
+  site.  An access token contains the URL and secret code of a
+  corresponding access grant.
+metadata:
+  include_properties: [metadata/*]
+spec:
+  include_properties: [settings]
+  properties:
+    - name: url
+      description: |
+        The URL of the token redemption service at the remote
+        site.
+    - name: ca
+      required: false
+      description: |
+        The trusted server certificate of the token redemption
+        service at the remote site.
+    - name: code
+      description: |
+        The secret code used to authenticate the token when
+        submitted for redemption.
+    - name: linkCost
+      type: integer # XXX This should come from the CRD
+      default: 1
+      links: [skupper/load_balancing]
+      description: |
+        The link cost to use when creating the link.
+status:
+  include_properties: [status/*]
+  properties:
+    - name: redeemed
+      description: |
+        True if the token has been redeemed.  Once a token is
+        redeemed, it cannot be used again.

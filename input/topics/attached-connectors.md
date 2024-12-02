@@ -18,3 +18,11 @@
   a network.
 - You can't create attached connectors with the CLI.  You have to use
   YAML resources.
+
+
+An _attached connector_ is a connector in a peer namespace.
+
+<figure>
+  <img src="../concepts/images/attached-connector-1.svg"/>
+  <figcaption>XXX</figcaption>
+</figure>

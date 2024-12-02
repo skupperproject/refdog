@@ -1,0 +1,20 @@
+name: routing key
+related_concepts: [listener, connector]
+description: |
+  A _routing key_ is an identifier for matching listeners and
+  connectors.
+
+  <figure>
+    <img src="images/routing-key-model.svg"/>
+    <figcaption>Each routing key has zero or more listeners and
+    zero or more connectors</figcaption>
+  </figure>
+
+  <figure>
+    <img src="images/routing-key-1.svg"/>
+    <figcaption>A routing key with two listeners and two
+    connectors</figcaption>
+  </figure>
+overview: |
+  - A service is truly exposed when there is at least one listener
+    and one connector, matched by routing key.

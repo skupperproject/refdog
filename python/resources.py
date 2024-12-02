@@ -247,35 +247,39 @@ class ResourceModel:
     def __init__(self):
         debug(f"Loading {self}")
 
-        self.data = read_yaml("config/resources.yaml")
+        self.index_data = read_yaml("config/resources/index.yaml")
+        self.property_data = read_yaml("config/resources/properties.yaml")
 
         self.resources = list()
         self.resources_by_name = dict()
         self.groups = list()
         self.crds_by_name = dict()
 
-        for resource_data in self.data["resources"]:
+        for yaml_file in list_dir("config/resources"):
+            if yaml_file in ("index.yaml", "properties.yaml"):
+                continue
+
+            resource_data = read_yaml(join("config/resources", yaml_file))
             resource = Resource(self, resource_data)
 
             self.resources.append(resource)
             self.resources_by_name[resource.name] = resource
 
-        for group_data in self.data["groups"]:
+        for group_data in self.index_data["groups"]:
             self.groups.append(ResourceGroup(self, group_data))
 
-        with working_dir("crds"):
-            for crd_file in list_dir():
-                if crd_file == "skupper_cluster_policy_crd.yaml":
-                    continue
+        for crd_file in list_dir("crds"):
+            if crd_file == "skupper_cluster_policy_crd.yaml":
+                continue
 
-                crd_data = read_yaml(crd_file)
+            crd_data = read_yaml(join("crds", crd_file))
 
-                if crd_data["kind"] != "CustomResourceDefinition":
-                    continue
+            if crd_data["kind"] != "CustomResourceDefinition":
+                continue
 
-                kind = crd_data["spec"]["names"]["kind"]
+            kind = crd_data["spec"]["names"]["kind"]
 
-                self.crds_by_name[kind] = crd_data
+            self.crds_by_name[kind] = crd_data
 
     def __repr__(self):
         return self.__class__.__name__
@@ -366,7 +370,7 @@ class Resource(ModelObject):
                 self.status_properties_by_name[prop.name] = prop
 
     def merge_property_data(self, section):
-        model_props = self.model.data.get("properties", {})
+        model_props = self.model.property_data
         included_keys = list()
 
         for pattern in self.data[section].get("include_properties", []):

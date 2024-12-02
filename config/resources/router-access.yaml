@@ -1,0 +1,38 @@
+name: RouterAccess
+related_resources: [Site, Link]
+links: [skupper/site_linking]
+description: |
+  Configuration for secure access to the site router.  The
+  configuration includes TLS credentials and router ports.
+spec:
+  include_properties: [settings]
+  properties:
+    - name: roles
+    - name: tlsCredentials
+      links: [skupper/router_tls, kubernetes/tls_secrets, skupper/system_tls_credentials]
+      description: |
+        The name of a bundle of TLS certificates and keys used for
+        secure router-to-router communication.  The bundle
+        contains the trusted server certificate.  It optionally
+        includes a client certificate and key for mutual TLS.
+
+        On Kubernetes, the value is the name of a Secret in the
+        current namespace.
+
+        On Docker, Podman, and Linux, the value is the name of a
+        directory under `input/certs/` in the current namespace.
+    - name: generateTlsCredentials
+    - name: issuer
+    - name: accessType
+    - name: bindHost
+    - name: subjectAlternativeNames
+status:
+  include_properties: [status/*]
+  properties:
+    - name: endpoints
+      group: advanced
+      description: |
+        An array of connection endpoints.  Each item has a name, host,
+        port, and group.
+
+        <!-- To what purpose? -->
