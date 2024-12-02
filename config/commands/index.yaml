@@ -1,0 +1,21 @@
+groups:
+  - name: Site configuration
+    commands:
+      - site
+  - name: Site linking
+    commands:
+      - token
+      - link
+  - name: Service exposure
+    commands:
+      - connector
+      - listener
+  - name: System operation
+    commands:
+      - system
+  - name: Debug operations
+    commands:
+      - debug
+  - name: Other operations
+    commands:
+      - version

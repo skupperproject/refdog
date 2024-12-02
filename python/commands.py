@@ -363,17 +363,24 @@ class CommandModel:
     def __init__(self):
         debug(f"Loading {self}")
 
-        self.data = read_yaml("config/commands.yaml")
+        self.option_data = read_yaml("config/commands/options.yaml")
 
         self.commands = list()
         self.commands_by_id = dict()
         self.groups = list()
 
-        for command_data in self.data["commands"]:
+        for yaml_file in list_dir("config/commands"):
+            if yaml_file in ("index.yaml", "options.yaml"):
+                continue
+
+            command_data = read_yaml(join("config/commands", yaml_file))
             command = Command(self, command_data)
+
             self.commands.append(command)
 
-        for group_data in self.data["groups"]:
+        index_data = read_yaml("config/commands/index.yaml")
+
+        for group_data in index_data["groups"]:
             self.groups.append(CommandGroup(self, group_data))
 
     def __repr__(self):
@@ -430,7 +437,7 @@ class Command(ModelObject):
             self.subcommands.append(command)
 
     def merge_option_data(self):
-        model_options = self.model.data.get("options", {})
+        model_options = self.model.option_data
         included_keys = list()
 
         for pattern in self.data.get("include_options", []):

@@ -1,0 +1,30 @@
+name: system
+platforms: [Docker, Podman, Linux]
+subcommands:
+  - name: install
+    platforms: [Docker, Podman, Linux]
+    description: |
+      Install the Skupper components.
+  - name: uninstall
+    description: |
+      Remove the Skupper components.
+  - name: start
+    platforms: [Docker, Podman, Linux]
+    description: |
+      Start running the Skupper components for the current site.
+  - name: stop
+    platforms: [Docker, Podman, Linux]
+    description: |
+      Shut down the Skupper components for the current site.
+  - name: reload
+    platforms: [Docker, Podman, Linux]
+    description: |
+      Reload the site configuration.
+  - name: apply
+    platforms: [Docker, Podman, Linux]
+    description: |
+      Apply resource configuration from files or standard input.
+  - name: status
+    platforms: [Docker, Podman, Linux]
+    description: |
+      Display the status of the system.

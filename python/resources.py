@@ -247,7 +247,6 @@ class ResourceModel:
     def __init__(self):
         debug(f"Loading {self}")
 
-        self.index_data = read_yaml("config/resources/index.yaml")
         self.property_data = read_yaml("config/resources/properties.yaml")
 
         self.resources = list()
@@ -265,7 +264,9 @@ class ResourceModel:
             self.resources.append(resource)
             self.resources_by_name[resource.name] = resource
 
-        for group_data in self.index_data["groups"]:
+        index_data = read_yaml("config/resources/index.yaml")
+
+        for group_data in index_data["groups"]:
             self.groups.append(ResourceGroup(self, group_data))
 
         for crd_file in list_dir("crds"):

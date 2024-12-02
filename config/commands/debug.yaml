@@ -1,0 +1,17 @@
+name: debug
+description: |
+  Display help for debug commands and exit.
+include_options: [global/*]
+subcommands:
+  - name: dump
+    description: |
+      Generate a debug dump file.
+    examples: |
+      # Generate a debug dump file
+      $ skupper debug dump ~/dump.tar.gz
+      Debug dump file generated at /home/fritz/dump.tar.gz.
+    include_options: [context/*, global/*]
+    options:
+      - name: file
+        type: string
+        required: true

@@ -65,7 +65,7 @@ skupper/resource_status:
   title: Resource status
   url: /topics/resource-status.html
 
-# # CLI overview
+## CLI overview
 # cli/status_commands
 # cli/generate_commands
 # cli waiting and timeouts
