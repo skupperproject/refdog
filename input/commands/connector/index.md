@@ -34,7 +34,7 @@ refdog_object_toc:
 ## Usage
 
 ~~~ shell
-skupper connector [command] [options]
+skupper connector [subcommand] [options]
 ~~~
 
 </section>

@@ -99,7 +99,12 @@ def generate_attribute_links(attr):
     out = list()
 
     for link in attr.gather_links():
-        out.append(f"<a href=\"{link[1]}\">{link[0]}</a>")
+        title, url = link
+
+        if url.startswith("/"):
+            url = "{{site_prefix}}" + url
+
+        out.append(f"<a href=\"{url}\">{title}</a>")
 
     return ", ".join(out)
 

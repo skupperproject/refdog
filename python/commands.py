@@ -267,7 +267,7 @@ def generate_usage(command):
     parts.append(command.name)
 
     if command.subcommands:
-        parts.append("[command]")
+        parts.append("[subcommand]")
 
     for option in command.options:
         if option.positional:

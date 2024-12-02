@@ -19,7 +19,13 @@ def refdog_object_links(page):
     lines.append("<nav>")
 
     for link in page.metadata["refdog_object_links"]:
-        lines.append(f"<a href=\"{site_prefix}{link['url']}\">{link['title']}</a>")
+        title = link["title"]
+        url = link["url"]
+
+        if url.startswith("/"):
+            url = site_prefix + url
+
+        lines.append(f"<a href=\"{url}\">{title}</a>")
 
     lines.append("</nav>")
     lines.append("</section>")

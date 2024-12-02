@@ -28,7 +28,7 @@ refdog_object_toc:
 ## Usage
 
 ~~~ shell
-skupper debug [command] [options]
+skupper debug [subcommand] [options]
 ~~~
 
 </section>

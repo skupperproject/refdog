@@ -92,7 +92,7 @@ Sites and links are the basis for creating application
 networks. In a simple two-site network, at least one of the
 sites must have link access enabled.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/link.html">Link concept</a>, <a href="/concepts/overview.html#site-linking">Site linking</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/link.html">Link concept</a>, <a href="{{site_prefix}}/concepts/overview.html#site-linking">Site linking</a></td></table>
 
 </div>
 </div>
@@ -131,7 +131,7 @@ the sites must have link access enabled.
 </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>default</code></th><td><p>Use the default link access.  On OpenShift, the default is <code>route</code>.  For other Kubernetes flavors, the default is <code>loadbalancer</code>.</p>
 </td></tr><tr><th><code>route</code></th><td><p>Use an OpenShift route.  <em>OpenShift only.</em></p>
 </td></tr><tr><th><code>loadbalancer</code></th><td><p>Use a Kubernetes load balancer.  <em>Kubernetes only.</em></p>
-</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/link.html">Link concept</a>, <a href="/concepts/overview.html#site-linking">Site linking</a></td></table>
+</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/link.html">Link concept</a>, <a href="{{site_prefix}}/concepts/overview.html#site-linking">Site linking</a></td></table>
 
 </div>
 </div>
@@ -151,7 +151,7 @@ after failure.  This already provides a high level of
 availability.  Enabling HA goes further and reduces the
 window of downtime caused by restarts.
 
-<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/topics/high-availability.html">High availability</a></td></table>
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/high-availability.html">High availability</a></td></table>
 
 </div>
 </div>

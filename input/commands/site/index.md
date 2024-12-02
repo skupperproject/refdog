@@ -32,7 +32,7 @@ refdog_object_toc:
 ## Usage
 
 ~~~ shell
-skupper site [command] [options]
+skupper site [subcommand] [options]
 ~~~
 
 </section>

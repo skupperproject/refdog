@@ -28,7 +28,7 @@ refdog_object_toc:
 ## Usage
 
 ~~~ shell
-skupper system [command] [options]
+skupper system [subcommand] [options]
 ~~~
 
 </section>
