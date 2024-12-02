@@ -70,7 +70,7 @@ concepts:
         host Skupper sites</figcaption>
       </figure>
   - name: link
-    related_concepts: [network, site, "access token"]
+    related_concepts: [network, site, access token]
     description: |
       A _link_ is a channel for communication between sites.  Links
       serve as a transport for application connections and requests.
@@ -158,7 +158,7 @@ concepts:
       - XXX at the network level
       - XXX a listener and a connector bound together by a routing key
   - name: listener
-    related_concepts: [connector, "routing key"]
+    related_concepts: [connector, routing key]
     description: |
       A _listener_ binds a local connection endpoint to connectors in
       remote sites.
@@ -171,7 +171,7 @@ concepts:
     overview: |
       - Local workloads can connect to the listener
   - name: connector
-    related_concepts: [listener, "routing key"]
+    related_concepts: [listener, routing key]
     description: |
       A _connector_ binds a local workload to listeners in remote
       sites.
@@ -216,14 +216,14 @@ concepts:
         <figcaption>XXX</figcaption>
       </figure>
 groups:
-  - name: Sites and networks
+  - name: Sites
     concepts:
       - site
-      - network
       - platform
   - name: Site linking
     concepts:
       - link
+      - network
       - access token
   - name: Service exposure
     concepts:

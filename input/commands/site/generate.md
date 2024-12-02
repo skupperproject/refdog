@@ -151,7 +151,7 @@ after failure.  This already provides a high level of
 availability.  Enabling HA goes further and reduces the
 window of downtime caused by restarts.
 
-<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://example.net/">High availability</a></td></table>
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/topics/high-availability.html">High availability</a></td></table>
 
 </div>
 </div>

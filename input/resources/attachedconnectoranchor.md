@@ -3,7 +3,7 @@ body_class: object resource
 refdog_object_has_attributes: true
 refdog_object_links:
 - title: Attached connectors
-  url: https://example.net/
+  url: /topics/attached-connectors.html
 - title: Attached connector concept
   url: /concepts/attached-connector.html
 - title: AttachedConnector resource
@@ -64,7 +64,7 @@ AttachedConnector resource in the connector namespace.
 
 The namespace of the resource.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/platform.html">Platform concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a>, <a href="https://example.net/">System namespaces</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/platform.html">Platform concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a>, <a href="/topics/system-namespaces.html">System namespaces</a></td></table>
 
 </div>
 </div>
@@ -120,7 +120,7 @@ routing keys.
 A map containing additional settings.  Each map entry has a
 string name and a string value.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://example.net/">Resource settings</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/topics/resource-settings.html">Resource settings</a></td></table>
 
 </div>
 </div>
@@ -143,7 +143,7 @@ The current state of the resource.
 - Pending
 - Ready
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://example.net/">Resource status</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/topics/resource-status.html">Resource status</a></td></table>
 
 </div>
 </div>
@@ -157,7 +157,7 @@ The current state of the resource.
 
 A human-readable status message.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://example.net/">Resource status</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/topics/resource-status.html">Resource status</a></td></table>
 
 </div>
 </div>
@@ -185,7 +185,7 @@ A human-readable status message.
 A set of named conditions describing the current state of the
 resource.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://example.net/">Resource status</a>, <a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="/topics/resource-status.html">Resource status</a>, <a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
 
 </div>
 </div>

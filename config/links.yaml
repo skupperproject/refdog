@@ -27,46 +27,43 @@ kubernetes/workloads:
   url: https://kubernetes.io/docs/concepts/workloads/
 skupper/application_tls:
   title: Application TLS
-  url: https://example.net/
+  url: /topics/application-tls.html
 skupper/attached_connectors:
   title: Attached connectors
-  url: https://example.net/
+  url: /topics/attached-connectors.html
 skupper/high_availability:
   title: High availability
-  url: https://example.net/
+  url: /topics/high-availability.html
 skupper/individual_pod_services:
   title: Individual pod services
-  url: https://example.net/
+  url: /topics/individual-pod-services.html
 skupper/load_balancing:
   title: Load balancing
-  url: https://example.net/
+  url: /topics/load-balancing.html
 skupper/large_networks:
   title: Large networks
-  url: https://example.net/
+  url: /topics/large-networks.html
 skupper/router_tls:
   title: Router TLS
-  url: https://example.net/
+  url: /topics/router-tls.html
 skupper/service_exposure:
   title: Service exposure
   url: "/concepts/overview.html#service-exposure"
-skupper/site_configuration:
-  title: Site configuration
-  url: "/concepts/overview.html#site-configuration"
 skupper/site_linking:
   title: Site linking
   url: "/concepts/overview.html#site-linking"
 skupper/system_namespaces:
   title: System namespaces
-  url: https://example.net/
+  url: /topics/system-namespaces.html
 skupper/system_tls_credentials:
   title: System TLS credentials
-  url: https://example.net/
+  url: /topics/system-tls-credentials.html
 skupper/resource_settings:
   title: Resource settings
-  url: https://example.net/
+  url: /topics/resource-settings.html
 skupper/resource_status:
   title: Resource status
-  url: https://example.net/
+  url: /topics/resource-status.html
 
 # # CLI overview
 # cli/status_commands

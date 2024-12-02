@@ -183,7 +183,7 @@ Wait for the given status before exiting.
 </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>none</code></th><td><p><em>Do not wait</em></p>
 </td></tr><tr><th><code>configured</code></th><td><p>Configured</p>
 </td></tr><tr><th><code>ready</code></th><td><p>Ready</p>
-</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://example.net/">Resource status</a></td></table>
+</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/topics/resource-status.html">Resource status</a></td></table>
 
 </div>
 </div>
@@ -250,7 +250,7 @@ Set the path to the kubeconfig file.
 
 Set the current namespace.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a>, <a href="https://example.net/">System namespaces</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a>, <a href="/topics/system-namespaces.html">System namespaces</a></td></table>
 
 </div>
 </div>

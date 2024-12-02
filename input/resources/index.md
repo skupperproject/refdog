@@ -10,7 +10,7 @@ links:
 
 [Overview](overview.html)
 
-#### Site configuration
+#### Sites
 
 <table class="objects">
 <tr><th><a href="{{site_prefix}}/resources/site.html">Site</a></th><td><p>A place where components of your application are running</p>

@@ -2,8 +2,6 @@
 body_class: object resource
 refdog_object_has_attributes: true
 refdog_object_links:
-- title: Site configuration
-  url: /concepts/overview.html#site-configuration
 - title: Site concept
   url: /concepts/site.html
 - title: Site command
@@ -99,7 +97,7 @@ The name of the resource.
 
 The namespace of the resource.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/platform.html">Platform concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a>, <a href="https://example.net/">System namespaces</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/platform.html">Platform concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a>, <a href="/topics/system-namespaces.html">System namespaces</a></td></table>
 
 </div>
 </div>
@@ -149,7 +147,7 @@ after failure.  This already provides a high level of
 availability.  Enabling HA goes further and reduces the
 window of downtime caused by restarts.
 
-<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>Updatable</th><td>True</td><tr><th>See also</th><td><a href="https://example.net/">High availability</a></td></table>
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>Updatable</th><td>True</td><tr><th>See also</th><td><a href="/topics/high-availability.html">High availability</a></td></table>
 
 </div>
 </div>
@@ -170,7 +168,7 @@ This issuer is used by AccessGrant and RouterAccess if a
 specific issuer is not set.
 
 <table class="fields"><tr><th>Default</th><td><p><code>skupper-site-ca</code></p>
-</td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://example.net/">Router TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a></td></table>
+</td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="/topics/router-tls.html">Router TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a></td></table>
 
 </div>
 </div>
@@ -192,7 +190,7 @@ there is little benefit.
 
 Currently, edge sites cannot also have HA enabled.
 
-<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://example.net/">Large networks</a></td></table>
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/topics/large-networks.html">Large networks</a></td></table>
 
 </div>
 </div>
@@ -234,7 +232,7 @@ string name and a string value.
 - `routerLogging` - Set the router logging level.<br/>
   Default: `info`.  Choices: `debug`, `info`, `warning`, `error`.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://example.net/">Resource settings</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/topics/resource-settings.html">Resource settings</a></td></table>
 
 </div>
 </div>
@@ -257,7 +255,7 @@ The current state of the resource.
 - Pending
 - Ready
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://example.net/">Resource status</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/topics/resource-status.html">Resource status</a></td></table>
 
 </div>
 </div>
@@ -271,7 +269,7 @@ The current state of the resource.
 
 A human-readable status message.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://example.net/">Resource status</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/topics/resource-status.html">Resource status</a></td></table>
 
 </div>
 </div>
@@ -293,7 +291,7 @@ resource.
 - Resolved
 - Ready
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://example.net/">Resource status</a>, <a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="/topics/resource-status.html">Resource status</a>, <a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
 
 </div>
 </div>
@@ -309,7 +307,7 @@ resource.
 The name of the Kubernetes secret containing the active
 default signing CA.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://example.net/">Router TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="/topics/router-tls.html">Router TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a></td></table>
 
 </div>
 </div>

@@ -25,6 +25,9 @@ def get_object_links(obj):
         })
 
     for name in obj.links:
+        if name not in named_links:
+            fail(f"{obj}: Link '{name}' is unknown")
+
         data.append({
             "title": named_links[name]["title"],
             "url": named_links[name]["url"],

@@ -2,10 +2,10 @@
 body_class: object resource
 refdog_object_has_attributes: true
 refdog_object_links:
-- title: Site configuration
-  url: /concepts/overview.html#site-configuration
 - title: Site linking
   url: /concepts/overview.html#site-linking
+- title: Site resource
+  url: /resources/site.html
 - title: Link resource
   url: /resources/link.html
 refdog_object_toc:
@@ -75,7 +75,7 @@ current namespace.
 On Docker, Podman, and Linux, the value is the name of a
 directory under `input/certs/` in the current namespace.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://example.net/">Router TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a>, <a href="https://example.net/">System TLS credentials</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/topics/router-tls.html">Router TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a>, <a href="/topics/system-tls-credentials.html">System TLS credentials</a></td></table>
 
 </div>
 </div>
@@ -151,7 +151,7 @@ directory under `input/certs/` in the current namespace.
 A map containing additional settings.  Each map entry has a
 string name and a string value.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://example.net/">Resource settings</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/topics/resource-settings.html">Resource settings</a></td></table>
 
 </div>
 </div>
@@ -174,7 +174,7 @@ The current state of the resource.
 - Pending
 - Ready
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://example.net/">Resource status</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/topics/resource-status.html">Resource status</a></td></table>
 
 </div>
 </div>
@@ -188,7 +188,7 @@ The current state of the resource.
 
 A human-readable status message.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://example.net/">Resource status</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="/topics/resource-status.html">Resource status</a></td></table>
 
 </div>
 </div>
@@ -222,7 +222,7 @@ port, and group.
 A set of named conditions describing the current state of the
 resource.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://example.net/">Resource status</a>, <a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="/topics/resource-status.html">Resource status</a>, <a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
 
 </div>
 </div>

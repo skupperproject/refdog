@@ -46,7 +46,7 @@ properties:
       resource.
   connector/spec/routingKey:
     name: routingKey
-    related_concepts: ["routing key"]
+    related_concepts: [routing key]
     description: |
       The identifier used to route traffic from listeners to
       connectors.  To expose a local workload to a remote site, the
@@ -133,7 +133,7 @@ properties:
   connector/status/hasMatchingListeners:
     name: hasMatchingListeners
     type: boolean
-    related_concepts: ["routing key"]
+    related_concepts: [routing key]
   connector/status/selectedPods:
     name: selectedPods
     group: advanced
@@ -142,7 +142,6 @@ resources:
   - name: Site
     related_concepts: [network, platform]
     related_resources: [Link]
-    links: [skupper/site_configuration]
     description: |
       A place where components of your application are running.
       Sites are linked to form application networks.
@@ -175,7 +174,7 @@ resources:
         - name: linkAccess
           group: frequently-used
           default: none
-          related_concepts: ["link"]
+          related_concepts: [link]
           links: [skupper/site_linking]
           description: |
             Configure external access for links from remote sites.
@@ -287,8 +286,8 @@ resources:
           group: advanced
           related_concepts: [network]
   - name: RouterAccess
-    related_resources: [Link]
-    links: [skupper/site_configuration, skupper/site_linking]
+    related_resources: [Site, Link]
+    links: [skupper/site_linking]
     description: |
       Configuration for secure access to the site router.  The
       configuration includes TLS credentials and router ports.
@@ -325,7 +324,7 @@ resources:
 
             <!-- To what purpose? -->
   - name: AccessGrant
-    related_concepts: ["access token"]
+    related_concepts: [access token]
     related_resources: [AccessToken]
     related_commands: [token/issue]
     links: [skupper/site_linking]
@@ -506,7 +505,7 @@ resources:
       include_properties: [settings]
       properties:
         - name: routingKey
-          related_concepts: ["routing key"]
+          related_concepts: [routing key]
           description: |
             The identifier used to route traffic from listeners to
             connectors.  To enable connecting to a service at a
@@ -592,7 +591,7 @@ resources:
         - name: selectedPods
   - name: AttachedConnector
     platforms: [Kubernetes]
-    related_concepts: ["attached connector"]
+    related_concepts: [attached connector]
     related_resources: [AttachedConnectorAnchor]
     links: [skupper/attached_connectors]
     description: |
@@ -619,7 +618,7 @@ resources:
   - name: AttachedConnectorAnchor
     rename: AttachedConnectorBinding
     platforms: [Kubernetes]
-    related_concepts: ["attached connector"]
+    related_concepts: [attached connector]
     related_resources: [AttachedConnector]
     links: [skupper/attached_connectors]
     description: |
@@ -643,7 +642,7 @@ resources:
     status:
       include_properties: [status/*, connector/status/*]
 groups:
-  - name: Site configuration
+  - name: Sites
     resources:
       - Site
   - name: Site linking

@@ -10,12 +10,10 @@ links:
 
 [Overview](overview.html)
 
-#### Sites and networks
+#### Sites
 
 <table class="objects">
 <tr><th><a href="{{site_prefix}}/concepts/site.html">Site</a></th><td><p>A <em>site</em> is a place on the network where workloads are running</p>
-</td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/network.html">Network</a></th><td><p>A <em>network</em> is a set of linked sites</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/platform.html">Platform</a></th><td><p>A <em>platform</em> is a system for running workloads</p>
 </td></tr>
@@ -25,6 +23,8 @@ links:
 
 <table class="objects">
 <tr><th><a href="{{site_prefix}}/concepts/link.html">Link</a></th><td><p>A <em>link</em> is a channel for communication between sites</p>
+</td></tr>
+<tr><th><a href="{{site_prefix}}/concepts/network.html">Network</a></th><td><p>A <em>network</em> is a set of linked sites</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/access-token.html">Access token</a></th><td><p>An <em>access token</em> is a short-lived credential used to create a link</p>
 </td></tr>
