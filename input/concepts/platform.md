@@ -9,11 +9,11 @@ refdog_object_links:
 
 <section>
 
-A _platform_ is a system for running workloads.  A platform
+A ***platform*** is a system for running workloads.  A platform
 hosts sites.  Skupper supports Kubernetes, Docker, Podman, and
 Linux.
 
-Platforms provide namespaces for related workloads and
+Platforms provide ***namespaces*** for related workloads and
 resources.  Skupper uses namespaces to host multiple independent
 sites on one instance of a platform.
 

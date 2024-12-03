@@ -1,7 +1,7 @@
 name: routing key
 related_concepts: [listener, connector]
 description: |
-  A _routing key_ is an identifier for matching listeners and
+  A ***routing key*** is an identifier for matching listeners and
   connectors.
 
   <figure>

@@ -1,7 +1,7 @@
 name: listener
 related_concepts: [connector, routing key]
 description: |
-  A _listener_ binds a local connection endpoint to connectors in
+  A ***listener*** binds a local connection endpoint to connectors in
   remote sites.
 
   <figure>

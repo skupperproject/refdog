@@ -15,7 +15,7 @@ refdog_object_links:
 
 <section>
 
-An _access token_ is a short-lived credential used to create a
+An ***access token*** is a short-lived credential used to create a
 link.  An access token contains the URL and secret code of a
 corresponding access grant.
 

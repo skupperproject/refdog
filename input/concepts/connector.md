@@ -15,7 +15,7 @@ refdog_object_links:
 
 <section>
 
-A _connector_ binds a local workload to listeners in remote
+A ***connector*** binds a local workload to listeners in remote
 sites.
 
 <figure>

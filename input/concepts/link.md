@@ -17,12 +17,12 @@ refdog_object_links:
 
 <section>
 
-A _link_ is a channel for communication between sites.  Links
-serve as a transport for application connections and requests.
-A set of linked sites constitutes a network.
+A ***link*** is a channel for communication between sites.  Links
+serve as a transport for application connections and requests.  A
+set of linked sites constitutes a network.
 
 To create a link to a remote site, the remote site must provide
-_link access_.  A link access is an external access point for
+***link access***.  A link access is an external access point for
 accepting links.
 
 Application connections and requests flow across links in both

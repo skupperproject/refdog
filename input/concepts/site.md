@@ -17,7 +17,7 @@ refdog_object_links:
 
 <section>
 
-A _site_ is a place on the network where workloads are running.
+A ***site*** is a place on the network where workloads are running.
 Sites are linked to form application networks.
 
 Sites operate on multiple platforms.  One site corresponds to

@@ -11,7 +11,7 @@ refdog_object_links:
 
 <section>
 
-A _routing key_ is an identifier for matching listeners and
+A ***routing key*** is an identifier for matching listeners and
 connectors.
 
 <figure>
