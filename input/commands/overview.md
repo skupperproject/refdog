@@ -6,8 +6,13 @@
 
 - Site, Link, Listener, and Connector.
 
-- Generally, they submit the resource to the controller and wait for
-  ready state (Listener and Connector wait for configured state).
+- On Kubernetes: Generally, they submit the resource to the controller
+  and wait for ready state (Listener and Connector wait for configured
+  state).
+
+- On other platforms: They don't wait for anything.  Instead they put
+  the resources in the input location.  The user must then trigger a
+  config reload.
 
 - Create operations take a name option, which is the name of the
   resource created (.metadata.name).
@@ -34,6 +39,9 @@
   resources for your current site.  By contrast, link generates a link
   resource (and a secret to go with it) for use in a *remote* site,
   *to* the current site.
+
+- The generate commands usually don't need to wait for a status.  Link
+  generate is the exception - it needs the site to be ready.
 
 - The token commands are for creating links!
 

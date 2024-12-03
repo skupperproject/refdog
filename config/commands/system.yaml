@@ -11,7 +11,7 @@ subcommands:
   - name: start
     platforms: [Docker, Podman, Linux]
     description: |
-      Start running the Skupper components for the current site.
+      Start up the Skupper components for the current site.
   - name: stop
     platforms: [Docker, Podman, Linux]
     description: |

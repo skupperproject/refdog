@@ -89,7 +89,7 @@ links:
 </td></tr>
 <tr><th><a href="{{site_prefix}}/commands/system/uninstall.html">System uninstall</a></th><td><p>Remove the Skupper components</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/commands/system/start.html">System start</a></th><td><p>Start running the Skupper components for the current site</p>
+<tr><th><a href="{{site_prefix}}/commands/system/start.html">System start</a></th><td><p>Start up the Skupper components for the current site</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/commands/system/stop.html">System stop</a></th><td><p>Shut down the Skupper components for the current site</p>
 </td></tr>
