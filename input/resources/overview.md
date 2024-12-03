@@ -1,18 +1,19 @@
 # Skupper resource overview
 
+- Skupper uses YAML resources for configuration
 - These are Kubernetes custom resources
 - They are used for non-Kube platforms as well
 - Some resource fields are "updatable" - you can change their values
   without recreating the resource.
 
-## Site configuration resources
+## Sites
 
-## Site linking resources
+## Site linking
 
 - You may want to use the CLI (or some other automation) to do the
   linking part
 
-## Service exposure resources
+## Service exposure
 
 ## Hello World using YAML
 
