@@ -31,6 +31,9 @@ skupper/application_tls:
 skupper/attached_connectors:
   title: Attached connectors
   url: /topics/attached-connectors.html
+skupper/debug_dumps:
+  title: Debug dumps
+  url: /topics/debug-dumps.html
 skupper/high_availability:
   title: High availability
   url: /topics/high-availability.html

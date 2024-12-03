@@ -7,7 +7,7 @@ refdog_object_links:
 - title: Access token concept
   url: /concepts/access-token.html
 - title: AccessToken resource
-  url: /resources/accesstoken.html
+  url: /resources/access-token.html
 - title: Token issue command
   url: /commands/token/issue.html
 refdog_object_toc:

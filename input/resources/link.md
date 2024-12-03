@@ -9,7 +9,7 @@ refdog_object_links:
 - title: Link command
   url: /commands/link/index.html
 - title: RouterAccess resource
-  url: /resources/routeraccess.html
+  url: /resources/router-access.html
 refdog_object_toc:
 - id: ''
   title: Overview

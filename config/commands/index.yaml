@@ -1,21 +1,21 @@
 groups:
-  - name: Site configuration
+  - title: Site operations
     commands:
       - site
-  - name: Site linking
+  - title: Site linking
     commands:
       - token
       - link
-  - name: Service exposure
+  - title: Service exposure
     commands:
       - connector
       - listener
-  - name: System operation
+  - title: System operations
     commands:
       - system
-  - name: Debug operations
+  - title: Debug operations
     commands:
       - debug
-  - name: Other operations
+  - title: Other operations
     commands:
       - version

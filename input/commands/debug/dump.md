@@ -1,7 +1,9 @@
 ---
 body_class: object command
 refdog_object_has_attributes: true
-refdog_object_links: []
+refdog_object_links:
+- title: Debug dumps
+  url: /topics/debug-dumps.html
 refdog_object_toc:
 - id: ''
   title: Overview

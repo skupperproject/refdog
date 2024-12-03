@@ -138,7 +138,9 @@ status:
         An array of connection endpoints.  Each item has a name, host,
         port, and group.
 
-        <!-- To what purpose? -->
+        These include connection endpoints for link access.
+      notes: |
+        Why is this here in status?  Does it duplicate what we have in RouterAccess?
     - name: network
       group: advanced
     - name: sitesInNetwork

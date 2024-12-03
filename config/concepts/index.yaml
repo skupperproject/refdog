@@ -1,14 +1,14 @@
 groups:
-  - name: Sites
+  - title: Sites
     concepts:
       - site
       - platform
-  - name: Site linking
+  - title: Site linking
     concepts:
       - link
       - network
       - access token
-  - name: Service exposure
+  - title: Service exposure
     concepts:
       - listener
       - connector

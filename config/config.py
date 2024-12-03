@@ -8,6 +8,15 @@ def path_nav(page):
 
     return f"<nav class=\"path-nav\">{''.join(links)}</nav>"
 
+def directory_nav(page):
+    def sort_fn(x):
+        return x.title
+
+    children = sorted(page.children, key=sort_fn)
+    links = [f"<li><a href=\"{site_prefix}{x.url}\">{x.title}</a></li>" for x in children]
+
+    return f"<nav class=\"directory-nav\"><ul>{''.join(links)}</ul></nav>"
+
 def refdog_object_links(page):
     if not page.metadata.get("refdog_object_links"):
         return ""

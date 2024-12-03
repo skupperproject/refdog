@@ -25,7 +25,18 @@ spec:
     - name: issuer
     - name: accessType
     - name: bindHost
+      default: 0.0.0.0
+      platforms: [Docker, Podman, Linux]
+      description: |
+        The hostname or IP address of the network interface to bind
+        to.  By default, Skupper binds all the interfaces on the host.
     - name: subjectAlternativeNames
+      platforms: [Docker, Podman, Linux]
+      default: |
+        _The current hostname and the IP address of each bound network
+        interface_
+      description: |
+        The hostnames and IPs secured by the router TLS certificate.
 status:
   include_properties: [status/*]
   properties:

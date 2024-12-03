@@ -4,6 +4,7 @@ description: |
 include_options: [global/*]
 subcommands:
   - name: dump
+    links: [skupper/debug_dumps]
     description: |
       Generate a debug dump file.
     examples: |

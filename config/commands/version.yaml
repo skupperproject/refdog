@@ -25,7 +25,7 @@ examples: |
       images:
         - name: quay.io/skupper/router:3.0.0
           digest: sha256:dc5e27385a1e110dd2db1903ba7ec3e0d50b57f742aa02d7dd0a7b1b68c34394
-        - name: quay.io/skupper/router-agent:2.0.0
+        - name: quay.io/skupper/kube-adaptor:2.0.0
           digest: sha256:4dc24bb3d605ed3fcec2f8ef7d45ca883d9d87b278bfedd5fcca74281d617a5e
     network-observer:
       version: 1.0.0

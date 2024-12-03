@@ -10,7 +10,7 @@ links:
 
 [Overview](overview.html)
 
-#### Site configuration
+#### Site operations
 
 <table class="objects">
 <tr><th><a href="{{site_prefix}}/commands/site/index.html">Site</a></th><td>Overview of site commands</td></tr>
@@ -81,7 +81,7 @@ links:
 </table>
 
 
-#### System operation
+#### System operations
 
 <table class="objects">
 <tr><th><a href="{{site_prefix}}/commands/system/index.html">System</a></th><td>Overview of system commands</td></tr>

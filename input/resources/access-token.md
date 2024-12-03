@@ -7,7 +7,7 @@ refdog_object_links:
 - title: Access token concept
   url: /concepts/access-token.html
 - title: AccessGrant resource
-  url: /resources/accessgrant.html
+  url: /resources/access-grant.html
 - title: Token redeem command
   url: /commands/token/redeem.html
 refdog_object_toc:

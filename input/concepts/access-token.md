@@ -4,9 +4,9 @@ refdog_object_links:
 - title: Link concept
   url: /concepts/link.html
 - title: AccessGrant resource
-  url: /resources/accessgrant.html
+  url: /resources/access-grant.html
 - title: AccessToken resource
-  url: /resources/accesstoken.html
+  url: /resources/access-token.html
 - title: Token command
   url: /commands/token/index.html
 ---

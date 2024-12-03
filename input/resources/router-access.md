@@ -123,7 +123,11 @@ directory under `input/certs/` in the current namespace.
 </div>
 <div class="attribute-body">
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+The hostname or IP address of the network interface to bind
+to.  By default, Skupper binds all the interfaces on the host.
+
+<table class="fields"><tr><th>Default</th><td><p><code>0.0.0.0</code></p>
+</td><tr><th>Platforms</th><td>Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -135,7 +139,11 @@ directory under `input/certs/` in the current namespace.
 </div>
 <div class="attribute-body">
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+The hostnames and IPs secured by the router TLS certificate.
+
+<table class="fields"><tr><th>Default</th><td><p><em>The current hostname and the IP address of each bound network
+interface</em></p>
+</td><tr><th>Platforms</th><td>Docker, Podman, Linux</td></table>
 
 </div>
 </div>

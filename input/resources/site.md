@@ -323,9 +323,15 @@ default signing CA.
 An array of connection endpoints.  Each item has a name, host,
 port, and group.
 
-<!-- To what purpose? -->
+These include connection endpoints for link access.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/link.html">Link concept</a>, <a href="{{site_prefix}}/concepts/overview.html#site-linking">Site linking</a></td></table>
+
+<section class="notes">
+
+Why is this here in status?  Does it duplicate what we have in RouterAccess?
+
+</section>
 
 </div>
 </div>

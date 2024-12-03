@@ -29,7 +29,7 @@ def generate(model):
     append()
 
     for group in model.groups:
-        append(f"#### {group.name}")
+        append(f"#### {group.title}")
         append()
         append("<table class=\"objects\">")
 

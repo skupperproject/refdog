@@ -1,13 +1,17 @@
 groups:
-  - name: Sites
+  - title: Primary resources
     resources:
       - Site
-  - name: Site linking
+      - Link
+      - Listener
+      - Connector
+  - title: Site linking
     resources:
+      - Link
       - AccessGrant
       - AccessToken
-      - Link
-  - name: Service exposure
+      - RouterAccess
+  - title: Service exposure
     resources:
       - Listener
       - Connector

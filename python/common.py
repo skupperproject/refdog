@@ -2,6 +2,7 @@ from plano import *
 
 import html
 import mistune
+import re
 
 named_links = read_yaml("config/links.yaml")
 
@@ -120,7 +121,7 @@ def object_property(name, default=None, required=False):
     return property(get)
 
 class ModelObjectGroup:
-    name = object_property("name", required=True)
+    title = object_property("title", required=True)
     description = object_property("description")
 
     def __init__(self, model, data):
@@ -130,11 +131,11 @@ class ModelObjectGroup:
         debug(f"Loading {self}")
 
     def __repr__(self):
-        return f"{self.__class__.__name__} '{self.name}'"
+        return f"{self.__class__.__name__} '{self.title}'"
 
     @property
     def id(self):
-        return get_fragment_id(self.name)
+        return get_fragment_id(self.title)
 
 class ModelObject:
     hidden = object_property("hidden", default=False)
@@ -154,7 +155,10 @@ class ModelObject:
 
     @property
     def id(self):
-        return get_fragment_id(self.name)
+        # Convert camel case to hyphenated
+        name = re.sub(r"(?<!^)(?=[A-Z])", "-", self.name)
+
+        return get_fragment_id(name)
 
     @property
     def rename(self):
