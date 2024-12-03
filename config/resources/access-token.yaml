@@ -20,13 +20,12 @@ spec:
   properties:
     - name: url
       description: |
-        The URL of the token redemption service at the remote
-        site.
+        The URL of the grant service at the remote site.
     - name: ca
       required: false
       description: |
-        The trusted server certificate of the token redemption
-        service at the remote site.
+        The trusted server certificate of the grant service at the
+        remote site.
     - name: code
       description: |
         The secret code used to authenticate the token when

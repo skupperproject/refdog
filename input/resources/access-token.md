@@ -91,8 +91,7 @@ The namespace of the resource.
 </div>
 <div class="attribute-body">
 
-The URL of the token redemption service at the remote
-site.
+The URL of the grant service at the remote site.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
@@ -122,8 +121,8 @@ submitted for redemption.
 </div>
 <div class="attribute-body">
 
-The trusted server certificate of the token redemption
-service at the remote site.
+The trusted server certificate of the grant service at the
+remote site.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 

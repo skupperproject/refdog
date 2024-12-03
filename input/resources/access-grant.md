@@ -291,10 +291,10 @@ A set of named conditions describing the current state of the
 resource.
 
 
-- `Processed` - The controller has accepted the access grant.
-- `Resolved` - The grant server is available to process access
-  tokens for this grant.
-- `Ready` - The access grant is ready to use.  All other
+- `Processed` - The controller has accepted the grant.
+- `Resolved` - The grant service is available to process tokens
+  for this grant.
+- `Ready` - The grant is ready to use.  All other
   conditions are true.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a>, <a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
