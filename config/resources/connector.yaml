@@ -2,7 +2,7 @@ name: Connector
 related_resources: [Listener]
 links: [skupper/service_exposure]
 description: |
-  Binds local workloads to listeners in remote sites.
+  A binding from a local workload to listeners in remotes sites.
 
   Each site can have multiple connector resources.
 examples:
@@ -24,5 +24,3 @@ spec:
   include_properties: [connector/spec/*, settings]
 status:
   include_properties: [status/*, connector/status/*]
-  properties:
-    - name: selectedPods

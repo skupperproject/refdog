@@ -27,7 +27,7 @@ refdog_object_toc:
 
 <section>
 
-A connection endpoint for communicating with workloads in remote
+A binding from a local connection endpoint to connectors in remote
 sites.
 
 Each site can have multiple listener definitions.
@@ -112,7 +112,7 @@ connectors.  To enable connecting to a service at a
 remote site, the local listener and the remote connector
 must have matching routing keys.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/routing-key.html">Routing key concept</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/routing-key.html">Routing key concept</a></td></table>
 
 </div>
 </div>
@@ -129,7 +129,7 @@ The hostname or IP address of the local listener.  Clients
 at this site use the listener host and port to
 establish connections to the remote service.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td></table>
 
 </div>
 </div>
@@ -146,7 +146,7 @@ The port of the local listener.  Clients at this site use
 the listener host and port to establish connections to
 the remote service.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td></table>
 
 </div>
 </div>
@@ -200,6 +200,9 @@ directory under `input/certs/` in the current namespace.
 A map containing additional settings.  Each map entry has a
 string name and a string value.
 
+**Note:** In general, we recommend not changing settings from
+their default values.
+
 
 - `observer` - Set the protocol observer used to generate
   traffic metrics.<br/>
@@ -225,8 +228,10 @@ string name and a string value.
 
 The current state of the resource.
 
-- Pending
-- Ready
+- `Pending` - The resource is being processed.
+- `Error` - There was an error processing the resource.  See
+  `message` for more information.
+- `Ready` - The resource is ready to use.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a></td></table>
 
@@ -240,7 +245,8 @@ The current state of the resource.
 </div>
 <div class="attribute-body">
 
-A human-readable status message.
+A human-readable status message.  Error messages are reported
+here.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a></td></table>
 
@@ -254,7 +260,10 @@ A human-readable status message.
 </div>
 <div class="attribute-body">
 
-<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+True if there is at least one connector with a matching
+routing key (usually in a remote site).
+
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/routing-key.html">Routing key concept</a></td></table>
 
 </div>
 </div>
@@ -269,6 +278,14 @@ A human-readable status message.
 
 A set of named conditions describing the current state of the
 resource.
+
+
+- `Configured` - The listener configuration has been applied
+  to the router.
+- `Matched` - There is at least one connector corresponding to
+  this listener.
+- `Ready` - The listener is ready to use.  All other conditions
+  are true.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a>, <a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
 

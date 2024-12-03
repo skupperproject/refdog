@@ -3,11 +3,13 @@ body_class: object resource
 refdog_object_has_attributes: true
 refdog_object_links:
 - title: Site linking
-  url: /concepts/overview.html#site-linking
+  url: /topics/site-linking.html
 - title: Access token concept
   url: /concepts/access-token.html
 - title: AccessGrant resource
   url: /resources/access-grant.html
+- title: Token issue command
+  url: /commands/token/issue.html
 - title: Token redeem command
   url: /commands/token/redeem.html
 refdog_object_toc:
@@ -28,6 +30,12 @@ refdog_object_toc:
 A transferrable token redeemable for a link to a remote
 site.  An access token contains the URL and secret code of a
 corresponding access grant.
+
+Access tokens are often [issued][issue] and [redeemed][redeem] using
+the Skupper CLI.
+
+[issue]: {{site_prefix}}/commands/token/issue.html
+[redeem]: {{site_prefix}}/commands/token/redeem.html
 
 ~~~ yaml
 apiVersion: skupper.io/v2alpha1
@@ -147,6 +155,9 @@ The link cost to use when creating the link.
 A map containing additional settings.  Each map entry has a
 string name and a string value.
 
+**Note:** In general, we recommend not changing settings from
+their default values.
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-settings.html">Resource settings</a></td></table>
 
 </div>
@@ -182,8 +193,10 @@ redeemed, it cannot be used again.
 
 The current state of the resource.
 
-- Pending
-- Ready
+- `Pending` - The resource is being processed.
+- `Error` - There was an error processing the resource.  See
+  `message` for more information.
+- `Ready` - The resource is ready to use.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a></td></table>
 
@@ -197,7 +210,8 @@ The current state of the resource.
 </div>
 <div class="attribute-body">
 
-A human-readable status message.
+A human-readable status message.  Error messages are reported
+here.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a></td></table>
 
@@ -214,6 +228,9 @@ A human-readable status message.
 
 A set of named conditions describing the current state of the
 resource.
+
+
+- `Redeemed` - The token has been exchanged for a link.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a>, <a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
 

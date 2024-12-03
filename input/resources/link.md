@@ -3,13 +3,13 @@ body_class: object resource
 refdog_object_has_attributes: true
 refdog_object_links:
 - title: Site linking
-  url: /concepts/overview.html#site-linking
+  url: /topics/site-linking.html
 - title: Link concept
   url: /concepts/link.html
 - title: Link command
   url: /commands/link/index.html
-- title: RouterAccess resource
-  url: /resources/router-access.html
+- title: AccessToken resource
+  url: /resources/access-token.html
 refdog_object_toc:
 - id: ''
   title: Overview
@@ -29,8 +29,10 @@ A site-to-site communication channel. Links serve as a
 transport for application connections and requests.  A set
 of linked sites constitute a network.
 
-Links are not usually created directly.  Instead, you
-typically use an access token to obtain a link.
+**Note:** Links are not usually created directly.  Instead, you
+typically use an [access token][token] to obtain a link.
+
+[token]: access-token.html
 
 ~~~ yaml
 apiVersion: skupper.io/v2alpha1
@@ -140,6 +142,9 @@ directory under `input/certs/` in the current namespace.
 A map containing additional settings.  Each map entry has a
 string name and a string value.
 
+**Note:** In general, we recommend not changing settings from
+their default values.
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-settings.html">Resource settings</a></td></table>
 
 </div>
@@ -150,6 +155,40 @@ string name and a string value.
 <section class="attributes">
 
 ## Status properties
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="status-status">status</h3>
+<div class="attribute-type-info">string</div>
+</div>
+<div class="attribute-body">
+
+The current state of the resource.
+
+- `Pending` - The resource is being processed.
+- `Error` - There was an error processing the resource.  See
+  `message` for more information.
+- `Ready` - The resource is ready to use.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="status-message">message</h3>
+<div class="attribute-type-info">string</div>
+</div>
+<div class="attribute-body">
+
+A human-readable status message.  Error messages are reported
+here.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a></td></table>
+
+</div>
+</div>
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
@@ -181,37 +220,6 @@ The name of the site linked to.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="status-status">status</h3>
-<div class="attribute-type-info">string</div>
-</div>
-<div class="attribute-body">
-
-The current state of the resource.
-
-- Pending
-- Ready
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a></td></table>
-
-</div>
-</div>
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="status-message">message</h3>
-<div class="attribute-type-info">string</div>
-</div>
-<div class="attribute-body">
-
-A human-readable status message.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a></td></table>
-
-</div>
-</div>
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
 <h3 id="status-conditions">conditions</h3>
 <div class="attribute-type-info">array</div>
 <div class="attribute-flags">advanced</div>
@@ -220,6 +228,13 @@ A human-readable status message.
 
 A set of named conditions describing the current state of the
 resource.
+
+
+- `Configured` - The link configuration has been applied to
+  the router.
+- `Operational` - The link to the remote site is active.
+- `Ready` - The link is ready to use.  All other conditions
+  are true.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a>, <a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
 

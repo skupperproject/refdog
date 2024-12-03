@@ -3,7 +3,7 @@ body_class: object resource
 refdog_object_has_attributes: true
 refdog_object_links:
 - title: Site linking
-  url: /concepts/overview.html#site-linking
+  url: /topics/site-linking.html
 - title: Access token concept
   url: /concepts/access-token.html
 - title: AccessToken resource
@@ -118,14 +118,13 @@ grant can be redeemed.
 </div>
 <div class="attribute-body">
 
-The secret code used to authenticate access tokens
-submitted for redemption.
+The secret code to use to authenticate access tokens submitted
+for redemption.
 
-If not set, a value for the code field in the status is
-generated.
+If not set, a value is generated and placed in the `code`
+status property.
 
-<table class="fields"><tr><th>Default</th><td><p><em>Generated</em></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -140,7 +139,7 @@ generated.
 The name of a Kubernetes secret used to generate a
 certificate when redeeming a token for this grant.
 
-If not set, the defaultIssuer on Site is used.
+If not set, `defaultIssuer` on the Site rsource is used.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/router-tls.html">Router TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a></td></table>
 
@@ -158,6 +157,9 @@ If not set, the defaultIssuer on Site is used.
 A map containing additional settings.  Each map entry has a
 string name and a string value.
 
+**Note:** In general, we recommend not changing settings from
+their default values.
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-settings.html">Resource settings</a></td></table>
 
 </div>
@@ -168,6 +170,40 @@ string name and a string value.
 <section class="attributes">
 
 ## Status properties
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="status-status">status</h3>
+<div class="attribute-type-info">string</div>
+</div>
+<div class="attribute-body">
+
+The current state of the resource.
+
+- `Pending` - The resource is being processed.
+- `Error` - There was an error processing the resource.  See
+  `message` for more information.
+- `Ready` - The resource is ready to use.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="status-message">message</h3>
+<div class="attribute-type-info">string</div>
+</div>
+<div class="attribute-body">
+
+A human-readable status message.  Error messages are reported
+here.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a></td></table>
+
+</div>
+</div>
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
@@ -245,37 +281,6 @@ submitted for redemption.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="status-status">status</h3>
-<div class="attribute-type-info">string</div>
-</div>
-<div class="attribute-body">
-
-The current state of the resource.
-
-- Pending
-- Ready
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a></td></table>
-
-</div>
-</div>
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="status-message">message</h3>
-<div class="attribute-type-info">string</div>
-</div>
-<div class="attribute-body">
-
-A human-readable status message.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a></td></table>
-
-</div>
-</div>
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
 <h3 id="status-conditions">conditions</h3>
 <div class="attribute-type-info">array</div>
 <div class="attribute-flags">advanced</div>
@@ -284,6 +289,13 @@ A human-readable status message.
 
 A set of named conditions describing the current state of the
 resource.
+
+
+- `Processed` - The controller has accepted the access grant.
+- `Resolved` - The grant server is available to process access
+  tokens for this grant.
+- `Ready` - The access grant is ready to use.  All other
+  conditions are true.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a>, <a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
 

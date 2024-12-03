@@ -27,7 +27,7 @@ refdog_object_toc:
 
 <section>
 
-Binds local workloads to listeners in remote sites.
+A binding from a local workload to listeners in remotes sites.
 
 Each site can have multiple connector resources.
 
@@ -110,7 +110,7 @@ connectors.  To expose a local workload to a remote site, the
 remote listener and the local connector must have matching
 routing keys.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/routing-key.html">Routing key concept</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/routing-key.html">Routing key concept</a></td></table>
 
 </div>
 </div>
@@ -127,7 +127,7 @@ The port on the target workload to forward traffic to.
 
 <!-- The port to connect to. -->
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td></table>
 
 </div>
 </div>
@@ -149,7 +149,7 @@ A Kubernetes label selector for specifying target server pods.
 On Kubernetes, you usually want to use this.  As an alternative,
 you can use `host`.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">Kubernetes label selectors</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>Updatable</th><td>True</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">Kubernetes label selectors</a></td></table>
 
 </div>
 </div>
@@ -164,7 +164,7 @@ you can use `host`.
 The hostname or IP address of the server.  This is an
 alternative to `selector` for specifying the target server.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td></table>
 
 </div>
 </div>
@@ -266,6 +266,9 @@ matches the hostname in the server's certificate.
 A map containing additional settings.  Each map entry has a
 string name and a string value.
 
+**Note:** In general, we recommend not changing settings from
+their default values.
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-settings.html">Resource settings</a></td></table>
 
 </div>
@@ -286,8 +289,10 @@ string name and a string value.
 
 The current state of the resource.
 
-- Pending
-- Ready
+- `Pending` - The resource is being processed.
+- `Error` - There was an error processing the resource.  See
+  `message` for more information.
+- `Ready` - The resource is ready to use.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a></td></table>
 
@@ -301,7 +306,8 @@ The current state of the resource.
 </div>
 <div class="attribute-body">
 
-A human-readable status message.
+A human-readable status message.  Error messages are reported
+here.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a></td></table>
 
@@ -315,20 +321,10 @@ A human-readable status message.
 </div>
 <div class="attribute-body">
 
+True if there is at least one listener with a matching routing
+key (usually in a remote site).
+
 <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/routing-key.html">Routing key concept</a></td></table>
-
-</div>
-</div>
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="status-selectedpods">selectedPods</h3>
-<div class="attribute-type-info">array</div>
-<div class="attribute-flags">advanced</div>
-</div>
-<div class="attribute-body">
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -344,7 +340,27 @@ A human-readable status message.
 A set of named conditions describing the current state of the
 resource.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a>, <a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
+- `Configured` - The connector configuration has been applied
+  to the router.
+- `Matched` - There is at least one listener corresponding to
+  this connector.
+- `Ready` - The connector is ready to use.  All other conditions
+  are true.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="status-selectedpods">selectedPods</h3>
+<div class="attribute-type-info">array</div>
+<div class="attribute-flags">advanced</div>
+</div>
+<div class="attribute-body">
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>

@@ -10,6 +10,19 @@ links:
 
 [Overview](overview.html)
 
+#### Primary concepts
+
+<table class="objects">
+<tr><th><a href="{{site_prefix}}/concepts/network.html">Network</a></th><td><p>A <em>network</em> is a set of linked sites</p>
+</td></tr>
+<tr><th><a href="{{site_prefix}}/concepts/site.html">Site</a></th><td><p>A <em>site</em> is a place on the network where workloads are running</p>
+</td></tr>
+<tr><th><a href="{{site_prefix}}/concepts/listener.html">Listener</a></th><td><p>A <em>listener</em> binds a local connection endpoint to connectors in remote sites</p>
+</td></tr>
+<tr><th><a href="{{site_prefix}}/concepts/connector.html">Connector</a></th><td><p>A <em>connector</em> binds a local workload to listeners in remote sites</p>
+</td></tr>
+</table>
+
 #### Sites
 
 <table class="objects">

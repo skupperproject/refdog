@@ -1,11 +1,19 @@
 name: Site
 related_concepts: [network, platform]
-related_resources: [Link]
 description: |
   A place where components of your application are running.
   Sites are linked to form application networks.
 
-  There can be only one Site resource per namespace.
+  There can be only one active Site resource per namespace.
+
+  On Kubernetes, a Site input resource results in the following output
+  resources:
+
+    - A Deployment and ConfigMap for the router
+    - A ServiceAccount, Role, and RoleBinding (if `serviceAccount` is
+      not set)
+    - A Secret containing a signing CA for site linking (if
+      `defaultIssuer` is not set)
 examples:
   - description: A minimal site
     yaml: |
@@ -33,6 +41,7 @@ spec:
     - name: linkAccess
       group: frequently-used
       default: none
+      updatable: true
       related_concepts: [link]
       links: [skupper/site_linking]
       description: |
@@ -68,6 +77,7 @@ spec:
     - name: defaultIssuer
       group: advanced
       default: skupper-site-ca
+      updatable: true
       platforms: [Kubernetes]
       links: [skupper/router_tls, kubernetes/tls_secrets]
       description: |
@@ -90,6 +100,10 @@ spec:
         there is little benefit.
 
         Currently, edge sites cannot also have HA enabled.
+
+        <!-- Future: An edge site has the exclusive ability to set a
+        "VAN ID" that enables multiple VANs to operate on shared
+        router infrastructure. -->
     - name: serviceAccount
       group: advanced
       default: skupper-router
@@ -108,7 +122,7 @@ spec:
           Default: *Computed based on the number of router worker
           threads.  Minimum 2.*
         - `routerLogging` - Set the router logging level.<br/>
-          Default: `info`.  Choices: `debug`, `info`, `warning`, `error`.
+          Default: `info`.  Choices: `info`, `warning`, `error`.
 status:
   include_properties: [status/*]
   properties:
@@ -119,10 +133,13 @@ status:
       description: |
         @description@
 
-        - Configured
-        - Running
-        - Resolved
-        - Ready
+        - `Configured` - The output resources for this resource have
+          been created.
+        - `Running` - There is at least one router pod running.
+        - `Resolved` - The hostname or IP address for link access is
+          available.
+        - `Ready` - The site is ready for use.  All other conditions
+          are true.
     - name: defaultIssuer
       group: advanced
       platforms: [Kubernetes]

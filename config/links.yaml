@@ -54,7 +54,7 @@ skupper/service_exposure:
   url: "/concepts/overview.html#service-exposure"
 skupper/site_linking:
   title: Site linking
-  url: "/concepts/overview.html#site-linking"
+  url: /topics/site-linking.html
 skupper/system_namespaces:
   title: System namespaces
   url: /topics/system-namespaces.html

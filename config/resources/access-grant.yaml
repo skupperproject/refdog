@@ -28,13 +28,12 @@ spec:
         grant can be redeemed.
       default: 15m
     - name: code
-      default: _Generated_
       description: |
-        The secret code used to authenticate access tokens
-        submitted for redemption.
+        The secret code to use to authenticate access tokens submitted
+        for redemption.
 
-        If not set, a value for the code field in the status is
-        generated.
+        If not set, a value is generated and placed in the `code`
+        status property.
     - name: issuer
       platforms: [Kubernetes]
       links: [skupper/router_tls, kubernetes/tls_secrets]
@@ -42,10 +41,12 @@ spec:
         The name of a Kubernetes secret used to generate a
         certificate when redeeming a token for this grant.
 
-        If not set, the defaultIssuer on Site is used.
+        If not set, `defaultIssuer` on the Site rsource is used.
 status:
   include_properties: [status/*]
   properties:
+    - name: status
+    - name: message
     - name: redeemed
       rename: redemptions
       description: |
@@ -67,3 +68,12 @@ status:
         The secret code used to authenticate access tokens
         submitted for redemption.
       default: _Generated_
+    - name: conditions
+      description: |
+        @description@
+
+        - `Processed` - The controller has accepted the access grant.
+        - `Resolved` - The grant server is available to process access
+          tokens for this grant.
+        - `Ready` - The access grant is ready to use.  All other
+          conditions are true.

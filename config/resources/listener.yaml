@@ -2,7 +2,7 @@ name: Listener
 related_resources: [Connector]
 links: [skupper/service_exposure]
 description: |
-  A connection endpoint for communicating with workloads in remote
+  A binding from a local connection endpoint to connectors in remote
   sites.
 
   Each site can have multiple listener definitions.
@@ -26,6 +26,7 @@ spec:
   include_properties: [settings]
   properties:
     - name: routingKey
+      updatable: true
       related_concepts: [routing key]
       description: |
         The identifier used to route traffic from listeners to
@@ -33,11 +34,13 @@ spec:
         remote site, the local listener and the remote connector
         must have matching routing keys.
     - name: host
+      updatable: true
       description: |
         The hostname or IP address of the local listener.  Clients
         at this site use the listener host and port to
         establish connections to the remote service.
     - name: port
+      updatable: true
       description: |
         The port of the local listener.  Clients at this site use
         the listener host and port to establish connections to
@@ -82,3 +85,17 @@ status:
     - name: message
     - name: hasMatchingConnectors
       type: boolean
+      related_concepts: [routing key]
+      description: |
+        True if there is at least one connector with a matching
+        routing key (usually in a remote site).
+    - name: conditions
+      description: |
+        @description@
+
+        - `Configured` - The listener configuration has been applied
+          to the router.
+        - `Matched` - There is at least one connector corresponding to
+          this listener.
+        - `Ready` - The listener is ready to use.  All other conditions
+          are true.

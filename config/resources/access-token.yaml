@@ -1,12 +1,18 @@
 name: AccessToken
 related_concepts: [access token]
 related_resources: [AccessGrant]
-related_commands: [token/redeem]
+related_commands: [token/issue, token/redeem]
 links: [skupper/site_linking]
 description: |
   A transferrable token redeemable for a link to a remote
   site.  An access token contains the URL and secret code of a
   corresponding access grant.
+
+  Access tokens are often [issued][issue] and [redeemed][redeem] using
+  the Skupper CLI.
+
+  [issue]: {{site_prefix}}/commands/token/issue.html
+  [redeem]: {{site_prefix}}/commands/token/redeem.html
 metadata:
   include_properties: [metadata/*]
 spec:
@@ -38,3 +44,8 @@ status:
       description: |
         True if the token has been redeemed.  Once a token is
         redeemed, it cannot be used again.
+    - name: conditions
+      description: |
+        @description@
+
+        - `Redeemed` - The token has been exchanged for a link.

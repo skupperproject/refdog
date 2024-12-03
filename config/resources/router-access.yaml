@@ -4,10 +4,16 @@ links: [skupper/site_linking]
 description: |
   Configuration for secure access to the site router.  The
   configuration includes TLS credentials and router ports.
+metadata:
+  include_properties: [metadata/*]
 spec:
   include_properties: [settings]
   properties:
     - name: roles
+      description: |
+        The named interfaces by which a router can be accessed.  These
+        include "inter-router" for links between interior routers and
+        "edge" for links from edge routers.
     - name: tlsCredentials
       links: [skupper/router_tls, kubernetes/tls_secrets, skupper/system_tls_credentials]
       description: |
@@ -40,10 +46,19 @@ spec:
 status:
   include_properties: [status/*]
   properties:
+    - name: status
+    - name: message
+    - name: conditions
+      description: |
+        @description@
+
+        - `Configured` - The router access configuration has been applied to
+          the router.
+        - `Resolved` - The connection endpoints are available.
+        - `Ready` - The router access is ready to use.  All other
+          conditions are true.
     - name: endpoints
       group: advanced
       description: |
         An array of connection endpoints.  Each item has a name, host,
         port, and group.
-
-        <!-- To what purpose? -->

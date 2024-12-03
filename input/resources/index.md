@@ -17,9 +17,9 @@ links:
 </td></tr>
 <tr><th><a href="{{site_prefix}}/resources/link.html">Link</a></th><td><p>A site-to-site communication channel</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/resources/listener.html">Listener</a></th><td><p>A connection endpoint for communicating with workloads in remote sites</p>
+<tr><th><a href="{{site_prefix}}/resources/listener.html">Listener</a></th><td><p>A binding from a local connection endpoint to connectors in remote sites</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/resources/connector.html">Connector</a></th><td><p>Binds local workloads to listeners in remote sites</p>
+<tr><th><a href="{{site_prefix}}/resources/connector.html">Connector</a></th><td><p>A binding from a local workload to listeners in remotes sites</p>
 </td></tr>
 </table>
 
@@ -39,9 +39,9 @@ links:
 #### Service exposure
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/resources/listener.html">Listener</a></th><td><p>A connection endpoint for communicating with workloads in remote sites</p>
+<tr><th><a href="{{site_prefix}}/resources/listener.html">Listener</a></th><td><p>A binding from a local connection endpoint to connectors in remote sites</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/resources/connector.html">Connector</a></th><td><p>Binds local workloads to listeners in remote sites</p>
+<tr><th><a href="{{site_prefix}}/resources/connector.html">Connector</a></th><td><p>A binding from a local workload to listeners in remotes sites</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/resources/attached-connector.html">AttachedConnector</a></th><td><p>A connector in a peer namespace</p>
 </td></tr>

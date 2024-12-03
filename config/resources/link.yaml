@@ -1,13 +1,15 @@
 name: Link
-related_resources: [RouterAccess]
+related_resources: [AccessToken]
 links: [skupper/site_linking]
 description: |
   A site-to-site communication channel. Links serve as a
   transport for application connections and requests.  A set
   of linked sites constitute a network.
 
-  Links are not usually created directly.  Instead, you
-  typically use an access token to obtain a link.
+  **Note:** Links are not usually created directly.  Instead, you
+  typically use an [access token][token] to obtain a link.
+
+  [token]: access-token.html
 metadata:
   include_properties: [metadata/*]
 spec:
@@ -37,9 +39,20 @@ spec:
 status:
   include_properties: [status/*]
   properties:
+    - name: status
+    - name: message
     - name: remoteSiteId
       description: |
         The unique ID of the site linked to.
     - name: remoteSiteName
       description: |
         The name of the site linked to.
+    - name: conditions
+      description: |
+        @description@
+
+        - `Configured` - The link configuration has been applied to
+          the router.
+        - `Operational` - The link to the remote site is active.
+        - `Ready` - The link is ready to use.  All other conditions
+          are true.

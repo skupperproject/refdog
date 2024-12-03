@@ -3,7 +3,7 @@ body_class: object resource
 refdog_object_has_attributes: true
 refdog_object_links:
 - title: Site linking
-  url: /concepts/overview.html#site-linking
+  url: /topics/site-linking.html
 - title: Site resource
   url: /resources/site.html
 - title: Link resource
@@ -37,6 +37,35 @@ kind: RouterAccess
 
 ## Metadata properties
 
+<div class="attribute">
+<div class="attribute-heading">
+<h3 id="metadata-name">name</h3>
+<div class="attribute-type-info">string</div>
+<div class="attribute-flags">required</div>
+</div>
+<div class="attribute-body">
+
+The name of the resource.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="metadata-namespace">namespace</h3>
+<div class="attribute-type-info">string</div>
+</div>
+<div class="attribute-body">
+
+The namespace of the resource.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/platform.html">Platform concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a>, <a href="{{site_prefix}}/topics/system-namespaces.html">System namespaces</a></td></table>
+
+</div>
+</div>
+
 </section>
 
 <section class="attributes">
@@ -50,6 +79,10 @@ kind: RouterAccess
 <div class="attribute-flags">required</div>
 </div>
 <div class="attribute-body">
+
+The named interfaces by which a router can be accessed.  These
+include "inter-router" for links between interior routers and
+"edge" for links from edge routers.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
@@ -159,6 +192,9 @@ interface</em></p>
 A map containing additional settings.  Each map entry has a
 string name and a string value.
 
+**Note:** In general, we recommend not changing settings from
+their default values.
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-settings.html">Resource settings</a></td></table>
 
 </div>
@@ -179,8 +215,10 @@ string name and a string value.
 
 The current state of the resource.
 
-- Pending
-- Ready
+- `Pending` - The resource is being processed.
+- `Error` - There was an error processing the resource.  See
+  `message` for more information.
+- `Ready` - The resource is ready to use.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a></td></table>
 
@@ -194,27 +232,10 @@ The current state of the resource.
 </div>
 <div class="attribute-body">
 
-A human-readable status message.
+A human-readable status message.  Error messages are reported
+here.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a></td></table>
-
-</div>
-</div>
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="status-endpoints">endpoints</h3>
-<div class="attribute-type-info">array</div>
-<div class="attribute-flags">advanced</div>
-</div>
-<div class="attribute-body">
-
-An array of connection endpoints.  Each item has a name, host,
-port, and group.
-
-<!-- To what purpose? -->
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -230,7 +251,30 @@ port, and group.
 A set of named conditions describing the current state of the
 resource.
 
+
+- `Configured` - The router access configuration has been applied to
+  the router.
+- `Resolved` - The connection endpoints are available.
+- `Ready` - The router access is ready to use.  All other
+  conditions are true.
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a>, <a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="status-endpoints">endpoints</h3>
+<div class="attribute-type-info">array</div>
+<div class="attribute-flags">advanced</div>
+</div>
+<div class="attribute-body">
+
+An array of connection endpoints.  Each item has a name, host,
+port, and group.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>

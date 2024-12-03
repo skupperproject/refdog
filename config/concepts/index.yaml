@@ -1,4 +1,10 @@
 groups:
+  - title: Primary concepts
+    concepts:
+      - network
+      - site
+      - listener
+      - connector
   - title: Sites
     concepts:
       - site

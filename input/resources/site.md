@@ -10,8 +10,6 @@ refdog_object_links:
   url: /concepts/network.html
 - title: Platform concept
   url: /concepts/platform.html
-- title: Link resource
-  url: /resources/link.html
 refdog_object_toc:
 - id: ''
   title: Overview
@@ -32,7 +30,16 @@ refdog_object_toc:
 A place where components of your application are running.
 Sites are linked to form application networks.
 
-There can be only one Site resource per namespace.
+There can be only one active Site resource per namespace.
+
+On Kubernetes, a Site input resource results in the following output
+resources:
+
+  - A Deployment and ConfigMap for the router
+  - A ServiceAccount, Role, and RoleBinding (if `serviceAccount` is
+    not set)
+  - A Secret containing a signing CA for site linking (if
+    `defaultIssuer` is not set)
 
 ~~~ yaml
 apiVersion: skupper.io/v2alpha1
@@ -127,7 +134,7 @@ the sites must have link access enabled.
 </td></tr><tr><th><code>default</code></th><td><p>Use the default link access for the current platform. On OpenShift, the default is <code>route</code>.  For other Kubernetes flavors, the default is <code>loadbalancer</code>.</p>
 </td></tr><tr><th><code>route</code></th><td><p>Use an OpenShift route.  <em>OpenShift only.</em></p>
 </td></tr><tr><th><code>loadbalancer</code></th><td><p>Use a Kubernetes load balancer.  <em>Kubernetes only.</em></p>
-</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/link.html">Link concept</a>, <a href="{{site_prefix}}/concepts/overview.html#site-linking">Site linking</a></td></table>
+</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/link.html">Link concept</a>, <a href="{{site_prefix}}/topics/site-linking.html">Site linking</a></td></table>
 
 </div>
 </div>
@@ -168,7 +175,7 @@ This issuer is used by AccessGrant and RouterAccess if a
 specific issuer is not set.
 
 <table class="fields"><tr><th>Default</th><td><p><code>skupper-site-ca</code></p>
-</td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/router-tls.html">Router TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a></td></table>
+</td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>Updatable</th><td>True</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/router-tls.html">Router TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a></td></table>
 
 </div>
 </div>
@@ -189,6 +196,10 @@ of sites.  However, for networks with 16 or fewer sites,
 there is little benefit.
 
 Currently, edge sites cannot also have HA enabled.
+
+<!-- Future: An edge site has the exclusive ability to set a
+"VAN ID" that enables multiple VANs to operate on shared
+router infrastructure. -->
 
 <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/large-networks.html">Large networks</a></td></table>
 
@@ -223,6 +234,9 @@ run the Skupper controller.
 A map containing additional settings.  Each map entry has a
 string name and a string value.
 
+**Note:** In general, we recommend not changing settings from
+their default values.
+
 
 - `routerDataConnections` - Set the number of data
   connections the router uses when linking to other
@@ -230,7 +244,7 @@ string name and a string value.
   Default: *Computed based on the number of router worker
   threads.  Minimum 2.*
 - `routerLogging` - Set the router logging level.<br/>
-  Default: `info`.  Choices: `debug`, `info`, `warning`, `error`.
+  Default: `info`.  Choices: `info`, `warning`, `error`.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-settings.html">Resource settings</a></td></table>
 
@@ -252,8 +266,10 @@ string name and a string value.
 
 The current state of the resource.
 
-- Pending
-- Ready
+- `Pending` - The resource is being processed.
+- `Error` - There was an error processing the resource.  See
+  `message` for more information.
+- `Ready` - The resource is ready to use.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a></td></table>
 
@@ -267,7 +283,8 @@ The current state of the resource.
 </div>
 <div class="attribute-body">
 
-A human-readable status message.
+A human-readable status message.  Error messages are reported
+here.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a></td></table>
 
@@ -286,10 +303,13 @@ A set of named conditions describing the current state of the
 resource.
 
 
-- Configured
-- Running
-- Resolved
-- Ready
+- `Configured` - The output resources for this resource have
+  been created.
+- `Running` - There is at least one router pod running.
+- `Resolved` - The hostname or IP address for link access is
+  available.
+- `Ready` - The site is ready for use.  All other conditions
+  are true.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a>, <a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
 
@@ -325,7 +345,7 @@ port, and group.
 
 These include connection endpoints for link access.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/link.html">Link concept</a>, <a href="{{site_prefix}}/concepts/overview.html#site-linking">Site linking</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/link.html">Link concept</a>, <a href="{{site_prefix}}/topics/site-linking.html">Site linking</a></td></table>
 
 <section class="notes">
 
