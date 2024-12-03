@@ -28,21 +28,29 @@ other workloads in other sites.  Skupper uses ***links*** between sites to
 provide site-to-site communication.
 
 When a set of sites are linked, they function as one
-application-focused _network_.
+application-focused ***network***.
 
 <figure>
   <img src="images/network-1.svg"/>
   <figcaption>A simple network with two sites</figcaption>
 </figure>
 
-You can use short-lived ***access tokens*** to securely create links.
+You typically use short-lived ***access tokens*** to securely create
+links.
 
 Learn more about **[links](link.html)**, **[networks](network.html)**,
 and **[access tokens](access-token.html)**.
 
 ## Service exposure
 
-Sites and links establish the network transport, but there is one more step...
+Services are exposed by creating corresponding ***listeners*** and
+***connectors***.  A listener in one site provides a connection
+endpoint for clients.  A connector in another site binds to local
+servers.
+
+The listener and connector are associated using a ***routing key***.
+Skupper routers use the routing key to forward client connections to
+the sites where the server workload is running.
 
 <figure>
   <img src="images/overview-3.svg"/>
