@@ -1,7 +1,11 @@
 ---
 body_class: object command
 refdog_object_has_attributes: true
-refdog_object_links: []
+refdog_object_links:
+- title: Platform concept
+  url: /concepts/platform.html
+- title: System install command
+  url: /commands/system/install.html
 refdog_object_toc:
 - id: ''
   title: Overview
@@ -19,6 +23,10 @@ refdog_object_toc:
 
 Remove the Skupper components.
 
+This removes the router configuration, TLS certificates, and
+systemd unit file for the current namespace.  On Docker or
+Podman, it also removes the containers for Skupper components.
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </section>
@@ -30,5 +38,69 @@ Remove the Skupper components.
 ~~~ shell
 skupper system uninstall [options]
 ~~~
+
+</section>
+
+<section class="attributes">
+
+## Primary options
+
+</section>
+
+<section class="attributes">
+
+## Global options
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="option-namespace">--namespace</h3>
+<div class="attribute-type-info">(-n) &lt;name&gt;</div>
+<div class="attribute-flags">global</div>
+</div>
+<div class="attribute-body">
+
+Set the current namespace.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a>, <a href="{{site_prefix}}/topics/system-namespaces.html">System namespaces</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="option-platform">--platform</h3>
+<div class="attribute-type-info">&lt;platform&gt;</div>
+<div class="attribute-flags">global</div>
+</div>
+<div class="attribute-body">
+
+Set the Skupper platform.
+
+<!-- You can also use the `SKUPPER_PLATFORM` environment variable. -->
+
+<table class="fields"><tr><th>Default</th><td><p><code>kubernetes</code></p>
+</td><tr><th>Choices</th><td><table class="choices"><tr><th><code>kubernetes</code></th><td><p>Kubernetes</p>
+</td></tr><tr><th><code>docker</code></th><td><p>Docker</p>
+</td></tr><tr><th><code>podman</code></th><td><p>Podman</p>
+</td></tr><tr><th><code>linux</code></th><td><p>Linux</p>
+</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/platform.html">Platform concept</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="option-help">--help</h3>
+<div class="attribute-type-info">(-h) boolean</div>
+<div class="attribute-flags">global</div>
+</div>
+<div class="attribute-body">
+
+Display help and exit.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
+</div>
+</div>
 
 </section>

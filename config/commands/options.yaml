@@ -24,11 +24,11 @@ create/wait:
     Wait for the given status before exiting.
   choices:
     - name: none
-      description: _Do not wait_
+      description: Do not wait.
     - name: configured
-      description: Configured
+      description: Wait until the configuration is applied.
     - name: ready
-      description: Ready
+      description: Wait until the resource is ready to use.
 update/name:
   name: name
   type: string
@@ -291,6 +291,8 @@ global/platform:
       description: Linux
   description: |
     Set the Skupper platform.
+
+    <!-- You can also use the `SKUPPER_PLATFORM` environment variable. -->
 global/help:
   name: help
   group: global

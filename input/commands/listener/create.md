@@ -140,9 +140,9 @@ establish connections to the remote service.
 Wait for the given status before exiting.
 
 <table class="fields"><tr><th>Default</th><td><p><code>ready</code></p>
-</td><tr><th>Choices</th><td><table class="choices"><tr><th><code>none</code></th><td><p><em>Do not wait</em></p>
-</td></tr><tr><th><code>configured</code></th><td><p>Configured</p>
-</td></tr><tr><th><code>ready</code></th><td><p>Ready</p>
+</td><tr><th>Choices</th><td><table class="choices"><tr><th><code>none</code></th><td><p>Do not wait.</p>
+</td></tr><tr><th><code>configured</code></th><td><p>Wait until the configuration is applied.</p>
+</td></tr><tr><th><code>ready</code></th><td><p>Wait until the resource is ready to use.</p>
 </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a></td></table>
 
 </div>
@@ -224,6 +224,8 @@ Set the current namespace.
 <div class="attribute-body">
 
 Set the Skupper platform.
+
+<!-- You can also use the `SKUPPER_PLATFORM` environment variable. -->
 
 <table class="fields"><tr><th>Default</th><td><p><code>kubernetes</code></p>
 </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>kubernetes</code></th><td><p>Kubernetes</p>

@@ -1,5 +1,8 @@
 # Skupper command overview
 
+- Most commands operate in the context of a platform and current
+  namespace.  `SKUPPER_PLATFORM` and `SKUPPER_NAMESPACE`
+
 ## Resource configuration and status commands
 
 - Create, update, delete, and status.
@@ -25,7 +28,7 @@
 
 ## Resource output generation commands
 
-- These commands generate structured output, YAML or JSON.
+- These commands generate Skupper resources in YAML or JSON format.
 
 - They generate output that represents Skupper resources.
 

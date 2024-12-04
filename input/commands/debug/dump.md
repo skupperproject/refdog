@@ -127,6 +127,8 @@ Set the current namespace.
 
 Set the Skupper platform.
 
+<!-- You can also use the `SKUPPER_PLATFORM` environment variable. -->
+
 <table class="fields"><tr><th>Default</th><td><p><code>kubernetes</code></p>
 </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>kubernetes</code></th><td><p>Kubernetes</p>
 </td></tr><tr><th><code>docker</code></th><td><p>Docker</p>
