@@ -34,7 +34,7 @@ def generate(model):
         for concept in group.concepts:
             title = concept.title.removesuffix(" concept")
             description = nvl(concept.description, "").replace("\n", " ")
-            description = description.split(".")[0]
+            description = re.split(r"\.\s", description)[0]
             description = mistune.html(description)
 
             append(f"<tr><th><a href=\"{concept.href}\">{title}</a></th><td>{description}</td></tr>")

@@ -17,12 +17,13 @@ refdog_object_links:
 
 <section>
 
-A ***site*** is a place on the network where workloads are running.
-Sites are linked to form application networks.
+A **site** is a place on the IP network where application workloads
+are running.  Sites are joined by **[links](link.html)** to form
+application **[networks](network.html)**.
 
-Sites operate on multiple platforms.  One site corresponds to
-one namespace in a platform instance.  Sites can be added to a
-network and removed from a network dynamically.
+Sites operate on multiple **[platforms](platform.html)**.  One site
+corresponds to one namespace in a platform instance.  Sites can be
+added to a network and removed from a network dynamically.
 
 Each site has a Skupper router which is responsible for
 communicating with the local workloads and forwarding traffic to

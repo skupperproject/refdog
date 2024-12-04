@@ -17,20 +17,22 @@ refdog_object_links:
 
 <section>
 
-A ***link*** is a channel for communication between sites.  Links
-serve as a transport for application connections and requests.  A
-set of linked sites constitutes a network.
+A **link** is a channel for communication between
+**[sites](site.html)**.  Links serve as a transport for application
+connections and requests.  A set of linked sites constitutes a
+**[network](network.html)**.
+
+Links are encrypted and authenticated using mutual TLS.  Application
+connections and requests flow across links in both directions.  A
+linked site can communicate with any other site in the network, even
+if it is not linked directly.  Links can be added and removed
+dynamically.
 
 To create a link to a remote site, the remote site must provide
-***link access***.  A link access is an external access point for
-accepting links.
-
-Application connections and requests flow across links in both
-directions.  A linked site can communicate with any other site
-in the network of sites, even if it is not linked directly.
-
-Links are encrypted and authenticated using mutual TLS.  You can
-use access tokens to create links.
+**link access**.  A link access is an external access point for
+accepting links.  Creating a link further requires explicit
+permission from the target site.  This is usually accomplished using
+**[access tokens](access-token.html)**.
 
 <figure>
   <img src="images/link-1.svg"/>

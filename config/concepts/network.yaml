@@ -1,12 +1,14 @@
 name: network
 related_concepts: [site, link]
 description: |
-  A ***network*** is a set of linked sites. A Skupper network is also
-  known as an ***application network*** or ***virtual application
-  network*** (VAN).
+  A **network** is a set of **[sites](site.html)** joined by
+  **[links](link.html)**. A Skupper network is also known as an
+  **application network** or **virtual application network** (VAN).
 
-  Each network is meant for one distributed application.  This
-  provides isolation from other applications and networks.
+  Each site in the network can expose services to other sites in the
+  network. In turn, each site in the network can access those exposed
+  services.  Each network is meant for one distributed application.
+  This provides isolation from other applications and networks.
 
   <figure>
     <img src="images/network-1.svg"/>

@@ -15,9 +15,14 @@ refdog_object_links:
 
 <section>
 
-An ***access token*** is a short-lived credential used to create a
+An **access token** is a short-lived credential used to create a
 link.  An access token contains the URL and secret code of a
-corresponding ***access grant***.
+corresponding **access grant**.
+
+Access tokens have limited redemptions and limited lifespans.
+By default, they can be redeemed only once, and they expire 15
+minutes after being issued.  You can set custom limits by
+configuring the access grant.
 
 A site wishing to accept a link (the accepting site) creates an
 access grant.  It uses the access grant to create a
@@ -27,11 +32,6 @@ the accepting site (it _redeems_ the token).  If the token is
 valid, the accepting site sends the remote site the TLS
 credentials and connection endpoints required to create a link
 to the accepting site.
-
-Access tokens have limited redemptions and limited lifespans.
-By default, they can be redeemed only once, and they expire 15
-minutes after being issued.  You can set custom limits by
-configuring the access grant.
 
 <figure>
   <img src="images/access-token-1.svg"/>

@@ -1,8 +1,7 @@
 name: connector
 related_concepts: [listener, routing key]
 description: |
-  A ***connector*** binds a local workload to listeners in remote
-  sites.
+  A **connector** binds a local workload to listeners in remote sites.
 
   <figure>
     <img src="images/connector-1.svg"/>

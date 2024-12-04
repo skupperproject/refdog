@@ -11,8 +11,8 @@ refdog_object_links:
 
 <section>
 
-A ***routing key*** is an identifier for matching listeners and
-connectors.
+A **routing key** is an identifier for matching
+**[listeners](listener.html)** and **[connectors](connector.html)**.
 
 <figure>
   <img src="images/routing-key-model.svg"/>
