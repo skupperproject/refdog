@@ -15,54 +15,54 @@
 
 ## Service exposure
 
-## Hello World using YAML
+<!-- ## Hello World using YAML -->
 
-Site West:
+<!-- Site West: -->
 
-~~~
-apiVersion: skupper.io/v2alpha1
-kind: Site
-metadata:
-  name: west
-  namespace: hello-world-west
-spec:
-  linkAccess: default
----
-apiVersion: skupper.io/v2alpha1
-kind: Listener
-metadata:
-  name: backend
-  namespace: hello-world-west
-spec:
-  routingKey: backend
-  port: 8080
-  host: backend
-~~~
+<!-- ~~~ -->
+<!-- apiVersion: skupper.io/v2alpha1 -->
+<!-- kind: Site -->
+<!-- metadata: -->
+<!--   name: west -->
+<!--   namespace: hello-world-west -->
+<!-- spec: -->
+<!--   linkAccess: default -->
+<!-- --- -->
+<!-- apiVersion: skupper.io/v2alpha1 -->
+<!-- kind: Listener -->
+<!-- metadata: -->
+<!--   name: backend -->
+<!--   namespace: hello-world-west -->
+<!-- spec: -->
+<!--   routingKey: backend -->
+<!--   port: 8080 -->
+<!--   host: backend -->
+<!-- ~~~ -->
 
-~~~
-skupper token issue ~/west-token.yaml
-~~~
+<!-- ~~~ -->
+<!-- skupper token issue ~/west-token.yaml -->
+<!-- ~~~ -->
 
-Site East:
+<!-- Site East: -->
 
-~~~
-apiVersion: skupper.io/v2alpha1
-kind: Site
-metadata:
-  name: east
-  namespace: hello-world-east
----
-apiVersion: skupper.io/v2alpha1
-kind: Connector
-metadata:
-  name: backend
-  namespace: hello-world-east
-spec:
-  routingKey: backend
-  port: 8080
-  selector: app=backend
-~~~
+<!-- ~~~ -->
+<!-- apiVersion: skupper.io/v2alpha1 -->
+<!-- kind: Site -->
+<!-- metadata: -->
+<!--   name: east -->
+<!--   namespace: hello-world-east -->
+<!-- --- -->
+<!-- apiVersion: skupper.io/v2alpha1 -->
+<!-- kind: Connector -->
+<!-- metadata: -->
+<!--   name: backend -->
+<!--   namespace: hello-world-east -->
+<!-- spec: -->
+<!--   routingKey: backend -->
+<!--   port: 8080 -->
+<!--   selector: app=backend -->
+<!-- ~~~ -->
 
-~~~
-skupper token redeem ~/west-token.yaml
-~~~
+<!-- ~~~ -->
+<!-- skupper token redeem ~/west-token.yaml -->
+<!-- ~~~ -->
