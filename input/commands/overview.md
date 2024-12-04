@@ -3,11 +3,16 @@
 - Most commands operate in the context of a platform and current
   namespace.  `SKUPPER_PLATFORM` and `SKUPPER_NAMESPACE`
 
-## Resource configuration and status commands
+## Resource commands
 
-- Create, update, delete, and status.
+- **Site command**
+- **Link command**
+- **Listener command**
+- **Connector command**
 
-- Site, Link, Listener, and Connector.
+## Resource subcommands
+
+### Create, update, and delete
 
 - On Kubernetes: Generally, they submit the resource to the controller
   and wait for ready state (Listener and Connector wait for configured
@@ -23,10 +28,12 @@
 - Update operations shift the resource status from ready to pending
   while the change is taking place.  It waits for ready status.
 
+### Status
+
 - The status command gets the status info from the resource status
   fields.
 
-## Resource output generation commands
+### Generate
 
 - These commands generate Skupper resources in YAML or JSON format.
 
@@ -46,15 +53,11 @@
 - The generate commands usually don't need to wait for a status.  Link
   generate is the exception - it needs the site to be ready.
 
+## Token commands
+
 - The token commands are for creating links!
 
-## Site configuration commands
-
-## Site linking commands
-
-## Service exposure commands
-
-## Site operation commands
+## System commands
 
 - These commands are for non-Kube sites.
 
@@ -65,24 +68,24 @@
 
 - These commands are for debugging and troubleshooting.
 
-## Other stuff
+## Version command
 
 - The version command!
 
-## Hello World using the CLI
+<!-- ## Hello World using the CLI -->
 
-Site West:
+<!-- Site West: -->
 
-~~~
-skupper site create west --enable-link-access
-skupper listener create backend 8080
-skupper token issue ~/west-token.yaml
-~~~
+<!-- ~~~ -->
+<!-- skupper site create west --enable-link-access -->
+<!-- skupper listener create backend 8080 -->
+<!-- skupper token issue ~/west-token.yaml -->
+<!-- ~~~ -->
 
-Site East:
+<!-- Site East: -->
 
-~~~
-skupper site create east
-skupper connector create backend 8080
-skupper token redeem ~/west-token.yaml
-~~~
+<!-- ~~~ -->
+<!-- skupper site create east -->
+<!-- skupper connector create backend 8080 -->
+<!-- skupper token redeem ~/west-token.yaml -->
+<!-- ~~~ -->

@@ -15,7 +15,7 @@ refdog_object_links:
 <table class="objects">
 <tr><th><a href="{{site_prefix}}/concepts/network.html">Network</a></th><td><p>A <strong>network</strong> is a set of <strong><a href="site.html">sites</a></strong> joined by <strong><a href="link.html">links</a></strong></p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/site.html">Site</a></th><td><p>A <strong>site</strong> is a place on the IP network where application workloads are running</p>
+<tr><th><a href="{{site_prefix}}/concepts/site.html">Site</a></th><td><p>A <strong>site</strong> is a place on the internet where application workloads are running</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/link.html">Link</a></th><td><p>A <strong>link</strong> is a channel for communication between <strong><a href="site.html">sites</a></strong></p>
 </td></tr>
@@ -28,7 +28,7 @@ refdog_object_links:
 #### Sites
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/concepts/site.html">Site</a></th><td><p>A <strong>site</strong> is a place on the IP network where application workloads are running</p>
+<tr><th><a href="{{site_prefix}}/concepts/site.html">Site</a></th><td><p>A <strong>site</strong> is a place on the internet where application workloads are running</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/platform.html">Platform</a></th><td><p>A <strong>platform</strong> is a system for running application workloads</p>
 </td></tr>

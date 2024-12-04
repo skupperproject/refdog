@@ -17,7 +17,7 @@ refdog_object_links:
 
 <section>
 
-A **site** is a place on the IP network where application workloads
+A **site** is a place on the internet where application workloads
 are running.  Sites are joined by **[links](link.html)** to form
 application **[networks](network.html)**.
 
