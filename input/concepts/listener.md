@@ -15,8 +15,8 @@ refdog_object_links:
 
 <section>
 
-A **listener** binds a local connection endpoint to connectors in
-remote sites.
+A **listener** binds a local connection endpoint to
+**[connectors](connector.html)** in remote **[sites](site.html)**.
 
 <figure>
   <img src="images/listener-1.svg"/>

@@ -1,5 +1,5 @@
 ---
-links:
+refdog_object_links:
 - title: Skupper concepts
   url: /concepts/index.html
 - title: Skupper resources

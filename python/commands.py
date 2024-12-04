@@ -16,7 +16,7 @@ def generate(model):
         lines.append(line)
 
     append("---")
-    append("links:")
+    append("refdog_object_links:")
     append("- title: Skupper concepts")
     append("  url: /concepts/index.html")
     append("- title: Skupper resources")
@@ -44,14 +44,14 @@ def generate(model):
                 for subcommand in command.subcommands:
                     title = subcommand.title.removesuffix(" command")
                     description = nvl(subcommand.description, "").replace("\n", " ")
-                    description = description.split(".")[0]
+                    description = re.split(r"\.\s", description)[0]
                     description = mistune.html(description)
 
                     append(f"<tr><th><a href=\"{subcommand.href}\">{title}</a></th><td>{description}</td></tr>")
             else:
                 title = command.title.removesuffix(" command")
                 description = nvl(command.description, "").replace("\n", " ")
-                description = description.split(".")[0]
+                description = re.split(r"\.\s", description)[0]
                 description = mistune.html(description)
 
                 append(f"<tr><th><a href=\"{command.href}\">{title}</a></th><td>{description}</td></tr>")

@@ -16,7 +16,7 @@ def generate(model):
         lines.append(line)
 
     append("---")
-    append("links:")
+    append("refdog_object_links:")
     append("- title: Skupper concepts")
     append("  url: /concepts/index.html")
     append("- title: Skupper commands")
@@ -36,7 +36,7 @@ def generate(model):
         for resource in group.resources:
             title = resource.title.removesuffix(" resource")
             description = nvl(resource.description, "").replace("\n", " ")
-            description = description.split(".")[0]
+            description = re.split(r"\.\s", description)[0]
             description = mistune.html(description)
 
             append(f"<tr><th><a href=\"{resource.href}\">{title}</a></th><td>{description}</td></tr>")

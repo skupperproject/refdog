@@ -4,8 +4,8 @@ related_resources: [AccessGrant, AccessToken]
 related_commands: [token]
 description: |
   An **access token** is a short-lived credential used to create a
-  link.  An access token contains the URL and secret code of a
-  corresponding **access grant**.
+  **[link](link.html)**.  An access token contains the URL and secret
+  code of a corresponding **access grant**.
 
   Access tokens have limited redemptions and limited lifespans.
   By default, they can be redeemed only once, and they expire 15
