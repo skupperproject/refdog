@@ -30,6 +30,8 @@ subcommands:
       Start up the Skupper components for the current site.
 
       This starts the systemd service for the current namespace.
+
+      <!-- Maybe: If not installed yet, run install -->
     include_options: [context/namespace, global/*]
   - name: stop
     platforms: [Docker, Podman, Linux]

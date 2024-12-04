@@ -3,6 +3,7 @@ groups:
     concepts:
       - network
       - site
+      - link
       - listener
       - connector
   - title: Sites

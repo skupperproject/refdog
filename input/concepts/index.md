@@ -17,6 +17,8 @@ links:
 </td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/site.html">Site</a></th><td><p>A <em><strong>site</strong></em> is a place on the network where workloads are running</p>
 </td></tr>
+<tr><th><a href="{{site_prefix}}/concepts/link.html">Link</a></th><td><p>A <em><strong>link</strong></em> is a channel for communication between sites</p>
+</td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/listener.html">Listener</a></th><td><p>A <em><strong>listener</strong></em> binds a local connection endpoint to connectors in remote sites</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/connector.html">Connector</a></th><td><p>A <em><strong>connector</strong></em> binds a local workload to listeners in remote sites</p>

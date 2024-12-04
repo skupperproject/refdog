@@ -17,7 +17,7 @@ refdog_object_links:
 
 An ***access token*** is a short-lived credential used to create a
 link.  An access token contains the URL and secret code of a
-corresponding access grant.
+corresponding ***access grant***.
 
 A site wishing to accept a link (the accepting site) creates an
 access grant.  It uses the access grant to create a
