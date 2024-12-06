@@ -1,10 +1,21 @@
 # Skupper resource overview
 
+- CRDs and the Skupper controller (and system equivalent)
+- A declarative API.
+- It is the basis for all Skupper configuration.
 - Skupper uses YAML resources for configuration
-- These are Kubernetes custom resources
-- They are used for non-Kube platforms as well
+- These are Kubernetes custom resources.  They are used for non-Kube platforms as well.
+
+- The resources are primary.  Everything goes through the standard
+  resources.  All of Skupper's logic is in the controller that
+  processes the resources.  The CLI's job is to create and submit
+  resources.
+
 - Some resource fields are "updatable" - you can change their values
   without recreating the resource.
+
+- Where do resources go in Kubernetes?
+- Where do they go in non-Kube?  FS location.  system apply.
 
 ## Sites
 
