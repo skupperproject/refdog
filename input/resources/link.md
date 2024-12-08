@@ -115,10 +115,10 @@ the link.
 </div>
 <div class="attribute-body">
 
-The name of a bundle of TLS certificates and keys used for
-secure router-to-router communication.  The bundle
-contains the trusted server certificate.  It optionally
-includes a client certificate and key for mutual TLS.
+The name of a bundle of certificates used for mutual TLS
+router-to-router communication.  The bundle contains the
+client certificate and key and the trusted server certificate
+(usually a CA).
 
 On Kubernetes, the value is the name of a Secret in the
 current namespace.

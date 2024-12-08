@@ -3,6 +3,9 @@ description: |
   Display help for debug commands and exit.
 include_options: [global/*]
 subcommands:
+  - name: diagnose
+    description: |
+      XXX
   - name: dump
     links: [skupper/debug_dumps]
     description: |

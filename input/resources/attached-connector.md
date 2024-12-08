@@ -166,10 +166,10 @@ If true, expose each pod as an individual service.
 </div>
 <div class="attribute-body">
 
-The name of a bundle of TLS certificates and keys used for
-secure router-to-server communication.  The bundle contains the
-trusted server certificate.  It optionally includes a client
-certificate and key for mutual TLS.
+The name of a bundle of TLS certificates used for secure
+router-to-server communication.  The bundle contains the trusted
+server certificate (usually a CA).  It optionally includes a
+client certificate and key for mutual TLS.
 
 On Kubernetes, the value is the name of a Secret in the current
 namespace.

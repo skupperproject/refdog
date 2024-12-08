@@ -174,12 +174,13 @@ If true, expose each pod as an individual service.
 </div>
 <div class="attribute-body">
 
-The name of a bundle of TLS certificates and keys used for
-secure client-to-router communication.  The bundle contains
-the trusted server certificate.
+The name of a bundle of TLS certificates used for secure
+client-to-router communication.  The bundle contains the
+server certificate and key.  It optionally includes the
+trusted client certificate (usually a CA) for mutual TLS.
 
-On Kubernetes, the value is the name of a Secret in the current
-namespace.
+On Kubernetes, the value is the name of a Secret in the
+current namespace.
 
 On Docker, Podman, and Linux, the value is the name of a
 directory under `input/certs/` in the current namespace.

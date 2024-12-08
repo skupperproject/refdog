@@ -102,10 +102,12 @@ refdog_object_links:
 </table>
 
 
-#### Debug operations
+#### Debugging operations
 
 <table class="objects">
 <tr><th><a href="{{site_prefix}}/commands/debug/index.html">Debug</a></th><td>Overview of debug commands</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/debug/diagnose.html">Debug diagnose</a></th><td><p>XXX</p>
+</td></tr>
 <tr><th><a href="{{site_prefix}}/commands/debug/dump.html">Debug dump</a></th><td><p>Generate a debug dump file</p>
 </td></tr>
 </table>
