@@ -21,7 +21,8 @@ refdog_object_toc:
 
 <section>
 
-Generate a debug dump file.
+Generate a debug dump file.  Debug dumps collect the details of
+a site so another party can identify and fix a problem.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
@@ -32,7 +33,7 @@ Generate a debug dump file.
 ## Usage
 
 ~~~ shell
-skupper debug dump <file> [options]
+skupper debug dump [file] [options]
 ~~~
 
 </section>
@@ -42,9 +43,13 @@ skupper debug dump <file> [options]
 ## Examples
 
 ~~~ console
-# Generate a debug dump file
-$ skupper debug dump ~/dump.tar.gz
-Debug dump file generated at /home/fritz/dump.tar.gz.
+# Generate a dump file
+$ skupper debug dump
+Debug dump file: /home/fritz/skupper-dump-west-2024-12-09.tar.gz
+
+# Generate a dump file to a particular path
+$ skupper debug dump /tmp/abc.tar.gz
+Debug dump file: /tmp/abc.tar.gz
 ~~~
 
 </section>
@@ -55,13 +60,18 @@ Debug dump file generated at /home/fritz/dump.tar.gz.
 
 <div class="attribute">
 <div class="attribute-heading">
-<h3 id="option-file">&lt;file&gt;</h3>
+<h3 id="option-file">[file]</h3>
 <div class="attribute-type-info">string</div>
-<div class="attribute-flags">required</div>
+<div class="attribute-flags">optional</div>
 </div>
 <div class="attribute-body">
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+The name of the file to generate.
+
+The command exits with an error if the file already exists.
+
+<table class="fields"><tr><th>Default</th><td><p><code>skupper-dump-&lt;site-name&gt;-&lt;date&gt;.tar.gz</code></p>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>

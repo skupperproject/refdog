@@ -38,8 +38,6 @@ skupper debug [subcommand] [options]
 ## Subcommands
 
 <table class="objects">
-<tr><th><a href="diagnose.html">Debug diagnose</a></th><td><p>XXX</p>
-</td></tr>
 <tr><th><a href="dump.html">Debug dump</a></th><td><p>Generate a debug dump file</p>
 </td></tr>
 </table>
