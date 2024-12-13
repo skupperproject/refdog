@@ -16,8 +16,8 @@ kind: AccessToken
 metadata:
   name: <token-name>
 spec:
-  code: "{{ .status.code }}"
-  ca: {{ printf "%q" .status.ca }}
-  url: "{{ .status.url }}"
+  code: "{{{ .status.code }}}"
+  ca: {{{ printf "%q" .status.ca }}}
+  url: "{{{ .status.url }}}"
 ' > token.yaml
 ~~~
