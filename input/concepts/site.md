@@ -21,6 +21,14 @@ A **site** is a place on the internet where application workloads
 are running.  Sites are joined by **[links](link.html)** to form
 application **[networks](network.html)**.
 
+<figure>
+  <img src="images/site-model.svg"/>
+  <figcaption>The site model</figcaption>
+</figure>
+
+A site is associated with one platform and one network.  Each site
+has zero or many workloads and zero or many links.
+
 Sites operate on multiple **[platforms](platform.html)**.  One site
 corresponds to one namespace in a platform instance.  Sites can be
 added to a network and removed from a network dynamically.
@@ -28,11 +36,6 @@ added to a network and removed from a network dynamically.
 Each site has a Skupper router which is responsible for
 communicating with the local workloads and forwarding traffic to
 routers in remote sites.
-
-<figure>
-  <img src="images/site-model.svg"/>
-  <figcaption>The site model</figcaption>
-</figure>
 
 <figure>
   <img src="images/site-1.svg"/>

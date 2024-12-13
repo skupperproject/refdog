@@ -25,8 +25,10 @@ keys](routing-key.html)**.
   <figcaption>The listener model</figcaption>
 </figure>
 
-A site has zero or more listeners.  Each listener has an associated
-connection endpoint (host:port) and routing key.
+A site has zero or many listeners.  Each listener has an associated
+connection endpoint and routing key.  The connection endpoint
+exposes a host and port for accepting connections from local
+clients.
 
 <figure>
   <img src="images/routing-key-model.svg"/>
@@ -35,7 +37,7 @@ connection endpoint (host:port) and routing key.
 
 The routing key is a string identifier that binds the listener to
 connectors in remote sites.  Skupper routers forward client
-connections to listeners across the network to connectors with
+connections across the network from listeners to connectors with
 matching routing keys.  The connectors then forward the client
 connections to the workload servers.
 
