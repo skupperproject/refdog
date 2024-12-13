@@ -82,7 +82,7 @@ The namespace of the resource.
 
 The named interfaces by which a router can be accessed.  These
 include "inter-router" for links between interior routers and
-"edge" for links from edge routers.
+"edge" for links from edge routers to interior routers.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 

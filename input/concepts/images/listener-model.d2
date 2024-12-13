@@ -1,0 +1,19 @@
+...@common
+
+Endpoint (host\:port).class: notion
+Routing key.class: notion
+
+Site -- Listener: {
+  source-arrowhead: 1
+  target-arrowhead: n
+}
+
+Listener -- Endpoint (host\:port): {
+  source-arrowhead: 1
+  target-arrowhead: 1
+}
+
+Listener -- Routing key: {
+  source-arrowhead: n
+  target-arrowhead: 1
+}

@@ -19,6 +19,16 @@ A **listener** binds a local connection endpoint to
 **[connectors](connector.html)** in remote **[sites](site.html)**.
 
 <figure>
+  <img src="images/listener-model.svg"/>
+  <figcaption>The listener model</figcaption>
+</figure>
+
+<figure>
+  <img src="images/routing-key-model.svg"/>
+  <figcaption>Listeners and connectors associated by routing key</figcaption>
+</figure>
+
+<figure>
   <img src="images/listener-1.svg"/>
   <figcaption>A listener with multiple clients connecting
   through it</figcaption>

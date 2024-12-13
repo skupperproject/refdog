@@ -19,6 +19,16 @@ A **connector** binds a local workload to
 **[listeners](listener.html)** in remote **[sites](site.html)**.
 
 <figure>
+  <img src="images/connector-model.svg"/>
+  <figcaption>The connector model</figcaption>
+</figure>
+
+<figure>
+  <img src="images/routing-key-model.svg"/>
+  <figcaption>Listeners and connectors associated by routing key</figcaption>
+</figure>
+
+<figure>
   <img src="images/connector-1.svg"/>
   <figcaption>A connector bound to a set of servers</figcaption>
 </figure>

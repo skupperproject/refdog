@@ -1,0 +1,19 @@
+...@common
+
+Workload.class: notion
+Routing key.class: notion
+
+Site -- Connector: {
+  source-arrowhead: 1
+  target-arrowhead: n
+}
+
+Connector -- Workload: {
+  source-arrowhead: 1
+  target-arrowhead: 1
+}
+
+Connector -- Routing key: {
+  source-arrowhead: n
+  target-arrowhead: 1
+}

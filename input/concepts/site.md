@@ -30,6 +30,11 @@ communicating with the local workloads and forwarding traffic to
 routers in remote sites.
 
 <figure>
+  <img src="images/site-model.svg"/>
+  <figcaption>The site model</figcaption>
+</figure>
+
+<figure>
   <img src="images/site-1.svg"/>
   <figcaption>A site with three workloads</figcaption>
 </figure>
