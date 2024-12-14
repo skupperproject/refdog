@@ -1,6 +1,8 @@
 ---
 body_class: object concept
 refdog_object_links:
+- title: Service exposure
+  url: /concepts/overview.html#service-exposure
 - title: Listener resource
   url: /resources/listener.html
 - title: Listener command
@@ -17,7 +19,7 @@ refdog_object_links:
 
 A **listener** binds a local connection endpoint to
 **[connectors](connector.html)** in remote **[sites](site.html)**.
-Listeners and connectors are bound using **[routing
+Listeners and connectors are matched using **[routing
 keys](routing-key.html)**.
 
 <figure>
@@ -25,7 +27,7 @@ keys](routing-key.html)**.
   <figcaption>The listener model</figcaption>
 </figure>
 
-A site has zero or many listeners.  Each listener has an associated
+A site has zero or more listeners.  Each listener has an associated
 connection endpoint and routing key.  The connection endpoint
 exposes a host and port for accepting connections from local
 clients.

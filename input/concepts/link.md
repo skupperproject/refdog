@@ -27,7 +27,7 @@ connections and requests.  A set of linked sites constitutes a
   <figcaption>The link model</figcaption>
 </figure>
 
-A site has zero or many links.  Each link has a host, port, and TLS
+A site has zero or more links.  Each link has a host, port, and TLS
 credentials for making a mutual TLS connection to a remote site.
 
 Application connections and requests flow across links in both

@@ -52,6 +52,6 @@ refdog_object_links:
 </td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/connector.html">Connector</a></th><td><p>A <strong>connector</strong> binds a local workload to <strong><a href="listener.html">listeners</a></strong> in remote <strong><a href="site.html">sites</a></strong></p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/routing-key.html">Routing key</a></th><td><p>A <strong>routing key</strong> is an identifier for matching <strong><a href="listener.html">listeners</a></strong> and <strong><a href="connector.html">connectors</a></strong></p>
+<tr><th><a href="{{site_prefix}}/concepts/routing-key.html">Routing key</a></th><td><p>A <strong>routing key</strong> is a string identifier for matching <strong><a href="listener.html">listeners</a></strong> and <strong><a href="connector.html">connectors</a></strong></p>
 </td></tr>
 </table>

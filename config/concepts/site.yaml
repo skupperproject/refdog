@@ -11,7 +11,7 @@ description: |
   </figure>
 
   A site is associated with one platform and one network.  Each site
-  has zero or many workloads and zero or many links.
+  has zero or more workloads and zero or more links.
 
   Sites operate on multiple **[platforms](platform.html)**.  One site
   corresponds to one namespace in a platform instance.  Sites can be

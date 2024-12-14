@@ -1,6 +1,8 @@
 ---
 body_class: object concept
 refdog_object_links:
+- title: Service exposure
+  url: /concepts/overview.html#service-exposure
 - title: Listener concept
   url: /concepts/listener.html
 - title: Connector concept
@@ -11,14 +13,17 @@ refdog_object_links:
 
 <section>
 
-A **routing key** is an identifier for matching
+A **routing key** is a string identifier for matching
 **[listeners](listener.html)** and **[connectors](connector.html)**.
 
 <figure>
   <img src="images/routing-key-model.svg"/>
-  <figcaption>Each routing key has zero or more listeners and
-  zero or more connectors</figcaption>
+  <figcaption>The routing key model</figcaption>
 </figure>
+
+A routing key has zero or more listeners and zero or more
+connectors.  A service is exposed on the application network when it
+has at least one listener and one connector, matched by routing key.
 
 <figure>
   <img src="images/routing-key-1.svg"/>

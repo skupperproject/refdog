@@ -1,6 +1,8 @@
 ---
 body_class: object concept
 refdog_object_links:
+- title: Service exposure
+  url: /concepts/overview.html#service-exposure
 - title: Connector resource
   url: /resources/connector.html
 - title: Connector command
@@ -17,7 +19,7 @@ refdog_object_links:
 
 A **connector** binds a local workload to
 **[listeners](listener.html)** in remote **[sites](site.html)**.
-Listeners and connectors are bound using **[routing
+Listeners and connectors are matched using **[routing
 keys](routing-key.html)**.
 
 <figure>
@@ -25,7 +27,7 @@ keys](routing-key.html)**.
   <figcaption>The connector model</figcaption>
 </figure>
 
-A site has zero or many connectors.  Each connector has an
+A site has zero or more connectors.  Each connector has an
 associated workload and routing key.  The workload can be specified
 as a Kubernetes pod selector or as the host and port of a local
 network service.
