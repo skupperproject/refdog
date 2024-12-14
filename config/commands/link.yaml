@@ -1,11 +1,13 @@
 name: link
 related_commands: [token]
+links: [skupper/site_linking]
 description: |
   Display help for link commands and exit.
 include_options: [global/*]
 subcommands:
   - name: update
     wait: Ready
+    links: [skupper/site_linking]
     description: |
       Change link settings.
     examples: |
@@ -16,6 +18,7 @@ subcommands:
     include_options: [link/*, update/*, context/*, global/*]
   - name: delete
     wait: Deletion
+    links: [skupper/site_linking]
     description: |
       Delete a link.
     examples: |
@@ -25,6 +28,7 @@ subcommands:
       Link "west-6bfn6" is deleted.
     include_options: [delete/*, context/*, global/*]
   - name: status
+    links: [skupper/site_linking]
     description: |
       Display the status of links in the current site.
     examples: |
@@ -36,17 +40,18 @@ subcommands:
 
       Links from remote sites:
 
-      [none]
+      <none>
 
       # Show the status of one link
       $ skupper link status west-6bfn6
       Name:     west-6bfn6
       Status:   Ready
-      Message:  [none]
+      Message:  <none>
       Cost:     1
     include_options: [status/*, context/*, global/*]
   - name: generate
     wait: Site resource Ready
+    links: [skupper/site_linking]
     description: |
       Generate a Link resource for use in a remote site.
 

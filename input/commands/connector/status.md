@@ -2,10 +2,14 @@
 body_class: object command
 refdog_object_has_attributes: true
 refdog_object_links:
+- title: Service exposure
+  url: /concepts/overview.html#service-exposure
 - title: Connector concept
   url: /concepts/connector.html
 - title: Connector resource
   url: /resources/connector.html
+- title: Listener status command
+  url: /commands/listener/status.html
 refdog_object_toc:
 - id: ''
   title: Overview
@@ -47,17 +51,17 @@ skupper connector status [name] [options]
 # Show the status of all connectors in the current site
 $ skupper connector status
 NAME       STATUS   ROUTING-KEY   SELECTOR         HOST     PORT   LISTENERS
-backend    Ready    backend       app=backend      [none]   8080   true
-database   Ready    database      app=postgresql   [none]   5432   true
+backend    Ready    backend       app=backend      <none>   8080   true
+database   Ready    database      app=postgresql   <none>   5432   true
 
 # Show the status of one connector
 $ skupper connector status backend
 Name:                     backend
 Status:                   Ready
-Message:                  [none]
+Message:                  <none>
 Routing key:              backend
 Selector:                 app=backend
-Host:                     [none]
+Host:                     <none>
 Port:                     8080
 Has matching listeners:   1
 ~~~

@@ -2,6 +2,7 @@ name: access token
 related_concepts: [link]
 related_resources: [AccessGrant, AccessToken]
 related_commands: [token]
+links: [skupper/site_linking]
 description: |
   An **access token** is a short-lived credential used to create a
   **[link](link.html)**.  An access token contains the URL and secret

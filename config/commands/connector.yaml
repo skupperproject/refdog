@@ -1,5 +1,6 @@
 name: connector
 related_commands: [listener]
+links: [skupper/service_exposure]
 description: |
   Display help for connector commands and exit.
 include_options: [global/*]
@@ -7,6 +8,7 @@ subcommands:
   - name: create
     wait: Configured
     related_commands: [listener/create]
+    links: [skupper/service_exposure]
     description: |
       Create a connector.
     examples: |
@@ -28,6 +30,7 @@ subcommands:
   - name: update
     wait: Configured
     related_commands: [listener/update]
+    links: [skupper/service_exposure]
     description: |
       Update a connector.
     examples: |
@@ -42,6 +45,7 @@ subcommands:
   - name: delete
     wait: Deletion
     related_commands: [listener/delete]
+    links: [skupper/service_exposure]
     description: |
       Delete a connector.
     examples: |
@@ -51,27 +55,31 @@ subcommands:
       Connector "database" is deleted.
     include_options: [delete/*, context/*, global/*]
   - name: status
+    related_commands: [listener/status]
+    links: [skupper/service_exposure]
     description: |
       Display the status of connectors in the current site.
     examples: |
       # Show the status of all connectors in the current site
       $ skupper connector status
       NAME       STATUS   ROUTING-KEY   SELECTOR         HOST     PORT   LISTENERS
-      backend    Ready    backend       app=backend      [none]   8080   true
-      database   Ready    database      app=postgresql   [none]   5432   true
+      backend    Ready    backend       app=backend      <none>   8080   true
+      database   Ready    database      app=postgresql   <none>   5432   true
 
       # Show the status of one connector
       $ skupper connector status backend
       Name:                     backend
       Status:                   Ready
-      Message:                  [none]
+      Message:                  <none>
       Routing key:              backend
       Selector:                 app=backend
-      Host:                     [none]
+      Host:                     <none>
       Port:                     8080
       Has matching listeners:   1
     include_options: [status/*, context/*, global/*]
   - name: generate
+    related_commands: [listener/generate]
+    links: [skupper/service_exposure]
     description: |
       Generate a Connector resource.
     examples: |

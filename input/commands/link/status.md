@@ -2,6 +2,8 @@
 body_class: object command
 refdog_object_has_attributes: true
 refdog_object_links:
+- title: Site linking
+  url: /topics/site-linking.html
 - title: Link concept
   url: /concepts/link.html
 - title: Link resource
@@ -52,13 +54,13 @@ south-ac619   Error    10
 
 Links from remote sites:
 
-[none]
+<none>
 
 # Show the status of one link
 $ skupper link status west-6bfn6
 Name:     west-6bfn6
 Status:   Ready
-Message:  [none]
+Message:  <none>
 Cost:     1
 ~~~
 

@@ -1,6 +1,8 @@
 ---
 body_class: object concept
 refdog_object_links:
+- title: Site linking
+  url: /topics/site-linking.html
 - title: Link resource
   url: /resources/link.html
 - title: Link command

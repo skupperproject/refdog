@@ -1,5 +1,6 @@
 name: link
 related_concepts: [network, site, access token]
+links: [skupper/site_linking]
 description: |
   A **link** is a channel for communication between
   **[sites](site.html)**.  Links serve as a transport for application

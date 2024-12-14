@@ -2,10 +2,14 @@
 body_class: object command
 refdog_object_has_attributes: true
 refdog_object_links:
+- title: Service exposure
+  url: /concepts/overview.html#service-exposure
 - title: Listener concept
   url: /concepts/listener.html
 - title: Listener resource
   url: /resources/listener.html
+- title: Connector status command
+  url: /commands/connector/status.html
 refdog_object_toc:
 - id: ''
   title: Overview
@@ -54,7 +58,7 @@ database   Ready    database      database   5432   true
 $ skupper listener status backend
 Name:                      backend
 Status:                    Ready
-Message:                   [none]
+Message:                   <none>
 Routing key:               backend
 Host:                      backend
 Port:                      8080

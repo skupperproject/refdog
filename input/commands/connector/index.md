@@ -2,6 +2,8 @@
 body_class: object command
 refdog_object_has_attributes: true
 refdog_object_links:
+- title: Service exposure
+  url: /concepts/overview.html#service-exposure
 - title: Connector concept
   url: /concepts/connector.html
 - title: Connector resource
