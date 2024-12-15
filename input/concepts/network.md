@@ -30,7 +30,7 @@ This provides isolation from other applications and networks.
 
 <figure>
   <img src="images/network-1.svg"/>
-  <figcaption>A simple two-site network</figcaption>
+  <figcaption>A simple network with two sites</figcaption>
 </figure>
 
 <figure>

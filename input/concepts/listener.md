@@ -49,8 +49,8 @@ then forward the client connections to the workload servers.
 
 <figure>
   <img src="images/listener-1.svg"/>
-  <figcaption>A listener with multiple clients connecting
-  through it</figcaption>
+  <figcaption>A database service with listeners in two
+  sites</figcaption>
 </figure>
 
 </section>

@@ -1,9 +1,9 @@
 ...@common
 
-Frontend 1 -- Listener 1 -- Routing key -- Connector 1 -- Backend 1
-Frontend 2 -- Listener 2 -- Routing key -- Connector 2 -- Backend 2
+Site 1.class: neutral
+Site 1.Clients.style.fill: white
 
-Routing key.label: "\"backend\""
+Site 2.class: neutral
+Site 2.Servers.style.fill: white
 
-Frontend*.class: notion
-Backend*.class: notion
+Site 1.Clients -> Site 1.Listener -- Routing key -- Site 2.Connector -> Site 2.Servers

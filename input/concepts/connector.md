@@ -49,7 +49,8 @@ then forward the client connections to the workload servers.
 
 <figure>
   <img src="images/connector-1.svg"/>
-  <figcaption>A connector bound to a set of servers</figcaption>
+  <figcaption>A database service with connectors in two
+  sites</figcaption>
 </figure>
 
 </section>

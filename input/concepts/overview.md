@@ -1,7 +1,7 @@
 # Skupper concept overview
 
 <figure>
-  <img src="images/overview-1.svg"/>
+  <img src="images/overview-model.svg"/>
   <figcaption>The primary concepts in the Skupper model</figcaption>
 </figure>
 
@@ -57,6 +57,6 @@ forward client connections to the sites where the server workload is
 running.
 
 <figure>
-  <img src="images/overview-3.svg"/>
+  <img src="images/routing-key-1.svg" style="max-width: 90%;"/>
   <figcaption>A workload exposed as a service in a remote site</figcaption>
 </figure>

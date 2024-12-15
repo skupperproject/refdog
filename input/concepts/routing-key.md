@@ -27,6 +27,12 @@ has at least one listener and one connector, matched by routing key.
 
 <figure>
   <img src="images/routing-key-1.svg"/>
+  <figcaption>A workload exposed as a service in a remote
+  site</figcaption>
+</figure>
+
+<figure>
+  <img src="images/routing-key-2.svg"/>
   <figcaption>A routing key with two listeners and two
   connectors</figcaption>
 </figure>

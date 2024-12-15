@@ -1,14 +1,13 @@
 ...@common
 
-Site: {
-  Connector -> Server 1
-  Connector -> Server 2
-  Connector -> Server 3
+Site 1.class: neutral
+Site 1.Servers.style.fill: white
 
-  Server*.style.fill: white
-}
-
-Listeners -- Routing key -- Site.Connector
+Site 2.class: neutral
+Site 2.Servers.style.fill: white
 
 Listeners.class: notion
-Site*.class: neutral
+
+Listeners -- Routing key\n\"database\" -- Site 1.Connector -> Site 1.Servers
+
+Routing key\n\"database\" -- Site 2.Connector -> Site 2.Servers

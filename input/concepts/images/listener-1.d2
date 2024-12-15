@@ -1,16 +1,13 @@
 ...@common
 
-direction: right
+Site 1.class: neutral
+Site 1.Clients.style.fill: white
 
-Site: {
-  Client 1 -> Listener
-  Client 2 -> Listener
-  Client 3 -> Listener
-
-  Client*.style.fill: white
-}
-
-Site.Listener -- Routing key -- Connectors
+Site 2.class: neutral
+Site 2.Clients.style.fill: white
 
 Connectors.class: notion
-Site*.class: neutral
+
+Site 1.Clients -> Site 1.Listener -- Routing key\n\"database\" -- Connectors
+
+Site 2.Clients -> Site 2.Listener -- Routing key\n\"database\"
