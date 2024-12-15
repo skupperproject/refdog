@@ -1,31 +1,18 @@
 ...@common
 
-direction: down
+Canvas.class: canvas
 
 Canvas: {
-  Platform: {
-    Namespace 1: {
-      Site: {
-        W1
-        W2
-      }
-    }
-
-    Namespace 2: {
-      Site: {
-        W1
-        W2
-      }
-    }
-
-    Namespace 3: {
-      Site: {
-        style.opacity: 0
-        W1
-        W2
-      }
-    }
+  Platform 1: {
+    Namespace 1.Site
+    Namespace 2.Site
   }
-}
 
-Canvas.class: canvas
+  Platform 2: {
+    Namespace 1.Site
+    Namespace 2.Site
+  }
+
+  Platform 1.Namespace 1.Site -- Platform 2.Namespace 1.Site
+  Platform 1.Namespace 2.Site -- Platform 2.Namespace 2.Site
+}

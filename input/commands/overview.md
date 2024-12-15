@@ -1,26 +1,18 @@
 # Skupper command overview
 
-The Skupper CLI is a light layer on top of the standard Skupper
-custom resources.  Its primary job is to generate YAML resources,
-submit them to the platform, and wait for the desired result.
-
-The resource `create` and `update` operations in particular are meant
-to provide a convenient and CLI-conventional interface, as an
-alternative to writing YAML by hand.
-
-#### Blocking
+The Skupper command-line interface (CLI) is a light layer on top of
+the standard Skupper resources.  Its primary job is to generate
+resources, submit them to the platform, and wait for the desired
+result.  It also provides commands for linking sites, operating
+Skupper components, and debugging.
 
 In general, the operations block until the user's desired outcome is
 achieved.  You can change the wait condition using the `--wait`
 option.
 
-Create and update in general block until the resource is ready.
-Delete waits for deletion to complete.
-
-#### More stuff
-
-- Most commands operate in the context of a platform and current
-  namespace.  `SKUPPER_PLATFORM` and `SKUPPER_NAMESPACE`
+XXX Most commands operate in the context of a platform and current
+namespace.  You can use options `SKUPPER_PLATFORM` and
+`SKUPPER_NAMESPACE`.
 
 ## Resource commands
 
@@ -44,6 +36,10 @@ more `--some-key some-value` command line options.  YAML resource
 options in camel case (`someKey`) are exposed as hyphenated names
 (`some-key`) when used as command line options.
 
+XXX The resource `create` and `update` operations in particular are meant
+to provide a convenient and CLI-conventional interface, as an
+alternative to writing YAML by hand. XXX
+
 #### `skupper <resource-type> [options]`
 
 Without specifying a subcommand, these print help text for the
@@ -56,12 +52,18 @@ Create a resource.
 - Create operations take a name option, which is the name of the
   resource created (.metadata.name).
 
+- XXX Create and update in general block until the resource is ready.
+  Delete waits for deletion to complete.
+
 #### `skupper <resource-type> update <resource-name> [options]`
 
 - Update operations shift the resource status from ready to pending
   while the change is taking place.  It waits for ready status.
 
 - It has the same options as create.
+
+- XXX Create and update in general block until the resource is ready.
+  Delete waits for deletion to complete.
 
 #### `skupper <resource-type> delete <resource-name> [options]`
 

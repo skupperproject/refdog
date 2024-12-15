@@ -8,12 +8,11 @@
 ## Sites
 
 Skupper's job is to provide connectivity for applications that have
-parts running in multiple locations and on different platforms.
-
-A **[site](site.html)** represents a particular location and a
-particular **[platform](platform.html)**.  It's a place where you have real running
-workloads.  Each site corresponds to one platform namespace, so you
-can have multiple sites on one platform.
+parts running in multiple locations and on different platforms.  A
+**[site](site.html)** represents a particular location and a
+particular **[platform](platform.html)**.  It's a place where you have
+real running workloads.  Each site corresponds to one platform
+namespace, so you can have multiple sites on one platform.
 
 <figure>
   <img src="images/site-1.svg"/>

@@ -11,11 +11,13 @@ refdog_object_links:
 
 A **platform** is a system for running application workloads.  A
 platform hosts sites.  Skupper supports Kubernetes, Docker, Podman,
-and Linux.
+and Linux.  Each site in a network can run on any supported
+platform.
 
 Platforms provide **namespaces** for related workloads and
 resources.  Skupper uses namespaces to host multiple independent
-sites on one instance of a platform.
+sites on one instance of a platform, and each site can belong to a
+distinct application network.
 
 <figure>
   <img src="images/platform-model.svg"/>
@@ -34,8 +36,8 @@ with zero sites or one site.
 
 <figure>
   <img src="images/platform-2.svg"/>
-  <figcaption>A platform with three namespaces, two of which
-  host Skupper sites</figcaption>
+  <figcaption>Two distinct networks spanning two
+  platforms</figcaption>
 </figure>
 
 </section>
