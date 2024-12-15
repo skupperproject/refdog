@@ -27,21 +27,25 @@ keys](routing-key.html)**.
   <figcaption>The connector model</figcaption>
 </figure>
 
+<figure>
+  <img src="images/routing-key-model.svg"/>
+  <figcaption>The routing key model</figcaption>
+</figure>
+
 A site has zero or more connectors.  Each connector has an
 associated workload and routing key.  The workload can be specified
 as a Kubernetes pod selector or as the host and port of a local
-network service.
+network service.  The routing key is a string identifier that binds
+the connector to listeners in remote sites.
 
 <figure>
-  <img src="images/routing-key-model.svg"/>
-  <figcaption>Listeners and connectors associated by routing key</figcaption>
+  <img src="images/service-1.svg"/>
+  <figcaption>Client connections forwarded to servers</figcaption>
 </figure>
 
-The routing key is a string identifier that binds the connector to
-listeners in remote sites.  Skupper routers forward client
-connections across the network from listeners to connectors with
-matching routing keys.  The connectors then forward the client
-connections to the workload servers.
+Skupper routers forward client connections across the network from
+listeners to connectors with matching routing keys.  The connectors
+then forward the client connections to the workload servers.
 
 <figure>
   <img src="images/connector-1.svg"/>
