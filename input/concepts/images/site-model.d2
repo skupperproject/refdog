@@ -1,27 +1,8 @@
 ...@common
 
-Platform: {
-  class: notion
-  # tooltip: A platform is a system for running workloads
-}
-
-Network: {
-  class: notion
-  # tooltip: A network is a set of linked sites
-}
-
-Site: {
-  # tooltip: A site is a place on the network where workloads are running
-}
-
-Workload: {
-  class: notion
-  # tooltip: A workload is a running instance of an application component
-}
-
 Network -- Site: {
   source-arrowhead: 1
-  target-arrowhead: n
+  target-arrowhead: 1..n
 }
 
 Platform -- Site: {
