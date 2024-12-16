@@ -2,8 +2,13 @@
 
 Process.class: notion
 
-Site -- Workload: {
+Platform -- Workload: {
   source-arrowhead: 1
+  target-arrowhead: n
+}
+
+Site -- Workload: {
+  source-arrowhead: 0..1
   target-arrowhead: n
 }
 

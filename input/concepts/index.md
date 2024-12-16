@@ -15,7 +15,7 @@ refdog_object_links:
 <table class="objects">
 <tr><th><a href="{{site_prefix}}/concepts/site.html">Site</a></th><td><p>A site is a place on the <a href="network.html">network</a> where application <a href="workload.html">workloads</a> are running</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/workload.html">Workload</a></th><td><p>A workload is a set of processes running at a <a href="site.html">site</a></p>
+<tr><th><a href="{{site_prefix}}/concepts/workload.html">Workload</a></th><td><p>A workload is a set of processes running on a <a href="platform.html">platform</a></p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/platform.html">Platform</a></th><td><p>A platform is a system for running application <a href="workload.html">workloads</a></p>
 </td></tr>

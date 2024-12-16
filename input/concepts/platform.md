@@ -16,8 +16,8 @@ in a network can run on any supported platform.
 
 Platforms provide **namespaces** for related workloads and
 resources.  Skupper uses namespaces to host multiple independent
-sites on one instance of a platform, and each site can belong to a
-distinct application network.
+sites on one instance of a platform.  Each site on a platform can
+belong to a distinct application network.
 
 <figure>
   <img src="images/platform-model.svg"/>
@@ -25,8 +25,8 @@ distinct application network.
 </figure>
 
 A platform has zero or more namespaces.  Each namespace is
-associated with zero or more workloads.  A namespace is associated
-with zero sites or one site.
+associated with zero or more workloads.  A namespace may be
+associated with a site.
 
 <figure>
   <img src="images/platform-1.svg"/>

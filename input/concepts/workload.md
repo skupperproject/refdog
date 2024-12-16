@@ -13,16 +13,18 @@ refdog_object_links:
 
 <section>
 
-A workload is a set of processes running at a [site](site.html).  A
-process is a pod, container, or system process.
+A workload is a set of processes running on a
+[platform](platform.html).  A process is a pod, container, or system
+process.
 
 <figure>
   <img src="images/workload-model.svg"/>
   <figcaption>The workload model</figcaption>
 </figure>
 
-A site has zero or more workloads.  Each workload has zero or more
-processes and zero or more [connectors](connector.html).
+A platform has zero or more workloads.  A site also has zero or more
+workloads.  Each workload has zero or more processes and zero or
+more [connectors](connector.html).
 
 A workload implements one part of an application by providing a
 network interface (for example, an API) that other parts of the
