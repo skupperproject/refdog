@@ -5,12 +5,14 @@ refdog_object_links:
   url: /resources/site.html
 - title: Site command
   url: /commands/site/index.html
-- title: Network concept
-  url: /concepts/network.html
 - title: Link concept
   url: /concepts/link.html
+- title: Network concept
+  url: /concepts/network.html
 - title: Platform concept
   url: /concepts/platform.html
+- title: Workload concept
+  url: /concepts/workload.html
 ---
 
 # Site concept

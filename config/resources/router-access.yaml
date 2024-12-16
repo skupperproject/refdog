@@ -3,7 +3,8 @@ related_resources: [Site, Link]
 links: [skupper/site_linking]
 description: |
   Configuration for secure access to the site router.  The
-  configuration includes TLS credentials and router ports.
+  configuration includes TLS credentials and router ports.  The
+  RouterAccess resource is used to implement link access for sites.
 metadata:
   include_properties: [metadata/*]
 spec:

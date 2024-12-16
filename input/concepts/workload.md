@@ -1,12 +1,12 @@
 ---
 body_class: object concept
 refdog_object_links:
+- title: Platform concept
+  url: /concepts/platform.html
 - title: Site concept
   url: /concepts/site.html
 - title: Connector concept
   url: /concepts/connector.html
-- title: Platform concept
-  url: /concepts/platform.html
 ---
 
 # Workload concept
@@ -15,7 +15,8 @@ refdog_object_links:
 
 A workload is a set of processes running on a
 [platform](platform.html).  A process is a pod, container, or system
-process.
+process.  Workloads in a [site](site.html) are exposed as services
+on the [network](network.html) using [connectors](connector.html).
 
 <figure>
   <img src="images/workload-model.svg"/>

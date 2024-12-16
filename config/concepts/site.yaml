@@ -1,5 +1,5 @@
 name: site
-related_concepts: [network, link, platform]
+related_concepts: [link, network, platform, workload]
 description: |
   A site is a place on the [network](network.html) where application
   [workloads](workload.html) are running.  Sites are joined by

@@ -24,7 +24,8 @@ refdog_object_toc:
 <section>
 
 Configuration for secure access to the site router.  The
-configuration includes TLS credentials and router ports.
+configuration includes TLS credentials and router ports.  The
+RouterAccess resource is used to implement link access for sites.
 
 ~~~ yaml
 apiVersion: skupper.io/v2alpha1
