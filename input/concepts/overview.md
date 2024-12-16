@@ -19,7 +19,7 @@ namespace, so you can have multiple sites on one platform.
   <figcaption>A site with three workloads</figcaption>
 </figure>
 
-## Site linking
+## Networks
 
 In a distributed application, those workloads need to communicate with
 other workloads in other sites.  Skupper uses [links](link.html)

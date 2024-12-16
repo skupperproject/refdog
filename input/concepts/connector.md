@@ -37,6 +37,10 @@ as a Kubernetes pod selector or as the host and port of a local
 network service.  The routing key is a string identifier that binds
 the connector to listeners in remote sites.
 
+On Kubernetes, the workload is usually specified using a pod
+selector.  On Docker, Podman, and Linux, it is specified using a
+host and port.
+
 <figure>
   <img src="images/service-1.svg"/>
   <figcaption>Client connections forwarded to servers</figcaption>

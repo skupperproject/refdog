@@ -21,12 +21,12 @@ refdog_object_links:
 </td></tr>
 </table>
 
-#### Site linking
+#### Networks
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/concepts/link.html">Link</a></th><td><p>A link is a channel for communication between <a href="site.html">sites</a></p>
-</td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/network.html">Network</a></th><td><p>A network is a set of <a href="site.html">sites</a> joined by <a href="link.html">links</a></p>
+</td></tr>
+<tr><th><a href="{{site_prefix}}/concepts/link.html">Link</a></th><td><p>A link is a channel for communication between <a href="site.html">sites</a></p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/concepts/access-token.html">Access token</a></th><td><p>An access token is a short-lived credential used to create a <a href="link.html">link</a></p>
 </td></tr>

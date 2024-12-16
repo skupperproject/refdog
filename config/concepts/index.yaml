@@ -4,10 +4,10 @@ groups:
       - site
       - workload
       - platform
-  - title: Site linking
+  - title: Networks
     concepts:
-      - link
       - network
+      - link
       - access token
   - title: Service exposure
     concepts:
