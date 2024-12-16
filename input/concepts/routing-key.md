@@ -13,8 +13,8 @@ refdog_object_links:
 
 <section>
 
-A **routing key** is a string identifier for matching
-**[listeners](listener.html)** and **[connectors](connector.html)**.
+A routing key is a string identifier for matching
+[listeners](listener.html) and [connectors](connector.html).
 
 <figure>
   <img src="images/routing-key-model.svg"/>

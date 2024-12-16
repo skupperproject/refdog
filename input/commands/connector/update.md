@@ -151,7 +151,7 @@ It resolves to an equivalent pod selector.
 This is an alternative to setting the `--selector` or
 `--host` options.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/workloads/">Kubernetes workloads</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/workload.html">Workload concept</a>, <a href="https://kubernetes.io/docs/concepts/workloads/">Kubernetes workloads</a></td></table>
 
 </div>
 </div>

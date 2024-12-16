@@ -17,10 +17,10 @@ refdog_object_links:
 
 <section>
 
-A **listener** binds a local connection endpoint to
-**[connectors](connector.html)** in remote **[sites](site.html)**.
-Listeners and connectors are matched using **[routing
-keys](routing-key.html)**.
+A listener binds a local connection endpoint to
+[connectors](connector.html) in remote [sites](site.html).
+Listeners and connectors are matched using [routing
+keys](routing-key.html).
 
 <figure>
   <img src="images/listener-model.svg"/>

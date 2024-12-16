@@ -1,14 +1,8 @@
 groups:
-  - title: Primary concepts
-    concepts:
-      - network
-      - site
-      - link
-      - listener
-      - connector
   - title: Sites
     concepts:
       - site
+      - workload
       - platform
   - title: Site linking
     concepts:

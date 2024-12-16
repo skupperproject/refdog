@@ -17,9 +17,9 @@ refdog_object_links:
 
 <section>
 
-A **site** is a place on the internet where application workloads
-are running.  Sites are joined by **[links](link.html)** to form
-application **[networks](network.html)**.
+A site is a place on the [network](network.html) where application
+[workloads](workload.html) are running.  Sites are joined by
+[links](link.html).
 
 <figure>
   <img src="images/site-model.svg"/>
@@ -29,7 +29,7 @@ application **[networks](network.html)**.
 A site is associated with one platform and one network.  Each site
 has zero or more workloads and zero or more links.
 
-Sites operate on multiple **[platforms](platform.html)**.  One site
+Sites operate on multiple [platforms](platform.html).  One site
 corresponds to one namespace in a platform instance.  Sites can be
 added to a network and removed from a network dynamically.
 

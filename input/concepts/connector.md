@@ -17,10 +17,9 @@ refdog_object_links:
 
 <section>
 
-A **connector** binds a local workload to
-**[listeners](listener.html)** in remote **[sites](site.html)**.
-Listeners and connectors are matched using **[routing
-keys](routing-key.html)**.
+A connector binds a local [workload](workload.html) to
+[listeners](listener.html) in remote [sites](site.html).  Listeners
+and connectors are matched using [routing keys](routing-key.html).
 
 <figure>
   <img src="images/connector-model.svg"/>

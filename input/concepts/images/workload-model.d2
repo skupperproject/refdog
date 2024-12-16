@@ -1,0 +1,18 @@
+...@common
+
+Process.class: notion
+
+Site -- Workload: {
+  source-arrowhead: 1
+  target-arrowhead: n
+}
+
+Workload -- Process: {
+  source-arrowhead: 1
+  target-arrowhead: n
+}
+
+Workload -- Connector: {
+  source-arrowhead: 1
+  target-arrowhead: n
+}

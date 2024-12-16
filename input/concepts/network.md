@@ -11,9 +11,9 @@ refdog_object_links:
 
 <section>
 
-A **network** is a set of **[sites](site.html)** joined by
-**[links](link.html)**. A Skupper network is also known as an
-**application network** or **virtual application network** (VAN).
+A network is a set of [sites](site.html) joined by
+[links](link.html). A Skupper network is also known as an
+application network or virtual application network (VAN).
 
 <figure>
   <img src="images/network-model.svg" style="max-height: 5em;"/>

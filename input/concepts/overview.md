@@ -9,9 +9,9 @@
 
 Skupper's job is to provide connectivity for applications that have
 parts running in multiple locations and on different platforms.  A
-**[site](site.html)** represents a particular location and a
-particular **[platform](platform.html)**.  It's a place where you have
-real running workloads.  Each site corresponds to one platform
+[site](site.html) represents a particular location and a particular
+[platform](platform.html).  It's a place where you have real running
+[workloads](workload.html).  Each site corresponds to one platform
 namespace, so you can have multiple sites on one platform.
 
 <figure>
@@ -22,13 +22,13 @@ namespace, so you can have multiple sites on one platform.
 ## Site linking
 
 In a distributed application, those workloads need to communicate with
-other workloads in other sites.  Skupper uses **[links](link.html)**
+other workloads in other sites.  Skupper uses [links](link.html)
 between sites to provide site-to-site communication.  Links are always
 secured using mutual TLS authentication and encryption.
 
 When a set of sites are linked, they function as one
-application-focused **[network](network.html)**.  You typically use
-short-lived **[access tokens](access-token.html)** to securely create
+application-focused [network](network.html).  You typically use
+short-lived [access tokens](access-token.html) to securely create
 links.
 
 <figure>
@@ -45,13 +45,13 @@ established in any direction and to any site, regardless of how the
 underlying links are established.
 
 Services are exposed on the network by creating corresponding
-**[listeners](listener.html)** and **[connectors](connector.html)**.
-A listener in one site provides a connection endpoint for client
+[listeners](listener.html) and [connectors](connector.html).  A
+listener in one site provides a connection endpoint for client
 workloads.  A connector in another site binds to local server
 workloads.
 
-The listener and connector are associated using a **[routing
-key](routing-key.html)**.  Skupper routers use the routing key to
+The listener and connector are associated using a [routing
+key](routing-key.html).  Skupper routers use the routing key to
 forward client connections to the sites where the server workload is
 running.
 

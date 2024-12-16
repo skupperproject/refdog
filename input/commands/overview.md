@@ -1,18 +1,52 @@
 # Skupper command overview
 
-The Skupper command-line interface (CLI) is a light layer on top of
-the standard Skupper resources.  Its primary job is to generate
-resources, submit them to the platform, and wait for the desired
-result.  It also provides commands for linking sites, operating
-Skupper components, and debugging.
+`skupper` is the command-line interface (CLI) for creating and
+operating Skupper networks.
+
+The Skupper CLI is a light layer on top of the standard Skupper
+resources.  Its primary job is to generate resources, submit them to
+the platform, and wait for the desired result.
+
+#### Key capabilities
+
+- **Resource configuration** - Create, update, and delete Skupper
+  sites, links, listeners, and connectors.
+- **Resource status** - Inspect the current state of Skupper
+  resources.
+- **Site linking** - Use tokens to set up site-to-site links.
+- **System operation** - Install and operate Skupper runtime
+  components.
+- **Troubleshooting** - Use debugging tools to identify and fix
+  problems.
+
+#### Usage
+
+~~~
+skupper [command] [subcommand] [options]
+~~~
+
+XXX
+
+#### Context
+
+Most commands operate in the context of a selected platform and
+current namespace.  You can use the `--platform` and `--namespace`
+options and the `SKUPPER_PLATFORM` and `SKUPPER_NAMESPACE` environment
+variables to set them.
+
+XXX And kubeconfig and context!
+
+#### Blocking
 
 In general, the operations block until the user's desired outcome is
 achieved.  You can change the wait condition using the `--wait`
 option.
 
-XXX Most commands operate in the context of a platform and current
-namespace.  You can use options `SKUPPER_PLATFORM` and
-`SKUPPER_NAMESPACE`.
+XXX Timeouts!
+
+#### Errors
+
+XXX
 
 ## Resource commands
 

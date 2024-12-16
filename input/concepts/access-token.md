@@ -17,9 +17,9 @@ refdog_object_links:
 
 <section>
 
-An **access token** is a short-lived credential used to create a
-**[link](link.html)**.  An access token contains the URL and secret
-code of a corresponding **access grant**.
+An access token is a short-lived credential used to create a
+[link](link.html).  An access token contains the URL and secret code
+of a corresponding **access grant**.
 
 <figure>
   <img src="images/access-token-model-1.svg"/>
