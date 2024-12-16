@@ -27,9 +27,8 @@ refdog_object_toc:
 
 <section>
 
-A transferrable token redeemable for a link to a remote
-site.  An access token contains the URL and secret code of a
-corresponding access grant.
+A short-lived credential used to create a link.  An access token
+contains the URL and secret code of a corresponding access grant.
 
 Access tokens are often [issued][issue] and [redeemed][redeem] using
 the Skupper CLI.

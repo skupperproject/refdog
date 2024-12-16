@@ -27,8 +27,7 @@ refdog_object_toc:
 
 <section>
 
-A place where components of your application are running.
-Sites are linked to form application networks.
+A place on the network where application workloads are running.
 
 There can be only one active Site resource per namespace.
 

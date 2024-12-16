@@ -13,9 +13,9 @@ refdog_object_links:
 #### Primary resources
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/resources/site.html">Site</a></th><td><p>A place where components of your application are running</p>
+<tr><th><a href="{{site_prefix}}/resources/site.html">Site</a></th><td><p>A place on the network where application workloads are running</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/resources/link.html">Link</a></th><td><p>A site-to-site communication channel</p>
+<tr><th><a href="{{site_prefix}}/resources/link.html">Link</a></th><td><p>A channel for communication between sites</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/resources/listener.html">Listener</a></th><td><p>A binding from a local connection endpoint to connectors in remote sites</p>
 </td></tr>
@@ -26,11 +26,11 @@ refdog_object_links:
 #### Site linking
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/resources/link.html">Link</a></th><td><p>A site-to-site communication channel</p>
+<tr><th><a href="{{site_prefix}}/resources/link.html">Link</a></th><td><p>A channel for communication between sites</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/resources/access-grant.html">AccessGrant</a></th><td><p>Permission to redeem access tokens for links to the local site</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/resources/access-token.html">AccessToken</a></th><td><p>A transferrable token redeemable for a link to a remote site</p>
+<tr><th><a href="{{site_prefix}}/resources/access-token.html">AccessToken</a></th><td><p>A short-lived credential used to create a link</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/resources/router-access.html">RouterAccess</a></th><td><p>Configuration for secure access to the site router</p>
 </td></tr>
