@@ -27,16 +27,15 @@ between sites to provide site-to-site communication.  Links are always
 secured using mutual TLS authentication and encryption.
 
 When a set of sites are linked, they function as one
-application-focused [network](network.html).  You typically use
-short-lived [access tokens](access-token.html) to securely create
-links.
+application-focused [network](network.html).  You can use short-lived
+[access tokens](access-token.html) to securely create links.
 
 <figure>
   <img src="images/network-1.svg"/>
   <figcaption>A simple network with two sites</figcaption>
 </figure>
 
-## Service exposure
+## Services
 
 Site-to-site links are distinct from application connections.  Links
 form the transport for your network. Application connections are
@@ -58,4 +57,30 @@ running.
 <figure>
   <img src="images/routing-key-1.svg" style="max-width: 90%;"/>
   <figcaption>A workload exposed as a service in a remote site</figcaption>
+</figure>
+
+## Applications
+
+An [application](application.html) is a set of
+[components](component.html) that work together to do something
+useful. A *distributed* application has components that can be
+deployed as workloads in different locations. Distributed applications
+are often built with a multitier, service-oriented, or microservices
+architecture.
+
+Because Skupper makes communication transparent to the application,
+the location of the running workloads is a concern independent of the
+application's design. You can deploy your application workloads to
+locations that suit you today, and you can safely change to new
+locations later.
+
+<figure>
+  <img src="images/application-1.svg"/>
+  <figcaption>A simple application with two components</figcaption>
+</figure>
+
+<figure>
+  <img src="images/component-2.svg"/>
+  <figcaption>Hello World with its components implemented by
+  workloads in three different sites</figcaption>
 </figure>

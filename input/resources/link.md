@@ -27,10 +27,10 @@ refdog_object_toc:
 
 A channel for communication between sites.  Links serve as a
 transport for application connections and requests.  A set of linked
-sites constitute a network.
+sites constitutes a network.
 
-**Note:** Links are not usually created directly.  Instead, you
-typically use an [access token][token] to obtain a link.
+**Note:** Links are not usually created directly.  Instead, you can
+use an [access token][token] to obtain a link.
 
 [token]: access-token.html
 
@@ -121,10 +121,9 @@ client certificate and key and the trusted server certificate
 (usually a CA).
 
 On Kubernetes, the value is the name of a Secret in the
-current namespace.
-
-On Docker, Podman, and Linux, the value is the name of a
-directory under `input/certs/` in the current namespace.
+current namespace.  On Docker, Podman, and Linux, the value is
+the name of a directory under `input/certs/` in the current
+namespace.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/router-tls.html">Router TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a>, <a href="{{site_prefix}}/topics/system-tls-credentials.html">System TLS credentials</a></td></table>
 

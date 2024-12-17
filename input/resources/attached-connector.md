@@ -172,10 +172,8 @@ server certificate (usually a CA).  It optionally includes a
 client certificate and key for mutual TLS.
 
 On Kubernetes, the value is the name of a Secret in the current
-namespace.
-
-On Docker, Podman, and Linux, the value is the name of a
-directory under `input/certs/` in the current namespace.
+namespace. On Docker, Podman, and Linux, the value is the name of
+a directory under `input/certs/` in the current namespace.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/application-tls.html">Application TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a>, <a href="{{site_prefix}}/topics/system-tls-credentials.html">System TLS credentials</a></td></table>
 

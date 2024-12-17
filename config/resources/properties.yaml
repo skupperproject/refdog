@@ -112,10 +112,8 @@ connector/spec/tlsCredentials:
     client certificate and key for mutual TLS.
 
     On Kubernetes, the value is the name of a Secret in the current
-    namespace.
-
-    On Docker, Podman, and Linux, the value is the name of a
-    directory under `input/certs/` in the current namespace.
+    namespace. On Docker, Podman, and Linux, the value is the name of
+    a directory under `input/certs/` in the current namespace.
 connector/spec/useClientCert:
   name: useClientCert
   group: advanced

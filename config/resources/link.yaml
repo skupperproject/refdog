@@ -4,10 +4,10 @@ links: [skupper/site_linking]
 description: |
   A channel for communication between sites.  Links serve as a
   transport for application connections and requests.  A set of linked
-  sites constitute a network.
+  sites constitutes a network.
 
-  **Note:** Links are not usually created directly.  Instead, you
-  typically use an [access token][token] to obtain a link.
+  **Note:** Links are not usually created directly.  Instead, you can
+  use an [access token][token] to obtain a link.
 
   [token]: access-token.html
 metadata:
@@ -32,10 +32,9 @@ spec:
         (usually a CA).
 
         On Kubernetes, the value is the name of a Secret in the
-        current namespace.
-
-        On Docker, Podman, and Linux, the value is the name of a
-        directory under `input/certs/` in the current namespace.
+        current namespace.  On Docker, Podman, and Linux, the value is
+        the name of a directory under `input/certs/` in the current
+        namespace.
 status:
   include_properties: [status/*]
   properties:

@@ -3,7 +3,7 @@ body_class: object resource
 refdog_object_has_attributes: true
 refdog_object_links:
 - title: Service exposure
-  url: /concepts/overview.html#service-exposure
+  url: /topics/service-exposure.html
 - title: Listener concept
   url: /concepts/listener.html
 - title: Listener command
@@ -180,10 +180,9 @@ server certificate and key.  It optionally includes the
 trusted client certificate (usually a CA) for mutual TLS.
 
 On Kubernetes, the value is the name of a Secret in the
-current namespace.
-
-On Docker, Podman, and Linux, the value is the name of a
-directory under `input/certs/` in the current namespace.
+current namespace.  On Docker, Podman, and Linux, the value is
+the name of a directory under `input/certs/` in the current
+namespace.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/application-tls.html">Application TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a>, <a href="{{site_prefix}}/topics/system-tls-credentials.html">System TLS credentials</a></td></table>
 

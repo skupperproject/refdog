@@ -62,10 +62,9 @@ spec:
         trusted client certificate (usually a CA) for mutual TLS.
 
         On Kubernetes, the value is the name of a Secret in the
-        current namespace.
-
-        On Docker, Podman, and Linux, the value is the name of a
-        directory under `input/certs/` in the current namespace.
+        current namespace.  On Docker, Podman, and Linux, the value is
+        the name of a directory under `input/certs/` in the current
+        namespace.
     - name: type
       hidden: true
       group: advanced

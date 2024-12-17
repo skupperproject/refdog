@@ -2,7 +2,7 @@
 body_class: object concept
 refdog_object_links:
 - title: Service exposure
-  url: /concepts/overview.html#service-exposure
+  url: /topics/service-exposure.html
 - title: Connector resource
   url: /resources/connector.html
 - title: Connector command

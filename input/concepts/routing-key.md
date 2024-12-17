@@ -2,7 +2,7 @@
 body_class: object concept
 refdog_object_links:
 - title: Service exposure
-  url: /concepts/overview.html#service-exposure
+  url: /topics/service-exposure.html
 - title: Listener concept
   url: /concepts/listener.html
 - title: Connector concept

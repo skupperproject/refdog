@@ -42,3 +42,12 @@ refdog_object_links:
 <tr><th><a href="{{site_prefix}}/concepts/routing-key.html">Routing key</a></th><td><p>A routing key is a string identifier for matching <a href="listener.html">listeners</a> and <a href="connector.html">connectors</a></p>
 </td></tr>
 </table>
+
+#### Application modeling
+
+<table class="objects">
+<tr><th><a href="{{site_prefix}}/concepts/application.html">Application</a></th><td><p>An application is a set of <a href="component.html">components</a> that work together</p>
+</td></tr>
+<tr><th><a href="{{site_prefix}}/concepts/component.html">Component</a></th><td><p>A component is a logical part of an <a href="application.html">application</a></p>
+</td></tr>
+</table>

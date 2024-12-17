@@ -14,3 +14,7 @@ groups:
       - listener
       - connector
       - routing key
+  - title: Application modeling
+    concepts:
+      - application
+      - component

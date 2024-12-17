@@ -14,9 +14,10 @@ refdog_object_links:
 <section>
 
 A workload is a set of processes running on a
-[platform](platform.html).  A process is a pod, container, or system
-process.  Workloads in a [site](site.html) are exposed as services
-on the [network](network.html) using [connectors](connector.html).
+[platform](platform.html).  A **process** is a pod, container, or
+system process.  Workloads in a [site](site.html) are exposed as
+services on the [network](network.html) using
+[connectors](connector.html).
 
 <figure>
   <img src="images/workload-model.svg"/>
