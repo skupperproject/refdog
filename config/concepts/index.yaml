@@ -9,12 +9,12 @@ groups:
       - network
       - link
       - access token
-  - title: Service exposure
+  - title: Services
     concepts:
       - listener
       - connector
       - routing key
-  - title: Application modeling
+  - title: Applications
     concepts:
       - application
       - component

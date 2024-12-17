@@ -32,7 +32,7 @@ refdog_object_links:
 </td></tr>
 </table>
 
-#### Service exposure
+#### Services
 
 <table class="objects">
 <tr><th><a href="{{site_prefix}}/concepts/listener.html">Listener</a></th><td><p>A listener binds a local connection endpoint to <a href="connector.html">connectors</a> in remote <a href="site.html">sites</a></p>
@@ -43,7 +43,7 @@ refdog_object_links:
 </td></tr>
 </table>
 
-#### Application modeling
+#### Applications
 
 <table class="objects">
 <tr><th><a href="{{site_prefix}}/concepts/application.html">Application</a></th><td><p>An application is a set of <a href="component.html">components</a> that work together</p>

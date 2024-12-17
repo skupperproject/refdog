@@ -38,9 +38,11 @@ exposes a host and port for accepting connections from local
 clients.  The routing key is a string identifier that binds the
 listener to connectors in remote sites.
 
-On Kubernetes, a listener is implemented as a Service.  On Docker,
-Podman, and Linux, it is a listening socket bound to a local network
-interface.
+On Kubernetes, a listener is implemented as a
+[Service][kube-service].  On Docker, Podman, and Linux, it is a
+listening socket bound to a local network interface.
+
+[kube-service]: https://kubernetes.io/docs/concepts/services-networking/service/
 
 <figure>
   <img src="images/service-1.svg"/>
