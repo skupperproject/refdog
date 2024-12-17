@@ -47,13 +47,11 @@ status:
   properties:
     - name: status
     - name: message
-    - name: redeemed
-      rename: redemptions
+    - name: redemptions
       description: |
         The number of times a token for this grant has been
         redeemed.
-    - name: expiration
-      rename: expirationTime
+    - name: expirationTime
       description: |
         The point in time when the grant expires.
     - name: url

@@ -532,7 +532,10 @@ class CommandGroup(ModelObjectGroup):
         self.commands = list()
 
         for command_id in self.data.get("commands", []):
-            self.commands.append(self.model.commands_by_id[command_id])
+            try:
+                self.commands.append(self.model.commands_by_id[command_id])
+            except KeyError:
+                fail(f"{self}: Command '{command_id}' not found")
 
 def option_property(name, default=None):
     def get(obj):

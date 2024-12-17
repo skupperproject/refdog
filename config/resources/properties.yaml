@@ -86,9 +86,8 @@ connector/spec/host:
   description: |
     The hostname or IP address of the server.  This is an
     alternative to `selector` for specifying the target server.
-connector/spec/includeNotReady:
-  name: includeNotReady
-  rename: includeNotReadyPods
+connector/spec/includeNotReadyPods:
+  name: includeNotReadyPods
   group: advanced
   platforms: [Kubernetes]
   description: |
@@ -137,8 +136,8 @@ connector/spec/type:
   default: tcp
   description: |
     The connector type.
-connector/status/hasMatchingListeners:
-  name: hasMatchingListeners
+connector/status/hasMatchingListener:
+  name: hasMatchingListener
   type: boolean
   related_concepts: [routing key]
   description: |

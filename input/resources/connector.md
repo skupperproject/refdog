@@ -314,7 +314,7 @@ here.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="status-hasmatchinglisteners">hasMatchingListeners</h3>
+<h3 id="status-hasmatchinglistener">hasMatchingListener</h3>
 <div class="attribute-type-info">boolean</div>
 </div>
 <div class="attribute-body">

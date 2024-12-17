@@ -83,7 +83,7 @@ status:
   properties:
     - name: status
     - name: message
-    - name: hasMatchingConnectors
+    - name: hasMatchingConnector
       type: boolean
       related_concepts: [routing key]
       description: |

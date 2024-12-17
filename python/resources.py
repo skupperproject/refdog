@@ -415,7 +415,10 @@ class ResourceGroup(ModelObjectGroup):
         self.resources = list()
 
         for resource_name in self.data.get("resources", []):
-            self.resources.append(self.model.resources_by_name[resource_name])
+            try:
+                self.resources.append(self.model.resources_by_name[resource_name])
+            except KeyError:
+                fail(f"{self}: Resource '{resource_name}' not found'")
 
 def property_property(name):
     def get(obj):

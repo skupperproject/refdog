@@ -255,7 +255,7 @@ here.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="status-hasmatchingconnectors">hasMatchingConnectors</h3>
+<h3 id="status-hasmatchingconnector">hasMatchingConnector</h3>
 <div class="attribute-type-info">boolean</div>
 </div>
 <div class="attribute-body">

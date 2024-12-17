@@ -45,6 +45,6 @@ refdog_object_links:
 </td></tr>
 <tr><th><a href="{{site_prefix}}/resources/attached-connector.html">AttachedConnector</a></th><td><p>A connector in a peer namespace</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/resources/attached-connector-anchor.html">AttachedConnectorBinding</a></th><td><p>A binding to an attached connector in a peer namespace</p>
+<tr><th><a href="{{site_prefix}}/resources/attached-connector-binding.html">AttachedConnectorBinding</a></th><td><p>A binding to an attached connector in a peer namespace</p>
 </td></tr>
 </table>

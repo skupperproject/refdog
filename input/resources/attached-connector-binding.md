@@ -4,8 +4,8 @@ refdog_object_has_attributes: true
 refdog_object_links:
 - title: Attached connectors
   url: /topics/attached-connectors.html
-- title: AttachedConnectorBinding resource
-  url: /resources/attached-connector-binding.html
+- title: AttachedConnector resource
+  url: /resources/attached-connector.html
 refdog_object_toc:
 - id: ''
   title: Overview
@@ -17,15 +17,15 @@ refdog_object_toc:
   title: Status properties
 ---
 
-# AttachedConnector resource
+# AttachedConnectorBinding resource
 
 <section>
 
-A connector in a peer namespace.
+A binding to an attached connector in a peer namespace.
 
 ~~~ yaml
 apiVersion: skupper.io/v2alpha1
-kind: AttachedConnector
+kind: AttachedConnectorBinding
 ~~~
 
 </section>
@@ -46,7 +46,7 @@ The name of the resource.
 
 
 The name must be the same as that of the associated
-AttachedConnectorBinding resource in the site namespace.
+AttachedConnector resource in the connector namespace.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
@@ -75,14 +75,14 @@ The namespace of the resource.
 
 <div class="attribute">
 <div class="attribute-heading">
-<h3 id="spec-sitenamespace">siteNamespace</h3>
+<h3 id="spec-connectornamespace">connectorNamespace</h3>
 <div class="attribute-type-info">string</div>
 <div class="attribute-flags">required</div>
 </div>
 <div class="attribute-body">
 
-The name of the namespace in which the site this connector
-should be attached to is defined.
+The name of the namespace where the associated
+AttachedConnector is located.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
@@ -91,76 +91,33 @@ should be attached to is defined.
 
 <div class="attribute">
 <div class="attribute-heading">
-<h3 id="spec-port">port</h3>
-<div class="attribute-type-info">integer</div>
-<div class="attribute-flags">required</div>
-</div>
-<div class="attribute-body">
-
-The port on the target workload to forward traffic to.
-
-<!-- The port to connect to. -->
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td></table>
-
-</div>
-</div>
-
-<div class="attribute">
-<div class="attribute-heading">
-<h3 id="spec-selector">selector</h3>
+<h3 id="spec-routingkey">routingKey</h3>
 <div class="attribute-type-info">string</div>
 <div class="attribute-flags">required</div>
 </div>
 <div class="attribute-body">
 
-A Kubernetes label selector for specifying target server pods.
+The identifier used to route traffic from listeners to
+connectors.  To expose a local workload to a remote site, the
+remote listener and the local connector must have matching
+routing keys.
 
-<!-- The selector that identifies the pods to connect to. -->
-<!-- This uses the compact format with '=' expressions -->
-<!-- Either this or host must be specified -->
-
-On Kubernetes, you usually want to use this.  As an alternative,
-you can use `host`.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>Updatable</th><td>True</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">Kubernetes label selectors</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/routing-key.html">Routing key concept</a></td></table>
 
 </div>
 </div>
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="spec-includenotreadypods">includeNotReadyPods</h3>
+<h3 id="spec-exposepodsbyname">exposePodsByName</h3>
 <div class="attribute-type-info">boolean</div>
 <div class="attribute-flags">advanced</div>
 </div>
 <div class="attribute-body">
 
-If true, include server pods in the `NotReady` state.
+If true, expose each pod as an individual service.
 
-<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes</td></table>
-
-</div>
-</div>
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="spec-tlscredentials">tlsCredentials</h3>
-<div class="attribute-type-info">string</div>
-<div class="attribute-flags">advanced</div>
-</div>
-<div class="attribute-body">
-
-The name of a bundle of TLS certificates used for secure
-router-to-server communication.  The bundle contains the trusted
-server certificate (usually a CA).  It optionally includes a
-client certificate and key for mutual TLS.
-
-On Kubernetes, the value is the name of a Secret in the current
-namespace. On Docker, Podman, and Linux, the value is the name of
-a directory under `input/certs/` in the current namespace.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/application-tls.html">Application TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a>, <a href="{{site_prefix}}/topics/system-tls-credentials.html">System TLS credentials</a></td></table>
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/individual-pod-services.html">Individual pod services</a></td></table>
 
 </div>
 </div>
@@ -211,6 +168,21 @@ The current state of the resource.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
+<h3 id="status-hasmatchinglistener">hasMatchingListener</h3>
+<div class="attribute-type-info">boolean</div>
+</div>
+<div class="attribute-body">
+
+True if there is at least one listener with a matching routing
+key (usually in a remote site).
+
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/routing-key.html">Routing key concept</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
 <h3 id="status-conditions">conditions</h3>
 <div class="attribute-type-info">array</div>
 <div class="attribute-flags">advanced</div>
@@ -221,19 +193,6 @@ A set of named conditions describing the current state of the
 resource.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a>, <a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
-
-</div>
-</div>
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="status-selectedpods">selectedPods</h3>
-<div class="attribute-type-info">array</div>
-<div class="attribute-flags">advanced</div>
-</div>
-<div class="attribute-body">
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>

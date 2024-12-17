@@ -16,4 +16,4 @@ groups:
       - Listener
       - Connector
       - AttachedConnector
-      - AttachedConnectorAnchor
+      - AttachedConnectorBinding

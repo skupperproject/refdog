@@ -1,7 +1,7 @@
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
-  name: certificates.skupper.io
+  name: attachedconnectorbindings.skupper.io
 spec:
   group: skupper.io
   versions:
@@ -15,33 +15,23 @@ spec:
             spec:
               type: object
               properties:
-                ca:
+                connectorNamespace:
                   type: string
-                subject:
+                routingKey:
                   type: string
-                hosts:
-                  type: array
-                  items:
-                    type: string
-                client:
-                  type: boolean
-                server:
-                  type: boolean
-                signing:
+                exposePodsByName:
                   type: boolean
                 settings:
                   type: object
                   additionalProperties:
                     type: string
               required:
-              - ca
-              - subject
+              - connectorNamespace
+              - routingKey
             status:
               type: object
               properties:
                 status:
-                  type: string
-                message:
                   type: string
                 conditions:
                   type: array
@@ -79,42 +69,29 @@ spec:
                     - reason
                     - status
                     - type
-                expiration:
-                  type: string
-                  format: date-time
+                hasMatchingListener:
+                  type: boolean
       subresources:
         status: {}
       additionalPrinterColumns:
-      - name: CA
+      - name: Routing Key
         type: string
-        description: Identifies the CA to be used in signing the certificate
-        jsonPath: .spec.ca
-      - name: Server
-        type: boolean
-        description: Whether or not the certificate is valid for use as a server
-        jsonPath: .spec.server
-      - name: Client
-        type: boolean
-        description: Whether or not the certificate is valid for use as a client
-        jsonPath: .spec.client
-      - name: Signing
-        type: boolean
-        description: Whether or not the certificate is valid for use as a CA
-        jsonPath: .spec.signing
+        description: An identifier that associates connectors with listeners.
+        jsonPath: .spec.routingKey
+      - name: Connector Namespace
+        type: string
+        description: The namespace where the associated AttachableConnector is located.
+        jsonPath: .spec.connectorNamespace
       - name: Status
         type: string
-        description: The status of the certificate
+        description: The status of the connector
         jsonPath: .status.status
-      - name: Expiration
-        type: string
-        description: The expiration of the certificate if relevant
-        jsonPath: .status.expiration
-      - name: Message
-        type: string
-        description: Any relevant human readable message
-        jsonPath: .status.message
+      - name: Has Matching Listener
+        type: integer
+        description: Whether there is at least one listener in the network with a matching routing key.
+        jsonPath: .status.hasMatchingListener
   scope: Namespaced
   names:
-    plural: certificates
-    singular: certificate
-    kind: Certificate
+    plural: attachedconnectorbindings
+    singular: attachedconnectorbinding
+    kind: AttachedConnectorBinding
