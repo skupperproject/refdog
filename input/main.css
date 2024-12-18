@@ -469,3 +469,15 @@ figcaption {
     margin-top: -0.5em;
     font-style: italic;
 }
+
+/* -- */
+
+.data-table table {
+    border-collapse: collapse;
+}
+
+.data-table th, .data-table td {
+    padding: 0.3em 0.4em;
+    text-align: left;
+    border: 1px solid hsl(0, 0%, 80%);
+}

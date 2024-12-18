@@ -25,9 +25,9 @@ refdog_object_toc:
 
 <section>
 
-A channel for communication between sites.  Links serve as a
-transport for application connections and requests.  A set of linked
-sites constitutes a network.
+A channel for communication between sites.  Links carry application
+connections and requests.  A set of linked sites constitutes a
+network.
 
 **Note:** Links are not usually created directly.  Instead, you can
 use an [access token][token] to obtain a link.

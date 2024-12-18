@@ -1,22 +1,22 @@
 # Skupper command overview
 
-`skupper` is the command-line interface (CLI) for creating and
-operating Skupper networks.
+Skupper uses the `skupper` command as its command-line interface (CLI)
+for creating and operating Skupper networks.
 
 The Skupper CLI is a light layer on top of the standard Skupper
-resources.  Its primary job is to generate resources, submit them to
-the platform, and wait for the desired result.
+resources.  Its primary job is to create resources, submit them to the
+platform, and check the result.
 
-#### Key capabilities
+#### Capabilities
 
-- **Resource configuration** - Create, update, and delete Skupper
-  sites, links, listeners, and connectors.
-- **Resource status** - Inspect the current state of Skupper
+- **Resource configuration:** Create, update, and delete Skupper
   resources.
-- **Site linking** - Use tokens to set up site-to-site links.
-- **System operation** - Install and operate Skupper runtime
+- **Resource status:** Inspect the current state of Skupper resources.
+- **Resource output generation:** Produce YAML or JSON output.
+- **Site linking:** Use tokens to set up site-to-site links.
+- **System operation:** Install and operate Skupper runtime
   components.
-- **Troubleshooting** - Use debugging tools to identify and fix
+- **Troubleshooting:** Use debugging tools to identify and fix
   problems.
 
 #### Usage
@@ -25,16 +25,29 @@ the platform, and wait for the desired result.
 skupper [command] [subcommand] [options]
 ~~~
 
-XXX
+- `command`: A resource type or functional area.
+- `subcommand`: The specific operation you want to perform.
+- `options`: Additional arguments that change the operation's
+  behavior.
 
 #### Context
 
-Most commands operate in the context of a selected platform and
-current namespace.  You can use the `--platform` and `--namespace`
-options and the `SKUPPER_PLATFORM` and `SKUPPER_NAMESPACE` environment
-variables to set them.
+Skupper commands operate with a current platform and namespace (with a
+few exceptions).  On Kubernetes, there is additionally a current
+kubeconfig and context.  You can use CLI options or environment
+variables to change the current selection.
 
-XXX And kubeconfig and context!
+<div class="data-table">
+
+| Context | Default | Option | Environment variable |
+|-|-|-|-|
+| Platform | `kubernetes` | `--platform` | `SKUPPER_PLATFORM` |
+| Namespace (on Kubernetes) | _From kubeconfig context_ | `--namespace` (`-n`) | _None_ |
+| Namespace (non-Kubernetes) | `default` | `--namespace` (`-n`) | _None_ |
+| Kubeconfig | `~/.kube/config` | `--kubeconfig` | `KUBECONFIG` |
+| Kubeconfig context | _From kubeconfig_ | `--context` | _None_ |
+
+</div>
 
 #### Blocking
 
@@ -50,12 +63,8 @@ XXX
 
 ## Resource commands
 
-These are the core CLI operations.
-
-- **Site command**
-- **Link command**
-- **Listener command**
-- **Connector command**
+These are the core CLI operations, for sites, links, listeners, and
+connectors.
 
 - On Kubernetes: Generally, they submit the resource to the controller
   and wait for ready state (Listener and Connector wait for configured

@@ -20,8 +20,8 @@ refdog_object_links:
 <section>
 
 A link is a channel for communication between [sites](site.html).
-Links serve as a transport for application connections and requests.
-A set of linked sites constitutes a [network](network.html).
+Links carry application connections and requests.  A set of linked
+sites constitutes a [network](network.html).
 
 To create a link to a remote site, the remote site must provide a
 **link access**.  A link access is an external access point for
