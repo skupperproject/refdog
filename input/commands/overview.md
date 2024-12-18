@@ -3,9 +3,12 @@
 Skupper uses the `skupper` command as its command-line interface (CLI)
 for creating and operating Skupper networks.
 
+## General behavior
+
 The Skupper CLI is a light layer on top of the standard Skupper
 resources.  Its primary job is to create resources, submit them to the
-platform, and check the result.
+platform, and check the result.  It additionally provides operations
+for Skupper infrastructure and debugging.
 
 #### Capabilities
 
@@ -39,11 +42,10 @@ variables to change the current selection.
 
 <div class="data-table">
 
-| Context | Default | Option | Environment variable |
+| Context | Default | CLI option | Environment variable |
 |-|-|-|-|
 | Platform | `kubernetes` | `--platform` | `SKUPPER_PLATFORM` |
-| Namespace (on Kubernetes) | _From kubeconfig context_ | `--namespace` (`-n`) | _None_ |
-| Namespace (non-Kubernetes) | `default` | `--namespace` (`-n`) | _None_ |
+| Namespace | ***Kubernetes:*** _From kubeconfig_<br/> ***Docker, Podman, Linux:*** `default` | `--namespace` | _None_ |
 | Kubeconfig | `~/.kube/config` | `--kubeconfig` | `KUBECONFIG` |
 | Kubeconfig context | _From kubeconfig_ | `--context` | _None_ |
 
@@ -51,15 +53,18 @@ variables to change the current selection.
 
 #### Blocking
 
-In general, the operations block until the user's desired outcome is
-achieved.  You can change the wait condition using the `--wait`
-option.
-
-XXX Timeouts!
+Resource, token, and system operations block until the desired outcome
+is achieved or the timeout is exceeded.  You can change the wait
+condition using the `--wait` option and change the timeout using the
+`--timeout` option.
 
 #### Errors
 
-XXX
+The Skupper CLI returns a non-zero exit code indicating an error when:
+
+* User input is invalid.
+* Referenced resources are not found.
+* The operation fails or times out.
 
 ## Resource commands
 
