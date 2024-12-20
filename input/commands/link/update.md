@@ -23,13 +23,13 @@ refdog_toc:
 
 <section>
 
-Change link settings.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Ready</td></table>
-
 ~~~ shell
 skupper link update <name> [options]
 ~~~
+
+Change link settings.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Ready</td></table>
 
 </section>
 

@@ -21,13 +21,13 @@ refdog_toc:
 
 <section>
 
-Delete a site.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Deletion</td></table>
-
 ~~~ shell
 skupper site delete [name] [options]
 ~~~
+
+Delete a site.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Deletion</td></table>
 
 </section>
 

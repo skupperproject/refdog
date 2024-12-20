@@ -27,14 +27,14 @@ refdog_toc:
 
 <section>
 
+~~~ shell
+skupper token redeem <file> [options]
+~~~
+
 Redeem a token file in order to create a link to a remote
 site.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-~~~ shell
-skupper token redeem <file> [options]
-~~~
 
 </section>
 

@@ -88,16 +88,16 @@ def generate_command(command):
     append()
     append("<section>")
     append()
+    append("~~~ shell")
+    append(f"{generate_usage(command)}")
+    append("~~~")
+    append()
 
     if command.description and not command.subcommands:
         append(command.description.strip())
         append()
 
     append(generate_command_fields(command))
-    append()
-    append("~~~ shell")
-    append(f"{generate_usage(command)}")
-    append("~~~")
     append()
     append("</section>")
     append()

@@ -14,9 +14,9 @@ for creating and operating Skupper networks.
 #### Capabilities
 
 The Skupper CLI is a light layer on top of the standard Skupper
-resources.  Its main job is to configure Skupper resources.  It
-additionally provides commands for site linking, system operation, and
-troubleshooting.
+resources.  Its main job is to configure Skupper sites, listeners, and
+connectors.  It additionally provides commands for site linking,
+system operation, and troubleshooting.
 
 - **Resource configuration:** Create, update, and delete Skupper
   resources.

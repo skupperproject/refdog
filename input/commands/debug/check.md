@@ -15,13 +15,13 @@ refdog_toc:
 
 <section>
 
-Run diagnostic checks.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
 ~~~ shell
 skupper debug check [options]
 ~~~
+
+Run diagnostic checks.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </section>
 

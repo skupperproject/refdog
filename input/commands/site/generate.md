@@ -21,13 +21,13 @@ refdog_toc:
 
 <section>
 
-Generate a Site resource.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
 ~~~ shell
 skupper site generate <name> [options]
 ~~~
+
+Generate a Site resource.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </section>
 

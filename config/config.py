@@ -43,7 +43,7 @@ def refdog_links(page):
 
 def refdog_toc(page):
     if not page.metadata.get("refdog_toc"):
-        return ""
+        return "<section id=\"-toc\"></section>"
 
     lines = list()
 

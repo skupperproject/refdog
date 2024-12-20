@@ -17,11 +17,11 @@ refdog_toc:
 
 <section>
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
 ~~~ shell
 skupper debug [subcommand] [options]
 ~~~
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </section>
 

@@ -25,13 +25,13 @@ refdog_toc:
 
 <section>
 
-Create a listener.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Configured</td></table>
-
 ~~~ shell
 skupper listener create <name> <port> [options]
 ~~~
+
+Create a listener.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Configured</td></table>
 
 </section>
 

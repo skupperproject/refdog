@@ -25,13 +25,13 @@ refdog_toc:
 
 <section>
 
-Generate a Connector resource.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
 ~~~ shell
 skupper connector generate <name> <port> [options]
 ~~~
+
+Generate a Connector resource.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </section>
 

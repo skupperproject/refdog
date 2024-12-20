@@ -25,13 +25,13 @@ refdog_toc:
 
 <section>
 
-Display the status of listeners in the current site.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
 ~~~ shell
 skupper listener status [name] [options]
 ~~~
+
+Display the status of listeners in the current site.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </section>
 

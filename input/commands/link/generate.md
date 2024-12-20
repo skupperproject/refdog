@@ -23,6 +23,10 @@ refdog_toc:
 
 <section>
 
+~~~ shell
+skupper link generate [name] [options]
+~~~
+
 Generate a Link resource for use in a remote site.
 
 Generating a link requires a site with link access enabled.
@@ -30,10 +34,6 @@ The command waits for the site to enter the ready state
 before producing the link.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Site resource Ready</td></table>
-
-~~~ shell
-skupper link generate [name] [options]
-~~~
 
 </section>
 

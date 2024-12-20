@@ -23,13 +23,13 @@ refdog_toc:
 
 <section>
 
-Delete a link.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Deletion</td></table>
-
 ~~~ shell
 skupper link delete <name> [options]
 ~~~
+
+Delete a link.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Deletion</td></table>
 
 </section>
 

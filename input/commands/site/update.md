@@ -21,13 +21,13 @@ refdog_toc:
 
 <section>
 
-Change site settings.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Ready</td></table>
-
 ~~~ shell
 skupper site update [name] [options]
 ~~~
+
+Change site settings.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Ready</td></table>
 
 </section>
 

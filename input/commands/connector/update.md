@@ -25,13 +25,13 @@ refdog_toc:
 
 <section>
 
-Update a connector.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Configured</td></table>
-
 ~~~ shell
 skupper connector update <name> <port> [options]
 ~~~
+
+Update a connector.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Configured</td></table>
 
 </section>
 

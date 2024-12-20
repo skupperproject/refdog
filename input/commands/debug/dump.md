@@ -19,14 +19,14 @@ refdog_toc:
 
 <section>
 
+~~~ shell
+skupper debug dump [file] [options]
+~~~
+
 Generate a debug dump file.  Debug dumps collect the details of
 a site so another party can identify and fix a problem.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-~~~ shell
-skupper debug dump [file] [options]
-~~~
 
 </section>
 

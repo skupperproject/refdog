@@ -17,13 +17,13 @@ refdog_toc:
 
 <section>
 
-Display the status of the system.
-
-<table class="fields"><tr><th>Platforms</th><td>Docker, Podman, Linux</td></table>
-
 ~~~ shell
 skupper system status [options]
 ~~~
+
+Display the status of the system.
+
+<table class="fields"><tr><th>Platforms</th><td>Docker, Podman, Linux</td></table>
 
 </section>
 

@@ -17,13 +17,13 @@ refdog_toc:
 
 <section>
 
-Display versions of Skupper components.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
 ~~~ shell
 skupper version [options]
 ~~~
+
+Display versions of Skupper components.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </section>
 

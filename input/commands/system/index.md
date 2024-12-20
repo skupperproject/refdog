@@ -17,11 +17,11 @@ refdog_toc:
 
 <section>
 
-<table class="fields"><tr><th>Platforms</th><td>Docker, Podman, Linux</td></table>
-
 ~~~ shell
 skupper system [subcommand] [options]
 ~~~
+
+<table class="fields"><tr><th>Platforms</th><td>Docker, Podman, Linux</td></table>
 
 </section>
 

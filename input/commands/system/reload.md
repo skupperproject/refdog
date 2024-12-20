@@ -17,14 +17,14 @@ refdog_toc:
 
 <section>
 
+~~~ shell
+skupper system reload [options]
+~~~
+
 Reload the site configuration.
 
 This restarts the systemd service for the current namespace.
 
 <table class="fields"><tr><th>Platforms</th><td>Docker, Podman, Linux</td></table>
-
-~~~ shell
-skupper system reload [options]
-~~~
 
 </section>

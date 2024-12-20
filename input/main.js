@@ -37,14 +37,13 @@ function createLink(parent, href, text) {
 }
 
 window.addEventListener("load", () => {
-    const container = $("body > aside > div");
+    const oldToc = $("#-toc");
 
-    if (!container) {
+    if (oldToc === null) {
         return;
     }
 
-    // Do nothing if a TOC is already present
-    if ($("#-toc")) {
+    if (oldToc.children.length !== 0) {
         return;
     }
 
@@ -103,7 +102,7 @@ window.addEventListener("load", () => {
     }
 
     toc.appendChild(tocLinks);
-    container.appendChild(toc);
+    oldToc.replaceWith(toc);
 });
 
 window.addEventListener("load", () => {

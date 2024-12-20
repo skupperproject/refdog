@@ -19,6 +19,10 @@ refdog_toc:
 
 <section>
 
+~~~ shell
+skupper system install [options]
+~~~
+
 Install the Skupper components.
 
 This creates the router configuration, TLS certificates, and
@@ -26,10 +30,6 @@ systemd unit file for the current namespace.  On Docker or
 Podman, it also creates containers for Skupper components.
 
 <table class="fields"><tr><th>Platforms</th><td>Docker, Podman, Linux</td></table>
-
-~~~ shell
-skupper system install [options]
-~~~
 
 </section>
 

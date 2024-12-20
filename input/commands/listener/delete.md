@@ -25,13 +25,13 @@ refdog_toc:
 
 <section>
 
-Delete a listener.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Deletion</td></table>
-
 ~~~ shell
 skupper listener delete <name> [options]
 ~~~
+
+Delete a listener.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Deletion</td></table>
 
 </section>
 
