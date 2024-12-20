@@ -1,12 +1,12 @@
 ---
 body_class: object command
-refdog_object_has_attributes: true
-refdog_object_links:
+refdog_links:
 - title: Site concept
   url: /concepts/site.html
 - title: Site resource
   url: /resources/site.html
-refdog_object_toc:
+refdog_object_has_attributes: true
+refdog_toc:
 - id: ''
   title: Overview
 - id: usage

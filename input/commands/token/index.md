@@ -1,7 +1,6 @@
 ---
 body_class: object command
-refdog_object_has_attributes: true
-refdog_object_links:
+refdog_links:
 - title: Site linking
   url: /topics/site-linking.html
 - title: Access token concept
@@ -10,7 +9,8 @@ refdog_object_links:
   url: /resources/access-grant.html
 - title: AccessToken resource
   url: /resources/access-token.html
-refdog_object_toc:
+refdog_object_has_attributes: true
+refdog_toc:
 - id: ''
   title: Overview
 - id: usage

@@ -16,7 +16,7 @@ def generate(model):
         lines.append(line)
 
     append("---")
-    append("refdog_object_links:")
+    append("refdog_links:")
     append("- title: Skupper concepts")
     append("  url: /concepts/index.html")
     append("- title: Skupper commands")
@@ -155,9 +155,9 @@ def generate_resource_metadata(resource):
 
     data["body_class"] = "object resource"
     data["refdog_object_has_attributes"] = True
-    data["refdog_object_links"] = get_object_links(resource)
+    data["refdog_links"] = get_object_links(resource)
 
-    data["refdog_object_toc"] = [
+    data["refdog_toc"] = [
         {
             "title": "Overview",
             "id": "",
@@ -165,12 +165,12 @@ def generate_resource_metadata(resource):
     ]
 
     if resource.examples:
-        data["refdog_object_toc"].append({
+        data["refdog_toc"].append({
             "title": "Examples",
             "id": "examples",
         })
 
-    data["refdog_object_toc"].extend([
+    data["refdog_toc"].extend([
         {
             "title": "Metadata properties",
             "id": "metadata-properties",

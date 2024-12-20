@@ -1,26 +1,37 @@
+---
+refdog_links:
+  - title: Skupper concept overview
+    url: /concepts/overview.html
+  - title: Skupper resource overview
+    url: /resources/overview.html
+---
+
 # Skupper command overview
 
 Skupper uses the `skupper` command as its command-line interface (CLI)
 for creating and operating Skupper networks.
 
-## General behavior
+#### Capabilities
 
 The Skupper CLI is a light layer on top of the standard Skupper
-resources.  Its primary job is to create resources, submit them to the
-platform, and check the result.  It additionally provides operations
-for Skupper infrastructure and debugging.
-
-#### Capabilities
+resources.  Its main job is to configure Skupper resources.  It
+additionally provides commands for site linking, system operation, and
+troubleshooting.
 
 - **Resource configuration:** Create, update, and delete Skupper
   resources.
-- **Resource status:** Inspect the current state of Skupper resources.
-- **Resource output generation:** Produce YAML or JSON output.
+- **Resource status:** Display the current state of Skupper resources.
+- **Resource generation:** Produce Skupper resources in YAML or JSON
+  format.
 - **Site linking:** Use tokens to set up site-to-site links.
 - **System operation:** Install and operate Skupper runtime
   components.
 - **Troubleshooting:** Use debugging tools to identify and fix
   problems.
+
+By design, the Skupper CLI does not do everything the Skupper
+resources can do.  We encourage you to use the resources directly for
+advanced use cases.
 
 #### Usage
 
@@ -45,18 +56,30 @@ variables to change the current selection.
 | Context | Default | CLI option | Environment variable |
 |-|-|-|-|
 | Platform | `kubernetes` | `--platform` | `SKUPPER_PLATFORM` |
-| Namespace | ***Kubernetes:*** _From kubeconfig_<br/> ***Docker, Podman, Linux:*** `default` | `--namespace` | _None_ |
-| Kubeconfig | `~/.kube/config` | `--kubeconfig` | `KUBECONFIG` |
+| Namespace | _From kubeconfig_ | `--namespace` | _None_ |
 | Kubeconfig context | _From kubeconfig_ | `--context` | _None_ |
+| Kubeconfig | `~/.kube/config` | `--kubeconfig` | `KUBECONFIG` |
 
 </div>
 
+On Docker, Podman, and Linux, the current namespace defaults to
+`default`.
+
 #### Blocking
 
-Resource, token, and system operations block until the desired outcome
-is achieved or the timeout is exceeded.  You can change the wait
-condition using the `--wait` option and change the timeout using the
-`--timeout` option.
+On Kubernetes, resource operations block until the desired outcome is
+achieved, an error occurs, or the timeout is exceeded.  You can change
+the wait condition and the timeout duration using the `--wait` and
+`--timeout` options.
+
+- Site and link operations block until the resource is ready.
+- Listener and connector operations block until the resource is
+  configured.
+- All resource delete operations block until deletion is complete.
+
+On Docker, Podman, and Linux, resource operations do not block.
+Instead, they place the resources in the input location.  Changes are
+applied when the user invokes `skupper system reload`.
 
 #### Errors
 
@@ -68,131 +91,97 @@ The Skupper CLI returns a non-zero exit code indicating an error when:
 
 ## Resource commands
 
-These are the core CLI operations, for sites, links, listeners, and
+~~~
+skupper <resource-type> create <resource-name> [options]
+skupper <resource-type> update <resource-name> [options]
+skupper <resource-type> delete <resource-name> [options]
+skupper <resource-type> status [resource-name] [options]
+skupper <resource-type> generate <resource-name> [options]
+~~~
+
+These are the primary CLI operations for sites, links, listeners, and
 connectors.
 
-- On Kubernetes: Generally, they submit the resource to the controller
-  and wait for ready state (Listener and Connector wait for configured
-  state).
+Resource properties are set using one or more `--some-key some-value`
+command-line options.  YAML resource options in camel case (`someKey`)
+are exposed as hyphenated names (`some-key`) when used as options.
 
-- On other platforms: They don't wait for anything.  Instead they put
-  the resources in the input location.  The user must then trigger a
-  config reload.
+`create`, `update`, and `delete` operations control the lifecycle of
+Skupper resources and configure their properties.
 
-Resource options for setting resource properties are set using one or
-more `--some-key some-value` command line options.  YAML resource
-options in camel case (`someKey`) are exposed as hyphenated names
-(`some-key`) when used as command line options.
+`status` operations display the current state of resources.  If no
+resource name is specified, they list the status of all resources of
+the given type.
 
-XXX The resource `create` and `update` operations in particular are meant
-to provide a convenient and CLI-conventional interface, as an
-alternative to writing YAML by hand. XXX
-
-#### `skupper <resource-type> [options]`
-
-Without specifying a subcommand, these print help text for the
-operations of this resource type.
-
-#### `skupper <resource-type> create <resource-name> [options]`
-
-Create a resource.
-
-- Create operations take a name option, which is the name of the
-  resource created (.metadata.name).
-
-- XXX Create and update in general block until the resource is ready.
-  Delete waits for deletion to complete.
-
-#### `skupper <resource-type> update <resource-name> [options]`
-
-- Update operations shift the resource status from ready to pending
-  while the change is taking place.  It waits for ready status.
-
-- It has the same options as create.
-
-- XXX Create and update in general block until the resource is ready.
-  Delete waits for deletion to complete.
-
-#### `skupper <resource-type> delete <resource-name> [options]`
-
-- Waits until deletion is complete.
-
-#### `skupper <resource-type> status [resource-name] [options]`
-
-- The status command gets the status info from the resource status
-  fields.
-
-- If no name is given, it gets an aggregate output across all
-  resources of this type (in a table!).
-
-- `status` without a qualifying resource name argument enumerates the
-  status of all the resources of this type.
-
-- `status` with a resource name and `--output yaml` gives you...
-
-#### `skupper <resource-type> generate <resource-name> [options]`
-
-- These commands generate Skupper resources in YAML or JSON format.
-
-- They generate output that represents Skupper resources.
-
-- You might want to direct the output to a file, cut and paste it, or
-  pipe it to kubectl.
-
-- These are good for learning about the resources.
-
-- Link generate is a little different from the other generate
-  commands.  In general, the generate commands are helping you produce
-  resources for your current site.  By contrast, link generates a link
-  resource (and a secret to go with it) for use in a *remote* site,
-  *to* the current site.
-
-- The generate commands usually don't need to wait for a status.  Link
-  generate is the exception - it needs the site to be ready.
+`generate` operations produce Skupper resources as YAML or JSON
+output.  They are useful for directing the output to files or other
+tools.
 
 ## Token commands
+
+~~~
+skupper token issue <token-file> [options]
+skupper token redeem <token-file> [options]
+~~~
 
 - The token commands are for creating links!
 
 ## System commands
 
-- These commands are for non-Kube sites.
+~~~
+skupper system setup [options]
+skupper system teardown [options]
+skupper system start [options]
+skupper system stop [options]
+skupper system reload [options]
+skupper system status [options]
+~~~
 
+- These commands are for non-Kube sites.
 - They are about installing and operating the Skupper runtime
   components.
 
 ## Debug commands
 
+~~~
+skupper debug check [options]
+skupper debug dump [options]
+~~~
+
 - These commands are for debugging and troubleshooting.
 
 ## Version command
 
+~~~
+skupper version
+~~~
+
 - The version command!
 
-## Hello World using the CLI
+<!-- ## Hello World using the CLI -->
 
-~~~ console
-# Get the CLI
+<!-- ~~~ console -->
+<!-- # Get the CLI -->
 
-$ curl https://skupper.io/install.sh | sh
+<!-- $ curl https://skupper.io/install.sh | sh -->
 
-# West
+<!-- # West -->
 
-$ export KUBECONFIG=~/.kube/config-west
-$ kubectl apply -f https://skupper.io/install.yaml
-$ kubectl create deployment frontend --image quay.io/skupper/hello-world-frontend
+<!-- $ export KUBECONFIG=~/.kube/config-west -->
+<!-- $ kubectl apply -f https://skupper.io/install.yaml -->
+<!-- $ kubectl create deployment frontend --image quay.io/skupper/hello-world-frontend -->
 
-$ skupper site create --enable-link-access
-$ skupper listener create backend 8080
-$ skupper token issue ~/token.yaml
+<!-- $ skupper site create --enable-link-access -->
+<!-- $ skupper listener create backend 8080 -->
+<!-- $ skupper token issue ~/token.yaml -->
 
-# East
+<!-- # East -->
 
-$ export KUBECONFIG=~/.kube/config-east
-$ kubectl apply -f https://skupper.io/install.yaml
-$ kubectl create deployment backend --image quay.io/skupper/hello-world-backend --replicas 3
+<!-- $ export KUBECONFIG=~/.kube/config-east -->
+<!-- $ kubectl apply -f https://skupper.io/install.yaml -->
+<!-- $ kubectl create deployment backend --image quay.io/skupper/hello-world-backend --replicas 3 -->
 
-$ skupper site create
-$ skupper connector create backend 8080
-$ skupper token redeem ~/token.yaml
-~~~
+<!-- $ skupper site create -->
+<!-- $ skupper connector create backend 8080 -->
+<!-- $ skupper token redeem ~/token.yaml -->
+<!-- ~~~ -->

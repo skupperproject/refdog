@@ -1,6 +1,6 @@
 ---
 body_class: object concept
-refdog_object_links:
+refdog_links:
 - title: Platform concept
   url: /concepts/platform.html
 - title: Site concept

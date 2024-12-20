@@ -16,7 +16,7 @@ def generate(model):
         lines.append(line)
 
     append("---")
-    append("refdog_object_links:")
+    append("refdog_links:")
     append("- title: Skupper concepts")
     append("  url: /concepts/index.html")
     append("- title: Skupper resources")
@@ -210,9 +210,9 @@ def generate_command_metadata(command):
 
     data["body_class"] = "object command"
     data["refdog_object_has_attributes"] = True
-    data["refdog_object_links"] = get_object_links(command)
+    data["refdog_links"] = get_object_links(command)
 
-    data["refdog_object_toc"] = [
+    data["refdog_toc"] = [
         {
             "title": "Overview",
             "id": "",
@@ -229,7 +229,7 @@ def generate_command_metadata(command):
         items = getattr(command, section.lower())
 
         if items:
-            data["refdog_object_toc"].append({
+            data["refdog_toc"].append({
                 "title": section,
                 "id": get_fragment_id(section),
             })
@@ -240,7 +240,7 @@ def generate_command_metadata(command):
         children.extend([{"title": x.syntax_name, "id": x.id} for x in command.options
                          if not x.hidden and x.group == group])
 
-    data["refdog_object_toc"].extend([
+    data["refdog_toc"].extend([
         {
             "title": "Primary options",
             "id": "primary-options",
@@ -251,7 +251,7 @@ def generate_command_metadata(command):
     children = [{"title": x.syntax_name, "id": x.id} for x in command.options
                 if not x.hidden and x.group == "global"]
 
-    data["refdog_object_toc"].extend([
+    data["refdog_toc"].extend([
         {
             "title": "Global options",
             "id": "global-options",

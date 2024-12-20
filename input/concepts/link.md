@@ -1,6 +1,6 @@
 ---
 body_class: object concept
-refdog_object_links:
+refdog_links:
 - title: Site linking
   url: /topics/site-linking.html
 - title: Link resource

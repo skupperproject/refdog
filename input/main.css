@@ -474,6 +474,7 @@ figcaption {
 
 .data-table table {
     border-collapse: collapse;
+    font-size: 0.9em;
 }
 
 .data-table th, .data-table td {

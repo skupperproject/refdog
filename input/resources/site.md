@@ -1,7 +1,6 @@
 ---
 body_class: object resource
-refdog_object_has_attributes: true
-refdog_object_links:
+refdog_links:
 - title: Site concept
   url: /concepts/site.html
 - title: Site command
@@ -10,7 +9,8 @@ refdog_object_links:
   url: /concepts/network.html
 - title: Platform concept
   url: /concepts/platform.html
-refdog_object_toc:
+refdog_object_has_attributes: true
+refdog_toc:
 - id: ''
   title: Overview
 - id: examples

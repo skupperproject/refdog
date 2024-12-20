@@ -1,5 +1,5 @@
 ---
-refdog_object_links:
+refdog_links:
   - title: Skupper resources
     url: /resources/index.html
   - title: Skupper commands

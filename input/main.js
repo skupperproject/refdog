@@ -26,20 +26,51 @@ Element.prototype.$$ = function () {
     return this.querySelectorAll.apply(this, arguments);
 };
 
+function createLink(parent, href, text) {
+    const elem = document.createElement("a");
+    const textNode = document.createTextNode(text);
+
+    elem.setAttribute("href", href);
+    elem.appendChild(textNode);
+
+    parent.appendChild(elem);
+}
+
 window.addEventListener("load", () => {
     const container = $("body > aside > div");
-    const headings = $$("h2");
 
     if (!container) {
-	return;
+        return;
     }
 
-    if (headings.length == 0) {
-	return;
-    }
-
+    // Do nothing if a TOC is already present
     if ($("#-toc")) {
-	return;
+        return;
+    }
+
+    const parent = $("h1").parentElement;
+    const headings = new Map(); // Element heading => Array of subheadings
+    let currHeading = null;
+    let currSubheadings = null;
+
+    for (let i = 0; i < parent.children.length; i++) {
+        const child = parent.children[i];
+        const tag = child.tagName.toLowerCase();
+
+        if (tag === "h2") {
+            currHeading = child;
+            currSubheadings = [];
+
+            headings.set(currHeading, currSubheadings);
+        }
+
+        if (tag === "h3" && currSubheadings) {
+            currSubheadings.push(child);
+        }
+    }
+
+    if (headings.size === 0) {
+        return;
     }
 
     const toc = document.createElement("section");
@@ -52,31 +83,19 @@ window.addEventListener("load", () => {
 
     const tocLinks = document.createElement("nav");
 
-    for (const heading of headings) {
-        const link = document.createElement("a");
-        const text = document.createTextNode(heading.textContent);
+    createLink(tocLinks, "#", $("h1").textContent);
 
-        link.setAttribute("href", `#${heading.id}`);
-        link.appendChild(text);
+    for (const [heading, subheadings] of headings) {
+        createLink(tocLinks, `#${heading.id}`, heading.textContent);
 
-        tocLinks.appendChild(link);
-
-        const subheadings = heading.parentElement.$$("h3");
-
-        if (subheadings.length == 0) {
+        if (subheadings.length === 0) {
             continue;
         }
 
         const sublinks = document.createElement("nav");
 
         for (const subheading of subheadings) {
-            const sublink = document.createElement("a");
-            const subtext = document.createTextNode(subheading.textContent);
-
-            sublink.setAttribute("href", `#${subheading.id}`);
-            sublink.appendChild(subtext);
-
-            sublinks.appendChild(sublink);
+            createLink(sublinks, `#${subheading.id}`, subheading.textContent);
         }
 
         tocLinks.appendChild(sublinks);
@@ -96,9 +115,9 @@ window.addEventListener("load", () => {
     const updateHeadingSelection = () => {
         const currHash = window.location.hash;
 
-	for (const element of $$(".selected")) {
-	    element.classList.remove("selected");
-	}
+        for (const elem of $$(".selected")) {
+            elem.classList.remove("selected");
+        }
 
         if (currHash) {
             for (const link of tocLinks.$$("a")) {
@@ -106,12 +125,15 @@ window.addEventListener("load", () => {
 
                 if (linkHash === currHash) {
                     link.classList.add("selected");
-		    break;
+                    break;
                 }
             }
 
-	    $(currHash).parentElement.parentElement.classList.add("selected");
-	}
+            $(currHash).parentElement.parentElement.classList.add("selected");
+        } else {
+            // Select the top heading by default
+            tocLinks.$("a").classList.add("selected");
+        }
     }
 
     updateHeadingSelection();
@@ -121,63 +143,63 @@ window.addEventListener("load", () => {
 
 window.addEventListener("load", () => {
     for (const block of $$("pre > code.language-console")) {
-	const lines = block.innerHTML.split("\n");
+        const lines = block.innerHTML.split("\n");
 
-	block.innerHTML = lines.map(line => {
-	    switch (line[0]) {
-	    case "#":
-		return `<span class="shell-comment">${line}</span>`;
-	    case "$":
-		return `<span class="shell-command">${line}</span>`;
-	    default:
-		return `<span class="shell-output">${line}</span>`;
-	    }
-	}).join("\n");
+        block.innerHTML = lines.map(line => {
+            switch (line[0]) {
+            case "#":
+                return `<span class="shell-comment">${line}</span>`;
+            case "$":
+                return `<span class="shell-command">${line}</span>`;
+            default:
+                return `<span class="shell-output">${line}</span>`;
+            }
+        }).join("\n");
     }
 });
 
 window.addEventListener("load", () => {
-    for (const element of $$("div.attribute > div.attribute-heading")) {
-	element.addEventListener("click", () => {
-	    element.parentElement.classList.toggle("collapsed");
-	});
+    for (const elem of $$("div.attribute > div.attribute-heading")) {
+        elem.addEventListener("click", () => {
+            elem.parentElement.classList.toggle("collapsed");
+        });
     }
 });
 
 window.addEventListener("load", () => {
     if ($("a#expand-all")) {
-	$("a#expand-all").addEventListener("click", () => {
-	    for (const element of $$("div.attribute.collapsed")) {
-		element.classList.remove("collapsed");
-	    }
-	});
+        $("a#expand-all").addEventListener("click", () => {
+            for (const elem of $$("div.attribute.collapsed")) {
+                elem.classList.remove("collapsed");
+            }
+        });
     }
 
     if ($("a#collapse-all")) {
-	$("a#collapse-all").addEventListener("click", () => {
-	    for (const element of $$("div.attribute")) {
-		element.classList.add("collapsed");
-	    }
-	});
+        $("a#collapse-all").addEventListener("click", () => {
+            for (const elem of $$("div.attribute")) {
+                elem.classList.add("collapsed");
+            }
+        });
     }
 });
 
-
 // Function to open an image in fullscreen
-function openFullscreen(element) {
-  if (element.requestFullscreen) {
-    element.requestFullscreen();
-  } else if (element.mozRequestFullScreen) { // Firefox
-    element.mozRequestFullScreen();
-  } else if (element.webkitRequestFullscreen) { // Chrome, Safari, and Opera
-    element.webkitRequestFullscreen();
-  } else if (element.msRequestFullscreen) { // IE/Edge
-    element.msRequestFullscreen();
+function openFullscreen(elem) {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.mozRequestFullScreen) { // Firefox
+    elem.mozRequestFullScreen();
+  } else if (elem.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { // IE/Edge
+    elem.msRequestFullscreen();
   }
 }
+
 // Attach click event listeners to all img elements
-document.querySelectorAll('img').forEach(img => {
-  img.addEventListener('click', () => {
+document.querySelectorAll("img").forEach(img => {
+  img.addEventListener("click", () => {
     openFullscreen(img);
   });
 });

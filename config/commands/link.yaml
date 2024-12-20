@@ -59,6 +59,15 @@ subcommands:
       The command waits for the site to enter the ready state
       before producing the link.
 
+    # - Link generate is a little different from the other generate
+    #   commands.  In general, the generate commands are helping you
+    #   produce resources for your current site.  By contrast, link
+    #   generates a link resource (and a secret to go with it) for use
+    #   in a *remote* site, *to* the current site.
+
+    # - The generate commands usually don't need to wait for a status.  Link
+    #   generate is the exception - it needs the site to be ready.
+
     # - Using this skips the grant and token procedure
     # - The generated output includes a Skupper Link and an associated secret
     # - You can apply the link at a remote site to create a link to this site

@@ -8,8 +8,8 @@ groups:
       - link
   - title: Service exposure
     commands:
-      - connector
       - listener
+      - connector
   - title: System operations
     commands:
       - system

@@ -1,6 +1,6 @@
 ---
 body_class: object concept
-refdog_object_links:
+refdog_links:
 - title: Service exposure
   url: /topics/service-exposure.html
 - title: Listener concept

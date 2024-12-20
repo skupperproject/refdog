@@ -14,7 +14,7 @@ def generate(model):
         lines.append(line)
 
     append("---")
-    append("refdog_object_links:")
+    append("refdog_links:")
     append("  - title: Skupper resources")
     append("    url: /resources/index.html")
     append("  - title: Skupper commands")
@@ -90,7 +90,7 @@ def generate_concept_metadata(concept):
     data = dict()
 
     data["body_class"] = "object concept"
-    data["refdog_object_links"] = get_object_links(concept)
+    data["refdog_links"] = get_object_links(concept)
 
     return emit_yaml(data).strip()
 

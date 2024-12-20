@@ -1,7 +1,6 @@
 ---
 body_class: object resource
-refdog_object_has_attributes: true
-refdog_object_links:
+refdog_links:
 - title: Service exposure
   url: /topics/service-exposure.html
 - title: Listener concept
@@ -10,7 +9,8 @@ refdog_object_links:
   url: /commands/listener/index.html
 - title: Connector resource
   url: /resources/connector.html
-refdog_object_toc:
+refdog_object_has_attributes: true
+refdog_toc:
 - id: ''
   title: Overview
 - id: examples

@@ -17,8 +17,8 @@ def directory_nav(page):
 
     return f"<nav class=\"directory-nav\"><ul>{''.join(links)}</ul></nav>"
 
-def refdog_object_links(page):
-    if not page.metadata.get("refdog_object_links"):
+def refdog_links(page):
+    if not page.metadata.get("refdog_links"):
         return ""
 
     lines = list()
@@ -27,7 +27,7 @@ def refdog_object_links(page):
     lines.append("<h4>See also</h4>")
     lines.append("<nav>")
 
-    for link in page.metadata["refdog_object_links"]:
+    for link in page.metadata["refdog_links"]:
         title = link["title"]
         url = link["url"]
 
@@ -41,8 +41,8 @@ def refdog_object_links(page):
 
     return "\n".join(lines)
 
-def refdog_object_toc(page):
-    if not page.metadata.get("refdog_object_toc"):
+def refdog_toc(page):
+    if not page.metadata.get("refdog_toc"):
         return ""
 
     lines = list()
@@ -51,7 +51,7 @@ def refdog_object_toc(page):
     lines.append("  <h4>Contents</h4>")
     lines.append("  <nav>")
 
-    for section in page.metadata["refdog_object_toc"]:
+    for section in page.metadata["refdog_toc"]:
         lines.append(f"<a href=\"#{section['id']}\">{section['title']}</a>")
 
         children = section.get("children", [])

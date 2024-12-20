@@ -1,3 +1,11 @@
+---
+refdog_links:
+  - title: Skupper resource overview
+    url: /resources/overview.html
+  - title: Skupper command overview
+    url: /commands/overview.html
+---
+
 # Skupper concept overview
 
 <figure>

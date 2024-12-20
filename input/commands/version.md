@@ -1,8 +1,8 @@
 ---
 body_class: object command
+refdog_links: []
 refdog_object_has_attributes: true
-refdog_object_links: []
-refdog_object_toc:
+refdog_toc:
 - id: ''
   title: Overview
 - id: usage
@@ -46,7 +46,6 @@ COMPONENT          VERSION
 cli                2.0.0
 controller         2.0.0
 router             3.0.0
-network-observer   1.0.0
 
 # Show version details in YAML format
 $ skupper version --output yaml
@@ -56,19 +55,18 @@ components:
   controller:
     version: 2.0.0
     images:
-      - name: quay.io/skupper/controller:2.0.0
+      controller:
+        name: quay.io/skupper/controller:2.0.0
         digest: sha256:663d97f86ff3fcce27a3842cd2b3a8e32af791598a46d815c07b0aec07505f55
   router:
     version: 3.0.0
     images:
-      - name: quay.io/skupper/router:3.0.0
+      router:
+        name: quay.io/skupper/router:3.0.0
         digest: sha256:dc5e27385a1e110dd2db1903ba7ec3e0d50b57f742aa02d7dd0a7b1b68c34394
-      - name: quay.io/skupper/kube-adaptor:2.0.0
+      kube-adaptor:
+        name: quay.io/skupper/kube-adaptor:2.0.0
         digest: sha256:4dc24bb3d605ed3fcec2f8ef7d45ca883d9d87b278bfedd5fcca74281d617a5e
-  network-observer:
-    version: 1.0.0
-      - name: quay.io/skupper/network-observer:1.0.0
-        digest: sha256:670ea540b1e037270eab73a1da2b7ec9e5c05e17cafb8948159ba1acd9ea5552
 ~~~
 
 </section>

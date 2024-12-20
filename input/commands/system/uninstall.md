@@ -1,12 +1,12 @@
 ---
 body_class: object command
-refdog_object_has_attributes: true
-refdog_object_links:
+refdog_links:
 - title: Platform concept
   url: /concepts/platform.html
 - title: System install command
   url: /commands/system/install.html
-refdog_object_toc:
+refdog_object_has_attributes: true
+refdog_toc:
 - id: ''
   title: Overview
 - id: usage

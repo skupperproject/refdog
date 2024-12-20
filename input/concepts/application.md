@@ -1,6 +1,6 @@
 ---
 body_class: object concept
-refdog_object_links:
+refdog_links:
 - title: Network concept
   url: /concepts/network.html
 - title: Component concept

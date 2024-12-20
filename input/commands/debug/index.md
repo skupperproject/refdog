@@ -1,8 +1,8 @@
 ---
 body_class: object command
+refdog_links: []
 refdog_object_has_attributes: true
-refdog_object_links: []
-refdog_object_toc:
+refdog_toc:
 - id: ''
   title: Overview
 - id: usage

@@ -1,5 +1,5 @@
 ---
-refdog_object_links:
+refdog_links:
 - title: Skupper concepts
   url: /concepts/index.html
 - title: Skupper resources
@@ -53,20 +53,6 @@ refdog_object_links:
 #### Service exposure
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/commands/connector/index.html">Connector</a></th><td>Overview of connector commands</td></tr>
-<tr><th><a href="{{site_prefix}}/commands/connector/create.html">Connector create</a></th><td><p>Create a connector</p>
-</td></tr>
-<tr><th><a href="{{site_prefix}}/commands/connector/update.html">Connector update</a></th><td><p>Update a connector</p>
-</td></tr>
-<tr><th><a href="{{site_prefix}}/commands/connector/delete.html">Connector delete</a></th><td><p>Delete a connector</p>
-</td></tr>
-<tr><th><a href="{{site_prefix}}/commands/connector/status.html">Connector status</a></th><td><p>Display the status of connectors in the current site</p>
-</td></tr>
-<tr><th><a href="{{site_prefix}}/commands/connector/generate.html">Connector generate</a></th><td><p>Generate a Connector resource</p>
-</td></tr>
-</table>
-
-<table class="objects">
 <tr><th><a href="{{site_prefix}}/commands/listener/index.html">Listener</a></th><td>Overview of listener commands</td></tr>
 <tr><th><a href="{{site_prefix}}/commands/listener/create.html">Listener create</a></th><td><p>Create a listener</p>
 </td></tr>
@@ -77,6 +63,20 @@ refdog_object_links:
 <tr><th><a href="{{site_prefix}}/commands/listener/status.html">Listener status</a></th><td><p>Display the status of listeners in the current site</p>
 </td></tr>
 <tr><th><a href="{{site_prefix}}/commands/listener/generate.html">Listener generate</a></th><td><p>Generate a Listener resource</p>
+</td></tr>
+</table>
+
+<table class="objects">
+<tr><th><a href="{{site_prefix}}/commands/connector/index.html">Connector</a></th><td>Overview of connector commands</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/connector/create.html">Connector create</a></th><td><p>Create a connector</p>
+</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/connector/update.html">Connector update</a></th><td><p>Update a connector</p>
+</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/connector/delete.html">Connector delete</a></th><td><p>Delete a connector</p>
+</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/connector/status.html">Connector status</a></th><td><p>Display the status of connectors in the current site</p>
+</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/connector/generate.html">Connector generate</a></th><td><p>Generate a Connector resource</p>
 </td></tr>
 </table>
 

@@ -1,12 +1,12 @@
 ---
 body_class: object resource
-refdog_object_has_attributes: true
-refdog_object_links:
+refdog_links:
 - title: Attached connectors
   url: /topics/attached-connectors.html
 - title: AttachedConnectorBinding resource
   url: /resources/attached-connector-binding.html
-refdog_object_toc:
+refdog_object_has_attributes: true
+refdog_toc:
 - id: ''
   title: Overview
 - id: metadata-properties

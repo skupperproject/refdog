@@ -1,3 +1,11 @@
+---
+refdog_links:
+  - title: Skupper concept overview
+    url: /concepts/overview.html
+  - title: Skupper command overview
+    url: /commands/overview.html
+---
+
 # Skupper resource overview
 
 - CRDs and the Skupper controller (and system equivalent)

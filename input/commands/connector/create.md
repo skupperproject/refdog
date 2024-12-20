@@ -1,7 +1,6 @@
 ---
 body_class: object command
-refdog_object_has_attributes: true
-refdog_object_links:
+refdog_links:
 - title: Service exposure
   url: /topics/service-exposure.html
 - title: Connector concept
@@ -10,7 +9,8 @@ refdog_object_links:
   url: /resources/connector.html
 - title: Listener create command
   url: /commands/listener/create.html
-refdog_object_toc:
+refdog_object_has_attributes: true
+refdog_toc:
 - id: ''
   title: Overview
 - id: usage

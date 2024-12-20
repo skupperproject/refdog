@@ -1,6 +1,6 @@
 ---
 body_class: object concept
-refdog_object_links:
+refdog_links:
 - title: Site resource
   url: /resources/site.html
 - title: Site command
