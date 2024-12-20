@@ -95,13 +95,6 @@ def generate_command(command):
 
     append(generate_command_fields(command))
     append()
-
-    append("</section>")
-    append()
-    append("<section>")
-    append()
-    append("## Usage")
-    append()
     append("~~~ shell")
     append(f"{generate_usage(command)}")
     append("~~~")
@@ -216,10 +209,6 @@ def generate_command_metadata(command):
         {
             "title": "Overview",
             "id": "",
-        },
-        {
-            "title": "Usage",
-            "id": "usage",
         },
     ]
 

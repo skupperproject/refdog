@@ -9,8 +9,6 @@ refdog_object_has_attributes: true
 refdog_toc:
 - id: ''
   title: Overview
-- id: usage
-  title: Usage
 - id: primary-options
   title: Primary options
 - id: global-options
@@ -28,12 +26,6 @@ This starts the systemd service for the current namespace.
 <!-- Maybe: If not installed yet, run install -->
 
 <table class="fields"><tr><th>Platforms</th><td>Docker, Podman, Linux</td></table>
-
-</section>
-
-<section>
-
-## Usage
 
 ~~~ shell
 skupper system start [options]

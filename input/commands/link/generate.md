@@ -11,8 +11,6 @@ refdog_object_has_attributes: true
 refdog_toc:
 - id: ''
   title: Overview
-- id: usage
-  title: Usage
 - id: examples
   title: Examples
 - id: primary-options
@@ -32,12 +30,6 @@ The command waits for the site to enter the ready state
 before producing the link.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Site resource Ready</td></table>
-
-</section>
-
-<section>
-
-## Usage
 
 ~~~ shell
 skupper link generate [name] [options]

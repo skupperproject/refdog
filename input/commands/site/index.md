@@ -9,8 +9,6 @@ refdog_object_has_attributes: true
 refdog_toc:
 - id: ''
   title: Overview
-- id: usage
-  title: Usage
 - id: subcommands
   title: Subcommands
 - id: primary-options
@@ -24,12 +22,6 @@ refdog_toc:
 <section>
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</section>
-
-<section>
-
-## Usage
 
 ~~~ shell
 skupper site [subcommand] [options]

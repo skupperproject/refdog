@@ -11,8 +11,6 @@ refdog_object_has_attributes: true
 refdog_toc:
 - id: ''
   title: Overview
-- id: usage
-  title: Usage
 - id: examples
   title: Examples
 - id: primary-options
@@ -28,12 +26,6 @@ refdog_toc:
 Change link settings.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Ready</td></table>
-
-</section>
-
-<section>
-
-## Usage
 
 ~~~ shell
 skupper link update <name> [options]

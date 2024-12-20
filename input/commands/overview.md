@@ -99,21 +99,21 @@ skupper <resource-type> status [resource-name] [options]
 skupper <resource-type> generate <resource-name> [options]
 ~~~
 
-These are the primary CLI operations for sites, links, listeners, and
+These commands operate on Skupper sites, links, listeners, and
 connectors.
 
 Resource properties are set using one or more `--some-key some-value`
 command-line options.  YAML resource options in camel case (`someKey`)
-are exposed as hyphenated names (`some-key`) when used as options.
+are exposed as hyphenated names (`--some-key`) when used as options.
 
-`create`, `update`, and `delete` operations control the lifecycle of
+The `create`, `update`, and `delete` commands control the lifecycle of
 Skupper resources and configure their properties.
 
-`status` operations display the current state of resources.  If no
+The `status` commands display the current state of resources.  If no
 resource name is specified, they list the status of all resources of
 the given type.
 
-`generate` operations produce Skupper resources as YAML or JSON
+The `generate` commands produce Skupper resources as YAML or JSON
 output.  They are useful for directing the output to files or other
 tools.
 
@@ -124,22 +124,25 @@ skupper token issue <token-file> [options]
 skupper token redeem <token-file> [options]
 ~~~
 
-- The token commands are for creating links!
+These commands use access tokens to create links between sites.
+
+The `token issue` command creates an access token for use in remote
+sites.  The `token redeem` command uses an access token to create a
+link to the issuing site.
 
 ## System commands
 
 ~~~
-skupper system setup [options]
-skupper system teardown [options]
+skupper system install [options]
+skupper system uninstall [options]
 skupper system start [options]
 skupper system stop [options]
 skupper system reload [options]
 skupper system status [options]
 ~~~
 
-- These commands are for non-Kube sites.
-- They are about installing and operating the Skupper runtime
-  components.
+These commands configure and operate the Skupper runtime components
+for Docker, Podman, and Linux sites.
 
 ## Debug commands
 
@@ -148,7 +151,7 @@ skupper debug check [options]
 skupper debug dump [options]
 ~~~
 
-- These commands are for debugging and troubleshooting.
+These commands help you troubleshoot problems.
 
 ## Version command
 
@@ -156,7 +159,7 @@ skupper debug dump [options]
 skupper version
 ~~~
 
-- The version command!
+The `version` command displays the versions of Skupper components.
 
 <!-- ## Hello World using the CLI -->
 

@@ -15,8 +15,6 @@ refdog_object_has_attributes: true
 refdog_toc:
 - id: ''
   title: Overview
-- id: usage
-  title: Usage
 - id: examples
   title: Examples
 - id: primary-options
@@ -33,12 +31,6 @@ Redeem a token file in order to create a link to a remote
 site.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</section>
-
-<section>
-
-## Usage
 
 ~~~ shell
 skupper token redeem <file> [options]

@@ -7,8 +7,6 @@ refdog_object_has_attributes: true
 refdog_toc:
 - id: ''
   title: Overview
-- id: usage
-  title: Usage
 - id: examples
   title: Examples
 - id: primary-options
@@ -25,12 +23,6 @@ Generate a debug dump file.  Debug dumps collect the details of
 a site so another party can identify and fix a problem.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</section>
-
-<section>
-
-## Usage
 
 ~~~ shell
 skupper debug dump [file] [options]

@@ -1,60 +1,26 @@
 ---
 body_class: object command
-refdog_links:
-- title: Service exposure
-  url: /topics/service-exposure.html
-- title: Listener concept
-  url: /concepts/listener.html
-- title: Listener resource
-  url: /resources/listener.html
-- title: Connector status command
-  url: /commands/connector/status.html
+refdog_links: []
 refdog_object_has_attributes: true
 refdog_toc:
 - id: ''
   title: Overview
-- id: examples
-  title: Examples
 - id: primary-options
   title: Primary options
 - id: global-options
   title: Global options
 ---
 
-# Listener status command
+# Debug check command
 
 <section>
 
-Display the status of listeners in the current site.
+Run diagnostic checks.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 ~~~ shell
-skupper listener status [name] [options]
-~~~
-
-</section>
-
-<section>
-
-## Examples
-
-~~~ console
-# Show the status of all listeners in the current site
-$ skupper listener status
-NAME       STATUS   ROUTING-KEY   HOST       PORT   CONNECTORS
-backend    Ready    backend       backend    8080   true
-database   Ready    database      database   5432   true
-
-# Show the status of one listener
-$ skupper listener status backend
-Name:                      backend
-Status:                    Ready
-Message:                   <none>
-Routing key:               backend
-Host:                      backend
-Port:                      8080
-Has matching connectors:   true
+skupper debug check [options]
 ~~~
 
 </section>
@@ -62,54 +28,6 @@ Has matching connectors:   true
 <section class="attributes">
 
 ## Primary options
-
-<div class="attribute">
-<div class="attribute-heading">
-<h3 id="option-name">[name]</h3>
-<div class="attribute-type-info">string</div>
-<div class="attribute-flags">optional</div>
-</div>
-<div class="attribute-body">
-
-An optional resource name.  If set, the status command reports
-status for the named resource only.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
-
-</div>
-</div>
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="option-timeout">--timeout</h3>
-<div class="attribute-type-info">&lt;duration&gt;</div>
-</div>
-<div class="attribute-body">
-
-Raise an error if the operation does not complete in the given
-period of time.
-
-<table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://pkg.go.dev/time#ParseDuration">Duration format</a></td></table>
-
-</div>
-</div>
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="option-output">--output</h3>
-<div class="attribute-type-info">(-o) &lt;format&gt;</div>
-</div>
-<div class="attribute-body">
-
-Print status to the console in a structured output format.
-
-<table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
-</td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
-</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
 
 </section>
 

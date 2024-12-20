@@ -95,8 +95,6 @@ refdog_links:
 </td></tr>
 <tr><th><a href="{{site_prefix}}/commands/system/reload.html">System reload</a></th><td><p>Reload the site configuration</p>
 </td></tr>
-<tr><th><a href="{{site_prefix}}/commands/system/apply.html">System apply</a></th><td><p>Apply resource configuration from files or standard input</p>
-</td></tr>
 <tr><th><a href="{{site_prefix}}/commands/system/status.html">System status</a></th><td><p>Display the status of the system</p>
 </td></tr>
 </table>
@@ -106,6 +104,8 @@ refdog_links:
 
 <table class="objects">
 <tr><th><a href="{{site_prefix}}/commands/debug/index.html">Debug</a></th><td>Overview of debug commands</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/debug/check.html">Debug check</a></th><td><p>Run diagnostic checks</p>
+</td></tr>
 <tr><th><a href="{{site_prefix}}/commands/debug/dump.html">Debug dump</a></th><td><p>Generate a debug dump file</p>
 </td></tr>
 </table>

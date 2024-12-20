@@ -15,8 +15,6 @@ refdog_object_has_attributes: true
 refdog_toc:
 - id: ''
   title: Overview
-- id: usage
-  title: Usage
 - id: examples
   title: Examples
 - id: primary-options
@@ -39,12 +37,6 @@ The command waits for the site to enter the ready state
 before producing the token.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>Waits for</th><td>Ready</td></table>
-
-</section>
-
-<section>
-
-## Usage
 
 ~~~ shell
 skupper token issue <file> [options]

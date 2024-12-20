@@ -5,8 +5,6 @@ refdog_object_has_attributes: true
 refdog_toc:
 - id: ''
   title: Overview
-- id: usage
-  title: Usage
 - id: subcommands
   title: Subcommands
 - id: primary-options
@@ -20,12 +18,6 @@ refdog_toc:
 <section>
 
 <table class="fields"><tr><th>Platforms</th><td>Docker, Podman, Linux</td></table>
-
-</section>
-
-<section>
-
-## Usage
 
 ~~~ shell
 skupper system [subcommand] [options]
@@ -47,8 +39,6 @@ skupper system [subcommand] [options]
 <tr><th><a href="stop.html">System stop</a></th><td><p>Shut down the Skupper components for the current site</p>
 </td></tr>
 <tr><th><a href="reload.html">System reload</a></th><td><p>Reload the site configuration</p>
-</td></tr>
-<tr><th><a href="apply.html">System apply</a></th><td><p>Apply resource configuration from files or standard input</p>
 </td></tr>
 <tr><th><a href="status.html">System status</a></th><td><p>Display the status of the system</p>
 </td></tr>

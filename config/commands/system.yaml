@@ -49,14 +49,14 @@ subcommands:
       Reload the site configuration.
 
       This restarts the systemd service for the current namespace.
-  - name: apply
-    platforms: [Docker, Podman, Linux]
-    related_concepts: [platform]
-    description: |
-      Apply resource configuration from files or standard input.
+  # - name: apply
+  #   platforms: [Docker, Podman, Linux]
+  #   related_concepts: [platform]
+  #   description: |
+  #     Apply resource configuration from files or standard input.
 
-      <!-- File locations and names -->
-    include_options: [context/namespace, global/*]
+  #     <!-- File locations and names -->
+  #   include_options: [context/namespace, global/*]
   - name: status
     platforms: [Docker, Podman, Linux]
     related_concepts: [platform]
