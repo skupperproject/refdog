@@ -69,6 +69,9 @@ window.addEventListener("load", () => {
     }
 
     if (headings.size === 0) {
+        // Remove the TOC element so it doesn't affect page layout
+        oldToc.remove();
+
         return;
     }
 
