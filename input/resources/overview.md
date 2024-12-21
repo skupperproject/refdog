@@ -8,21 +8,19 @@ refdog_links:
 
 # Skupper resource overview
 
-- CRDs and the Skupper controller (and system equivalent)
-- A declarative API.
-- It is the basis for all Skupper configuration.
-- Skupper uses YAML resources for configuration
-- These are Kubernetes custom resources.  They are used for non-Kube platforms as well.
-- The resources are primary.  Everything goes through the standard
-  resources.  All of Skupper's logic is in the controller that
-  processes the resources.  The CLI's job is to create and submit
-  resources.
+Skupper uses Kubernetes-style custom resources to configure and deploy
+Skupper networks, for both Kubernetes and non-Kubernetes platforms.
+The Skupper resources provide a declarative interface that simplifies
+automation and supports integration with other tools.
 
 #### Controller
 
-The Skupper controller is responsible for processing Skupper resources
+The Skupper controller is responsible for processing input resources
 and producing output resources.
 
+- CRDs and the Skupper controller (and system equivalent)
+- All of Skupper's logic is in the controller that processes the
+  resources.
 - Control plane
 - Input resources and output resources
 - Router config
@@ -37,16 +35,13 @@ Creation, updates, deletion
 - Where do they go in non-Kube?  FS location.  system apply.
 - You can use the CLI do these things.
 
-#### Common spec properties
+#### Common properties
 
-- settings
-- tlsCredentials
-
-#### Common status properties
-
-- Status
-- Message
-- Conditions
+- spec.settings
+- spec.tlsCredentials
+- status.Status
+- status.Message
+- status.Conditions
 
 #### Labels and annotations
 
