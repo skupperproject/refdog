@@ -85,8 +85,10 @@ window.addEventListener("load", () => {
 
     const tocLinks = document.createElement("nav");
 
-    // createLink(tocLinks, "#", $("h1").textContent);
     createLink(tocLinks, "#", "Overview");
+
+    // XXX Another variant I considered
+    // createLink(tocLinks, "#", $("h1").textContent);
 
     for (const [heading, subheadings] of headings) {
         createLink(tocLinks, `#${heading.id}`, heading.textContent);

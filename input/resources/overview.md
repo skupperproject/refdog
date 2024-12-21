@@ -13,26 +13,72 @@ refdog_links:
 - It is the basis for all Skupper configuration.
 - Skupper uses YAML resources for configuration
 - These are Kubernetes custom resources.  They are used for non-Kube platforms as well.
-
 - The resources are primary.  Everything goes through the standard
   resources.  All of Skupper's logic is in the controller that
   processes the resources.  The CLI's job is to create and submit
   resources.
 
+#### Controller
+
+The Skupper controller is responsible for processing Skupper resources
+and producing output resources.
+
+- Control plane
+- Input resources and output resources
+- Router config
+
+#### Resource operations
+
+Creation, updates, deletion
+
 - Some resource fields are "updatable" - you can change their values
   without recreating the resource.
-
 - Where do resources go in Kubernetes?
 - Where do they go in non-Kube?  FS location.  system apply.
+- You can use the CLI do these things.
 
-## Sites
+#### Common spec properties
 
-## Site linking
+- settings
+- tlsCredentials
 
-- You may want to use the CLI (or some other automation) to do the
-  linking part
+#### Common status properties
 
-## Service exposure
+- Status
+- Message
+- Conditions
+
+#### Labels and annotations
+
+{{lipsum()}}
+
+## Primary resources
+
+- **Site:** {{lipsum(10)}}
+- **Link:** {{lipsum(10)}}
+- **Listener:** {{lipsum(10)}}
+- **Connector:** {{lipsum(10)}}
+
+Site is the heart of things.  The Site resource represents a location
+in a Skupper network.  It carries all the configuration for the site.
+The starting point.  The parent of other Skupper resources.
+
+## Site linking resources
+
+- **Link:** {{lipsum(10)}}
+- **AccessGrant:** {{lipsum(10)}}
+- **AccessToken:** {{lipsum(10)}}
+- **RouterAccess:** {{lipsum(10)}}
+
+You may want to use the CLI (or some other automation) to do the
+linking part.
+
+## Service exposure resources
+
+- **Listener:** {{lipsum(10)}}
+- **Connector:** {{lipsum(10)}}
+- **AttachedConnector:** {{lipsum(10)}}
+- **AttachedConnectorBinding:** {{lipsum(10)}}
 
 <!-- ## Hello World using YAML -->
 
