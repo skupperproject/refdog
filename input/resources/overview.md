@@ -15,15 +15,10 @@ automation and supports integration with other tools.
 
 #### Controller
 
-The Skupper controller is responsible for processing input resources
-and producing output resources.
-
-- CRDs and the Skupper controller (and system equivalent)
-- All of Skupper's logic is in the controller that processes the
-  resources.
-- Control plane
-- Input resources and output resources
-- Router config
+The Skupper controller consumes the standard Skupper resources as
+input and produces platform-specific resources as output.  The output
+resources configure the local site and router for the desired
+connectivity.
 
 #### Resource operations
 

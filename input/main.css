@@ -237,6 +237,10 @@ pre {
 
 /* XXX The handling of only versus multiple child elements needs work */
 
+::marker {
+    font-size: 0.9em;
+}
+
 ol, ul, dd {
     padding: 0 0 0 1em;
 }
