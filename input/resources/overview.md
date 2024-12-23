@@ -29,6 +29,8 @@ Creation, updates, deletion
 - Where do resources go in Kubernetes?
 - Where do they go in non-Kube?  FS location.  system apply.
 - You can use the CLI do these things.
+- On Kubernetes, use kubectl apply and delete.  On Docker, Podman, and
+  Linux, use skupper system apply and delete.
 
 #### Common properties
 
@@ -49,9 +51,17 @@ Creation, updates, deletion
 - **Listener:** {{lipsum(10)}}
 - **Connector:** {{lipsum(10)}}
 
+These are the main resources you interact with.  The others are for
+less common scenarios.
+
 Site is the heart of things.  The Site resource represents a location
 in a Skupper network.  It carries all the configuration for the site.
 The starting point.  The parent of other Skupper resources.
+
+Links....  The Link resource is usually not created directly.
+Instead, you use access tokens.
+
+Listener and connector are the key resources for service exposure.
 
 ## Site linking resources
 

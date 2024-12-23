@@ -132,7 +132,7 @@ the sites must have link access enabled.
 </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>none</code></th><td><p>No linking to this site is permitted.</p>
 </td></tr><tr><th><code>default</code></th><td><p>Use the default link access for the current platform. On OpenShift, the default is <code>route</code>.  For other Kubernetes flavors, the default is <code>loadbalancer</code>.</p>
 </td></tr><tr><th><code>route</code></th><td><p>Use an OpenShift route.  <em>OpenShift only.</em></p>
-</td></tr><tr><th><code>loadbalancer</code></th><td><p>Use a Kubernetes load balancer.  <em>Kubernetes only.</em></p>
+</td></tr><tr><th><code>loadbalancer</code></th><td><p>Use a Kubernetes load balancer.</p>
 </td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/link.html">Link concept</a>, <a href="{{site_prefix}}/topics/site-linking.html">Site linking</a></td></table>
 
 </div>
@@ -168,7 +168,7 @@ window of downtime caused by restarts.
 
 The name of a Kubernetes secret containing the signing CA
 used to generate a certificate from a token.  A secret is
-generated if none is supplied.
+generated if none is specified.
 
 This issuer is used by AccessGrant and RouterAccess if a
 specific issuer is not set.
@@ -213,10 +213,11 @@ router infrastructure. -->
 </div>
 <div class="attribute-body">
 
-The name of the Kubernetes service account under which to
-run the Skupper controller.
+The name of the Kubernetes service account under which to run
+the Skupper router.  A service account is generated if none is
+specified.
 
-<table class="fields"><tr><th>Default</th><td><p><code>skupper-router</code></p>
+<table class="fields"><tr><th>Default</th><td><p><em>Generated</em></p>
 </td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/security/service-accounts/">Kubernetes service accounts</a></td></table>
 
 </div>

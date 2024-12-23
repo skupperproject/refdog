@@ -31,6 +31,15 @@ spec:
     - name: generateTlsCredentials
     - name: issuer
     - name: accessType
+      platforms: [Kubernetes]
+      default: |
+        _On OpenShift, the default is `route`.  For other
+        Kubernetes flavors, the default is `loadbalancer`._
+      choices:
+        - name: route
+          description: Use an OpenShift route.  _OpenShift only._
+        - name: loadbalancer
+          description: Use a Kubernetes load balancer.
     - name: bindHost
       default: 0.0.0.0
       platforms: [Docker, Podman, Linux]

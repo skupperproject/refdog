@@ -145,7 +145,11 @@ directory under `input/certs/` in the current namespace.
 </div>
 <div class="attribute-body">
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Default</th><td><p><em>On OpenShift, the default is <code>route</code>.  For other
+Kubernetes flavors, the default is <code>loadbalancer</code>.</em></p>
+</td><tr><th>Choices</th><td><table class="choices"><tr><th><code>route</code></th><td><p>Use an OpenShift route.  <em>OpenShift only.</em></p>
+</td></tr><tr><th><code>loadbalancer</code></th><td><p>Use a Kubernetes load balancer.</p>
+</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes</td></table>
 
 </div>
 </div>
