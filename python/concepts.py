@@ -5,13 +5,7 @@ def generate(model):
 
     make_dir("input/concepts")
 
-    lines = list()
-
-    def append(line=""):
-        if line is None:
-            return
-
-        lines.append(line)
+    append = Appender()
 
     append("---")
     append("refdog_links:")
@@ -42,7 +36,7 @@ def generate(model):
         append("</table>")
         append()
 
-    write("input/concepts/index.md", "\n".join(lines))
+    write("input/concepts/index.md", append.output())
 
     for concept in model.concepts:
         generate_concept(concept)
@@ -50,19 +44,13 @@ def generate(model):
 def generate_concept(concept):
     debug(f"Generating {concept}")
 
-    lines = list()
-
-    def append(line=""):
-        if line is None:
-            return
-
-        lines.append(line)
+    append = Appender()
 
     append("---")
     append(generate_concept_metadata(concept))
     append("---")
     append()
-    append(f"# {concept.title}")
+    append(f"# {concept.title_with_type}")
     append()
     append("<section>")
     append()
@@ -84,7 +72,7 @@ def generate_concept(concept):
         append("</section>")
         append()
 
-    write(f"input/concepts/{concept.id}.md", "\n".join(lines))
+    write(f"input/concepts/{concept.id}.md", append.output())
 
 def generate_concept_metadata(concept):
     data = dict()

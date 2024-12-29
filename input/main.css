@@ -109,7 +109,7 @@ body {
         "header header header header"
         ". main aside ."
         "footer footer footer footer";
-    height: 100%;
+    min-height: 100vh;
     color: var(--text-color);
     background-color: var(--body-background-color);
     font-family: var(--body-font-family);
@@ -346,6 +346,10 @@ pre {
 /* Refdog-specific styles for prose elements */
 
 /** Objects (resources and commands) **/
+
+body.object.index ul {
+    column-count: 3;
+}
 
 body.object h2 {
     font-size: 1.3em;

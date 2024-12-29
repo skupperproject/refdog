@@ -7,13 +7,7 @@ def generate(model):
 
     make_dir("input/commands")
 
-    lines = list()
-
-    def append(line=""):
-        if line is None:
-            return
-
-        lines.append(line)
+    append = Appender()
 
     append("---")
     append("refdog_links:")
@@ -36,20 +30,20 @@ def generate(model):
             append("<table class=\"objects\">")
 
             if command.subcommands:
-                title = command.title.removesuffix(" command")
+                title = command.title
                 description = f"Overview of {command.name} commands"
 
                 append(f"<tr><th><a href=\"{command.href}\">{title}</a></th><td>{description}</td></tr>")
 
                 for subcommand in command.subcommands:
-                    title = subcommand.title.removesuffix(" command")
+                    title = subcommand.title
                     description = nvl(subcommand.description, "").replace("\n", " ")
                     description = re.split(r"\.\s", description)[0]
                     description = mistune.html(description)
 
                     append(f"<tr><th><a href=\"{subcommand.href}\">{title}</a></th><td>{description}</td></tr>")
             else:
-                title = command.title.removesuffix(" command")
+                title = command.title
                 description = nvl(command.description, "").replace("\n", " ")
                 description = re.split(r"\.\s", description)[0]
                 description = mistune.html(description)
@@ -61,7 +55,7 @@ def generate(model):
 
         append()
 
-    write("input/commands/index.md", "\n".join(lines))
+    write("input/commands/index.md", append.output())
 
     for command in model.commands:
         generate_command(command)
@@ -72,19 +66,13 @@ def generate(model):
 def generate_command(command):
     debug(f"Generating {command}")
 
-    lines = list()
-
-    def append(line=""):
-        if line is None:
-            return
-
-        lines.append(line)
+    append = Appender()
 
     append("---")
     append(generate_command_metadata(command))
     append("---")
     append()
-    append(f"# {command.title}")
+    append(f"# {command.title_with_type}")
     append()
     append("<section>")
     append()
@@ -122,7 +110,7 @@ def generate_command(command):
         append("<table class=\"objects\">")
 
         for subcommand in command.subcommands:
-            title = subcommand.title.removesuffix(" command")
+            title = subcommand.title
             description = nvl(subcommand.description, "").replace("\n", " ")
             description = description.split(".")[0]
             description = mistune.html(description)
@@ -194,9 +182,9 @@ def generate_command(command):
         append()
 
     if command.subcommands:
-        write(f"input/commands/{command.id}/index.md", "\n".join(lines))
+        write(f"input/commands/{command.id}/index.md", append.output())
     else:
-        write(f"input/commands/{command.id}.md", "\n".join(lines))
+        write(f"input/commands/{command.id}.md", append.output())
 
 def generate_command_metadata(command):
     data = dict()
@@ -481,9 +469,9 @@ class Command(ModelObject):
     @property
     def title(self):
         if self.parent:
-            return f"{capitalize(self.parent.name)} {self.name} command"
+            return f"{capitalize(self.parent.name)} {self.name}"
         else:
-            return f"{capitalize(self.name)} command"
+            return f"{capitalize(self.name)}"
 
     @property
     def href(self):

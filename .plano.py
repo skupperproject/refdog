@@ -1,33 +1,11 @@
 from transom.planocommands import *
 
-import commands
-import concepts
-import resources
+from generate import generate_objects, generate_index
 
 @command
 def generate():
-    concept_model = concepts.ConceptModel()
-    resource_model = resources.ResourceModel()
-    command_model = commands.CommandModel()
-
-    concept_model.resource_model = resource_model
-    concept_model.command_model = command_model
-    concept_model.concept_model = concept_model
-
-    resource_model.concept_model = concept_model
-    resource_model.command_model = command_model
-    resource_model.resource_model = resource_model
-
-    command_model.concept_model = concept_model
-    command_model.resource_model = resource_model
-    command_model.command_model = command_model
-
-    resource_model.check()
-    command_model.check()
-
-    concepts.generate(concept_model)
-    resources.generate(resource_model)
-    commands.generate(command_model)
+    generate_objects()
+    generate_index()
 
 @command
 def generate_diagrams():

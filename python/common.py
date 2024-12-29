@@ -6,6 +6,19 @@ import re
 
 named_links = read_yaml("config/links.yaml")
 
+class Appender:
+    def __init__(self):
+        self.lines = list()
+
+    def __call__(self, line=""):
+        if line is None:
+            return
+
+        self.lines.append(line)
+
+    def output(self):
+        return "\n".join(self.lines)
+
 def indent(text, spaces):
     return "\n".join(f"{' ' * spaces}{line}" for line in text.split("\n"))
 
@@ -21,7 +34,7 @@ def get_object_links(obj):
 
     def add_link(other):
         data.append({
-            "title": other.title,
+            "title": other.title_with_type,
             "url": other.href.removeprefix("{{site_prefix}}"),
         })
 
@@ -166,8 +179,16 @@ class ModelObject:
 
     @property
     def title(self):
+        return f"{capitalize(self.rename)}"
+
+    @property
+    def title_with_type(self):
         type = self.__class__.__name__.lower()
-        return f"{capitalize(self.rename)} {type}"
+
+        if type == "subcommand":
+            type = "command"
+
+        return f"{self.title} {type}"
 
     @property
     def href(self):
@@ -275,7 +296,7 @@ class ModelObjectAttribute:
         links = list()
 
         for concept in self.related_concepts:
-            links.append((concept.title, concept.href))
+            links.append((concept.title_with_type, concept.href))
 
         # XXX Other related things here?
 

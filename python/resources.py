@@ -7,13 +7,7 @@ def generate(model):
 
     make_dir("input/resources")
 
-    lines = list()
-
-    def append(line=""):
-        if line is None:
-            return
-
-        lines.append(line)
+    append = Appender()
 
     append("---")
     append("refdog_links:")
@@ -44,7 +38,7 @@ def generate(model):
         append("</table>")
         append()
 
-    write("input/resources/index.md", "\n".join(lines))
+    write("input/resources/index.md", append.output())
 
     for resource in model.resources:
         generate_resource(resource)
@@ -56,19 +50,13 @@ def generate_resource(resource):
         debug(f"{resource} is hidden")
         return
 
-    lines = list()
-
-    def append(line=""):
-        if line is None:
-            return
-
-        lines.append(line)
+    append = Appender()
 
     append("---")
     append(generate_resource_metadata(resource))
     append("---")
     append()
-    append(f"# {capitalize(resource.rename)} resource")
+    append(f"# {resource.title_with_type}")
     append()
     append("<section>")
     append()
@@ -148,7 +136,7 @@ def generate_resource(resource):
         append("</section>")
         append()
 
-    write(f"input/resources/{resource.id}.md", "\n".join(lines))
+    write(f"input/resources/{resource.id}.md", append.output())
 
 def generate_resource_metadata(resource):
     data = dict()
