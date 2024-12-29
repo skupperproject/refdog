@@ -39,21 +39,31 @@ def generate_index():
     append()
     append("# Refdog")
     append()
-    append("## Concepts")
+    append("#### Concepts")
+    append()
+
+    append("[Overview](concepts/overview.html)<br/>")
+    append("[Index](concepts/index.html)")
     append()
 
     for concept in concept_model.concepts:
         append(f"- [{concept.title}]({concept.href})")
 
     append()
-    append("## Resources")
+    append("#### Resources")
+    append()
+    append("[Overview](resources/overview.html)<br/>")
+    append("[Index](resources/index.html)")
     append()
 
     for resource in resource_model.resources:
         append(f"- [{resource.title}]({resource.href})")
 
     append()
-    append("## Commands")
+    append("#### Commands")
+    append()
+    append("[Overview](commands/overview.html)<br/>")
+    append("[Index](commands/index.html)")
     append()
 
     for command in command_model.commands:
