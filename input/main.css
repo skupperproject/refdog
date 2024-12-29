@@ -121,6 +121,7 @@ header {
     display: flex;
     justify-content: center;
     background-color: var(--body-background-color);
+    border-bottom: 1px solid var(--line-color);
     align-self: start; /* Important for sticky positioning */
     position: sticky;
     top: 0;
@@ -141,9 +142,7 @@ aside {
     grid-area: aside;
     padding: 2em 0;
     display: flex;
-}
-
-aside > div {
+    flex-direction: column;
     align-self: start; /* Important for sticky positioning */
     position: sticky;
     top: 6em;
@@ -322,7 +321,7 @@ header {
     border-bottom: 3px solid var(--line-color);
 }
 
-aside > div {
+aside {
     border-left: 3px solid var(--line-color);
 }
 
