@@ -98,9 +98,7 @@ article:only-child, section:only-child {
 /* Standard page structure */
 
 html {
-    height: 100%;
     overflow-y: scroll;
-    scroll-padding-top: 6em;
 }
 
 body {
@@ -109,7 +107,7 @@ body {
     grid-template-columns: minmax(2em, 1fr) calc(var(--page-width) * 0.7) calc(var(--page-width) * 0.3) minmax(2em, 1fr);
     grid-template-areas:
         "header header header header"
-        ". main sidebar ."
+        ". main aside ."
         "footer footer footer footer";
     height: 100%;
     color: var(--text-color);
@@ -123,30 +121,24 @@ header {
     display: flex;
     justify-content: center;
     background-color: var(--body-background-color);
-    padding: 1em;
-    border-bottom: 1px solid var(--line-color);
-    position: fixed;
+    align-self: start; /* Important for sticky positioning */
+    position: sticky;
     top: 0;
-    left: 0;
-    right: 0;
     z-index: 1;
 }
 
-header nav {
+header > div {
+    padding: 1em;
     width: var(--page-width);
 }
 
 main {
     grid-area: main;
-    position: relative;
-    top: 4em;
-    padding: 2em 0;
+    padding: 2em 1em;
 }
 
 aside {
-    grid-area: sidebar;
-    position: relative;
-    top: 4em;
+    grid-area: aside;
     padding: 2em 0;
     display: flex;
 }
@@ -174,7 +166,13 @@ aside nav > nav {
 
 footer {
     grid-area: footer;
-    padding: 1em 0;
+    display: flex;
+    justify-content: center;
+}
+
+footer > div {
+    padding: 1em;
+    width: var(--page-width);
 }
 
 @media (max-width: 768px) {
@@ -183,10 +181,25 @@ footer {
         grid-template-columns: 1fr;
         grid-template-areas:
             "header"
-            "sidebar"
+            "aside"
             "main"
             "footer";
+    }
+
+    header > div {
+        width: 100%;
+    }
+
+    main {
         padding: 1em;
+    }
+
+    aside {
+        display: none;
+    }
+
+    footer > div {
+        width: 100%;
     }
 }
 
@@ -232,6 +245,7 @@ code {
 pre {
     padding: 1em;
     background-color: var(--code-background-color);
+    overflow: auto;
 }
 
 /* Standard styles for lists */
@@ -320,6 +334,14 @@ aside h4 {
     margin-bottom: 1.9em;
 }
 
+footer {
+    border-top: 3px solid var(--line-color);
+}
+
+footer > div {
+    padding: 2em 1em;
+}
+
 /* Skupper-specific styles for prose elements */
 
 pre {
@@ -334,11 +356,11 @@ body.object h2 {
     font-size: 1.3em;
 }
 
-body.object main::after {
-    content: "";
-    display: block;
-    height: 100vh;
-}
+/* body.object main::after { */
+/*     content: ""; */
+/*     display: block; */
+/*     height: 100vh; */
+/* } */
 
 table.objects th {
     width: 14em;
@@ -473,8 +495,9 @@ figure {
 }
 
 figcaption {
-    margin-top: -0.5em;
+    margin-top: -0.8em;
     font-style: italic;
+    font-size: 0.9em;
 }
 
 /* -- */

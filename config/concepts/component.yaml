@@ -2,10 +2,10 @@ name: component
 related_concepts: [application, workload]
 description: |
   A component is a logical part of an [application](application.html).
-  It has a set of responsibilities in achieving the goals of the
-  application.  Components provide and require **interfaces** such as
-  network protocols or APIs.  A component is implemented by
-  [workloads](workload.html).
+  Each component has a set of responsibilities in achieving the goals
+  of the application.  Components provide and require **interfaces**
+  such as REST APIs or database listeners.  A component is implemented
+  by [workloads](workload.html).
 
   <figure>
     <img src="images/component-model.svg"/>
