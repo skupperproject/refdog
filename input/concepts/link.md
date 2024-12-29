@@ -49,8 +49,8 @@ directions.  A linked site can communicate with any other site in
 the network, even if it is not linked directly.  Links can be added
 and removed dynamically.
 
-You can use **[access tokens](access-token.html)** to securely
-exchange the connection details required to create a link.
+You can use [access tokens](access-token.html) to securely exchange
+the connection details required to create a link.
 
 <figure>
   <img src="images/link-1.svg"/>
