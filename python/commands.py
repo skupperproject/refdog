@@ -502,26 +502,6 @@ def option_property(name, default=None):
 
     return property(get)
 
-def option_name(property_name):
-    chars = list()
-    prev = None
-
-    for char in property_name:
-        if char.isupper():
-            if prev and prev.islower():
-                chars.append("-")
-
-            chars.append(char.lower())
-        else:
-            if prev and prev.isupper() and chars[-2] != "-":
-                chars.insert(-1, "-")
-
-            chars.append(char)
-
-        prev = char
-
-    return "".join(chars)
-
 class Option(ModelObjectAttribute):
     type = option_property("type")
     required = option_property("required", default=False)
