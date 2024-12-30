@@ -13,6 +13,13 @@ Skupper networks, for both Kubernetes and non-Kubernetes platforms.
 The Skupper resources provide a declarative interface that simplifies
 automation and supports integration with other tools.
 
+#### Capabilities
+
+- **Site configuration:** Create and update Skupper sites.
+- **Site linking:** Create and update site-to-site links.
+- **Service exposure:** Expose application workloads on Skupper
+  networks.
+
 #### Controller
 
 The Skupper controller consumes the standard Skupper resources as
@@ -20,7 +27,7 @@ input and produces platform-specific resources as output.  The output
 resources configure the local site and router for the desired
 connectivity.
 
-#### Resource operations
+#### Operations
 
 Creation, updates, deletion
 
