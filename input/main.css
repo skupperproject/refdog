@@ -347,10 +347,6 @@ pre {
 
 /** Objects (resources and commands) **/
 
-body.object.index ul {
-    column-count: 3;
-}
-
 body.object h2 {
     font-size: 1.3em;
 }

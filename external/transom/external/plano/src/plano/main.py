@@ -762,8 +762,9 @@ def print_json(data, **kwargs):
 
 ## HTTP operations
 
-def _run_curl(method, url, content=None, content_file=None, content_type=None, output_file=None, insecure=False,
-              user=None, password=None, quiet=False):
+def _run_curl(method, url, content=None, content_file=None, content_type=None, output_file=None,
+              insecure=False, user=None, password=None, client_cert=None, client_key=None, server_cert=None,
+              quiet=False):
     check_program("curl")
 
     _notice(quiet, f"Sending {method} request to '{url}'")
@@ -794,6 +795,15 @@ def _run_curl(method, url, content=None, content_file=None, content_type=None, o
         assert password is not None
         args.extend(["--user", f"{user}:{password}"])
 
+    if client_cert is not None:
+        args.extend(["--cert", client_cert])
+
+    if client_key is not None:
+        args.extend(["--key", client_key])
+
+    if server_cert is not None:
+        args.extend(["--cacert", server_cert])
+
     args.append(url)
 
     if output_file is not None:
@@ -808,37 +818,64 @@ def _run_curl(method, url, content=None, content_file=None, content_type=None, o
     if output_file is None:
         return proc.stdout_result
 
-def http_get(url, output_file=None, insecure=False, user=None, password=None, quiet=False):
-    return _run_curl("GET", url, output_file=output_file, insecure=insecure, user=user, password=password, quiet=quiet)
+def http_get(url, output_file=None, insecure=False, user=None, password=None,
+             client_cert=None, client_key=None, server_cert=None,
+             quiet=False):
+    return _run_curl("GET", url, output_file=output_file, insecure=insecure, user=user, password=password,
+                     client_cert=client_cert, client_key=client_key, server_cert=server_cert,
+                     quiet=quiet)
 
-def http_get_json(url, insecure=False, user=None, password=None, quiet=False):
-    return parse_json(http_get(url, insecure=insecure, user=user, password=password, quiet=quiet))
+def http_get_json(url,
+                  insecure=False, user=None, password=None,
+                  client_cert=None, client_key=None, server_cert=None, quiet=False):
+    return parse_json(http_get(url, insecure=insecure, user=user, password=password,
+                               client_cert=client_cert, client_key=client_key, server_cert=server_cert,
+                               quiet=quiet))
 
-def http_put(url, content, content_type=None, insecure=False, user=None, password=None, quiet=False):
+def http_put(url, content, content_type=None, insecure=False, user=None, password=None,
+             client_cert=None, client_key=None, server_cert=None,
+             quiet=False):
     _run_curl("PUT", url, content=content, content_type=content_type, insecure=insecure, user=user, password=password,
+              client_cert=client_cert, client_key=client_key, server_cert=server_cert,
               quiet=quiet)
 
-def http_put_file(url, content_file, content_type=None, insecure=False, user=None, password=None, quiet=False):
+def http_put_file(url, content_file, content_type=None, insecure=False, user=None, password=None,
+                  client_cert=None, client_key=None, server_cert=None,
+                  quiet=False):
     _run_curl("PUT", url, content_file=content_file, content_type=content_type, insecure=insecure, user=user,
-              password=password, quiet=quiet)
+              password=password, client_cert=client_cert, client_key=client_key, server_cert=server_cert,
+              quiet=quiet)
 
-def http_put_json(url, data, insecure=False, user=None, password=None, quiet=False):
+def http_put_json(url, data, insecure=False, user=None, password=None,
+                  client_cert=None, client_key=None, server_cert=None,
+                  quiet=False):
     http_put(url, emit_json(data), content_type="application/json", insecure=insecure, user=user, password=password,
+             client_cert=client_cert, client_key=client_key, server_cert=server_cert,
              quiet=quiet)
 
 def http_post(url, content, content_type=None, output_file=None, insecure=False, user=None, password=None,
+              client_cert=None, client_key=None, server_cert=None,
               quiet=False):
     return _run_curl("POST", url, content=content, content_type=content_type, output_file=output_file,
-                     insecure=insecure, user=user, password=password, quiet=quiet)
+                     insecure=insecure, user=user, password=password,
+                     client_cert=client_cert, client_key=client_key, server_cert=server_cert,
+                     quiet=quiet)
 
 def http_post_file(url, content_file, content_type=None, output_file=None, insecure=False, user=None, password=None,
+                   client_cert=None, client_key=None, server_cert=None,
                    quiet=False):
     return _run_curl("POST", url, content_file=content_file, content_type=content_type, output_file=output_file,
-                     insecure=insecure, user=user, password=password, quiet=quiet)
+                     insecure=insecure, user=user, password=password,
+                     client_cert=client_cert, client_key=client_key, server_cert=server_cert,
+                     quiet=quiet)
 
-def http_post_json(url, data, insecure=False, user=None, password=None, quiet=False):
-    return parse_json(http_post(url, emit_json(data), content_type="application/json", insecure=insecure, user=user,
-                                password=password, quiet=quiet))
+def http_post_json(url, data, insecure=False, user=None, password=None,
+                   client_cert=None, client_key=None, server_cert=None,
+                   quiet=False):
+    return parse_json(http_post(url, emit_json(data), content_type="application/json",
+                                insecure=insecure, user=user, password=password,
+                                client_cert=client_cert, client_key=client_key, server_cert=server_cert,
+                                quiet=quiet))
 
 ## Link operations
 
@@ -1505,6 +1542,25 @@ def url_decode(string):
 
 def parse_url(url):
     return _urllib_parse.urlparse(url)
+
+# A class for building up long strings
+#
+# append = Appender()
+# append("abc")
+# append()
+# append("123")
+# append.join() -> "abc\n\n123"
+class Appender:
+    def __init__(self):
+        self.items = list()
+
+    def __call__(self, item=""):
+        assert item is not None
+
+        self.items.append(str(item))
+
+    def join(self, separator="\n"):
+        return separator.join(self.items)
 
 ## Temp operations
 

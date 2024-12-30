@@ -6,19 +6,6 @@ import re
 
 named_links = read_yaml("config/links.yaml")
 
-class Appender:
-    def __init__(self):
-        self.lines = list()
-
-    def __call__(self, line=""):
-        if line is None:
-            return
-
-        self.lines.append(line)
-
-    def output(self):
-        return "\n".join(self.lines)
-
 def indent(text, spaces):
     return "\n".join(f"{' ' * spaces}{line}" for line in text.split("\n"))
 

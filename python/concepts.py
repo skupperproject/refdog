@@ -36,7 +36,7 @@ def generate(model):
         append("</table>")
         append()
 
-    write("input/concepts/index.md", append.output())
+    write("input/concepts/index.md", append.join())
 
     for concept in model.concepts:
         generate_concept(concept)
@@ -72,13 +72,13 @@ def generate_concept(concept):
         append("</section>")
         append()
 
-    write(f"input/concepts/{concept.id}.md", append.output())
+    write(f"input/concepts/{concept.id}.md", append.join())
 
 def generate_concept_metadata(concept):
-    data = dict()
-
-    data["body_class"] = "object concept"
-    data["refdog_links"] = get_object_links(concept)
+    data = {
+        "body_class": "object concept",
+        "refdog_links": get_object_links(concept),
+    }
 
     return emit_yaml(data).strip()
 

@@ -11,10 +11,10 @@ def generate(model):
 
     append("---")
     append("refdog_links:")
-    append("- title: Skupper concepts")
-    append("  url: /concepts/index.html")
-    append("- title: Skupper commands")
-    append("  url: /commands/index.html")
+    append("  - title: Skupper concepts")
+    append("    url: /concepts/index.html")
+    append("  - title: Skupper commands")
+    append("    url: /commands/index.html")
     append("---")
     append()
     append("# Skupper resources")
@@ -38,7 +38,7 @@ def generate(model):
         append("</table>")
         append()
 
-    write("input/resources/index.md", append.output())
+    write("input/resources/index.md", append.join())
 
     for resource in model.resources:
         generate_resource(resource)
@@ -136,21 +136,20 @@ def generate_resource(resource):
         append("</section>")
         append()
 
-    write(f"input/resources/{resource.id}.md", append.output())
+    write(f"input/resources/{resource.id}.md", append.join())
 
 def generate_resource_metadata(resource):
-    data = dict()
-
-    data["body_class"] = "object resource"
-    data["refdog_object_has_attributes"] = True
-    data["refdog_links"] = get_object_links(resource)
-
-    data["refdog_toc"] = [
-        {
-            "title": "Overview",
-            "id": "",
-        }
-    ]
+    data = {
+        "body_class": "object resource",
+        "refdog_object_has_attributes": True,
+        "refdog_links": get_object_links(resource),
+        "refdog_toc": [
+            {
+                "title": "Overview",
+                "id": "",
+            }
+        ],
+    }
 
     if resource.examples:
         data["refdog_toc"].append({

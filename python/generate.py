@@ -1,7 +1,5 @@
 from transom.planocommands import *
 
-from common import Appender
-
 import commands
 import concepts
 import resources
@@ -42,33 +40,33 @@ def generate_index():
     append("#### Concepts")
     append()
 
-    append("[Overview](concepts/overview.html)<br/>")
-    append("[Index](concepts/index.html)")
+    append("- [Overview](concepts/overview.html)")
+    append("- [Index](concepts/index.html)")
     append()
 
-    for concept in concept_model.concepts:
-        append(f"- [{concept.title}]({concept.href})")
+    # for concept in concept_model.concepts:
+    #     append(f"- [{concept.title}]({concept.href})")
 
     append()
     append("#### Resources")
     append()
-    append("[Overview](resources/overview.html)<br/>")
-    append("[Index](resources/index.html)")
+    append("- [Overview](resources/overview.html)")
+    append("- [Index](resources/index.html)")
     append()
 
-    for resource in resource_model.resources:
-        append(f"- [{resource.title}]({resource.href})")
+    # for resource in resource_model.resources:
+    #     append(f"- [{resource.title}]({resource.href})")
 
     append()
     append("#### Commands")
     append()
-    append("[Overview](commands/overview.html)<br/>")
-    append("[Index](commands/index.html)")
+    append("- [Overview](commands/overview.html)")
+    append("- [Index](commands/index.html)")
     append()
 
-    for command in command_model.commands:
-        append(f"- [{command.title}]({command.href})")
+    # for command in command_model.commands:
+    #     append(f"- [{command.title}]({command.href})")
 
     append()
 
-    write("input/index.md", append.output())
+    write("input/index.md", append.join())

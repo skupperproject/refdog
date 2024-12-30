@@ -11,10 +11,10 @@ def generate(model):
 
     append("---")
     append("refdog_links:")
-    append("- title: Skupper concepts")
-    append("  url: /concepts/index.html")
-    append("- title: Skupper resources")
-    append("  url: /resources/index.html")
+    append("  - title: Skupper concepts")
+    append("    url: /concepts/index.html")
+    append("  - title: Skupper resources")
+    append("    url: /resources/index.html")
     append("---")
     append()
     append("# Skupper commands")
@@ -55,7 +55,7 @@ def generate(model):
 
         append()
 
-    write("input/commands/index.md", append.output())
+    write("input/commands/index.md", append.join())
 
     for command in model.commands:
         generate_command(command)
@@ -182,23 +182,22 @@ def generate_command(command):
         append()
 
     if command.subcommands:
-        write(f"input/commands/{command.id}/index.md", append.output())
+        write(f"input/commands/{command.id}/index.md", append.join())
     else:
-        write(f"input/commands/{command.id}.md", append.output())
+        write(f"input/commands/{command.id}.md", append.join())
 
 def generate_command_metadata(command):
-    data = dict()
-
-    data["body_class"] = "object command"
-    data["refdog_object_has_attributes"] = True
-    data["refdog_links"] = get_object_links(command)
-
-    data["refdog_toc"] = [
-        {
-            "title": "Overview",
-            "id": "",
-        },
-    ]
+    data = {
+        "body_class": "object command",
+        "refdog_object_has_attributes": True,
+        "refdog_links": get_object_links(command),
+        "refdog_toc": [
+            {
+                "title": "Overview",
+                "id": "",
+            },
+        ],
+    }
 
     sections = "Usage", "Output", "Subcommands", "Examples"
 
