@@ -4,7 +4,7 @@ import plano as _plano
 import re as _re
 
 StringBuilder = _plano.StringBuilder
-capitalize, join, nvl, plural = _plano.capitalize, _plano.join, _plano.nvl, _plano.plural
+capitalize, join, plural = _plano.capitalize, _plano.join, _plano.plural
 debug, notice, warning, fail = _plano.debug, _plano.notice, _plano.warning, _plano.fail
 emit_yaml, read_yaml = _plano.emit_yaml, _plano.read_yaml
 list_dir, make_dir = _plano.list_dir, _plano.make_dir
@@ -187,12 +187,8 @@ class ModelObject:
         return make_fragment_id(name)
 
     @property
-    def rename(self):
-        return self.data.get("rename", self.name)
-
-    @property
     def title(self):
-        return f"{capitalize(self.rename)}"
+        return f"{capitalize(self.name)}"
 
     @property
     def title_with_type(self):
@@ -291,10 +287,6 @@ class ModelObjectAttribute:
         name = _re.sub(r"(?<!^)(?=[A-Z])", "-", self.name)
 
         return make_fragment_id(name)
-
-    @property
-    def rename(self):
-        return self.data.get("rename", self.name)
 
     @property
     def group(self):

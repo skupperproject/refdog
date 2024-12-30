@@ -60,7 +60,7 @@ def generate_resource(resource):
 
     append("~~~ yaml")
     append("apiVersion: skupper.io/v2alpha1")
-    append(f"kind: {resource.rename}")
+    append(f"kind: {resource.name}")
     append("~~~")
 
     append()
@@ -179,7 +179,6 @@ def generate_property(prop, append):
 
     classes = ["attribute"]
     flags = list()
-    name = nvl(prop.rename, prop.name)
 
     if prop.format:
         type_info = f"{prop.type} ({prop.format})"
@@ -194,7 +193,7 @@ def generate_property(prop, append):
 
     append(f"<div class=\"{' '.join(classes)}\">")
     append(f"<div class=\"attribute-heading\">")
-    append(f"<h3 id=\"{prop.id}\">{name}</h3>")
+    append(f"<h3 id=\"{prop.id}\">{prop.name}</h3>")
     append(f"<div class=\"attribute-type-info\">{type_info}</div>")
 
     if flags:
