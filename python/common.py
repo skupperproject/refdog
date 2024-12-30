@@ -9,7 +9,7 @@ debug, notice, warning, fail = _plano.debug, _plano.notice, _plano.warning, _pla
 emit_yaml, read_yaml = _plano.emit_yaml, _plano.read_yaml
 list_dir, make_dir = _plano.list_dir, _plano.make_dir
 
-_named_links = _plano.read_yaml("config/links.yaml")
+_named_links = read_yaml("config/links.yaml")
 
 def is_match(text, pattern):
     return _fnmatch.fnmatchcase(text, pattern)
