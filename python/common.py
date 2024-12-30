@@ -3,7 +3,7 @@ import mistune as _mistune
 import plano as _plano
 import re as _re
 
-StringBuilder = _plano.Appender
+StringBuilder = _plano.StringBuilder
 capitalize, join, nvl, plural = _plano.capitalize, _plano.join, _plano.nvl, _plano.plural
 debug, notice, warning, fail = _plano.debug, _plano.notice, _plano.warning, _plano.fail
 emit_yaml, read_yaml = _plano.emit_yaml, _plano.read_yaml
