@@ -69,4 +69,4 @@ def generate_index():
 
     append()
 
-    write("input/index.md", append.join())
+    append.write("input/index.md")

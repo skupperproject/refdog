@@ -49,7 +49,7 @@ def generate(model):
 
         append()
 
-    write("input/commands/index.md", append.join())
+    append.write("input/commands/index.md")
 
     for command in model.commands:
         generate_command(command)
@@ -174,9 +174,9 @@ def generate_command(command):
         append()
 
     if command.subcommands:
-        write(f"input/commands/{command.id}/index.md", append.join())
+        append.write(f"input/commands/{command.id}/index.md")
     else:
-        write(f"input/commands/{command.id}.md", append.join())
+        append.write(f"input/commands/{command.id}.md")
 
 def generate_command_metadata(command):
     data = {

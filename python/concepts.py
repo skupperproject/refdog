@@ -34,7 +34,7 @@ def generate(model):
         append("</table>")
         append()
 
-    write("input/concepts/index.md", append.join())
+    append.write("input/concepts/index.md")
 
     for concept in model.concepts:
         generate_concept(concept)
@@ -70,7 +70,7 @@ def generate_concept(concept):
         append("</section>")
         append()
 
-    write(f"input/concepts/{concept.id}.md", append.join())
+    append.write(f"input/concepts/{concept.id}.md")
 
 def generate_concept_metadata(concept):
     data = {

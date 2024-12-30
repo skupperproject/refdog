@@ -34,7 +34,7 @@ def generate(model):
         append("</table>")
         append()
 
-    write("input/resources/index.md", append.join())
+    append.write("input/resources/index.md")
 
     for resource in model.resources:
         generate_resource(resource)
@@ -132,7 +132,7 @@ def generate_resource(resource):
         append("</section>")
         append()
 
-    write(f"input/resources/{resource.id}.md", append.join())
+    append.write(f"input/resources/{resource.id}.md")
 
 def generate_resource_metadata(resource):
     data = {
