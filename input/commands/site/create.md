@@ -258,6 +258,6 @@ Display help and exit.
 
 - **A site resource already exists**
 
-  There is already a site resource defined for the namespace.
+  <p>There is already a site resource defined for the namespace.</p>
 
 </section>

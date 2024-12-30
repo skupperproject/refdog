@@ -27,9 +27,7 @@ def generate(model):
 
         for concept in group.concepts:
             title = concept.title.removesuffix(" concept")
-            description = nvl(concept.description, "").replace("\n", " ")
-            description = re.split(r"\.\s", description)[0]
-            description = mistune.html(description)
+            description = first_sentence(concept.description)
 
             append(f"<tr><th><a href=\"{concept.href}\">{title}</a></th><td>{description}</td></tr>")
 

@@ -37,16 +37,12 @@ def generate(model):
 
                 for subcommand in command.subcommands:
                     title = subcommand.title
-                    description = nvl(subcommand.description, "").replace("\n", " ")
-                    description = re.split(r"\.\s", description)[0]
-                    description = mistune.html(description)
+                    description = first_sentence(subcommand.description)
 
                     append(f"<tr><th><a href=\"{subcommand.href}\">{title}</a></th><td>{description}</td></tr>")
             else:
                 title = command.title
-                description = nvl(command.description, "").replace("\n", " ")
-                description = re.split(r"\.\s", description)[0]
-                description = mistune.html(description)
+                description = first_sentence(command.description)
 
                 append(f"<tr><th><a href=\"{command.href}\">{title}</a></th><td>{description}</td></tr>")
 
@@ -111,9 +107,7 @@ def generate_command(command):
 
         for subcommand in command.subcommands:
             title = subcommand.title
-            description = nvl(subcommand.description, "").replace("\n", " ")
-            description = description.split(".")[0]
-            description = mistune.html(description)
+            description = first_sentence(subcommand.description)
 
             append(f"<tr><th><a href=\"{subcommand.name}.html\">{title}</a></th><td>{description}</td></tr>")
 
@@ -332,7 +326,7 @@ def generate_error(error, append):
     append()
 
     if error.description:
-        append(indent(error.description.strip(), 2))
+        append(f"  <p>{error.description.strip()}</p>")
         append()
 
 class CommandModel:

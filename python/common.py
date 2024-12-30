@@ -6,8 +6,20 @@ import re
 
 named_links = read_yaml("config/links.yaml")
 
-def indent(text, spaces):
-    return "\n".join(f"{' ' * spaces}{line}" for line in text.split("\n"))
+def first_sentence(text):
+    if text is None:
+        return ""
+
+    text = text.replace("\n", " ")
+    text = mistune.html(text)
+    text = re.sub(r"<[^>]*>", "", text)
+
+    match = re.search(r"(.+?)\.\s+", text, re.DOTALL)
+
+    if match is None:
+        return text.removesuffix(".")
+
+    return match.group(1)
 
 def get_fragment_id(name):
     return name.lower().replace(" ", "-")

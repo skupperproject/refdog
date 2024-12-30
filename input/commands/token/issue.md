@@ -250,8 +250,8 @@ Display help and exit.
 
 - **Link access is not enabled**
 
-  Link access at this site is not currently enabled.  You
-  can use "skupper site update --enable-link-access" to
-  enable it.
+  <p>Link access at this site is not currently enabled.  You
+can use "skupper site update --enable-link-access" to
+enable it.</p>
 
 </section>

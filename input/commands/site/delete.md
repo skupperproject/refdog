@@ -212,6 +212,6 @@ Display help and exit.
 
 - **No site resource exists**
 
-  There is no existing Skupper site resource to delete.
+  <p>There is no existing Skupper site resource to delete.</p>
 
 </section>

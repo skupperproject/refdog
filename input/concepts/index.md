@@ -13,41 +13,30 @@ refdog_links:
 #### Sites
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/concepts/site.html">Site</a></th><td><p>A site is a place on the <a href="network.html">network</a> where application <a href="workload.html">workloads</a> are running</p>
-</td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/workload.html">Workload</a></th><td><p>A workload is a set of processes running on a <a href="platform.html">platform</a></p>
-</td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/platform.html">Platform</a></th><td><p>A platform is a system for running application <a href="workload.html">workloads</a></p>
-</td></tr>
+<tr><th><a href="{{site_prefix}}/concepts/site.html">Site</a></th><td>A site is a place on the network where application workloads are running</td></tr>
+<tr><th><a href="{{site_prefix}}/concepts/workload.html">Workload</a></th><td>A workload is a set of processes running on a platform</td></tr>
+<tr><th><a href="{{site_prefix}}/concepts/platform.html">Platform</a></th><td>A platform is a system for running application workloads</td></tr>
 </table>
 
 #### Networks
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/concepts/network.html">Network</a></th><td><p>A network is a set of <a href="site.html">sites</a> joined by <a href="link.html">links</a></p>
-</td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/link.html">Link</a></th><td><p>A link is a channel for communication between <a href="site.html">sites</a></p>
-</td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/access-token.html">Access token</a></th><td><p>An access token is a short-lived credential used to create a <a href="link.html">link</a></p>
-</td></tr>
+<tr><th><a href="{{site_prefix}}/concepts/network.html">Network</a></th><td>A network is a set of sites joined by links</td></tr>
+<tr><th><a href="{{site_prefix}}/concepts/link.html">Link</a></th><td>A link is a channel for communication between sites</td></tr>
+<tr><th><a href="{{site_prefix}}/concepts/access-token.html">Access token</a></th><td>An access token is a short-lived credential used to create a link</td></tr>
 </table>
 
 #### Services
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/concepts/listener.html">Listener</a></th><td><p>A listener binds a local connection endpoint to <a href="connector.html">connectors</a> in remote <a href="site.html">sites</a></p>
-</td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/connector.html">Connector</a></th><td><p>A connector binds a local <a href="workload.html">workload</a> to <a href="listener.html">listeners</a> in remote <a href="site.html">sites</a></p>
-</td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/routing-key.html">Routing key</a></th><td><p>A routing key is a string identifier for matching <a href="listener.html">listeners</a> and <a href="connector.html">connectors</a></p>
-</td></tr>
+<tr><th><a href="{{site_prefix}}/concepts/listener.html">Listener</a></th><td>A listener binds a local connection endpoint to connectors in remote sites</td></tr>
+<tr><th><a href="{{site_prefix}}/concepts/connector.html">Connector</a></th><td>A connector binds a local workload to listeners in remote sites</td></tr>
+<tr><th><a href="{{site_prefix}}/concepts/routing-key.html">Routing key</a></th><td>A routing key is a string identifier for matching listeners and connectors</td></tr>
 </table>
 
 #### Applications
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/concepts/application.html">Application</a></th><td><p>An application is a set of <a href="component.html">components</a> that work together</p>
-</td></tr>
-<tr><th><a href="{{site_prefix}}/concepts/component.html">Component</a></th><td><p>A component is a logical part of an <a href="application.html">application</a></p>
-</td></tr>
+<tr><th><a href="{{site_prefix}}/concepts/application.html">Application</a></th><td>An application is a set of components that work together</td></tr>
+<tr><th><a href="{{site_prefix}}/concepts/component.html">Component</a></th><td>A component is a logical part of an application</td></tr>
 </table>

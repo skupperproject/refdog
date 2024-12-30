@@ -260,6 +260,6 @@ Display help and exit.
 
 - **No site resource exists**
 
-  There is no existing Skupper site resource to update.
+  <p>There is no existing Skupper site resource to update.</p>
 
 </section>

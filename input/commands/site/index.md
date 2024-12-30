@@ -34,16 +34,11 @@ skupper site [subcommand] [options]
 ## Subcommands
 
 <table class="objects">
-<tr><th><a href="create.html">Site create</a></th><td><p>Create a site</p>
-</td></tr>
-<tr><th><a href="update.html">Site update</a></th><td><p>Change site settings</p>
-</td></tr>
-<tr><th><a href="delete.html">Site delete</a></th><td><p>Delete a site</p>
-</td></tr>
-<tr><th><a href="status.html">Site status</a></th><td><p>Display the status of a site</p>
-</td></tr>
-<tr><th><a href="generate.html">Site generate</a></th><td><p>Generate a Site resource</p>
-</td></tr>
+<tr><th><a href="create.html">Site create</a></th><td>Create a site</td></tr>
+<tr><th><a href="update.html">Site update</a></th><td>Change site settings</td></tr>
+<tr><th><a href="delete.html">Site delete</a></th><td>Delete a site</td></tr>
+<tr><th><a href="status.html">Site status</a></th><td>Display the status of a site</td></tr>
+<tr><th><a href="generate.html">Site generate</a></th><td>Generate a Site resource</td></tr>
 </table>
 
 </section>

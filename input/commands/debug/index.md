@@ -30,10 +30,8 @@ skupper debug [subcommand] [options]
 ## Subcommands
 
 <table class="objects">
-<tr><th><a href="check.html">Debug check</a></th><td><p>Run diagnostic checks</p>
-</td></tr>
-<tr><th><a href="dump.html">Debug dump</a></th><td><p>Generate a debug dump file</p>
-</td></tr>
+<tr><th><a href="check.html">Debug check</a></th><td>Run diagnostic checks</td></tr>
+<tr><th><a href="dump.html">Debug dump</a></th><td>Generate a debug dump file</td></tr>
 </table>
 
 </section>

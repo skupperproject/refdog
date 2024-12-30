@@ -29,9 +29,7 @@ def generate(model):
 
         for resource in group.resources:
             title = resource.title.removesuffix(" resource")
-            description = nvl(resource.description, "").replace("\n", " ")
-            description = re.split(r"\.\s", description)[0]
-            description = mistune.html(description)
+            description = first_sentence(resource.description)
 
             append(f"<tr><th><a href=\"{resource.href}\">{title}</a></th><td>{description}</td></tr>")
 
