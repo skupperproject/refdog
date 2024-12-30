@@ -19,9 +19,10 @@ refdog_links:
 <tr><th><a href="{{site_prefix}}/resources/connector.html">Connector</a></th><td>A binding from a local workload to listeners in remotes sites</td></tr>
 </table>
 
-#### Site linking
+#### Sites and site linking
 
 <table class="objects">
+<tr><th><a href="{{site_prefix}}/resources/site.html">Site</a></th><td>A place on the network where application workloads are running</td></tr>
 <tr><th><a href="{{site_prefix}}/resources/link.html">Link</a></th><td>A channel for communication between sites</td></tr>
 <tr><th><a href="{{site_prefix}}/resources/access-grant.html">AccessGrant</a></th><td>Permission to redeem access tokens for links to the local site</td></tr>
 <tr><th><a href="{{site_prefix}}/resources/access-token.html">AccessToken</a></th><td>A short-lived credential used to create a link</td></tr>

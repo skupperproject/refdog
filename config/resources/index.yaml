@@ -5,8 +5,9 @@ groups:
       - Link
       - Listener
       - Connector
-  - title: Site linking
+  - title: Sites and site linking
     resources:
+      - Site
       - Link
       - AccessGrant
       - AccessToken
