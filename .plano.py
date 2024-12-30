@@ -1,14 +1,19 @@
+from generate import *
 from transom.planocommands import *
-
-from generate import generate_objects, generate_index
 
 @command
 def generate():
+    """
+    Generate input files from YAML config files
+    """
     generate_objects()
     generate_index()
 
 @command
 def generate_diagrams():
+    """
+    Generate SVG diagrams from D2 files
+    """
     for input_file in find("input/concepts/images", "*.d2"):
         output_file = input_file.removesuffix(".d2") + ".svg"
 
@@ -18,6 +23,9 @@ def generate_diagrams():
 
 @command
 def update_crds():
+    """
+    Update the CRD source files
+    """
     url = "https://github.com/skupperproject/skupper/archive/refs/heads/v2.tar.gz"
     crd_dir = get_absolute_path("crds")
 
