@@ -116,7 +116,7 @@ The namespace of the resource.
 
 <div class="attribute">
 <div class="attribute-heading">
-<h3 id="spec-linkaccess">linkAccess</h3>
+<h3 id="spec-link-access">linkAccess</h3>
 <div class="attribute-type-info">string</div>
 <div class="attribute-flags">frequently used</div>
 </div>
@@ -160,7 +160,7 @@ window of downtime caused by restarts.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="spec-defaultissuer">defaultIssuer</h3>
+<h3 id="spec-default-issuer">defaultIssuer</h3>
 <div class="attribute-type-info">string</div>
 <div class="attribute-flags">advanced</div>
 </div>
@@ -207,7 +207,7 @@ router infrastructure. -->
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="spec-serviceaccount">serviceAccount</h3>
+<h3 id="spec-service-account">serviceAccount</h3>
 <div class="attribute-type-info">string</div>
 <div class="attribute-flags">advanced</div>
 </div>
@@ -318,7 +318,7 @@ resource.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="status-defaultissuer">defaultIssuer</h3>
+<h3 id="status-default-issuer">defaultIssuer</h3>
 <div class="attribute-type-info">string</div>
 <div class="attribute-flags">advanced</div>
 </div>
@@ -371,7 +371,7 @@ Why is this here in status?  Does it duplicate what we have in RouterAccess?
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="status-sitesinnetwork">sitesInNetwork</h3>
+<h3 id="status-sites-in-network">sitesInNetwork</h3>
 <div class="attribute-type-info">integer</div>
 <div class="attribute-flags">advanced</div>
 </div>

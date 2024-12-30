@@ -101,7 +101,7 @@ The namespace of the resource.
 
 <div class="attribute">
 <div class="attribute-heading">
-<h3 id="spec-routingkey">routingKey</h3>
+<h3 id="spec-routing-key">routingKey</h3>
 <div class="attribute-type-info">string</div>
 <div class="attribute-flags">required</div>
 </div>
@@ -153,7 +153,7 @@ the remote service.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="spec-exposepodsbyname">exposePodsByName</h3>
+<h3 id="spec-expose-pods-by-name">exposePodsByName</h3>
 <div class="attribute-type-info">boolean</div>
 <div class="attribute-flags">advanced</div>
 </div>
@@ -168,7 +168,7 @@ If true, expose each pod as an individual service.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="spec-tlscredentials">tlsCredentials</h3>
+<h3 id="spec-tls-credentials">tlsCredentials</h3>
 <div class="attribute-type-info">string</div>
 <div class="attribute-flags">advanced</div>
 </div>
@@ -255,7 +255,7 @@ here.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="status-hasmatchingconnector">hasMatchingConnector</h3>
+<h3 id="status-has-matching-connector">hasMatchingConnector</h3>
 <div class="attribute-type-info">boolean</div>
 </div>
 <div class="attribute-body">

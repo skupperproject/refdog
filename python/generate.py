@@ -29,7 +29,7 @@ def generate_objects():
     _commands.generate(command_model)
 
 def generate_index():
-    append = Appender()
+    append = StringBuilder()
 
     append("---")
     append("body_class: object index")

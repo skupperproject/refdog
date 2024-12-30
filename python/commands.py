@@ -5,7 +5,7 @@ def generate(model):
 
     make_dir("input/commands")
 
-    append = Appender()
+    append = StringBuilder()
 
     append("---")
     append("refdog_links:")
@@ -28,21 +28,14 @@ def generate(model):
             append("<table class=\"objects\">")
 
             if command.subcommands:
-                title = command.title
-                description = f"Overview of {command.name} commands"
+                summary = f"Overview of {command.name} commands"
 
-                append(f"<tr><th><a href=\"{command.href}\">{title}</a></th><td>{description}</td></tr>")
+                append(f"<tr><th><a href=\"{command.href}\">{command.title}</a></th><td>{summary}</td></tr>")
 
-                for subcommand in command.subcommands:
-                    title = subcommand.title
-                    description = first_sentence(subcommand.description)
-
-                    append(f"<tr><th><a href=\"{subcommand.href}\">{title}</a></th><td>{description}</td></tr>")
+                for sc in command.subcommands:
+                    append(f"<tr><th><a href=\"{sc.href}\">{sc.title}</a></th><td>{sc.summary}</td></tr>")
             else:
-                title = command.title
-                description = first_sentence(command.description)
-
-                append(f"<tr><th><a href=\"{command.href}\">{title}</a></th><td>{description}</td></tr>")
+                append(f"<tr><th><a href=\"{command.href}\">{command.title}</a></th><td>{command.summary}</td></tr>")
 
             append("</table>")
             append()
@@ -60,7 +53,7 @@ def generate(model):
 def generate_command(command):
     debug(f"Generating {command}")
 
-    append = Appender()
+    append = StringBuilder()
 
     append("---")
     append(generate_command_metadata(command))
@@ -103,11 +96,8 @@ def generate_command(command):
         append()
         append("<table class=\"objects\">")
 
-        for subcommand in command.subcommands:
-            title = subcommand.title
-            description = first_sentence(subcommand.description)
-
-            append(f"<tr><th><a href=\"{subcommand.name}.html\">{title}</a></th><td>{description}</td></tr>")
+        for sc in command.subcommands:
+            append(f"<tr><th><a href=\"{sc.id}.html\">{sc.title}</a></th><td>{sc.summary}</td></tr>")
 
         append("</table>")
         append()
@@ -199,7 +189,7 @@ def generate_command_metadata(command):
         if items:
             data["refdog_toc"].append({
                 "title": section,
-                "id": get_fragment_id(section),
+                "id": make_fragment_id(section),
             })
 
     children = list()
@@ -542,7 +532,7 @@ class Option(ModelObjectAttribute):
 
     @property
     def id(self):
-        return f"option-{get_fragment_id(self.rename)}"
+        return f"option-{super().id}"
 
     @property
     def syntax_name(self):

@@ -5,7 +5,7 @@ def generate(model):
 
     make_dir("input/concepts")
 
-    append = Appender()
+    append = StringBuilder()
 
     append("---")
     append("refdog_links:")
@@ -26,10 +26,7 @@ def generate(model):
         append("<table class=\"objects\">")
 
         for concept in group.concepts:
-            title = concept.title.removesuffix(" concept")
-            description = first_sentence(concept.description)
-
-            append(f"<tr><th><a href=\"{concept.href}\">{title}</a></th><td>{description}</td></tr>")
+            append(f"<tr><th><a href=\"{concept.href}\">{concept.title}</a></th><td>{concept.summary}</td></tr>")
 
         append("</table>")
         append()
@@ -42,7 +39,7 @@ def generate(model):
 def generate_concept(concept):
     debug(f"Generating {concept}")
 
-    append = Appender()
+    append = StringBuilder()
 
     append("---")
     append(generate_concept_metadata(concept))

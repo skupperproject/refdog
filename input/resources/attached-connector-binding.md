@@ -75,7 +75,7 @@ The namespace of the resource.
 
 <div class="attribute">
 <div class="attribute-heading">
-<h3 id="spec-connectornamespace">connectorNamespace</h3>
+<h3 id="spec-connector-namespace">connectorNamespace</h3>
 <div class="attribute-type-info">string</div>
 <div class="attribute-flags">required</div>
 </div>
@@ -91,7 +91,7 @@ AttachedConnector is located.
 
 <div class="attribute">
 <div class="attribute-heading">
-<h3 id="spec-routingkey">routingKey</h3>
+<h3 id="spec-routing-key">routingKey</h3>
 <div class="attribute-type-info">string</div>
 <div class="attribute-flags">required</div>
 </div>
@@ -109,7 +109,7 @@ routing keys.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="spec-exposepodsbyname">exposePodsByName</h3>
+<h3 id="spec-expose-pods-by-name">exposePodsByName</h3>
 <div class="attribute-type-info">boolean</div>
 <div class="attribute-flags">advanced</div>
 </div>
@@ -168,7 +168,7 @@ The current state of the resource.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="status-hasmatchinglistener">hasMatchingListener</h3>
+<h3 id="status-has-matching-listener">hasMatchingListener</h3>
 <div class="attribute-type-info">boolean</div>
 </div>
 <div class="attribute-body">

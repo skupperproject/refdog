@@ -99,7 +99,7 @@ The namespace of the resource.
 
 <div class="attribute">
 <div class="attribute-heading">
-<h3 id="spec-routingkey">routingKey</h3>
+<h3 id="spec-routing-key">routingKey</h3>
 <div class="attribute-type-info">string</div>
 <div class="attribute-flags">required</div>
 </div>
@@ -171,7 +171,7 @@ alternative to `selector` for specifying the target server.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="spec-includenotreadypods">includeNotReadyPods</h3>
+<h3 id="spec-include-not-ready-pods">includeNotReadyPods</h3>
 <div class="attribute-type-info">boolean</div>
 <div class="attribute-flags">advanced</div>
 </div>
@@ -186,7 +186,7 @@ If true, include server pods in the `NotReady` state.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="spec-exposepodsbyname">exposePodsByName</h3>
+<h3 id="spec-expose-pods-by-name">exposePodsByName</h3>
 <div class="attribute-type-info">boolean</div>
 <div class="attribute-flags">advanced</div>
 </div>
@@ -201,7 +201,7 @@ If true, expose each pod as an individual service.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="spec-tlscredentials">tlsCredentials</h3>
+<h3 id="spec-tls-credentials">tlsCredentials</h3>
 <div class="attribute-type-info">string</div>
 <div class="attribute-flags">advanced</div>
 </div>
@@ -223,7 +223,7 @@ a directory under `input/certs/` in the current namespace.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="spec-useclientcert">useClientCert</h3>
+<h3 id="spec-use-client-cert">useClientCert</h3>
 <div class="attribute-type-info">boolean</div>
 <div class="attribute-flags">advanced</div>
 </div>
@@ -239,7 +239,7 @@ mutual TLS.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="spec-verifyhostname">verifyHostname</h3>
+<h3 id="spec-verify-hostname">verifyHostname</h3>
 <div class="attribute-type-info">boolean</div>
 <div class="attribute-flags">advanced</div>
 </div>
@@ -314,7 +314,7 @@ here.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="status-hasmatchinglistener">hasMatchingListener</h3>
+<h3 id="status-has-matching-listener">hasMatchingListener</h3>
 <div class="attribute-type-info">boolean</div>
 </div>
 <div class="attribute-body">
@@ -352,7 +352,7 @@ resource.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="status-selectedpods">selectedPods</h3>
+<h3 id="status-selected-pods">selectedPods</h3>
 <div class="attribute-type-info">array</div>
 <div class="attribute-flags">advanced</div>
 </div>

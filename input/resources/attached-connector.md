@@ -75,7 +75,7 @@ The namespace of the resource.
 
 <div class="attribute">
 <div class="attribute-heading">
-<h3 id="spec-sitenamespace">siteNamespace</h3>
+<h3 id="spec-site-namespace">siteNamespace</h3>
 <div class="attribute-type-info">string</div>
 <div class="attribute-flags">required</div>
 </div>
@@ -130,7 +130,7 @@ you can use `host`.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="spec-includenotreadypods">includeNotReadyPods</h3>
+<h3 id="spec-include-not-ready-pods">includeNotReadyPods</h3>
 <div class="attribute-type-info">boolean</div>
 <div class="attribute-flags">advanced</div>
 </div>
@@ -145,7 +145,7 @@ If true, include server pods in the `NotReady` state.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="spec-tlscredentials">tlsCredentials</h3>
+<h3 id="spec-tls-credentials">tlsCredentials</h3>
 <div class="attribute-type-info">string</div>
 <div class="attribute-flags">advanced</div>
 </div>
@@ -227,7 +227,7 @@ resource.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="status-selectedpods">selectedPods</h3>
+<h3 id="status-selected-pods">selectedPods</h3>
 <div class="attribute-type-info">array</div>
 <div class="attribute-flags">advanced</div>
 </div>

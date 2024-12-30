@@ -130,7 +130,7 @@ remote site.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="spec-linkcost">linkCost</h3>
+<h3 id="spec-link-cost">linkCost</h3>
 <div class="attribute-type-info">integer</div>
 </div>
 <div class="attribute-body">

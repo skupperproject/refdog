@@ -5,7 +5,7 @@ def generate(model):
 
     make_dir("input/resources")
 
-    append = Appender()
+    append = StringBuilder()
 
     append("---")
     append("refdog_links:")
@@ -26,10 +26,7 @@ def generate(model):
         append("<table class=\"objects\">")
 
         for resource in group.resources:
-            title = resource.title.removesuffix(" resource")
-            description = first_sentence(resource.description)
-
-            append(f"<tr><th><a href=\"{resource.href}\">{title}</a></th><td>{description}</td></tr>")
+            append(f"<tr><th><a href=\"{resource.href}\">{resource.title}</a></th><td>{resource.summary}</td></tr>")
 
         append("</table>")
         append()
@@ -46,7 +43,7 @@ def generate_resource(resource):
         debug(f"{resource} is hidden")
         return
 
-    append = Appender()
+    append = StringBuilder()
 
     append("---")
     append(generate_resource_metadata(resource))
@@ -424,7 +421,7 @@ class Property(ModelObjectAttribute):
 
     @property
     def id(self):
-        return f"{self.section}-{get_fragment_id(self.rename)}"
+        return f"{self.section}-{super().id}"
 
     @property
     def required(self):

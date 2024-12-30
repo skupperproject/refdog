@@ -92,7 +92,7 @@ include "inter-router" for links between interior routers and
 
 <div class="attribute">
 <div class="attribute-heading">
-<h3 id="spec-tlscredentials">tlsCredentials</h3>
+<h3 id="spec-tls-credentials">tlsCredentials</h3>
 <div class="attribute-type-info">string</div>
 <div class="attribute-flags">required</div>
 </div>
@@ -116,7 +116,7 @@ directory under `input/certs/` in the current namespace.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="spec-generatetlscredentials">generateTlsCredentials</h3>
+<h3 id="spec-generate-tls-credentials">generateTlsCredentials</h3>
 <div class="attribute-type-info">boolean</div>
 </div>
 <div class="attribute-body">
@@ -140,7 +140,7 @@ directory under `input/certs/` in the current namespace.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="spec-accesstype">accessType</h3>
+<h3 id="spec-access-type">accessType</h3>
 <div class="attribute-type-info">string</div>
 </div>
 <div class="attribute-body">
@@ -156,7 +156,7 @@ Kubernetes flavors, the default is <code>loadbalancer</code>.</em></p>
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="spec-bindhost">bindHost</h3>
+<h3 id="spec-bind-host">bindHost</h3>
 <div class="attribute-type-info">string</div>
 </div>
 <div class="attribute-body">
@@ -172,7 +172,7 @@ to.  By default, Skupper binds all the interfaces on the host.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="spec-subjectalternativenames">subjectAlternativeNames</h3>
+<h3 id="spec-subject-alternative-names">subjectAlternativeNames</h3>
 <div class="attribute-type-info">array</div>
 </div>
 <div class="attribute-body">

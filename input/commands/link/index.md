@@ -38,10 +38,10 @@ skupper link [subcommand] [options]
 ## Subcommands
 
 <table class="objects">
-<tr><th><a href="update.html">Link update</a></th><td>Change link settings</td></tr>
-<tr><th><a href="delete.html">Link delete</a></th><td>Delete a link</td></tr>
-<tr><th><a href="status.html">Link status</a></th><td>Display the status of links in the current site</td></tr>
-<tr><th><a href="generate.html">Link generate</a></th><td>Generate a Link resource for use in a remote site</td></tr>
+<tr><th><a href="link/update.html">Link update</a></th><td>Change link settings</td></tr>
+<tr><th><a href="link/delete.html">Link delete</a></th><td>Delete a link</td></tr>
+<tr><th><a href="link/status.html">Link status</a></th><td>Display the status of links in the current site</td></tr>
+<tr><th><a href="link/generate.html">Link generate</a></th><td>Generate a Link resource for use in a remote site</td></tr>
 </table>
 
 </section>

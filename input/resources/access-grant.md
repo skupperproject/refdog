@@ -82,7 +82,7 @@ The namespace of the resource.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="spec-redemptionsallowed">redemptionsAllowed</h3>
+<h3 id="spec-redemptions-allowed">redemptionsAllowed</h3>
 <div class="attribute-type-info">integer</div>
 </div>
 <div class="attribute-body">
@@ -97,7 +97,7 @@ be redeemed.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="spec-expirationwindow">expirationWindow</h3>
+<h3 id="spec-expiration-window">expirationWindow</h3>
 <div class="attribute-type-info">string (duration)</div>
 </div>
 <div class="attribute-body">
@@ -222,7 +222,7 @@ redeemed.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="status-expirationtime">expirationTime</h3>
+<h3 id="status-expiration-time">expirationTime</h3>
 <div class="attribute-type-info">string (date-time)</div>
 </div>
 <div class="attribute-body">

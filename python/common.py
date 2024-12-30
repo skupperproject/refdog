@@ -3,7 +3,7 @@ import mistune as _mistune
 import plano as _plano
 import re as _re
 
-Appender = _plano.Appender
+StringBuilder = _plano.Appender
 capitalize, join, nvl, plural = _plano.capitalize, _plano.join, _plano.nvl, _plano.plural
 debug, notice, warning, fail = _plano.debug, _plano.notice, _plano.warning, _plano.fail
 emit_yaml, read_yaml = _plano.emit_yaml, _plano.read_yaml
@@ -14,7 +14,7 @@ _named_links = read_yaml("config/links.yaml")
 def is_match(text, pattern):
     return _fnmatch.fnmatchcase(text, pattern)
 
-def first_sentence(text):
+def extract_first_sentence(text):
     if text is None:
         return ""
 
@@ -35,7 +35,7 @@ def convert_markdown(text):
 def strip_html_tags(text):
     return _re.sub(r"<[^>]*>", "", text)
 
-def get_fragment_id(name):
+def make_fragment_id(name):
     return name.lower().replace(" ", "-")
 
 def get_object_links(obj):
@@ -161,7 +161,7 @@ class ModelObjectGroup:
 
     @property
     def id(self):
-        return get_fragment_id(self.title)
+        return make_fragment_id(self.title)
 
 class ModelObject:
     hidden = object_property("hidden", default=False)
@@ -184,7 +184,7 @@ class ModelObject:
         # Convert camel case to hyphenated
         name = _re.sub(r"(?<!^)(?=[A-Z])", "-", self.name)
 
-        return get_fragment_id(name)
+        return make_fragment_id(name)
 
     @property
     def rename(self):
@@ -202,6 +202,10 @@ class ModelObject:
             type = "command"
 
         return f"{self.title} {type}"
+
+    @property
+    def summary(self):
+        return extract_first_sentence(self.description)
 
     @property
     def href(self):
@@ -280,6 +284,13 @@ class ModelObjectAttribute:
 
     def __repr__(self):
         return f"{self.__class__.__name__} '{self.name}'"
+
+    @property
+    def id(self):
+        # Convert camel case to hyphenated
+        name = _re.sub(r"(?<!^)(?=[A-Z])", "-", self.name)
+
+        return make_fragment_id(name)
 
     @property
     def rename(self):

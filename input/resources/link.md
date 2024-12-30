@@ -110,7 +110,7 @@ the link.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="spec-tlscredentials">tlsCredentials</h3>
+<h3 id="spec-tls-credentials">tlsCredentials</h3>
 <div class="attribute-type-info">string</div>
 </div>
 <div class="attribute-body">
@@ -191,7 +191,7 @@ here.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="status-remotesiteid">remoteSiteId</h3>
+<h3 id="status-remote-site-id">remoteSiteId</h3>
 <div class="attribute-type-info">string</div>
 </div>
 <div class="attribute-body">
@@ -205,7 +205,7 @@ The unique ID of the site linked to.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="status-remotesitename">remoteSiteName</h3>
+<h3 id="status-remote-site-name">remoteSiteName</h3>
 <div class="attribute-type-info">string</div>
 </div>
 <div class="attribute-body">
