@@ -1,7 +1,5 @@
 from common import *
 
-import fnmatch
-
 def generate(model):
     debug("Generating resources")
 
@@ -361,12 +359,12 @@ class Resource(ModelObject):
 
         for pattern in self.data[section].get("include_properties", []):
             for key in model_props:
-                if fnmatch.fnmatchcase(key, pattern):
+                if is_match(key, pattern):
                     included_keys.append(key)
 
         for pattern in self.data[section].get("exclude_properties", []):
             for key in included_keys:
-                if fnmatch.fnmatchcase(key, pattern):
+                if is_match(key, pattern):
                     included_keys.remove(key)
 
         included_props = {model_props[x]["name"]: model_props[x] for x in included_keys}

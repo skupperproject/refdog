@@ -1,7 +1,5 @@
 from resources import *
 
-import fnmatch
-
 def generate(model):
     debug("Generating commands")
 
@@ -412,12 +410,12 @@ class Command(ModelObject):
 
         for pattern in self.data.get("include_options", []):
             for key in model_options:
-                if fnmatch.fnmatchcase(key, pattern):
+                if is_match(key, pattern):
                     included_keys.append(key)
 
         for pattern in self.data.get("exclude_options", []):
             for key in included_keys:
-                if fnmatch.fnmatchcase(key, pattern):
+                if is_match(key, pattern):
                     included_keys.remove(key)
 
         included_options = {model_options[x]["name"]: model_options[x] for x in included_keys}

@@ -1,25 +1,41 @@
-from plano import *
+import fnmatch as _fnmatch
+import mistune as _mistune
+import plano as _plano
+import re as _re
 
-import html
-import mistune
-import re
+Appender = _plano.Appender
+debug, notice, warning, fail = _plano.debug, _plano.notice, _plano.warning, _plano.fail
+join = _plano.join
+read_yaml, emit_yaml = _plano.read_yaml, _plano.emit_yaml
+list_dir, make_dir = _plano.list_dir, _plano.make_dir
+write = _plano.write
+capitalize, nvl, plural = _plano.capitalize, _plano.nvl, _plano.plural
 
-named_links = read_yaml("config/links.yaml")
+_named_links = _plano.read_yaml("config/links.yaml")
+
+def is_match(text, pattern):
+    return _fnmatch.fnmatchcase(text, pattern)
 
 def first_sentence(text):
     if text is None:
         return ""
 
     text = text.replace("\n", " ")
-    text = mistune.html(text)
-    text = re.sub(r"<[^>]*>", "", text)
+    text = convert_markdown(text)
+    text = strip_html_tags(text)
 
-    match = re.search(r"(.+?)\.\s+", text, re.DOTALL)
+    match = _re.search(r"(.+?)\.\s+", text, _re.DOTALL)
 
     if match is None:
         return text.removesuffix(".")
 
     return match.group(1)
+
+def convert_markdown(text):
+    return _mistune.html(text)
+
+def strip_html_tags(text):
+    return _re.sub(r"<[^>]*>", "", text)
 
 def get_fragment_id(name):
     return name.lower().replace(" ", "-")
@@ -38,12 +54,12 @@ def get_object_links(obj):
         })
 
     for name in obj.links:
-        if name not in named_links:
+        if name not in _named_links:
             fail(f"{obj}: Link '{name}' not found")
 
         data.append({
-            "title": named_links[name]["title"],
-            "url": named_links[name]["url"],
+            "title": _named_links[name]["title"],
+            "url": _named_links[name]["url"],
         })
 
     for other in obj.corresponding_objects:
@@ -73,7 +89,7 @@ def generate_attribute_fields(attr):
             if not default.startswith("_"):
                 default = f"`{default}`"
 
-            default = mistune.html(default)
+            default = convert_markdown(default)
 
         rows.append(f"<tr><th>Default</th><td>{default}</td>")
 
@@ -102,7 +118,7 @@ def generate_attribute_choices(attr):
     for choice_data in attr.choices:
         name = choice_data["name"]
         description = choice_data["description"].replace("\n", " ").strip()
-        description = mistune.html(description)
+        description = convert_markdown(description)
 
         rows.append(f"<tr><th><code>{name}</code></th><td>{description}</td></tr>")
 
@@ -168,7 +184,7 @@ class ModelObject:
     @property
     def id(self):
         # Convert camel case to hyphenated
-        name = re.sub(r"(?<!^)(?=[A-Z])", "-", self.name)
+        name = _re.sub(r"(?<!^)(?=[A-Z])", "-", self.name)
 
         return get_fragment_id(name)
 
@@ -300,8 +316,8 @@ class ModelObjectAttribute:
         # XXX Other related things here?
 
         for name in self.links:
-            title = named_links[name]["title"]
-            url = named_links[name]["url"]
+            title = _named_links[name]["title"]
+            url = _named_links[name]["url"]
 
             links.append((title, url))
 
