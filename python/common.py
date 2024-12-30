@@ -14,27 +14,6 @@ _named_links = read_yaml("config/links.yaml")
 def is_match(text, pattern):
     return _fnmatch.fnmatchcase(text, pattern)
 
-def extract_first_sentence(text):
-    if text is None:
-        return ""
-
-    text = text.replace("\n", " ")
-    text = convert_markdown(text)
-    text = strip_html_tags(text)
-
-    match = _re.search(r"(.+?)\.\s+", text, _re.DOTALL)
-
-    if match is None:
-        return text.removesuffix(".")
-
-    return match.group(1)
-
-def convert_markdown(text):
-    return _mistune.html(text)
-
-def strip_html_tags(text):
-    return _re.sub(r"<[^>]*>", "", text)
-
 def make_fragment_id(name):
     return name.lower().replace(" ", "-")
 
@@ -87,7 +66,7 @@ def generate_attribute_fields(attr):
             if not default.startswith("_"):
                 default = f"`{default}`"
 
-            default = convert_markdown(default)
+            default = _convert_markdown(default)
 
         rows.append(f"<tr><th>Default</th><td>{default}</td>")
 
@@ -116,7 +95,7 @@ def generate_attribute_choices(attr):
     for choice_data in attr.choices:
         name = choice_data["name"]
         description = choice_data["description"].replace("\n", " ").strip()
-        description = convert_markdown(description)
+        description = _convert_markdown(description)
 
         rows.append(f"<tr><th><code>{name}</code></th><td>{description}</td></tr>")
 
@@ -201,7 +180,7 @@ class ModelObject:
 
     @property
     def summary(self):
-        return extract_first_sentence(self.description)
+        return _extract_first_sentence(self.description)
 
     @property
     def href(self):
@@ -323,3 +302,21 @@ class ModelObjectAttribute:
             links.append((title, url))
 
         return links
+
+def _extract_first_sentence(text):
+    if text is None:
+        return ""
+
+    text = text.replace("\n", " ")
+    text = _convert_markdown(text)
+    text = _re.sub(r"<[^>]*>", "", text) # Strip tags
+
+    match = _re.search(r"(.+?)\.\s+", text, _re.DOTALL)
+
+    if match is None:
+        return text.removesuffix(".")
+
+    return match.group(1)
+
+def _convert_markdown(text):
+    return _mistune.html(text)
