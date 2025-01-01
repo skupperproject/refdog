@@ -10,6 +10,12 @@ def generate():
     generate_index()
 
 @command
+def test():
+    generate()
+    render()
+    check_links()
+
+@command
 def generate_diagrams():
     """
     Generate SVG diagrams from D2 files
