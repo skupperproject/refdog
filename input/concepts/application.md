@@ -9,8 +9,6 @@ refdog_links:
 
 # Application concept
 
-<section>
-
 An application is a set of [components](component.html) that work
 together.  A Skupper [network](network.html) is dedicated to one
 application.
@@ -31,5 +29,3 @@ An application has one or more components.
   <img src="images/application-2.svg"/ style="max-height: 30em; max-width: 90%;">
   <figcaption>The components of the Online Boutique example application</figcaption>
 </figure>
-
-</section>

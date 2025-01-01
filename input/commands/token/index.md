@@ -10,20 +10,9 @@ refdog_links:
 - title: AccessToken resource
   url: /resources/access-token.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: subcommands
-  title: Subcommands
-- id: primary-options
-  title: Primary options
-- id: global-options
-  title: Global options
 ---
 
 # Token command
-
-<section>
 
 ~~~ shell
 skupper token [subcommand] [options]
@@ -31,15 +20,9 @@ skupper token [subcommand] [options]
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
-</section>
-
-<section>
-
 ## Subcommands
 
 <table class="objects">
 <tr><th><a href="{{site_prefix}}/commands/token/issue.html">Token issue</a></th><td>Issue a token file redeemable for a link to the current site</td></tr>
 <tr><th><a href="{{site_prefix}}/commands/token/redeem.html">Token redeem</a></th><td>Redeem a token file in order to create a link to a remote site</td></tr>
 </table>
-
-</section>

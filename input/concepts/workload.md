@@ -11,8 +11,6 @@ refdog_links:
 
 # Workload concept
 
-<section>
-
 A workload is a set of processes running on a
 [platform](platform.html).  A **process** is a pod, container, or
 system process.  Workloads in a [site](site.html) are exposed as
@@ -46,5 +44,3 @@ On Linux, a workload is a set of system processes.
   <figcaption>A workload exposed as a service using a
   connector</figcaption>
 </figure>
-
-</section>

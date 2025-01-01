@@ -6,20 +6,9 @@ refdog_links:
 - title: Site resource
   url: /resources/site.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: examples
-  title: Examples
-- id: primary-options
-  title: Primary options
-- id: global-options
-  title: Global options
 ---
 
 # Site generate command
-
-<section>
 
 ~~~ shell
 skupper site generate <name> [options]
@@ -28,10 +17,6 @@ skupper site generate <name> [options]
 Generate a Site resource.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</section>
-
-<section>
 
 ## Examples
 
@@ -48,10 +33,6 @@ spec:
 # Generate a Site resource and direct the output to a file
 $ skupper site generate east > east.yaml
 ~~~
-
-</section>
-
-<section class="attributes">
 
 ## Primary options
 
@@ -148,10 +129,6 @@ window of downtime caused by restarts.
 </div>
 </div>
 
-</section>
-
-<section class="attributes">
-
 ## Global options
 
 <div class="attribute collapsed">
@@ -190,5 +167,3 @@ Display help and exit.
 
 </div>
 </div>
-
-</section>

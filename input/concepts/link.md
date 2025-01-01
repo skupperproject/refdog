@@ -17,8 +17,6 @@ refdog_links:
 
 # Link concept
 
-<section>
-
 A link is a channel for communication between [sites](site.html).
 Links carry application connections and requests.  A set of linked
 sites constitutes a [network](network.html).
@@ -66,5 +64,3 @@ the connection details required to create a link.
   <img src="images/link-3.svg"/>
   <figcaption>A larger network with links to a central hub site</figcaption>
 </figure>
-
-</section>

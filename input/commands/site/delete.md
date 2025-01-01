@@ -6,20 +6,9 @@ refdog_links:
 - title: Site resource
   url: /resources/site.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: examples
-  title: Examples
-- id: primary-options
-  title: Primary options
-- id: global-options
-  title: Global options
 ---
 
 # Site delete command
-
-<section>
 
 ~~~ shell
 skupper site delete [name] [options]
@@ -28,10 +17,6 @@ skupper site delete [name] [options]
 Delete a site.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Deletion</td></table>
-
-</section>
-
-<section>
 
 ## Examples
 
@@ -44,10 +29,6 @@ Site "west" is deleted.
 # Delete the current site and all of its associated Skupper resources
 $ skupper site delete --all
 ~~~
-
-</section>
-
-<section class="attributes">
 
 ## Primary options
 
@@ -115,10 +96,6 @@ Wait for deletion to complete before exiting.
 
 </div>
 </div>
-
-</section>
-
-<section class="attributes">
 
 ## Global options
 
@@ -204,14 +181,8 @@ Display help and exit.
 </div>
 </div>
 
-</section>
-
-<section>
-
 ## Errors
 
 - **No site resource exists**
 
   <p>There is no existing Skupper site resource to delete.</p>
-
-</section>

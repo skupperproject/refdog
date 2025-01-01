@@ -365,7 +365,7 @@ table.objects th {
 
 /** Attributes (resource properties and command options) **/
 
-section.attributes > div.attribute {
+div.attribute {
     margin: 1em 1em 1.4em 1em;
 }
 

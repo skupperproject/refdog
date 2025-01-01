@@ -10,20 +10,9 @@ refdog_links:
 - title: Listener update command
   url: /commands/listener/update.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: examples
-  title: Examples
-- id: primary-options
-  title: Primary options
-- id: global-options
-  title: Global options
 ---
 
 # Connector update command
-
-<section>
 
 ~~~ shell
 skupper connector update <name> <port> [options]
@@ -32,10 +21,6 @@ skupper connector update <name> <port> [options]
 Update a connector.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Configured</td></table>
-
-</section>
-
-<section>
 
 ## Examples
 
@@ -48,10 +33,6 @@ Connector "database" is configured.
 # Change the routing key
 $ skupper connector update backend --routing-key be2
 ~~~
-
-</section>
-
-<section class="attributes">
 
 ## Primary options
 
@@ -198,10 +179,6 @@ period of time.
 </div>
 </div>
 
-</section>
-
-<section class="attributes">
-
 ## Global options
 
 <div class="attribute collapsed">
@@ -285,5 +262,3 @@ Display help and exit.
 
 </div>
 </div>
-
-</section>

@@ -47,24 +47,9 @@ def generate_concept(concept):
     append()
     append(f"# {concept.title_with_type}")
     append()
-    append("<section>")
-    append()
 
     if concept.description:
         append(concept.description.strip())
-        append()
-
-    append("</section>")
-    append()
-
-    if concept.notes:
-        append("<section class=\"notes\">")
-        append()
-        append("## Notes")
-        append()
-        append(concept.notes.strip())
-        append()
-        append("</section>")
         append()
 
     append.write(f"input/concepts/{concept.id}.md")

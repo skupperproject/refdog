@@ -9,8 +9,6 @@ refdog_links:
 
 # Component concept
 
-<section>
-
 A component is a logical part of an [application](application.html).
 Each component has a set of responsibilities in achieving the goals
 of the application.  Components provide and require **interfaces**
@@ -37,5 +35,3 @@ by zero or more workloads.
   <figcaption>Hello World with its components implemented by
   workloads in three different sites</figcaption>
 </figure>
-
-</section>

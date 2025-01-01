@@ -12,20 +12,9 @@ refdog_links:
 - title: Token redeem command
   url: /commands/token/redeem.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: metadata-properties
-  title: Metadata properties
-- id: spec-properties
-  title: Spec properties
-- id: status-properties
-  title: Status properties
 ---
 
 # AccessToken resource
-
-<section>
 
 A short-lived credential used to create a link.  An access token
 contains the URL and secret code of a corresponding access grant.
@@ -40,10 +29,6 @@ the Skupper CLI.
 apiVersion: skupper.io/v2alpha1
 kind: AccessToken
 ~~~
-
-</section>
-
-<section class="attributes">
 
 ## Metadata properties
 
@@ -75,10 +60,6 @@ The namespace of the resource.
 
 </div>
 </div>
-
-</section>
-
-<section class="attributes">
 
 ## Spec properties
 
@@ -161,10 +142,6 @@ their default values.
 </div>
 </div>
 
-</section>
-
-<section class="attributes">
-
 ## Status properties
 
 <div class="attribute collapsed">
@@ -234,5 +211,3 @@ resource.
 
 </div>
 </div>
-
-</section>

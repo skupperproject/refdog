@@ -10,20 +10,9 @@ refdog_links:
 - title: Connector create command
   url: /commands/connector/create.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: examples
-  title: Examples
-- id: primary-options
-  title: Primary options
-- id: global-options
-  title: Global options
 ---
 
 # Listener create command
-
-<section>
 
 ~~~ shell
 skupper listener create <name> <port> [options]
@@ -32,10 +21,6 @@ skupper listener create <name> <port> [options]
 Create a listener.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Configured</td></table>
-
-</section>
-
-<section>
 
 ## Examples
 
@@ -48,10 +33,6 @@ Listener "database" is configured.
 # Set the routing key and host explicitly
 $ skupper listener create backend 8080 --routing-key be1 --host apiserver
 ~~~
-
-</section>
-
-<section class="attributes">
 
 ## Primary options
 
@@ -158,10 +139,6 @@ period of time.
 </div>
 </div>
 
-</section>
-
-<section class="attributes">
-
 ## Global options
 
 <div class="attribute collapsed">
@@ -245,5 +222,3 @@ Display help and exit.
 
 </div>
 </div>
-
-</section>

@@ -4,18 +4,9 @@ refdog_links:
 - title: Platform concept
   url: /concepts/platform.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: primary-options
-  title: Primary options
-- id: global-options
-  title: Global options
 ---
 
 # System status command
-
-<section>
 
 ~~~ shell
 skupper system status [options]
@@ -25,15 +16,7 @@ Display the status of the system.
 
 <table class="fields"><tr><th>Platforms</th><td>Docker, Podman, Linux</td></table>
 
-</section>
-
-<section class="attributes">
-
 ## Primary options
-
-</section>
-
-<section class="attributes">
 
 ## Global options
 
@@ -88,5 +71,3 @@ Display help and exit.
 
 </div>
 </div>
-
-</section>

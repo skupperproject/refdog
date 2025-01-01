@@ -10,20 +10,9 @@ refdog_links:
 - title: Connector status command
   url: /commands/connector/status.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: examples
-  title: Examples
-- id: primary-options
-  title: Primary options
-- id: global-options
-  title: Global options
 ---
 
 # Listener status command
-
-<section>
 
 ~~~ shell
 skupper listener status [name] [options]
@@ -32,10 +21,6 @@ skupper listener status [name] [options]
 Display the status of listeners in the current site.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</section>
-
-<section>
 
 ## Examples
 
@@ -56,10 +41,6 @@ Host:                      backend
 Port:                      8080
 Has matching connectors:   true
 ~~~
-
-</section>
-
-<section class="attributes">
 
 ## Primary options
 
@@ -110,10 +91,6 @@ Print status to the console in a structured output format.
 
 </div>
 </div>
-
-</section>
-
-<section class="attributes">
 
 ## Global options
 
@@ -198,5 +175,3 @@ Display help and exit.
 
 </div>
 </div>
-
-</section>

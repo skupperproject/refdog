@@ -10,22 +10,9 @@ refdog_links:
 - title: Platform concept
   url: /concepts/platform.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: examples
-  title: Examples
-- id: metadata-properties
-  title: Metadata properties
-- id: spec-properties
-  title: Spec properties
-- id: status-properties
-  title: Status properties
 ---
 
 # Site resource
-
-<section>
 
 A place on the network where application workloads are running.
 
@@ -44,10 +31,6 @@ resources:
 apiVersion: skupper.io/v2alpha1
 kind: Site
 ~~~
-
-</section>
-
-<section>
 
 ## Examples
 
@@ -72,10 +55,6 @@ metadata:
 spec:
   linkAccess: default
 ~~~
-
-</section>
-
-<section class="attributes">
 
 ## Metadata properties
 
@@ -107,10 +86,6 @@ The namespace of the resource.
 
 </div>
 </div>
-
-</section>
-
-<section class="attributes">
 
 ## Spec properties
 
@@ -251,10 +226,6 @@ their default values.
 </div>
 </div>
 
-</section>
-
-<section class="attributes">
-
 ## Status properties
 
 <div class="attribute collapsed">
@@ -347,12 +318,6 @@ These include connection endpoints for link access.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/link.html">Link concept</a>, <a href="{{site_prefix}}/topics/site-linking.html">Site linking</a></td></table>
 
-<section class="notes">
-
-Why is this here in status?  Does it duplicate what we have in RouterAccess?
-
-</section>
-
 </div>
 </div>
 
@@ -381,5 +346,3 @@ Why is this here in status?  Does it duplicate what we have in RouterAccess?
 
 </div>
 </div>
-
-</section>

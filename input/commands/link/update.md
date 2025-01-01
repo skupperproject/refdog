@@ -8,20 +8,9 @@ refdog_links:
 - title: Link resource
   url: /resources/link.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: examples
-  title: Examples
-- id: primary-options
-  title: Primary options
-- id: global-options
-  title: Global options
 ---
 
 # Link update command
-
-<section>
 
 ~~~ shell
 skupper link update <name> [options]
@@ -31,10 +20,6 @@ Change link settings.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Ready</td></table>
 
-</section>
-
-<section>
-
 ## Examples
 
 ~~~ console
@@ -43,10 +28,6 @@ $ skupper link update west-6bfn6 --cost 10
 Waiting for status...
 Link "west-6bfn6" is ready.
 ~~~
-
-</section>
-
-<section class="attributes">
 
 ## Primary options
 
@@ -113,10 +94,6 @@ Wait for the given status before exiting.
 
 </div>
 </div>
-
-</section>
-
-<section class="attributes">
 
 ## Global options
 
@@ -201,5 +178,3 @@ Display help and exit.
 
 </div>
 </div>
-
-</section>

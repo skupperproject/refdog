@@ -9,8 +9,6 @@ refdog_links:
 
 # Network concept
 
-<section>
-
 A network is a set of [sites](site.html) joined by
 [links](link.html). A Skupper network is also known as an
 application network or virtual application network (VAN).
@@ -37,5 +35,3 @@ This provides isolation from other applications and networks.
   <img src="images/network-2.svg"/>
   <figcaption>A larger network</figcaption>
 </figure>
-
-</section>

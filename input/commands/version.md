@@ -2,20 +2,9 @@
 body_class: object command
 refdog_links: []
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: examples
-  title: Examples
-- id: primary-options
-  title: Primary options
-- id: global-options
-  title: Global options
 ---
 
 # Version command
-
-<section>
 
 ~~~ shell
 skupper version [options]
@@ -24,10 +13,6 @@ skupper version [options]
 Display versions of Skupper components.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</section>
-
-<section>
 
 ## Examples
 
@@ -61,10 +46,6 @@ components:
         digest: sha256:4dc24bb3d605ed3fcec2f8ef7d45ca883d9d87b278bfedd5fcca74281d617a5e
 ~~~
 
-</section>
-
-<section class="attributes">
-
 ## Primary options
 
 <div class="attribute collapsed">
@@ -82,10 +63,6 @@ Produce verbose structured output.
 
 </div>
 </div>
-
-</section>
-
-<section class="attributes">
 
 ## Global options
 
@@ -170,5 +147,3 @@ Display help and exit.
 
 </div>
 </div>
-
-</section>

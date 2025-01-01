@@ -51,8 +51,6 @@ def generate_resource(resource):
     append()
     append(f"# {resource.title_with_type}")
     append()
-    append("<section>")
-    append()
 
     if resource.description:
         append(resource.description.strip())
@@ -64,12 +62,8 @@ def generate_resource(resource):
     append("~~~")
 
     append()
-    append("</section>")
-    append()
 
     if resource.examples:
-        append("<section>")
-        append()
         append("## Examples")
         append()
 
@@ -81,21 +75,12 @@ def generate_resource(resource):
             append("~~~")
             append()
 
-        append("</section>")
-        append()
-
-    append("<section class=\"attributes\">")
-    append()
     append("## Metadata properties")
     append()
 
     for prop in resource.metadata_properties:
         generate_property(prop, append)
 
-    append("</section>")
-    append()
-    append("<section class=\"attributes\">")
-    append()
     append("## Spec properties")
     append()
 
@@ -104,10 +89,6 @@ def generate_resource(resource):
             if prop.group == group:
                 generate_property(prop, append)
 
-    append("</section>")
-    append()
-    append("<section class=\"attributes\">")
-    append()
     append("## Status properties")
     append()
 
@@ -116,19 +97,6 @@ def generate_resource(resource):
             if prop.group == group:
                 generate_property(prop, append)
 
-    append("</section>")
-    append()
-
-    if resource.notes:
-        append("<section class=\"notes\">")
-        append()
-        append("## Notes")
-        append()
-        append(resource.notes.strip())
-        append()
-        append("</section>")
-        append()
-
     append.write(f"input/resources/{resource.id}.md")
 
 def generate_resource_metadata(resource):
@@ -136,37 +104,7 @@ def generate_resource_metadata(resource):
         "body_class": "object resource",
         "refdog_object_has_attributes": True,
         "refdog_links": get_object_links(resource),
-        "refdog_toc": [
-            {
-                "title": "Overview",
-                "id": "",
-            }
-        ],
     }
-
-    if resource.examples:
-        data["refdog_toc"].append({
-            "title": "Examples",
-            "id": "examples",
-        })
-
-    data["refdog_toc"].extend([
-        {
-            "title": "Metadata properties",
-            "id": "metadata-properties",
-            # "children": [{"title": x.name, "id": x.id} for x in resource.metadata_properties if not x.hidden],
-        },
-        {
-            "title": "Spec properties",
-            "id": "spec-properties",
-            # "children": [{"title": x.name, "id": x.id} for x in resource.spec_properties if not x.hidden],
-        },
-        {
-            "title": "Status properties",
-            "id": "status-properties",
-            # "children": [{"title": x.name, "id": x.id} for x in resource.status_properties if not x.hidden],
-        },
-    ])
 
     return emit_yaml(data).strip()
 
@@ -209,15 +147,6 @@ def generate_property(prop, append):
 
     append(generate_attribute_fields(prop))
     append()
-
-    if prop.notes:
-        append("<section class=\"notes\">")
-        append()
-        append(prop.notes.strip())
-        append()
-        append("</section>")
-        append()
-
     append("</div>")
     append("</div>")
     append()

@@ -4,20 +4,9 @@ refdog_links:
 - title: Debug dumps
   url: /topics/debug-dumps.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: examples
-  title: Examples
-- id: primary-options
-  title: Primary options
-- id: global-options
-  title: Global options
 ---
 
 # Debug dump command
-
-<section>
 
 ~~~ shell
 skupper debug dump [file] [options]
@@ -27,10 +16,6 @@ Generate a debug dump file.  Debug dumps collect the details of
 a site so another party can identify and fix a problem.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</section>
-
-<section>
 
 ## Examples
 
@@ -43,10 +28,6 @@ Debug dump file: /home/fritz/skupper-dump-west-2024-12-09.tar.gz
 $ skupper debug dump /tmp/abc.tar.gz
 Debug dump file: /tmp/abc.tar.gz
 ~~~
-
-</section>
-
-<section class="attributes">
 
 ## Primary options
 
@@ -67,10 +48,6 @@ The command exits with an error if the file already exists.
 
 </div>
 </div>
-
-</section>
-
-<section class="attributes">
 
 ## Global options
 
@@ -155,5 +132,3 @@ Display help and exit.
 
 </div>
 </div>
-
-</section>

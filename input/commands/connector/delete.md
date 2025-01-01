@@ -10,20 +10,9 @@ refdog_links:
 - title: Listener delete command
   url: /commands/listener/delete.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: examples
-  title: Examples
-- id: primary-options
-  title: Primary options
-- id: global-options
-  title: Global options
 ---
 
 # Connector delete command
-
-<section>
 
 ~~~ shell
 skupper connector delete <name> [options]
@@ -33,10 +22,6 @@ Delete a connector.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Deletion</td></table>
 
-</section>
-
-<section>
-
 ## Examples
 
 ~~~ console
@@ -45,10 +30,6 @@ $ skupper connector delete database
 Waiting for deletion...
 Connector "database" is deleted.
 ~~~
-
-</section>
-
-<section class="attributes">
 
 ## Primary options
 
@@ -96,10 +77,6 @@ Wait for deletion to complete before exiting.
 
 </div>
 </div>
-
-</section>
-
-<section class="attributes">
 
 ## Global options
 
@@ -184,5 +161,3 @@ Display help and exit.
 
 </div>
 </div>
-
-</section>

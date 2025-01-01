@@ -12,20 +12,9 @@ refdog_links:
 - title: Token redeem command
   url: /commands/token/redeem.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: examples
-  title: Examples
-- id: primary-options
-  title: Primary options
-- id: global-options
-  title: Global options
 ---
 
 # Token issue command
-
-<section>
 
 ~~~ shell
 skupper token issue <file> [options]
@@ -41,10 +30,6 @@ The command waits for the site to enter the ready state
 before producing the token.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>Waits for</th><td>Ready</td></table>
-
-</section>
-
-<section>
 
 ## Examples
 
@@ -69,10 +54,6 @@ $ skupper token issue ~/token.yaml --expiration-window 24h --redemptions-allowed
 # Issue a token using an existing access grant
 $ skupper token issue ~/token.yaml --grant west-1
 ~~~
-
-</section>
-
-<section class="attributes">
 
 ## Primary options
 
@@ -153,10 +134,6 @@ one.
 
 </div>
 </div>
-
-</section>
-
-<section class="attributes">
 
 ## Global options
 
@@ -242,10 +219,6 @@ Display help and exit.
 </div>
 </div>
 
-</section>
-
-<section>
-
 ## Errors
 
 - **Link access is not enabled**
@@ -253,5 +226,3 @@ Display help and exit.
   <p>Link access at this site is not currently enabled.  You
 can use "skupper site update --enable-link-access" to
 enable it.</p>
-
-</section>

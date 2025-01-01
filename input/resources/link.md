@@ -10,20 +10,9 @@ refdog_links:
 - title: AccessToken resource
   url: /resources/access-token.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: metadata-properties
-  title: Metadata properties
-- id: spec-properties
-  title: Spec properties
-- id: status-properties
-  title: Status properties
 ---
 
 # Link resource
-
-<section>
 
 A channel for communication between sites.  Links carry application
 connections and requests.  A set of linked sites constitutes a
@@ -38,10 +27,6 @@ use an [access token][token] to obtain a link.
 apiVersion: skupper.io/v2alpha1
 kind: Link
 ~~~
-
-</section>
-
-<section class="attributes">
 
 ## Metadata properties
 
@@ -73,10 +58,6 @@ The namespace of the resource.
 
 </div>
 </div>
-
-</section>
-
-<section class="attributes">
 
 ## Spec properties
 
@@ -148,10 +129,6 @@ their default values.
 
 </div>
 </div>
-
-</section>
-
-<section class="attributes">
 
 ## Status properties
 
@@ -239,5 +216,3 @@ resource.
 
 </div>
 </div>
-
-</section>

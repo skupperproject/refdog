@@ -7,8 +7,6 @@ refdog_links:
 
 # Platform concept
 
-<section>
-
 A platform is a system for running application
 [workloads](workload.html).  A platform hosts [sites](site.html).
 Skupper supports Kubernetes, Docker, Podman, and Linux.  Each site
@@ -39,5 +37,3 @@ associated with a site.
   <figcaption>Two different networks spanning two
   platforms</figcaption>
 </figure>
-
-</section>

@@ -15,8 +15,6 @@ refdog_links:
 
 # Access token concept
 
-<section>
-
 An access token is a short-lived credential used to create a
 [link](link.html).  An access token contains the URL and secret code
 of a corresponding **access grant**.
@@ -53,5 +51,3 @@ configuring the access grant.
 
 * If the token is valid, site 1 sends site 2 the TLS host, port, and
   credentials required to create a link to site 1.
-
-</section>

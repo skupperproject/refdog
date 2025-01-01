@@ -61,8 +61,6 @@ def generate_command(command):
     append()
     append(f"# {command.title_with_type}")
     append()
-    append("<section>")
-    append()
     append("~~~ shell")
     append(f"{generate_usage(command)}")
     append("~~~")
@@ -74,24 +72,16 @@ def generate_command(command):
 
     append(generate_command_fields(command))
     append()
-    append("</section>")
-    append()
 
     if command.output:
-        append("<section>")
-        append()
         append("## Output")
         append()
         append("~~~ console")
         append(command.output.strip())
         append("~~~")
         append()
-        append("</section>")
-        append()
 
     if command.subcommands:
-        append("<section>")
-        append()
         append("## Subcommands")
         append()
         append("<table class=\"objects\">")
@@ -101,24 +91,16 @@ def generate_command(command):
 
         append("</table>")
         append()
-        append("</section>")
-        append()
     else:
         if command.examples:
-            append("<section>")
-            append()
             append("## Examples")
             append()
             append("~~~ console")
             append(command.examples.strip())
             append("~~~")
             append()
-            append("</section>")
-            append()
 
         if command.options:
-            append("<section class=\"attributes\">")
-            append()
             append("## Primary options")
             append()
 
@@ -127,10 +109,6 @@ def generate_command(command):
                     if option.group == group:
                         generate_option(option, append)
 
-            append("</section>")
-            append()
-            append("<section class=\"attributes\">")
-            append()
             append("## Global options")
             append()
 
@@ -138,30 +116,12 @@ def generate_command(command):
                 if option.group == "global":
                     generate_option(option, append)
 
-            append("</section>")
-            append()
-
         if command.errors:
-            append("<section>")
-            append()
             append("## Errors")
             append()
 
             for error in command.errors:
                 generate_error(error, append)
-
-            append("</section>")
-            append()
-
-    if command.notes:
-        append("<section class=\"notes\">")
-        append()
-        append("## Notes")
-        append()
-        append(command.notes.strip())
-        append()
-        append("</section>")
-        append()
 
     if command.subcommands:
         append.write(f"input/commands/{command.id}/index.md")
@@ -173,49 +133,7 @@ def generate_command_metadata(command):
         "body_class": "object command",
         "refdog_object_has_attributes": True,
         "refdog_links": get_object_links(command),
-        "refdog_toc": [
-            {
-                "title": "Overview",
-                "id": "",
-            },
-        ],
     }
-
-    sections = "Usage", "Output", "Subcommands", "Examples"
-
-    for section in sections:
-        items = getattr(command, section.lower())
-
-        if items:
-            data["refdog_toc"].append({
-                "title": section,
-                "id": make_fragment_id(section),
-            })
-
-    children = list()
-
-    for group in ("positional", "required", "frequently-used", None, "advanced"):
-        children.extend([{"title": x.syntax_name, "id": x.id} for x in command.options
-                         if not x.hidden and x.group == group])
-
-    data["refdog_toc"].extend([
-        {
-            "title": "Primary options",
-            "id": "primary-options",
-            # "children": children, XXX
-        },
-    ])
-
-    children = [{"title": x.syntax_name, "id": x.id} for x in command.options
-                if not x.hidden and x.group == "global"]
-
-    data["refdog_toc"].extend([
-        {
-            "title": "Global options",
-            "id": "global-options",
-            # "children": children, XXX
-        },
-    ])
 
     return emit_yaml(data).strip()
 
@@ -296,15 +214,6 @@ def generate_option(option, append):
 
     append(generate_attribute_fields(option))
     append()
-
-    if option.notes:
-        append("<section class=\"notes\">")
-        append()
-        append(option.notes.strip())
-        append()
-        append("</section>")
-        append()
-
     append("</div>")
     append("</div>")
     append()

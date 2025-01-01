@@ -17,8 +17,6 @@ refdog_links:
 
 # Site concept
 
-<section>
-
 A site is a place on the [network](network.html) where application
 [workloads](workload.html) are running.  Sites are joined by
 [links](link.html).
@@ -54,5 +52,3 @@ routers in remote sites.
   <figcaption>A network with sites on three different
   platforms</figcaption>
 </figure>
-
-</section>

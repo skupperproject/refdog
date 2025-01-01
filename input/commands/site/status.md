@@ -6,20 +6,9 @@ refdog_links:
 - title: Site resource
   url: /resources/site.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: examples
-  title: Examples
-- id: primary-options
-  title: Primary options
-- id: global-options
-  title: Global options
 ---
 
 # Site status command
-
-<section>
 
 ~~~ shell
 skupper site status [name] [options]
@@ -28,10 +17,6 @@ skupper site status [name] [options]
 Display the status of a site.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</section>
-
-<section>
 
 ## Examples
 
@@ -42,10 +27,6 @@ Name:      west
 Status:    Ready
 Message:   -
 ~~~
-
-</section>
-
-<section class="attributes">
 
 ## Primary options
 
@@ -98,10 +79,6 @@ Print status to the console in a structured output format.
 
 </div>
 </div>
-
-</section>
-
-<section class="attributes">
 
 ## Global options
 
@@ -186,5 +163,3 @@ Display help and exit.
 
 </div>
 </div>
-
-</section>

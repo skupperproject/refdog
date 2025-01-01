@@ -8,20 +8,9 @@ refdog_links:
 - title: Link resource
   url: /resources/link.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: examples
-  title: Examples
-- id: primary-options
-  title: Primary options
-- id: global-options
-  title: Global options
 ---
 
 # Link delete command
-
-<section>
 
 ~~~ shell
 skupper link delete <name> [options]
@@ -31,10 +20,6 @@ Delete a link.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Deletion</td></table>
 
-</section>
-
-<section>
-
 ## Examples
 
 ~~~ console
@@ -43,10 +28,6 @@ $ skupper link delete west-6bfn6
 Waiting for deletion...
 Link "west-6bfn6" is deleted.
 ~~~
-
-</section>
-
-<section class="attributes">
 
 ## Primary options
 
@@ -94,10 +75,6 @@ Wait for deletion to complete before exiting.
 
 </div>
 </div>
-
-</section>
-
-<section class="attributes">
 
 ## Global options
 
@@ -182,5 +159,3 @@ Display help and exit.
 
 </div>
 </div>
-
-</section>

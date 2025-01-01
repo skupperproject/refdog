@@ -6,20 +6,9 @@ refdog_links:
 - title: Site resource
   url: /resources/site.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: examples
-  title: Examples
-- id: primary-options
-  title: Primary options
-- id: global-options
-  title: Global options
 ---
 
 # Site create command
-
-<section>
 
 ~~~ shell
 skupper site create <name> [options]
@@ -28,10 +17,6 @@ skupper site create <name> [options]
 Create a site.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Ready</td></table>
-
-</section>
-
-<section>
 
 ## Examples
 
@@ -44,10 +29,6 @@ Site "west" is ready.
 # Create a site that can accept links from remote sites
 $ skupper site create west --enable-link-access
 ~~~
-
-</section>
-
-<section class="attributes">
 
 ## Primary options
 
@@ -162,10 +143,6 @@ Wait for the given status before exiting.
 </div>
 </div>
 
-</section>
-
-<section class="attributes">
-
 ## Global options
 
 <div class="attribute collapsed">
@@ -250,14 +227,8 @@ Display help and exit.
 </div>
 </div>
 
-</section>
-
-<section>
-
 ## Errors
 
 - **A site resource already exists**
 
   <p>There is already a site resource defined for the namespace.</p>
-
-</section>

@@ -15,8 +15,6 @@ refdog_links:
 
 # Listener concept
 
-<section>
-
 A listener binds a local connection endpoint to
 [connectors](connector.html) in remote [sites](site.html).
 Listeners and connectors are matched using [routing
@@ -58,5 +56,3 @@ then forward the client connections to the workload servers.
   <figcaption>A database service with listeners in two
   sites</figcaption>
 </figure>
-
-</section>

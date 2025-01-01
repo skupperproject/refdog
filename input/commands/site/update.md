@@ -6,20 +6,9 @@ refdog_links:
 - title: Site resource
   url: /resources/site.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: examples
-  title: Examples
-- id: primary-options
-  title: Primary options
-- id: global-options
-  title: Global options
 ---
 
 # Site update command
-
-<section>
 
 ~~~ shell
 skupper site update [name] [options]
@@ -28,10 +17,6 @@ skupper site update [name] [options]
 Change site settings.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Ready</td></table>
-
-</section>
-
-<section>
 
 ## Examples
 
@@ -44,10 +29,6 @@ Site "west" is ready.
 # Update multiple settings
 $ skupper site update --enable-link-access --service-account alice
 ~~~
-
-</section>
-
-<section class="attributes">
 
 ## Primary options
 
@@ -164,10 +145,6 @@ Wait for the given status before exiting.
 </div>
 </div>
 
-</section>
-
-<section class="attributes">
-
 ## Global options
 
 <div class="attribute collapsed">
@@ -252,14 +229,8 @@ Display help and exit.
 </div>
 </div>
 
-</section>
-
-<section>
-
 ## Errors
 
 - **No site resource exists**
 
   <p>There is no existing Skupper site resource to update.</p>
-
-</section>

@@ -10,30 +10,15 @@ refdog_links:
 - title: Listener command
   url: /commands/listener/index.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: subcommands
-  title: Subcommands
-- id: primary-options
-  title: Primary options
-- id: global-options
-  title: Global options
 ---
 
 # Connector command
-
-<section>
 
 ~~~ shell
 skupper connector [subcommand] [options]
 ~~~
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</section>
-
-<section>
 
 ## Subcommands
 
@@ -44,5 +29,3 @@ skupper connector [subcommand] [options]
 <tr><th><a href="{{site_prefix}}/commands/connector/status.html">Connector status</a></th><td>Display the status of connectors in the current site</td></tr>
 <tr><th><a href="{{site_prefix}}/commands/connector/generate.html">Connector generate</a></th><td>Generate a Connector resource</td></tr>
 </table>
-
-</section>

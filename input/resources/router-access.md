@@ -8,20 +8,9 @@ refdog_links:
 - title: Link resource
   url: /resources/link.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: metadata-properties
-  title: Metadata properties
-- id: spec-properties
-  title: Spec properties
-- id: status-properties
-  title: Status properties
 ---
 
 # RouterAccess resource
-
-<section>
 
 Configuration for secure access to the site router.  The
 configuration includes TLS credentials and router ports.  The
@@ -31,10 +20,6 @@ RouterAccess resource is used to implement link access for sites.
 apiVersion: skupper.io/v2alpha1
 kind: RouterAccess
 ~~~
-
-</section>
-
-<section class="attributes">
 
 ## Metadata properties
 
@@ -66,10 +51,6 @@ The namespace of the resource.
 
 </div>
 </div>
-
-</section>
-
-<section class="attributes">
 
 ## Spec properties
 
@@ -205,10 +186,6 @@ their default values.
 </div>
 </div>
 
-</section>
-
-<section class="attributes">
-
 ## Status properties
 
 <div class="attribute collapsed">
@@ -283,5 +260,3 @@ port, and group.
 
 </div>
 </div>
-
-</section>

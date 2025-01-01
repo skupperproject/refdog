@@ -8,20 +8,9 @@ refdog_links:
 - title: Link resource
   url: /resources/link.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: examples
-  title: Examples
-- id: primary-options
-  title: Primary options
-- id: global-options
-  title: Global options
 ---
 
 # Link status command
-
-<section>
 
 ~~~ shell
 skupper link status [name] [options]
@@ -30,10 +19,6 @@ skupper link status [name] [options]
 Display the status of links in the current site.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</section>
-
-<section>
 
 ## Examples
 
@@ -55,10 +40,6 @@ Status:   Ready
 Message:  <none>
 Cost:     1
 ~~~
-
-</section>
-
-<section class="attributes">
 
 ## Primary options
 
@@ -109,10 +90,6 @@ Print status to the console in a structured output format.
 
 </div>
 </div>
-
-</section>
-
-<section class="attributes">
 
 ## Global options
 
@@ -197,5 +174,3 @@ Display help and exit.
 
 </div>
 </div>
-
-</section>

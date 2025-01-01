@@ -11,8 +11,6 @@ refdog_links:
 
 # Routing key concept
 
-<section>
-
 A routing key is a string identifier for matching
 [listeners](listener.html) and [connectors](connector.html).
 
@@ -36,5 +34,3 @@ has at least one listener and one connector, matched by routing key.
   <figcaption>A routing key with two listeners and two
   connectors</figcaption>
 </figure>
-
-</section>

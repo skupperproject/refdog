@@ -6,18 +6,9 @@ refdog_links:
 - title: System install command
   url: /commands/system/install.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: primary-options
-  title: Primary options
-- id: global-options
-  title: Global options
 ---
 
 # System uninstall command
-
-<section>
 
 ~~~ shell
 skupper system uninstall [options]
@@ -31,15 +22,7 @@ Podman, it also removes the containers for Skupper components.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
-</section>
-
-<section class="attributes">
-
 ## Primary options
-
-</section>
-
-<section class="attributes">
 
 ## Global options
 
@@ -94,5 +77,3 @@ Display help and exit.
 
 </div>
 </div>
-
-</section>

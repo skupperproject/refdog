@@ -6,20 +6,9 @@ refdog_links:
 - title: AttachedConnector resource
   url: /resources/attached-connector.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: metadata-properties
-  title: Metadata properties
-- id: spec-properties
-  title: Spec properties
-- id: status-properties
-  title: Status properties
 ---
 
 # AttachedConnectorBinding resource
-
-<section>
 
 A binding to an attached connector in a peer namespace.
 
@@ -27,10 +16,6 @@ A binding to an attached connector in a peer namespace.
 apiVersion: skupper.io/v2alpha1
 kind: AttachedConnectorBinding
 ~~~
-
-</section>
-
-<section class="attributes">
 
 ## Metadata properties
 
@@ -66,10 +51,6 @@ The namespace of the resource.
 
 </div>
 </div>
-
-</section>
-
-<section class="attributes">
 
 ## Spec properties
 
@@ -141,10 +122,6 @@ their default values.
 </div>
 </div>
 
-</section>
-
-<section class="attributes">
-
 ## Status properties
 
 <div class="attribute collapsed">
@@ -196,5 +173,3 @@ resource.
 
 </div>
 </div>
-
-</section>

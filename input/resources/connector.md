@@ -10,22 +10,9 @@ refdog_links:
 - title: Listener resource
   url: /resources/listener.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: examples
-  title: Examples
-- id: metadata-properties
-  title: Metadata properties
-- id: spec-properties
-  title: Spec properties
-- id: status-properties
-  title: Status properties
 ---
 
 # Connector resource
-
-<section>
 
 A binding from a local workload to listeners in remotes sites.
 
@@ -35,10 +22,6 @@ Each site can have multiple connector resources.
 apiVersion: skupper.io/v2alpha1
 kind: Connector
 ~~~
-
-</section>
-
-<section>
 
 ## Examples
 
@@ -55,10 +38,6 @@ spec:
   port: 8080
   selector: app=backend
 ~~~
-
-</section>
-
-<section class="attributes">
 
 ## Metadata properties
 
@@ -90,10 +69,6 @@ The namespace of the resource.
 
 </div>
 </div>
-
-</section>
-
-<section class="attributes">
 
 ## Spec properties
 
@@ -272,10 +247,6 @@ their default values.
 </div>
 </div>
 
-</section>
-
-<section class="attributes">
-
 ## Status properties
 
 <div class="attribute collapsed">
@@ -362,5 +333,3 @@ resource.
 
 </div>
 </div>
-
-</section>

@@ -12,20 +12,9 @@ refdog_links:
 - title: Token issue command
   url: /commands/token/issue.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: examples
-  title: Examples
-- id: primary-options
-  title: Primary options
-- id: global-options
-  title: Global options
 ---
 
 # Token redeem command
-
-<section>
 
 ~~~ shell
 skupper token redeem <file> [options]
@@ -36,10 +25,6 @@ site.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
-</section>
-
-<section>
-
 ## Examples
 
 ~~~ console
@@ -49,10 +34,6 @@ Waiting for status...
 Link "west-6bfn6" is active.
 You can now safely delete /home/fritz/token.yaml.
 ~~~
-
-</section>
-
-<section class="attributes">
 
 ## Primary options
 
@@ -100,10 +81,6 @@ The link cost to use when creating the link.
 
 </div>
 </div>
-
-</section>
-
-<section class="attributes">
 
 ## Global options
 
@@ -188,5 +165,3 @@ Display help and exit.
 
 </div>
 </div>
-
-</section>

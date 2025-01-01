@@ -15,8 +15,6 @@ refdog_links:
 
 # Connector concept
 
-<section>
-
 A connector binds a local [workload](workload.html) to
 [listeners](listener.html) in remote [sites](site.html).  Listeners
 and connectors are matched using [routing keys](routing-key.html).
@@ -57,5 +55,3 @@ then forward the client connections to the workload servers.
   <figcaption>A database service with connectors in two
   sites</figcaption>
 </figure>
-
-</section>

@@ -2,30 +2,15 @@
 body_class: object command
 refdog_links: []
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: subcommands
-  title: Subcommands
-- id: primary-options
-  title: Primary options
-- id: global-options
-  title: Global options
 ---
 
 # System command
-
-<section>
 
 ~~~ shell
 skupper system [subcommand] [options]
 ~~~
 
 <table class="fields"><tr><th>Platforms</th><td>Docker, Podman, Linux</td></table>
-
-</section>
-
-<section>
 
 ## Subcommands
 
@@ -37,5 +22,3 @@ skupper system [subcommand] [options]
 <tr><th><a href="{{site_prefix}}/commands/system/reload.html">System reload</a></th><td>Reload the site configuration</td></tr>
 <tr><th><a href="{{site_prefix}}/commands/system/status.html">System status</a></th><td>Display the status of the system</td></tr>
 </table>
-
-</section>

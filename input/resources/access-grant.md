@@ -10,20 +10,9 @@ refdog_links:
 - title: Token issue command
   url: /commands/token/issue.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: metadata-properties
-  title: Metadata properties
-- id: spec-properties
-  title: Spec properties
-- id: status-properties
-  title: Status properties
 ---
 
 # AccessGrant resource
-
-<section>
 
 Permission to redeem access tokens for links to the local
 site.  A remote site can use a token containing the grant
@@ -38,10 +27,6 @@ status are used to generate access tokens from the grant.
 apiVersion: skupper.io/v2alpha1
 kind: AccessGrant
 ~~~
-
-</section>
-
-<section class="attributes">
 
 ## Metadata properties
 
@@ -73,10 +58,6 @@ The namespace of the resource.
 
 </div>
 </div>
-
-</section>
-
-<section class="attributes">
 
 ## Spec properties
 
@@ -164,10 +145,6 @@ their default values.
 
 </div>
 </div>
-
-</section>
-
-<section class="attributes">
 
 ## Status properties
 
@@ -301,5 +278,3 @@ resource.
 
 </div>
 </div>
-
-</section>

@@ -10,20 +10,9 @@ refdog_links:
 - title: Listener generate command
   url: /commands/listener/generate.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: examples
-  title: Examples
-- id: primary-options
-  title: Primary options
-- id: global-options
-  title: Global options
 ---
 
 # Connector generate command
-
-<section>
 
 ~~~ shell
 skupper connector generate <name> <port> [options]
@@ -32,10 +21,6 @@ skupper connector generate <name> <port> [options]
 Generate a Connector resource.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</section>
-
-<section>
 
 ## Examples
 
@@ -54,10 +39,6 @@ spec:
 # Generate a Connector resource and direct the output to a file
 $ skupper connector generate backend 8080 > backend.yaml
 ~~~
-
-</section>
-
-<section class="attributes">
 
 ## Primary options
 
@@ -205,10 +186,6 @@ Select the output format.
 </div>
 </div>
 
-</section>
-
-<section class="attributes">
-
 ## Global options
 
 <div class="attribute collapsed">
@@ -247,5 +224,3 @@ Display help and exit.
 
 </div>
 </div>
-
-</section>
