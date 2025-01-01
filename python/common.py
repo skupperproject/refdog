@@ -181,6 +181,11 @@ class ModelObject:
         return _extract_first_sentence(self.description)
 
     @property
+    def input_file(self):
+        type = self.__class__.__name__.lower()
+        return f"input/{plural(type)}/{self.id}.md"
+
+    @property
     def href(self):
         type = self.__class__.__name__.lower()
         return f"{{{{site_prefix}}}}/{plural(type)}/{self.id}.html"

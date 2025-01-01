@@ -52,7 +52,7 @@ def generate_concept(concept):
         append(concept.description.strip())
         append()
 
-    append.write(f"input/concepts/{concept.id}.md")
+    append.write(concept.input_file)
 
 def generate_concept_metadata(concept):
     data = {

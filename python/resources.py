@@ -97,7 +97,7 @@ def generate_resource(resource):
             if prop.group == group:
                 generate_property(prop, append)
 
-    append.write(f"input/resources/{resource.id}.md")
+    append.write(resource.input_file)
 
 def generate_resource_metadata(resource):
     data = {

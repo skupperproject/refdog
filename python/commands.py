@@ -123,10 +123,7 @@ def generate_command(command):
             for error in command.errors:
                 generate_error(error, append)
 
-    if command.subcommands:
-        append.write(f"input/commands/{command.id}/index.md")
-    else:
-        append.write(f"input/commands/{command.id}.md")
+    append(command.input_file)
 
 def generate_command_metadata(command):
     data = {
@@ -300,7 +297,7 @@ class Command(ModelObject):
         self.model.commands_by_id[self.id] = self
 
         for command_data in self.data.get("subcommands", []):
-            command = Subcommand(model, command_data, self)
+            command = Command(model, command_data, self)
             self.subcommands.append(command)
 
     def merge_option_data(self):
@@ -353,22 +350,29 @@ class Command(ModelObject):
     def id(self):
         if self.parent:
             return self.parent.id + "/" + super().id
-        else:
-            return super().id
+
+        return super().id
 
     @property
     def title(self):
         if self.parent:
             return f"{capitalize(self.parent.name)} {self.name}"
-        else:
-            return f"{capitalize(self.name)}"
+
+        return f"{capitalize(self.name)}"
+
+    @property
+    def input_file(self):
+        if self.subcommands:
+            return f"input/commands/{self.id}/index.md"
+
+        return super().input_file
 
     @property
     def href(self):
         if self.subcommands:
             return f"{{{{site_prefix}}}}/commands/{self.id}/index.html"
-        else:
-            return f"{{{{site_prefix}}}}/commands/{self.id}.html"
+
+        return super().href
 
     @property
     def resource(self):
@@ -388,9 +392,6 @@ class Command(ModelObject):
             description = description.replace("@resource_description@", self.resource.description.strip())
 
         return description
-
-class Subcommand(Command):
-    pass
 
 class CommandGroup(ModelObjectGroup):
     def __init__(self, model, data):
