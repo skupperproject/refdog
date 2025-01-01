@@ -5,14 +5,12 @@ import re as _re
 
 StringBuilder = _plano.StringBuilder
 capitalize, join, plural = _plano.capitalize, _plano.join, _plano.plural
-debug, notice, warning, fail = _plano.debug, _plano.notice, _plano.warning, _plano.fail
+debug, notice, warning, error, fail = _plano.debug, _plano.notice, _plano.warning, _plano.error, _plano.fail
 emit_yaml, read_yaml = _plano.emit_yaml, _plano.read_yaml
 list_dir, make_dir = _plano.list_dir, _plano.make_dir
+string_matches_glob = _plano.string_matches_glob
 
 _named_links = read_yaml("config/links.yaml")
-
-def is_match(text, pattern):
-    return _fnmatch.fnmatchcase(text, pattern)
 
 def make_fragment_id(name):
     return name.lower().replace(" ", "-")

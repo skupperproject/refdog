@@ -97,7 +97,7 @@ def generate_command(command):
         append("<table class=\"objects\">")
 
         for sc in command.subcommands:
-            append(f"<tr><th><a href=\"{sc.id}.html\">{sc.title}</a></th><td>{sc.summary}</td></tr>")
+            append(f"<tr><th><a href=\"{sc.href}\">{sc.title}</a></th><td>{sc.summary}</td></tr>")
 
         append("</table>")
         append()
@@ -400,12 +400,12 @@ class Command(ModelObject):
 
         for pattern in self.data.get("include_options", []):
             for key in model_options:
-                if is_match(key, pattern):
+                if string_matches_glob(key, pattern):
                     included_keys.append(key)
 
         for pattern in self.data.get("exclude_options", []):
             for key in included_keys:
-                if is_match(key, pattern):
+                if string_matches_glob(key, pattern):
                     included_keys.remove(key)
 
         included_options = {model_options[x]["name"]: model_options[x] for x in included_keys}

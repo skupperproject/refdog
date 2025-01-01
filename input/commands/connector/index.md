@@ -38,11 +38,11 @@ skupper connector [subcommand] [options]
 ## Subcommands
 
 <table class="objects">
-<tr><th><a href="connector/create.html">Connector create</a></th><td>Create a connector</td></tr>
-<tr><th><a href="connector/update.html">Connector update</a></th><td>Update a connector</td></tr>
-<tr><th><a href="connector/delete.html">Connector delete</a></th><td>Delete a connector</td></tr>
-<tr><th><a href="connector/status.html">Connector status</a></th><td>Display the status of connectors in the current site</td></tr>
-<tr><th><a href="connector/generate.html">Connector generate</a></th><td>Generate a Connector resource</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/connector/create.html">Connector create</a></th><td>Create a connector</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/connector/update.html">Connector update</a></th><td>Update a connector</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/connector/delete.html">Connector delete</a></th><td>Delete a connector</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/connector/status.html">Connector status</a></th><td>Display the status of connectors in the current site</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/connector/generate.html">Connector generate</a></th><td>Generate a Connector resource</td></tr>
 </table>
 
 </section>

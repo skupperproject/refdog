@@ -30,12 +30,12 @@ skupper system [subcommand] [options]
 ## Subcommands
 
 <table class="objects">
-<tr><th><a href="system/install.html">System install</a></th><td>Install the Skupper components</td></tr>
-<tr><th><a href="system/uninstall.html">System uninstall</a></th><td>Remove the Skupper components</td></tr>
-<tr><th><a href="system/start.html">System start</a></th><td>Start up the Skupper components for the current site</td></tr>
-<tr><th><a href="system/stop.html">System stop</a></th><td>Shut down the Skupper components for the current site</td></tr>
-<tr><th><a href="system/reload.html">System reload</a></th><td>Reload the site configuration</td></tr>
-<tr><th><a href="system/status.html">System status</a></th><td>Display the status of the system</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/system/install.html">System install</a></th><td>Install the Skupper components</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/system/uninstall.html">System uninstall</a></th><td>Remove the Skupper components</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/system/start.html">System start</a></th><td>Start up the Skupper components for the current site</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/system/stop.html">System stop</a></th><td>Shut down the Skupper components for the current site</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/system/reload.html">System reload</a></th><td>Reload the site configuration</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/system/status.html">System status</a></th><td>Display the status of the system</td></tr>
 </table>
 
 </section>

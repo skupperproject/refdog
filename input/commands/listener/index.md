@@ -38,11 +38,11 @@ skupper listener [subcommand] [options]
 ## Subcommands
 
 <table class="objects">
-<tr><th><a href="listener/create.html">Listener create</a></th><td>Create a listener</td></tr>
-<tr><th><a href="listener/update.html">Listener update</a></th><td>Update a listener</td></tr>
-<tr><th><a href="listener/delete.html">Listener delete</a></th><td>Delete a listener</td></tr>
-<tr><th><a href="listener/status.html">Listener status</a></th><td>Display the status of listeners in the current site</td></tr>
-<tr><th><a href="listener/generate.html">Listener generate</a></th><td>Generate a Listener resource</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/listener/create.html">Listener create</a></th><td>Create a listener</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/listener/update.html">Listener update</a></th><td>Update a listener</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/listener/delete.html">Listener delete</a></th><td>Delete a listener</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/listener/status.html">Listener status</a></th><td>Display the status of listeners in the current site</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/listener/generate.html">Listener generate</a></th><td>Generate a Listener resource</td></tr>
 </table>
 
 </section>
