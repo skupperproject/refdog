@@ -27,6 +27,15 @@ input and produces platform-specific resources as output.  The output
 resources configure the local site and router for the desired
 connectivity.
 
+On Kubernetes, a Site input resource results in the following output
+resources:
+
+- A Deployment and ConfigMap for the router
+- A ServiceAccount, Role, and RoleBinding (if `serviceAccount` is
+  not set)
+- A Secret containing a signing CA for site linking (if
+  `defaultIssuer` is not set)
+
 #### Operations
 
 Creation, updates, deletion

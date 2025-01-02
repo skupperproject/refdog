@@ -9,6 +9,8 @@ refdog_links:
   url: /concepts/network.html
 - title: Platform concept
   url: /concepts/platform.html
+- title: Link resource
+  url: /resources/link.html
 refdog_object_has_attributes: true
 ---
 
@@ -17,16 +19,9 @@ refdog_object_has_attributes: true
 A site is a place on the network where application workloads are
 running.  Sites are joined by [links](link.html).
 
-There can be only one active Site resource per namespace.
-
-On Kubernetes, a Site input resource results in the following output
-resources:
-
-  - A Deployment and ConfigMap for the router
-  - A ServiceAccount, Role, and RoleBinding (if `serviceAccount` is
-    not set)
-  - A Secret containing a signing CA for site linking (if
-    `defaultIssuer` is not set)
+The Site resource is the basis for site configuration.  It is the
+parent of all Skupper resources in its namespace.  There can be only
+one active Site resource per namespace.
 
 ~~~ yaml
 apiVersion: skupper.io/v2alpha1

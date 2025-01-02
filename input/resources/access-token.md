@@ -19,8 +19,8 @@ refdog_object_has_attributes: true
 A short-lived credential used to create a link.  An access token
 contains the URL and secret code of a corresponding access grant.
 
-Access tokens are often [issued][issue] and [redeemed][redeem] using
-the Skupper CLI.
+**Note:** Access tokens are often [issued][issue] and
+[redeemed][redeem] using the Skupper CLI.
 
 [issue]: {{site_prefix}}/commands/token/issue.html
 [redeem]: {{site_prefix}}/commands/token/redeem.html

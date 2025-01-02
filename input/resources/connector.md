@@ -18,12 +18,12 @@ A connector binds a local workload to [listeners](listener.html) in
 remote [sites](site.html).  Listeners and connectors are matched by
 routing key.
 
-On Kubernetes, a connector has a selector and port for specifying
-workload pods.
+On Kubernetes, a Connector resource has a selector and port for
+specifying workload pods.
 
-On Docker, Podman, and Linux, a connector has a host and port for
-specifying a local server.  Optionally, Kubernetes can also use a
-host and port.
+On Docker, Podman, and Linux, a Connector resource has a host and
+port for specifying a local server.  Optionally, Kubernetes can also
+use a host and port.
 
 ~~~ yaml
 apiVersion: skupper.io/v2alpha1
