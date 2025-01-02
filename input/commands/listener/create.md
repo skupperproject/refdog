@@ -46,6 +46,10 @@ $ skupper listener create backend 8080 --routing-key be1 --host apiserver
 
 The name of the resource to be created.
 
+
+The name is also the default routing key and host if
+`--routing-key` and `--host` are not specified.
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
 </div>

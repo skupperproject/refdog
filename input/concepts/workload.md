@@ -12,7 +12,7 @@ refdog_links:
 # Workload concept
 
 A workload is a set of processes running on a
-[platform](platform.html).  A **process** is a pod, container, or
+[platform](platform.html).  A _process_ is a pod, container, or
 system process.  Workloads in a [site](site.html) are exposed as
 services on the [network](network.html) using
 [connectors](connector.html).

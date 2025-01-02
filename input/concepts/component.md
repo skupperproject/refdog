@@ -11,7 +11,7 @@ refdog_links:
 
 A component is a logical part of an [application](application.html).
 Each component has a set of responsibilities in achieving the goals
-of the application.  Components provide and require **interfaces**
+of the application.  Components provide and require _interfaces_
 such as REST APIs or database listeners.  A component is implemented
 by [workloads](workload.html).
 

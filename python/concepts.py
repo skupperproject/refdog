@@ -37,7 +37,7 @@ def generate(model):
         generate_concept(concept)
 
 def generate_concept(concept):
-    notice(f"Generating {concept}")
+    notice(f"Generating {concept.input_file}")
 
     append = StringBuilder()
 

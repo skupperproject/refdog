@@ -132,10 +132,11 @@ This is an alternative to setting the `--selector` or
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="option-host">--host</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
+<div class="attribute-flags">frequently used</div>
 </div>
 <div class="attribute-body">
 

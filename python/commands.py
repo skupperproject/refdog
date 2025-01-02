@@ -51,7 +51,7 @@ def generate(model):
             generate_command(subcommand)
 
 def generate_command(command):
-    notice(f"Generating {command}")
+    notice(f"Generating {command.input_file}")
 
     append = StringBuilder()
 
@@ -123,7 +123,7 @@ def generate_command(command):
             for error in command.errors:
                 generate_error(error, append)
 
-    append(command.input_file)
+    append.write(command.input_file)
 
 def generate_usage(command):
     parts = ["skupper"]

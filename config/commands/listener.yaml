@@ -22,6 +22,11 @@ subcommands:
     include_options: [listener/*, create/*, context/*, global/*]
     options:
       - name: name
+        description: |
+          @description@
+
+          The name is also the default routing key and host if
+          `--routing-key` and `--host` are not specified.
       - name: port
   - name: update
     wait: Configured

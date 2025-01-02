@@ -17,7 +17,7 @@ refdog_links:
 
 An access token is a short-lived credential used to create a
 [link](link.html).  An access token contains the URL and secret code
-of a corresponding **access grant**.
+of a corresponding _access grant_.
 
 <figure>
   <img src="images/access-token-model-1.svg"/>

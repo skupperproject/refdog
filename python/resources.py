@@ -37,7 +37,7 @@ def generate(model):
         generate_resource(resource)
 
 def generate_resource(resource):
-    notice(f"Generating {resource}")
+    notice(f"Generating {resource.input_file}")
 
     if resource.hidden:
         debug(f"{resource} is hidden")

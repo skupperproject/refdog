@@ -12,10 +12,10 @@ A platform is a system for running application
 Skupper supports Kubernetes, Docker, Podman, and Linux.  Each site
 in a network can run on any supported platform.
 
-Platforms provide **namespaces** for related workloads and
-resources.  Skupper uses namespaces to host multiple independent
-sites on one instance of a platform.  Each site on a platform can
-belong to a distinct application network.
+Platforms provide _namespaces_ for related workloads and resources.
+Skupper uses namespaces to host multiple independent sites on one
+instance of a platform.  Each site on a platform can belong to a
+distinct application network.
 
 <figure>
   <img src="images/platform-model.svg"/>
