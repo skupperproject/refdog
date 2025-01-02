@@ -1,7 +1,7 @@
 from resources import *
 
 def generate(model):
-    debug("Generating commands")
+    notice("Generating commands")
 
     make_dir("input/commands")
 
@@ -51,7 +51,7 @@ def generate(model):
             generate_command(subcommand)
 
 def generate_command(command):
-    debug(f"Generating {command}")
+    notice(f"Generating {command}")
 
     append = StringBuilder()
 
@@ -225,7 +225,7 @@ def generate_error(error, append):
 
 class CommandModel:
     def __init__(self):
-        debug(f"Loading {self}")
+        notice(f"Loading {self}")
 
         self.option_data = read_yaml("config/commands/options.yaml")
 
@@ -299,6 +299,12 @@ class Command(ModelObject):
         for command_data in self.data.get("subcommands", []):
             command = Command(model, command_data, self)
             self.subcommands.append(command)
+
+    def __repr__(self):
+        if self.parent:
+            return f"{self.__class__.__name__} '{self.parent.name} {self.name}'"
+        else:
+            return super().__repr__()
 
     def merge_option_data(self):
         model_options = self.model.option_data

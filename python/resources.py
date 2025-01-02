@@ -1,7 +1,7 @@
 from common import *
 
 def generate(model):
-    debug("Generating resources")
+    notice("Generating resources")
 
     make_dir("input/resources")
 
@@ -37,7 +37,7 @@ def generate(model):
         generate_resource(resource)
 
 def generate_resource(resource):
-    debug(f"Generating {resource}")
+    notice(f"Generating {resource}")
 
     if resource.hidden:
         debug(f"{resource} is hidden")
@@ -153,7 +153,7 @@ def generate_property(prop, append):
 
 class ResourceModel:
     def __init__(self):
-        debug(f"Loading {self}")
+        notice(f"Loading {self}")
 
         self.property_data = read_yaml("config/resources/properties.yaml")
 

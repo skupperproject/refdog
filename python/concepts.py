@@ -1,7 +1,7 @@
 from common import *
 
 def generate(model):
-    debug("Generating concepts")
+    notice("Generating concepts")
 
     make_dir("input/concepts")
 
@@ -37,7 +37,7 @@ def generate(model):
         generate_concept(concept)
 
 def generate_concept(concept):
-    debug(f"Generating {concept}")
+    notice(f"Generating {concept}")
 
     append = StringBuilder()
 
@@ -64,7 +64,7 @@ def generate_concept_metadata(concept):
 
 class ConceptModel:
     def __init__(self):
-        debug(f"Loading {self}")
+        notice(f"Loading {self}")
 
         self.concepts = list()
         self.concepts_by_name = dict()
@@ -86,7 +86,7 @@ class ConceptModel:
             self.groups.append(ConceptGroup(self, group_data))
 
     def __repr__(self):
-        return "concept model"
+        return self.__class__.__name__
 
 class Concept(ModelObject):
     pass

@@ -151,8 +151,6 @@ class ModelObject:
         self.model = model
         self.data = data
 
-        debug(f"Loading {self}")
-
     def __repr__(self):
         return f"{self.__class__.__name__} '{self.name}'"
 
