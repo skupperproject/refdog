@@ -1,5 +1,7 @@
 ---
 refdog_links:
+  - title: Resource overview
+    url: overview.html
   - title: Skupper concepts
     url: /concepts/index.html
   - title: Skupper commands
@@ -7,8 +9,6 @@ refdog_links:
 ---
 
 # Skupper resources
-
-[Overview](overview.html)
 
 #### Primary resources
 

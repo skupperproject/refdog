@@ -37,36 +37,39 @@ def generate_index():
     append()
     append("# Refdog")
     append()
+    append("<div style=\"display: flex;\">")
+    append("<div style=\"margin-right: 4em;\">")
+    append()
     append("#### Concepts")
     append()
 
-    append("- [Overview](concepts/overview.html)")
-    append("- [Index](concepts/index.html)")
+    append("[Concept overview](concepts/overview.html)<br/>")
+    append("[Concept index](concepts/index.html)")
     append()
 
-    # for concept in concept_model.concepts:
-    #     append(f"- [{concept.title}]({concept.href})")
-
+    append()
+    append("</div>")
+    append("<div style=\"margin-right: 4em;\">")
     append()
     append("#### Resources")
     append()
-    append("- [Overview](resources/overview.html)")
-    append("- [Index](resources/index.html)")
+    append("[Resource overview](resources/overview.html)<br/>")
+    append("[Resource index](resources/index.html)")
     append()
 
-    # for resource in resource_model.resources:
-    #     append(f"- [{resource.title}]({resource.href})")
-
+    append()
+    append("</div>")
+    append("<div style=\"margin-right: 4em;\">")
     append()
     append("#### Commands")
     append()
-    append("- [Overview](commands/overview.html)")
-    append("- [Index](commands/index.html)")
+    append("[Command overview](commands/overview.html)<br/>")
+    append("[Command index](commands/index.html)")
     append()
 
-    # for command in command_model.commands:
-    #     append(f"- [{command.title}]({command.href})")
-
+    append()
+    append("</div>")
+    append("</div>")
     append()
 
     append.write("input/index.md")

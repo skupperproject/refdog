@@ -4,20 +4,32 @@ body_class: object index
 
 # Refdog
 
+<div style="display: flex;">
+<div style="margin-right: 4em;">
+
 #### Concepts
 
-- [Overview](concepts/overview.html)
-- [Index](concepts/index.html)
+[Concept overview](concepts/overview.html)<br/>
+[Concept index](concepts/index.html)
 
+
+</div>
+<div style="margin-right: 4em;">
 
 #### Resources
 
-- [Overview](resources/overview.html)
-- [Index](resources/index.html)
+[Resource overview](resources/overview.html)<br/>
+[Resource index](resources/index.html)
 
+
+</div>
+<div style="margin-right: 4em;">
 
 #### Commands
 
-- [Overview](commands/overview.html)
-- [Index](commands/index.html)
+[Command overview](commands/overview.html)<br/>
+[Command index](commands/index.html)
 
+
+</div>
+</div>

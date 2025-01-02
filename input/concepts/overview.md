@@ -1,8 +1,10 @@
 ---
 refdog_links:
-  - title: Skupper resource overview
+  - title: Concept index
+    url: index.html
+  - title: Resource overview
     url: /resources/overview.html
-  - title: Skupper command overview
+  - title: Command overview
     url: /commands/overview.html
 ---
 

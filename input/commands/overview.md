@@ -1,8 +1,10 @@
 ---
 refdog_links:
-  - title: Skupper concept overview
+  - title: Command index
+    url: index.html
+  - title: Concept overview
     url: /concepts/overview.html
-  - title: Skupper resource overview
+  - title: Resource overview
     url: /resources/overview.html
 ---
 
@@ -13,9 +15,9 @@ for creating and operating Skupper networks.
 
 #### Capabilities
 
-The Skupper CLI is a light layer on top of the standard Skupper
-resources.  Its main job is to configure Skupper sites, listeners, and
-connectors.  It additionally provides commands for site linking,
+In its primary role, the Skupper CLI is a thin layer on top of the
+standard Skupper resources.  Its job is to configure sites, listeners,
+and connectors.  It additionally provides commands for site linking,
 system operation, and troubleshooting.
 
 - **Resource configuration:** Create, update, and delete Skupper

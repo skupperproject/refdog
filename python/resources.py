@@ -9,6 +9,8 @@ def generate(model):
 
     append("---")
     append("refdog_links:")
+    append("  - title: Resource overview")
+    append("    url: overview.html")
     append("  - title: Skupper concepts")
     append("    url: /concepts/index.html")
     append("  - title: Skupper commands")
@@ -16,8 +18,6 @@ def generate(model):
     append("---")
     append()
     append("# Skupper resources")
-    append()
-    append("[Overview](overview.html)")
     append()
 
     for group in model.groups:
