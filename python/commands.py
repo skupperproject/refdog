@@ -181,7 +181,7 @@ def generate_option(option, append):
         else:
             flags.append(option.group.replace("-", " "))
 
-    if option.group not in ("positional", "required", "frequently-used"):
+    if option.group not in ("positional", "required", "frequently-used", None):
         classes.append("collapsed")
 
     append(f"<div class=\"{' '.join(classes)}\">")

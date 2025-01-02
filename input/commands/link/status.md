@@ -59,7 +59,7 @@ status for the named resource only.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="option-timeout">--timeout</h3>
 <div class="attribute-type-info">&lt;duration&gt;</div>
@@ -70,12 +70,12 @@ Raise an error if the operation does not complete in the given
 period of time.
 
 <table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://pkg.go.dev/time#ParseDuration">Duration format</a></td></table>
+</td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://pkg.go.dev/time#ParseDuration">Duration format</a></td></table>
 
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="option-output">--output</h3>
 <div class="attribute-type-info">(-o) &lt;format&gt;</div>

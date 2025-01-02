@@ -111,7 +111,7 @@ establish connections to the remote service.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="option-wait">--wait</h3>
 <div class="attribute-type-info">&lt;status&gt;</div>
@@ -129,7 +129,7 @@ Wait for the given status before exiting.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="option-output">--output</h3>
 <div class="attribute-type-info">(-o) &lt;format&gt;</div>

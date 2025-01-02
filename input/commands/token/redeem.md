@@ -52,7 +52,7 @@ The name of the token file to use.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="option-timeout">--timeout</h3>
 <div class="attribute-type-info">&lt;duration&gt;</div>
@@ -68,7 +68,7 @@ period of time.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="option-link-cost">--link-cost</h3>
 <div class="attribute-type-info">&lt;integer&gt;</div>

@@ -10,6 +10,7 @@ create/timeout:
   type: string
   placeholder: duration
   default: 60s
+  platforms: [Kubernetes]
   links: [kubernetes/duration_format]
   description: |
     Raise an error if the operation does not complete in the given
@@ -19,6 +20,7 @@ create/wait:
   type: string
   placeholder: status
   default: ready
+  platforms: [Kubernetes]
   links: [skupper/resource_status]
   description: |
     Wait for the given status before exiting.
@@ -41,6 +43,7 @@ update/timeout:
   type: string
   placeholder: duration
   default: 60s
+  platforms: [Kubernetes]
   description: |
     Raise an error if the operation does not complete in the given
     period of time.
@@ -49,6 +52,7 @@ update/wait:
   type: string
   placeholder: status
   default: ready
+  platforms: [Kubernetes]
   links: [skupper/resource_status]
   description: |
     Wait for the given status before exiting.
@@ -71,6 +75,7 @@ delete/timeout:
   type: string
   placeholder: duration
   default: 60s
+  platforms: [Kubernetes]
   description: |
     Raise an error if the operation does not complete in the given
     period of time.
@@ -78,6 +83,7 @@ delete/wait:
   name: wait
   type: boolean
   default: true
+  platforms: [Kubernetes]
   description: |
     Wait for deletion to complete before exiting.
 status/name:
@@ -94,6 +100,7 @@ status/timeout:
   type: string
   placeholder: duration
   default: 60s
+  platforms: [Kubernetes]
   links: [kubernetes/duration_format]
   description: |
     Raise an error if the operation does not complete in the given

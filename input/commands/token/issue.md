@@ -72,7 +72,7 @@ The name of the token file to create.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="option-timeout">--timeout</h3>
 <div class="attribute-type-info">&lt;duration&gt;</div>
@@ -88,7 +88,7 @@ period of time.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="option-expiration-window">--expiration-window</h3>
 <div class="attribute-type-info">&lt;duration&gt;</div>
@@ -104,7 +104,7 @@ grant can be redeemed.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="option-redemptions-allowed">--redemptions-allowed</h3>
 <div class="attribute-type-info">&lt;integer&gt;</div>

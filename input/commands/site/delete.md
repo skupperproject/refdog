@@ -67,7 +67,7 @@ namespace.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="option-timeout">--timeout</h3>
 <div class="attribute-type-info">&lt;duration&gt;</div>
@@ -78,12 +78,12 @@ Raise an error if the operation does not complete in the given
 period of time.
 
 <table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+</td><tr><th>Platforms</th><td>Kubernetes</td></table>
 
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="option-wait">--wait</h3>
 <div class="attribute-type-info">boolean</div>
@@ -92,7 +92,7 @@ period of time.
 
 Wait for deletion to complete before exiting.
 
-<table class="fields"><tr><th>Default</th><td>true</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Default</th><td>true</td><tr><th>Platforms</th><td>Kubernetes</td></table>
 
 </div>
 </div>
