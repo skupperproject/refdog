@@ -52,6 +52,9 @@ skupper/router_tls:
 skupper/service_exposure:
   title: Service exposure
   url: /topics/service-exposure.html
+skupper/site_configuration:
+  title: Site configuration
+  url: /topics/site-configuration.html
 skupper/site_linking:
   title: Site linking
   url: /topics/site-linking.html

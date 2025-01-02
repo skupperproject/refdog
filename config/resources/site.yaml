@@ -1,6 +1,6 @@
 name: Site
-related_concepts: [network, platform]
 related_resources: [Link]
+links: [skupper/site_configuration]
 description: |
   A site is a place on the network where application workloads are
   running.  Sites are joined by [links](link.html).

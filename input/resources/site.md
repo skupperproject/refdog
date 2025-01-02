@@ -1,14 +1,12 @@
 ---
 body_class: object resource
 refdog_links:
+- title: Site configuration
+  url: /topics/site-configuration.html
 - title: Site concept
   url: /concepts/site.html
 - title: Site command
   url: /commands/site/index.html
-- title: Network concept
-  url: /concepts/network.html
-- title: Platform concept
-  url: /concepts/platform.html
 - title: Link resource
   url: /resources/link.html
 refdog_object_has_attributes: true
