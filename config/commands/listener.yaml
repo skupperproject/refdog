@@ -25,8 +25,8 @@ subcommands:
         description: |
           @description@
 
-          The name is also the default routing key and host if
-          `--routing-key` and `--host` are not specified.
+          The name is the default routing key and host if the
+          `--routing-key` and `--host` options are not specified.
       - name: port
   - name: update
     wait: Configured

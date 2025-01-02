@@ -62,9 +62,7 @@ connector/spec/port:
   name: port
   updatable: true
   description: |
-    The port on the target workload to forward traffic to.
-
-    <!-- The port to connect to. -->
+    The port on the target server to connect to.
 connector/spec/selector:
   name: selector
   group: frequently-used
@@ -72,14 +70,10 @@ connector/spec/selector:
   platforms: [Kubernetes]
   links: [kubernetes/label_selectors]
   description: |
-    A Kubernetes label selector for specifying target server pods.
+    A Kubernetes label selector for specifying target server pods.  It
+    uses `<label-name>=<label-value>` syntax.
 
-    <!-- The selector that identifies the pods to connect to. -->
-    <!-- This uses the compact format with '=' expressions -->
-    <!-- Either this or host must be specified -->
-
-    On Kubernetes, you usually want to use this.  As an alternative,
-    you can use `host`.
+    On Kubernetes, either `selector` or `host` is required.
 connector/spec/host:
   name: host
   group: frequently-used
@@ -87,6 +81,10 @@ connector/spec/host:
   description: |
     The hostname or IP address of the server.  This is an
     alternative to `selector` for specifying the target server.
+
+    On Kubernetes, either `selector` or `host` is required.
+
+    On Docker, Podman, or Linux, `host` is required.
 connector/spec/includeNotReadyPods:
   name: includeNotReadyPods
   group: advanced

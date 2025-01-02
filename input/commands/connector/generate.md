@@ -65,9 +65,7 @@ The name of the resource to be generated.
 </div>
 <div class="attribute-body">
 
-The port on the target workload to forward traffic to.
-
-<!-- The port to connect to. -->
+The port on the target server to connect to.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
@@ -101,17 +99,14 @@ routing keys.
 </div>
 <div class="attribute-body">
 
-A Kubernetes label selector for specifying target server pods.
+A Kubernetes label selector for specifying target server pods.  It
+uses `<label-name>=<label-value>` syntax.
 
-<!-- The selector that identifies the pods to connect to. -->
-<!-- This uses the compact format with '=' expressions -->
-<!-- Either this or host must be specified -->
-
-On Kubernetes, you usually want to use this.  As an alternative,
-you can use `host`.
+This is an alternative to setting the `--workload` or
+`--host` options.
 
 <table class="fields"><tr><th>Default</th><td><p><code>app=[value-of-name]</code></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">Kubernetes label selectors</a></td></table>
+</td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">Kubernetes label selectors</a></td></table>
 
 </div>
 </div>
@@ -124,8 +119,9 @@ you can use `host`.
 </div>
 <div class="attribute-body">
 
-A Kubernetes resource name that identifies a workload.
-It resolves to an equivalent pod selector.
+A Kubernetes resource name that identifies a workload.  It uses
+`<resource-type>/<resource-name>` syntax and resolves to an
+equivalent pod selector.
 
 This is an alternative to setting the `--selector` or
 `--host` options.
@@ -145,6 +141,9 @@ This is an alternative to setting the `--selector` or
 
 The hostname or IP address of the server.  This is an
 alternative to `selector` for specifying the target server.
+
+This is an alternative to setting the `--selector` or
+`--workload` options.
 
 <table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
 </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>

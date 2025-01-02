@@ -185,6 +185,13 @@ connector/selector:
   name: selector
   property: selector
   default: app=[value-of-name]
+  platforms: [Kubernetes] # XXX Should inherit
+  description: |
+    A Kubernetes label selector for specifying target server pods.  It
+    uses `<label-name>=<label-value>` syntax.
+
+    This is an alternative to setting the `--workload` or
+    `--host` options.
 connector/workload:
   name: workload
   group: frequently-used
@@ -193,8 +200,9 @@ connector/workload:
   platforms: [Kubernetes]
   links: [kubernetes/workloads]
   description: |
-    A Kubernetes resource name that identifies a workload.
-    It resolves to an equivalent pod selector.
+    A Kubernetes resource name that identifies a workload.  It uses
+    `<resource-type>/<resource-name>` syntax and resolves to an
+    equivalent pod selector.
 
     This is an alternative to setting the `--selector` or
     `--host` options.
@@ -203,6 +211,12 @@ connector/host:
   required: false
   property: host
   default: _Value of name_
+  description: |
+    The hostname or IP address of the server.  This is an
+    alternative to `selector` for specifying the target server.
+
+    This is an alternative to setting the `--selector` or
+    `--workload` options.
 connector/wait:
   name: wait
   type: string
