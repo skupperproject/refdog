@@ -1,7 +1,8 @@
 name: Site
 related_concepts: [network, platform]
 description: |
-  A place on the network where application workloads are running.
+  A site is a place on the network where application workloads are
+  running.  Sites are joined by [links](link.html).
 
   There can be only one active Site resource per namespace.
 

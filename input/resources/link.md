@@ -14,9 +14,13 @@ refdog_object_has_attributes: true
 
 # Link resource
 
-A channel for communication between sites.  Links carry application
-connections and requests.  A set of linked sites constitutes a
-network.
+A link is a channel for communication between [sites](site.html).
+Links carry application connections and requests.  A set of linked
+sites constitutes a network.
+
+To create a link to a remote site, the remote site must enable
+_link access_.  Link access provides an external access point for
+accepting links.
 
 **Note:** Links are not usually created directly.  Instead, you can
 use an [access token][token] to obtain a link.

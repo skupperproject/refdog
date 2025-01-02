@@ -14,10 +14,13 @@ refdog_object_has_attributes: true
 
 # Listener resource
 
-A binding from a local connection endpoint to connectors in remote
-sites.
+A listener binds a local connection endpoint to
+[connectors](connector.html) in remote [sites](site.html).
+Listeners and connectors are matched by routing key.
 
-Each site can have multiple listener definitions.
+A listener has a host and port for accepting connections from local
+clients.  To expose a multi-port service, create multiple listeners
+with the same host value.
 
 ~~~ yaml
 apiVersion: skupper.io/v2alpha1
@@ -37,8 +40,8 @@ metadata:
   namespace: hello-world-west
 spec:
   routingKey: backend
-  port: 8080
   host: backend
+  port: 8080
 ~~~
 
 ## Metadata properties

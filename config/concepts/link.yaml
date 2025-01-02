@@ -6,8 +6,8 @@ description: |
   Links carry application connections and requests.  A set of linked
   sites constitutes a [network](network.html).
 
-  To create a link to a remote site, the remote site must provide a
-  **link access**.  A link access is an external access point for
+  To create a link to a remote site, the remote site must enable
+  _link access_.  Link access provides an external access point for
   accepting links.
 
   <figure>

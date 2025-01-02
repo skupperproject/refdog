@@ -14,9 +14,16 @@ refdog_object_has_attributes: true
 
 # Connector resource
 
-A binding from a local workload to listeners in remotes sites.
+A connector binds a local workload to [listeners](listener.html) in
+remote [sites](site.html).  Listeners and connectors are matched by
+routing key.
 
-Each site can have multiple connector resources.
+On Kubernetes, a connector has a selector and port for specifying
+workload pods.
+
+On Docker, Podman, and Linux, a connector has a host and port for
+specifying a local server.  Optionally, Kubernetes can also use a
+host and port.
 
 ~~~ yaml
 apiVersion: skupper.io/v2alpha1
@@ -35,8 +42,8 @@ metadata:
   namespace: hello-world-east
 spec:
   routingKey: backend
-  port: 8080
   selector: app=backend
+  port: 8080
 ~~~
 
 ## Metadata properties
@@ -129,10 +136,11 @@ you can use `host`.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="spec-host">host</h3>
 <div class="attribute-type-info">string</div>
+<div class="attribute-flags">frequently used</div>
 </div>
 <div class="attribute-body">
 

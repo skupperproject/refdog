@@ -14,7 +14,8 @@ refdog_object_has_attributes: true
 
 # Site resource
 
-A place on the network where application workloads are running.
+A site is a place on the network where application workloads are
+running.  Sites are joined by [links](link.html).
 
 There can be only one active Site resource per namespace.
 

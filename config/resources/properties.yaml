@@ -82,6 +82,7 @@ connector/spec/selector:
     you can use `host`.
 connector/spec/host:
   name: host
+  group: frequently-used
   updatable: true
   description: |
     The hostname or IP address of the server.  This is an
