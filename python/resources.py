@@ -46,7 +46,7 @@ def generate_resource(resource):
     append = StringBuilder()
 
     append("---")
-    append(generate_resource_metadata(resource))
+    append(generate_object_metadata(resource))
     append("---")
     append()
     append(f"# {resource.title_with_type}")
@@ -98,15 +98,6 @@ def generate_resource(resource):
                 generate_property(prop, append)
 
     append.write(resource.input_file)
-
-def generate_resource_metadata(resource):
-    data = {
-        "body_class": "object resource",
-        "refdog_object_has_attributes": True,
-        "refdog_links": get_object_links(resource),
-    }
-
-    return emit_yaml(data).strip()
 
 def generate_property(prop, append):
     debug(f"Generating {prop}")

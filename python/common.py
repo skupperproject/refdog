@@ -15,15 +15,15 @@ _named_links = read_yaml("config/links.yaml")
 def make_fragment_id(name):
     return name.lower().replace(" ", "-")
 
-def get_object_links(obj):
+def generate_object_metadata(obj):
     from concepts import Concept
     from resources import Resource
     from commands import Command
 
-    data = list()
+    link_data = list()
 
     def add_link(other):
-        data.append({
+        link_data.append({
             "title": other.title_with_type,
             "url": other.href.removeprefix("{{site_prefix}}"),
         })
@@ -32,7 +32,7 @@ def get_object_links(obj):
         if name not in _named_links:
             fail(f"{obj}: Link '{name}' not found")
 
-        data.append({
+        link_data.append({
             "title": _named_links[name]["title"],
             "url": _named_links[name]["url"],
         })
@@ -49,7 +49,16 @@ def get_object_links(obj):
     for command in obj.related_commands:
         add_link(command)
 
-    return data
+    data = {
+        "body_class": "object {}".format(obj.__class__.__name__.lower()),
+        "refdog_object_has_attributes": True,
+        "refdog_links": link_data,
+    }
+
+    if isinstance(obj, Concept):
+        del data["refdog_object_has_attributes"]
+
+    return emit_yaml(data).strip()
 
 def generate_attribute_fields(attr):
     rows = list()

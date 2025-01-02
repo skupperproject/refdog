@@ -42,7 +42,7 @@ def generate_concept(concept):
     append = StringBuilder()
 
     append("---")
-    append(generate_concept_metadata(concept))
+    append(generate_object_metadata(concept))
     append("---")
     append()
     append(f"# {concept.title_with_type}")
@@ -53,14 +53,6 @@ def generate_concept(concept):
         append()
 
     append.write(concept.input_file)
-
-def generate_concept_metadata(concept):
-    data = {
-        "body_class": "object concept",
-        "refdog_links": get_object_links(concept),
-    }
-
-    return emit_yaml(data).strip()
 
 class ConceptModel:
     def __init__(self):

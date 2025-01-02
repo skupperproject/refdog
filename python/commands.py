@@ -56,7 +56,7 @@ def generate_command(command):
     append = StringBuilder()
 
     append("---")
-    append(generate_command_metadata(command))
+    append(generate_object_metadata(command))
     append("---")
     append()
     append(f"# {command.title_with_type}")
@@ -124,15 +124,6 @@ def generate_command(command):
                 generate_error(error, append)
 
     append(command.input_file)
-
-def generate_command_metadata(command):
-    data = {
-        "body_class": "object command",
-        "refdog_object_has_attributes": True,
-        "refdog_links": get_object_links(command),
-    }
-
-    return emit_yaml(data).strip()
 
 def generate_usage(command):
     parts = ["skupper"]
