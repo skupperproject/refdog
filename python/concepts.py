@@ -56,7 +56,7 @@ def generate_concept(concept):
 
 class ConceptModel:
     def __init__(self):
-        notice(f"Loading {self}")
+        debug(f"Loading {self}")
 
         self.concepts = list()
         self.concepts_by_name = dict()

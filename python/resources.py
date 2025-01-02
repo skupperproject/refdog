@@ -144,7 +144,7 @@ def generate_property(prop, append):
 
 class ResourceModel:
     def __init__(self):
-        notice(f"Loading {self}")
+        debug(f"Loading {self}")
 
         self.property_data = read_yaml("config/resources/properties.yaml")
 

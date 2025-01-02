@@ -216,7 +216,7 @@ def generate_error(error, append):
 
 class CommandModel:
     def __init__(self):
-        notice(f"Loading {self}")
+        debug(f"Loading {self}")
 
         self.option_data = read_yaml("config/commands/options.yaml")
 
