@@ -78,7 +78,7 @@ spec:
       description: |
         @description@
 
-        - `observer` - Set the protocol observer used to generate
+        - `observer`: Set the protocol observer used to generate
           traffic metrics.<br/>
           Default: `auto`.  Choices: `auto`, `none`, `http1`, `http2`.
 status:
@@ -96,9 +96,9 @@ status:
       description: |
         @description@
 
-        - `Configured` - The listener configuration has been applied
+        - `Configured`: The listener configuration has been applied
           to the router.
-        - `Matched` - There is at least one connector corresponding to
+        - `Matched`: There is at least one connector corresponding to
           this listener.
-        - `Ready` - The listener is ready to use.  All other conditions
+        - `Ready`: The listener is ready to use.  All other conditions
           are true.

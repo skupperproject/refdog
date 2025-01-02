@@ -128,10 +128,10 @@ their default values.
 
 The current state of the resource.
 
-- `Pending` - The resource is being processed.
-- `Error` - There was an error processing the resource.  See
+- `Pending`: The resource is being processed.
+- `Error`: There was an error processing the resource.  See
   `message` for more information.
-- `Ready` - The resource is ready to use.
+- `Ready`: The resource is ready to use.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a></td></table>
 

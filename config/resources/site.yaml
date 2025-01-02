@@ -112,12 +112,12 @@ spec:
       description: |
         @description@
 
-        - `routerDataConnections` - Set the number of data
+        - `routerDataConnections`: Set the number of data
           connections the router uses when linking to other
           routers.<br/>
           Default: *Computed based on the number of router worker
           threads.  Minimum 2.*
-        - `routerLogging` - Set the router logging level.<br/>
+        - `routerLogging`: Set the router logging level.<br/>
           Default: `info`.  Choices: `info`, `warning`, `error`.
 status:
   include_properties: [status/*]
@@ -129,12 +129,12 @@ status:
       description: |
         @description@
 
-        - `Configured` - The output resources for this resource have
+        - `Configured`: The output resources for this resource have
           been created.
-        - `Running` - There is at least one router pod running.
-        - `Resolved` - The hostname or IP address for link access is
+        - `Running`: There is at least one router pod running.
+        - `Resolved`: The hostname or IP address for link access is
           available.
-        - `Ready` - The site is ready for use.  All other conditions
+        - `Ready`: The site is ready for use.  All other conditions
           are true.
     - name: defaultIssuer
       group: advanced

@@ -59,8 +59,8 @@ status:
       description: |
         @description@
 
-        - `Configured` - The link configuration has been applied to
+        - `Configured`: The link configuration has been applied to
           the router.
-        - `Operational` - The link to the remote site is active.
-        - `Ready` - The link is ready to use.  All other conditions
+        - `Operational`: The link to the remote site is active.
+        - `Ready`: The link is ready to use.  All other conditions
           are true.

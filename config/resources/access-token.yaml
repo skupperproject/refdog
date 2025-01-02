@@ -46,4 +46,4 @@ status:
       description: |
         @description@
 
-        - `Redeemed` - The token has been exchanged for a link.
+        - `Redeemed`: The token has been exchanged for a link.

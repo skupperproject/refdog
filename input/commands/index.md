@@ -2,9 +2,9 @@
 refdog_links:
   - title: Command overview
     url: overview.html
-  - title: Skupper concepts
+  - title: Concept index
     url: /concepts/index.html
-  - title: Skupper resources
+  - title: Resource index
     url: /resources/index.html
 ---
 

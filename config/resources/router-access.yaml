@@ -62,10 +62,10 @@ status:
       description: |
         @description@
 
-        - `Configured` - The router access configuration has been applied to
+        - `Configured`: The router access configuration has been applied to
           the router.
-        - `Resolved` - The connection endpoints are available.
-        - `Ready` - The router access is ready to use.  All other
+        - `Resolved`: The connection endpoints are available.
+        - `Ready`: The router access is ready to use.  All other
           conditions are true.
     - name: endpoints
       group: advanced

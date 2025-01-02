@@ -72,8 +72,8 @@ status:
       description: |
         @description@
 
-        - `Processed` - The controller has accepted the grant.
-        - `Resolved` - The grant service is available to process tokens
+        - `Processed`: The controller has accepted the grant.
+        - `Resolved`: The grant service is available to process tokens
           for this grant.
-        - `Ready` - The grant is ready to use.  All other
+        - `Ready`: The grant is ready to use.  All other
           conditions are true.
