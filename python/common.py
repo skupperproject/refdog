@@ -1,4 +1,3 @@
-import fnmatch as _fnmatch
 import mistune as _mistune
 import plano as _plano
 import re as _re
@@ -303,7 +302,7 @@ class ModelObjectAttribute:
         for concept in self.related_concepts:
             links.append((concept.title_with_type, concept.href))
 
-        # XXX Other related things here?
+        # Other related things here?
 
         for name in self.links:
             title = _named_links[name]["title"]
