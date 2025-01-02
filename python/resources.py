@@ -56,12 +56,6 @@ def generate_resource(resource):
         append(resource.description.strip())
         append()
 
-    append("~~~ yaml")
-    append("apiVersion: skupper.io/v2alpha1")
-    append(f"kind: {resource.name}")
-    append("~~~")
-    append()
-
     if resource.examples:
         append("## Examples")
         append()
@@ -116,7 +110,7 @@ def generate_property(prop, append):
     if prop.group:
         flags.append(prop.group.replace("-", " "))
 
-    if prop.group not in ("required", "frequently-used"):
+    if prop.group not in ("required", "frequently-used", None):
         classes.append("collapsed")
 
     append(f"<div class=\"{' '.join(classes)}\">")

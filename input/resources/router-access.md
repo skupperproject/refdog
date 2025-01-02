@@ -16,11 +16,6 @@ Configuration for secure access to the site router.  The
 configuration includes TLS credentials and router ports.  The
 RouterAccess resource is used to implement link access for sites.
 
-~~~ yaml
-apiVersion: skupper.io/v2alpha1
-kind: RouterAccess
-~~~
-
 ## Metadata properties
 
 <div class="attribute">
@@ -38,7 +33,7 @@ The name of the resource.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="metadata-namespace">namespace</h3>
 <div class="attribute-type-info">string</div>
@@ -95,7 +90,7 @@ directory under `input/certs/` in the current namespace.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="spec-generate-tls-credentials">generateTlsCredentials</h3>
 <div class="attribute-type-info">boolean</div>
@@ -107,7 +102,7 @@ directory under `input/certs/` in the current namespace.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="spec-issuer">issuer</h3>
 <div class="attribute-type-info">string</div>
@@ -119,7 +114,7 @@ directory under `input/certs/` in the current namespace.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="spec-access-type">accessType</h3>
 <div class="attribute-type-info">string</div>
@@ -135,7 +130,7 @@ Kubernetes flavors, the default is <code>loadbalancer</code>.</em></p>
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="spec-bind-host">bindHost</h3>
 <div class="attribute-type-info">string</div>
@@ -151,7 +146,7 @@ to.  By default, Skupper binds all the interfaces on the host.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="spec-subject-alternative-names">subjectAlternativeNames</h3>
 <div class="attribute-type-info">array</div>
@@ -188,7 +183,7 @@ their default values.
 
 ## Status properties
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-status">status</h3>
 <div class="attribute-type-info">string</div>
@@ -207,7 +202,7 @@ The current state of the resource.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-message">message</h3>
 <div class="attribute-type-info">string</div>

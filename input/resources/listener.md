@@ -22,11 +22,6 @@ A Listener resource specifies a host and port for accepting
 connections from local clients.  To expose a multi-port service,
 create multiple listeners with the same host value.
 
-~~~ yaml
-apiVersion: skupper.io/v2alpha1
-kind: Listener
-~~~
-
 ## Examples
 
 A listener in site West for the Hello World backend service
@@ -61,7 +56,7 @@ The name of the resource.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="metadata-namespace">namespace</h3>
 <div class="attribute-type-info">string</div>
@@ -193,7 +188,7 @@ their default values.
 
 ## Status properties
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-status">status</h3>
 <div class="attribute-type-info">string</div>
@@ -212,7 +207,7 @@ The current state of the resource.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-message">message</h3>
 <div class="attribute-type-info">string</div>
@@ -227,7 +222,7 @@ here.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-has-matching-connector">hasMatchingConnector</h3>
 <div class="attribute-type-info">boolean</div>

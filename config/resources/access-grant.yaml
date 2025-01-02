@@ -28,6 +28,7 @@ spec:
         grant can be redeemed.
       default: 15m
     - name: code
+      group: advanced
       description: |
         The secret code to use to authenticate access tokens submitted
         for redemption.
@@ -35,6 +36,7 @@ spec:
         If not set, a value is generated and placed in the `code`
         status property.
     - name: issuer
+      group: advanced
       platforms: [Kubernetes]
       links: [skupper/router_tls, kubernetes/tls_secrets]
       description: |

@@ -12,11 +12,6 @@ refdog_object_has_attributes: true
 
 A binding to an attached connector in a peer namespace.
 
-~~~ yaml
-apiVersion: skupper.io/v2alpha1
-kind: AttachedConnectorBinding
-~~~
-
 ## Metadata properties
 
 <div class="attribute">
@@ -38,7 +33,7 @@ AttachedConnector resource in the connector namespace.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="metadata-namespace">namespace</h3>
 <div class="attribute-type-info">string</div>
@@ -124,7 +119,7 @@ their default values.
 
 ## Status properties
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-status">status</h3>
 <div class="attribute-type-info">string</div>
@@ -143,7 +138,7 @@ The current state of the resource.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-has-matching-listener">hasMatchingListener</h3>
 <div class="attribute-type-info">boolean</div>

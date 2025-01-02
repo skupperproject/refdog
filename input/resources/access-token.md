@@ -25,11 +25,6 @@ contains the URL and secret code of a corresponding access grant.
 [issue]: {{site_prefix}}/commands/token/issue.html
 [redeem]: {{site_prefix}}/commands/token/redeem.html
 
-~~~ yaml
-apiVersion: skupper.io/v2alpha1
-kind: AccessToken
-~~~
-
 ## Metadata properties
 
 <div class="attribute">
@@ -47,7 +42,7 @@ The name of the resource.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="metadata-namespace">namespace</h3>
 <div class="attribute-type-info">string</div>
@@ -94,7 +89,7 @@ submitted for redemption.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="spec-ca">ca</h3>
 <div class="attribute-type-info">string</div>
@@ -109,7 +104,7 @@ remote site.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="spec-link-cost">linkCost</h3>
 <div class="attribute-type-info">integer</div>
@@ -144,7 +139,7 @@ their default values.
 
 ## Status properties
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-redeemed">redeemed</h3>
 <div class="attribute-type-info">boolean</div>
@@ -159,7 +154,7 @@ redeemed, it cannot be used again.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-status">status</h3>
 <div class="attribute-type-info">string</div>
@@ -178,7 +173,7 @@ The current state of the resource.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-message">message</h3>
 <div class="attribute-type-info">string</div>

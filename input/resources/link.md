@@ -29,11 +29,6 @@ use an [access token][token] to obtain a link.
 
 [token]: access-token.html
 
-~~~ yaml
-apiVersion: skupper.io/v2alpha1
-kind: Link
-~~~
-
 ## Metadata properties
 
 <div class="attribute">
@@ -51,7 +46,7 @@ The name of the resource.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="metadata-namespace">namespace</h3>
 <div class="attribute-type-info">string</div>
@@ -75,12 +70,15 @@ The namespace of the resource.
 </div>
 <div class="attribute-body">
 
+An array of connection endpoints. Each item has a name, host,
+port, and group.
+
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="spec-cost">cost</h3>
 <div class="attribute-type-info">integer</div>
@@ -95,7 +93,7 @@ the link.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="spec-tls-credentials">tlsCredentials</h3>
 <div class="attribute-type-info">string</div>
@@ -108,9 +106,10 @@ client certificate and key and the trusted server certificate
 (usually a CA).
 
 On Kubernetes, the value is the name of a Secret in the
-current namespace.  On Docker, Podman, and Linux, the value is
-the name of a directory under `input/certs/` in the current
-namespace.
+current namespace.
+
+On Docker, Podman, and Linux, the value is the name of a
+directory under `input/certs/` in the current namespace.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/router-tls.html">Router TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a>, <a href="{{site_prefix}}/topics/system-tls-credentials.html">System TLS credentials</a></td></table>
 
@@ -138,7 +137,7 @@ their default values.
 
 ## Status properties
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-status">status</h3>
 <div class="attribute-type-info">string</div>
@@ -157,7 +156,7 @@ The current state of the resource.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-message">message</h3>
 <div class="attribute-type-info">string</div>
@@ -172,7 +171,7 @@ here.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-remote-site-id">remoteSiteId</h3>
 <div class="attribute-type-info">string</div>
@@ -186,7 +185,7 @@ The unique ID of the site linked to.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-remote-site-name">remoteSiteName</h3>
 <div class="attribute-type-info">string</div>

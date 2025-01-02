@@ -23,11 +23,6 @@ expiration window and for a limited number of redemptions.
 The `code`, `url`, and `ca` properties of the resource
 status are used to generate access tokens from the grant.
 
-~~~ yaml
-apiVersion: skupper.io/v2alpha1
-kind: AccessGrant
-~~~
-
 ## Metadata properties
 
 <div class="attribute">
@@ -45,7 +40,7 @@ The name of the resource.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="metadata-namespace">namespace</h3>
 <div class="attribute-type-info">string</div>
@@ -61,7 +56,7 @@ The namespace of the resource.
 
 ## Spec properties
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="spec-redemptions-allowed">redemptionsAllowed</h3>
 <div class="attribute-type-info">integer</div>
@@ -76,7 +71,7 @@ be redeemed.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="spec-expiration-window">expirationWindow</h3>
 <div class="attribute-type-info">string (duration)</div>
@@ -96,6 +91,7 @@ grant can be redeemed.
 <div class="attribute-heading">
 <h3 id="spec-code">code</h3>
 <div class="attribute-type-info">string</div>
+<div class="attribute-flags">advanced</div>
 </div>
 <div class="attribute-body">
 
@@ -114,6 +110,7 @@ status property.
 <div class="attribute-heading">
 <h3 id="spec-issuer">issuer</h3>
 <div class="attribute-type-info">string</div>
+<div class="attribute-flags">advanced</div>
 </div>
 <div class="attribute-body">
 
@@ -148,7 +145,7 @@ their default values.
 
 ## Status properties
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-status">status</h3>
 <div class="attribute-type-info">string</div>
@@ -167,7 +164,7 @@ The current state of the resource.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-message">message</h3>
 <div class="attribute-type-info">string</div>
@@ -182,7 +179,7 @@ here.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-redemptions">redemptions</h3>
 <div class="attribute-type-info">integer</div>
@@ -197,7 +194,7 @@ redeemed.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-expiration-time">expirationTime</h3>
 <div class="attribute-type-info">string (date-time)</div>
@@ -211,7 +208,7 @@ The point in time when the grant expires.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-url">url</h3>
 <div class="attribute-type-info">string</div>
@@ -225,7 +222,7 @@ The URL of the token-redemption service for this grant.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-ca">ca</h3>
 <div class="attribute-type-info">string</div>
@@ -240,7 +237,7 @@ service for this grant.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-code">code</h3>
 <div class="attribute-type-info">string</div>

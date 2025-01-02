@@ -23,11 +23,6 @@ The Site resource is the basis for site configuration.  It is the
 parent of all Skupper resources in its namespace.  There can be only
 one active Site resource per namespace.
 
-~~~ yaml
-apiVersion: skupper.io/v2alpha1
-kind: Site
-~~~
-
 ## Examples
 
 A minimal site:
@@ -69,7 +64,7 @@ The name of the resource.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="metadata-namespace">namespace</h3>
 <div class="attribute-type-info">string</div>
@@ -109,7 +104,7 @@ the sites must have link access enabled.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="spec-ha">ha</h3>
 <div class="attribute-type-info">boolean</div>
@@ -224,7 +219,7 @@ their default values.
 
 ## Status properties
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-status">status</h3>
 <div class="attribute-type-info">string</div>
@@ -243,7 +238,7 @@ The current state of the resource.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-message">message</h3>
 <div class="attribute-type-info">string</div>

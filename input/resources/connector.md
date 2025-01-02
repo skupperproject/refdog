@@ -25,11 +25,6 @@ On Docker, Podman, and Linux, a Connector resource has a host and
 port for specifying a local server.  Optionally, Kubernetes can also
 use a host and port.
 
-~~~ yaml
-apiVersion: skupper.io/v2alpha1
-kind: Connector
-~~~
-
 ## Examples
 
 A connector in site East for the Hello World backend service:
@@ -63,7 +58,7 @@ The name of the resource.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="metadata-namespace">namespace</h3>
 <div class="attribute-type-info">string</div>
@@ -255,7 +250,7 @@ their default values.
 
 ## Status properties
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-status">status</h3>
 <div class="attribute-type-info">string</div>
@@ -274,7 +269,7 @@ The current state of the resource.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-message">message</h3>
 <div class="attribute-type-info">string</div>
@@ -289,7 +284,7 @@ here.
 </div>
 </div>
 
-<div class="attribute collapsed">
+<div class="attribute">
 <div class="attribute-heading">
 <h3 id="status-has-matching-listener">hasMatchingListener</h3>
 <div class="attribute-type-info">boolean</div>
