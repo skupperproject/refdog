@@ -6,9 +6,9 @@ description: |
   [connectors](connector.html) in remote [sites](site.html).
   Listeners and connectors are matched by routing key.
 
-  A Listener resource has a host and port for accepting connections
-  from local clients.  To expose a multi-port service, create multiple
-  listeners with the same host value.
+  A Listener resource specifies a host and port for accepting
+  connections from local clients.  To expose a multi-port service,
+  create multiple listeners with the same host value.
 examples:
   - description: |
       A listener in site West for the Hello World backend service
