@@ -8,12 +8,17 @@ refdog_links:
     url: /commands/overview.html
 ---
 
+<!-- - Some resource fields are "updatable" - you can change their values -->
+<!--   without . -->
+
 # Skupper resource overview
 
-Skupper uses Kubernetes-style custom resources to configure and deploy
-Skupper networks, for both Kubernetes and non-Kubernetes platforms.
-The Skupper resources provide a declarative interface that simplifies
-automation and supports integration with other tools.
+Skupper provides custom resource definitions (CRDs) that define the
+API for configuring and deploying Skupper networks.  Skupper uses
+custom resources not only for Kubernetes but also for Docker, Podman,
+and Linux.  The Skupper resources are designed to provide a uniform
+declarative interface that simplifies automation and supports
+integration with other tools.
 
 #### Capabilities
 
@@ -24,31 +29,39 @@ automation and supports integration with other tools.
 
 #### Controller
 
-The Skupper controller consumes the standard Skupper resources as
-input and produces platform-specific resources as output.  The output
-resources configure the local site and router for the desired
-connectivity.
+The Skupper controller is responsible for taking the desired state
+expressed in your Skupper custom resources and producing a
+corresponding runtime state.  It does this by generating
+platform-specific output resources that configure the local site and
+router.
 
-On Kubernetes, a Site input resource results in the following output
-resources:
+For example, a Site input resource on Kubernetes results in the
+following output resources:
 
 - A Deployment and ConfigMap for the router
-- A ServiceAccount, Role, and RoleBinding (if `serviceAccount` is
-  not set)
-- A Secret containing a signing CA for site linking (if
-  `defaultIssuer` is not set)
+- A ServiceAccount, Role, and RoleBinding for running site components
+- A Secret containing a signing CA for site linking
 
 #### Operations
 
-Creation, updates, deletion
+On Kubernetes:
 
-- Some resource fields are "updatable" - you can change their values
-  without recreating the resource.
-- Where do resources go in Kubernetes?
-- Where do they go in non-Kube?  FS location.  system apply.
-- You can use the CLI do these things.
-- On Kubernetes, use kubectl apply and delete.  On Docker, Podman, and
-  Linux, use skupper system apply and delete.
+- *Create and update:* `kubectl apply -f <yaml-file>`
+- *Display:* `kubectl get <resource-type>/<resource-name>`
+- *Delete:* `kubectl delete <resource-type>/<resource-name>`
+
+On Docker, Podman, and Linux:
+
+- *Create and update:* `skupper system apply -f <yaml-file>`
+- *Display:* `skupper system get <resource-type>/<resource-name>`
+- *Delete:* `skupper system delete <resource-type>/<resource-name>`
+
+On Docker, Podman, and Linux, resources are stored on the local
+filesystem under
+`~/.local/share/skupper/namespaces/default/resources`.
+
+The Skupper CLI provides additional commands to help create and
+configure Skupper resources.
 
 #### Common properties
 
