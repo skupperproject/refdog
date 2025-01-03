@@ -321,26 +321,26 @@ class Command(ModelObject):
         return merged_options
 
     def get_resource(self):
-        resource_name = self.data.get("resource")
+        resource_id = self.data.get("resource")
 
-        if resource_name is None and self.parent:
-            resource_name = self.parent.data.get("resource")
+        if resource_id is None and self.parent:
+            resource_id = self.parent.data.get("resource")
 
-        if resource_name is None:
+        if resource_id is None:
             return
 
         try:
-            return self.model.resource_model.resources_by_name[resource_name]
+            return self.model.resource_model.objects_by_id[resource_id]
         except KeyError:
-            fail(f"{self}: Resource '{resource_name}' not found")
+            fail(f"{self}: Resource '{resource_id}' not found")
 
-    def get_data_value(self, name, default):
+    def get_value(self, name, default):
         resource = self.get_resource()
 
         if resource:
             default = getattr(resource, name, default)
 
-        return super().get_data_value(name, default)
+        return super().get_value(name, default)
 
     @property
     def ancestors(self):
@@ -412,13 +412,13 @@ class Option(ModelObjectAttribute):
         return resource.spec_properties_by_name[property_name]
 
     # Get the default value from property if set
-    def get_data_value(self, name, default):
+    def get_value(self, name, default):
         property = self.get_property()
 
         if property:
             default = getattr(property, name, default)
 
-        return super().get_data_value(name, default)
+        return super().get_value(name, default)
 
     @property
     def id(self):
@@ -471,5 +471,5 @@ class Error:
     def __repr__(self):
         return f"{self.__class__.__name__} '{self.message}'"
 
-    def get_data_value(self, name, default):
+    def get_value(self, name, default):
         return self.data.get(name, default)

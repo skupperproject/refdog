@@ -1,5 +1,5 @@
 name: site
-resource: Site
+resource: site
 description: |
   Display help for site commands and exit.
 include_options: [global/*]

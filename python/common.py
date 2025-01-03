@@ -122,7 +122,7 @@ def generate_attribute_links(attr):
 
 def object_property(name, default=None, required=False):
     def get(obj):
-        value = obj.get_data_value(name, default)
+        value = obj.get_value(name, default)
 
         if required and value is None:
             raise Exception(f"Property '{name}' on {obj.__class__.__name__} is required")
@@ -183,7 +183,7 @@ class ModelObjectGroup:
     def __repr__(self):
         return f"{self.__class__.__name__} '{self.title}'"
 
-    def get_data_value(self, name, default):
+    def get_value(self, name, default):
         return self.data.get(name, default)
 
     @property
@@ -204,7 +204,7 @@ class ModelObject:
     def __repr__(self):
         return f"{self.__class__.__name__} '{self.name}'"
 
-    def get_data_value(self, name, default):
+    def get_value(self, name, default):
         return self.data.get(name, default)
 
     @property
@@ -317,7 +317,7 @@ class ModelObjectAttribute:
     def __repr__(self):
         return f"{self.__class__.__name__} '{self.name}'"
 
-    def get_data_value(self, name, default):
+    def get_value(self, name, default):
         return self.data.get(name, default)
 
     @property

@@ -1,5 +1,5 @@
 name: connector
-resource: Connector
+resource: connector
 related_commands: [listener]
 links: [skupper/service-exposure]
 description: |

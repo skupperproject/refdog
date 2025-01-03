@@ -1,5 +1,5 @@
 name: link
-resource: Link
+resource: link
 related_commands: [token]
 links: [skupper/site-linking]
 description: |
