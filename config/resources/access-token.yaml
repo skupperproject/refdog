@@ -30,7 +30,6 @@ spec:
         The secret code used to authenticate the token when
         submitted for redemption.
     - name: linkCost
-      type: integer # XXX This should come from the CRD
       default: 1
       links: [skupper/load-balancing]
       description: |
