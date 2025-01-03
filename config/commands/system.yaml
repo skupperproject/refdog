@@ -1,10 +1,9 @@
 name: system
 platforms: [Docker, Podman, Linux]
+related_concepts: [platform]
 subcommands:
   - name: install
-    platforms: [Docker, Podman, Linux]
     related_commands: [system/uninstall]
-    related_concepts: [platform]
     description: |
       Install the Skupper components.
 
@@ -14,7 +13,6 @@ subcommands:
     include_options: [context/namespace, global/*]
   - name: uninstall
     related_commands: [system/install]
-    related_concepts: [platform]
     description: |
       Remove the Skupper components.
 
@@ -23,9 +21,7 @@ subcommands:
       Podman, it also removes the containers for Skupper components.
     include_options: [context/namespace, global/*]
   - name: start
-    platforms: [Docker, Podman, Linux]
     related_commands: [system/stop]
-    related_concepts: [platform]
     description: |
       Start up the Skupper components for the current site.
 
@@ -34,32 +30,24 @@ subcommands:
       <!-- Maybe: If not installed yet, run install -->
     include_options: [context/namespace, global/*]
   - name: stop
-    platforms: [Docker, Podman, Linux]
     related_commands: [system/start]
-    related_concepts: [platform]
     description: |
       Shut down the Skupper components for the current site.
 
       This stops the systemd service for the current namespace.
     include_options: [context/namespace, global/*]
   - name: reload
-    platforms: [Docker, Podman, Linux]
-    related_concepts: [platform]
     description: |
       Reload the site configuration.
 
       This restarts the systemd service for the current namespace.
   # - name: apply
-  #   platforms: [Docker, Podman, Linux]
-  #   related_concepts: [platform]
   #   description: |
   #     Apply resource configuration from files or standard input.
 
   #     <!-- File locations and names -->
   #   include_options: [context/namespace, global/*]
   - name: status
-    platforms: [Docker, Podman, Linux]
-    related_concepts: [platform]
     description: |
       Display the status of the system.
     include_options: [context/namespace, global/*]

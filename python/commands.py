@@ -245,7 +245,6 @@ class CommandModel(Model):
 
 class Command(ModelObject):
     usage = object_property("usage")
-    platforms = object_property("platforms", default=["Kubernetes", "Docker", "Podman", "Linux"])
     output = object_property("output")
     examples = object_property("examples")
     wait = object_property("wait")
@@ -363,6 +362,18 @@ class Command(ModelObject):
             return f"{capitalize(self.parent.name)} {self.name}"
 
         return f"{capitalize(self.name)}"
+
+    @property
+    def platforms(self):
+        value = self.get_value("platforms", [])
+
+        if not value and self.parent:
+            value = self.parent.get_value("platforms", [])
+
+        if not value:
+            value = ["Kubernetes", "Docker", "Podman", "Linux"]
+
+        return value
 
     @property
     def input_file(self):

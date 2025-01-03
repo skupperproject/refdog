@@ -20,7 +20,7 @@ This removes the router configuration, TLS certificates, and
 systemd unit file for the current namespace.  On Docker or
 Podman, it also removes the containers for Skupper components.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Docker, Podman, Linux</td></table>
 
 ## Primary options
 

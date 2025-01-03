@@ -125,7 +125,7 @@ def object_property(name, default=None, required=False):
         value = obj.get_value(name, default)
 
         if required and value is None:
-            raise Exception(f"Property '{name}' on {obj.__class__.__name__} is required")
+            fail(f"{obj}: Property '{name}' is required")
 
         return value
 

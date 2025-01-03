@@ -1,6 +1,8 @@
 ---
 body_class: object command
-refdog_links: []
+refdog_links:
+- title: Platform concept
+  url: /concepts/platform.html
 refdog_object_has_attributes: true
 ---
 
