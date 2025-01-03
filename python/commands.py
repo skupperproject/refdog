@@ -320,6 +320,28 @@ class Command(ModelObject):
 
         return merged_options
 
+    def get_resource(self):
+        resource_name = self.data.get("resource")
+
+        if resource_name is None and self.parent:
+            resource_name = self.parent.data.get("resource")
+
+        if resource_name is None:
+            return
+
+        try:
+            return self.model.resource_model.resources_by_name[resource_name]
+        except KeyError:
+            fail(f"{self}: Resource '{resource_name}' not found")
+
+    def get_data_value(self, name, default):
+        resource = self.get_resource()
+
+        if resource:
+            default = getattr(resource, name, default)
+
+        return super().get_data_value(name, default)
+
     @property
     def ancestors(self):
         command = self.parent
@@ -357,23 +379,14 @@ class Command(ModelObject):
         return super().href
 
     @property
-    def resource(self):
-        name = self.data.get("resource", capitalize(self.name.split(" ")[0]))
-        resource = self.model.resource_model.resources_by_name.get(name)
-
-        if resource is None and self.parent is not None:
-            return self.parent.resource
-
-        return resource
-
-    @property
     def description(self):
-        description = self.data.get("description")
+        value = super().description
+        resource = self.get_resource()
 
-        if description and self.resource and self.resource.description:
-            description = description.replace("@resource_description@", self.resource.description.strip())
+        if resource and resource.description:
+            value = value.replace("@resource_description@", resource.description)
 
-        return description
+        return value
 
 class Option(ModelObjectAttribute):
     type = object_property("type")
@@ -384,13 +397,19 @@ class Option(ModelObjectAttribute):
     choices = object_property("choices")
 
     def get_property(self):
-        if "property" in self.data:
-            assert self.object.resource is not None
+        property_name = self.data.get("property")
 
-            if self.data["property"] not in self.object.resource.spec_properties_by_name:
-                fail("{}: Property '{}' not found in {}".format(self, self.data["property"], self.object.resource))
+        if property_name is None:
+            return
 
-            return self.object.resource.spec_properties_by_name[self.data["property"]]
+        resource = self.object.get_resource()
+
+        assert resource is not None, self.object
+
+        if property_name not in resource.spec_properties_by_name:
+            fail(f"{self}: Property '{property_name}' not found on {resource}")
+
+        return resource.spec_properties_by_name[property_name]
 
     # Get the default value from property if set
     def get_data_value(self, name, default):

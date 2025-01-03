@@ -1,4 +1,5 @@
 name: listener
+resource: Listener
 related_commands: [connector]
 links: [skupper/service-exposure]
 description: |
