@@ -61,7 +61,7 @@ The name of the resource to be updated.
 
 The port on the target server to connect to.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td></table>
 
 </div>
 </div>
@@ -80,27 +80,7 @@ remote listener and the local connector must have matching
 routing keys.
 
 <table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
-
-</div>
-</div>
-
-<div class="attribute">
-<div class="attribute-heading">
-<h3 id="option-selector">--selector</h3>
-<div class="attribute-type-info">&lt;string&gt;</div>
-<div class="attribute-flags">frequently used</div>
-</div>
-<div class="attribute-body">
-
-A Kubernetes label selector for specifying target server pods.  It
-uses `<label-name>=<label-value>` syntax.
-
-This is an alternative to setting the `--workload` or
-`--host` options.
-
-<table class="fields"><tr><th>Default</th><td><p><code>app=[value-of-name]</code></p>
-</td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">Kubernetes label selectors</a></td></table>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td></table>
 
 </div>
 </div>
@@ -127,9 +107,27 @@ This is an alternative to setting the `--selector` or
 
 <div class="attribute">
 <div class="attribute-heading">
+<h3 id="option-selector">--selector</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+</div>
+<div class="attribute-body">
+
+A Kubernetes label selector for specifying target server pods.  It
+uses `<label-name>=<label-value>` syntax.
+
+This is an alternative to setting the `--workload` or
+`--host` options.
+
+<table class="fields"><tr><th>Default</th><td><p><code>app=[value-of-name]</code></p>
+</td><tr><th>Platforms</th><td>Kubernetes</td><tr><th>Updatable</th><td>True</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">Kubernetes label selectors</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute">
+<div class="attribute-heading">
 <h3 id="option-host">--host</h3>
 <div class="attribute-type-info">&lt;string&gt;</div>
-<div class="attribute-flags">frequently used</div>
 </div>
 <div class="attribute-body">
 
@@ -140,7 +138,7 @@ This is an alternative to setting the `--selector` or
 `--workload` options.
 
 <table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td></table>
 
 </div>
 </div>

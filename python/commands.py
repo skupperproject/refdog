@@ -375,20 +375,31 @@ class Command(ModelObject):
 
         return description
 
-def option_property(name, default=None):
-    def get(obj):
-        default_ = getattr(obj.property_, name, None) if obj.property_ else default
-        return obj.data.get(name, default_)
-
-    return property(get)
-
 class Option(ModelObjectAttribute):
-    type = option_property("type")
-    required = option_property("required", default=False)
-    placeholder = option_property("placeholder")
-    short_option = option_property("short_option")
-    default = option_property("default")
-    choices = option_property("choices")
+    type = object_property("type")
+    required = object_property("required", default=False)
+    placeholder = object_property("placeholder")
+    short_option = object_property("short_option")
+    default = object_property("default")
+    choices = object_property("choices")
+
+    def get_property(self):
+        if "property" in self.data:
+            assert self.object.resource is not None
+
+            if self.data["property"] not in self.object.resource.spec_properties_by_name:
+                fail("{}: Property '{}' not found in {}".format(self, self.data["property"], self.object.resource))
+
+            return self.object.resource.spec_properties_by_name[self.data["property"]]
+
+    # Get the default value from property if set
+    def get_data_value(self, name, default):
+        property = self.get_property()
+
+        if property:
+            default = getattr(property, name, default)
+
+        return super().get_data_value(name, default)
 
     @property
     def id(self):
@@ -405,17 +416,6 @@ class Option(ModelObjectAttribute):
             return f"--{self.name}"
 
     @property
-    def property_(self):
-        if "property" in self.data:
-            assert self.object.resource is not None
-
-            if self.data["property"] not in self.object.resource.spec_properties_by_name:
-                fail("{}: Property '{}' not found in {}".format \
-                     (self, self.data["property"], self.object.resource))
-
-            return self.object.resource.spec_properties_by_name[self.data["property"]]
-
-    @property
     def positional(self):
         default = self.required and self.default is None
         return self.data.get("positional", default)
@@ -428,23 +428,17 @@ class Option(ModelObjectAttribute):
         if self.required:
             return "required"
 
-        default = self.property_.group if self.property_ else None
-        return self.data.get("group", default)
+        return super().group
 
     @property
     def description(self):
-        default = self.property_.description if self.property_ else None
-        value = self.data.get("description", default)
+        value = super().description
+        property = self.get_property()
 
-        if self.property_ and self.property_.description:
-            value = value.replace("@property_description@", self.property_.description)
+        if property and property.description:
+            value = value.replace("@property_description@", property.description)
 
         return value
-
-    @property
-    def links(self):
-        default = self.property_.links if self.property_ else []
-        return self.data.get("links", default)
 
 class Error:
     message = object_property("message", required=True)
@@ -457,3 +451,6 @@ class Error:
 
     def __repr__(self):
         return f"{self.__class__.__name__} '{self.message}'"
+
+    def get_data_value(self, name, default):
+        return self.data.get(name, default)

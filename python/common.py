@@ -122,7 +122,7 @@ def generate_attribute_links(attr):
 
 def object_property(name, default=None, required=False):
     def get(obj):
-        value = obj.data.get(name, default)
+        value = obj.get_data_value(name, default)
 
         if required and value is None:
             raise Exception(f"Property '{name}' on {obj.__class__.__name__} is required")
@@ -178,11 +178,13 @@ class ModelObjectGroup:
             try:
                 self.objects.append(self.model.objects_by_id[id])
             except KeyError:
-                _plano.pprint(111, self.model.objects_by_id)
                 fail(f"{self}: {self.model.object_class.__name__} '{id}' not found")
 
     def __repr__(self):
         return f"{self.__class__.__name__} '{self.title}'"
+
+    def get_data_value(self, name, default):
+        return self.data.get(name, default)
 
     @property
     def id(self):
@@ -201,6 +203,13 @@ class ModelObject:
 
     def __repr__(self):
         return f"{self.__class__.__name__} '{self.name}'"
+
+    def get_data_value(self, name, default):
+        return self.data.get(name, default)
+
+    @property
+    def name(self):
+        return self.data["name"]
 
     @property
     def id(self):
@@ -290,7 +299,6 @@ class ModelObject:
                 fail(f"{self}: Related command '{id}' not found")
 
 class ModelObjectAttribute:
-    name = object_property("name", required=True)
     group = object_property("group")
     description = object_property("description")
     platforms = object_property("platforms", default=["Kubernetes", "Docker", "Podman", "Linux"])
@@ -308,6 +316,13 @@ class ModelObjectAttribute:
 
     def __repr__(self):
         return f"{self.__class__.__name__} '{self.name}'"
+
+    def get_data_value(self, name, default):
+        return self.data.get(name, default)
+
+    @property
+    def name(self):
+        return self.data["name"]
 
     @property
     def id(self):

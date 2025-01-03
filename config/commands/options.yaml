@@ -192,7 +192,6 @@ connector/selector:
   name: selector
   property: selector
   default: app=[value-of-name]
-  platforms: [Kubernetes] # XXX Should inherit
   description: |
     A Kubernetes label selector for specifying target server pods.  It
     uses `<label-name>=<label-value>` syntax.

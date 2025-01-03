@@ -64,7 +64,7 @@ at this site use the listener host and port to
 establish connections to the remote service.
 
 <table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td></table>
 
 </div>
 </div>
@@ -81,7 +81,7 @@ The port of the local listener.  Clients at this site use
 the listener host and port to establish connections to
 the remote service.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td></table>
 
 </div>
 </div>
@@ -100,7 +100,7 @@ remote site, the local listener and the remote connector
 must have matching routing keys.
 
 <table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td></table>
 
 </div>
 </div>
