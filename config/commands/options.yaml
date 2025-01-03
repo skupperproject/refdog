@@ -137,7 +137,7 @@ generate/output:
       description: Produce JSON output
     - name: yaml
       description: Produce YAML output
-site/enable_link_access:
+site/enable-link-access:
   name: enable-link-access
   group: frequently-used
   type: boolean
@@ -149,7 +149,7 @@ site/enable_link_access:
     Sites and links are the basis for creating application
     networks. In a simple two-site network, at least one of the
     sites must have link access enabled.
-site/link_access_type:
+site/link-access-type:
   name: link-access-type
   property: linkAccess
   placeholder: type
@@ -166,7 +166,7 @@ site/link_access_type:
       description: Use an OpenShift route.  _OpenShift only._
     - name: loadbalancer
       description: Use a Kubernetes load balancer.  _Kubernetes only._
-site/enable_ha:
+site/enable-ha:
   name: enable-ha
   property: ha
 link/cost:
@@ -182,7 +182,7 @@ connector/port:
   name: port
   property: port
   positional: true
-connector/routing_key:
+connector/routing-key:
   name: routing-key
   group: frequently-used
   required: false
