@@ -47,18 +47,16 @@ following output resources:
 On Kubernetes:
 
 - *Create and update:* `kubectl apply -f <yaml-file>`
-- *Display:* `kubectl get <resource-type>/<resource-name>`
-- *Delete:* `kubectl delete <resource-type>/<resource-name>`
+- *Delete:* `kubectl delete -f <yaml-file>`
 
 On Docker, Podman, and Linux:
 
 - *Create and update:* `skupper system apply -f <yaml-file>`
-- *Display:* `skupper system get <resource-type>/<resource-name>`
-- *Delete:* `skupper system delete <resource-type>/<resource-name>`
+- *Delete:* `skupper system delete -f <yaml-file>`
 
 On Docker, Podman, and Linux, resources are stored on the local
 filesystem under
-`~/.local/share/skupper/namespaces/default/resources`.
+`~/.local/share/skupper/namespaces/default/input/resources`.
 
 The Skupper CLI provides additional commands to help create and
 configure Skupper resources.
