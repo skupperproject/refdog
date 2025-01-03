@@ -9,6 +9,8 @@ refdog_links:
   url: /resources/connector.html
 - title: Listener update command
   url: /commands/listener/update.html
+- title: Listener command
+  url: /commands/listener/index.html
 refdog_object_has_attributes: true
 ---
 

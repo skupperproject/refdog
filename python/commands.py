@@ -388,6 +388,42 @@ class Command(ModelObject):
 
         return value
 
+    @property
+    def related_concepts(self):
+        concepts = list(super().related_concepts)
+
+        if self.parent:
+            concepts.extend(self.parent.related_concepts)
+
+        return concepts
+
+    @property
+    def related_resources(self):
+        resources = list(super().related_resources)
+
+        if self.parent:
+            resources.extend(self.parent.related_resources)
+
+        return resources
+
+    @property
+    def related_commands(self):
+        commands = list(super().related_commands)
+
+        if self.parent:
+            commands.extend(self.parent.related_commands)
+
+        return commands
+
+    @property
+    def links(self):
+        links = set(super().links)
+
+        if self.parent:
+            links.update(self.parent.links)
+
+        return links
+
 class Option(ModelObjectAttribute):
     type = object_property("type")
     required = object_property("required", default=False)

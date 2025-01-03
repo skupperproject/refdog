@@ -7,6 +7,8 @@ refdog_links:
   url: /concepts/link.html
 - title: Link resource
   url: /resources/link.html
+- title: Token command
+  url: /commands/token/index.html
 refdog_object_has_attributes: true
 ---
 

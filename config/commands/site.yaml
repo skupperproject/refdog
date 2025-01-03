@@ -6,7 +6,6 @@ include_options: [global/*]
 subcommands:
   - name: create
     wait: Ready
-    links: [skupper/site-configuration]
     description: |
       Create a site.
     examples: |

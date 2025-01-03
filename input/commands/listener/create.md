@@ -9,6 +9,8 @@ refdog_links:
   url: /resources/listener.html
 - title: Connector create command
   url: /commands/connector/create.html
+- title: Connector command
+  url: /commands/connector/index.html
 refdog_object_has_attributes: true
 ---
 

@@ -10,9 +10,6 @@ subcommands:
     wait: Ready
     resource: access-grant
     platforms: [Kubernetes]
-     # XXX Inherit! vv
-    related_concepts: [access-token]
-    related_resources: [access-grant, access-token]
     related_commands: [token/redeem]
     links: [skupper/site-linking]
     description: |
@@ -78,9 +75,6 @@ subcommands:
           enable it.
   - name: redeem
     resource: access-token
-    # XXX Inherit!
-    related_concepts: [access-token]
-    related_resources: [access-grant, access-token]
     related_commands: [token/issue]
     links: [skupper/site-linking]
     description: |
