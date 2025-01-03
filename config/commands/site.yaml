@@ -28,7 +28,6 @@ subcommands:
           There is already a site resource defined for the namespace.
   - name: update
     wait: Ready
-    links: [skupper/site-configuration]
     description: |
       Change site settings.
     examples: |

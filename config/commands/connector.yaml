@@ -1,7 +1,6 @@
 name: connector
 resource: connector
 related_commands: [listener]
-links: [skupper/service-exposure]
 description: |
   Display help for connector commands and exit.
 include_options: [global/*]
@@ -9,7 +8,6 @@ subcommands:
   - name: create
     wait: Configured
     related_commands: [listener/create]
-    links: [skupper/service-exposure]
     description: |
       Create a connector.
     examples: |
@@ -37,7 +35,6 @@ subcommands:
   - name: update
     wait: Configured
     related_commands: [listener/update]
-    links: [skupper/service-exposure]
     description: |
       Update a connector.
     examples: |
@@ -52,7 +49,6 @@ subcommands:
   - name: delete
     wait: Deletion
     related_commands: [listener/delete]
-    links: [skupper/service-exposure]
     description: |
       Delete a connector.
     examples: |
@@ -63,7 +59,6 @@ subcommands:
     include_options: [delete/*, context/*, global/*]
   - name: status
     related_commands: [listener/status]
-    links: [skupper/service-exposure]
     description: |
       Display the status of connectors in the current site.
     examples: |
@@ -86,7 +81,6 @@ subcommands:
     include_options: [status/*, context/*, global/*]
   - name: generate
     related_commands: [listener/generate]
-    links: [skupper/service-exposure]
     description: |
       Generate a Connector resource.
     examples: |

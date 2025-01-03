@@ -24,7 +24,7 @@ Generating a link requires a site with link access enabled.
 The command waits for the site to enter the ready state
 before producing the link.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Site resource Ready</td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Waits for</th><td>Site resource ready</td></table>
 
 ## Examples
 

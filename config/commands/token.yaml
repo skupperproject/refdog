@@ -1,7 +1,7 @@
 name: token
+resource: access-token
 related_concepts: [access-token]
 related_resources: [access-grant, access-token]
-links: [skupper/site-linking]
 description: |
   Display help for token commands and exit.
 include_options: [global/*]
@@ -11,7 +11,6 @@ subcommands:
     resource: access-grant
     platforms: [Kubernetes]
     related_commands: [token/redeem]
-    links: [skupper/site-linking]
     description: |
       Issue a token file redeemable for a link to the current site.
 
@@ -76,7 +75,6 @@ subcommands:
   - name: redeem
     resource: access-token
     related_commands: [token/issue]
-    links: [skupper/site-linking]
     description: |
       Redeem a token file in order to create a link to a remote
       site.
