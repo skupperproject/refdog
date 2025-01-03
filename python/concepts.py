@@ -25,7 +25,7 @@ def generate(model):
         append()
         append("<table class=\"objects\">")
 
-        for concept in group.concepts:
+        for concept in group.objects:
             append(f"<tr><th><a href=\"{concept.href}\">{concept.title}</a></th><td>{concept.summary}</td></tr>")
 
         append("</table>")
@@ -54,43 +54,15 @@ def generate_concept(concept):
 
     append.write(concept.input_file)
 
-class ConceptModel:
+class ConceptModel(Model):
     def __init__(self):
-        debug(f"Loading {self}")
+        super().__init__(Concept, "config/concepts")
 
-        self.concepts = list()
-        self.concepts_by_name = dict()
-        self.groups = list()
+        self.init()
 
-        for yaml_file in list_dir("config/concepts"):
-            if yaml_file == "index.yaml":
-                continue
-
-            concept_data = read_yaml(join("config/concepts", yaml_file))
-            concept = Concept(self, concept_data)
-
-            self.concepts.append(concept)
-            self.concepts_by_name[concept.name] = concept
-
-        index_data = read_yaml("config/concepts/index.yaml")
-
-        for group_data in index_data["groups"]:
-            self.groups.append(ConceptGroup(self, group_data))
-
-    def __repr__(self):
-        return self.__class__.__name__
+    @property
+    def concepts(self):
+        return self.objects
 
 class Concept(ModelObject):
     pass
-
-class ConceptGroup(ModelObjectGroup):
-    def __init__(self, model, data):
-        super().__init__(model, data)
-
-        self.concepts = list()
-
-        for concept_name in self.data.get("concepts", []):
-            try:
-                self.concepts.append(self.model.concepts_by_name[concept_name])
-            except KeyError:
-                fail(f"{self}: Concept '{concept_name}' not found")

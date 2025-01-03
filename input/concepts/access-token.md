@@ -3,6 +3,8 @@ body_class: object concept
 refdog_links:
 - title: Site linking
   url: /topics/site-linking.html
+- title: AccessToken resource
+  url: /resources/access-token.html
 - title: Link concept
   url: /concepts/link.html
 - title: AccessGrant resource

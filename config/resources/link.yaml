@@ -1,6 +1,6 @@
 name: Link
-related_resources: [AccessToken]
-links: [skupper/site_linking]
+related_resources: [access-token]
+links: [skupper/site-linking]
 description: |
   A link is a channel for communication between [sites](site.html).
   Links carry application connections and requests.  A set of linked
@@ -23,7 +23,7 @@ spec:
   properties:
     - name: cost
       default: 1
-      links: [skupper/load_balancing]
+      links: [skupper/load-balancing]
       description: |
         The configured routing cost of sending traffic over
         the link.
@@ -32,7 +32,7 @@ spec:
         An array of connection endpoints. Each item has a name, host,
         port, and group.
     - name: tlsCredentials
-      links: [skupper/router_tls, kubernetes/tls_secrets, skupper/system_tls_credentials]
+      links: [skupper/router-tls, kubernetes/tls-secrets, skupper/system-tls-credentials]
       description: |
         The name of a bundle of certificates used for mutual TLS
         router-to-router communication.  The bundle contains the

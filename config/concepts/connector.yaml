@@ -1,6 +1,6 @@
 name: connector
-related_concepts: [listener, routing key]
-links: [skupper/service_exposure]
+related_concepts: [listener, routing-key]
+links: [skupper/service-exposure]
 description: |
   A connector binds a local [workload](workload.html) to
   [listeners](listener.html) in remote [sites](site.html).  Listeners

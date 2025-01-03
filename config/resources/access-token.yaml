@@ -1,8 +1,8 @@
 name: AccessToken
-related_concepts: [access token]
-related_resources: [AccessGrant]
+related_concepts: [access-token]
+related_resources: [access-grant]
 related_commands: [token/issue, token/redeem]
-links: [skupper/site_linking]
+links: [skupper/site-linking]
 description: |
   A short-lived credential used to create a link.  An access token
   contains the URL and secret code of a corresponding access grant.
@@ -32,7 +32,7 @@ spec:
     - name: linkCost
       type: integer # XXX This should come from the CRD
       default: 1
-      links: [skupper/load_balancing]
+      links: [skupper/load-balancing]
       description: |
         The link cost to use when creating the link.
 status:

@@ -86,7 +86,7 @@ remote listener and the local connector must have matching
 routing keys.
 
 <table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/routing-key.html">Routing key</a></td></table>
+</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 </div>
 </div>
@@ -126,7 +126,7 @@ equivalent pod selector.
 This is an alternative to setting the `--selector` or
 `--host` options.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/workload.html">Workload concept</a>, <a href="https://kubernetes.io/docs/concepts/workloads/">Kubernetes workloads</a></td></table>
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/workloads/">Kubernetes workloads</a></td></table>
 
 </div>
 </div>

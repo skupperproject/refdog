@@ -1,5 +1,6 @@
 name: network
 related_concepts: [site, link]
+links: [skupper/site-linking]
 description: |
   A network is a set of [sites](site.html) joined by
   [links](link.html). A Skupper network is also known as an

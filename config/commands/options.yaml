@@ -2,7 +2,7 @@ create/name:
   name: name
   type: string
   required: true
-  links: [kubernetes/object_names]
+  links: [kubernetes/object-names]
   description: |
     The name of the resource to be created.
 create/timeout:
@@ -11,7 +11,7 @@ create/timeout:
   placeholder: duration
   default: 60s
   platforms: [Kubernetes]
-  links: [kubernetes/duration_format]
+  links: [kubernetes/duration-format]
   description: |
     Raise an error if the operation does not complete in the given
     period of time.
@@ -21,7 +21,7 @@ create/wait:
   placeholder: status
   default: ready
   platforms: [Kubernetes]
-  links: [skupper/resource_status]
+  links: [skupper/resource-status]
   description: |
     Wait for the given status before exiting.
   choices:
@@ -35,7 +35,7 @@ update/name:
   name: name
   type: string
   required: true
-  links: [kubernetes/object_names]
+  links: [kubernetes/object-names]
   description: |
     The name of the resource to be updated.
 update/timeout:
@@ -53,7 +53,7 @@ update/wait:
   placeholder: status
   default: ready
   platforms: [Kubernetes]
-  links: [skupper/resource_status]
+  links: [skupper/resource-status]
   description: |
     Wait for the given status before exiting.
   choices:
@@ -67,7 +67,7 @@ delete/name:
   name: name
   type: string
   required: true
-  links: [kubernetes/object_names]
+  links: [kubernetes/object-names]
   description: |
     The name of the resource to be deleted.
 delete/timeout:
@@ -91,7 +91,7 @@ status/name:
   type: string
   required: false
   positional: true
-  links: [kubernetes/object_names]
+  links: [kubernetes/object-names]
   description: |
     An optional resource name.  If set, the status command reports
     status for the named resource only.
@@ -101,7 +101,7 @@ status/timeout:
   placeholder: duration
   default: 60s
   platforms: [Kubernetes]
-  links: [kubernetes/duration_format]
+  links: [kubernetes/duration-format]
   description: |
     Raise an error if the operation does not complete in the given
     period of time.
@@ -121,7 +121,7 @@ generate/name:
   name: name
   type: string
   required: true
-  links: [kubernetes/object_names]
+  links: [kubernetes/object-names]
   description: |
     The name of the resource to be generated.
 generate/output:
@@ -142,7 +142,7 @@ site/enable_link_access:
   group: frequently-used
   type: boolean
   related_concepts: [link]
-  links: [skupper/site_linking]
+  links: [skupper/site-linking]
   description: |
     Allow external access for links from remote sites.
 
@@ -292,7 +292,7 @@ context/namespace:
   type: string
   placeholder: name
   short_option: n
-  links: [kubernetes/namespaces, skupper/system_namespaces]
+  links: [kubernetes/namespaces, skupper/system-namespaces]
   description: |
     Set the current namespace.
 global/platform:
@@ -310,6 +310,7 @@ global/platform:
       description: Podman
     - name: linux
       description: Linux
+  related_concepts: [platform]
   description: |
     Set the Skupper platform.
 

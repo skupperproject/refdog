@@ -1,6 +1,6 @@
 name: Listener
-related_resources: [Connector]
-links: [skupper/service_exposure]
+related_resources: [connector]
+links: [skupper/service-exposure]
 description: |
   A listener binds a local connection endpoint to
   [connectors](connector.html) in remote [sites](site.html).
@@ -30,7 +30,7 @@ spec:
   properties:
     - name: routingKey
       updatable: true
-      related_concepts: [routing key]
+      related_concepts: [routing-key]
       description: |
         The identifier used to route traffic from listeners to
         connectors.  To enable connecting to a service at a
@@ -52,12 +52,12 @@ spec:
       type: boolean
       group: advanced
       platforms: [Kubernetes]
-      links: [skupper/individual_pod_services]
+      links: [skupper/individual-pod-services]
       description: |
         If true, expose each pod as an individual service.
     - name: tlsCredentials
       group: advanced
-      links: [skupper/application_tls, kubernetes/tls_secrets, skupper/system_tls_credentials]
+      links: [skupper/application-tls, kubernetes/tls-secrets, skupper/system-tls-credentials]
       description: |
         The name of a bundle of TLS certificates used for secure
         client-to-router communication.  The bundle contains the
@@ -88,7 +88,7 @@ status:
     - name: message
     - name: hasMatchingConnector
       type: boolean
-      related_concepts: [routing key]
+      related_concepts: [routing-key]
       description: |
         True if there is at least one connector with a matching
         routing key (usually in a remote site).

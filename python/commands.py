@@ -24,7 +24,7 @@ def generate(model):
         append(f"#### {group.title}")
         append()
 
-        for command in group.commands:
+        for command in group.objects:
             append("<table class=\"objects\">")
 
             if command.subcommands:
@@ -214,32 +214,17 @@ def generate_error(error, append):
         append(f"  <p>{error.description.strip()}</p>")
         append()
 
-class CommandModel:
+class CommandModel(Model):
     def __init__(self):
-        debug(f"Loading {self}")
+        super().__init__(Command, "config/commands")
 
-        self.option_data = read_yaml("config/commands/options.yaml")
+        self.option_data = read_yaml(join(self.config_dir, "options.yaml"))
 
-        self.commands = list()
-        self.commands_by_id = dict()
-        self.groups = list()
+        self.init(exclude=["options.yaml"])
 
-        for yaml_file in list_dir("config/commands"):
-            if yaml_file in ("index.yaml", "options.yaml"):
-                continue
-
-            command_data = read_yaml(join("config/commands", yaml_file))
-            command = Command(self, command_data)
-
-            self.commands.append(command)
-
-        index_data = read_yaml("config/commands/index.yaml")
-
-        for group_data in index_data["groups"]:
-            self.groups.append(CommandGroup(self, group_data))
-
-    def __repr__(self):
-        return self.__class__.__name__
+    @property
+    def commands(self):
+        return self.objects
 
     def check(self):
         for command in self.commands:
@@ -253,10 +238,10 @@ class CommandModel:
             for subcommand in command.subcommands:
                 for option in subcommand.options:
                     if not option.name:
-                        fail(f"{command}: {subcommand}: {option} has no name")
+                        fail(f"{subcommand}: {option} has no name")
 
                     if not option.type:
-                        fail(f"{command}: {subcommand}: {option} has no type")
+                        fail(f"{subcommand}: {option} has no type")
 
 class Command(ModelObject):
     usage = object_property("usage")
@@ -285,11 +270,11 @@ class Command(ModelObject):
         for error_data in self.data.get("errors", []):
             self.errors.append(Error(self, error_data))
 
-        self.model.commands_by_id[self.id] = self
-
         for command_data in self.data.get("subcommands", []):
             command = Command(model, command_data, self)
+
             self.subcommands.append(command)
+            self.model.objects_by_id[command.id] = command
 
     def __repr__(self):
         if self.parent:
@@ -390,18 +375,6 @@ class Command(ModelObject):
 
         return description
 
-class CommandGroup(ModelObjectGroup):
-    def __init__(self, model, data):
-        super().__init__(model, data)
-
-        self.commands = list()
-
-        for command_id in self.data.get("commands", []):
-            try:
-                self.commands.append(self.model.commands_by_id[command_id])
-            except KeyError:
-                fail(f"{self}: Command '{command_id}' not found")
-
 def option_property(name, default=None):
     def get(obj):
         default_ = getattr(obj.property_, name, None) if obj.property_ else default
@@ -472,17 +445,6 @@ class Option(ModelObjectAttribute):
     def links(self):
         default = self.property_.links if self.property_ else []
         return self.data.get("links", default)
-
-    def gather_links(self):
-        links = list()
-
-        if self.property_:
-            for concept in self.property_.related_concepts:
-                links.append((concept.title, concept.href))
-
-        links.extend(super().gather_links())
-
-        return links
 
 class Error:
     message = object_property("message", required=True)

@@ -5,6 +5,8 @@ refdog_links:
   url: /topics/site-linking.html
 - title: Access token concept
   url: /concepts/access-token.html
+- title: Access token concept
+  url: /concepts/access-token.html
 - title: AccessGrant resource
   url: /resources/access-grant.html
 - title: Token issue command

@@ -5,6 +5,7 @@ include_options: [global/*]
 subcommands:
   - name: create
     wait: Ready
+    links: [skupper/site-configuration]
     description: |
       Create a site.
     examples: |
@@ -27,6 +28,7 @@ subcommands:
           There is already a site resource defined for the namespace.
   - name: update
     wait: Ready
+    links: [skupper/site-configuration]
     description: |
       Change site settings.
     examples: |

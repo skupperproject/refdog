@@ -1,6 +1,6 @@
 name: RouterAccess
-related_resources: [Site, Link]
-links: [skupper/site_linking]
+related_resources: [site, link]
+links: [skupper/site-linking]
 description: |
   Configuration for secure access to the site router.  The
   configuration includes TLS credentials and router ports.  The
@@ -16,7 +16,7 @@ spec:
         include "inter-router" for links between interior routers and
         "edge" for links from edge routers to interior routers.
     - name: tlsCredentials
-      links: [skupper/router_tls, kubernetes/tls_secrets, skupper/system_tls_credentials]
+      links: [skupper/router-tls, kubernetes/tls-secrets, skupper/system-tls-credentials]
       description: |
         The name of a bundle of TLS certificates used for mutual TLS
         router-to-router communication.  The bundle contains the

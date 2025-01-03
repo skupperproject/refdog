@@ -25,7 +25,7 @@ def generate(model):
         append()
         append("<table class=\"objects\">")
 
-        for resource in group.resources:
+        for resource in group.objects:
             append(f"<tr><th><a href=\"{resource.href}\">{resource.title}</a></th><td>{resource.summary}</td></tr>")
 
         append("</table>")
@@ -135,31 +135,19 @@ def generate_property(prop, append):
     append("</div>")
     append()
 
-class ResourceModel:
+class ResourceModel(Model):
     def __init__(self):
-        debug(f"Loading {self}")
+        super().__init__(Resource, "config/resources")
 
-        self.property_data = read_yaml("config/resources/properties.yaml")
+        self.property_data = read_yaml(join(self.config_dir, "properties.yaml"))
 
-        self.resources = list()
+        self.init(exclude=["properties.yaml"])
+
         self.resources_by_name = dict()
-        self.groups = list()
         self.crds_by_name = dict()
 
-        for yaml_file in list_dir("config/resources"):
-            if yaml_file in ("index.yaml", "properties.yaml"):
-                continue
-
-            resource_data = read_yaml(join("config/resources", yaml_file))
-            resource = Resource(self, resource_data)
-
-            self.resources.append(resource)
+        for resource in self.resources:
             self.resources_by_name[resource.name] = resource
-
-        index_data = read_yaml("config/resources/index.yaml")
-
-        for group_data in index_data["groups"]:
-            self.groups.append(ResourceGroup(self, group_data))
 
         for crd_file in list_dir("crds"):
             if crd_file == "skupper_cluster_policy_crd.yaml":
@@ -174,8 +162,9 @@ class ResourceModel:
 
             self.crds_by_name[kind] = crd_data
 
-    def __repr__(self):
-        return self.__class__.__name__
+    @property
+    def resources(self):
+        return self.objects
 
     def check(self):
         for crd_name, crd_data in self.crds_by_name.items():

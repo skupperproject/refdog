@@ -99,6 +99,7 @@ article:only-child, section:only-child {
 
 html {
     overflow-y: scroll;
+    scroll-padding-top: 5em;
 }
 
 body {

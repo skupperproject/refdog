@@ -3,7 +3,7 @@ metadata/name:
   type: string
   updatable: false
   required: true
-  links: [kubernetes/object_names]
+  links: [kubernetes/object-names]
   description: |
     The name of the resource.
 metadata/namespace:
@@ -11,14 +11,14 @@ metadata/namespace:
   type: string
   updatable: false
   related_concepts: [platform]
-  links: [kubernetes/namespaces, skupper/system_namespaces]
+  links: [kubernetes/namespaces, skupper/system-namespaces]
   description: |
     The namespace of the resource.
 settings:
   name: settings
   group: advanced
   type: object
-  links: [skupper/resource_settings]
+  links: [skupper/resource-settings]
   description: |
     A map containing additional settings.  Each map entry has a
     string name and a string value.
@@ -27,7 +27,7 @@ settings:
     their default values.
 status/status:
   name: status
-  links: [skupper/resource_status]
+  links: [skupper/resource-status]
   description: |
     The current state of the resource.
 
@@ -37,7 +37,7 @@ status/status:
     - `Ready`: The resource is ready to use.
 status/message:
   name: message
-  links: [skupper/resource_status]
+  links: [skupper/resource-status]
   description: |
     A human-readable status message.  Error messages are reported
     here.
@@ -45,14 +45,14 @@ status/conditions:
   name: conditions
   group: advanced
   platforms: [Kubernetes]
-  links: [skupper/resource_status, kubernetes/conditions]
+  links: [skupper/resource-status, kubernetes/conditions]
   description: |
     A set of named conditions describing the current state of the
     resource.
 connector/spec/routingKey:
   name: routingKey
   updatable: true
-  related_concepts: [routing key]
+  related_concepts: [routing-key]
   description: |
     The identifier used to route traffic from listeners to
     connectors.  To expose a local workload to a remote site, the
@@ -68,7 +68,7 @@ connector/spec/selector:
   group: frequently-used
   updatable: true
   platforms: [Kubernetes]
-  links: [kubernetes/label_selectors]
+  links: [kubernetes/label-selectors]
   description: |
     A Kubernetes label selector for specifying target server pods.  It
     uses `<label-name>=<label-value>` syntax.
@@ -96,13 +96,13 @@ connector/spec/exposePodsByName:
   group: advanced
   type: boolean
   platforms: [Kubernetes]
-  links: [skupper/individual_pod_services]
+  links: [skupper/individual-pod-services]
   description: |
     If true, expose each pod as an individual service.
 connector/spec/tlsCredentials:
   name: tlsCredentials
   group: advanced
-  links: [skupper/application_tls, kubernetes/tls_secrets, skupper/system_tls_credentials]
+  links: [skupper/application-tls, kubernetes/tls-secrets, skupper/system-tls-credentials]
   description: |
     The name of a bundle of TLS certificates used for secure
     router-to-server communication.  The bundle contains the trusted
@@ -116,7 +116,7 @@ connector/spec/useClientCert:
   name: useClientCert
   group: advanced
   type: boolean
-  links: [skupper/application_tls]
+  links: [skupper/application-tls]
   description: |
     Send the client certificate when connecting in order to enable
     mutual TLS.
@@ -124,7 +124,7 @@ connector/spec/verifyHostname:
   name: verifyHostname
   group: advanced
   type: boolean
-  links: [skupper/application_tls]
+  links: [skupper/application-tls]
   description: |
     If true, require that the hostname of the server connected to
     matches the hostname in the server's certificate.
@@ -138,7 +138,7 @@ connector/spec/type:
 connector/status/hasMatchingListener:
   name: hasMatchingListener
   type: boolean
-  related_concepts: [routing key]
+  related_concepts: [routing-key]
   description: |
     True if there is at least one listener with a matching routing
     key (usually in a remote site).

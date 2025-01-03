@@ -1,6 +1,6 @@
 name: routing key
 related_concepts: [listener, connector]
-links: [skupper/service_exposure]
+links: [skupper/service-exposure]
 description: |
   A routing key is a string identifier for matching
   [listeners](listener.html) and [connectors](connector.html).

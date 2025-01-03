@@ -1,6 +1,6 @@
 name: link
-related_concepts: [network, site, access token]
-links: [skupper/site_linking]
+related_concepts: [network, site, access-token]
+links: [skupper/site-linking]
 description: |
   A link is a channel for communication between [sites](site.html).
   Links carry application connections and requests.  A set of linked

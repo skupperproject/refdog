@@ -1,7 +1,7 @@
 name: AttachedConnectorBinding
 platforms: [Kubernetes]
-related_resources: [AttachedConnector]
-links: [skupper/attached_connectors]
+related_resources: [attached-connector]
+links: [skupper/attached-connectors]
 description: |
   A binding to an attached connector in a peer namespace.
 metadata:

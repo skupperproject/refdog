@@ -1,7 +1,7 @@
 name: token
-related_concepts: [access token]
-related_resources: [AccessGrant, AccessToken]
-links: [skupper/site_linking]
+related_concepts: [access-token]
+related_resources: [access-grant, access-token]
+links: [skupper/site-linking]
 description: |
   Display help for token commands and exit.
 include_options: [global/*]
@@ -10,10 +10,11 @@ subcommands:
     wait: Ready
     resource: AccessGrant
     platforms: [Kubernetes]
-    related_concepts: ["access token"]
-    related_resources: [AccessGrant, AccessToken]
+     # XXX Inherit! vv
+    related_concepts: [access-token]
+    related_resources: [access-grant, access-token]
     related_commands: [token/redeem]
-    links: [skupper/site_linking]
+    links: [skupper/site-linking]
     description: |
       Issue a token file redeemable for a link to the current site.
 
@@ -77,10 +78,11 @@ subcommands:
           enable it.
   - name: redeem
     resource: AccessToken
-    related_concepts: [access token]
-    related_resources: [AccessGrant, AccessToken]
+    # XXX Inherit!
+    related_concepts: [access-token]
+    related_resources: [access-grant, access-token]
     related_commands: [token/issue]
-    links: [skupper/site_linking]
+    links: [skupper/site-linking]
     description: |
       Redeem a token file in order to create a link to a remote
       site.

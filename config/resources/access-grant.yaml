@@ -1,8 +1,8 @@
 name: AccessGrant
-related_concepts: [access token]
-related_resources: [AccessToken]
+related_concepts: [access-token]
+related_resources: [access-token]
 related_commands: [token/issue]
-links: [skupper/site_linking]
+links: [skupper/site-linking]
 description: |
   Permission to redeem access tokens for links to the local
   site.  A remote site can use a token containing the grant
@@ -38,7 +38,7 @@ spec:
     - name: issuer
       group: advanced
       platforms: [Kubernetes]
-      links: [skupper/router_tls, kubernetes/tls_secrets]
+      links: [skupper/router-tls, kubernetes/tls-secrets]
       description: |
         The name of a Kubernetes secret used to generate a
         certificate when redeeming a token for this grant.

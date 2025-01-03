@@ -8,7 +8,7 @@ subcommands:
       Run diagnostic checks.
     include_options: [context/*, global/*]
   - name: dump
-    links: [skupper/debug_dumps]
+    links: [skupper/debug-dumps]
     description: |
       Generate a debug dump file.  Debug dumps collect the details of
       a site so another party can identify and fix a problem.

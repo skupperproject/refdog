@@ -131,6 +131,37 @@ def object_property(name, default=None, required=False):
 
     return property(get)
 
+class Model:
+    def __init__(self, object_class, config_dir):
+        self.object_class = object_class
+        self.config_dir = config_dir
+
+        debug(f"Initializing {self}")
+
+        self.objects = list()
+        self.objects_by_id = dict()
+        self.groups = list()
+
+    def __repr__(self):
+        return self.__class__.__name__
+
+    def init(self, exclude=[]):
+        for yaml_file in list_dir(self.config_dir):
+            if yaml_file == "groups.yaml":
+                continue
+
+            if yaml_file in exclude:
+                continue
+
+            obj_data = read_yaml(join(self.config_dir, yaml_file))
+            obj = self.object_class(self, obj_data)
+
+            self.objects.append(obj)
+            self.objects_by_id[obj.id] = obj
+
+        for group_data in read_yaml(join(self.config_dir, "groups.yaml")):
+            self.groups.append(ModelObjectGroup(self, group_data))
+
 class ModelObjectGroup:
     title = object_property("title", required=True)
     description = object_property("description")
@@ -139,7 +170,16 @@ class ModelObjectGroup:
         self.model = model
         self.data = data
 
-        debug(f"Loading {self}")
+        debug(f"Initializing {self}")
+
+        self.objects = list()
+
+        for id in self.data.get("objects", []):
+            try:
+                self.objects.append(self.model.objects_by_id[id])
+            except KeyError:
+                _plano.pprint(111, self.model.objects_by_id)
+                fail(f"{self}: {self.model.object_class.__name__} '{id}' not found")
 
     def __repr__(self):
         return f"{self.__class__.__name__} '{self.title}'"
@@ -202,52 +242,52 @@ class ModelObject:
         from resources import Resource
         from commands import Command
 
-        name = self.name
+        id = self.id
 
         if isinstance(self, Command) and self.parent is not None:
-            name = self.parent.name
+            id = self.parent.id
 
         if not isinstance(self, Concept):
             try:
-                yield self.model.concept_model.concepts_by_name[name.lower()]
+                yield self.model.concept_model.objects_by_id[id]
             except KeyError:
                 pass
 
         if not isinstance(self, Resource):
             try:
-                yield self.model.resource_model.resources_by_name[capitalize(name)]
+                yield self.model.resource_model.objects_by_id[id]
             except KeyError:
                 pass
 
         if not isinstance(self, Command):
             try:
-                yield self.model.command_model.commands_by_id[name.lower()]
+                yield self.model.command_model.objects_by_id[id]
             except KeyError:
                 pass
 
     @property
     def related_concepts(self):
-        for name in self.data.get("related_concepts", []):
+        for id in self.data.get("related_concepts", []):
             try:
-                yield self.model.concept_model.concepts_by_name[name]
+                yield self.model.concept_model.objects_by_id[id]
             except KeyError:
-                fail(f"{self}: Related concept '{name}' not found")
+                fail(f"{self}: Related concept '{id}' not found")
 
     @property
     def related_resources(self):
-        for name in self.data.get("related_resources", []):
+        for id in self.data.get("related_resources", []):
             try:
-                yield self.model.resource_model.resources_by_name[name]
+                yield self.model.resource_model.objects_by_id[id]
             except KeyError:
-                fail(f"{self}: Related resource '{name}' not found")
+                fail(f"{self}: Related resource '{id}' not found")
 
     @property
     def related_commands(self):
-        for name in self.data.get("related_commands", []):
+        for id in self.data.get("related_commands", []):
             try:
-                yield self.model.command_model.commands_by_id[name]
+                yield self.model.command_model.objects_by_id[id]
             except KeyError:
-                fail(f"{self}: Related command '{name}' not found")
+                fail(f"{self}: Related command '{id}' not found")
 
 class ModelObjectAttribute:
     name = object_property("name", required=True)
@@ -283,32 +323,26 @@ class ModelObjectAttribute:
 
         return self.data.get("group")
 
-    @property
-    def related_concepts(self):
-        try:
-            yield self.model.concept_model.concepts_by_name[self.name.lower()]
-        except KeyError:
-            pass
-
-        for name in self.data.get("related_concepts", []):
-            try:
-                yield self.model.concept_model.concepts_by_name[name]
-            except KeyError:
-                fail(f"Related concept '{name}' on {self} not found")
-
     def gather_links(self):
         links = list()
 
-        for concept in self.related_concepts:
-            links.append((concept.title_with_type, concept.href))
+        for id in self.data.get("related_concepts", []):
+            try:
+                obj = self.model.concept_model.objects_by_id[id]
+            except KeyError:
+                fail(f"{self}: Related concept '{id}' not found")
+
+            links.append((obj.title_with_type, obj.href))
 
         # Other related things here?
 
-        for name in self.links:
-            title = _named_links[name]["title"]
-            url = _named_links[name]["url"]
+        for id in self.links:
+            try:
+                link_data = _named_links[id]
+            except KeyError:
+                fail(f"{self}: Link '{id}' not found")
 
-            links.append((title, url))
+            links.append((link_data["title"], link_data["url"]))
 
         return links
 

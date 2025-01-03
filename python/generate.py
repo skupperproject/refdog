@@ -28,6 +28,15 @@ def generate_objects():
     _resources.generate(resource_model)
     _commands.generate(command_model)
 
+    # for obj in concept_model.objects:
+    #     print(obj, obj.id)
+    # for obj in resource_model.objects:
+    #     print(obj, obj.id)
+    # for obj in command_model.objects:
+    #     print(obj, obj.id)
+    #     for sc in obj.subcommands:
+    #         print(sc, sc.id)
+
 def generate_index():
     append = StringBuilder()
 
