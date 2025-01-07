@@ -52,7 +52,7 @@ The name of the resource to be created.
 The name is the default routing key and host if the
 `--routing-key` and `--host` options are not specified.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+<table class="fields"><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
 </div>
 </div>
@@ -69,7 +69,7 @@ The port of the local listener.  Clients at this site use
 the listener host and port to establish connections to
 the remote service.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td></table>
+<table class="fields"><tr><th>Updatable</th><td>True</td></table>
 
 </div>
 </div>
@@ -88,7 +88,7 @@ remote site, the local listener and the remote connector
 must have matching routing keys.
 
 <table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td></table>
+</td><tr><th>Updatable</th><td>True</td></table>
 
 </div>
 </div>
@@ -106,7 +106,7 @@ at this site use the listener host and port to
 establish connections to the remote service.
 
 <table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>Updatable</th><td>True</td></table>
+</td><tr><th>Updatable</th><td>True</td></table>
 
 </div>
 </div>
@@ -187,7 +187,7 @@ Set the path to the kubeconfig file.
 
 Set the current namespace.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a>, <a href="{{site_prefix}}/topics/system-namespaces.html">System namespaces</a></td></table>
+<table class="fields"><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a>, <a href="{{site_prefix}}/topics/system-namespaces.html">System namespaces</a></td></table>
 
 </div>
 </div>
@@ -209,7 +209,7 @@ Set the Skupper platform.
 </td></tr><tr><th><code>docker</code></th><td><p>Docker</p>
 </td></tr><tr><th><code>podman</code></th><td><p>Podman</p>
 </td></tr><tr><th><code>linux</code></th><td><p>Linux</p>
-</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/platform.html">Platform concept</a></td></table>
+</td></tr></table></td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/platform.html">Platform concept</a></td></table>
 
 </div>
 </div>
@@ -224,7 +224,7 @@ Set the Skupper platform.
 
 Display help and exit.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
 
 </div>
 </div>

@@ -47,7 +47,7 @@ You can now safely delete /home/fritz/token.yaml.
 
 The name of the token file to use.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
 
 </div>
 </div>
@@ -63,7 +63,7 @@ Raise an error if the operation does not complete in the given
 period of time.
 
 <table class="fields"><tr><th>Default</th><td><p><code>60s</code></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+</td></table>
 
 </div>
 </div>
@@ -77,7 +77,7 @@ period of time.
 
 The link cost to use when creating the link.
 
-<table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/load-balancing.html">Load balancing</a></td></table>
+<table class="fields"><tr><th>Default</th><td>1</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/load-balancing.html">Load balancing</a></td></table>
 
 </div>
 </div>
@@ -124,7 +124,7 @@ Set the path to the kubeconfig file.
 
 Set the current namespace.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a>, <a href="{{site_prefix}}/topics/system-namespaces.html">System namespaces</a></td></table>
+<table class="fields"><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a>, <a href="{{site_prefix}}/topics/system-namespaces.html">System namespaces</a></td></table>
 
 </div>
 </div>
@@ -146,7 +146,7 @@ Set the Skupper platform.
 </td></tr><tr><th><code>docker</code></th><td><p>Docker</p>
 </td></tr><tr><th><code>podman</code></th><td><p>Podman</p>
 </td></tr><tr><th><code>linux</code></th><td><p>Linux</p>
-</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/platform.html">Platform concept</a></td></table>
+</td></tr></table></td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/platform.html">Platform concept</a></td></table>
 
 </div>
 </div>
@@ -161,7 +161,7 @@ Set the Skupper platform.
 
 Display help and exit.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
 
 </div>
 </div>

@@ -59,7 +59,7 @@ Produce verbose structured output.
 
 <table class="fields"><tr><th>Choices</th><td><table class="choices"><tr><th><code>json</code></th><td><p>Produce JSON output</p>
 </td></tr><tr><th><code>yaml</code></th><td><p>Produce YAML output</p>
-</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+</td></tr></table></td></table>
 
 </div>
 </div>
@@ -106,7 +106,7 @@ Set the path to the kubeconfig file.
 
 Set the current namespace.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a>, <a href="{{site_prefix}}/topics/system-namespaces.html">System namespaces</a></td></table>
+<table class="fields"><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a>, <a href="{{site_prefix}}/topics/system-namespaces.html">System namespaces</a></td></table>
 
 </div>
 </div>
@@ -128,7 +128,7 @@ Set the Skupper platform.
 </td></tr><tr><th><code>docker</code></th><td><p>Docker</p>
 </td></tr><tr><th><code>podman</code></th><td><p>Podman</p>
 </td></tr><tr><th><code>linux</code></th><td><p>Linux</p>
-</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/platform.html">Platform concept</a></td></table>
+</td></tr></table></td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/platform.html">Platform concept</a></td></table>
 
 </div>
 </div>
@@ -143,7 +143,7 @@ Set the Skupper platform.
 
 Display help and exit.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
 
 </div>
 </div>

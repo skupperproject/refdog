@@ -4,46 +4,34 @@ refdog_links:
 - title: Platform concept
   url: /concepts/platform.html
 refdog_object_has_attributes: true
-refdog_toc:
-- id: ''
-  title: Overview
-- id: usage
-  title: Usage
-- id: primary-options
-  title: Primary options
-- id: global-options
-  title: Global options
 ---
 
 # System apply command
-
-<section>
-
-Apply resource configuration from files or standard input.
-
-<!-- File locations and names -->
-
-<table class="fields"><tr><th>Platforms</th><td>Docker, Podman, Linux</td></table>
-
-</section>
-
-<section>
-
-## Usage
 
 ~~~ shell
 skupper system apply [options]
 ~~~
 
-</section>
+Create or update resources using files or standard input.
 
-<section class="attributes">
+<!-- File locations and names -->
+<!-- Need to run reload after -->
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 ## Primary options
 
-</section>
+<div class="attribute">
+<div class="attribute-heading">
+<h3 id="option-filename">--filename</h3>
+<div class="attribute-type-info">(-f) &lt;string&gt;</div>
+</div>
+<div class="attribute-body">
 
-<section class="attributes">
+
+
+</div>
+</div>
 
 ## Global options
 
@@ -57,7 +45,7 @@ skupper system apply [options]
 
 Set the current namespace.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a>, <a href="{{site_prefix}}/topics/system-namespaces.html">System namespaces</a></td></table>
+<table class="fields"><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a>, <a href="{{site_prefix}}/topics/system-namespaces.html">System namespaces</a></td></table>
 
 </div>
 </div>
@@ -79,7 +67,7 @@ Set the Skupper platform.
 </td></tr><tr><th><code>docker</code></th><td><p>Docker</p>
 </td></tr><tr><th><code>podman</code></th><td><p>Podman</p>
 </td></tr><tr><th><code>linux</code></th><td><p>Linux</p>
-</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/platform.html">Platform concept</a></td></table>
+</td></tr></table></td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/platform.html">Platform concept</a></td></table>
 
 </div>
 </div>
@@ -94,9 +82,7 @@ Set the Skupper platform.
 
 Display help and exit.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
 
 </div>
 </div>
-
-</section>

@@ -35,7 +35,7 @@ status are used to generate access tokens from the grant.
 
 The name of the resource.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
+<table class="fields"><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/names/">Kubernetes object names</a></td></table>
 
 </div>
 </div>
@@ -49,7 +49,7 @@ The name of the resource.
 
 The namespace of the resource.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/platform.html">Platform concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a>, <a href="{{site_prefix}}/topics/system-namespaces.html">System namespaces</a></td></table>
+<table class="fields"><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/platform.html">Platform concept</a>, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a>, <a href="{{site_prefix}}/topics/system-namespaces.html">System namespaces</a></td></table>
 
 </div>
 </div>
@@ -66,7 +66,7 @@ The namespace of the resource.
 The number of times an access token for this grant can
 be redeemed.
 
-<table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+<table class="fields"><tr><th>Default</th><td>1</td></table>
 
 </div>
 </div>
@@ -82,7 +82,7 @@ The period of time in which an access token for this
 grant can be redeemed.
 
 <table class="fields"><tr><th>Default</th><td><p><code>15m</code></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+</td></table>
 
 </div>
 </div>
@@ -101,7 +101,7 @@ for redemption.
 If not set, a value is generated and placed in the `code`
 status property.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
 
 </div>
 </div>
@@ -119,7 +119,7 @@ certificate when redeeming a token for this grant.
 
 If not set, `defaultIssuer` on the Site rsource is used.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/router-tls.html">Router TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a></td></table>
+<table class="fields"><tr><th>See also</th><td><a href="{{site_prefix}}/topics/router-tls.html">Router TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a></td></table>
 
 </div>
 </div>
@@ -138,7 +138,7 @@ string name and a string value.
 **Note:** In general, we recommend not changing settings from
 their default values.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-settings.html">Resource settings</a></td></table>
+<table class="fields"><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-settings.html">Resource settings</a></td></table>
 
 </div>
 </div>
@@ -159,7 +159,7 @@ The current state of the resource.
   `message` for more information.
 - `Ready`: The resource is ready to use.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a></td></table>
+<table class="fields"><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a></td></table>
 
 </div>
 </div>
@@ -174,7 +174,7 @@ The current state of the resource.
 A human-readable status message.  Error messages are reported
 here.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a></td></table>
+<table class="fields"><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a></td></table>
 
 </div>
 </div>
@@ -189,7 +189,7 @@ here.
 The number of times a token for this grant has been
 redeemed.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
 
 </div>
 </div>
@@ -203,7 +203,7 @@ redeemed.
 
 The point in time when the grant expires.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
 
 </div>
 </div>
@@ -217,7 +217,7 @@ The point in time when the grant expires.
 
 The URL of the token-redemption service for this grant.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
 
 </div>
 </div>
@@ -232,7 +232,7 @@ The URL of the token-redemption service for this grant.
 The trusted server certificate of the token-redemption
 service for this grant.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
 
 </div>
 </div>
@@ -248,7 +248,7 @@ The secret code used to authenticate access tokens
 submitted for redemption.
 
 <table class="fields"><tr><th>Default</th><td><p><em>Generated</em></p>
-</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+</td></table>
 
 </div>
 </div>
@@ -271,7 +271,7 @@ resource.
 - `Ready`: The grant is ready to use.  All other
   conditions are true.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes</td><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a>, <a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
+<table class="fields"><tr><th>See also</th><td><a href="{{site_prefix}}/topics/resource-status.html">Resource status</a>, <a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
 
 </div>
 </div>

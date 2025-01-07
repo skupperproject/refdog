@@ -3,28 +3,68 @@ body_class: object command
 refdog_links:
 - title: Platform concept
   url: /concepts/platform.html
-- title: System stop command
-  url: /commands/system/stop.html
 refdog_object_has_attributes: true
 ---
 
-# System start command
+# System generate-bundle command
 
 ~~~ shell
-skupper system start [options]
+skupper system generate-bundle <bundle-file> [options]
 ~~~
 
-Start the Skupper router for the current site.  This starts the
-systemd service for the current namespace.
-
-**Note:** In the absence of a long-lived controller, this
-operation first reads the input resources and updates the router
-configuration.  With a long-lived controller, that config update
-would have already taken place.
+Generate a self-contained site bundle for use on another
+machine.
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 ## Primary options
+
+<div class="attribute">
+<div class="attribute-heading">
+<h3 id="option-bundle-file">&lt;bundle-file&gt;</h3>
+<div class="attribute-type-info">string</div>
+<div class="attribute-flags">required</div>
+</div>
+<div class="attribute-body">
+
+The name of the bundle file to generate.
+
+The command exits with an error if the file already exists.
+
+
+
+</div>
+</div>
+
+<div class="attribute">
+<div class="attribute-heading">
+<h3 id="option-input">--input</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+</div>
+<div class="attribute-body">
+
+The location of the Skupper resources defining the site.
+
+<table class="fields"><tr><th>Default</th><td><p><code>$HOME/.local/share/skupper/namespaces/&lt;namespace&gt;/input/resources</code></p>
+</td></table>
+
+</div>
+</div>
+
+<div class="attribute">
+<div class="attribute-heading">
+<h3 id="option-type">--type</h3>
+<div class="attribute-type-info">&lt;string&gt;</div>
+</div>
+<div class="attribute-body">
+
+<table class="fields"><tr><th>Default</th><td><p><code>tarball</code></p>
+</td><tr><th>Choices</th><td><table class="choices"><tr><th><code>tarball</code></th><td><p>A gzipped tar file</p>
+</td></tr><tr><th><code>shell-script</code></th><td><p>A self-extracting shell script</p>
+</td></tr></table></td></table>
+
+</div>
+</div>
 
 ## Global options
 

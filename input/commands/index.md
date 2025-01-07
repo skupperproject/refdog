@@ -64,12 +64,14 @@ refdog_links:
 
 <table class="objects">
 <tr><th><a href="{{site_prefix}}/commands/system/index.html">System</a></th><td>Overview of system commands</td></tr>
-<tr><th><a href="{{site_prefix}}/commands/system/install.html">System install</a></th><td>Install the Skupper components</td></tr>
-<tr><th><a href="{{site_prefix}}/commands/system/uninstall.html">System uninstall</a></th><td>Remove the Skupper components</td></tr>
-<tr><th><a href="{{site_prefix}}/commands/system/start.html">System start</a></th><td>Start up the Skupper components for the current site</td></tr>
-<tr><th><a href="{{site_prefix}}/commands/system/stop.html">System stop</a></th><td>Shut down the Skupper components for the current site</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/system/install.html">System install</a></th><td>Install local system infrastructure and configure the environment</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/system/uninstall.html">System uninstall</a></th><td>Remove local system infrastructure</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/system/start.html">System start</a></th><td>Start the Skupper router for the current site</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/system/stop.html">System stop</a></th><td>Stop the Skupper router for the current site</td></tr>
 <tr><th><a href="{{site_prefix}}/commands/system/reload.html">System reload</a></th><td>Reload the site configuration</td></tr>
-<tr><th><a href="{{site_prefix}}/commands/system/status.html">System status</a></th><td>Display the status of the system</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/system/apply.html">System apply</a></th><td>Create or update resources using files or standard input</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/system/delete.html">System delete</a></th><td>Delete resources using files or standard input</td></tr>
+<tr><th><a href="{{site_prefix}}/commands/system/generate-bundle.html">System generate-bundle</a></th><td>Generate a self-contained site bundle for use on another machine</td></tr>
 </table>
 
 

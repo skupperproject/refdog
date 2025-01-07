@@ -79,7 +79,9 @@ def generate_attribute_fields(attr):
     if attr.choices:
         rows.append(f"<tr><th>Choices</th><td>{generate_attribute_choices(attr)}</td>")
 
-    if attr.platforms:
+    from commands import Option
+
+    if attr.platforms and isinstance(attr, Option) and attr.platforms != attr.object.platforms:
         rows.append(f"<tr><th>Platforms</th><td>{', '.join(attr.platforms)}</td>")
 
     if attr.updatable:

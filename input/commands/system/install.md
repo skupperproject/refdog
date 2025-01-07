@@ -14,32 +14,24 @@ refdog_object_has_attributes: true
 skupper system install [options]
 ~~~
 
-Install the Skupper components.
+Install local system infrastructure and configure the environment.
 
-This creates the router configuration, TLS certificates, and
-systemd unit file for the current namespace.  On Docker or
-Podman, it also creates containers for Skupper components.
+It does the following:
 
-<table class="fields"><tr><th>Platforms</th><td>Docker, Podman, Linux</td></table>
+- Checks the local environment for required resources and
+  configuration.
+- In some instances, configures the local environment.  On
+  Podman, it starts the Podman API service if it is not already
+  available.
+
+**Note:** With a long-lived controller, this operation would
+also start the controller as a user-scoped systemd service.
+
+<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 ## Primary options
 
 ## Global options
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="option-namespace">--namespace</h3>
-<div class="attribute-type-info">(-n) &lt;name&gt;</div>
-<div class="attribute-flags">global</div>
-</div>
-<div class="attribute-body">
-
-Set the current namespace.
-
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/">Kubernetes namespaces</a>, <a href="{{site_prefix}}/topics/system-namespaces.html">System namespaces</a></td></table>
-
-</div>
-</div>
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
@@ -58,7 +50,7 @@ Set the Skupper platform.
 </td></tr><tr><th><code>docker</code></th><td><p>Docker</p>
 </td></tr><tr><th><code>podman</code></th><td><p>Podman</p>
 </td></tr><tr><th><code>linux</code></th><td><p>Linux</p>
-</td></tr></table></td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/platform.html">Platform concept</a></td></table>
+</td></tr></table></td><tr><th>See also</th><td><a href="{{site_prefix}}/concepts/platform.html">Platform concept</a></td></table>
 
 </div>
 </div>
@@ -73,7 +65,7 @@ Set the Skupper platform.
 
 Display help and exit.
 
-<table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
+
 
 </div>
 </div>

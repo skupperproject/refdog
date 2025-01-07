@@ -3,28 +3,35 @@ body_class: object command
 refdog_links:
 - title: Platform concept
   url: /concepts/platform.html
-- title: System stop command
-  url: /commands/system/stop.html
 refdog_object_has_attributes: true
 ---
 
-# System start command
+# System delete command
 
 ~~~ shell
-skupper system start [options]
+skupper system delete [options]
 ~~~
 
-Start the Skupper router for the current site.  This starts the
-systemd service for the current namespace.
+Delete resources using files or standard input.
 
-**Note:** In the absence of a long-lived controller, this
-operation first reads the input resources and updates the router
-configuration.  With a long-lived controller, that config update
-would have already taken place.
+<!-- File locations and names -->
+<!-- Need to run reload after -->
 
 <table class="fields"><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
 ## Primary options
+
+<div class="attribute">
+<div class="attribute-heading">
+<h3 id="option-filename">--filename</h3>
+<div class="attribute-type-info">(-f) &lt;string&gt;</div>
+</div>
+<div class="attribute-body">
+
+
+
+</div>
+</div>
 
 ## Global options
 
