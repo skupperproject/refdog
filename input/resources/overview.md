@@ -78,17 +78,16 @@ create and configure Skupper resources.
 - [Listener](listener.html): Binds a local connection endpoint to connectors in remote sites
 - [Connector](connector.html): Binds a local workload to listeners in remote sites
 
-A site is a central concept in Skupper, representing a location on the
-network where part of your application is running.  The Site resource
-functions as the foundational building block for your network,
-carrying all the necessary configuration for that specific
-location. You can think of it as the starting point for setting up
-your application network.
+These are the main resources you typically work with. The other
+resources are for less common situations.
 
-A link is a secure communication channel that joins two Skupper sites.
-Links are the backbone of a Skupper network, providing connectivity
-for distributed applications to communicate across geographical
-boundaries and various platforms.
+The Site resource functions as the foundational building block for
+your network, carrying all the necessary configuration for that
+specific location.  You can think of it as the starting point for
+setting up your application network.
+
+The Link resource configures a secure communication channel that joins
+two sites to form a network.
 
 Listeners and connectors are how you expose services on Skupper
 networks.  They work in tandem to bind client connection endpoints to
@@ -101,12 +100,22 @@ server workloads that run in other sites.
 - [AccessToken](access-token.html): A short-lived credential used to create a link
 - [RouterAccess](router-access.html): Configuration for secure access to the site router
 
+The AccessGrant and AccessToken resources provide short-lived tokens
+for securely creating links.
+
+The RouterAccess resource is for advanced scenarios where you need to
+configure how the Skupper router is exposed.
+
 ## Service exposure resources
 
 - [Listener](listener.html): Binds a local connection endpoint to connectors in remote sites
 - [Connector](connector.html): Binds a local workload to listeners in remote sites
 - [AttachedConnector](attached-connector.html): A connector in a peer namespace
 - [AttachedConnectorBinding](attached-connector-binding.html): A binding to an attached connector in a peer namespace
+
+The AttachedConnector and AttachedConnectorBinding resources allow you
+to expose resources running in other namespaces on the same Kubernetes
+cluster where your site is located.
 
 <!-- ## Hello World using YAML -->
 
