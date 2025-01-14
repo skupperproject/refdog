@@ -22,10 +22,10 @@ integration with other tools.
 
 #### Capabilities
 
-- **Site configuration:** Create and update Skupper sites.
-- **Site linking:** Create and update site-to-site links.
+- **Site configuration:** Create and update Skupper sites
+- **Site linking:** Create and update site-to-site links
 - **Service exposure:** Expose application workloads on Skupper
-  networks.
+  networks
 
 #### Controller
 
