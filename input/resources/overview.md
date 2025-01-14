@@ -58,56 +58,55 @@ On Docker, Podman, and Linux, resources are stored on the local
 filesystem under
 `~/.local/share/skupper/namespaces/default/input/resources`.
 
-The Skupper CLI provides additional commands to help create and
-configure Skupper resources.
+The Skupper CLI provides additional type-specific commands to help
+create and configure Skupper resources.
 
-#### Common properties
+<!-- #### Common properties -->
 
-- spec.settings
-- spec.tlsCredentials
-- status.Status
-- status.Message
-- status.Conditions
+<!-- - spec.settings -->
+<!-- - spec.tlsCredentials -->
+<!-- - status.Status -->
+<!-- - status.Message -->
+<!-- - status.Conditions -->
 
-#### Labels and annotations
-
-{{lipsum()}}
+<!-- #### Labels and annotations -->
 
 ## Primary resources
 
-- **Site:** {{lipsum(10)}}
-- **Link:** {{lipsum(10)}}
-- **Listener:** {{lipsum(10)}}
-- **Connector:** {{lipsum(10)}}
+- [Site](site.html): A place on the network where application workloads are running
+- [Link](link.html): A channel for communication between sites
+- [Listener](listener.html): Binds a local connection endpoint to connectors in remote sites
+- [Connector](connector.html): Binds a local workload to listeners in remote sites
 
-These are the main resources you interact with.  The others are for
-less common scenarios.
+A site is a central concept in Skupper, representing a location on the
+network where part of your application is running.  It functions as
+the foundational building block for your Skupper network, carrying all
+the necessary configuration for that specific location. You can think
+of it as the starting point for setting up your application network.
 
-Site is the heart of things.  The Site resource represents a location
-in a Skupper network.  It carries all the configuration for the site.
-The starting point.  The parent of other Skupper resources.
+A link is a secure communication channel that joins two Skupper sites,
+enabling your application to connect across sites.  Links are the
+backbone of a Skupper network, providing connectivity for distributed
+applications to communicate across geographical boundaries and various
+platforms.
 
-Links....  The Link resource is usually not created directly.
-Instead, you use access tokens.
-
-Listener and connector are the key resources for service exposure.
+Listeners and connectors enable you expose services on Skupper
+networks.  They work in tandem to bind client connection endpoints to
+workloads that run in different locations.
 
 ## Site linking resources
 
-- **Link:** {{lipsum(10)}}
-- **AccessGrant:** {{lipsum(10)}}
-- **AccessToken:** {{lipsum(10)}}
-- **RouterAccess:** {{lipsum(10)}}
-
-You may want to use the CLI (or some other automation) to do the
-linking part.
+- [Link](link.html): A channel for communication between sites
+- [AccessGrant](access-grant.html): Permission to redeem access tokens for links to the local site
+- [AccessToken](access-token.html): A short-lived credential used to create a link
+- [RouterAccess](router-access.html): Configuration for secure access to the site router
 
 ## Service exposure resources
 
-- **Listener:** {{lipsum(10)}}
-- **Connector:** {{lipsum(10)}}
-- **AttachedConnector:** {{lipsum(10)}}
-- **AttachedConnectorBinding:** {{lipsum(10)}}
+- [Listener](listener.html): Binds a local connection endpoint to connectors in remote sites
+- [Connector](connector.html): Binds a local workload to listeners in remote sites
+- [AttachedConnector](attached-connector.html): A connector in a peer namespace
+- [AttachedConnectorBinding](attached-connector-binding.html): A binding to an attached connector in a peer namespace
 
 <!-- ## Hello World using YAML -->
 

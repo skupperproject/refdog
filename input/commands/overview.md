@@ -141,6 +141,9 @@ skupper system start [options]
 skupper system stop [options]
 skupper system reload [options]
 skupper system status [options]
+skupper system apply [options]
+skupper system delete [options]
+skupper system generate-bundle [options]
 ~~~
 
 These commands configure and operate the Skupper runtime components
