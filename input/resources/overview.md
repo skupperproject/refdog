@@ -79,20 +79,20 @@ create and configure Skupper resources.
 - [Connector](connector.html): Binds a local workload to listeners in remote sites
 
 A site is a central concept in Skupper, representing a location on the
-network where part of your application is running.  It functions as
-the foundational building block for your Skupper network, carrying all
-the necessary configuration for that specific location. You can think
-of it as the starting point for setting up your application network.
+network where part of your application is running.  The Site resource
+functions as the foundational building block for your network,
+carrying all the necessary configuration for that specific
+location. You can think of it as the starting point for setting up
+your application network.
 
-A link is a secure communication channel that joins two Skupper sites,
-enabling your application to connect across sites.  Links are the
-backbone of a Skupper network, providing connectivity for distributed
-applications to communicate across geographical boundaries and various
-platforms.
+A link is a secure communication channel that joins two Skupper sites.
+Links are the backbone of a Skupper network, providing connectivity
+for distributed applications to communicate across geographical
+boundaries and various platforms.
 
-Listeners and connectors enable you expose services on Skupper
+Listeners and connectors are how you expose services on Skupper
 networks.  They work in tandem to bind client connection endpoints to
-workloads that run in different locations.
+server workloads that run in other sites.
 
 ## Site linking resources
 
