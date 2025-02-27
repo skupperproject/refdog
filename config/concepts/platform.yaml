@@ -3,8 +3,9 @@ related_concepts: [site]
 description: |
   A platform is a system for running application
   [workloads](workload.html).  A platform hosts [sites](site.html).
-  Skupper supports Kubernetes, Docker, Podman, and Linux.  Each site
-  in a network can run on any supported platform.
+  Skupper supports Kubernetes, Docker, Podman, and Linux. Note that Docker,
+  Podman and Linux platforms are referred to as *local systems* in
+  documentation.  Each site in a network can run on any supported platform.
 
   Platforms provide _namespaces_ for related workloads and resources.
   Skupper uses namespaces to host multiple independent sites on one
