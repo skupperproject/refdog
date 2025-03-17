@@ -145,7 +145,7 @@ alternative to `selector` for specifying the target server.
 This is an alternative to setting the `--selector` or
 `--workload` options.
 
-<table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
+<table class="fields"><tr><th>Default</th><td><p><em>On Kubernetes: Value of name</em><br/><em>On Docker, Podman, and Linux:</em> <code>localhost</code></p>
 </td><tr><th>Updatable</th><td>True</td></table>
 
 </div>

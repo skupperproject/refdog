@@ -216,7 +216,8 @@ connector/host:
   name: host
   required: false
   property: host
-  default: _Value of name_
+  default: |
+    _On Kubernetes: Value of name_<br/>_On Docker, Podman, and Linux:_ `localhost`
   description: |
     The hostname or IP address of the server.  This is an
     alternative to `selector` for specifying the target server.
