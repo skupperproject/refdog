@@ -37,7 +37,7 @@ subcommands:
       Site "west" is ready.
 
       # Update multiple settings
-      $ skupper site update --enable-link-access --service-account alice
+      $ skupper site update --enable-link-access --enable-ha
     include_options: [site/*, update/*, context/*, global/*]
     options:
       - name: name

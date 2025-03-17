@@ -29,7 +29,7 @@ Waiting for status...
 Site "west" is ready.
 
 # Update multiple settings
-$ skupper site update --enable-link-access --service-account alice
+$ skupper site update --enable-link-access --enable-ha
 ~~~
 
 ## Primary options
