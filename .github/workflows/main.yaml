@@ -36,7 +36,6 @@ jobs:
         run: |
           plano render
         env:
-          SITE_PREFIX: /refdog
           PLANO_COLOR: 1
       - uses: actions/upload-pages-artifact@v3
         with:

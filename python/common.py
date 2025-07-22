@@ -24,7 +24,7 @@ def generate_object_metadata(obj):
     def add_link(other):
         link_data.append({
             "title": other.title_with_type,
-            "url": other.href.removeprefix("{{site_prefix}}"),
+            "url": other.href.removeprefix("{{site.prefix}}"),
         })
 
     for name in obj.links:
@@ -116,7 +116,7 @@ def generate_attribute_links(attr):
         title, url = link
 
         if url.startswith("/"):
-            url = "{{site_prefix}}" + url
+            url = "{{site.prefix}}" + url
 
         out.append(f"<a href=\"{url}\">{title}</a>")
 
@@ -245,7 +245,7 @@ class ModelObject:
     @property
     def href(self):
         type = self.__class__.__name__.lower()
-        return f"{{{{site_prefix}}}}/{plural(type)}/{self.id}.html"
+        return f"{{{{site.prefix}}}}/{plural(type)}/{self.id}.html"
 
     @property
     def corresponding_objects(self):

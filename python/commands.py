@@ -385,7 +385,7 @@ class Command(ModelObject):
     @property
     def href(self):
         if self.subcommands:
-            return f"{{{{site_prefix}}}}/commands/{self.id}/index.html"
+            return f"{{{{site.prefix}}}}/commands/{self.id}/index.html"
 
         return super().href
 

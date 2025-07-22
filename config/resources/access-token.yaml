@@ -10,8 +10,8 @@ description: |
   **Note:** Access tokens are often [issued][issue] and
   [redeemed][redeem] using the Skupper CLI.
 
-  [issue]: {{site_prefix}}/commands/token/issue.html
-  [redeem]: {{site_prefix}}/commands/token/redeem.html
+  [issue]: {{site.prefix}}/commands/token/issue.html
+  [redeem]: {{site.prefix}}/commands/token/redeem.html
 metadata:
   include_properties: [metadata/*]
 spec:

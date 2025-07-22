@@ -23,6 +23,6 @@ skupper token [subcommand] [options]
 ## Subcommands
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/commands/token/issue.html">Token issue</a></th><td>Issue a token file redeemable for a link to the current site</td></tr>
-<tr><th><a href="{{site_prefix}}/commands/token/redeem.html">Token redeem</a></th><td>Redeem a token file in order to create a link to a remote site</td></tr>
+<tr><th><a href="{{site.prefix}}/commands/token/issue.html">Token issue</a></th><td>Issue a token file redeemable for a link to the current site</td></tr>
+<tr><th><a href="{{site.prefix}}/commands/token/redeem.html">Token redeem</a></th><td>Redeem a token file in order to create a link to a remote site</td></tr>
 </table>

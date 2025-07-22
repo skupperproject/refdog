@@ -1,3 +1,3 @@
 # Topics
 
-{{directory_nav(page)}}
+{{page.directory_nav()}}

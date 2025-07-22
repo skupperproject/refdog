@@ -15,6 +15,6 @@ skupper debug [subcommand] [options]
 ## Subcommands
 
 <table class="objects">
-<tr><th><a href="{{site_prefix}}/commands/debug/check.html">Debug check</a></th><td>Run diagnostic checks</td></tr>
-<tr><th><a href="{{site_prefix}}/commands/debug/dump.html">Debug dump</a></th><td>Generate a debug dump file</td></tr>
+<tr><th><a href="{{site.prefix}}/commands/debug/check.html">Debug check</a></th><td>Run diagnostic checks</td></tr>
+<tr><th><a href="{{site.prefix}}/commands/debug/dump.html">Debug dump</a></th><td>Generate a debug dump file</td></tr>
 </table>
