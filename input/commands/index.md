@@ -1,4 +1,5 @@
 ---
+title: Commands
 refdog_links:
   - title: Command overview
     url: overview.html

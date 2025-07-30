@@ -8,6 +8,7 @@ def generate(model):
     append = StringBuilder()
 
     append("---")
+    append("title: Concepts")
     append("refdog_links:")
     append("  - title: Concept overview")
     append("    url: overview.html")

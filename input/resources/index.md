@@ -1,4 +1,5 @@
 ---
+title: Resources
 refdog_links:
   - title: Resource overview
     url: overview.html
