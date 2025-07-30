@@ -1,17 +1,7 @@
----
-refdog_links:
-  - title: Resource index
-    url: index.html
-  - title: Concept overview
-    url: /concepts/overview.html
-  - title: Command overview
-    url: /commands/overview.html
----
-
 <!-- - Some resource fields are "updatable" - you can change their values -->
 <!--   without . -->
 
-# Skupper resource overview
+## Overview
 
 Skupper provides custom resource definitions (CRDs) that define the
 API for configuring and deploying Skupper networks.  Skupper uses
@@ -71,7 +61,7 @@ create and configure Skupper resources.
 
 <!-- #### Labels and annotations -->
 
-## Primary resources
+#### Primary resources
 
 - [Site](site.html): A place on the network where application workloads are running
 - [Link](link.html): A channel for communication between sites
@@ -93,7 +83,7 @@ Listeners and connectors are how you expose services on Skupper
 networks.  They work in tandem to bind client connection endpoints to
 server workloads that run in other sites.
 
-## Site linking resources
+#### Site linking resources
 
 - [Link](link.html): A channel for communication between sites
 - [AccessGrant](access-grant.html): Permission to redeem access tokens for links to the local site
@@ -106,7 +96,7 @@ for securely creating links.
 The RouterAccess resource is for advanced scenarios where you need to
 configure how the Skupper router is exposed.
 
-## Service exposure resources
+#### Service exposure resources
 
 - [Listener](listener.html): Binds a local connection endpoint to connectors in remote sites
 - [Connector](connector.html): Binds a local workload to listeners in remote sites
@@ -117,7 +107,7 @@ The AttachedConnector and AttachedConnectorBinding resources allow you
 to expose resources running in other namespaces on the same Kubernetes
 cluster where your site is located.
 
-<!-- ## Hello World using YAML -->
+<!-- #### Hello World using YAML -->
 
 <!-- Site West: -->
 

@@ -5,6 +5,7 @@ import re as _re
 StringBuilder = _plano.StringBuilder
 capitalize, join, plural = _plano.capitalize, _plano.join, _plano.plural
 debug, notice, warning, error, fail = _plano.debug, _plano.notice, _plano.warning, _plano.error, _plano.fail
+read = _plano.read
 emit_yaml, read_yaml = _plano.emit_yaml, _plano.read_yaml
 list_dir, make_dir = _plano.list_dir, _plano.make_dir
 string_matches_glob = _plano.string_matches_glob

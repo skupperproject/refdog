@@ -10,15 +10,15 @@ def generate(model):
     append("---")
     append("title: Commands")
     append("refdog_links:")
-    append("  - title: Command overview")
-    append("    url: overview.html")
-    append("  - title: Concept index")
+    append("  - title: Concepts")
     append("    url: /concepts/index.html")
-    append("  - title: Resource index")
+    append("  - title: Resources")
     append("    url: /resources/index.html")
     append("---")
     append()
     append("# Skupper commands")
+    append()
+    append("## Index")
     append()
 
     for group in model.groups:
@@ -42,6 +42,8 @@ def generate(model):
             append()
 
         append()
+
+    append(read("config/commands/overview.md"))
 
     append.write("input/commands/index.md")
 
@@ -221,7 +223,7 @@ class CommandModel(Model):
 
         self.option_data = read_yaml(join(self.config_dir, "options.yaml"))
 
-        self.init(exclude=["options.yaml"])
+        self.init(exclude=["options.yaml", "overview.md"])
 
     @property
     def commands(self):

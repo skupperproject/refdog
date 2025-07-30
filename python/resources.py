@@ -10,15 +10,15 @@ def generate(model):
     append("---")
     append("title: Resources")
     append("refdog_links:")
-    append("  - title: Resource overview")
-    append("    url: overview.html")
-    append("  - title: Concept index")
+    append("  - title: Concepts")
     append("    url: /concepts/index.html")
-    append("  - title: Command index")
+    append("  - title: Commands")
     append("    url: /commands/index.html")
     append("---")
     append()
     append("# Skupper resources")
+    append()
+    append("## Index")
     append()
 
     for group in model.groups:
@@ -31,6 +31,8 @@ def generate(model):
 
         append("</table>")
         append()
+
+    append(read("config/resources/overview.md"))
 
     append.write("input/resources/index.md")
 
@@ -142,7 +144,7 @@ class ResourceModel(Model):
 
         self.property_data = read_yaml(join(self.config_dir, "properties.yaml"))
 
-        self.init(exclude=["properties.yaml"])
+        self.init(exclude=["properties.yaml", "overview.md"])
 
         self.resources_by_name = dict()
         self.crds_by_name = dict()

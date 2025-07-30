@@ -1,14 +1,4 @@
----
-refdog_links:
-  - title: Command index
-    url: index.html
-  - title: Concept overview
-    url: /concepts/overview.html
-  - title: Resource overview
-    url: /resources/overview.html
----
-
-# Skupper command overview
+## Overview
 
 Skupper uses the `skupper` command as its command-line interface (CLI)
 for creating and operating Skupper networks.
@@ -91,7 +81,7 @@ The Skupper CLI returns a non-zero exit code indicating an error when:
 * Referenced resources are not found.
 * The operation fails or times out.
 
-## Resource commands
+#### Resource commands
 
 ~~~
 skupper <resource-type> create <resource-name> [options]
@@ -119,7 +109,7 @@ The `generate` commands produce Skupper resources as YAML or JSON
 output.  They are useful for directing the output to files or other
 tools.
 
-## Token commands
+#### Token commands
 
 ~~~
 skupper token issue <token-file> [options]
@@ -132,7 +122,7 @@ The `token issue` command creates an access token for use in remote
 sites.  The `token redeem` command uses an access token to create a
 link to the issuing site.
 
-## System commands
+#### System commands
 
 ~~~
 skupper system install [options]
@@ -149,7 +139,7 @@ skupper system generate-bundle [options]
 These commands configure and operate the Skupper runtime components
 for Docker, Podman, and Linux sites.
 
-## Debug commands
+#### Debug commands
 
 ~~~
 skupper debug check [options]
@@ -158,7 +148,7 @@ skupper debug dump [options]
 
 These commands help you troubleshoot problems.
 
-## Version command
+#### Version command
 
 ~~~
 skupper version

@@ -10,15 +10,15 @@ def generate(model):
     append("---")
     append("title: Concepts")
     append("refdog_links:")
-    append("  - title: Concept overview")
-    append("    url: overview.html")
-    append("  - title: Resource index")
+    append("  - title: Resources")
     append("    url: /resources/index.html")
-    append("  - title: Command index")
+    append("  - title: Commands")
     append("    url: /commands/index.html")
     append("---")
     append()
     append("# Skupper concepts")
+    append()
+    append("## Index")
     append()
 
     for group in model.groups:
@@ -31,6 +31,8 @@ def generate(model):
 
         append("</table>")
         append()
+
+    append(read("config/concepts/overview.md"))
 
     append.write("input/concepts/index.md")
 
@@ -59,7 +61,7 @@ class ConceptModel(Model):
     def __init__(self):
         super().__init__(Concept, "config/concepts")
 
-        self.init()
+        self.init(exclude=["overview.md"])
 
     @property
     def concepts(self):

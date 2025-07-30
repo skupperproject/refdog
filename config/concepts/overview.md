@@ -1,21 +1,11 @@
----
-refdog_links:
-  - title: Concept index
-    url: index.html
-  - title: Resource overview
-    url: /resources/overview.html
-  - title: Command overview
-    url: /commands/overview.html
----
-
-# Skupper concept overview
+## Overview
 
 <figure>
   <img src="images/overview-model.svg"/>
   <figcaption>The primary concepts in the Skupper model</figcaption>
 </figure>
 
-## Sites
+#### Sites
 
 Skupper's job is to provide connectivity for applications that have
 parts running in multiple locations and on different platforms.  A
@@ -29,7 +19,7 @@ namespace, so you can have multiple sites on one platform.
   <figcaption>A site with three workloads</figcaption>
 </figure>
 
-## Networks
+#### Networks
 
 In a distributed application, those workloads need to communicate with
 other workloads in other sites.  Skupper uses [links](link.html)
@@ -45,7 +35,7 @@ application-focused [network](network.html).  You can use short-lived
   <figcaption>A simple network with two sites</figcaption>
 </figure>
 
-## Services
+#### Services
 
 Site-to-site links are distinct from application connections.  Links
 form the transport for your network. Application connections are
@@ -69,7 +59,7 @@ running.
   <figcaption>A workload exposed as a service in a remote site</figcaption>
 </figure>
 
-## Applications
+#### Applications
 
 An [application](application.html) is a set of
 [components](component.html) that work together to do something
