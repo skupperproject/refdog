@@ -2,151 +2,100 @@
 """
 sync_yaml_descriptions.py
 
-Sync *all* `description` fields from a CRD's openAPIV3Schema to a site.yaml
-while preserving formatting (block scalars, comments) when ruamel.yaml is available.
+Sync all CRD openAPIV3Schema descriptions into a documentation-style site.yaml.
 
-Default behavior:
-- Auto-detect CRD schema at spec.versions[].schema.openAPIV3Schema
-- Auto-detect a schema-like mapping in site.yaml
-- Copy every `description` by property path from CRD schema -> site schema
-- Also copy the CRD root schema description to:
-    1) the site schema root's description (if present)
-    2) the site doc's top-level `description` (if present)
+Features
+- Requires ruamel.yaml (round-trip). No fallbacks.
+- Auto-detects target style:
+  1) JSON Schema (mapping-based properties) → path-to-path sync
+  2) Catalog style (properties is a list of {name: ...}) → name-based sync
+- Copies CRD root schema description to:
+    - target schema root (if present)
+    - top-level document 'description' (if present)
+- Only updates 'description' fields.
 
-I/O:
-- Reads --from FILE (CRD) and --to FILE (site), or reads target from stdin if --to omitted
-- Writes to stdout by default; use --in-place to overwrite the target
-- Logs progress to stderr; safe for pipes, tee, GNU Parallel
-
-Examples:
+Usage
   ./sync_yaml_descriptions.py --from skupper_site_crd.yaml --to site.yaml --in-place --report
 """
 
-import argparse, sys, io
+import sys, argparse
 from typing import Any, Dict, List, Tuple, Optional
 
-# Try ruamel for round-trip preservation; fall back to PyYAML.
-USE_RUAMEL = False
-yaml = None  # will be assigned
-try:
-    from ruamel.yaml import YAML
-    from ruamel.yaml.comments import CommentedMap, CommentedSeq
-    RUAMEL = YAML
-    USE_RUAMEL = True
-except Exception:
-    try:
-        import yaml as PYYAML
-        yaml = PYYAML
-        USE_RUAMEL = False
-    except Exception as e:
-        print(f"[sync] ERROR: Need a YAML library. Install ruamel.yaml (preferred) or PyYAML. ({e})", file=sys.stderr)
-        sys.exit(2)
+from ruamel.yaml import YAML
+from ruamel.yaml.comments import CommentedMap, CommentedSeq
 
 Json = Any
 PathT = Tuple[str, ...]
 
 
-# ---------- YAML IO ----------
+# ------------- YAML IO -------------
 
-def _load_yaml_stream_ruamel(fh: io.TextIOBase) -> List[Json]:
-    y = RUAMEL(typ="rt")
+def load_yaml_stream(path: Optional[str]) -> List[Json]:
+    y = YAML(typ="rt")
     y.preserve_quotes = True
-    docs: List[Json] = []
-    for doc in y.load_all(fh):
-        if doc is not None:
-            docs.append(doc)
-    return docs
+    with (open(path, "r", encoding="utf-8") if path else sys.stdin) as fh:
+        return [doc for doc in y.load_all(fh) if doc is not None]
 
-def _dump_yaml_stream_ruamel(docs: List[Json], fh: io.TextIOBase) -> None:
-    y = RUAMEL(typ="rt")
+def dump_yaml_stream(docs: List[Json], path: Optional[str]) -> None:
+    y = YAML(typ="rt")
     y.preserve_quotes = True
-    # Keep indentation friendly for docs
     y.indent(mapping=2, sequence=4, offset=2)
-    y.dump_all(docs, fh)
-
-def _load_yaml_stream_pyyaml(fh: io.TextIOBase) -> List[Json]:
-    docs = list(yaml.safe_load_all(fh))
-    return [d for d in docs if d is not None]
-
-def _dump_yaml_stream_pyyaml(docs: List[Json], fh: io.TextIOBase) -> None:
-    yaml.safe_dump_all(docs, fh, sort_keys=False)
-
-def load_yaml_path_or_stdin(path: Optional[str]) -> List[Json]:
-    if path:
-        with open(path, "r", encoding="utf-8") as fh:
-            return _load_yaml_stream_ruamel(fh) if USE_RUAMEL else _load_yaml_stream_pyyaml(fh)
-    return _load_yaml_stream_ruamel(sys.stdin) if USE_RUAMEL else _load_yaml_stream_pyyaml(sys.stdin)
-
-def dump_yaml_stream(docs: List[Json], fh: io.TextIOBase) -> None:
-    return _dump_yaml_stream_ruamel(docs, fh) if USE_RUAMEL else _dump_yaml_stream_pyyaml(docs, fh)
+    with (open(path, "w", encoding="utf-8") if path else sys.stdout) as fh:
+        y.dump_all(docs, fh)
 
 
-# ---------- Schema helpers ----------
+# ------------- helpers -------------
 
-def is_mapping(x: Json) -> bool:
-    if USE_RUAMEL:
-        return isinstance(x, (dict, CommentedMap))
-    return isinstance(x, dict)
+def is_map(x: Json) -> bool:
+    return isinstance(x, (dict, CommentedMap))
 
-def is_sequence(x: Json) -> bool:
-    if USE_RUAMEL:
-        return isinstance(x, (list, CommentedSeq))
-    return isinstance(x, list)
+def is_seq(x: Json) -> bool:
+    return isinstance(x, (list, CommentedSeq))
+
+def set_block_style_if_multiline(node_parent: Json, key: str) -> None:
+    try:
+        val = node_parent[key]
+        if isinstance(val, str) and "\n" in val:
+            node_parent[key].fa.set_block_style()  # type: ignore[attr-defined]
+    except Exception:
+        pass
+
+
+# ------------- CRD extraction -------------
 
 def find_crd_schema(doc: Json) -> Optional[Json]:
-    """Return openAPIV3Schema dict from a CRD, else None."""
     try:
-        spec = doc.get("spec") if is_mapping(doc) else None
-        versions = spec.get("versions", []) if is_mapping(spec) else []
+        spec = doc.get("spec") if is_map(doc) else None
+        versions = spec.get("versions", []) if is_map(spec) else []
         for v in versions or []:
-            schema = (v.get("schema") or {}).get("openAPIV3Schema") if is_mapping(v) else None
-            if is_mapping(schema):
+            schema = (v.get("schema") or {}).get("openAPIV3Schema") if is_map(v) else None
+            if is_map(schema):
                 return schema
     except Exception:
         pass
     return None
 
-def is_schema_like(node: Json) -> bool:
-    return is_mapping(node) and any(k in node for k in ("properties","type","description","items"))
-
-def find_first_schema(node: Json) -> Optional[Json]:
-    """Heuristically find first schema-like mapping in a document."""
-    if is_schema_like(node) and any(k in node for k in ("properties","type")):
-        return node
-    if is_mapping(node):
-        for _, v in list(node.items()):
-            r = find_first_schema(v)
-            if r is not None:
-                return r
-    if is_sequence(node):
-        for v in list(node):
-            r = find_first_schema(v)
-            if r is not None:
-                return r
-    return None
-
 def walk_schema(node: Json, path: PathT = ()) -> List[Tuple[PathT, Dict[str, Any]]]:
-    """Yield (path,node) for nodes in a JSON Schema-like tree."""
     out: List[Tuple[PathT, Dict[str, Any]]] = []
-    if not is_mapping(node):
+    if not is_map(node):
         return out
     out.append((path, node))
     props = node.get("properties")
-    if is_mapping(props):
-        for key, sub in list(props.items()):
+    if is_map(props):
+        for key, sub in props.items():
             out.extend(walk_schema(sub, path + (str(key),)))
     if "items" in node:
         out.extend(walk_schema(node.get("items"), path + ("items",)))
     if "additionalProperties" in node:
         ap = node.get("additionalProperties")
-        if is_mapping(ap):
+        if is_map(ap):
             out.extend(walk_schema(ap, path + ("additionalProperties",)))
-        elif is_sequence(ap):
+        elif is_seq(ap):
             for i, sub in enumerate(ap):
                 out.extend(walk_schema(sub, path + ("additionalProperties", str(i))))
-    for kw in ("allOf","anyOf","oneOf"):
+    for kw in ("allOf", "anyOf", "oneOf"):
         seq = node.get(kw)
-        if is_sequence(seq):
+        if is_seq(seq):
             for i, sub in enumerate(seq):
                 out.extend(walk_schema(sub, path + (kw, str(i))))
     return out
@@ -154,112 +103,177 @@ def walk_schema(node: Json, path: PathT = ()) -> List[Tuple[PathT, Dict[str, Any
 def build_desc_map(schema: Json) -> Dict[PathT, str]:
     out: Dict[PathT, str] = {}
     for p, n in walk_schema(schema):
-        d = n.get("description") if is_mapping(n) else None
+        d = n.get("description") if is_map(n) else None
         if isinstance(d, str):
             out[p] = d
     return out
 
-def path_to_str(p: PathT) -> str:
-    return "/".join(p) if p else "<root>"
 
-def set_block_style_if_multiline(node_parent: Json, key: str):
-    if not USE_RUAMEL:
-        return
-    try:
-        val = node_parent[key]
-        if isinstance(val, str) and ("\n" in val):
-            # Force block style on multi-line strings
-            node_parent.yaml_set_comment_before_after_key  # probe attribute exists
-            node_parent[key].fa.set_block_style()  # type: ignore[attr-defined]
-    except Exception:
-        pass
+# ------------- Target detection -------------
+
+def looks_like_json_schema_root(node: Json) -> bool:
+    return is_map(node) and ("properties" in node or "type" in node or "items" in node)
+
+def find_first_schema_like(node: Json) -> Optional[Json]:
+    if looks_like_json_schema_root(node) and ("properties" in node or "type" in node):
+        return node
+    if is_map(node):
+        for _, v in node.items():
+            r = find_first_schema_like(v)
+            if r is not None:
+                return r
+    if is_seq(node):
+        for v in node:
+            r = find_first_schema_like(v)
+            if r is not None:
+                return r
+    return None
+
+def is_catalog_properties_block(block: Json) -> bool:
+    # In site.yaml, e.g.: spec: { properties: [ {name: linkAccess, description: ...}, ... ] }
+    return is_map(block) and is_seq(block.get("properties"))
+
+def find_catalog_sections(doc: Json) -> Dict[str, Json]:
+    # return mapping of section name -> section mapping (with 'properties' list)
+    sections = {}
+    for key in ("spec", "status", "metadata"):
+        sec = doc.get(key)
+        if is_map(sec) and is_seq(sec.get("properties")):
+            sections[key] = sec
+    return sections
 
 
-# ---------- Main ----------
+# ------------- Apply updates -------------
 
-def main():
-    ap = argparse.ArgumentParser(description="Sync all description fields CRD -> site.yaml, preserving formatting.")
-    ap.add_argument("--from", dest="src", required=True, help="CRD YAML path")
-    ap.add_argument("--to", dest="dst", default=None, help="Target YAML path (site). If omitted, read target from stdin and write to stdout.")
-    ap.add_argument("--in-place", action="store_true", help="Overwrite target file (requires --to)")
-    ap.add_argument("--report", action="store_true", help="Report updated/missing paths to stderr")
-    args = ap.parse_args()
-
-    if not USE_RUAMEL:
-        print("[sync] NOTE: ruamel.yaml not available; falling back to PyYAML. Output formatting may change (quotes/newlines).", file=sys.stderr)
-
-    # Load
-    src_docs = load_yaml_path_or_stdin(args.src)
-    if not src_docs:
-        print("[sync] ERROR: source YAML is empty", file=sys.stderr); sys.exit(2)
-    dst_docs = load_yaml_path_or_stdin(args.dst)
-    if not dst_docs:
-        print("[sync] ERROR: target YAML is empty", file=sys.stderr); sys.exit(2)
-
-    src_doc = src_docs[0]
-    dst_doc = dst_docs[0]
-
-    # Find schemas
-    src_schema = find_crd_schema(src_doc)
-    if not is_mapping(src_schema):
-        print("[sync] ERROR: could not find CRD openAPIV3Schema in source", file=sys.stderr); sys.exit(2)
-
-    dst_schema = find_first_schema(dst_doc)
-    if not is_mapping(dst_schema):
-        print("[sync] ERROR: could not find a schema-like mapping in target", file=sys.stderr); sys.exit(2)
-
-    # Build map and apply
-    src_descs = build_desc_map(src_schema)
+def apply_to_json_schema(dst_schema: Json, src_descs: Dict[PathT, str], report: bool) -> Tuple[int,int]:
     index: Dict[PathT, Dict[str, Any]] = dict(walk_schema(dst_schema))
-
     updated = 0
     skipped = 0
     for p, d in src_descs.items():
         node = index.get(p)
         if node is None:
             skipped += 1
-            if args.report:
-                print(f"[miss]  {path_to_str(p)}", file=sys.stderr)
+            if report:
+                print(f"[miss]  {'/'.join(p) or '<root>'}", file=sys.stderr)
             continue
-        old = node.get("description")
-        if old != d:
+        if node.get("description") != d:
             node["description"] = d
-            if USE_RUAMEL:
-                # force block style for multi-line
-                set_block_style_if_multiline(node, "description")
+            set_block_style_if_multiline(node, "description")
             updated += 1
-            if args.report:
-                print(f"[update] {path_to_str(p)}", file=sys.stderr)
+            if report:
+                print(f"[update] {'/'.join(p) or '<root>'}", file=sys.stderr)
+    return updated, skipped
 
-    # Also copy root description → schema root and doc top-level description (if present)
-    root_updates = 0
+def apply_to_catalog(dst_doc: Json, src_descs: Dict[PathT, str], report: bool) -> Tuple[int,int]:
+    """
+    Map CRD paths like ('spec','linkAccess') or ('status','conditions') to
+    catalog entries like dst_doc['spec']['properties'][i]['name']=='linkAccess'.
+    """
+    sections = find_catalog_sections(dst_doc)
+    updated = 0
+    skipped = 0
+
+    # Build a quick index: for each section, name -> item mapping
+    name_index: Dict[str, Dict[str, Json]] = {}
+    for sec_name, sec in sections.items():
+        idx: Dict[str, Json] = {}
+        for item in sec.get("properties") or []:
+            if is_map(item) and isinstance(item.get("name"), str):
+                idx[item["name"]] = item
+        name_index[sec_name] = idx
+
+    for p, d in src_descs.items():
+        # We only attempt simple <section>/<field> matches
+        if len(p) != 2:
+            continue
+        section, field = p
+        if section not in name_index:
+            continue
+        target = name_index[section].get(field)
+        if target is None:
+            skipped += 1
+            if report:
+                print(f"[miss]  {section}/{field}", file=sys.stderr)
+            continue
+        if target.get("description") != d:
+            target["description"] = d
+            set_block_style_if_multiline(target, "description")
+            updated += 1
+            if report:
+                print(f"[update] {section}/{field}", file=sys.stderr)
+
+    return updated, skipped
+
+
+# ------------- Main -------------
+
+def main():
+    ap = argparse.ArgumentParser(description="Sync CRD descriptions into site.yaml (schema or catalog style).")
+    ap.add_argument("--from", dest="src", required=True, help="CRD YAML path")
+    ap.add_argument("--to", dest="dst", default=None, help="Target YAML path (site). If omitted, read from stdin and write to stdout.")
+    ap.add_argument("--in-place", action="store_true", help="Overwrite target file (requires --to)")
+    ap.add_argument("--report", action="store_true", help="Report updates/misses to stderr")
+    args = ap.parse_args()
+
+    src_docs = load_yaml_stream(args.src)
+    if not src_docs:
+        print("[sync] ERROR: source YAML is empty", file=sys.stderr); sys.exit(2)
+    dst_docs = load_yaml_stream(args.dst)
+    if not dst_docs:
+        print("[sync] ERROR: target YAML is empty", file=sys.stderr); sys.exit(2)
+
+    src_doc = src_docs[0]
+    dst_doc = dst_docs[0]
+
+    src_schema = find_crd_schema(src_doc)
+    if not is_map(src_schema):
+        print("[sync] ERROR: could not find openAPIV3Schema in source", file=sys.stderr); sys.exit(2)
+    src_descs = build_desc_map(src_schema)
+
+    # Decide target mode
+    dst_schema_like = find_first_schema_like(dst_doc)
+    catalog_sections = find_catalog_sections(dst_doc)
+
+    total_updated = 0
+    total_skipped = 0
+
+    if dst_schema_like and "properties" in dst_schema_like and is_map(dst_schema_like.get("properties")):
+        # JSON Schema mode
+        u, s = apply_to_json_schema(dst_schema_like, src_descs, report=args.report)
+        total_updated += u; total_skipped += s
+
+    if catalog_sections:
+        # Catalog mode (this will handle your 'linkAccess' case)
+        u, s = apply_to_catalog(dst_doc, src_descs, report=args.report)
+        total_updated += u; total_skipped += s
+
+    if not dst_schema_like and not catalog_sections:
+        print("[sync] ERROR: target doc does not look like schema or catalog; nothing to update", file=sys.stderr)
+        sys.exit(2)
+
+    # Sync root description to schema root and to top-level doc description (if present)
     root_desc = src_schema.get("description")
+    root_updates = 0
     if isinstance(root_desc, str):
-        if dst_schema.get("description") != root_desc:
-            dst_schema["description"] = root_desc
-            if USE_RUAMEL:
-                set_block_style_if_multiline(dst_schema, "description")
+        if dst_schema_like is not None and dst_schema_like.get("description") != root_desc:
+            dst_schema_like["description"] = root_desc
+            set_block_style_if_multiline(dst_schema_like, "description")
             root_updates += 1
-            if args.report:
-                print("[update] <schema-root description>", file=sys.stderr)
+            if args.report: print("[update] <schema-root description>", file=sys.stderr)
         if "description" in dst_doc and dst_doc.get("description") != root_desc:
             dst_doc["description"] = root_desc
-            if USE_RUAMEL:
-                set_block_style_if_multiline(dst_doc, "description")
+            set_block_style_if_multiline(dst_doc, "description")
             root_updates += 1
-            if args.report:
-                print("[update] <document-top-level description>", file=sys.stderr)
+            if args.report: print("[update] <document-top-level description>", file=sys.stderr)
 
-    print(f"[sync] crd->site: updated {updated} (+{root_updates} root), skipped {skipped}", file=sys.stderr)
+    print(f"[sync] updated {total_updated} (+{root_updates} root), skipped {total_skipped}", file=sys.stderr)
 
-    # Write
     if args.in_place:
         if not args.dst:
             print("[sync] ERROR: --in-place requires --to FILE", file=sys.stderr); sys.exit(2)
-        with open(args.dst, "w", encoding="utf-8") as fh:
-            dump_yaml_stream(dst_docs, fh)
+        dump_yaml_stream(dst_docs, args.dst)
     else:
-        dump_yaml_stream(dst_docs, sys.stdout)
+        dump_yaml_stream(dst_docs, None)
 
 
 if __name__ == "__main__":
