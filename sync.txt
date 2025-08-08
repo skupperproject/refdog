@@ -1,0 +1,1 @@
+ python sync.py --from crds/skupper_site_crd.yaml --to config/resources/site.yaml  --in-place

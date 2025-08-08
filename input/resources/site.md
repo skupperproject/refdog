@@ -15,10 +15,10 @@ refdog_object_has_attributes: true
 # Site resource
 
 A site is a place on the network where application workloads are
-running.  Sites are joined by [links](link.html).
+running. Sites are joined by links.
 
-The Site resource is the basis for site configuration.  It is the
-parent of all Skupper resources in its namespace.  There can be only
+The Site resource is the basis for site configuration. It is the
+parent of all Skupper resources in its namespace. There can be only
 one active Site resource per namespace.
 
 ## Examples

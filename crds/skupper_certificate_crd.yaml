@@ -1,7 +1,7 @@
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
-  name: routeraccesses.skupper.io
+  name: certificates.skupper.io
 spec:
   group: skupper.io
   versions:
@@ -10,44 +10,33 @@ spec:
       storage: true
       schema:
         openAPIV3Schema:
-          description: "Configuration for secure access to the site router"
+          description: "An internal resource used to indicate TLS credentials to be created"
           type: object
           properties:
             spec:
               type: object
               properties:
-                roles:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      port:
-                        type: integer
-                    required:
-                      - name
-                generateTlsCredentials:
-                  type: boolean
-                issuer:
+                ca:
                   type: string
-                accessType:
+                subject:
                   type: string
-                tlsCredentials:
-                  type: string
-                bindHost:
-                  type: string
-                subjectAlternativeNames:
+                hosts:
                   type: array
                   items:
                     type: string
+                client:
+                  type: boolean
+                server:
+                  type: boolean
+                signing:
+                  type: boolean
                 settings:
                   type: object
                   additionalProperties:
                     type: string
               required:
-              - roles
-              - tlsCredentials
+              - ca
+              - subject
             status:
               type: object
               properties:
@@ -91,32 +80,42 @@ spec:
                     - reason
                     - status
                     - type
-                endpoints:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                      host:
-                        type: string
-                      port:
-                        type: string
-                      group:
-                        type: string
+                expiration:
+                  type: string
+                  format: date-time
       subresources:
         status: {}
       additionalPrinterColumns:
+      - name: CA
+        type: string
+        description: Identifies the CA to be used in signing the certificate
+        jsonPath: .spec.ca
+      - name: Server
+        type: boolean
+        description: Whether or not the certificate is valid for use as a server
+        jsonPath: .spec.server
+      - name: Client
+        type: boolean
+        description: Whether or not the certificate is valid for use as a client
+        jsonPath: .spec.client
+      - name: Signing
+        type: boolean
+        description: Whether or not the certificate is valid for use as a CA
+        jsonPath: .spec.signing
       - name: Status
         type: string
-        description: The status of the router access
+        description: The status of the certificate
         jsonPath: .status.status
+      - name: Expiration
+        type: string
+        description: The expiration of the certificate if relevant
+        jsonPath: .status.expiration
       - name: Message
         type: string
         description: Any relevant human readable message
         jsonPath: .status.message
   scope: Namespaced
   names:
-    plural: routeraccesses
-    singular: routeraccess
-    kind: RouterAccess
+    plural: certificates
+    singular: certificate
+    kind: Certificate

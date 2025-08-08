@@ -10,6 +10,7 @@ spec:
       storage: true
       schema:
         openAPIV3Schema:
+          description: "Permission to redeem access tokens for links to the local site"
           type: object
           properties:
             spec:
@@ -74,7 +75,7 @@ spec:
                         type: string
                       type:
                         maxLength: 316
-                        pattern: ^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][- A-Za-z0-9_.]*)?[A-Za-z0-9])$
+                        pattern: ^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$
                         type: string
                     required:
                     - lastTransitionTime
@@ -92,11 +93,11 @@ spec:
       - name: Redemptions Made
         type: integer
         description: The number of times an access token originating from this grant has been redeemed
-        jsonPath: .status.redeemed
+        jsonPath: .status.redemptions
       - name: Expiration
         type: string
         description: When the grant will expire
-        jsonPath: .status.expiration
+        jsonPath: .status.expirationTime
       - name: Status
         type: string
         description: The status of the grant
@@ -110,3 +111,6 @@ spec:
     plural: accessgrants
     singular: accessgrant
     kind: AccessGrant
+    shortNames:
+    - grant
+    - gr
