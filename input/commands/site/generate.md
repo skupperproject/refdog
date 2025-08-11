@@ -101,10 +101,11 @@ Configure external access for links from remote sites.
 Sites and links are the basis for creating application
 networks. In a simple two-site network, at least one of the
 sites must have link access enabled. Choices include:
-  `none`: No linking to this site is enabled.
-  `default`: Use the default link access for the current platform. For OpenShift, the default is `route`. For other Kubernetes flavors, the default is `loadbalancer`.
-  `route`: Use an OpenShift route.
-  `loadbalancer`: Use a Kubernetes load balancer.
+
+- `none`: No linking to this site is enabled.
+- `default`: Use the default link access for the current platform. For OpenShift, the default is `route`. For other Kubernetes flavors, the default is `loadbalancer`.
+- `route`: Use an OpenShift route.
+- `loadbalancer`: Use a Kubernetes load balancer.
 
 <table class="fields"><tr><th>Default</th><td><p><code>default</code></p>
 </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>default</code></th><td><p>Use the default link access.  On OpenShift, the default is <code>route</code>.  For other Kubernetes flavors, the default is <code>loadbalancer</code>.</p>

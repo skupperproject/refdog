@@ -1,14 +1,13 @@
 name: Listener
 related_resources: [connector]
 links: [skupper/service-exposure]
-description: |
-  A listener binds a local connection endpoint to
-  [connectors](connector.html) in remote [sites](site.html).
-  Listeners and connectors are matched by routing key.
+description: |-
+  A listener binds a local connection endpoint to connectors in remote sites.
+  Listeners and connector are matched by routing key.
 
-  A Listener resource specifies a host and port for accepting
-  connections from local clients.  To expose a multi-port service,
-  create multiple listeners with the same host value.
+  A Listener resource specifies a host and port for accepting connections
+  from local client. To expose a multi-port service, create multiple listener
+  with the same host value.
 examples:
   - description: |
       A listener in site West for the Hello World backend service
@@ -31,43 +30,43 @@ spec:
     - name: routingKey
       updatable: true
       related_concepts: [routing-key]
-      description: |
-        The identifier used to route traffic from listeners to
-        connectors.  To enable connecting to a service at a
-        remote site, the local listener and the remote connector
-        must have matching routing keys.
+      description: |-
+        The identifier to route traffic from listeners to connectors. To
+        enable connecting to a service at a remote site, the local listener
+        and the remote connector must have matching routingKeys.
     - name: host
       updatable: true
-      description: |
-        The hostname or IP address of the local listener.  Clients
-        at this site use the listener host and port to
-        establish connections to the remote service.
+      description: |-
+        The hostname or IP address of the local listener. Clients at this
+        site use the listener host and port to establish connections to the
+        remote service.
     - name: port
       updatable: true
-      description: |
-        The port of the local listener.  Clients at this site use
-        the listener host and port to establish connections to
-        the remote service.
+      description: |-
+        The port of the local listener. Clients at this site use the listener
+        host and port to establish connections to the remote service.
     - name: exposePodsByName
       type: boolean
       group: advanced
       platforms: [Kubernetes]
       links: [skupper/individual-pod-services]
-      description: |
-        If true, expose each pod as an individual service.
+      description: |-
+        If true, expose each pod as an individual service. This allows individual
+        pods to be directly connected across a network. The pod names will be used
+        to create each service.
     - name: tlsCredentials
       group: advanced
-      links: [skupper/application-tls, kubernetes/tls-secrets, skupper/system-tls-credentials]
-      description: |
-        The name of a bundle of TLS certificates used for secure
-        client-to-router communication.  The bundle contains the
-        server certificate and key.  It optionally includes the
-        trusted client certificate (usually a CA) for mutual TLS.
+      links: [skupper/application-tls, kubernetes/tls-secrets, 
+            skupper/system-tls-credentials]
+      description: |-
+        The name of a bundle of TLS certificates used for secure client-to-router
+        communication. The bundle contains the server certificate and key. It
+        optionally includes the trusted client certificate (usually a CA) for
+        mutual TLS.
 
-        On Kubernetes, the value is the name of a Secret in the
-        current namespace.  On Docker, Podman, and Linux, the value is
-        the name of a directory under `input/certs/` in the current
-        namespace.
+        On Kubernetes, the value is the name of a Secret in the current namespace.
+        On Docker, Podman, and Linux, the value is the name of a directory under
+        input/certs/ in the current namespace.
     - name: type
       hidden: true
       group: advanced
@@ -75,30 +74,39 @@ spec:
       description: |
         The listener type.
     - name: settings
-      description: |
-        @description@
+      description: |-
+        A map containing additional settings. Each map entry has a string name and a string value.
 
-        - `observer`: Set the protocol observer used to generate
-          traffic metrics.<br/>
-          Default: `auto`.  Choices: `auto`, `none`, `http1`, `http2`.
+        **Note:** In general, we recommend not changing settings from
+        their default values.
+  description: |-
+    A listener binds a local connection endpoint to connectors in remote sites.
+    Listeners and connector are matched by routing key.
+
+    A Listener resource specifies a host and port for accepting connections
+    from local client. To expose a multi-port service, create multiple listener
+    with the same host value.
 status:
   include_properties: [status/*]
   properties:
     - name: status
+      description: |-
+        The current state of the resource.
+        - `Pending`: The resource is being processed.
+        - `Error`: There was an error processing the resource. See `message` for more information.
+        - `Ready`: The resource is ready to use.
     - name: message
+      description: |-
+        A human-readable status message. Error messages are reported here.
     - name: hasMatchingConnector
       type: boolean
       related_concepts: [routing-key]
-      description: |
-        True if there is at least one connector with a matching
-        routing key (usually in a remote site).
+      description: |-
+        True if there is at least one connector with a matching routing key (usually in a remote site).
     - name: conditions
-      description: |
-        @description@
+      description: |-
+        A set of named conditions describing the current state of the resource.
 
-        - `Configured`: The listener configuration has been applied
-          to the router.
-        - `Matched`: There is at least one connector corresponding to
-          this listener.
-        - `Ready`: The listener is ready to use.  All other conditions
-          are true.
+        - `Configured`: The link configuration has been applied to the router.
+        - `Operational`: The link to the remote site is active.
+        - `Ready`: The link is ready for use. All other conditions are true.

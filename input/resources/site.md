@@ -91,10 +91,11 @@ Configure external access for links from remote sites.
 Sites and links are the basis for creating application
 networks. In a simple two-site network, at least one of the
 sites must have link access enabled. Choices include:
-  `none`: No linking to this site is enabled.
-  `default`: Use the default link access for the current platform. For OpenShift, the default is `route`. For other Kubernetes flavors, the default is `loadbalancer`.
-  `route`: Use an OpenShift route.
-  `loadbalancer`: Use a Kubernetes load balancer.
+
+- `none`: No linking to this site is enabled.
+- `default`: Use the default link access for the current platform. For OpenShift, the default is `route`. For other Kubernetes flavors, the default is `loadbalancer`.
+- `route`: Use an OpenShift route.
+- `loadbalancer`: Use a Kubernetes load balancer.
 
 <table class="fields"><tr><th>Default</th><td><p><code>none</code></p>
 </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>none</code></th><td><p>No linking to this site is permitted.</p>
@@ -205,11 +206,11 @@ entry has a string name and a string value.
 **Note:** In  general, we recommend not changing settings
 from their default values.
 
-`routerDataConnections`: Set the number of router worker threads. Minimum 2.
-`routerLogging`: Set the number of router logging level. Options are "info", "warning", "error".
-`disable-anti-affinity`: Set to "true" in order to prevent skupper from specifying router pod affinity.
-`size`: The desired site sizing profile to use for constraining pod resources. Corresponds to a ConfigMap with matching `skupper.io/site-sizing` label.
-`tls-prior-valid-revisions`: Set the number of revisions to TLS Secrets backing Site Link connections that are permissible to hold open to preserve established service connections. An unsigned integer defaults to 1. Set to 0 to immediately disrupt connections secured with old TLS configurations.
+- `routerDataConnections`: Set the number of router worker threads. Minimum 2.
+- `routerLogging`: Set the number of router logging level. Options are "info", "warning", "error".
+- `disable-anti-affinity`: Set to "true" in order to prevent skupper from specifying router pod affinity.
+- `size`: The desired site sizing profile to use for constraining pod resources. Corresponds to a ConfigMap with matching `skupper.io/site-sizing` label.
+- `tls-prior-valid-revisions`: Set the number of revisions to TLS Secrets backing Site Link connections that are permissible to hold open to preserve established service connections. An unsigned integer defaults to 1. Set to 0 to immediately disrupt connections secured with old TLS configurations.
 
 <table class="fields"><tr><th>See also</th><td><a href="{{site.prefix}}/topics/resource-settings.html">Resource settings</a></td></table>
 
@@ -226,9 +227,10 @@ from their default values.
 <div class="attribute-body">
 
 The current state of the resource.
-`Pending`: The resource is being processed.
-`Error`: There was an error processing the resource. See `message` for more information.
-`Ready`: The resource is ready to use.
+
+- `Pending`: The resource is being processed.
+- `Error`: There was an error processing the resource. See `message` for more information.
+- `Ready`: The resource is ready to use.
 
 <table class="fields"><tr><th>See also</th><td><a href="{{site.prefix}}/topics/resource-status.html">Resource status</a></td></table>
 
@@ -259,10 +261,10 @@ A human-readable status message. Error messages are reported here.
 
 A set of named conditions describing the current state of the resource.
 
-`Configured`: The output resources for this resource have been created.
-`Running`: There is at least one router pod running.
-`Resolved`: The hostname or IP address for link access is available.
-`Ready`: The site is ready for use. All other conditions are true.
+- `Configured`: The output resources for this resource have been created.
+- `Running`: There is at least one router pod running.
+- `Resolved`: The hostname or IP address for link access is available.
+- `Ready`: The site is ready for use. All other conditions are true.
 
 <table class="fields"><tr><th>See also</th><td><a href="{{site.prefix}}/topics/resource-status.html">Resource status</a>, <a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
 

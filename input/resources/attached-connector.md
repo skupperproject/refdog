@@ -10,7 +10,8 @@ refdog_object_has_attributes: true
 
 # AttachedConnector resource
 
-A connector in a peer namespace.
+An attached connector is a connector in a peer namespace that allows you to bring a workload into your existing VAN without creating a separate site or establishing inter-site links.
+The name of this resource must be the same as that of the associated AttachedConnectorBinding resource in the site namespace.
 
 ## Metadata properties
 
@@ -57,8 +58,7 @@ The namespace of the resource.
 </div>
 <div class="attribute-body">
 
-The name of the namespace in which the site this connector
-should be attached to is defined.
+The name of the namespace in which the site this connector should be attached to is defined.
 
 
 

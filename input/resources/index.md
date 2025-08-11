@@ -35,7 +35,7 @@ refdog_links:
 <table class="objects">
 <tr><th><a href="{{site.prefix}}/resources/listener.html">Listener</a></th><td>A listener binds a local connection endpoint to connectors in remote sites</td></tr>
 <tr><th><a href="{{site.prefix}}/resources/connector.html">Connector</a></th><td>A connector binds a local workload to listeners in remote sites</td></tr>
-<tr><th><a href="{{site.prefix}}/resources/attached-connector.html">AttachedConnector</a></th><td>A connector in a peer namespace</td></tr>
+<tr><th><a href="{{site.prefix}}/resources/attached-connector.html">AttachedConnector</a></th><td>An attached connector is a connector in a peer namespace that allows you to bring a workload into your existing VAN without creating a separate site or establishing inter-site links</td></tr>
 <tr><th><a href="{{site.prefix}}/resources/attached-connector-binding.html">AttachedConnectorBinding</a></th><td>A binding to an attached connector in a peer namespace</td></tr>
 </table>
 

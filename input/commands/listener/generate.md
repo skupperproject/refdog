@@ -67,9 +67,8 @@ The name of the resource to be generated.
 </div>
 <div class="attribute-body">
 
-The port of the local listener.  Clients at this site use
-the listener host and port to establish connections to
-the remote service.
+The port of the local listener. Clients at this site use the listener
+host and port to establish connections to the remote service.
 
 <table class="fields"><tr><th>Updatable</th><td>True</td></table>
 
@@ -84,10 +83,9 @@ the remote service.
 </div>
 <div class="attribute-body">
 
-The identifier used to route traffic from listeners to
-connectors.  To enable connecting to a service at a
-remote site, the local listener and the remote connector
-must have matching routing keys.
+The identifier to route traffic from listeners to connectors. To
+enable connecting to a service at a remote site, the local listener
+and the remote connector must have matching routingKeys.
 
 <table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
 </td><tr><th>Updatable</th><td>True</td></table>
@@ -103,9 +101,9 @@ must have matching routing keys.
 </div>
 <div class="attribute-body">
 
-The hostname or IP address of the local listener.  Clients
-at this site use the listener host and port to
-establish connections to the remote service.
+The hostname or IP address of the local listener. Clients at this
+site use the listener host and port to establish connections to the
+remote service.
 
 <table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
 </td><tr><th>Updatable</th><td>True</td></table>
