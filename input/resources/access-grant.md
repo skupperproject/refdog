@@ -14,14 +14,12 @@ refdog_object_has_attributes: true
 
 # AccessGrant resource
 
-Permission to redeem access tokens for links to the local
-site.  A remote site can use a token containing the grant
-URL and secret code to obtain a certificate signed by the
-grant's certificate authority (CA), within a certain
-expiration window and for a limited number of redemptions.
+Permission to redeem access tokens for links to the local site.
+A remote site can use a token containing the grant URL and secret
+code to obtain a certificate signed by the grant's certificate authority (CA),
+within a certain expiration window and for a limited number of redemptions.
 
-The `code`, `url`, and `ca` properties of the resource
-status are used to generate access tokens from the grant.
+The code, url, and ca properties of the resource status are used to generate access tokens from the grant.
 
 ## Metadata properties
 
@@ -63,8 +61,8 @@ The namespace of the resource.
 </div>
 <div class="attribute-body">
 
-The number of times an access token for this grant can
-be redeemed.
+The maximum number of times an access token for this grant can be redeemed.
+The default value is `1`.
 
 <table class="fields"><tr><th>Default</th><td>1</td></table>
 
@@ -78,8 +76,8 @@ be redeemed.
 </div>
 <div class="attribute-body">
 
-The period of time in which an access token for this
-grant can be redeemed.
+The period of time in which an access token for this grant can be redeemed.
+The default value is `15m`.
 
 <table class="fields"><tr><th>Default</th><td><p><code>15m</code></p>
 </td></table>
@@ -95,11 +93,8 @@ grant can be redeemed.
 </div>
 <div class="attribute-body">
 
-The secret code to use to authenticate access tokens submitted
-for redemption.
-
-If not set, a value is generated and placed in the `code`
-status property.
+Advanced. The secret code to use to authenticate access tokens submitted for redemption.
+If not set, a value is generated and placed in the code status property.
 
 
 
@@ -114,10 +109,8 @@ status property.
 </div>
 <div class="attribute-body">
 
-The name of a Kubernetes secret used to generate a
-certificate when redeeming a token for this grant.
-
-If not set, `defaultIssuer` on the Site rsource is used.
+Advanced. The name of a Kubernetes secret used to generate a certificate when redeeming a token for this grant.
+If not set, `defaultIssuer` on the Site resource is used.
 
 <table class="fields"><tr><th>See also</th><td><a href="{{site.prefix}}/topics/router-tls.html">Router TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a></td></table>
 
@@ -153,10 +146,8 @@ their default values.
 <div class="attribute-body">
 
 The current state of the resource.
-
 - `Pending`: The resource is being processed.
-- `Error`: There was an error processing the resource.  See
-  `message` for more information.
+- `Error`: There was an error processing the resource. See `message` for more information.
 - `Ready`: The resource is ready to use.
 
 <table class="fields"><tr><th>See also</th><td><a href="{{site.prefix}}/topics/resource-status.html">Resource status</a></td></table>
@@ -171,8 +162,7 @@ The current state of the resource.
 </div>
 <div class="attribute-body">
 
-A human-readable status message.  Error messages are reported
-here.
+A human-readable status message. Error messages are reported here.
 
 <table class="fields"><tr><th>See also</th><td><a href="{{site.prefix}}/topics/resource-status.html">Resource status</a></td></table>
 
@@ -186,8 +176,7 @@ here.
 </div>
 <div class="attribute-body">
 
-The number of times a token for this grant has been
-redeemed.
+The number of times a token for this grant has been redeemed.
 
 
 
@@ -229,8 +218,7 @@ The URL of the token-redemption service for this grant.
 </div>
 <div class="attribute-body">
 
-The trusted server certificate of the token-redemption
-service for this grant.
+The trusted server certificate of the token-redemption service for this grant.
 
 
 
@@ -244,8 +232,7 @@ service for this grant.
 </div>
 <div class="attribute-body">
 
-The secret code used to authenticate access tokens
-submitted for redemption.
+The secret code used to authenticate access tokens submitted for redemption.
 
 <table class="fields"><tr><th>Default</th><td><p><em>Generated</em></p>
 </td></table>
@@ -261,15 +248,11 @@ submitted for redemption.
 </div>
 <div class="attribute-body">
 
-A set of named conditions describing the current state of the
-resource.
-
+A set of named conditions describing the current state of the resource.
 
 - `Processed`: The controller has accepted the grant.
-- `Resolved`: The grant service is available to process tokens
-  for this grant.
-- `Ready`: The grant is ready to use.  All other
-  conditions are true.
+- `Resolved`: The grant service is available to process tokens for this grant.
+- `Ready`: The grant is ready to use. All other conditions are true.
 
 <table class="fields"><tr><th>See also</th><td><a href="{{site.prefix}}/topics/resource-status.html">Resource status</a>, <a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
 

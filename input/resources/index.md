@@ -26,7 +26,7 @@ refdog_links:
 <tr><th><a href="{{site.prefix}}/resources/site.html">Site</a></th><td>A site is a place on the network where application workloads are running</td></tr>
 <tr><th><a href="{{site.prefix}}/resources/link.html">Link</a></th><td>A link is a channel for communication between sites</td></tr>
 <tr><th><a href="{{site.prefix}}/resources/access-grant.html">AccessGrant</a></th><td>Permission to redeem access tokens for links to the local site</td></tr>
-<tr><th><a href="{{site.prefix}}/resources/access-token.html">AccessToken</a></th><td>A short-lived credential used to create a link</td></tr>
+<tr><th><a href="{{site.prefix}}/resources/access-token.html">AccessToken</a></th><td>A short-lived credential used to create a link between sites</td></tr>
 <tr><th><a href="{{site.prefix}}/resources/router-access.html">RouterAccess</a></th><td>Configuration for secure access to the site router</td></tr>
 </table>
 
@@ -36,7 +36,7 @@ refdog_links:
 <tr><th><a href="{{site.prefix}}/resources/listener.html">Listener</a></th><td>A listener binds a local connection endpoint to connectors in remote sites</td></tr>
 <tr><th><a href="{{site.prefix}}/resources/connector.html">Connector</a></th><td>A connector binds a local workload to listeners in remote sites</td></tr>
 <tr><th><a href="{{site.prefix}}/resources/attached-connector.html">AttachedConnector</a></th><td>An attached connector is a connector in a peer namespace that allows you to bring a workload into your existing VAN without creating a separate site or establishing inter-site links</td></tr>
-<tr><th><a href="{{site.prefix}}/resources/attached-connector-binding.html">AttachedConnectorBinding</a></th><td>A binding to an attached connector in a peer namespace</td></tr>
+<tr><th><a href="{{site.prefix}}/resources/attached-connector-binding.html">AttachedConnectorBinding</a></th><td>An attached connector binding is a binding to an attached connector in a peer namespace that allows you to  bring a workload into your existing VAN without creating a separate site or establishing inter-site links</td></tr>
 </table>
 
 <!-- - Some resource fields are "updatable" - you can change their values -->

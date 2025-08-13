@@ -14,16 +14,14 @@ refdog_object_has_attributes: true
 
 # Connector resource
 
-A connector binds a local workload to [listeners](listener.html) in
-remote [sites](site.html).  Listeners and connectors are matched by
-routing key.
+A connector binds a local workload to listeners in remote sites. Listeners
+and connectors are matched by routing key.
 
-On Kubernetes, a Connector resource has a selector and port for
-specifying workload pods.
+On Kubernetes, a Connector resource has a selector and port for specifying
+workload pods.
 
-On Docker, Podman, and Linux, a Connector resource has a host and
-port for specifying a local server.  Optionally, Kubernetes can also
-use a host and port.
+On Docker, Podman, and Linux, a Connector resource has a host and port for
+specifying a local server. Optionally, Kubernetes can also use a host and port.
 
 ## Examples
 
@@ -82,10 +80,9 @@ The namespace of the resource.
 </div>
 <div class="attribute-body">
 
-The identifier used to route traffic from listeners to
-connectors.  To expose a local workload to a remote site, the
-remote listener and the local connector must have matching
-routing keys.
+The identifier used to route traffic from listeners to connectors.
+To expose a local workload to a remote site, the remote listener and
+the local connector must have matching routing keys.
 
 <table class="fields"><tr><th>Updatable</th><td>True</td><tr><th>See also</th><td><a href="{{site.prefix}}/concepts/routing-key.html">Routing key concept</a></td></table>
 
@@ -115,10 +112,10 @@ The port on the target server to connect to.
 </div>
 <div class="attribute-body">
 
-A Kubernetes label selector for specifying target server pods.  It
-uses `<label-name>=<label-value>` syntax.
+A Kubernetes label selector for specifying target server pods. It uses
+<label-name>=<label-value> syntax.
 
-On Kubernetes, either `selector` or `host` is required.
+On Kubernetes, either selector or host is required.
 
 <table class="fields"><tr><th>Updatable</th><td>True</td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors">Kubernetes label selectors</a></td></table>
 
@@ -133,14 +130,67 @@ On Kubernetes, either `selector` or `host` is required.
 </div>
 <div class="attribute-body">
 
-The hostname or IP address of the server.  This is an
-alternative to `selector` for specifying the target server.
+The hostname or IP address of the server. This is an alternative to
+selector for specifying the target server.
 
-On Kubernetes, either `selector` or `host` is required.
+On Kubernetes, either selector or host is required.
 
-On Docker, Podman, or Linux, `host` is required.
+On Docker, Podman, or Linux, host is required.
 
 <table class="fields"><tr><th>Updatable</th><td>True</td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="spec-tls-credentials">tlsCredentials</h3>
+<div class="attribute-type-info">string</div>
+<div class="attribute-flags">advanced</div>
+</div>
+<div class="attribute-body">
+
+The name of a bundle of TLS certificates used for secure router-to-server
+communication. The bundle contains the trusted server certificate
+(usually a CA). It optionally includes a client certificate and key for
+mutual TLS.
+
+On Kubernetes, the value is the name of a Secret in the current namespace.
+On Docker, Podman, and Linux, the value is the name of a directory under
+input/certs/ in the current namespace.
+
+<table class="fields"><tr><th>See also</th><td><a href="{{site.prefix}}/topics/application-tls.html">Application TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a>, <a href="{{site.prefix}}/topics/system-tls-credentials.html">System TLS credentials</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="spec-use-client-cert">useClientCert</h3>
+<div class="attribute-type-info">boolean</div>
+<div class="attribute-flags">advanced</div>
+</div>
+<div class="attribute-body">
+
+Send the client certificate when connecting in order to enable mutual TLS.
+
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>See also</th><td><a href="{{site.prefix}}/topics/application-tls.html">Application TLS</a></td></table>
+
+</div>
+</div>
+
+<div class="attribute collapsed">
+<div class="attribute-heading">
+<h3 id="spec-verify-hostname">verifyHostname</h3>
+<div class="attribute-type-info">boolean</div>
+<div class="attribute-flags">advanced</div>
+</div>
+<div class="attribute-body">
+
+If true, require that the hostname of the server connected to matches the
+hostname in the server's certificate.
+
+<table class="fields"><tr><th>Default</th><td>False</td><tr><th>See also</th><td><a href="{{site.prefix}}/topics/application-tls.html">Application TLS</a></td></table>
 
 </div>
 </div>
@@ -153,7 +203,7 @@ On Docker, Podman, or Linux, `host` is required.
 </div>
 <div class="attribute-body">
 
-If true, include server pods in the `NotReady` state.
+If true, include server pods in the NotReady state.
 
 <table class="fields"><tr><th>Default</th><td>False</td></table>
 
@@ -177,71 +227,16 @@ If true, expose each pod as an individual service.
 
 <div class="attribute collapsed">
 <div class="attribute-heading">
-<h3 id="spec-tls-credentials">tlsCredentials</h3>
-<div class="attribute-type-info">string</div>
-<div class="attribute-flags">advanced</div>
-</div>
-<div class="attribute-body">
-
-The name of a bundle of TLS certificates used for secure
-router-to-server communication.  The bundle contains the trusted
-server certificate (usually a CA).  It optionally includes a
-client certificate and key for mutual TLS.
-
-On Kubernetes, the value is the name of a Secret in the current
-namespace. On Docker, Podman, and Linux, the value is the name of
-a directory under `input/certs/` in the current namespace.
-
-<table class="fields"><tr><th>See also</th><td><a href="{{site.prefix}}/topics/application-tls.html">Application TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a>, <a href="{{site.prefix}}/topics/system-tls-credentials.html">System TLS credentials</a></td></table>
-
-</div>
-</div>
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="spec-use-client-cert">useClientCert</h3>
-<div class="attribute-type-info">boolean</div>
-<div class="attribute-flags">advanced</div>
-</div>
-<div class="attribute-body">
-
-Send the client certificate when connecting in order to enable
-mutual TLS.
-
-<table class="fields"><tr><th>Default</th><td>False</td><tr><th>See also</th><td><a href="{{site.prefix}}/topics/application-tls.html">Application TLS</a></td></table>
-
-</div>
-</div>
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
-<h3 id="spec-verify-hostname">verifyHostname</h3>
-<div class="attribute-type-info">boolean</div>
-<div class="attribute-flags">advanced</div>
-</div>
-<div class="attribute-body">
-
-If true, require that the hostname of the server connected to
-matches the hostname in the server's certificate.
-
-<table class="fields"><tr><th>Default</th><td>False</td><tr><th>See also</th><td><a href="{{site.prefix}}/topics/application-tls.html">Application TLS</a></td></table>
-
-</div>
-</div>
-
-<div class="attribute collapsed">
-<div class="attribute-heading">
 <h3 id="spec-settings">settings</h3>
 <div class="attribute-type-info">object</div>
 <div class="attribute-flags">advanced</div>
 </div>
 <div class="attribute-body">
 
-A map containing additional settings.  Each map entry has a
-string name and a string value.
+A map containing additional settings. Each map entry has a string name and a
+string value.
 
-**Note:** In general, we recommend not changing settings from
-their default values.
+Note: In general, we recommend not changing settings from their default values.
 
 <table class="fields"><tr><th>See also</th><td><a href="{{site.prefix}}/topics/resource-settings.html">Resource settings</a></td></table>
 

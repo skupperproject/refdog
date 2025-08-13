@@ -18,7 +18,7 @@ A listener binds a local connection endpoint to connectors in remote sites.
 Listeners and connector are matched by routing key.
 
 A Listener resource specifies a host and port for accepting connections
-from local client. To expose a multi-port service, create multiple listener
+from local client. To expose a multi-port service, create multiple listeners
 with the same host value.
 
 ## Examples
@@ -235,9 +235,9 @@ True if there is at least one connector with a matching routing key (usually in 
 
 A set of named conditions describing the current state of the resource.
 
-- `Configured`: The link configuration has been applied to the router.
-- `Operational`: The link to the remote site is active.
-- `Ready`: The link is ready for use. All other conditions are true.
+- `Configured`: The listener configuration has been applied to the router.
+- `Operational`: There is at least one connector corresponding to this listener.
+- `Ready`: The listener is ready for use. All other conditions are true.
 
 <table class="fields"><tr><th>See also</th><td><a href="{{site.prefix}}/topics/resource-status.html">Resource status</a>, <a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
 

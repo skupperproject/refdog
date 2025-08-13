@@ -78,12 +78,13 @@ sites must have link access enabled.
 </div>
 <div class="attribute-body">
 
-Configure external access for links from remote sites.
+Configure external access for links from remote sites. When
+set, implies a RouterAccess resource with accessType set
+according to the linkAccess value.
 
 Sites and links are the basis for creating application
 networks. In a simple two-site network, at least one of the
 sites must have link access enabled. Choices include:
-
 - `none`: No linking to this site is enabled.
 - `default`: Use the default link access for the current platform. For OpenShift, the default is `route`. For other Kubernetes flavors, the default is `loadbalancer`.
 - `route`: Use an OpenShift route.

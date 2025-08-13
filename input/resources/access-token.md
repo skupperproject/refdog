@@ -18,14 +18,9 @@ refdog_object_has_attributes: true
 
 # AccessToken resource
 
-A short-lived credential used to create a link.  An access token
-contains the URL and secret code of a corresponding access grant.
-
-**Note:** Access tokens are often [issued][issue] and
-[redeemed][redeem] using the Skupper CLI.
-
-[issue]: {{site.prefix}}/commands/token/issue.html
-[redeem]: {{site.prefix}}/commands/token/redeem.html
+A short-lived credential used to create a link between sites.
+An access token contains the URL and secret code of a corresponding access grant.
+**Note:** Access tokens are typically issued and redeemed using the Skupper CLI.
 
 ## Metadata properties
 
@@ -83,8 +78,7 @@ The URL of the grant service at the remote site.
 </div>
 <div class="attribute-body">
 
-The secret code used to authenticate the token when
-submitted for redemption.
+The secret code used to authenticate the token when submitted for redemption.
 
 
 
@@ -98,8 +92,7 @@ submitted for redemption.
 </div>
 <div class="attribute-body">
 
-The trusted server certificate of the grant service at the
-remote site.
+The trusted server certificate of the grant service at the remote site.
 
 
 
@@ -148,8 +141,7 @@ their default values.
 </div>
 <div class="attribute-body">
 
-True if the token has been redeemed.  Once a token is
-redeemed, it cannot be used again.
+True if the token has been redeemed. Once a token is redeemed, it cannot be used again.
 
 <table class="fields"><tr><th>Default</th><td>False</td></table>
 
@@ -198,9 +190,7 @@ here.
 </div>
 <div class="attribute-body">
 
-A set of named conditions describing the current state of the
-resource.
-
+A set of named conditions describing the current state of the resource.
 
 - `Redeemed`: The token has been exchanged for a link.
 

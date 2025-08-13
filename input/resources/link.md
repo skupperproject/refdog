@@ -14,7 +14,7 @@ refdog_object_has_attributes: true
 
 # Link resource
 
-A link is a channel for communication between [sites](site.html).
+A link is a channel for communication between sites.
 Links carry application connections and requests.  A set of linked
 sites constitutes a network.
 
@@ -25,9 +25,7 @@ _link access_.  Link access provides an external access point for
 accepting links.
 
 **Note:** Links are not usually created directly.  Instead, you can
-use an [access token][token] to obtain a link.
-
-[token]: access-token.html
+use an AccessToken to obtain a link.
 
 ## Metadata properties
 
@@ -85,8 +83,7 @@ port, and group.
 </div>
 <div class="attribute-body">
 
-The configured routing cost of sending traffic over
-the link.
+The configured routing cost of sending traffic over the link.
 
 <table class="fields"><tr><th>Default</th><td>1</td><tr><th>See also</th><td><a href="{{site.prefix}}/topics/load-balancing.html">Load balancing</a></td></table>
 
@@ -145,10 +142,8 @@ their default values.
 <div class="attribute-body">
 
 The current state of the resource.
-
 - `Pending`: The resource is being processed.
-- `Error`: There was an error processing the resource.  See
-  `message` for more information.
+- `Error`: There was an error processing the resource. See `message` for more information.
 - `Ready`: The resource is ready to use.
 
 <table class="fields"><tr><th>See also</th><td><a href="{{site.prefix}}/topics/resource-status.html">Resource status</a></td></table>
@@ -163,8 +158,7 @@ The current state of the resource.
 </div>
 <div class="attribute-body">
 
-A human-readable status message.  Error messages are reported
-here.
+A human-readable status message. Error messages are reported here.
 
 <table class="fields"><tr><th>See also</th><td><a href="{{site.prefix}}/topics/resource-status.html">Resource status</a></td></table>
 
@@ -207,15 +201,11 @@ The name of the site linked to.
 </div>
 <div class="attribute-body">
 
-A set of named conditions describing the current state of the
-resource.
+A set of named conditions describing the current state of the resource.
 
-
-- `Configured`: The link configuration has been applied to
-  the router.
+- `Configured`: The link configuration has been applied to the router.
 - `Operational`: The link to the remote site is active.
-- `Ready`: The link is ready to use.  All other conditions
-  are true.
+- `Ready`: The link is ready for use. All other conditions are true.
 
 <table class="fields"><tr><th>See also</th><td><a href="{{site.prefix}}/topics/resource-status.html">Resource status</a>, <a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
 

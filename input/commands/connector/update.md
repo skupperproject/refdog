@@ -76,10 +76,9 @@ The port on the target server to connect to.
 </div>
 <div class="attribute-body">
 
-The identifier used to route traffic from listeners to
-connectors.  To expose a local workload to a remote site, the
-remote listener and the local connector must have matching
-routing keys.
+The identifier used to route traffic from listeners to connectors.
+To expose a local workload to a remote site, the remote listener and
+the local connector must have matching routing keys.
 
 <table class="fields"><tr><th>Default</th><td><p><em>Value of name</em></p>
 </td><tr><th>Updatable</th><td>True</td></table>

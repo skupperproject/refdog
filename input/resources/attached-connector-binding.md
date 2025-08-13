@@ -10,7 +10,10 @@ refdog_object_has_attributes: true
 
 # AttachedConnectorBinding resource
 
-A binding to an attached connector in a peer namespace.
+An attached connector binding is a binding to an attached connector in a peer namespace that allows you to 
+bring a workload into your existing VAN without creating a separate site or establishing inter-site links.
+The name of this resource must be the same as that of the associated AttachedConnector resource in the peer 
+namespace.
 
 ## Metadata properties
 
@@ -57,8 +60,7 @@ The namespace of the resource.
 </div>
 <div class="attribute-body">
 
-The name of the namespace where the associated
-AttachedConnector is located.
+The name of the namespace where the associated AttachedConnector is located.
 
 
 

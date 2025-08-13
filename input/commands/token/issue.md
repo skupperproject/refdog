@@ -95,8 +95,8 @@ period of time.
 </div>
 <div class="attribute-body">
 
-The period of time in which an access token for this
-grant can be redeemed.
+The period of time in which an access token for this grant can be redeemed.
+The default value is `15m`.
 
 <table class="fields"><tr><th>Default</th><td><p><code>15m</code></p>
 </td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
@@ -111,8 +111,8 @@ grant can be redeemed.
 </div>
 <div class="attribute-body">
 
-The number of times an access token for this grant can
-be redeemed.
+The maximum number of times an access token for this grant can be redeemed.
+The default value is `1`.
 
 <table class="fields"><tr><th>Default</th><td>1</td><tr><th>Platforms</th><td>Kubernetes, Docker, Podman, Linux</td></table>
 
