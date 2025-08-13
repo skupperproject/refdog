@@ -1,0 +1,9 @@
+python sync.py --from crds/skupper_site_crd.yaml --to config/resources/site.yaml  --in-place
+python sync.py --from crds/skupper_router_access_crd.yaml --to config/resources/router-access.yaml --in-place 
+python sync.py --from crds/skupper_access_grant_crd.yaml --to config/resources/access-grant.yaml --in-place 
+python sync.py --from crds/skupper_access_token_crd.yaml --to config/resources/access-token.yaml --in-place 
+python sync.py --from crds/skupper_link_crd.yaml --to config/resources/link.yaml --in-place 
+python sync.py --from crds/skupper_connector_crd.yaml --to config/resources/connector.yaml --in-place 
+python sync.py --from crds/skupper_attached_connector_crd.yaml --to config/resources/attached-connector.yaml --in-place 
+python sync.py --from crds/skupper_attached_connector_binding_crd.yaml --to config/resources/attached-connector-binding.yaml --in-place 
+python sync.py --from crds/skupper_listener_crd.yaml --to config/resources/listener.yaml --in-place 

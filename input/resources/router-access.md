@@ -97,6 +97,10 @@ directory under `input/certs/` in the current namespace.
 </div>
 <div class="attribute-body">
 
+When set, Skupper generates the TLS credentials to be
+stored in the Secret specified by `tlsCredentials`. See
+also `issuer`.
+
 <table class="fields"><tr><th>Default</th><td>False</td></table>
 
 </div>
@@ -109,6 +113,10 @@ directory under `input/certs/` in the current namespace.
 </div>
 <div class="attribute-body">
 
+The name of the Kubernetes Secret containing the signing CA
+used to generate TLS certificates for the RouterAccess when
+`generateTlsCredentials` is set.
+
 
 
 </div>
@@ -120,6 +128,15 @@ directory under `input/certs/` in the current namespace.
 <div class="attribute-type-info">string</div>
 </div>
 <div class="attribute-body">
+
+Configures the access type for the router endpoints.
+Available access types and the default selection is
+configured on the Skupper controller for Kubernetes.
+
+The options available by default are:
+  - `local`: No external ingress. Implies a Kubernetes Service with type CluterIP.
+  - `route`: Exposed via an OpenShift Route.
+  - `loadbalancer`: Exposed via a Kubernetes Service with type LoadBalancer.
 
 <table class="fields"><tr><th>Default</th><td><p><em>On OpenShift, the default is <code>route</code>.  For other
 Kubernetes flavors, the default is <code>loadbalancer</code>.</em></p>
@@ -191,11 +208,9 @@ their default values.
 <div class="attribute-body">
 
 The current state of the resource.
-
-- `Pending`: The resource is being processed.
-- `Error`: There was an error processing the resource.  See
-  `message` for more information.
-- `Ready`: The resource is ready to use.
+ - `Pending`: The resource is being processed.
+ - `Error`: There was an error processing the resource. See `message` for more information.
+ - `Ready`: The resource is ready to use.
 
 <table class="fields"><tr><th>See also</th><td><a href="{{site.prefix}}/topics/resource-status.html">Resource status</a></td></table>
 
@@ -209,8 +224,7 @@ The current state of the resource.
 </div>
 <div class="attribute-body">
 
-A human-readable status message.  Error messages are reported
-here.
+A human-readable status message. Error messages are reported here.
 
 <table class="fields"><tr><th>See also</th><td><a href="{{site.prefix}}/topics/resource-status.html">Resource status</a></td></table>
 
@@ -225,15 +239,11 @@ here.
 </div>
 <div class="attribute-body">
 
-A set of named conditions describing the current state of the
-resource.
+A set of named conditions describing the current state of the resource.
 
-
-- `Configured`: The router access configuration has been applied to
-  the router.
-- `Resolved`: The connection endpoints are available.
-- `Ready`: The router access is ready to use.  All other
-  conditions are true.
+ - `Configured`: The output resources for this resource have been created.
+ - `Resolved`: The connection endpoints are available.
+ - `Ready`: The router access is ready for use. All other conditions are true.
 
 <table class="fields"><tr><th>See also</th><td><a href="{{site.prefix}}/topics/resource-status.html">Resource status</a>, <a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
 

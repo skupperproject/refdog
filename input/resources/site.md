@@ -15,10 +15,10 @@ refdog_object_has_attributes: true
 # Site resource
 
 A site is a place on the network where application workloads are
-running.  Sites are joined by [links](link.html).
+running. Sites are joined by links.
 
-The Site resource is the basis for site configuration.  It is the
-parent of all Skupper resources in its namespace.  There can be only
+The Site resource is the basis for site configuration. It is the
+parent of all Skupper resources in its namespace. There can be only
 one active Site resource per namespace.
 
 ## Examples
@@ -86,11 +86,17 @@ The namespace of the resource.
 </div>
 <div class="attribute-body">
 
-Configure external access for links from remote sites.
+Configure external access for links from remote sites. When
+set, implies a RouterAccess resource with accessType set
+according to the linkAccess value.
 
 Sites and links are the basis for creating application
-networks.  In a simple two-site network, at least one of
-the sites must have link access enabled.
+networks. In a simple two-site network, at least one of the
+sites must have link access enabled. Choices include:
+- `none`: No linking to this site is enabled.
+- `default`: Use the default link access for the current platform. For OpenShift, the default is `route`. For other Kubernetes flavors, the default is `loadbalancer`.
+- `route`: Use an OpenShift route.
+- `loadbalancer`: Use a Kubernetes load balancer.
 
 <table class="fields"><tr><th>Default</th><td><p><code>none</code></p>
 </td><tr><th>Choices</th><td><table class="choices"><tr><th><code>none</code></th><td><p>No linking to this site is permitted.</p>
@@ -109,13 +115,17 @@ the sites must have link access enabled.
 </div>
 <div class="attribute-body">
 
-Configure the site for high availability (HA).  HA sites
+Configure the site for high availability (HA). HA sites
 have two active routers.
 
 Note that Skupper routers are stateless, and they restart
-after failure.  This already provides a high level of
-availability.  Enabling HA goes further and reduces the
+after failure. This already provides a high level of
+availability. Enabling HA goes further and reduces the
 window of downtime caused by restarts.
+
+By default, Pod anti-affinity will be configured on the router
+Deployments when HA is enabled. To overwrite this behavior
+see the `disable-anti-affinity` Site setting.
 
 <table class="fields"><tr><th>Default</th><td>False</td><tr><th>Updatable</th><td>True</td><tr><th>See also</th><td><a href="{{site.prefix}}/topics/high-availability.html">High availability</a></td></table>
 
@@ -130,12 +140,12 @@ window of downtime caused by restarts.
 </div>
 <div class="attribute-body">
 
-The name of a Kubernetes secret containing the signing CA
-used to generate a certificate from a token.  A secret is
-generated if none is specified.
+Advanced. The name of a Kubernetes secret containing the
+signing CA used to generate a certificate from a token. A
+secret is generated if none is specified.
 
 This issuer is used by AccessGrant and RouterAccess if a
-specific issuer is not set.
+specific issuer is not set. Defaults to `skupper-site-ca`
 
 <table class="fields"><tr><th>Default</th><td><p><code>skupper-site-ca</code></p>
 </td><tr><th>Updatable</th><td>True</td><tr><th>See also</th><td><a href="{{site.prefix}}/topics/router-tls.html">Router TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a></td></table>
@@ -151,18 +161,14 @@ specific issuer is not set.
 </div>
 <div class="attribute-body">
 
-Configure the site to operate in edge mode.  Edge sites
-cannot accept links from remote sites.
+Advanced. Configure the site to operate in edge mode. Edge
+sites cannot accept links from remote sites.
 
 Edge mode can help you scale your network to large numbers
-of sites.  However, for networks with 16 or fewer sites,
+of sites. However, for networks with 16 or fewer sites,
 there is little benefit.
 
 Currently, edge sites cannot also have HA enabled.
-
-<!-- Future: An edge site has the exclusive ability to set a
-"VAN ID" that enables multiple VANs to operate on shared
-router infrastructure. -->
 
 <table class="fields"><tr><th>Default</th><td>False</td><tr><th>See also</th><td><a href="{{site.prefix}}/topics/large-networks.html">Large networks</a></td></table>
 
@@ -177,9 +183,9 @@ router infrastructure. -->
 </div>
 <div class="attribute-body">
 
-The name of the Kubernetes service account under which to run
-the Skupper router.  A service account is generated if none is
-specified.
+Advanced. The name of the Kubernetes service account under
+which to run the Skupper router. A service account is
+generated if none is specified.
 
 <table class="fields"><tr><th>Default</th><td><p><em>Generated</em></p>
 </td><tr><th>See also</th><td><a href="https://kubernetes.io/docs/concepts/security/service-accounts/">Kubernetes service accounts</a></td></table>
@@ -195,20 +201,17 @@ specified.
 </div>
 <div class="attribute-body">
 
-A map containing additional settings.  Each map entry has a
-string name and a string value.
+Advanced. A map containing additional settings. Each map
+entry has a string name and a string value.
 
-**Note:** In general, we recommend not changing settings from
-their default values.
+**Note:** In  general, we recommend not changing `settings`
+from their default values.
 
-
-- `routerDataConnections`: Set the number of data
-  connections the router uses when linking to other
-  routers.<br/>
-  Default: *Computed based on the number of router worker
-  threads.  Minimum 2.*
-- `routerLogging`: Set the router logging level.<br/>
-  Default: `info`.  Choices: `info`, `warning`, `error`.
+- `routerDataConnections`: Set the number of router worker threads. Minimum 2.
+- `routerLogging`: Set the number of router logging level. Options are "info", "warning", "error".
+- `disable-anti-affinity`: Set to "true" in order to prevent skupper from specifying router pod affinity.
+- `size`: The desired site sizing profile to use for constraining pod resources. Corresponds to a ConfigMap with matching `skupper.io/site-sizing` label.
+- `tls-prior-valid-revisions`: Set the number of revisions to TLS Secrets backing Site Link connections that are permissible to hold open to preserve established service connections. An unsigned integer defaults to 1. Set to 0 to immediately disrupt connections secured with old TLS configurations.
 
 <table class="fields"><tr><th>See also</th><td><a href="{{site.prefix}}/topics/resource-settings.html">Resource settings</a></td></table>
 
@@ -225,10 +228,8 @@ their default values.
 <div class="attribute-body">
 
 The current state of the resource.
-
 - `Pending`: The resource is being processed.
-- `Error`: There was an error processing the resource.  See
-  `message` for more information.
+- `Error`: There was an error processing the resource. See `message` for more information.
 - `Ready`: The resource is ready to use.
 
 <table class="fields"><tr><th>See also</th><td><a href="{{site.prefix}}/topics/resource-status.html">Resource status</a></td></table>
@@ -243,8 +244,7 @@ The current state of the resource.
 </div>
 <div class="attribute-body">
 
-A human-readable status message.  Error messages are reported
-here.
+A human-readable status message. Error messages are reported here.
 
 <table class="fields"><tr><th>See also</th><td><a href="{{site.prefix}}/topics/resource-status.html">Resource status</a></td></table>
 
@@ -259,17 +259,12 @@ here.
 </div>
 <div class="attribute-body">
 
-A set of named conditions describing the current state of the
-resource.
+A set of named conditions describing the current state of the resource.
 
-
-- `Configured`: The output resources for this resource have
-  been created.
+- `Configured`: The output resources for this resource have been created.
 - `Running`: There is at least one router pod running.
-- `Resolved`: The hostname or IP address for link access is
-  available.
-- `Ready`: The site is ready for use.  All other conditions
-  are true.
+- `Resolved`: The hostname or IP address for link access is available.
+- `Ready`: The site is ready for use. All other conditions are true.
 
 <table class="fields"><tr><th>See also</th><td><a href="{{site.prefix}}/topics/resource-status.html">Resource status</a>, <a href="https://maelvls.dev/kubernetes-conditions/">Kubernetes conditions</a></td></table>
 
@@ -284,8 +279,7 @@ resource.
 </div>
 <div class="attribute-body">
 
-The name of the Kubernetes secret containing the active
-default signing CA.
+The name of the Kubernetes secret containing the active default signing CA.
 
 <table class="fields"><tr><th>See also</th><td><a href="{{site.prefix}}/topics/router-tls.html">Router TLS</a>, <a href="https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets">Kubernetes TLS secrets</a></td></table>
 
@@ -300,10 +294,7 @@ default signing CA.
 </div>
 <div class="attribute-body">
 
-An array of connection endpoints.  Each item has a name, host,
-port, and group.
-
-These include connection endpoints for link access.
+An array of connection endpoints. Each item has a name, host, port, and group. These include connection endpoints for link access.
 
 <table class="fields"><tr><th>See also</th><td><a href="{{site.prefix}}/concepts/link.html">Link concept</a>, <a href="{{site.prefix}}/topics/site-linking.html">Site linking</a></td></table>
 

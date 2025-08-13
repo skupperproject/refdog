@@ -45,4 +45,4 @@ def update_crds():
             assert is_dir(extracted_dir)
 
             with working_dir(extracted_dir):
-                copy("api/types/crds", crd_dir, inside=False)
+                copy("config/crd/bases", crd_dir, inside=False)

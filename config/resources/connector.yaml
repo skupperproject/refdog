@@ -1,17 +1,15 @@
 name: Connector
 related_resources: [listener]
 links: [skupper/service-exposure]
-description: |
-  A connector binds a local workload to [listeners](listener.html) in
-  remote [sites](site.html).  Listeners and connectors are matched by
-  routing key.
+description: |-
+  A connector binds a local workload to listeners in remote sites. Listeners
+  and connectors are matched by routing key.
 
-  On Kubernetes, a Connector resource has a selector and port for
-  specifying workload pods.
+  On Kubernetes, a Connector resource has a selector and port for specifying
+  workload pods.
 
-  On Docker, Podman, and Linux, a Connector resource has a host and
-  port for specifying a local server.  Optionally, Kubernetes can also
-  use a host and port.
+  On Docker, Podman, and Linux, a Connector resource has a host and port for
+  specifying a local server. Optionally, Kubernetes can also use a host and port.
 examples:
   - description: |
       A connector in site East for the Hello World backend service
@@ -29,5 +27,67 @@ metadata:
   include_properties: [metadata/*]
 spec:
   include_properties: [connector/spec/*, settings]
+  properties:
+    - name: routingKey
+      description: |-
+        The identifier used to route traffic from listeners to connectors.
+        To expose a local workload to a remote site, the remote listener and
+        the local connector must have matching routing keys.
+       # will be filled from CRD
+    - name: selector
+      description: |-
+        A Kubernetes label selector for specifying target server pods. It uses
+        <label-name>=<label-value> syntax.
+
+        On Kubernetes, either selector or host is required.
+    - name: host
+      description: |-
+        The hostname or IP address of the server. This is an alternative to
+        selector for specifying the target server.
+
+        On Kubernetes, either selector or host is required.
+
+        On Docker, Podman, or Linux, host is required.
+    - name: port
+      description: |-
+        The port on the target server to connect to.
+    - name: tlsCredentials
+      description: |-
+        The name of a bundle of TLS certificates used for secure router-to-server
+        communication. The bundle contains the trusted server certificate
+        (usually a CA). It optionally includes a client certificate and key for
+        mutual TLS.
+
+        On Kubernetes, the value is the name of a Secret in the current namespace.
+        On Docker, Podman, and Linux, the value is the name of a directory under
+        input/certs/ in the current namespace.
+    - name: useClientCert
+      description: |-
+        Send the client certificate when connecting in order to enable mutual TLS.
+    - name: verifyHostname
+      description: |-
+        If true, require that the hostname of the server connected to matches the
+        hostname in the server's certificate.
+    - name: includeNotReadyPods
+      description: |-
+        If true, include server pods in the NotReady state.
+    - name: exposePodsByName
+      description: |-
+        If true, expose each pod as an individual service.
+    - name: settings
+      description: |-
+        A map containing additional settings. Each map entry has a string name and a
+        string value.
+
+        Note: In general, we recommend not changing settings from their default values.
+  description: |-
+    A connector binds a local workload to listeners in remote sites. Listeners
+    and connectors are matched by routing key.
+
+    On Kubernetes, a Connector resource has a selector and port for specifying
+    workload pods.
+
+    On Docker, Podman, and Linux, a Connector resource has a host and port for
+    specifying a local server. Optionally, Kubernetes can also use a host and port.
 status:
   include_properties: [status/*, connector/status/*]
