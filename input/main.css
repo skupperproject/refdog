@@ -507,3 +507,10 @@ figcaption {
     text-align: left;
     border: 1px solid hsl(0, 0%, 80%);
 }
+
+/* -- */
+
+div.index {
+    font-size: 0.95em;
+    margin-left: 1em;
+}

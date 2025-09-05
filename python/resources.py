@@ -16,9 +16,11 @@ def generate(model):
     append("    url: /commands/index.html")
     append("---")
     append()
-    append("# Skupper resources")
+    append("# Skupper API resources")
     append()
-    append("## Index")
+    append("## Resource index")
+    append()
+    append("<div class=\"index\">")
     append()
 
     for group in model.groups:
@@ -31,6 +33,9 @@ def generate(model):
 
         append("</table>")
         append()
+
+    append("</div>")
+    append()
 
     append(read("config/resources/overview.md"))
 

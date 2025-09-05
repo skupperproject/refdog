@@ -7,9 +7,11 @@ refdog_links:
     url: /resources/index.html
 ---
 
-# Skupper commands
+# Skupper CLI commands
 
-## Index
+## Command index
+
+<div class="index">
 
 #### Site operations
 
@@ -21,7 +23,6 @@ refdog_links:
 <tr><th><a href="{{site.prefix}}/commands/site/status.html">Site status</a></th><td>Display the status of a site</td></tr>
 <tr><th><a href="{{site.prefix}}/commands/site/generate.html">Site generate</a></th><td>Generate a Site resource</td></tr>
 </table>
-
 
 #### Site linking
 
@@ -38,7 +39,6 @@ refdog_links:
 <tr><th><a href="{{site.prefix}}/commands/link/status.html">Link status</a></th><td>Display the status of links in the current site</td></tr>
 <tr><th><a href="{{site.prefix}}/commands/link/generate.html">Link generate</a></th><td>Generate a Link resource for use in a remote site</td></tr>
 </table>
-
 
 #### Service exposure
 
@@ -60,7 +60,6 @@ refdog_links:
 <tr><th><a href="{{site.prefix}}/commands/connector/generate.html">Connector generate</a></th><td>Generate a Connector resource</td></tr>
 </table>
 
-
 #### System operations
 
 <table class="objects">
@@ -75,7 +74,6 @@ refdog_links:
 <tr><th><a href="{{site.prefix}}/commands/system/generate-bundle.html">System generate-bundle</a></th><td>Generate a self-contained site bundle for use on another machine</td></tr>
 </table>
 
-
 #### Debugging operations
 
 <table class="objects">
@@ -84,13 +82,13 @@ refdog_links:
 <tr><th><a href="{{site.prefix}}/commands/debug/dump.html">Debug dump</a></th><td>Generate a debug dump file</td></tr>
 </table>
 
-
 #### Other operations
 
 <table class="objects">
 <tr><th><a href="{{site.prefix}}/commands/version.html">Version</a></th><td>Display versions of Skupper components</td></tr>
 </table>
 
+</div>
 
 ## Overview
 

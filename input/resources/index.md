@@ -7,9 +7,11 @@ refdog_links:
     url: /commands/index.html
 ---
 
-# Skupper resources
+# Skupper API resources
 
-## Index
+## Resource index
+
+<div class="index">
 
 #### Primary resources
 
@@ -38,6 +40,8 @@ refdog_links:
 <tr><th><a href="{{site.prefix}}/resources/attached-connector.html">AttachedConnector</a></th><td>A connector in a peer namespace</td></tr>
 <tr><th><a href="{{site.prefix}}/resources/attached-connector-binding.html">AttachedConnectorBinding</a></th><td>A binding to an attached connector in a peer namespace</td></tr>
 </table>
+
+</div>
 
 <!-- - Some resource fields are "updatable" - you can change their values -->
 <!--   without . -->

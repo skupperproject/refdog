@@ -9,7 +9,9 @@ refdog_links:
 
 # Skupper concepts
 
-## Index
+## Concept index
+
+<div class="index">
 
 #### Sites
 
@@ -41,6 +43,8 @@ refdog_links:
 <tr><th><a href="{{site.prefix}}/concepts/application.html">Application</a></th><td>An application is a set of components that work together</td></tr>
 <tr><th><a href="{{site.prefix}}/concepts/component.html">Component</a></th><td>A component is a logical part of an application</td></tr>
 </table>
+
+</div>
 
 ## Overview
 
